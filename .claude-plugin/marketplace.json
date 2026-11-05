@@ -1,0 +1,7 @@
+{
+  "name": "qafactory",
+  "owner": { "name": "Xartaxana" },
+  "plugins": [
+    { "name": "qa-factory", "source": "./qa-factory", "description": "QA Factory: ticket-driven functional testing with two human gates." }
+  ]
+}
