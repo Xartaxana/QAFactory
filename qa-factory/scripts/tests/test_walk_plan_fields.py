@@ -290,8 +290,9 @@ def role_load_raise_named():
     check_eq("every other role's process ratchet is at or below its frozen ceiling (a shrink is allowed, a raise is not)", raised(others), [])
     check_eq("negative control: a raised process ratchet of one other role is reported",
              raised(dict(others, **{"qa-scout": old_process["qa-scout"] + 1})), ["qa-scout"])
-    fragment = (PACKAGE / "changelog.d" / "tr3-10e-walk-data-field.md").read_text(encoding="utf-8")
-    check_in("the changelog fragment names the raise old -> new", "16718 -> 16747", fragment)
+    # A release folds the fragment into CHANGELOG.md, so the note is read through the one reader that follows it there.
+    note = harness.release_note(PACKAGE / "changelog.d" / "tr3-10e-walk-data-field.md", "16718 -> 16747")
+    check_in("the release note names the raise old -> new", "16718 -> 16747", note)
 
 
 def main():
