@@ -1,0 +1,8 @@
+{"type":"user","isSidechain":false,"promptId":"pC1","uuid":"uC1","timestamp":"2026-10-01T08:00:00Z","message":{"role":"user","content":"synthetic message of the person"}}
+{"type":"assistant","isSidechain":false,"requestId":"rC1","uuid":"aC1","timestamp":"2026-10-01T08:00:05Z","message":{"model":"claude-sonnet-5","usage":{"input_tokens":10,"output_tokens":1},"content":[{"type":"tool_use","id":"tC1","name":"Read","input":{"file_path":"synthetic.md"}}]}}
+{"type":"user","isSidechain":false,"promptId":"pC1","uuid":"uC1r","timestamp":"2026-10-01T08:00:10Z","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"tC1","content":"synthetic result"}]}}
+{"type":"user","isSidechain":false,"isMeta":true,"promptId":"pC1","uuid":"uC1m","timestamp":"2026-10-01T08:00:12Z","message":{"role":"user","content":"synthetic meta line"}}
+{"type":"user","isSidechain":false,"isCompactSummary":true,"promptId":"pC1","uuid":"uC1c","timestamp":"2026-10-01T08:00:14Z","message":{"role":"user","content":"synthetic compaction summary"}}
+{"type":"user","isSidechain":false,"promptId":"pC1","uuid":"uC1n","timestamp":"2026-10-01T08:00:16Z","message":{"role":"user","content":"<task-notification>synthetic background task finished</task-notification>"}}
+{"type":"user","isSidechain":false,"promptId":"pC1","uuid":"uC1x","timestamp":"2026-10-01T08:00:18Z","message":{"role":"user","content":"<command-message>synthetic-skill</command-message>"}}
+{"type":"assistant","isSidechain":false,"requestId":"rC2","uuid":"aC2","timestamp":"2026-10-01T08:00:30Z","message":{"model":"claude-sonnet-5","usage":{"input_tokens":10,"output_tokens":1},"content":[{"type":"text","text":"synthetic answer"}]}}

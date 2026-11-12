@@ -1,0 +1,323 @@
+{
+ "ticket": "LOCAL-1",
+ "issue_type": "",
+ "acceptance_criteria": [
+  "Add simple in-stock product from product page: item in cart with correct price, quantity 1 (REF-10)",
+  "Add out-of-stock product: \"Out of stock\" message, nothing added (REF-10)",
+  "Add quantity 3: cart shows quantity 3 and correct subtotal (REF-10)",
+  "Every path by which a product can get into the cart and every scenario using it (LOCAL-1 description)"
+ ],
+ "implementation": {
+  "source": "current-code",
+  "mr": null,
+  "branch": null,
+  "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "diff_path": null,
+  "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "implementations": [
+  {
+   "repo": "MyBooks",
+   "source": "current-code",
+   "mr": null,
+   "branch": null,
+   "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "diff_path": null,
+   "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  }
+ ],
+ "observables": [
+  {
+   "requirement": "REF-10 AC1 add simple product from product page",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 45,
+   "note": "addToCart POSTs /api/cart {bookId, quantity}; toast \"Book added to cart\""
+  },
+  {
+   "requirement": "REF-10 AC3 add multiple quantities (qty 3)",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 55,
+   "note": "toast \"N copies added to cart\""
+  },
+  {
+   "requirement": "REF-1 / REF-2 reject quantity 0",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 164,
+   "note": "onChange clamps any input to >=1 (0 becomes 1), so 0 is never sent; contradicts \"reject 0\""
+  },
+  {
+   "requirement": "REF-10 AC2 out-of-stock product",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 170,
+   "note": "button disabled and labelled \"Out of Stock\" instead of an error message after click"
+  },
+  {
+   "requirement": "REF-10 AC2 out-of-stock product",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 35,
+   "note": "400 OUT_OF_STOCK when stockQuantity<=0"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/HomePage.tsx",
+   "line": 118,
+   "note": "catalog card add path: handleAddToCart POSTs quantity 1 (BookCard.tsx:78 add-to-cart-button-<id>)"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/WishlistPage.tsx",
+   "line": 47,
+   "note": "wishlist move-to-cart path: POST /api/cart qty 1, then DELETE wishlist item; error toast keeps item"
+  },
+  {
+   "requirement": "REF-11/145/147 stock check incl. already in cart",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 44,
+   "note": "INSUFFICIENT_STOCK when inCart+adding>stock (cartRules.ts:7)"
+  },
+  {
+   "requirement": "REF-12 same product twice gives one line",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 53,
+   "note": "existing line updated to inCart+quantity"
+  },
+  {
+   "requirement": "REF-1/151/152/161/162/163 quantity validation",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/validation/schemas.ts",
+   "line": 41,
+   "note": "integer 1..999; bookId positive integer"
+  },
+  {
+   "requirement": "REF-9 raise cart quantity above stock",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 80,
+   "note": "PUT rejects quantity>stock, INSUFFICIENT_STOCK (route cart/[id]/route.ts:8)"
+  },
+  {
+   "requirement": "REF-13/157 guest and user carts",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/session.ts",
+   "line": 34,
+   "note": "owner = user id when signed in else guest session cookie"
+  },
+  {
+   "requirement": "REF-13/157 guest cart after sign-in",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 118,
+   "note": "mergeGuestCart: higher qty wins, capped at stock, no-stock dropped; called from LoginPage.tsx:36"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/route.ts",
+   "line": 24,
+   "note": "DELETE clears cart; DELETE cart/[id]/route.ts:20 removes one line"
+  },
+  {
+   "requirement": "REF-14 price sync / subtotal",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 103,
+   "note": "calculateCartTotal from DB price; GET /api/cart/total"
+  },
+  {
+   "requirement": "REF-15 unknown book",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 33,
+   "note": "404 BOOK_NOT_FOUND"
+  },
+  {
+   "requirement": "REF-3 quick view add path",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/HomePage.tsx",
+   "line": 361,
+   "note": "no quick-view component in src (grep empty): path has no implementation"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/providers/AppProviders.tsx",
+   "line": 35,
+   "note": "cart badge: updateCartCount sums quantities of GET /api/cart"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/CartPage.tsx",
+   "line": 185,
+   "note": "cart quantity input max = stock; PUT at CartPage.tsx:62, DELETE at :82"
+  }
+ ],
+ "related": [
+  {
+   "key": "REF-16",
+   "kind": "mention",
+   "source": "REF-16 / REF-10 issue links and bodies"
+  },
+  {
+   "key": "REF-10",
+   "kind": "mention",
+   "source": "REF-16 / REF-10 issue links and bodies"
+  },
+  {
+   "key": "REF-2",
+   "kind": "bug",
+   "source": "REF-16 / REF-10 issue links and bodies"
+  },
+  {
+   "key": "REF-29",
+   "kind": "bug",
+   "source": "REF-16 / REF-10 issue links and bodies"
+  }
+ ],
+ "subtasks": [],
+ "existing_tests": [
+  "MyBooks/src/lib/cartRules.test.ts",
+  "MyBooks/src/lib/validation/schemas.test.ts:60-70"
+ ],
+ "test_path": {
+  "api": "tests/api/cart/<feature>.spec.ts via core/fixtures/apiClient.fixture.ts",
+  "ui": "tests/e2e/cart/<feature>.spec.ts via core/pages/ page objects",
+  "data": "core/fixtures/*.fixture.ts; seed books by title, own users/carts"
+ },
+ "area_bugs": [
+  "REF-2 (open): quantity 0 on book page becomes 1",
+  "REF-29 (resolved): add-to-cart stock/quantity validation; orphan cart rows"
+ ],
+ "conflicts": [
+  {
+   "requirement": "REF-1 / REF-2: quantity must be a whole number from 1 up to stock; 0 must be rejected",
+   "code": "onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 164
+  }
+ ],
+ "changed_areas": [
+  "cart add paths: catalog card, book detail, wishlist move; cart update/remove/clear; guest merge on login"
+ ],
+ "coverage_status": "not_found",
+ "coverage_search": [
+  {
+   "repo": "tests",
+   "revision": "main@5cd21eb",
+   "changed_area": "cart",
+   "searched_paths": [
+    "tests/**",
+    "core/**",
+    "test-cases/"
+   ],
+   "status": "complete",
+   "reason": "grep cart: no files; positive control grep login finds 12 hits in 2 specs"
+  },
+  {
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "changed_area": "cart",
+   "searched_paths": [
+    "src/**/*.test.ts"
+   ],
+   "status": "complete",
+   "reason": "unit tests cover rules only"
+  }
+ ],
+ "existing_test_candidates": [
+  {
+   "candidate_id": "UT-cartRules",
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "path": "src/lib/cartRules.test.ts",
+   "selector": "mergedQuantity; fitsInStock",
+   "parameter_ids": [],
+   "level": "unit",
+   "assertion_refs": [
+    "src/lib/cartRules.test.ts:5-24"
+   ],
+   "candidate_requirement_refs": [
+    "REF-18"
+   ],
+   "origin": "existing",
+   "result_candidate_refs": []
+  },
+  {
+   "candidate_id": "UT-schemas-cart",
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "path": "src/lib/validation/schemas.test.ts",
+   "selector": "addToCartSchema; updateCartItemSchema",
+   "parameter_ids": [
+    "quantity",
+    "bookId"
+   ],
+   "level": "unit",
+   "assertion_refs": [
+    "src/lib/validation/schemas.test.ts:60-70"
+   ],
+   "candidate_requirement_refs": [
+    "REF-1",
+    "REF-4",
+    "REF-20"
+   ],
+   "origin": "existing",
+   "result_candidate_refs": []
+  }
+ ],
+ "constraints": [
+  "implementation_source current-code: observables defend existing behaviour only",
+  "stand local http://localhost:3000 health 200"
+ ],
+ "unresolved_facts": [
+  "REF-3 quick view: no implementation found",
+  "REF-6/165/166 have no code observable"
+ ],
+ "known_paths": {},
+ "trail": {
+  "searches": [
+   "Grep cart in MyBooks/src (40 files)",
+   "Grep cart in tests,core,test-cases (none)",
+   "Grep login in tests (positive control)",
+   "Grep quick view in components"
+  ],
+  "reads": [
+   "cartService.ts full",
+   "cartRules.ts",
+   "schemas.ts:36-55",
+   "WishlistPage.tsx:44-63",
+   "BookDetailPage.tsx:19-63,150-165",
+   "api/cart routes"
+  ]
+ },
+ "witness": "work/source-inventory.json (29 read, 19 excluded); observables carry path:line",
+ "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+}

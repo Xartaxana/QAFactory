@@ -1,0 +1,151 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces is the one the whole factory pays for when it is missing: A REFUSAL
+# THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A REFUSAL, IT IS A RIDDLE. The author then
+# guesses, and every guess is a round - and S4 allows two. So every finding carries, beside the
+# problem, the expected state in the reviewer's own words and, where one exists, the way the author
+# can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-critic-2.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the designer's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# One line per entry of the designer's `inputs`, with the version read. A review of a case that
+# has since been re-pinned is not a review of this window.
+inputs_read:
+  - path: <path exactly as the designer listed it>
+    version: <the pinned cv_ id, or the file's sha256>
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: LOCAL-1_TC_002,LOCAL-1_TC_005,LOCAL-1_TC_007,LOCAL-1_TC_008,LOCAL-1_TC_009,LOCAL-1_TC_019,LOCAL-1_TC_020,LOCAL-1_TC_021,LOCAL-1_TC_022,LOCAL-1_TC_023,LOCAL-1_TC_024
+  verdict: ok
+
+review:
+  outcome: approved  # approved | approved_with_fixes | rejected
+  rollcall: 11 of 11 reviewed
+  findings_file: work/test-cases/critic-findings.md  # required; the stage is not receipted without it
+  rounds_used: 2
+  rubric_covered: coverage, atomicity, clarity, edge cases, negative scenarios, traceability, completeness, 7b source contradiction, 7c working base, 8 seed the defect
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: LOCAL-1_TC_002
+    state: approve
+    reason: round-1 concerns repaired
+    case_version: cv_d0150be267e7a21396f3
+  - id: LOCAL-1_TC_005
+    state: approve
+    reason: cookie lifetime Then added
+    case_version: cv_1e2fe984a158845705a5
+  - id: LOCAL-1_TC_007
+    state: approve
+    reason: red by person's decision
+    case_version: cv_046af312329b03af6938
+  - id: LOCAL-1_TC_008
+    state: approve
+    reason: both partitions homed
+    case_version: cv_399811ae764fa23a33a4
+  - id: LOCAL-1_TC_009
+    state: approve_with_concerns
+    reason: Then 3 hedged, cannot fail alone
+    case_version: cv_a7a0796939a1b5bab25c
+  - id: LOCAL-1_TC_019
+    state: approve_with_concerns
+    reason: quantity unasserted until Q6
+    case_version: cv_52d16ccfe2ee80471805
+  - id: LOCAL-1_TC_020
+    state: approve_with_concerns
+    reason: refusal boundary only in Notes; Q6
+    case_version: cv_3599058ee1132918ddd6
+  - id: LOCAL-1_TC_021
+    state: approve_with_concerns
+    reason: all Thens wait on Q6
+    case_version: cv_beee818c5ed0c652255b
+  - id: LOCAL-1_TC_022
+    state: approve_with_concerns
+    reason: no literal until Q4; no true race
+    case_version: cv_050e8c970fb400e8ca43
+  - id: LOCAL-1_TC_023
+    state: approve_with_concerns
+    reason: abort never reaches server; Q4
+    case_version: cv_931e0a5df2fd8baabb25
+  - id: LOCAL-1_TC_024
+    state: approve_with_concerns
+    reason: Then 2 disjunction passes dropped add
+    case_version: cv_f8fbf2461e7153566924
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: F-1
+    case: LOCAL-1_TC_024
+    where: Then 2
+    problem: Then 2 is a disjunction, so a dropped add with any visible message passes.
+    expected: "Then 2: after the flow settles the cart holds one line for B quantity 1, or the page shows a visible message and the cart holds no line for B and no duplicate."
+    fix: Rewrite Then 2 so each branch also fixes the cart state.
+    check: Seeded defect (add dropped, message shown, line absent while claiming success) fails Then 2.
+    dimension: 8 seed the defect
+    blocking: false
+    replacement:
+      old: either the cart holds one line for B quantity 1, or the page shows a visible message
+      new: either the cart holds one line for B quantity 1, or the page shows a visible message and the cart holds no line for B
+  - id: F-2
+    case: LOCAL-1_TC_020
+    where: When step 4 and Notes
+    problem: The refusal of the add request is the completion boundary but lives only in the Notes.
+    expected: When step 4 waits for the POST /api/cart response and asserts a 4xx before the reload of step 5.
+    fix: Move the refusal check from Notes into a When/Then step.
+    check: Step 4 names the awaited 4xx response.
+    dimension: 3 clarity
+    blocking: false
+    replacement:
+      old: Click "move to cart" for X (the add is now refused by the stock rule).
+      new: Click "move to cart" for X and wait for the POST /api/cart response; it must be a 4xx (the add is refused by the stock rule).
+
+# What the review could not settle. An honest `unverified` with a named cause is worth more than a
+# verdict the evidence does not carry - and it is a word of the vocabulary, not an improvisation.
+unverified:
+  - id: <case id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or access would>
+
+claims:
+  every_case_of_the_review_scope_has_a_row: true
+  every_finding_names_expected_and_check: true
+  the_verdict_was_computed_by_rollcall_not_typed: true
+  no_case_outside_the_review_scope_was_reviewed: true
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

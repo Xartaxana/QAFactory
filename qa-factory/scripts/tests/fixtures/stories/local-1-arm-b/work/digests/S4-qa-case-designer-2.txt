@@ -1,0 +1,27 @@
+qa-case-designer S4 S4-qa-case-designer-2 · ok
+LOCAL-1_TC_001 · created · unchanged from round 1
+LOCAL-1_TC_002 · created · unchanged from round 1
+LOCAL-1_TC_003 · created · unchanged from round 1
+LOCAL-1_TC_004 · updated · Q6 a: quantity 2 plus 1 gives 3, written
+LOCAL-1_TC_005 · updated · cap case now reachable: stock lowered after the add
+LOCAL-1_TC_006 · updated · observable Thens from R-12, expected red
+LOCAL-1_TC_007 · updated · 201, 201, one line of 5 written
+LOCAL-1_TC_008 · updated · 400 VALIDATION_ERROR and edges 1/999 written
+LOCAL-1_TC_009 · updated · codes written, step 3 names PUT
+LOCAL-1_TC_010 · updated · 404 BOOK_NOT_FOUND and empty cart written
+LOCAL-1_TC_011 · updated · absent/unchanged Thens from R-9; refusal status unnamed
+LOCAL-1_TC_012 · updated · api only, PUT, 5 accepted, 6 refused
+LOCAL-1_TC_013 · updated · badge 3/4/2 and price formulas written
+LOCAL-1_TC_014 · updated · account cart empty precondition, R-12 dropped
+LOCAL-1_TC_015 · updated · unknown-book step added, R-5 dropped, invariant written
+LOCAL-1_TC_016 · updated · R-9 Thens written, evidence policy added
+LOCAL-1_TC_017 · updated · Thens from R-14 written, likely red
+LOCAL-1_TC_018 · updated · Thens from R-13 written, likely red
+LOCAL-1_TC_019 · created · unchanged from round 1
+LOCAL-1_TC_020 · created · unchanged from round 1
+work/test-cases/
+Cases are in test-cases/cart/, the project store, not work/test-cases/. The values file is work/handoffs/S4-qa-case-designer-2.values.yaml. The form was not touched, and case_version still says "pinned by case_versions.py after handover". I did not pin the cases.
+Open items:
+TC_012: the cart-page message for a refused update (R-10) is not covered by this api row. I recorded it as a declared gap.
+TC_011: no source names a status for a foreign PUT
+notes: state/findings/S4-qa-case-designer-2-digest-notes.md

@@ -1,0 +1,300 @@
+# S2 -> S3: the requirements register is handed to the strategist.
+#
+# The register is the story's oracle, so this file is where the factory proves the register was
+# built from everything it was given. `inputs_read` is not bookkeeping: it is the answer to the
+# one failure that has no refusal attached to it - a source or a diff hunk nobody opened. On
+# REF-1 the tester read part of `impl-diff.txt`, wrote 14 requirements, and every later
+# stage was correct about the wrong 14. The repaired run read every hunk and reached 21.
+#
+# The strategist may not add a requirement and may not repair one. Whatever is missing here is
+# missing from the plan, the cases, the tests and the report.
+# Fill: write your fields as "path: value" lines to work/handoffs/S2-qa-requirements-tester-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S2-qa-requirements-tester-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s2-tester-to-strategist
+stage: S2
+from_role: qa-requirements-tester
+to_role: qa-test-strategist
+
+inputs:
+  - path: work/handoffs/S2-qa-requirements-tester-1.yaml
+    what: this file
+    required: true
+  - path: work/requirements-register.md
+    what: every requirement with its source, revision, impact class and observable
+    required: true
+  - path: work/requirements-readiness.json
+    what: the open questions with their readings and owners
+    required: true
+  - path: understanding.md
+    what: the brief the person reads at gate A, and the Size line
+    required: true
+  - path: work/sizing.json
+    what: the computed size, weights and the arithmetic behind them
+    required: true
+
+# One line per entry of the scout's `inputs`, with what was actually read of it. The counts come
+# from the scout's handoff and the answer is `<read> of <handed>`; anything short of the whole
+# is a `blocked` field, not a smaller number quietly written.
+inputs_read:
+  - path: work/impl-diff.txt
+    handed: 0 (no implementation diff for this task)
+    read: 0 of 0
+  - path: work/context-bundle.json
+    version: 908dfe9036e906e6
+  - path: qa-factory/tickets/CART-1.md
+    version: person pasted text, revision unknown
+
+header:
+  role: qa-requirements-tester
+  stage: S2
+  window: CART-1
+  verdict: concerns
+
+# One row per requirement. This is the register in its machine form; the prose stays in the
+# register file. `state` from vocabulary.row_states - normally `found`, or `unresolved` for a
+# requirement whose oracle nobody can name yet.
+scope:
+  - id: R-1
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: AC-1 entry paths, current code
+    kind: confirmed_ac
+    source: "context-bundle.json a25b0801 / MyBooks/src/components/BookCard.tsx:78"
+    observable: "current-code:MyBooks/src/components/BookCard.tsx:78"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-2
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: AC-2 usage scenarios, current code
+    kind: confirmed_ac
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/session.ts:34"
+    observable: "current-code:MyBooks/src/lib/session.ts:34"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-3
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: unknown/out-of-stock add
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/services/cartService.ts:31"
+    observable: "current-code:MyBooks/src/lib/services/cartService.ts:31"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-4
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: stock limit on add
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/cartRules.ts:7"
+    observable: "current-code:MyBooks/src/lib/cartRules.ts:7"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-5
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: repeat add increments row
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/openapi/spec.ts:512"
+    observable: "expected-contract:MyBooks/src/lib/openapi/spec.ts:512"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-6
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: input validation 1..999
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/validation/schemas.ts:41"
+    observable: "current-code:MyBooks/src/lib/validation/schemas.ts:41"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-7
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: guest cookie ownership
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/cartOwner.ts:6"
+    observable: "current-code:MyBooks/src/lib/cartOwner.ts:6"
+    impact_class: access
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-8
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: merge at sign-in
+    kind: technical_invariant
+    source: "context-bundle.json a25b0801 / MyBooks/docs/AUTH.md:8"
+    observable: "expected-contract:MyBooks/docs/AUTH.md:8"
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-9
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: guest cart after registration unstated
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/components/pages/LoginPage.tsx:35"
+    observable: "current-code:MyBooks/src/components/pages/LoginPage.tsx:35"
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-10
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: badge sum of quantities
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/components/providers/AppProviders.tsx:35"
+    observable: "current-code:MyBooks/src/components/providers/AppProviders.tsx:35"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-11
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: PUT quantity and remove
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/services/cartService.ts:69"
+    observable: "current-code:MyBooks/src/lib/services/cartService.ts:69"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-12
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: foreign item id gives 404
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/app/api/cart/[id]/route.ts:8"
+    observable: "current-code:MyBooks/src/app/api/cart/[id]/route.ts:8"
+    impact_class: access
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-13
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: cart page NaN/fetch expectation unconfirmed
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/components/pages/CartPage.tsx:65"
+    observable: "current-code:MyBooks/src/components/pages/CartPage.tsx:65"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-14
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: wishlist move-to-cart
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/components/pages/WishlistPage.tsx:58"
+    observable: "current-code:MyBooks/src/components/pages/WishlistPage.tsx:58"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-15
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: checkout reads and clears cart
+    kind: derived_risk
+    source: "context-bundle.json a25b0801 / MyBooks/src/lib/services/orderService.ts:57"
+    observable: "current-code:MyBooks/src/lib/services/orderService.ts:57"
+    impact_class: money
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-16
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: concurrent add race, no observable
+    kind: derived_risk
+    source: context-bundle.json a25b0801 / none - needs schema and concurrency harness
+    observable: none - needs schema and concurrency harness
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+
+# Requirements that disagree with each other or with a source. Both readings travel: the plan row
+# carries `source_conflict` or `oracle_unknown`, the design review is forced, and the owner sees
+# BOTH readings at gate A. A matrix cell that reaches no plan row is an exit-gate error at S3.
+contradiction_matrix:
+  - id: <C-n>
+    requirement: <R-n>
+    contradicts: <R-m, or the source and what it says>
+    reading_a: <what follows if the requirement stands>
+    reading_b: <what follows if the other side stands>
+    owner_role: <one of vocabulary.question_owners - po_ba|dev_arch|qa>
+
+# Questions that block understanding. Each travels whole - the statement, what the sources say and
+# where, and the lettered readings with what each one costs. A question that arrives without its
+# readings goes back to this role, never to the person (REF-2).
+open_questions:
+  - id: Q1
+    statement: may current code plus AUTH.md and openapi be the oracle for the cart
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: only two generic ACs, no tracker stories (CART-1.md)
+    readings:
+      - id: a
+        reading: see readiness.json for both readings
+        cost: Use docs and code as oracle; rows without a document stay code-observed
+  - id: Q2
+    statement: should a guest cart survive registration then login
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: "RegisterPage.tsx:46 has no merge call; AUTH.md:8 says login merges"
+    readings:
+      - id: a
+        reading: see readiness.json for both readings
+        cost: Test as a bug if the cart is lost; else record as known
+  - id: Q3
+    statement: expected cart page behaviour for emptied quantity and failed fetch
+    owner_role: dev_arch
+    severity: non_blocking
+    sources_say: "CartPage.tsx:65 sends NaN; :30-38 no response.ok check"
+    readings:
+      - id: a
+        reading: see readiness.json for both readings
+        cost: Assert guard and error if required; else not tested
+  - id: Q4
+    statement: is concurrent add of one book in scope
+    owner_role: dev_arch
+    severity: non_blocking
+    sources_say: "cartService.ts:39-67 findFirst then create is not atomic"
+    readings:
+      - id: a
+        reading: see readiness.json for both readings
+        cost: Needs a parallel API check; else out of scope
+
+size:
+  computed: XXL
+  override: <the role's override, or a dash>
+  reasoning_ref: work/sizing.json
+
+artifacts:
+  register: work/requirements-register.md
+  readiness: work/requirements-readiness.json
+  understanding: understanding.md
+  sizing: work/sizing.json
+
+claims:
+  every_hunk_of_the_diff_was_read: true
+  every_requirement_has_an_observable_or_says_none: true
+  contradiction_matrix_walked_in_full: true
+  size_computed_by_sizing_py_not_quoted: true
+  size_recorded_in_pipeline: false  # `null` in pipeline.json while sizing.json said XXL
+
+expected_of_the_receiver:
+  - "every requirement above reaches a plan row, or is named `deferred` with a reason - the
+     strategist may not drop one silently and may not invent one"
+  - "a row touched by the contradiction matrix carries `source_conflict: true` or
+     `oracle_unknown: true` and forces design review at S4"
+  - "`observable: none` is a gate A question, never a reason to skip the requirement"
+
+unresolved:
+  - id: <R-n or Q-n>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[1].version
+    source: "sha256 of work/context-bundle.json"
+  - field: size.computed
+    source: "sizing.json"
+  - field: claims.size_computed_by_sizing_py_not_quoted
+    source: "verified by handoff_check.CLAIMS"

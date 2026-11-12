@@ -1,0 +1,199 @@
+{
+ "task": "CART-1",
+ "label": "initial-2605aa2460823ce36b05",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit=<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\evidence\\runs\\2605aa2460823ce36b05\\report.junit.xml",
+  "--project=chromium",
+  "tests/api/cart/add-rejections.spec.ts",
+  "tests/api/cart/add-stock-limit.spec.ts",
+  "tests/api/cart/add-accumulate.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/add-boundaries.spec.ts",
+  "tests/api/cart/cart-isolation.spec.ts",
+  "tests/api/cart/cart-merge.spec.ts",
+  "tests/api/cart/cart-update-delete.spec.ts",
+  "tests/api/cart/cart-ownership.spec.ts",
+  "tests/api/cart/cart-quote-order.spec.ts",
+  "tests/e2e/cart/add-to-cart.spec.ts"
+ ],
+ "exit_code": 1,
+ "duration_s": 43.5,
+ "log": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\2605aa2460823ce36b05\\initial-2605aa2460823ce36b05-20261031-114752.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-10-31T10:47:52.573277+00:00",
+ "ended_at": "2026-10-31T10:48:36.078305+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 18,
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 58.1,
+  "passed": 17
+ },
+ "failed": [
+  {
+   "test": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+   "kind": "failure",
+   "why": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart"
+  }
+ ],
+ "results": [
+  {
+   "test_id": "api\\cart\\add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+   "status": "failed",
+   "reason": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart"
+  },
+  {
+   "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "e2e\\cart\\add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "status": "passed",
+   "reason": ""
+  }
+ ],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\2605aa2460823ce36b05\\initial-2605aa2460823ce36b05-20261031-114752.junit.xml",
+ "report_hash": "b3db605e9b6595398ab24964c08c97842874ba420e50bad657251ae2679764bd",
+ "report_evidence": {
+  "path": "evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.junit.xml",
+  "sha256": "b3db605e9b6595398ab24964c08c97842874ba420e50bad657251ae2679764bd"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "failed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "initial",
+ "dispatch_id": "S6-qa-runner-1",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T10:47:48Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T10:48:36Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "summary_path": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\2605aa2460823ce36b05\\initial-2605aa2460823ce36b05-20261031-114752.json"
+}

@@ -1,0 +1,51 @@
+{
+  "unresolved": [
+    {
+      "case": "TP1-13877_TC_001",
+      "reason": "deferred_by_decision:gate_b",
+      "detail": "manual-human case (plan row TS-6); covers R-6 and R-7 (static diff review); the reviewer executes it at gate B",
+      "disputes": "nothing"
+    },
+    {
+      "case": "TP1-13877_TC_002",
+      "reason": "deferred_by_decision:gate_b",
+      "detail": "manual-human case (plan row TS-9); covers R-13 (migration note adequacy); the reviewer executes it at gate B",
+      "disputes": "nothing"
+    },
+    {
+      "case": "TP1-13877_TC_003",
+      "reason": "deferred_by_decision:gate_b",
+      "detail": "manual-human case (plan row TS-12); covers R-12 (IaC audit); out of scope for factory execution; the reviewer executes it at gate B",
+      "disputes": "nothing"
+    }
+  ],
+  "tests": [],
+  "probe": {
+    "layers": "not_applicable",
+    "reuse": "not_applicable",
+    "then_channel": "not_applicable",
+    "duplicates": "none",
+    "own_data": "not_applicable",
+    "collected": 0
+  },
+  "run_witness": "no_run_scope_empty_all_manual_human",
+  "revision": 2,
+  "then_bindings": [
+    {"case": "TP1-13877_TC_001", "then": 1, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 1 (P-readme-table) verified by a person reading the diff"},
+    {"case": "TP1-13877_TC_001", "then": 2, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 2 (P-models-docstring) verified by a person reading the diff"},
+    {"case": "TP1-13877_TC_001", "then": 3, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 3 (P-yaml-header) verified by a person reading the diff"},
+    {"case": "TP1-13877_TC_002", "then": 1, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 1 (P-migration-note-present) verified by a person reading the diff"},
+    {"case": "TP1-13877_TC_002", "then": 2, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 2 (P-enforcement-change-stated) verified by a person reading the diff"},
+    {"case": "TP1-13877_TC_002", "then": 3, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 3 (P-default-change-noted) verified by a person reading the diff"},
+    {"case": "TP1-13877_TC_003", "then": 1, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 1 (P-iac-clean) verified by a person auditing the deployment repositories"},
+    {"case": "TP1-13877_TC_003", "then": 2, "instance_id": null, "assertion_ref": null, "status": "unresolved",
+     "reason": "deferred_by_decision:gate_b", "detail": "manual-human; Then 2 (P-iac-pinned) verified by a person auditing the deployment repositories"}
+  ]
+}

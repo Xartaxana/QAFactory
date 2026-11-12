@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "block_id": "4d9f931528dfe8f92f72",
+  "attempt_id": "4d9f931528dfe8f92f72",
+  "attempt_started_at": "2026-10-31T10:17:29.341921+00:00",
+  "attempt_ended_at": "2026-10-31T10:17:46.970576+00:00",
+  "dispatch_id": "S5-qa-automator-4",
+  "profile_id": "web",
+  "repo_id": "test-automation-framework",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": {
+    "reason": "missing_fresh_evidence",
+    "evidence_refs": [
+      "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+    ]
+  },
+  "purpose": "initial",
+  "input_fingerprint": "a494558df7324ea529f3c41046e5d6f6cb7a646ecc9db5ede49bc1ddad560305",
+  "source_fingerprint": {
+    "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+    "test_content_sha": "f010905d7bd1a2dd0a7f7d6a6ea89f4739c99669ad796102ab7870a41a28c537",
+    "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+    "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+    "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+    "policy_revision": "config-projection-1"
+  },
+  "runtime_provenance": {
+    "profile_id": "web",
+    "timestamp": "2026-10-31T01:57:58Z",
+    "environment_id": "local",
+    "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+    "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+    "result": "matched",
+    "evidence_refs": [
+      "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+    ],
+    "provenance": {
+      "technical_verification": true,
+      "source_linkage": "exact",
+      "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  },
+  "execution_status": "failed",
+  "results": [
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "4d9f931528dfe8f92f72",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "a494558df7324ea529f3c41046e5d6f6cb7a646ecc9db5ede49bc1ddad560305",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "f010905d7bd1a2dd0a7f7d6a6ea89f4739c99669ad796102ab7870a41a28c537",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\4d9f931528dfe8f92f72\\initial-4d9f931528dfe8f92f72-20261031-111729.json",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/4d9f931528dfe8f92f72/initial-4d9f931528dfe8f92f72-20261031-111729.junit.xml",
+      "report_sha256": "bb39aea6a291f2effe42ef372f9230cdd940d4e7ba07dd72e600e7ffefeff83c"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "4d9f931528dfe8f92f72",
+    "raw_report_hash": "bb39aea6a291f2effe42ef372f9230cdd940d4e7ba07dd72e600e7ffefeff83c",
+    "reparsed": false
+  },
+  "report_scope": {
+    "selected": [
+      "@api @regression CART-1_TC_009 quote and order from cart"
+    ],
+    "unmatched_report_rows": [
+      "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart"
+    ]
+  }
+}

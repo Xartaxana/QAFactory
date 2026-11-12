@@ -1,0 +1,20 @@
+qa-requirements-tester S2 S2-qa-requirements-tester-1 · ok
+R-1 · found · observable in current code; story text
+R-2 · found · observable in current code; story text
+R-3 · found · observable in current code; story text
+R-4 · found · observable in current code; story text
+R-5 · found · observable in current code; claim row added (Q4)
+R-6 · found · observable in current code; claim row added (Q4)
+R-7 · found · observable in current code; derived
+R-8 · found · observable in current code; claim row added (Q4)
+R-9 · found · observable in current code; claim row added (Q4)
+R-10 · found · observable in current code; derived
+R-11 · found · observable in current code; claim row added (Q4)
+R-12 · found · observable in current code; claim row added (Q4)
+R-13 · found · observable in current code; claim row added (Q4)
+R-14 · found · observable in current code; claim row added (Q4)
+Q1 · unresolved · failed-call norm (R-12..R-14) awaits the person; default holds
+Q2 · found · PUT vs PATCH on /api/cart/{id}; non-blocking
+Q3 · found · wishlist move of a book already in cart; non-blocking
+Q4 · found · code-only behaviour claims need the person's confirmation
+work/requirements-readiness.json

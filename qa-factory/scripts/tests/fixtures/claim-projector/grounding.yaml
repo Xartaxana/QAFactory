@@ -1,0 +1,22 @@
+schema_version: 1
+implementation_source: diff
+rows:
+  - id: G-4
+    label: behaviour_change
+    reason: "PUT answers 403 now"
+claims:
+  - r: R-28
+    row: G-4
+    requirement: "PUT /v1/workflows/{id} answers 403 when the guardrail and the MCP checks both fail."
+    impact: degraded
+    before: "400"
+    before_ref: "diff:-testproject1-backend:src/testproject1/rest_api/routers/workflow.py:540"
+    now: "403"
+    now_ref: "diff:testproject1-backend:src/testproject1/rest_api/routers/workflow.py:541"
+    differs: "yes"
+    question: raise
+    ask:
+      question: "Which status code must PUT return when both checks fail?"
+      source_says: [{quote: "returns the same results and error codes for every invalid input as before", where: "register R-19"}]
+      severity: major
+      owner_role: po_ba

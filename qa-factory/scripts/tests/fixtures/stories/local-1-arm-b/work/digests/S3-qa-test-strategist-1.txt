@@ -1,0 +1,25 @@
+qa-test-strategist S3 S3-qa-test-strategist-1 · concerns
+TS-1 · automate · regression: yes, main path of the cart
+TS-2 · automate · regression: yes, quantity and stock partitions
+TS-3 · automate · regression: yes, two writes behind one click
+TS-4 · automate · regression: yes, reading A until answered
+TS-5 · automate · regression: yes, P0 data-loss merge rules
+TS-6 · automate · regression: yes, expected red, code contradicts R-12
+TS-7 · automate · regression: yes, P0 money
+TS-8 · automate · regression: yes, parametrised boundaries
+TS-9 · automate · regression: yes, P0 money overselling
+TS-10 · automate · regression: yes, one instance
+TS-11 · automate · regression: yes, P0 access
+TS-12 · automate · regression: yes, PUT until answered
+TS-13 · automate · regression: yes, P0 money, count built twice
+TS-14 · manual-agent · regression: no, a walk of the sign-in carry-over
+TS-15 · manual-agent · regression: no, a walk of the add rules
+TS-16 · manual-agent · regression: no, a walk of the owners
+TS-17 · automate · regression: yes, cart page failure path
+TS-18 · automate · regression: yes, move failure path
+TS-19 · automate · regression: yes, catalog add failure path
+TS-20 · automate · regression: yes, book page failure path
+test-plan.md
+All 20 obligations in work/test-plan.json now carry the fields the gate named: behavior, observation boundary, completion condition, scenarios, oracle status, decision, scope, sufficiency review, coverage links and oracle source. The three manual rows (OB-14 to OB-16) also carry an evidence_policy. The last hook run reported no findings. I did not re-run the exit gate, so it may still refuse.
+Guessed field names: some are guesses, including coverage_schema_version, oracle_source_ref and evidence_policy. A wrong name will show up as a gate finding.
+notes: state/findings/S3-qa-test-strategist-1-digest-notes.md

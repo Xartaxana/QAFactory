@@ -1,0 +1,67 @@
+header.verdict: ok
+review.outcome: approved
+review.rollcall: 10 of 10 reviewed
+review.rounds_used: 2
+review.rubric_covered: "coverage, atomicity, duplicates and level, clarity, edge cases, negative scenarios, traceability, completeness against the plan, oracle sources, seed the defect"
+"inputs_read[0].path": work/handoffs/S4-qa-case-designer-2.yaml
+"inputs_read[0].version": designer handoff as present at review
+"scope[0].id": LOCAL-1_TC_005
+"scope[0].state": approve
+"scope[0].reason": P-cap reachable, Thens concrete with independent GET
+"scope[0].case_version": cv_63c288a61eb8991687ce
+"scope[1].id": LOCAL-1_TC_006
+"scope[1].state": approve_with_concerns
+"scope[1].reason": Then 2 observable loose; lower level: impossible
+"scope[1].case_version": cv_53582e9fd2b6ca89c1d8
+"scope[2].id": LOCAL-1_TC_007
+"scope[2].state": approve
+"scope[2].reason": 201, 201, one line quantity 5 on independent GET
+"scope[2].case_version": cv_c9db7e5d30cd72586fd9
+"scope[3].id": LOCAL-1_TC_009
+"scope[3].state": approve
+"scope[3].reason": codes named, boundaries stock and stock+1, GET after refusals
+"scope[3].case_version": cv_076607482889f76c8067
+"scope[4].id": LOCAL-1_TC_011
+"scope[4].state": approve
+"scope[4].reason": owner absence Thens plus allowed same-account GET
+"scope[4].case_version": cv_1034782aa1322af81825
+"scope[5].id": LOCAL-1_TC_012
+"scope[5].state": approve
+"scope[5].reason": api only, 5 accepted and 6 refused, GET unchanged
+"scope[5].case_version": cv_449be24f68e1f4525921
+"scope[6].id": LOCAL-1_TC_013
+"scope[6].state": approve_with_concerns
+"scope[6].reason": values written; lower level: impossible (UI providers)
+"scope[6].case_version": cv_a66f995d657e98e066b3
+"scope[7].id": LOCAL-1_TC_014
+"scope[7].state": approve_with_concerns
+"scope[7].reason": lower level: api, kept for UI walk (P19)
+"scope[7].case_version": cv_6a7b2dde6d47ad7bccd9
+"scope[8].id": LOCAL-1_TC_015
+"scope[8].state": approve_with_concerns
+"scope[8].reason": lower level: api, kept for typed input and double click (P19)
+"scope[8].case_version": cv_d5f8d0a9c43032173271
+"scope[9].id": LOCAL-1_TC_016
+"scope[9].state": approve_with_concerns
+"scope[9].reason": lower level: api, kept for cookies and two browsers (P19)
+"scope[9].case_version": cv_f3d9f6c5056b38862707
+"findings[0].id": F-1
+"findings[0].case": LOCAL-1_TC_006
+"findings[0].where": Then 2
+"findings[0].problem": "the signed-in page is identified as 'account header/menu' without naming the element"
+"findings[0].expected": "Then 2 names the element read, e.g. the sign-out control or account name visible on the page"
+"findings[0].fix": name the element the automator reads
+"findings[0].check": the automator can write one locator from the Then alone
+"findings[0].dimension": clarity
+"findings[0].blocking": false
+"findings[0].replacement.old": "shows the account header/menu of the signed-in user"
+"findings[0].replacement.new": "shows the signed-in user's sign-out control or account name in the page header"
+unverified: []
+not_looked: []
+advice_read: "- (work/advice-S4.json absent)"
+advice_rejected: []
+questions: []
+claims.every_case_of_the_review_scope_has_a_row: true
+claims.every_finding_names_expected_and_check: true
+claims.the_verdict_was_computed_by_rollcall_not_typed: true
+claims.no_case_outside_the_review_scope_was_reviewed: true

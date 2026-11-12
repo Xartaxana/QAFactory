@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/CART-1",
+      "content_hash": null,
+      "discovered_from": null,
+      "exclusion_or_error": "HTTP 404: written by the service itself",
+      "fetched_at": "2026-10-31T00:56:21.690495Z",
+      "gap_acceptance": {
+        "accepted": [
+          "unavailable: HTTP 404: written by the service itself"
+        ],
+        "accepted_points": [
+          {
+            "at": "2026-10-31T00:59:39.251233Z",
+            "by": "human",
+            "class": "gap",
+            "id": "source:unavailable",
+            "kind": "source",
+            "revision": null,
+            "shown": false,
+            "text": "unavailable: HTTP 404: written by the service itself",
+            "words": "Go on without Jira (Recommended). Same pasted task text as ADD-TO-CART, re-keyed to CART-1 at the person's choice; accept the gap. Stand stays local."
+          }
+        ],
+        "at": "2026-10-31T00:59:39.251233Z",
+        "by": "human",
+        "words": "Go on without Jira (Recommended). Same pasted task text as ADD-TO-CART, re-keyed to CART-1 at the person's choice; accept the gap. Stand stays local."
+      },
+      "human_review": {
+        "at": "2026-10-31T00:59:40.676137Z",
+        "by": "human",
+        "shown": {
+          "relevance": "unknown",
+          "status": "unavailable"
+        },
+        "words": "Go on without Jira (Recommended). Same pasted task text as ADD-TO-CART, re-keyed to CART-1 at the person's choice; accept the gap. Stand stays local."
+      },
+      "inspection_ref": null,
+      "inspection_status": "unknown",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        },
+        "external_media": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "task",
+      "relation_evidence": null,
+      "relevance": "unknown",
+      "relevance_reason": "source could not be assessed",
+      "required": true,
+      "retry_at": null,
+      "retryable": false,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-ad1a8a3b1d2d9cd1f90f",
+      "status": "unavailable"
+    }
+  ]
+}

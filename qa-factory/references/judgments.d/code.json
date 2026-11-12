@@ -1,0 +1,263 @@
+{
+  "judgments": [
+    {
+      "id": "code_assert_matches_then",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 1,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 1 (fit to the case) for one test function; and the `contradicted-*` finding of s5_precheck when the mismatch is only in spelling",
+      "undecided": "qa-code-critic reads this test against its case in full, and the precheck finding stands",
+      "instructions": {
+        "question": "Does the test function in `test.code` contain an assertion that checks the outcome the clauses in `case.then` require?",
+        "read": [
+          "test.code",
+          "case.then"
+        ],
+        "focus": "The value compared, not the words used for it: a Then that fixes a status, a field value, a null, a visible element must have an assertion that fixes the same thing. `case.then` lists only the clauses this one function is answerable for; other clauses of the same case are proved by other functions and are not in it."
+      },
+      "criteria": {
+        "true": "For each clause of `case.then` an assertion in `test.code` compares the same observable against the same expected value, however the two spell it.",
+        "false": "A clause has no assertion at all, or an assertion compares that observable against a different value than the clause fixes (the clause says null and the test asserts not-null, the clause says 403 and the test asserts 401)."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-23, TP1-15045, 19 test functions: 19 asked, 7 decided (5 pass, 2 fail), verdicts identical across two runs. Both fails are the two contradictions the story really carried - TC-009 Then 2 (`error` asserted not-none against a Then that says null) and TC-014 Then 1 (`help`). First draft put the whole case's Then in the state and answered `fail` for every case split over several functions (TC-014's four clauses live in three tests); scoping the state to the clauses `then_bindings` gives THAT function removed 4 of the 6 fails and kept both real ones. As the downgrade question behind `s5_then_contradiction` it held all 4 `contradicted-*` findings of the story, twice, at p 0.04-0.08: the seam changed nothing on the run that motivated it."
+    },
+    {
+      "id": "code_sleep_justified",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 3,
+      "type": "noul",
+      "replaces": "the `smell:sleep-*` finding of s5_precheck for one test function",
+      "undecided": "the sleep finding stands and the author replaces the wait, as without a judge",
+      "instructions": {
+        "question": "The test in `test.code` pauses for a fixed number of seconds. Is there no condition it could wait for instead?",
+        "read": [
+          "test.code",
+          "case.then"
+        ],
+        "focus": "Whether the thing being waited for is observable from the test at all."
+      },
+      "criteria": {
+        "true": "The pause waits for something the test cannot observe: an external system's own schedule, a rate-limit window, a debounce or animation with no completion signal the test can read.",
+        "false": "The test could wait for the condition it actually needs — an element visible, a response status, a record present, a job state — with the framework's wait helper."
+      },
+      "thresholds": {
+        "true_at": 0.92,
+        "false_at": 0.1
+      },
+      "calibration": "2026-09-23: no live sample - the story's `sleep` findings were repaired before its final manifest, so no S5 window reached the exit gate with one. Checked against a table transport in scripts/tests/test_judge_code.py only. `true_at` is 0.92 because a decided `true` passes a refusal."
+    },
+    {
+      "id": "code_locator_fragile",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 5,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 5 (reuse and layering) for the UI surface of one test function",
+      "undecided": "qa-code-critic judges the locators of this test",
+      "instructions": {
+        "question": "Does the test in `test.code` find user-interface elements by something that changes when the page's markup or wording changes?",
+        "read": [
+          "test.code"
+        ],
+        "focus": "How the element is addressed, not whether the test passes."
+      },
+      "criteria": {
+        "true": "An element is addressed by position (nth, index, absolute XPath), by a generated or styling class name, or by visible prose spelled inline in the test.",
+        "false": "Elements come from a page object or a named locator of the framework, or are addressed by a test id, a role with an accessible name, or a stable attribute."
+      },
+      "thresholds": {
+        "true_at": 0.75,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-23, TP1-15045: 5 UI tests, probabilities 0.49-0.79, none decided at 0.85. The top score is TC-011, whose test body reaches past its page object with `page.locator('.ace_text-layer')` - the one genuinely fragile locator of the set - so `true_at` is 0.75. `false_at` stays at 0.15: a decided `false` is what lets the critic skip the dimension, and on this evidence the model is never that sure."
+    },
+    {
+      "id": "code_fixture_unneeded",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 5,
+      "type": "noul",
+      "replaces": "qa-code-critic's judgment of the setup one test function asks for",
+      "undecided": "qa-code-critic judges the fixtures of this test",
+      "instructions": {
+        "question": "Does the test in `test.code` ask for setup in `test.fixtures` that none of the clauses in `case.then` needs?",
+        "read": [
+          "test.code",
+          "test.fixtures",
+          "case.then"
+        ],
+        "focus": "A dependency the approved case never asked for is the test's defect, never a gap in the stand."
+      },
+      "criteria": {
+        "true": "A named fixture builds a second account, a second project, a paid feature or a data set that no clause of `case.then` observes and no step of the test uses.",
+        "false": "Every fixture the test names is used by a step it runs or by an outcome a clause checks."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-23, TP1-15045: 19 asked, 5 decided (all pass), probabilities 0.11-0.41. TC-014's non-owner fixture - the one the person ruled a test defect rather than a stand gap (I-84/I-85) - scored 0.29, so `false_at` stays at 0.15: widening it to 0.3 to decide more tests would have cleared exactly that finding."
+    },
+    {
+      "id": "code_owns_its_data",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 4,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 4 (isolation) for one test function",
+      "undecided": "qa-code-critic scores isolation for this test",
+      "instructions": {
+        "question": "Does the test in `test.code` create the data it asserts on within its own run, and make its data and accounts the way `project.test_data` says the project makes them?",
+        "read": [
+          "test.code",
+          "project.test_data"
+        ],
+        "focus": "Where the record under assertion and the accounts the test acts as come from. When project.test_data says \"not recorded\", judge creation only. A fixture whose body you cannot see is not evidence."
+      },
+      "criteria": {
+        "true": "The record the test asserts on is created by the test or by a fixture it names, a second copy of the test running at the same time would not see the same record, and every account, project or other entity the test acts in comes the way project.test_data describes (or project.test_data is \"not recorded\"). An account, project or entity supplied by a fixture whose body is not in `test.code` counts as made the project's way only when project.test_data names that fixture or helper; otherwise, where project.test_data records an approach, this is not true.",
+        "false": "The test asserts on a record identified by a fixed name or id that it does not create, on whatever the list returns first, or on state another test is expected to have left; or it reads an account, project or other entity from an environment variable or a fixed name where project.test_data says the project creates it per test. A comment giving a reason does not make this true: the critic judges the reason."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-23, TP1-15045: 19 asked, 10 decided (all pass), probabilities 0.33-0.95. The undecided nine are the UI tests whose record is built by a fixture the state does not carry; the question reads the function only. TQ1-11 (2026-11): the question now reads `project.test_data`; not recalibrated - the 12586 sample (TC-002 and TC-008 on env-key projects and users) is the owed calibration (live proof row of release-next/1)."
+    },
+    {
+      "id": "code_dead_code",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 6,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 6 (hygiene) for one test function",
+      "undecided": "qa-code-critic scores hygiene for this test",
+      "instructions": {
+        "question": "Does the test in `test.code` carry code that never runs or no longer checks anything?",
+        "read": [
+          "test.code"
+        ],
+        "focus": "Commented-out checks and statements after the test can no longer reach them."
+      },
+      "criteria": {
+        "true": "A commented-out assertion or step, a statement after an unconditional return or raise, a variable computed and never used in any check, or a skip/xfail with no reason.",
+        "false": "Every line either performs a step, builds data a step uses, or checks something."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.1
+      },
+      "enabled": false,
+      "calibration": "rejected 2026-09-23 on the 19 test functions of TP1-15045: 0 decided, every probability between 0.11 and 0.64, so the question neither cleared a test nor named one. The highest (TC-008, 0.64) does carry a redundant step and a name the function never binds, so the lean is not noise - but a dimension that decides nothing only adds every test to `needs_critic`. Commented-out assertions and `skip`/`xfail` without a reason are already named by `validate_artifacts.py` against `references/detectors.json`; hygiene stays with qa-code-critic."
+    },
+    {
+      "id": "code_narrow_negative",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 2,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 2 (check quality) for a negative test function",
+      "undecided": "qa-code-critic scores the negative check of this test",
+      "instructions": {
+        "question": "Does the test in `test.code` fix exactly one rejection outcome, rather than accepting any of several?",
+        "read": [
+          "test.code",
+          "case.then"
+        ],
+        "focus": "A negative test that accepts a set of failures passes when the product fails for the wrong reason."
+      },
+      "criteria": {
+        "true": "One status code and, where the case names one, one error code or message is compared; the test also checks that the state the step would have changed did not change; a refusal for a missing permission also shows, in `test.code`, an asserted allowed call made with the same credentials.",
+        "false": "The assertion accepts a range or a set (`in (400, 401, 403)`, `>= 400`, `anyOf`, `is_in(range(400, 500))`), only checks that an exception of a broad class was raised, only checks that the call did not succeed, or refuses for a missing permission with no allowed call by the same credentials in `test.code` (a call made with other credentials, or one whose status is not asserted, is none)."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-23, TP1-15045: asked of the 9 functions whose code or Then reads negative, 4 decided (all pass), probabilities 0.34-0.91. Criteria extended 2026-11-02 (TQ1-2: the same-credentials control); not re-calibrated - the seeded-defect corpus (TQ1-4) measures it. A range never passes here: a 4xx range with that control goes to qa-code-critic (rubric dimension 2)."
+    },
+    {
+      "id": "code_hardcoded_credential",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 6,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 6 (no secrets) for one test function",
+      "undecided": "qa-code-critic scores hygiene for this test",
+      "instructions": {
+        "question": "Does the test in `test.code` contain a real password, token, key or account secret written out as a literal?",
+        "read": [
+          "test.code"
+        ],
+        "focus": "A literal that would authenticate somewhere, not the name of a variable."
+      },
+      "criteria": {
+        "true": "A string literal is used as a password, token, api key or session cookie and is not an obvious placeholder.",
+        "false": "Credentials come from the environment, a fixture, a vault or the project's settings object, or the only literals are placeholders (`***`, `changeme`, `dummy`, `test-password`)."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.05
+      },
+      "calibration": "2026-09-23, TP1-15045: 19 asked, 19 decided `false` at 0.02-0.04 - the only dimension that clears every test of the story, and the cheapest one to keep. This repository takes credentials from fixtures and the environment, which is what the `false` criterion describes."
+    },
+    {
+      "id": "code_asserts_trigger_return",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "rubric_dimension": 2,
+      "type": "noul",
+      "replaces": "qa-code-critic rubric dimension 2 (proof reaches an observable outcome) for one test function",
+      "undecided": "qa-code-critic scores the proof of this test",
+      "instructions": {
+        "question": "Do the assertions of the test in `test.code` only read what the triggering call itself returned, without checking any outcome outside that call?",
+        "read": [
+          "test.code",
+          "case.then"
+        ],
+        "focus": "Whether anything is read back after the action."
+      },
+      "criteria": {
+        "true": "Every assertion reads the object the action returned, or records that a mock or a patched function was called; nothing is fetched, re-read or looked at again afterwards.",
+        "false": "At least one assertion reads the outcome through another path: a later request, a stored record, the rendered page, a log or an event."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      }
+    },
+    {
+      "id": "code_repair_cause",
+      "stage": "S5",
+      "script": "judge_code.py",
+      "type": "choice",
+      "replaces": "the `repair_cause` the orchestrator guesses when it opens a rework round from a critic finding",
+      "undecided": "the round is opened with `test_defect`, the contract's own default",
+      "instructions": {
+        "question": "What kind of problem is the review finding in `finding` about?",
+        "read": [
+          "finding",
+          "test.code"
+        ],
+        "focus": "Who fixes it and whether the round is about the test: `test_defect` is the only cause that spends the repair cap."
+      },
+      "criteria": {
+        "test_defect": "The test proves the wrong thing or too little: a wrong or missing assertion, an uncovered clause, a test that depends on another test, an expectation weakened or masked.",
+        "mechanical": "A fix that changes no assertion and no expected value: a sleep to replace with a wait, a raw locator to move into its page object, a lint or import or formatting complaint.",
+        "environment": "The stand: a missing account, flag, env file or lease, a stand signal, data the environment does not hold.",
+        "tooling": "The factory itself: manifest bookkeeping, an id spelling, a request shape, a defect in the probe, sandbox or runner.",
+        "reviewer_error": "The reviewer's own earlier mistake: a wrong id, parallel runs on a single-account stand, a mutation that reached nothing."
+      },
+      "thresholds": {
+        "confidence": 0.7
+      },
+      "calibration": "2026-09-23, the 9 S5 dispatches of TP1-15045 that recorded a `repair_cause`: 6 decided (confidence 0.83-0.97), 3 undecided (0.38-0.41) and so left at the contract's `test_defect`. 4 decided answers equal the recorded label. The 3 that differ (S5-191/194/197, `then_bindings` lost to manifest_put.py's whole-array write) were all recorded `mechanical` and answered `tooling` at 0.94-0.97 - and `tooling` is what the closed list's own definition says of manifest bookkeeping, so the question corrected the label rather than missing it. No decided answer contradicted the list's definitions; the confidence gap between decided and undecided is clean, so the threshold stays at 0.7. One more datum: a one-line finding (\"the test sleeps 5 seconds instead of waiting for the banner\") came back leaning `mechanical` at 0.49 and so undecided - the caller passes the finding's whole text, not its heading."
+    }
+  ]
+}

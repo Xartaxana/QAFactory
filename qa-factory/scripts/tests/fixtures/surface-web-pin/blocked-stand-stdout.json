@@ -1,0 +1,1 @@
+{"ok": false, "outcome": "env_blocked", "case": "TP1-15045_TC_007", "attempt": "a1", "env_blocked": {"id": "TP1-15045_TC_007", "probe_line": "e2e-ui start: runtime probe returned unknown: the probe gave no reason", "remedy": "bring the stand up on the build under test, then capture again", "owner": "user"}}

@@ -1,0 +1,37 @@
+# CI of the release repo Xartaxana/QAFactory (the plugin itself, no forge tools).
+# Layout: the package directory sits at the repo root as qa-factory/; change PKG if not.
+# A release repo gets few pushes, so the full selftest runs on every push and pull request -- no nightly needed.
+name: package-check
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  PKG: qa-factory
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: ${{ env.PKG }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -q pytest
+      - run: |
+          git config --global user.name "qafactory-ci"
+          git config --global user.email "qafactory-ci@invalid.example"
+          git config --global init.defaultBranch main
+      - run: python -B scripts/selftest.py --hygiene
+      - run: python -B scripts/release_fingerprint.py --check
+      - run: python -B scripts/selftest.py --jobs 4
+      - run: python -B scripts/install_smoke.py

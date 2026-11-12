@@ -1,0 +1,279 @@
+# S7: the failure analyst hands a repair to the automator.
+#
+# Only three verdicts are ever repaired - TEST_BUG, TEST_BUG:collection and FLAKY - and the cap is
+# two rounds per test. With two rounds to spend, a finding that does not say what the reviewer
+# expects costs half the budget on a guess. So this file carries the same `expected` and `check`
+# as the S5 review, plus the one thing a triage finding has and a review finding does not: the
+# EVIDENCE the verdict rests on, by path, because the author is being told its own test is wrong
+# and is entitled to see why.
+#
+# What is NOT here matters as much. An APP_BUG's EXPECTATION never reaches the automator: it is not
+# adjusted to the code, ever. The one thing an APP_BUG row hands over is a `reorder` (`kind: reorder`,
+# the row carries `reorder: true` and `blocked_thens`): the author MOVES the asserts of the independent
+# Thens above the red one - the Then lines and the expected values unchanged, the test staying red at the
+# same Then - and a code critic reviews that one test (`s7_reorder.py`, `phases/s7.md`). A row that asks
+# for it is a repair: the empty `scope` is not accepted while one stands. A CASE_DEFECT goes back to the
+# designer through `controller.py --operation rework`, not here.
+#
+# NOTHING TO REPAIR is a result, not a gap (FR-23). When the triage holds no TEST_BUG, no
+# TEST_BUG:collection and no FLAKY row, leave `scope` empty (`scope: []`, `repairs: []`) and list
+# EVERY triage row under `not_for_repair`. The check accepts the empty `scope` only while
+# `work/triage.json` agrees: it reads, it holds at least one row, no row carries a repair verdict
+# (a FLAKY row already fixed still counts as one), and every row is listed below - and nothing is
+# listed that the triage does not hold. With no triage row at all, only a run report that shows no
+# failed result and no manual check that failed or was inconclusive passes. `handoff_check.py --fix`
+# opens the `not_for_repair` rows (id, verdict) from the triage; you write `where_it_went`. In the
+# header, `window: none` says the same and is accepted only with an empty `scope`.
+#
+# A triage row marked `source: code` (verdict NOT_EXECUTED: code wrote it for a manual check whose
+# own record says what stopped it) is a triage row like any other here: list it under
+# `not_for_repair`, `where_it_went` naming the stage that owns it. You may replace it in the triage
+# with your own row; code never writes over yours.
+#
+# A RUNNER_MISREAD_EVIDENCE row (a manual runner's verdict contradicts the text its own attempt captured; its `contradiction`
+# block names the Then, the runner's words, the capture file and the quote) is NOT a repair either: the test is not the
+# defect and there is none. List it under `not_for_repair`; the driver sends the check back to the runner (S7 re-judge, no new
+# run) and S7 stays open until the runner has judged it again.
+# Fill: write your fields as "path: value" lines to work/handoffs/S7-qa-failure-analyst-2.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S7-qa-failure-analyst-2.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s7-analyst-to-automator
+stage: S7
+from_role: qa-failure-analyst
+to_role: qa-automator
+
+# The contract's own exception to "every handover has items" (handoff.null_outcomes). The check reads
+# it; it is not a field you fill.
+null_outcome:
+  scope:
+    condition: triage_has_no_repair
+    params:
+      repair_verdicts: [TEST_BUG, "TEST_BUG:collection", FLAKY]
+      listed_in: not_for_repair
+    words:
+      header.window:
+        word: none
+        means: "nothing is handed for repair"
+    source: work/triage.json
+
+inputs:
+  - path: work/handoffs/S7-qa-failure-analyst-2.yaml
+    what: this file
+    required: true
+  - path: work/triage.json
+    what: the verdict row behind every repair below
+    required: true
+  - path: work/automation-manifest.json
+    what: the instance, its case link and its selector
+    required: true
+  - path: <the evidence paths named per repair>
+    what: the log, the artifact or the rerun series the verdict rests on
+    required: true
+
+inputs_read:
+  - path: work/run-report.json
+    version: 724ab6a77eb9bb55
+    failures: 19
+  - path: work/run-report.json
+    version: 724ab6a77eb9bb55
+
+header:
+  role: qa-failure-analyst
+  stage: S7
+  window: LOCAL-1_TC_007,LOCAL-1_TC_008,LOCAL-1_TC_009,LOCAL-1_TC_012
+  verdict: concerns
+
+# One row per repair. `state` is the triage verdict (TEST_BUG, TEST_BUG:collection, FLAKY) or `reorder`
+# for a triage row that carries `reorder: true`; it comes from the restricted part of vocabulary.row_states
+# - only this role may write one. `id` is the instance id of the red test, `case` its case, `round` the
+# repair round it is in. The row says WHICH test is repaired; `repairs` below says HOW. No repair at all:
+# `scope: []`, see the top.
+scope:
+  - id: <instance id>
+    state: <TEST_BUG|TEST_BUG:collection|FLAKY|reorder>
+    reason: <= 80 characters>
+    case: <case id>
+    round: <r of 2>
+
+repairs:
+  - id: <instance id>
+    kind: <repair|reorder>
+    verdict: <TEST_BUG|TEST_BUG:collection|FLAKY|APP_BUG>
+    evidence: <path of the log or artifact the verdict rests on>
+    problem: <what the test does wrong, one sentence - about the test, never about the product>
+    expected: "<what the test should do instead, concretely - the assertion, the fixture, the
+                wait condition, the selector>"
+    fix: <what to change, one sentence>
+    check: <the command that shows the author it is satisfied - normally the repair_verify run>
+    mechanism: <one of vocabulary.flaky_mechanisms - isolation|race|timing|shared_state|teardown|environment|unknown>   # FLAKY only
+    rerun_series: <path of the three isolated reruns that proved the flakiness>    # FLAKY only
+    then_lines: "<the Then lines as they stand now - they must read the same after the fix>"
+
+# The verdicts that are NOT repaired, listed so the automator can see its window is complete and
+# does not go looking for work that is not its own. With an empty `scope` this list is the whole
+# triage: one row per triage row, by its instance id (a manual check, by its case id).
+not_for_repair:
+  - id: cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]
+    verdict: APP_BUG
+    where_it_went: work/bug-drafts/qty-invalid-input-coerced.json
+  - id: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+  - id: LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal
+    verdict: CASE_DEFECT
+    where_it_went: "rework dispatch to the designer (controller.py --operation rework): case pins unit price to GET /api/cart which carries none; R-4 is met on the cart page"
+
+rules:
+  - "retry annotations and sleeps are forbidden"
+  - "the Then lines before and after the fix must match - a repair that changes the expectation
+     is not a repair, it is a new case and it needs the designer"
+  - "after each round, rerun ONLY the failed instance, through a typed repair_verify request"
+  - "two rounds, then the test is `not_verified_flaky` and `delivery_ready` turns to no -
+     quarantine is a gate B decision with a debt file and a trigger, never yours"
+
+claims:
+  every_repair_names_evidence_expected_and_check: true
+  no_app_bug_expectation_was_handed_for_repair: true
+  every_flaky_verdict_carries_three_isolated_reruns_and_a_mechanism: true
+
+unresolved:
+  - id: <instance id>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: not_for_repair[0].id
+    source: "work/triage.json"
+  - field: not_for_repair[0].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[1].id
+    source: "work/triage.json"
+  - field: not_for_repair[1].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[2].id
+    source: "work/triage.json"
+  - field: not_for_repair[2].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[3].id
+    source: "work/triage.json"
+  - field: not_for_repair[3].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[4].id
+    source: "work/triage.json"
+  - field: not_for_repair[4].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[5].id
+    source: "work/triage.json"
+  - field: not_for_repair[5].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[6].id
+    source: "work/triage.json"
+  - field: not_for_repair[6].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[7].id
+    source: "work/triage.json"
+  - field: not_for_repair[7].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[8].id
+    source: "work/triage.json"
+  - field: not_for_repair[8].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[9].id
+    source: "work/triage.json"
+  - field: not_for_repair[9].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[10].id
+    source: "work/triage.json"
+  - field: not_for_repair[10].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[11].id
+    source: "work/triage.json"
+  - field: not_for_repair[11].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[12].id
+    source: "work/triage.json"
+  - field: not_for_repair[12].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[13].id
+    source: "work/triage.json"
+  - field: not_for_repair[13].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[14].id
+    source: "work/triage.json"
+  - field: not_for_repair[14].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[15].id
+    source: "work/triage.json"
+  - field: not_for_repair[15].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[16].id
+    source: "work/triage.json"
+  - field: not_for_repair[16].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[17].id
+    source: "work/triage.json"
+  - field: not_for_repair[17].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[18].id
+    source: "work/triage.json"
+  - field: not_for_repair[18].verdict
+    source: "work/triage.json"
+  - field: inputs_read[0].version
+    source: "sha256 of work/run-report.json"

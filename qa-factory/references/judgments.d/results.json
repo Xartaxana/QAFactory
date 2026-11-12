@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "note": "Package D's questions (S6-S9): triage, bug filing, the runner's manual observation, the retro's trap fold, and a ticket-diff severity check. Same rules as the root registry: judge.py reads this file, `judge_results.py` is the only script that asks these. `result_triage_verdict` never lets `APP_BUG` be a decided value - a person or the failure analyst confirms it, so a winning `APP_BUG` answer is always written back with `decided: false` regardless of its confidence; the raw choice still travels as `leaning` so the analyst sees what the judge read. `RUNNER_MISREAD_EVIDENCE` (like `ASSERT_STRICTER` and `NOT_EXECUTED`) is deliberately not a criterion of `result_triage_verdict`: it stands on a quote from the runner's own captures that only the analyst writes (`contradiction`), and a judge's guess would send a paid re-judge.",
+  "judgments": [
+    {
+      "id": "result_triage_verdict",
+      "stage": "S7",
+      "script": "judge_results.py",
+      "type": "choice",
+      "replaces": "qa-failure-analyst's initial sort of one failed/inconclusive row before it reads the evidence itself",
+      "undecided": "qa-failure-analyst triages the row as without a judge",
+      "instructions": {
+        "question": "Given the failing test's error head, the assertion line, the case's Then and the manifest row, which of these is this failure?",
+        "state": ["test", "error_head", "assertion", "then", "manifest_row"]
+      },
+      "criteria": {
+        "APP_BUG": "The product's own behaviour is wrong: the observed output, response or state contradicts the Then, and nothing points at the test or the environment.",
+        "TEST_BUG": "The test itself is broken: a selector/locator that cannot find its target, wrong test data, a leftover/isolation problem from setup or teardown, or an assertion that checks something other than what the Then says.",
+        "TEST_BUG:collection": "The test file fails to load or run at all - an import error, a syntax error, or a collection/build failure before any test logic executes.",
+        "ENV_ISSUE": "The error head is a timeout, connection failure, login failure or missing credential/data reaching the environment, unrelated to the assertion's own logic - including a single slow/unresponsive page or service call.",
+        "FLAKY": "Only choose this when `error_head` itself shows different outcomes across more than one attempt (for example two different results quoted). A single error head, however timing-shaped, is never enough on its own to conclude FLAKY.",
+        "APP_CHANGED": "The error head or assertion quotes an intended, described change of behaviour, not an accident.",
+        "CASE_DEFECT": "The assertion checks exactly what the Then asks for and the test performed the Then correctly, but the Then itself asks for something that contradicts what the requirement states."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      },
+      "calibration": "2026-09-23, live against typesafe/jev in shadow mode, run through `judge_results.py --triage` itself over a copy of TP1-15045's real run-report.json/evidence/test-cases (not hand-built state): TC-006 (ground truth ENV_ISSUE) decided ENV_ISSUE p=0.79; TC-012 (ground truth APP_BUG) leaning APP_BUG p=0.79, correctly left undecided by this threshold; TC-008 (ground truth ENV_ISSUE) came back **decided TEST_BUG p=0.89, wrong** - its error head is `Locator expected to be visible ... waiting for locator(\"h2:has-text('Workflows')\")`, which reads exactly like TEST_BUG's own 'a selector/locator that cannot find its target', and only cross-test comparison (the same locator passes elsewhere in the session) told the real analyst it was the stand, not the selector - state jev-1.13 never sees. Threshold raised from an initial 0.75 (which would have let that wrong TEST_BUG stand as decided) to 0.9, at which all three rows of this story land undecided-but-correctly-leaning rather than any wrong decision; a stricter threshold than most choice judgments in this file, because a wrong decided verdict here reaches the analyst looking like a settled fact. Too few ENV_ISSUE/TEST_BUG boundary rows in this one story to calibrate APP_CHANGED/CASE_DEFECT; their criteria are reasoned from vocabularies.md and qa-failure-analyst.md, not yet checked against a real example."
+    },
+    {
+      "id": "result_case_defect",
+      "stage": "S7",
+      "script": "judge_results.py",
+      "type": "noul",
+      "replaces": "part of qa-failure-analyst's 2b check (is the approved case, not the product, wrong)",
+      "undecided": "qa-failure-analyst checks the case against the register itself",
+      "instructions": "A test that performs exactly what its own expected result in `then` asks for still failed. Does `then` contradict the requirement text in `requirement`?",
+      "criteria": {
+        "true": "The Then demands an outcome the requirement text rules out or never asks for; the test is faithful to a case that misread the requirement.",
+        "false": "The Then matches or is silent on the requirement; nothing here shows the case itself is wrong."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.1
+      },
+      "calibration": "Not yet asked on TP1-15045: none of its three triaged rows carried `contradicts_requirement` (2b's only entry point), so no real CASE_DEFECT candidate exists in this story to calibrate against. Threshold set to the strict end because CASE_DEFECT sends an approved case back to the designer - a decision only qa-failure-analyst may reach, per s7.md 2b."
+    },
+    {
+      "id": "result_flaky_mechanism",
+      "stage": "S7",
+      "script": "judge_results.py",
+      "type": "choice",
+      "replaces": "nothing that already exists - a hint offered only once 3 reruns of the same instance are on record, before the analyst names the mechanism itself",
+      "undecided": "qa-failure-analyst names the mechanism from the reruns",
+      "instructions": "Across the reruns of the same test in `reruns` (each an outcome and its error head), what mechanism best explains the inconsistent result?",
+      "criteria": {
+        "isolation": "A prior test's leftover state (data, session, file) makes this one pass or fail depending on what ran before it.",
+        "race": "Two concurrent operations finish in an order the test does not control, and the outcome depends on which wins.",
+        "timing": "A fixed wait or timeout is sometimes too short for otherwise-correct, single-threaded work.",
+        "shared_state": "Independent test runs mutate the same record, file or environment value and interfere with each other.",
+        "teardown": "Cleanup from a previous run did not complete, so this run starts from an unexpected state.",
+        "environment": "The inconsistency tracks environment load or availability (a stand under load, network) rather than the test's own logic.",
+        "unknown": "The reruns show inconsistency but nothing above explains it."
+      },
+      "thresholds": {
+        "confidence": 0.75
+      },
+      "calibration": "Not yet asked on TP1-15045: no failing test there reached 3 reruns with an inconsistent pass/fail record (TC-006/TC-008 failed identically every time, which triage.json itself already notes as not FLAKY). Only fires once `FLAKY_MIN_RERUNS` reruns exist, so it stayed silent on this story's real data by construction."
+    },
+    {
+      "id": "result_bug_duplicate",
+      "stage": "S8",
+      "script": "judge_results.py",
+      "type": "noul",
+      "replaces": "qa-bug-reporter's dedup grep, for one draft against one existing bug",
+      "undecided": "qa-bug-reporter dedups by grep as without a judge",
+      "instructions": "Do the bug draft in `draft` and the existing bug in `existing_bug` describe the same defect - the same broken behaviour, in the same area, from the same or an equivalent trigger?",
+      "criteria": {
+        "true": "Same area, same trigger and the same wrong outcome, even if worded differently or found by a different test.",
+        "false": "A different area, a different trigger, or a different wrong outcome, even if superficially similar."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.1
+      },
+      "calibration": "2026-09-23, live against typesafe/jev in shadow mode. Run through `judge_results.py --bugs` itself over TP1-15045's real 4 filed drafts against all 4 real bugs (16 pairs, `area` resolved from the draft's own case file - drafts carry no `area` field, and leaving it blank first read as a real mismatch and cut confidence to 0.6-0.9): every same-draft/same-bug pair decided `true` at p=0.98-0.99, and no cross pair (different area/trigger: visual-diff badge vs node position vs 404 details vs self-reference message, though all 4 happen to share `workflows`) reached the 0.5 line the report even surfaces a near-miss at. Clean separation - kept at 0.9."
+    },
+    {
+      "id": "result_bug_priority",
+      "stage": "S8",
+      "script": "judge_results.py",
+      "type": "score",
+      "replaces": "the first guess of qa-bug-reporter's severity-from-impact table, before the human's gate B wording overrides it",
+      "undecided": "qa-bug-reporter derives severity from `impact_class` itself",
+      "instructions": "Given the damage description in `damage` (what the user loses when this bug happens), how severe is it?",
+      "criteria": [
+        {
+          "summary": "minor",
+          "signals": "Cosmetic, or a degraded but still usable experience; matches impact_class degraded/cosmetic."
+        },
+        {
+          "summary": "major",
+          "signals": "A flow cannot be completed without a workaround; matches impact_class blocked-flow."
+        },
+        {
+          "summary": "critical",
+          "signals": "Unauthorized or wrong access to something the user should not reach; matches impact_class access."
+        },
+        {
+          "summary": "blocker",
+          "signals": "Data loss or a material financial effect; matches impact_class data-loss/money."
+        }
+      ],
+      "thresholds": {
+        "confidence": 0.6
+      },
+      "advisory_only": true,
+      "calibration": "2026-09-23, live against typesafe/jev in shadow mode, run through `judge_results.py --bugs` over TP1-15045's real 4 filed drafts, `damage` built from title+actual (never the draft's own pre-classified `impact` word, which would just hand the judge the label back): all 4 decided `minor` (confidence 0.64-0.94), matching every one's real filed `severity: minor` in `bugs/BUG-{1..4}.md`. This story never produced a blocked-flow/access/data-loss bug, so `major`/`critical`/`blocker` are untested; kept advisory like `plan_row_damage` for the same reason - damage needs product context text alone does not carry, and the confidence spread here (0.64 to 0.94 for the same rung) shows exactly that."
+    },
+    {
+      "id": "result_observation_matches_then",
+      "stage": "S6",
+      "script": "judge_results.py",
+      "type": "noul",
+      "replaces": "nothing that exists today - qa-runner's own read of whether a manual-agent step's observed result satisfies its Then",
+      "undecided": "qa-runner records the step as observed and unscored, as without a judge",
+      "instructions": "Does what was observed in `observed` satisfy the expected result in `then`?",
+      "criteria": {
+        "true": "The observed outcome names the same thing the Then expects and matches its value or state.",
+        "false": "The observed outcome names a different thing, a different value, or the Then's expectation did not happen."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-23, live against typesafe/jev in shadow mode, one smoke check (TP1-15045 itself ran no manual-agent steps - channel: auto on every pinned case, so no real observation exists to check): TC-004's own Then ('Node C's rendered canvas position equals the baseline layout meta position (x=800, y=300)') against its real observed value (x=1082.0, y=175.0) decided `false` at p=0.98. One planted example only; not a calibration set."
+    },
+    {
+      "id": "result_trap_owner",
+      "stage": "S9",
+      "script": "judge_results.py",
+      "type": "choice",
+      "replaces": "qa-retro-analyst's first guess of which strategy document a recurring trap belongs to",
+      "undecided": "qa-retro-analyst decides the owner itself",
+      "instructions": "The recurring trap in `trap` was seen twice or more this run. Which document owns this kind of fact?",
+      "criteria": {
+        "test-strategy": "A planning trap: how risk, disposition or coverage was sized or chosen.",
+        "framework-rules": "A code or run trap: how a test was written, executed or diagnosed.",
+        "faq": "An owner's answer to a requirements question that keeps coming up, worth recording once so it is not asked again.",
+        "none": "A one-off specific to this story, not a recurring class of fact any strategy document should carry."
+      },
+      "thresholds": {
+        "confidence": 0.7
+      },
+      "calibration": "2026-09-23, live against typesafe/jev in shadow mode, one smoke check with an invented trap paragraph (no recurring trap is recorded for TP1-15045 in the read-only sample data - S9 was out of this package's calibration scope): 'the case designer forgot a positive control for a drag gesture twice this run' leaned `framework-rules` p=0.74, undecided at this threshold. One planted example only; not a calibration set."
+    },
+    {
+      "id": "result_ticket_change_severity",
+      "stage": "S8",
+      "script": "judge_results.py",
+      "type": "choice",
+      "replaces": "nothing that exists today - a semantic second look at `ticket_adapter.py diff`'s field-name severity, for the one case a changed field is classified `context` by name but its text states a requirement change (a new or edited comment)",
+      "undecided": "the code's own field-based severity stands, exactly as before this judgment existed",
+      "instructions": "The ticket changed under this story. Given the changed fields and their text in `diff`, does the change move what the story must implement or verify, or is it only surrounding context?",
+      "criteria": {
+        "requirements": "A changed title, description, type or acceptance criterion, or comment text stating or altering scope - the register or plan built on the old text may now be wrong.",
+        "context": "A status move, a new comment that only informs (no scope statement), a parent/subtask/link change - worth showing, not worth re-planning.",
+        "none": "Nothing changed, or what changed carries no information either way."
+      },
+      "thresholds": {
+        "confidence": 0.75
+      },
+      "calibration": "2026-09-23, live against typesafe/jev in shadow mode, run through `judge_results.py --ticket-diff` itself: `evals/fixtures/tickets/QA-1.md` plus one added comment stating a scope change ('tags should be case-sensitive, not lowercased - drop AC2's lowercasing'). `ticket_adapter.py diff` calls it `context` by field name (only `comments` changed); the judgment reads the comment's own text and decides `requirements` at p=0.96. In `shadow` mode `severity` correctly stays the code's `context` per this file's own `undecided` rule - only `mode: on` would let the decided answer override it. No second real TP1-15045 ticket snapshot exists in the read-only sample data for a same-story check."
+    }
+  ]
+}

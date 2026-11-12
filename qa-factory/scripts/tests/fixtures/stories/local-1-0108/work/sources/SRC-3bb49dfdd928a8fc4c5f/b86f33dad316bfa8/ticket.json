@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that adding a product after the session expires either extends the session or asks for a new login, and the product is added after re-authentication.\n\n*Type:* negative  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512254",
+  "key": "REF-8",
+  "labels": [
+    "negative",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14543,
+    "fields_requested": "*all",
+    "sha256": "11eff532932d3d4659de80f72f96e32907c53bb29ec62a714fcdf7ecb00de110",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:18.326+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product with session timeout",
+  "type": "Test"
+}

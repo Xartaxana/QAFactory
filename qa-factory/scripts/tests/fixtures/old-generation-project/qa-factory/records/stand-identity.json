@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "note": "How the factory reads which build each stand runs, per stand and test profile. One file for all stands; the last row of a stand+profile is in force, earlier rows are history. Written by stand_identity.py and runtime_probe.py; commit it so the team shares it.",
+  "rows": [
+    {
+      "environment_id": "localhost",
+      "profile_id": "e2e-ui",
+      "repo_id": "testproject1-ui",
+      "method": "oci_label",
+      "label": "org.opencontainers.image.revision",
+      "source": "person",
+      "recorded_by": "stand_identity.py",
+      "recorded_at": "2026-10-01T09:00:00+00:00",
+      "words": "read the label of the image: it carries the commit the image was built from"
+    }
+  ]
+}

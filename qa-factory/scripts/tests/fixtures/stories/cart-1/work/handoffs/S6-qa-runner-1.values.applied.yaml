@@ -1,0 +1,103 @@
+"scope[0].id": CART-1_TC_001
+"scope[0].state": passed
+"scope[0].reason": "passed in fresh run"
+"scope[0].case": CART-1_TC_001
+"scope[0].obligations": OB-1
+"scope[0].executed": fresh
+"scope[0].rerun_reason": "fixture and spec bytes moved"
+"scope[0].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[0].duration": "43s whole run"
+"scope[1].id": CART-1_TC_002
+"scope[1].state": passed
+"scope[1].reason": "passed in fresh run"
+"scope[1].case": CART-1_TC_002
+"scope[1].obligations": OB-2
+"scope[1].executed": fresh
+"scope[1].rerun_reason": "fixture and spec bytes moved"
+"scope[1].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[1].duration": "43s whole run"
+"scope[2].id": CART-1_TC_003
+"scope[2].state": passed
+"scope[2].reason": "passed in fresh run"
+"scope[2].case": CART-1_TC_003
+"scope[2].obligations": OB-3
+"scope[2].executed": fresh
+"scope[2].rerun_reason": "fixture and spec bytes moved"
+"scope[2].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[2].duration": "43s whole run"
+"scope[3].id": CART-1_TC_004
+"scope[3].state": passed
+"scope[3].reason": "passed in fresh run"
+"scope[3].case": CART-1_TC_004
+"scope[3].obligations": OB-4
+"scope[3].executed": fresh
+"scope[3].rerun_reason": "fixture and spec bytes moved"
+"scope[3].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[3].duration": "43s whole run"
+"scope[4].id": CART-1_TC_005
+"scope[4].state": passed
+"scope[4].reason": "passed in fresh run"
+"scope[4].case": CART-1_TC_005
+"scope[4].obligations": OB-5
+"scope[4].executed": fresh
+"scope[4].rerun_reason": "fixture and spec bytes moved"
+"scope[4].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[4].duration": "43s whole run"
+"scope[5].id": CART-1_TC_006
+"scope[5].state": passed
+"scope[5].reason": "passed in fresh run"
+"scope[5].case": CART-1_TC_006
+"scope[5].obligations": OB-6
+"scope[5].executed": fresh
+"scope[5].rerun_reason": "fixture and spec bytes moved"
+"scope[5].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[5].duration": "43s whole run"
+"scope[6].id": CART-1_TC_007
+"scope[6].state": passed
+"scope[6].reason": "passed in fresh run"
+"scope[6].case": CART-1_TC_007
+"scope[6].obligations": OB-7
+"scope[6].executed": fresh
+"scope[6].rerun_reason": "fixture and spec bytes moved"
+"scope[6].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[6].duration": "43s whole run"
+"scope[7].id": CART-1_TC_008
+"scope[7].state": passed
+"scope[7].reason": "passed in fresh run"
+"scope[7].case": CART-1_TC_008
+"scope[7].obligations": OB-8
+"scope[7].executed": fresh
+"scope[7].rerun_reason": "fixture and spec bytes moved"
+"scope[7].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[7].duration": "43s whole run"
+"scope[8].id": CART-1_TC_009
+"scope[8].state": red
+"scope[8].reason": "Then 2 red, contradicts_requirement R-15, no items in quote"
+"scope[8].case": CART-1_TC_009
+"scope[8].obligations": OB-9
+"scope[8].executed": fresh
+"scope[8].rerun_reason": "fixture and spec bytes moved"
+"scope[8].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[8].duration": "43s whole run"
+"scope[9].id": CART-1_TC_010
+"scope[9].state": passed
+"scope[9].reason": "passed in fresh run"
+"scope[9].case": CART-1_TC_010
+"scope[9].obligations": OB-10
+"scope[9].executed": fresh
+"scope[9].rerun_reason": "fixture and spec bytes moved"
+"scope[9].evidence": qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+"scope[9].duration": "43s whole run"
+"inputs_read[0].version": S5-qa-automator-7
+"inputs_read[0].instances_handed": 18
+"inputs_read[1].version": S4-qa-case-designer-2
+"inputs_read[1].manual_cases_handed": 0
+"inputs_read[2].path": work/handoffs/S5-qa-code-critic-7.yaml
+"inputs_read[2].version": S5-qa-code-critic-7
+"superseded[0].row": "6 unprefixed not_run ghost rows from earlier blocks"
+"superseded[0].superseded_by": "file-prefixed rows of block 2605aa2460823ce36b05 (reparsed)"
+claims.every_row_carries_an_evidence_path: true
+claims.every_blocked_row_names_a_remedy_and_the_probe_line: true
+claims.no_comparison_was_fabricated_where_before_evidence_is_missing: true
+claims.handed_and_manual_human_cases_are_absent_by_design: true
+claims.the_report_was_reduced_by_code_not_written: true

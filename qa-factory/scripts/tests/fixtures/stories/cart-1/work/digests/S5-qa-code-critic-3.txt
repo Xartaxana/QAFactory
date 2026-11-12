@@ -1,0 +1,6 @@
+qa-code-critic S5 window 2 (CART-1_TC_005..008) · concerns
+CART-1_TC_005 · unverified · probe gap accepted by person; static clean; red-fix legitimate_correction
+CART-1_TC_006 · unverified · probe gap accepted by person; static clean
+CART-1_TC_007 · unverified · probe gap accepted; mechanical: assert row count before destructure
+CART-1_TC_008 · unverified · probe gap accepted; mechanical: assert row count before destructure
+qa-factory/artifacts/CART-1/work/test-code/critic-findings-3.md

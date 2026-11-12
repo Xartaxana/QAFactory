@@ -1,0 +1,12 @@
+{
+  "stages": {
+    "S1": {"outcome": "accepted",
+           "handed": ["work/context-bundle.json", "work/context-manifest.json", "work/impl-diff.txt"],
+           "source": "hand-assembled walker fixture: a real controller run of S1, the manifest filled by hand"},
+    "S1manifest": {"outcome": "accepted", "source": "hand-assembled: the S1 manifest passes the phase check"},
+    "gateA": {"question_kind": "gate_a", "options": ["approve", "approve as is"], "decision": "refused",
+              "source": "hand-assembled: the world holds no test plan, so the decision road refuses the words"},
+    "S8": {"delivery": "no", "source": "hand-assembled: a story that stopped after S1 cannot be delivered"}
+  },
+  "amendments": []
+}

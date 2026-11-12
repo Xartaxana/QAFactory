@@ -1,0 +1,18 @@
+{
+ "purpose": "S7 triage: where the unit price lives (code reading, no run)",
+ "api_contract": {
+  "file": "MyBooks/src/lib/openapi/spec.ts:983-989",
+  "quote": "CartItem required: id, bookId, quantity; properties id, bookId, quantity, sessionId, userId - no price"
+ },
+ "api_handler": {
+  "file": "MyBooks/src/app/api/cart/route.ts GET -> CartService.getCartItems (prisma.cartItem.findMany, no book join)",
+  "cartService": "MyBooks/src/lib/services/cartService.ts:11-16"
+ },
+ "ui_price_source": {
+  "file": "MyBooks/src/components/pages/CartPage.tsx:30-45,169,193",
+  "quote": "fetch('/api/books/'+item.bookId) then renders item.book.price.toFixed(2) each and the line subtotal"
+ },
+ "requirement": "R-4: The price in the cart matches the product page and the backend price; R-1: puts the item in the cart with the correct price and quantity = 1",
+ "observed_green": "price on the cart page and /api/cart/total are checked green in TC_001 Then 2, TC_004 Then 2, TC_016 Then 2",
+ "note": "no requirement puts a price field on GET /api/cart; the case Thens pin 'GET /api/cart ... unit price' only"
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "dispatch": "S5-qa-code-critic-1",
+    "plan_sha256": "5945f7017eca78d3f3b14e37007257405f4b93a90ef34b6bcac2c99a13e1bdba",
+    "rows_sha": {
+      "LOCAL-1_TC_001": "18af129d369f2d63353062fa4646066ade5afbc4269d88811aa058610ae650ba",
+      "LOCAL-1_TC_002": "732cd51d0c6fa422341a88c0c56cd284db9df42faae3bd64c085e91b0d32dc64",
+      "LOCAL-1_TC_003": "15f281ffc48287e9c088a78239258e7f30f2ee8eff2532af40ca865d53fa307b",
+      "LOCAL-1_TC_004": "1a57efed41ac27ee3263b963180654253ac146ec961f4d5a841ee6d1f12c6068",
+      "LOCAL-1_TC_005": "66fec6d502d05c873b9f51a5ac133a5b8b740acfd349b11fa44afc01e464759d",
+      "LOCAL-1_TC_006": "5cd8df529badd7cda9b4346f1120cdd80aff2707c6de438729d3977c5ee94333",
+      "LOCAL-1_TC_007": "294910554cf6c6bf1907eedf2d78fa4a41e5015db4c93aaed173e5d227993a8e",
+      "LOCAL-1_TC_008": "bc8908a4578e8d3329d659291d7d46719aa1ee62012ebd09cc010349c2df98b3",
+      "LOCAL-1_TC_009": "944b9c8a3f76d658ad08c4dedbabeb45dde6e3c7a46b1b1e6b48f3723d8f14b2",
+      "LOCAL-1_TC_010": "29d4ddf7bd942fbf0329b99d513c9e91cbcfaba64e144c0346c7ae98f8cd80a6",
+      "LOCAL-1_TC_011": "0718651f840b3f26c2f1cd741a314d5b2c1be72068100758a843aef0ad3f3e7c",
+      "LOCAL-1_TC_012": "c9e6f1e155be6fba845f982136b45fe5842e84f44bfeb010cca27d089fdada45",
+      "LOCAL-1_TC_013": "c77477bb8a8816596cbb8804952575070ba9721a201ee17f34e4e145e85304be",
+      "LOCAL-1_TC_014": "3418f63e3692e0231e49288e9d5ad7be444795ddeb35003026fbd02f740e6b77",
+      "LOCAL-1_TC_015": "c43c1f12345a80d26b2cc3af489d0ceb74046e6ffbca332ba5f23c8fa6c173a8",
+      "LOCAL-1_TC_016": "621d9b84db067232f87140a8c5d7671e09fa58dc56e03a2f532d953784b5916a",
+      "LOCAL-1_TC_017": "4db67af4805c7e93fa2eabade1d7e6c0106adcb5aaf63024c11a7912c679afaf",
+      "LOCAL-1_TC_018": "14754773d6a6570f6f470d0671134f9d9c3d1bafbaf178017868341177108fa4",
+      "LOCAL-1_TC_019": "d5591e9387de7b18deccc158eb011767329a2f919cbf19bc1b417b66b4ebfc6d",
+      "LOCAL-1_TC_020": "a55e99a8890338b45be37245175c5e90a06be88b8a0da0573554248429402026",
+      "LOCAL-1_TC_021": "b1f8a946df7963e032c1c749ae4b02ddc91fcaf7e0c2eeaf06a69c59d220f3f3"
+    },
+    "tests": {
+      "cart_001": [
+        "LOCAL-1_TC_001"
+      ],
+      "cart_002": [
+        "LOCAL-1_TC_002"
+      ],
+      "cart_003": [
+        "LOCAL-1_TC_003"
+      ],
+      "cart_004": [
+        "LOCAL-1_TC_004"
+      ],
+      "cart_005": [
+        "LOCAL-1_TC_005"
+      ],
+      "cart_006": [
+        "LOCAL-1_TC_006"
+      ],
+      "cart_010": [
+        "LOCAL-1_TC_010"
+      ],
+      "cart_011": [
+        "LOCAL-1_TC_011"
+      ],
+      "cart_012": [
+        "LOCAL-1_TC_012"
+      ],
+      "cart_013": [
+        "LOCAL-1_TC_013"
+      ],
+      "cart_014": [
+        "LOCAL-1_TC_014"
+      ],
+      "cart_015": [
+        "LOCAL-1_TC_015"
+      ],
+      "cart_016": [
+        "LOCAL-1_TC_016"
+      ],
+      "cart_017": [
+        "LOCAL-1_TC_017"
+      ],
+      "cart_018": [
+        "LOCAL-1_TC_018"
+      ],
+      "cart_019": [
+        "LOCAL-1_TC_019"
+      ],
+      "cart_020": [
+        "LOCAL-1_TC_020"
+      ],
+      "cart_021": [
+        "LOCAL-1_TC_021"
+      ],
+      "cart_invalid_quantity": [
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009"
+      ]
+    }
+  }
+]

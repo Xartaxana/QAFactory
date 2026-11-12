@@ -1,0 +1,169 @@
+# S3 -> S4: the test plan is handed to the case designer.
+#
+# The plan is the only place where the factory decides what it will NOT do, so every row carries a
+# disposition and a reason, and every requirement of the register reaches a row or is named here as
+# deferred. The designer expands rows into cases; it does not re-plan, and it cannot ask for
+# something the row did not say.
+#
+# The field this file exists for is `obligations`: without it nothing downstream (the S4 roll-call, the
+# S5 scope check, the S8 traceability table) can answer "which plan row does this test discharge".
+# Obligation ids are minted HERE, once, and travel unchanged.
+schema_version: 1
+contract: s3-strategist-to-designer
+stage: S3
+from_role: qa-test-strategist
+to_role: qa-case-designer
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/test-plan.json
+    what: the machine plan - rows, dispositions, obligations, coverage contract revisions
+    required: true
+  - path: test-plan.md
+    what: the same plan in the words the person reads at gate A
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle; a case is written against the requirement, never against a test name
+    required: true
+  - path: work/grounding.yaml
+    what: the grounding table the strategist labelled - the hunks of the diff, the requirement lines, the risks K-n and the blast radius areas B-n
+    required: "when pipeline.implementation_source is diff"
+
+inputs_read:
+  - path: work/requirements-register.md
+    version: <hash or revision>
+    requirements: <how many rows the register carries>
+  - path: work/context-bundle.json
+    version: <hash>
+    existing_candidates_considered: <n of m>
+
+header:
+  role: qa-test-strategist
+  stage: S3
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per plan row. `state` is the row's disposition and comes from the restricted part of
+# vocabulary.row_states - automate, manual-agent, manual-human, skip, unverifiable - which only
+# this role may write. `reason` is why that disposition and not another.
+scope:
+  - id: <P-n, the row's stable id>
+    state: <automate|manual-agent|manual-human|skip|unverifiable>
+    reason: <= 80 characters>
+    requirements: "<the R-ids this row covers>"
+    obligations: "<the coverage_obligations[] ids this row mints - the ids every case, instance
+                   and ledger row downstream will quote>"
+    behaviour: <what is being checked, one sentence>
+    risk: <the risk scale of risk-policy.md>
+    # impact_class is one of data-loss, money, access, blocked-flow, degraded, cosmetic, none; priority is derived from it, never set by hand.
+    impact_class: <carried from the register>
+    oracle: <what says pass or fail, and where it comes from>
+    level: <one of vocabulary.test_levels - unit|integration|api|e2e-ui|other>
+    existing_coverage: <one of vocabulary.coverage_choices - reuse|extend|new, with the selector when it is reuse or extend>
+    environment: <the stand this row needs, or a dash>
+    design_review_required: <true|false>
+    source_conflict: <true|false>
+    oracle_unknown: <true|false>
+
+# Every requirement of the register reaches a row above (named in `requirements` in work/test-plan.json and in the `R`
+# column of test-plan.md): the S3 exit gate refuses a register id with no row, and an entry here never stands in for one.
+# A requirement that waits for a gate A question is a row `unverifiable` with `question_refs` and `if_answered`; one that
+# should not be checked is a row `skip` with the reason. Only a risk `K-n` or an area `B-n` may be named here instead of a
+# row. The same holds for the grounding table: a risk `K-n` or an area `B-n` that matters reaches a plan row
+# (`risk_source_refs` entry `grounding:K-n` / `blast:B-n` in work/test-plan.json) or is named here
+# by `ref`; the existing tests of an area that matters stand in the plan's `## Recommended regression` section as items,
+# one per test path, each signed `(blast:B-n)` (one token per area it defends), under the runner's `Command:` line.
+not_planned:
+  - ref: <R-n, K-n or B-n>
+    state: <deferred|deferred_by_decision|unverifiable|impossible>
+    reason: <why, in one sentence, and on whose decision when there was one>
+
+# Filled by CODE from work/grounding.yaml (handoff_check --fix); you do not write these two. Left empty
+# when the story has no diff to ground.
+grounding:
+  hunks: <n of m hunks a labelled row names - filled by code, or omit>
+  rows_cover: <n of m rows with a label - filled by code, or omit>
+  requirements_cover: <n of m register lines with a state - filled by code, or omit>
+  refactoring_percent: <the table's refactoring share - filled by code, or omit>
+  road: <the table's refactoring road - filled by code, or omit>
+
+blast_radius:
+  - <one line per area of the table: id, path kind, matters, regression, add_tests - filled by code, or omit>
+
+# For every manual row, what the runner will be allowed to count as evidence. Deciding this at S3
+# is the rule of the phase: a runner with no policy produces an observation that settles nothing.
+manual_policy:
+  - row: <P-n>
+    executed_by: <agent|human>
+    evidence: <what artifact proves it - a screenshot, a log line, a record in the product>
+    required_fields: "<what the runner must record for the evidence to count>"
+    inconclusive_when: <what the runner does when the observation does not answer the Then>
+
+budget:
+  size: <the register's size>
+  cap: <the ceiling: `cap` in work/sizing.json, not a number looked up by size>
+  planned_rows: <n>
+  within_cap: <true|false>
+  if_over: <what was cut, and why that and not something else>
+
+# Regression the person may want to run. The factory does not run it and says so.
+regression_recommendations:
+  - suite_or_command: <what to run>
+    why: <the risk it covers>
+
+artifacts:
+  plan_machine: work/test-plan.json
+  plan_human: test-plan.md
+  judge_plan: <work/judge-plan.json, when a judge is configured>
+
+claims:
+  every_register_requirement_reaches_a_row: <true|false>
+  every_row_has_a_disposition_and_a_reason: <true|false>
+  every_row_mints_obligation_ids: <true|false>
+  every_contradiction_matrix_cell_reached_a_row: <true|false>
+  no_test_was_run_in_this_stage: <true|false>
+  every_hunk_of_the_diff_has_a_grounding_row: <true|false>
+  every_register_requirement_has_a_grounding_line: <true|false>
+  every_risk_and_uncovered_area_reaches_a_row_or_not_planned: <true|false>
+  every_area_that_matters_has_regression_or_a_gap: <true|false>
+  refactoring_share_computed_by_code: <true|false, or omit when the table holds no refactoring share>
+
+expected_of_the_receiver:
+  - "one or more cases per row with `automate` or a manual disposition, and per row with `skip` or `unverifiable` whose
+     `if_answered` sets one of those for an open question (quote the question in `question_thens`); any other `skip` or
+     `unverifiable` row gets no case and is not re-argued"
+  - "every case quotes the obligation ids of its row - unchanged, not re-derived"
+  - "reuse or extend an existing case before writing a new one, as the row says"
+  - "a row with `source_conflict` or `oracle_unknown` keeps both readings in the case, and the
+     contested assertion is not automated until the owner answers at gate A"
+
+# What you tried and saw, one row per attempt: the acceptor of the stage reads it against your Good outcome
+# (spec t-1765 B3). Empty only with `tried_note` saying why nothing was tried (a grounding window, a repair of
+# named findings). Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: <R-n, a source id or an area>
+    technique: <the technique by its name in your charter>
+    observation: <what you saw, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <P-n or R-n>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+# Optional: every role the plan checks, also one your brief's roster lacks; never one from the code.
+product_roles:
+  - role: <optional: the role's name>
+    sign_in: <optional: account or none>
+    where: <optional: the requirement id>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

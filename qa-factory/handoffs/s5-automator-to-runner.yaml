@@ -1,0 +1,109 @@
+# S5 -> S6: the automated instances are handed to the runner.
+#
+# The runner's whole job is deciding what still has to be executed, and it decides it from
+# fingerprints: source, test, runtime, environment and application build. A stage transition alone
+# never makes a green receipt stale. So this file hands over, per instance, the fingerprint the
+# evidence was taken at and the automator's own reading of whether it still holds - and the runner
+# re-derives rather than trusts, but at least it knows what it is re-deriving against.
+#
+# `runtime_provenance` is here for the reason the whole of S5 learned on TP1-13797: a run on a
+# stand whose build is not the one under test proves nothing, and nothing in the manifest said
+# which build it was. `runtime_probe.py` writes that record; this file names it.
+schema_version: 1
+contract: s5-automator-to-runner
+stage: S5
+from_role: qa-automator
+to_role: qa-runner
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/automation-manifest.json
+    what: every instance, its case links, obligations and last receipt
+    required: true
+  - path: <the runtime_provenance record named below>
+    what: the identity of the stand the evidence was taken on
+    required: true
+  - path: work/evidence/
+    what: the receipts behind the green rows this file calls fresh
+    required: false
+
+inputs_read:
+  - path: work/handoffs/<the gate A file>.yaml
+    version: <plan_revision>
+    handed_profiles: "<the profiles the person took over, carried through unchanged>"
+  - path: <cases_root>/<case>.md
+    version: <the pinned cv_ id each instance was written against>
+
+header:
+  role: qa-automator
+  stage: S5
+  window: <the case ids this handoff covers>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per automated instance. `state` from vocabulary.row_states - green, red, not_run,
+# blocked_by_env, pending_implementation, contradicts_requirement, handed_to_person.
+scope:
+  - id: <instance id>
+    state: <one of vocabulary.row_states>   # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: <= 80 characters>
+    case: <case id>
+    case_version: <the pinned cv_ id this instance was written against>
+    obligations: "<the obligation ids it discharges>"
+    selector: <the exact node id or selector the runner executes, never a file or a suite>
+    profile: <the execution profile it runs under>
+    last_receipt: <the run witness path, or a dash when it never ran>
+    freshness: <one of vocabulary.freshness_states - fresh|stale|never_run>
+    stale_because: <one of vocabulary.staleness_causes, or a dash when freshness is fresh>
+
+# The identity the freshness verdicts above were taken against. The runner probes the stand before
+# and after its own run and compares with this; a difference is a reason to rerun, and it is the
+# reason it records.
+runtime:
+  provenance: <path of the runtime_provenance record>
+  environment: <the stand id>
+  application_build: <what identifies the build under test - a sha, a tag, an image digest>
+  probe_command: <the read-only probe the runner repeats>
+
+# Instances that are NOT the runner's, and why. A case of a profile the person took over is
+# dropped by `stage-scope` before the runner sees it; it is repeated here so the runner can tell
+# an absence from an oversight.
+not_in_scope:
+  - id: <instance or case id>
+    state: <handed_to_person|blocked_by_env|pending_implementation|contradicts_requirement>
+    reason: <one sentence>
+    who_runs_it: <the person, nobody, or a later story>
+
+artifacts:
+  manifest: work/automation-manifest.json
+  tests:
+    - <repo-relative path of every test file the story wrote or changed>
+  run_witness: <the last run_suite summary, with its exit code and totals line>
+  evidence_root: work/evidence/
+
+claims:
+  manifest_matches_the_tests_on_disk: <true|false>
+  every_instance_names_a_selector_the_runner_can_execute: <true|false>
+  every_instance_carries_a_fingerprint_or_says_never_run: <true|false>
+  red_instances_are_handed_over_red_and_were_not_adjusted_to_the_code: <true|false>
+  handed_profiles_are_excluded_from_scope: <true|false>
+
+expected_of_the_receiver:
+  - "run only what is missing or stale, and record the exact fingerprint reason for each rerun"
+  - "an unsupported selector stays unresolved - it never falls back to a file or a suite run"
+  - "a red instance marked `contradicts_requirement` is a failure to triage, never a known one
+     to skip"
+
+unresolved:
+  - id: <instance or case id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

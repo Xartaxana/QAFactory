@@ -1,0 +1,13 @@
+[
+  {"id": "summary", "name": "Summary", "custom": false, "schema": {"type": "string", "system": "summary"}},
+  {"id": "description", "name": "Description", "custom": false, "schema": {"type": "string", "system": "description"}},
+  {"id": "comment", "name": "Comment", "custom": false, "schema": {"type": "comments-page", "system": "comment"}},
+  {"id": "attachment", "name": "Attachment", "custom": false, "schema": {"type": "array", "items": "attachment", "system": "attachment"}},
+  {"id": "parent", "name": "Parent", "custom": false, "schema": {"type": "issuelink", "system": "parent"}},
+  {"id": "customfield_10014", "name": "Epic Link", "custom": true, "schema": {"type": "any", "custom": "com.pyxis.greenhopper.jira:gh-epic-link"}},
+  {"id": "customfield_10015", "name": "Parent Link", "custom": true, "schema": {"type": "any", "custom": "com.atlassian.jpo:jpo-custom-field-parent"}},
+  {"id": "customfield_20001", "name": "Synthetic note", "custom": true, "schema": {"type": "string"}},
+  {"id": "customfield_20002", "name": "Synthetic empty text", "custom": true, "schema": {"type": "string"}},
+  {"id": "customfield_20003", "name": "Synthetic option", "custom": true, "schema": {"type": "option"}},
+  {"id": "customfield_20011", "name": "Synthetic rich text", "custom": true, "schema": {"type": "string"}}
+]

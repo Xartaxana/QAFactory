@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "author_dispatch_id": "S5-qa-automator-7",
+  "reviewer_dispatch_id": "S5-qa-code-critic-7",
+  "input_hash": "ffc7c3737535a405008987b7660a0d29e57055aa7d7cb7f794ee3ac77ae6c40d",
+  "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "scope_instances": {
+    "CART-1_TC_010": [
+      "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+    ]
+  },
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "input_hash": "3a0dd8c705cf8f613e32dc88eba21379a720b62b8d23431780dd449845438362",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-10",
+          "obligation_hash": "1f380f95500bcdf2a6c6d4beaf4694d776e840d821aec845796c562155adcef8"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "obligation_hash": "9b9763da7d03af82fbb5c00b99b5e241bb7c52d61de19bc4b0751d5f96daef43",
+      "assertion_id": "tests/e2e/cart/add-to-cart.spec.ts:33",
+      "defect_location": "MyBooks/src/components/Navigation.tsx:60",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_010",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "3a0dd8c705cf8f613e32dc88eba21379a720b62b8d23431780dd449845438362"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "0e0709a5db9c7083d1569103b2dce82fbefeff70ca8fbc0dd42149cd6d81dc23",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/c9286026d096394cd0e6-reparse-dba7e3576bb8.json",
+          "sha256": "c5ffca96207f82cbeedf341676cfe778657c34915229bf7d89871256291fa5cd"
+        },
+        {
+          "path": "evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.junit.xml",
+          "sha256": "55b41d35cac7bf3ed14b2c2bb5d587bc3194ec509c8c670af68ed52851edbc02"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_010",
+        "words": "Accept unprobed (Recommended): the UI test CART-1_TC_010 stays green-but-unprobed (probe tool cannot read the TypeScript tests); list it under Left with you.",
+        "at": "2026-10-31T10:43:09+00:00"
+      }
+    }
+  ],
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "quality_not_run": [],
+  "expectation_changes": [],
+  "blocked_by_env": [],
+  "expectation_changes_unmeasured": "a red run has no later pass for cart-quote-order.spec.@api @regression CART-1_TC_009 quote and order from cart, and the test file that would say whether the test still exists cannot be read (not a Python file, a syntax error, or no file named by the manifest)"
+}

@@ -1,0 +1,60 @@
+{
+  "note": "The seven header lines of a brief (spec t-1765 section 3.4), rendered by brief_pack.sd_head_lines for a role whose agent file is a charter (scripts/charter.py is_charter). goal and DoD come from the charter, given from the brief's own file list, owns from references/artifact-writers.json, handoff from handoff.contract_of; non_goals and questions are per role here. A line with no data prints the em dash and the reason, never dropped (AR-23).",
+  "line_chars": 300,
+  "order": ["goal", "DoD", "given", "owns", "non-goals", "handoff", "questions"],
+  "empty": {
+    "goal": "the charter has no Outcome section",
+    "DoD": "the charter has no numbered item under Good outcome",
+    "given": "the stage declares no input file",
+    "owns": "the registry names no artifact of this role at this stage",
+    "non-goals": "the brief form names none for this role",
+    "handoff": "no handoff contract is registered for this stage and role",
+    "questions": "the brief form names no road for this role"
+  },
+  "roles": {
+    "qa-scout": {
+      "non_goals": "no plan, no cases, no stand probing beyond liveness; never edit application or test code; no external writes",
+      "questions": "open fact: unresolved_facts of work/context-manifest.json; go on with the recommendation; halt only with no diff and nobody to ask"
+    },
+    "qa-requirements-tester": {
+      "non_goals": "no plan, no cases; never resolve a contradiction yourself; no requirement without a source; no external writes",
+      "questions": "open_questions[] of work/requirements-readiness.json; continue on the recommendation, mark it until answered; halt only when the bundle is missing or empty"
+    },
+    "qa-test-strategist": {
+      "non_goals": "no test files, no case text; never pick a reading of a contradiction; never cut scope silently",
+      "questions": "new_questions of the plan row that rests on it, a branch per answer; continue on the recommendation, mark it until answered; halt only when the register is missing or empty"
+    },
+    "qa-case-designer": {
+      "non_goals": "no stand probing, no test code; never re-assign priority, class or basis of the plan row",
+      "questions": "a Then no source gives is unknown with its question, or raise with a raise_questions entry that the driver turns into a register question; a case that cannot be written at all is stuck, never the stage"
+    },
+    "qa-runner": {
+      "non_goals": "no diagnosis, no change of case or bug status; a handed_to_person case is the person's; never write results[] by hand",
+      "questions": "requirements silent: an unresolved_question at once, go on; access a person can give is a question; a probed gap is a recorded gap"
+    },
+    "qa-failure-analyst": {
+      "non_goals": "never change an expectation to match the product; no repair but a test defect, a flaky test, a reorder; no bug record before gate B",
+      "questions": "settle it yourself first (faq.md, the evidence, a control experiment); two readings both tenable: one question with both quotes, go on"
+    },
+    "qa-bug-reporter": {
+      "non_goals": "no draft the person did not choose; never argue the triage verdict, change a case status or fix a test; never write to a tracker; no application code",
+      "questions": "a question for the person goes in questions[] of your form, you do not stop for it; halt only when no gate B decision is recorded"
+    },
+    "qa-doc-scribe": {
+      "non_goals": "no second report file; no number, verdict, bug or size typed by hand; never add a roll-call row or reconcile ledger.json and the report by hand",
+      "questions": "what the person must decide is an item of Left with you, in words; halt only when a script fails or the roll-call names a missing requirement or case"
+    },
+    "qa-retro-analyst": {
+      "non_goals": "no recomputed number; never move or archive the artifact folder or set archived; no edit of a strategy document that is not editable",
+      "questions": "the person's one closing question is the orchestrator's: you record the answer verbatim; halt only when work/retro-numbers.json is missing"
+    },
+    "qa-automator": {
+      "non_goals": "no application code; no literal for an expectation left open; no workaround or silent drop of a step the product does not allow; no suite-wide run",
+      "questions": "a step the product does not allow, or an absent field: `unresolved` with a question, go on; a doubt about a case travels with its red test to S7"
+    },
+    "qa-code-critic": {
+      "non_goals": "never fix the tests or weaken an assertion; no product code edit in the main tree; do not re-report what code already checked",
+      "questions": "a doubt about the case goes to S7 with the red test; a proof the stand stopped is `unverified` with why; stop after the review cap"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "note": "The levels of proof a test can have that its check works, ordered by rank (higher rank = stronger). Closed variety lives here and code reads it (FR-13). D-0010: every NEW or CHANGED test instance gets the live check (probe_by_code.py); D-0012: an unchanged, reused test is not probed and blocks nothing; the product level (red_sandbox.py --probe) is a rare exception on the code critic's doubt that the check looks at the product. Only a failed or absent live check blocks delivery. A receipt of a higher level satisfies a lower level's requirement. A receipt counts for the bytes its test holds now, or with the code of the test unchanged (D-0017: a comment-only change, diff_scope.executable_sha equal; FB-10: an added test function). The S5 window (acceptance.validate_window) binds a review and a probe by the same rule, per test instance (proof_level.same_test). `scripts/proof_level.py` is the one reader.",
+  "levels": [
+    {
+      "id": "live",
+      "rank": 1,
+      "words": "the check is live",
+      "meaning": "its assertion runs and fails when made false",
+      "producer": "probe_by_code.py",
+      "mutation_kinds": ["assertion"],
+      "required": true
+    },
+    {
+      "id": "catches_broken_product",
+      "rank": 2,
+      "words": "catches a broken product",
+      "meaning": "a deliberate break of the product made it fail",
+      "producer": "red_sandbox.py --probe",
+      "mutation_kinds": ["real_behavior"],
+      "required": false
+    }
+  ],
+  "none_words": "not probed",
+  "not_required_words": "not probed (unchanged test)",
+  "handed_words": "not probed (handed to the person)",
+  "unknown_words": "proof level unknown (the test file cannot be found)",
+  "red_words": "probe not applicable: red",
+  "comment_only_words": "the receipt holds over a comment-only change",
+  "code_unchanged_words": "the receipt holds: the test's code is the same as when it was proven",
+  "review_words": {
+    "approved": "reviewed by the code critic",
+    "approved_with_fixes": "reviewed by the code critic, fixes named",
+    "rejected": "rejected by the code critic",
+    "unverified": "the code critic could not verify it",
+    "": "review not recorded"
+  }
+}

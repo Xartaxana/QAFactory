@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "_note": "Closed variety of scripts/http_client.py (FR-13): which answer headers and body keys tell the service's own answer from one that something on the path wrote. The authorship_markers and path_markers lists are an ESTIMATE until the live measurement (B-408, curl of the tracker's serverInfo with the factory, python and curl User-Agents) finalizes them. A marker in authorship_markers PROVES another party wrote the answer; a marker in path_markers only shows that party sits on the path, and never hides a service's own refusal.",
+  "classify_limit_bytes": 65536,
+  "title_limit_chars": 120,
+  "service_auth_headers": [
+    {"name": "X-Seraph-LoginReason", "denied_unless": ["", "OK"]},
+    {"name": "X-Authentication-Denied-Reason", "denied_unless": [""]},
+    {"name": "WWW-Authenticate", "statuses": [401]}
+  ],
+  "authorship_markers": [
+    {"name": "cf-mitigated", "who": "Cloudflare"},
+    {"name": "x-amzn-waf-action", "who": "AWS WAF"}
+  ],
+  "path_markers": [
+    {"name": "server", "equals": "cloudflare", "who": "Cloudflare"},
+    {"name": "cf-ray", "who": "Cloudflare"},
+    {"name": "x-amz-cf-id", "who": "CloudFront"},
+    {"name": "via", "who": "a proxy"}
+  ],
+  "message_keys": ["errorMessages", "errors", "message", "error_description", "error", "detail", "title"],
+  "service_message_keys": {"jira": ["errorMessages", "errors"]}
+}

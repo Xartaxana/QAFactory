@@ -1,0 +1,17 @@
+{
+  "name": "qa-factory",
+  "displayName": "QA Factory",
+  "version": "0.11.0",
+  "description": "QA Factory: ticket-driven functional testing with two human gates. qa-onboarding learns a repository once, qa-story takes a ticket from context and grounding through plan, cases, automation, quiet runs and triage to a code-computed checks ledger before any MR; qa-doctor reports one next action.",
+  "author": {
+    "name": "Xartaxana"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "qa",
+    "testing",
+    "test-automation",
+    "test-design",
+    "factory"
+  ]
+}

@@ -1,0 +1,83 @@
+# S5: the code critic hands its review of the PLAN back - to the automator when a remark blocks the windows,
+# or on to the windows when none does. The same file serves both: `review.outcome` decides which.
+#
+# This is the review of `work/s5-plan.json` (the plan dispatch, purpose `s5_plan`), not of any code: the
+# critic judges the plan's intent - every case answered, the level and the shape of each test, the oracle,
+# the data, the consolidation - before a line of a test exists. Code is judged later, window by window,
+# through s5-critic-to-automator.yaml, against this plan and the remarks written here.
+#
+# A remark is `blocker` or `remark`. A BLOCKER is what the automator of a window cannot put right inside
+# its own window (the plan answers the wrong case, the level cannot observe the Then); consolidation
+# across cases is never a blocker: the windows follow the plan. Everything else is a `remark`, and a
+# remark travels into the window it concerns, where the automator answers it with one row. The windows
+# see the remarks, never a rewritten plan.
+#
+# Code stamps the plan the critic judged (`s5_plan.py stamp_review` writes the receipt at `finish`): the
+# critic does not copy a hash, and the form carries none.
+schema_version: 1
+contract: s5-critic-plan-to-automator
+stage: S5
+from_role: qa-code-critic
+to_role: qa-automator            # on `approved` or `approved_with_remarks` the plan goes on to the windows instead
+
+inputs:
+  - path: work/handoffs/<the automator's dispatch>.yaml
+    what: the author's handoff for the plan
+    required: true
+  - path: work/s5-plan.json
+    what: the plan under review
+    required: true
+  - path: work/test-plan.json
+    what: the S3 rows the plan answers
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every case in scope at its pinned version
+    required: true
+
+# Proof that the review read what it was handed. One line per entry of the author's `inputs`, with the
+# version or the content it read - a review of a file that has since changed is not a review of this plan.
+inputs_read:
+  - path: <path exactly as the author listed it>
+    version: <pinned case version, or the hash of the file read>
+
+header:
+  role: qa-code-critic
+  stage: S5
+  window: <the case ids under review>
+  verdict: <one of vocabulary.header_verdicts>
+
+# The review's own conclusion about the plan. `approved`: no remark. `approved_with_remarks`: remarks
+# only, none a blocker. `blocked`: at least one blocker, and the plan goes back to its author for those rows.
+review:
+  outcome: <one of vocabulary.plan_verdicts>
+
+# One row per case reviewed. `state` from vocabulary.row_states, allowed for qa-code-critic: reviewed,
+# unverified, review_skipped; `reason` is a verdict of at most 80 characters, the explanation is the remark.
+scope:
+  - id: <case id>
+    state: <one of vocabulary.row_states>
+    reason: <= 80 characters>
+
+# What the author (or, later, the window) must change. A remark that does not say what the critic expects
+# is not a remark, it is a riddle: so every one carries `expected` - the condition the author can check its
+# own row against - and `check`, the critic's check that raised it. The empty list is the answer to an
+# `approved` plan. `case`, `test` and `then` say where the remark points; a dash on all three means the
+# plan as a whole, and a remark of that kind goes to every window.
+remarks:
+  - id: <PR-n, or the empty list>
+    case: <case id, or a dash when the remark is about the plan as a whole>
+    test: <T-n of the plan, or a dash>
+    then: <case id#n of one Then clause, or a dash>
+    kind: <one of vocabulary.plan_remark_kinds>
+    check: <the critic's check that raised it, K-n>
+    problem: <what is wrong, one sentence>
+    expected: "<what the critic expects to see instead, concretely - the level, the shape, the oracle>"
+    fix: <what to do, one sentence>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

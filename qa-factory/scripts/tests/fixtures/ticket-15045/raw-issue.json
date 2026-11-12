@@ -1,0 +1,131 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "10000001",
+  "self": "https://jira.example.test/rest/api/2/issue/10000001",
+  "key": "TP1-15045",
+  "fields": {
+    "summary": "Testing TP1-14482 Visual Workflow Diff for Revisions",
+    "description": "Purpose\r\n\r\nValidate TP1-14482 \"Visual Workflow Diff for Revisions\" \r\n\r\nStory under test\r\nTP1-14482 — Visual Workflow Diff for Revisions\r\n\r\nImplementation\r\n\r\nBackend repository:\r\ntestproject1\r\nMR !4214 — TP1-14482: Add POST /v1/workflows/\\{workflow_id}/validate dry-run endpoint\r\n\r\nFrontend repository:\r\ntestproject1-ui\r\nMR !1881 — TP1-14482: Add visual workflow diff view to version history\r\n\r\nLocal repositories\r\n\r\nBackend:\r\n~/Projects/testproject1-dev/testproject1\r\n\r\nFrontend:\r\n~/Projects/testproject1-dev/testproject1-ui\r\n\r\nWhat needs to be tested\r\n\r\n1. Visual revision diff opens from workflow version history.\r\n2. A single graph represents the target revision.\r\n3. Added nodes are highlighted in green.\r\n4. Removed nodes are displayed at their former position with red styling, REMOVED badge and strikethrough label.\r\n5. Modified nodes are highlighted distinctly/amber without exposing exact changed values in the visual view.\r\n6. YAML/text diff remains available as the detailed alternative view.\r\n7. Zoom, fit-view and drag-to-pan work correctly.\r\n8. Exactly two revisions are compared.\r\n9. Visual diff is read-only.\r\n10. Restoring a revision triggers workflow validation automatically.\r\n11. Validation errors are displayed inline after restore.\r\n12. Restore validation does not persist workflow changes to the backend.\r\n13. POST /v1/workflows/\\{workflow_id}/validate executes the same required pre-persist validation pipeline as workflow update.\r\n14. Validation endpoint performs no database write.\r\n15. Existing workflow versioning/text diff behavior is not regressed.\r\n\r\nQA Factory evaluation goals\r\n - Verify that qa-story correctly discovers that this story affects two repositories.\r\n - Verify that it identifies both backend MR !4214 and frontend MR !1881.\r\n - Verify that it builds coverage from the Jira acceptance criteria.\r\n - Verify that it selects appropriate backend, frontend and integration tests.\r\n - Verify Gate A plan quality, execution classification, evidence, defect reporting, coverage map and Gate B delivery decision.",
+    "status": {
+      "self": "https://jira.example.test/rest/api/2/status/10001",
+      "description": "Synthetic status description.",
+      "iconUrl": "https://jira.example.test/images/icons/status.png",
+      "name": "Ready for Review",
+      "id": "10001",
+      "statusCategory": {
+        "self": "https://jira.example.test/rest/api/2/statuscategory/4",
+        "id": 4,
+        "key": "indeterminate",
+        "colorName": "yellow",
+        "name": "In Progress"
+      }
+    },
+    "issuetype": {
+      "self": "https://jira.example.test/rest/api/2/issuetype/5",
+      "id": "5",
+      "description": "Synthetic issue type description.",
+      "iconUrl": "https://jira.example.test/images/icons/subtask.png",
+      "name": "Sub-task",
+      "subtask": true,
+      "avatarId": 10316
+    },
+    "parent": {
+      "id": "10000002",
+      "key": "TP1-14482",
+      "self": "https://jira.example.test/rest/api/2/issue/10000002",
+      "fields": {
+        "summary": "Visual Workflow Diff for Revisions",
+        "status": {"name": "In Progress", "id": "3"},
+        "priority": {"name": "Major", "id": "3"},
+        "issuetype": {"name": "Story", "id": "7", "subtask": false}
+      }
+    },
+    "issuelinks": [],
+    "subtasks": [],
+    "comment": {
+      "comments": [
+        {
+          "self": "https://jira.example.test/rest/api/2/issue/10000001/comment/15923998",
+          "id": "15923998",
+          "author": {
+            "self": "https://jira.example.test/rest/api/2/user?username=author.one",
+            "name": "author.one",
+            "key": "JIRAUSER10001",
+            "emailAddress": "author.one@example.test",
+            "avatarUrls": {"48x48": "https://jira.example.test/avatar/48.png"},
+            "displayName": "Exemplar Test Author",
+            "active": true,
+            "timeZone": "Europe/Warsaw"
+          },
+          "body": "Draft MR is intended for evaluation of QA Factory output and is not merge-ready product test coverage https://gi.example.test/org-cdme/testproject1-ui/-/merge_requests/1924",
+          "updateAuthor": {
+            "name": "author.one",
+            "displayName": "Exemplar Test Author",
+            "emailAddress": "author.one@example.test",
+            "active": true
+          },
+          "created": "2026-09-18T08:20:40.161+0000",
+          "updated": "2026-09-18T08:20:40.161+0000"
+        }
+      ],
+      "maxResults": 1,
+      "total": 1,
+      "startAt": 0
+    },
+    "attachment": [
+      {
+        "self": "https://jira.example.test/rest/api/2/attachment/30001",
+        "id": "30001",
+        "filename": "diff-view.png",
+        "author": {"name": "author.one", "displayName": "Exemplar Test Author", "emailAddress": "author.one@example.test", "active": true},
+        "created": "2026-09-18T08:10:00.000+0000",
+        "size": 1048576,
+        "mimeType": "image/png",
+        "content": "https://jira.example.test/secure/attachment/30001/diff-view.png",
+        "thumbnail": "https://jira.example.test/secure/thumbnail/30001/diff-view.png"
+      },
+      {
+        "self": "https://jira.example.test/rest/api/2/attachment/30002",
+        "id": "30002",
+        "filename": "notes.txt",
+        "author": {"name": "author.one", "displayName": "Exemplar Test Author", "emailAddress": "author.one@example.test", "active": true},
+        "created": "2026-09-18T08:11:00.000+0000",
+        "size": 2048,
+        "mimeType": "text/plain",
+        "content": "https://jira.example.test/secure/attachment/30002/notes.txt"
+      }
+    ],
+    "labels": ["AI-Generated", "testproject1_core"],
+    "components": [{"self": "https://jira.example.test/rest/api/2/component/40001", "id": "40001", "name": "Core"}],
+    "fixVersions": [],
+    "priority": {"self": "https://jira.example.test/rest/api/2/priority/3", "iconUrl": "https://jira.example.test/images/icons/major.svg", "name": "Major", "id": "3"},
+    "reporter": {
+      "self": "https://jira.example.test/rest/api/2/user?username=reporter.one",
+      "name": "reporter.one",
+      "key": "JIRAUSER10002",
+      "emailAddress": "reporter.one@example.test",
+      "avatarUrls": {"48x48": "https://jira.example.test/avatar/reporter.png"},
+      "displayName": "Exemplar Reporter",
+      "active": true,
+      "timeZone": "Europe/Warsaw"
+    },
+    "assignee": null,
+    "updated": "2026-09-18T08:20:40.161+0000",
+    "customfield_20001": "Synthetic named note kept because config names it.",
+    "customfield_20002": "",
+    "customfield_20003": {"disabled": false, "id": "50311", "self": "https://jira.example.test/rest/api/2/customFieldOption/50311", "value": "Planned"},
+    "customfield_20004": [{"name": "member.one", "key": "JIRAUSER10003", "emailAddress": "member.one@example.test", "displayName": "Exemplar Member", "active": true, "avatarUrls": {"16x16": "https://jira.example.test/avatar/16.png"}}],
+    "customfield_20005": [],
+    "customfield_20006": {},
+    "customfield_20007": "   ",
+    "customfield_20008": null,
+    "customfield_20009": {"boardId": 3, "self": "https://jira.example.test/rest/api/2/board/3", "id": 9, "goal": "synthetic goal", "nested": {"id": 1, "self": "https://jira.example.test/x", "label": "deep value", "iconUrl": "https://jira.example.test/i.png"}},
+    "customfield_20010": {"id": "7", "name": "Option by name", "self": "https://jira.example.test/rest/api/2/x/7"},
+    "customfield_20011": {"type": "doc", "version": 1, "content": [{"type": "paragraph", "content": [{"type": "text", "text": "Rich text in a named field."}]}]},
+    "customfield_20012": 0,
+    "customfield_10800": "9223372036854775807",
+    "customfield_25700": "2|ih2jks:",
+    "customfield_33100": "N/A",
+    "customfield_33334": ["member.one@example.test(member.one)"]
+  }
+}

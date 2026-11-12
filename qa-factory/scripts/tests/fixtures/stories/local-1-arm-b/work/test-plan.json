@@ -1,0 +1,2703 @@
+{
+  "rows": [
+    {
+      "id": "TS-1",
+      "schema_version": 2,
+      "what": "Add to cart from a catalog card shows success and moves the badge",
+      "requirements": [
+        "R-1"
+      ],
+      "branches": [
+        "BN-1"
+      ],
+      "walks": [
+        "Add from the catalog"
+      ],
+      "defect_hypothesis": "state @ HomePage.tsx:118 add handler: badge is not re-read after a successful add, or the error toast is shown as success when stock is short",
+      "impact_class": "blocked-flow",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:13",
+      "oracle": "requirement:R-1",
+      "disposition": "automate",
+      "reason": "regression: yes - main path of the cart, no test defends it",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "smoke",
+      "risk_rationale": "P1 area shopping cart; the catalog card is the first way into the cart",
+      "risk_source_refs": [
+        "register:R-1",
+        "fact-5"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "add one in-stock book from a card: success message and badge +1",
+        "short-stock book: error message, badge unchanged"
+      ],
+      "test_level_rationale": "toast and badge exist only in the rendered page; e2e-ui is the lowest rung that observes them",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-1",
+          "oracle_source_ref": "work/requirements-register.md#R-1",
+          "behavior": "catalog add shows success and moves the badge; short stock shows an error",
+          "observation_boundary": "rendered catalog page: message and badge",
+          "completion_condition": "the add response has been handled and the message is on screen",
+          "applicable_scenarios": [
+            "P1-c1",
+            "P1-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test reaches the catalog card; one new e2e case with two checks"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-1",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P1-c1",
+            "P1-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-1",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P1-c1",
+            "surfaces": [
+              {
+                "id": "S-1",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P1-c1"
+              },
+              {
+                "id": "S-1b",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P1-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-1",
+            "disposition": "gap",
+            "rationale": "nothing defends the catalog add",
+            "gap_reason": "no existing test reaches the catalog card"
+          }
+        ],
+        "planned_instance_ids": [
+          "P1-i1",
+          "P1-i2"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 2
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-2",
+      "schema_version": 2,
+      "what": "Add from the book page with a chosen quantity: message differs above 1, button unusable when out of stock",
+      "requirements": [
+        "R-2"
+      ],
+      "branches": [
+        "BN-2",
+        "BN-3"
+      ],
+      "walks": [
+        "Add from the book page"
+      ],
+      "defect_hypothesis": "boundary @ BookDetailPage.tsx:45 quantity handler: quantity 1 and quantity above 1 share one message, or the out-of-stock button stays clickable",
+      "impact_class": "blocked-flow",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:14",
+      "oracle": "requirement:R-2",
+      "disposition": "automate",
+      "reason": "regression: yes - second way into the cart, partitions on quantity and stock",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "equivalence partitioning",
+      "risk_rationale": "P1 area shopping cart; message and disabled state are rendered only",
+      "risk_source_refs": [
+        "register:R-2",
+        "fact-6"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "quantity 1: single-item message",
+        "quantity 3: message differs",
+        "out-of-stock book: button disabled and nothing sent"
+      ],
+      "test_level_rationale": "message and disabled state exist only in the rendered page; e2e-ui is the lowest rung that sees them",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-2",
+          "oracle_source_ref": "work/requirements-register.md#R-2",
+          "behavior": "book page add message differs above quantity 1; out-of-stock button is disabled",
+          "observation_boundary": "rendered book page: message and button state",
+          "completion_condition": "the add response has been handled and the message is on screen",
+          "applicable_scenarios": [
+            "P2-c1",
+            "P2-c2",
+            "P2-c3"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test reaches the book page; partitions on quantity and stock"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-2",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P2-c1",
+            "P2-c2",
+            "P2-c3"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-2",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P2-c2",
+            "surfaces": [
+              {
+                "id": "S-2",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P2-c1"
+              },
+              {
+                "id": "S-2b",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P2-c2"
+              },
+              {
+                "id": "S-2c",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P2-c3"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-2",
+            "disposition": "gap",
+            "rationale": "nothing defends the book page add",
+            "gap_reason": "no existing test reaches the book page"
+          }
+        ],
+        "planned_instance_ids": [
+          "P2-i1",
+          "P2-i2",
+          "P2-i3"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 3
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-3",
+      "schema_version": 2,
+      "what": "Move to cart from the wishlist adds the book with quantity 1 and removes it from the wishlist",
+      "requirements": [
+        "R-3"
+      ],
+      "branches": [],
+      "walks": [
+        "Move from the wishlist"
+      ],
+      "defect_hypothesis": "state @ WishlistPage.tsx:47 move handler: the book is added but stays in the wishlist, or the badge is not refreshed",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:15",
+      "oracle": "requirement:R-3",
+      "disposition": "automate",
+      "reason": "regression: yes - two writes in one click, one can be lost",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "state transition",
+      "risk_rationale": "degraded flow in the P1 cart area; two calls behind one click",
+      "risk_source_refs": [
+        "register:R-3",
+        "fact-7"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [
+        "book already in the cart is row P-4"
+      ],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "book not in cart: after Move it is in the cart with quantity 1 and gone from the wishlist",
+        "undo: add it back to the wishlist and move again"
+      ],
+      "test_level_rationale": "the outcome spans two pages and the badge; e2e-ui is the lowest rung that sees the wishlist list and the cart together",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-3",
+          "oracle_source_ref": "work/requirements-register.md#R-3",
+          "behavior": "move to cart adds the book with quantity 1 and removes it from the wishlist",
+          "observation_boundary": "rendered wishlist page and GET /api/cart",
+          "completion_condition": "both the add and the remove calls have answered and the list has refreshed",
+          "applicable_scenarios": [
+            "P3-c1",
+            "P3-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test reaches the wishlist page"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-3",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P3-c1",
+            "P3-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-3",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P3-c1",
+            "surfaces": [
+              {
+                "id": "S-3",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P3-c1"
+              },
+              {
+                "id": "S-3b",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P3-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-3",
+            "disposition": "gap",
+            "rationale": "nothing defends the move",
+            "gap_reason": "no existing test reaches the wishlist page"
+          }
+        ],
+        "planned_instance_ids": [
+          "P3-i1"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 1
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-4",
+      "schema_version": 2,
+      "what": "Move to cart of a book already in the cart: quantity after the move",
+      "requirements": [
+        "R-3"
+      ],
+      "branches": [
+        "BN-4"
+      ],
+      "walks": [],
+      "defect_hypothesis": "state @ WishlistPage.tsx:48 move handler: the second add overwrites the quantity instead of summing it, or leaves the cart unchanged",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:15",
+      "oracle": "requirement:R-3",
+      "disposition": "automate",
+      "reason": "regression: yes - quantity is summed (Q6 a)",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "decision table",
+      "risk_rationale": "the two readings differ by 1 in the cart quantity; consequence unknown, so not low",
+      "risk_source_refs": [
+        "register:R-3",
+        "fact-7"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "book in cart with quantity 2: Move gives quantity 3 (reading A)"
+      ],
+      "test_level_rationale": "same call chain as P-3; e2e-ui, one extra instance",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-4",
+          "oracle_source_ref": "work/requirements-register.md#R-3",
+          "behavior": "moving a book already in the cart sums the quantity (reading A until answered)",
+          "observation_boundary": "cart page quantity after the move",
+          "completion_condition": "the move has finished and the cart page is re-read",
+          "applicable_scenarios": [
+            "P4-c1",
+            "P4-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "one extra instance on the move chain; the open question changes only the expected number"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-3",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P4-c1",
+            "P4-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-3",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P4-c1",
+            "surfaces": [
+              {
+                "id": "S-4",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P4-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-4",
+            "disposition": "gap",
+            "rationale": "nothing defends the move onto an existing item",
+            "gap_reason": "no existing test reaches the wishlist page"
+          }
+        ],
+        "planned_instance_ids": [
+          "P4-i1"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 1
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-5",
+      "schema_version": 2,
+      "what": "Guest cart merge into the account cart: higher quantity wins, capped at stock, no-stock book dropped, empty guest cart",
+      "requirements": [
+        "R-4"
+      ],
+      "branches": [
+        "BN-5",
+        "BN-6"
+      ],
+      "walks": [],
+      "defect_hypothesis": "boundary @ cartService.ts:118 merge: quantities are summed instead of taking the higher, the cap at stock is skipped, or a zero-stock guest book is copied into the account cart",
+      "impact_class": "data-loss",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:16",
+      "oracle": "requirement:R-4",
+      "disposition": "automate",
+      "reason": "regression: yes - P0 data-loss, rules run on every sign-in",
+      "fit": "new",
+      "level": "api",
+      "technique": "equivalence partitioning",
+      "risk_rationale": "a wrong merge silently loses or inflates what the shopper chose; P1 area sign-in and cart",
+      "risk_source_refs": [
+        "register:R-4",
+        "fact-8"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [
+        "EX-2"
+      ],
+      "unknowns": [
+        "the pure helper is unit-tested (EX-2); the service with the database is not"
+      ],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "same book in both carts: higher quantity wins",
+        "higher quantity above stock: capped at stock",
+        "book only in guest cart: moved",
+        "guest book with stock 0: dropped",
+        "empty guest cart: account cart unchanged"
+      ],
+      "test_level_rationale": "POST /api/cart/merge observes the rule without the page; api is the lowest rung with the database behind it",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-5",
+          "oracle_source_ref": "work/requirements-register.md#R-4",
+          "behavior": "merge keeps the higher quantity, caps at stock, drops no-stock books, leaves the account cart alone for an empty guest cart",
+          "observation_boundary": "POST /api/cart/merge answer and GET /api/cart after it",
+          "completion_condition": "the merge response has returned and the account cart is read back",
+          "applicable_scenarios": [
+            "P5-c1",
+            "P5-c2",
+            "P5-c3"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "EX-2 tests the pure helper only; the service and database need an api case"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-4",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P5-c1",
+            "P5-c2",
+            "P5-c3"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-4",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P5-c2",
+            "surfaces": [
+              {
+                "id": "S-5",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P5-c1"
+              },
+              {
+                "id": "S-5b",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P5-c3"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-5",
+            "disposition": "gap",
+            "rationale": "EX-2 covers the helper only",
+            "gap_reason": "the application unit test does not reach the service, the database or the API"
+          }
+        ],
+        "planned_instance_ids": [
+          "P5-i1",
+          "P5-i2",
+          "P5-i3",
+          "P5-i4",
+          "P5-i5"
+        ],
+        "counts": {
+          "logical_cases_before": 1,
+          "logical_cases_after": 2,
+          "executable_instances_before": 1,
+          "executable_instances_after": 5
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-6",
+      "schema_version": 2,
+      "what": "A failed guest-cart merge at sign-in is not presented as success (500 and timeout of the merge call)",
+      "requirements": [
+        "R-12"
+      ],
+      "branches": [],
+      "walks": [],
+      "defect_hypothesis": "error-path @ LoginPage.tsx:36 merge call: the failure is only logged, sign-in is shown as success and the guest items are lost without a word",
+      "impact_class": "data-loss",
+      "impact": "severe",
+      "likelihood": "high",
+      "confidence": "medium",
+      "observable": "expected-contract:work/requirements-register.md:24",
+      "oracle": "",
+      "disposition": "automate",
+      "reason": "regression: yes - expected red: assert the visible error text",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "fault injection",
+      "risk_rationale": "guest items vanish at sign-in unannounced; code_says contradicts the requirement",
+      "risk_source_refs": [
+        "register:R-12",
+        "fact-9"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [
+        "whether the owner wants a message or a retry; both readings go to gate A"
+      ],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "merge answers 500: page stays alive, shopper is told or guest items are kept",
+        "merge never answers (timeout): same oracle"
+      ],
+      "test_level_rationale": "the message and the page state are rendered only; e2e-ui with the merge request failed by route interception is the lowest rung",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "requests": [
+        {
+          "request": "POST /api/cart/merge",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        }
+      ],
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-6",
+          "oracle_source_ref": "work/requirements-register.md#R-12",
+          "behavior": "a failed merge at sign-in is not shown as success",
+          "observation_boundary": "rendered page after sign-in with the merge request failed",
+          "completion_condition": "the failed merge has been handled and the next page is shown",
+          "applicable_scenarios": [
+            "P6-c1",
+            "P6-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no test fails the merge call; expected red"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-12",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P6-c1",
+            "P6-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-12",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P6-c1",
+            "surfaces": [
+              {
+                "id": "S-6",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P6-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no login-merge test.",
+        "entries": [
+          {
+            "obligation_id": "OB-6",
+            "disposition": "gap",
+            "rationale": "nothing fails the merge call",
+            "gap_reason": "the auth spec does not carry a guest cart"
+          }
+        ],
+        "planned_instance_ids": [
+          "P6-i1",
+          "P6-i2"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 2
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-7",
+      "schema_version": 2,
+      "what": "Adding a book already in the cart sums into one item and answers 201",
+      "requirements": [
+        "R-5"
+      ],
+      "branches": [],
+      "walks": [],
+      "defect_hypothesis": "state @ cartService.ts:53 add: a second line is created for the same book, or the quantity is replaced instead of summed",
+      "impact_class": "money",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:MyBooks/docs/openapi.json",
+      "oracle": "external:MyBooks/docs/openapi.json",
+      "disposition": "automate",
+      "reason": "regression: yes - P0 money, total depends on it",
+      "fit": "new",
+      "level": "api",
+      "technique": "state transition",
+      "risk_rationale": "a duplicate or replaced line misprices the order; contract states the sum",
+      "risk_source_refs": [
+        "register:R-5",
+        "fact-3"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "add 2 then 3 of one book: one item, quantity 5, second answer 201",
+        "read the cart back: one line"
+      ],
+      "test_level_rationale": "POST /api/cart and GET /api/cart show it; api is the lowest rung",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-7",
+          "oracle_source_ref": "MyBooks/docs/openapi.json#POST /api/cart",
+          "behavior": "adding a book already in the cart sums into one item and answers 201",
+          "observation_boundary": "POST /api/cart answer and GET /api/cart",
+          "completion_condition": "the second add has answered and the cart is read back",
+          "applicable_scenarios": [
+            "P7-c1",
+            "P7-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test posts to the cart"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-5",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P7-c1",
+            "P7-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-5",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P7-c1",
+            "surfaces": [
+              {
+                "id": "S-7",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P7-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-7",
+            "disposition": "gap",
+            "rationale": "nothing defends the sum",
+            "gap_reason": "no existing test posts to the cart"
+          }
+        ],
+        "planned_instance_ids": [
+          "P7-i1"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 1
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-8",
+      "schema_version": 2,
+      "what": "Invalid quantity or bookId is refused with VALIDATION_ERROR and nothing is added",
+      "requirements": [
+        "R-6"
+      ],
+      "branches": [
+        "BN-7"
+      ],
+      "walks": [],
+      "defect_hypothesis": "boundary @ schemas.ts:40 cart schema: quantity 0 or 1000 or a fraction passes, or a refused request still writes",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:MyBooks/docs/openapi.json",
+      "oracle": "external:MyBooks/docs/openapi.json",
+      "disposition": "automate",
+      "reason": "regression: yes - one parametrised case over the boundary values",
+      "fit": "new",
+      "level": "api",
+      "technique": "boundary value analysis",
+      "risk_rationale": "off-by-one limits are the classic miss; refusal must leave the cart unchanged",
+      "risk_source_refs": [
+        "register:R-6",
+        "fact-4"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "quantity 0, 1000, 1.5, -1 refused",
+        "quantity 1 and 999 accepted",
+        "bookId 0 and -3 refused",
+        "cart read back unchanged after each refusal"
+      ],
+      "test_level_rationale": "request schema is observable at POST /api/cart; api is the lowest rung",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-8",
+          "oracle_source_ref": "MyBooks/docs/openapi.json#POST /api/cart",
+          "behavior": "invalid quantity or bookId is refused with VALIDATION_ERROR and the cart is unchanged",
+          "observation_boundary": "POST /api/cart answer and GET /api/cart before and after",
+          "completion_condition": "the refusal response has returned",
+          "applicable_scenarios": [
+            "P8-c1",
+            "P8-c2",
+            "P8-c3",
+            "P8-c4",
+            "P8-c5"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test posts to the cart; one parametrised case"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-6",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P8-c1",
+            "P8-c2",
+            "P8-c3",
+            "P8-c4",
+            "P8-c5"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "state_unchanged"
+            ],
+            "oracle_ref": {
+              "ref": "R-6",
+              "revision": "r1"
+            },
+            "controls": [
+              "P8-c5"
+            ],
+            "completion_ref": "P8-c3",
+            "sequence": [
+              {
+                "phase": "before_read",
+                "ref": "P8-c1"
+              },
+              {
+                "phase": "action",
+                "ref": "P8-c2"
+              },
+              {
+                "phase": "completion",
+                "ref": "P8-c3"
+              },
+              {
+                "phase": "after_read",
+                "ref": "P8-c4"
+              }
+            ],
+            "positive_control_ref": "P8-c5",
+            "reachability_assertion_ref": "P8-c3",
+            "surfaces": [
+              {
+                "id": "S-8",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P8-c4"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-8",
+            "disposition": "gap",
+            "rationale": "nothing defends the schema",
+            "gap_reason": "no existing test posts to the cart"
+          }
+        ],
+        "planned_instance_ids": [
+          "P8-i1",
+          "P8-i2",
+          "P8-i3",
+          "P8-i4",
+          "P8-i5"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 5
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-9",
+      "schema_version": 2,
+      "what": "Stock rules of adding: stock 0 is OUT_OF_STOCK, stock exceeded with what is in the cart is INSUFFICIENT_STOCK, cart unchanged",
+      "requirements": [
+        "R-7"
+      ],
+      "branches": [
+        "BN-8"
+      ],
+      "walks": [],
+      "defect_hypothesis": "boundary @ cartService.ts:35 stock check: stock exactly met is refused, one over is accepted, or the check ignores what is already in the cart",
+      "impact_class": "money",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "medium",
+      "observable": "expected-contract:work/requirements-register.md:19",
+      "oracle": "requirement:R-7",
+      "disposition": "automate",
+      "reason": "regression: yes - P0 money, overselling",
+      "fit": "new",
+      "level": "api",
+      "technique": "boundary value analysis",
+      "risk_rationale": "overselling stock is a money loss; the helper is unit-tested (EX-1) but the service is not",
+      "risk_source_refs": [
+        "register:R-7",
+        "fact-2"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [
+        "EX-1"
+      ],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "stock 0: OUT_OF_STOCK",
+        "stock 5, cart 3, add 2: accepted (stock met)",
+        "stock 5, cart 3, add 3: INSUFFICIENT_STOCK",
+        "cart read back unchanged after each refusal"
+      ],
+      "test_level_rationale": "POST /api/cart with a read-back shows it; api is the lowest rung that reaches the database",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-9",
+          "oracle_source_ref": "work/requirements-register.md#R-7",
+          "behavior": "stock 0 and stock exceeded are refused and the cart is unchanged",
+          "observation_boundary": "POST /api/cart answer and GET /api/cart before and after",
+          "completion_condition": "the refusal response has returned",
+          "applicable_scenarios": [
+            "P9-c1",
+            "P9-c2",
+            "P9-c3",
+            "P9-c4",
+            "P9-c5",
+            "P9-c6"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "EX-1 tests the helper only; the service needs an api case"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-7",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P9-c1",
+            "P9-c2",
+            "P9-c3",
+            "P9-c4",
+            "P9-c5",
+            "P9-c6"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "state_unchanged"
+            ],
+            "oracle_ref": {
+              "ref": "R-7",
+              "revision": "r1"
+            },
+            "controls": [
+              "P9-c5"
+            ],
+            "completion_ref": "P9-c3",
+            "sequence": [
+              {
+                "phase": "before_read",
+                "ref": "P9-c1"
+              },
+              {
+                "phase": "action",
+                "ref": "P9-c2"
+              },
+              {
+                "phase": "completion",
+                "ref": "P9-c3"
+              },
+              {
+                "phase": "after_read",
+                "ref": "P9-c4"
+              }
+            ],
+            "positive_control_ref": "P9-c5",
+            "reachability_assertion_ref": "P9-c6",
+            "surfaces": [
+              {
+                "id": "S-9",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P9-c4"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-9",
+            "disposition": "gap",
+            "rationale": "EX-1 covers the helper only",
+            "gap_reason": "the application unit test does not reach the service or the API"
+          }
+        ],
+        "planned_instance_ids": [
+          "P9-i1",
+          "P9-i2",
+          "P9-i3"
+        ],
+        "counts": {
+          "logical_cases_before": 1,
+          "logical_cases_after": 2,
+          "executable_instances_before": 1,
+          "executable_instances_after": 3
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-10",
+      "schema_version": 2,
+      "what": "Adding a book id that does not exist answers 404 BOOK_NOT_FOUND",
+      "requirements": [
+        "R-8"
+      ],
+      "branches": [],
+      "walks": [],
+      "defect_hypothesis": "error-path @ cartService.ts:33 book lookup: a missing book answers 500 or is added as an empty line",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "low",
+      "confidence": "medium",
+      "observable": "expected-contract:MyBooks/docs/openapi.json",
+      "oracle": "external:MyBooks/docs/openapi.json",
+      "disposition": "automate",
+      "reason": "regression: yes - one extra instance beside the P-8 validation case",
+      "fit": "new",
+      "level": "api",
+      "technique": "error guessing",
+      "risk_rationale": "cheap extra instance next to the validation case; reversible local effect",
+      "risk_source_refs": [
+        "register:R-8",
+        "fact-12"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "well-formed id that no book has: 404 BOOK_NOT_FOUND"
+      ],
+      "test_level_rationale": "POST /api/cart shows it; api is the lowest rung",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-10",
+          "oracle_source_ref": "MyBooks/docs/openapi.json#POST /api/cart 404",
+          "behavior": "adding an unknown book id answers 404 BOOK_NOT_FOUND",
+          "observation_boundary": "POST /api/cart answer",
+          "completion_condition": "the response has returned",
+          "applicable_scenarios": [
+            "P10-c1"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test posts to the cart; one instance"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-8",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P10-c1"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-8",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P10-c1",
+            "surfaces": [
+              {
+                "id": "S-10",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P10-c1"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-10",
+            "disposition": "gap",
+            "rationale": "nothing defends the 404",
+            "gap_reason": "no existing test posts to the cart"
+          }
+        ],
+        "planned_instance_ids": [
+          "P10-i1"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 1
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-11",
+      "schema_version": 2,
+      "what": "Guest cart and user cart are separate owners: nothing of one is visible to or changed by the other (guest, USER, ADMIN)",
+      "requirements": [
+        "R-9"
+      ],
+      "branches": [
+        "BN-9"
+      ],
+      "walks": [],
+      "defect_hypothesis": "permission @ route.ts:15 owner resolution: a guest session falls back to a user cart, or an item id of another owner can be changed",
+      "impact_class": "access",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:21",
+      "oracle": "",
+      "disposition": "automate",
+      "reason": "regression: yes - P0 access, refusal path for each owner",
+      "fit": "new",
+      "level": "api",
+      "technique": "pairwise",
+      "risk_rationale": "cross-owner visibility leaks another person's cart; owner is resolved in one helper behind every cart call",
+      "risk_source_refs": [
+        "register:R-9",
+        "fact-1"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "guest adds, USER reads: USER cart lacks the item",
+        "USER adds, guest with another cookie reads: lacks the item",
+        "ADMIN follows the same rules",
+        "one owner changes or deletes an item id of another: refused and the item is intact"
+      ],
+      "test_level_rationale": "cookies and sessions are set per request context; api is the lowest rung",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-11",
+          "oracle_source_ref": "work/requirements-register.md#R-9",
+          "behavior": "guest, user and admin carts are separate owners and nothing of one is visible to another",
+          "observation_boundary": "GET /api/cart bodies per owner and answers to cross-owner changes",
+          "completion_condition": "every owner's read has returned",
+          "applicable_scenarios": [
+            "P11-c1",
+            "P11-c2",
+            "P11-c3"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no existing test reads a cart"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-9",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P11-c1",
+            "P11-c2",
+            "P11-c3"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "no_leak"
+            ],
+            "oracle_ref": {
+              "ref": "R-9",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P11-c1",
+            "payload_assertion_ref": "P11-c2",
+            "surfaces": [
+              {
+                "id": "S-11",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P11-c2"
+              },
+              {
+                "id": "S-11b",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P11-c3"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-11",
+            "disposition": "gap",
+            "rationale": "nothing defends owner separation",
+            "gap_reason": "no existing test reads a cart"
+          }
+        ],
+        "planned_instance_ids": [
+          "P11-i1",
+          "P11-i2",
+          "P11-i3"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 3
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-12",
+      "schema_version": 2,
+      "what": "Setting a cart item quantity never exceeds stock (INSUFFICIENT_STOCK) and the cart page shows the result",
+      "requirements": [
+        "R-10"
+      ],
+      "branches": [],
+      "walks": [],
+      "defect_hypothesis": "boundary @ cartService.ts:80 quantity update: the cap is checked on add but not on update, so the item can be set above stock",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:22",
+      "oracle": "requirement:R-10",
+      "disposition": "automate",
+      "reason": "regression: yes - verb PUT as in contract and code",
+      "fit": "new",
+      "level": "api",
+      "technique": "boundary value analysis",
+      "risk_rationale": "cap on update is a separate branch from cap on add; the verb differs between scout note and contract",
+      "risk_source_refs": [
+        "register:R-10",
+        "fact-11"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [
+        "EX-1"
+      ],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "set quantity to stock: accepted",
+        "set quantity to stock+1: INSUFFICIENT_STOCK and item unchanged",
+        "cart page shows the refusal in words"
+      ],
+      "test_level_rationale": "PUT /api/cart/{itemId} shows the cap; the page message is one extra assertion in P-13",
+      "design_review_required": true,
+      "source_conflict": true,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-12",
+          "oracle_source_ref": "work/requirements-register.md#R-10",
+          "behavior": "setting a cart item quantity never exceeds stock and the refusal is shown",
+          "observation_boundary": "PUT /api/cart/{itemId} answer and GET /api/cart",
+          "completion_condition": "the update response has returned and the cart is read back",
+          "applicable_scenarios": [
+            "P12-c1",
+            "P12-c2",
+            "P12-c3"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "EX-1 tests the helper only; no test updates a cart item; PUT as in contract and code"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-10",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P12-c1",
+            "P12-c2",
+            "P12-c3"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-10",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P12-c2",
+            "surfaces": [
+              {
+                "id": "S-12",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P12-c2"
+              },
+              {
+                "id": "S-12b",
+                "boundary": "API",
+                "status": "planned",
+                "assertion_ref": "P12-c3"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/api holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-12",
+            "disposition": "gap",
+            "rationale": "EX-1 covers the helper only",
+            "gap_reason": "no existing test updates a cart item"
+          }
+        ],
+        "planned_instance_ids": [
+          "P12-i1",
+          "P12-i2"
+        ],
+        "counts": {
+          "logical_cases_before": 1,
+          "logical_cases_after": 2,
+          "executable_instances_before": 1,
+          "executable_instances_after": 2
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-13",
+      "schema_version": 2,
+      "what": "Cart badge equals the sum of quantities and the cart total equals the sum of price x quantity after every add; walk the cart: see, change quantity, remove",
+      "requirements": [
+        "R-11"
+      ],
+      "branches": [],
+      "walks": [
+        "See and change the cart"
+      ],
+      "defect_hypothesis": "state @ AppProviders.tsx:35 badge count: the badge counts lines instead of quantities or is not re-read after an add, so it drifts from the cart page total",
+      "impact_class": "money",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:23",
+      "oracle": "",
+      "disposition": "automate",
+      "reason": "regression: yes - P0 money, two places compute the count",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "state transition",
+      "risk_rationale": "badge and total are built in two places and can drift by one; total is a money figure",
+      "risk_source_refs": [
+        "register:R-11",
+        "fact-10"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "add 2 of book A and 1 of book B: badge 3, total = 2*priceA + priceB",
+        "add A again: badge 4, total updated",
+        "change quantity on the cart page, then remove a line: badge and total follow"
+      ],
+      "test_level_rationale": "badge and total are rendered values compared across two components; e2e-ui is the lowest rung that sees both",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-13",
+          "oracle_source_ref": "work/requirements-register.md#R-11",
+          "behavior": "badge equals the sum of quantities and total equals the sum of price x quantity after every add",
+          "observation_boundary": "rendered badge and cart page total",
+          "completion_condition": "each add has been handled and the badge has refreshed",
+          "applicable_scenarios": [
+            "P13-c1",
+            "P13-c2",
+            "P13-c3"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "nothing compares badge and total"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-11",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P13-c1",
+            "P13-c2",
+            "P13-c3"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-11",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P13-c1",
+            "surfaces": [
+              {
+                "id": "S-13",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P13-c2"
+              },
+              {
+                "id": "S-13b",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P13-c3"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-13",
+            "disposition": "gap",
+            "rationale": "nothing compares badge and total",
+            "gap_reason": "no existing test reaches the cart page"
+          }
+        ],
+        "planned_instance_ids": [
+          "P13-i1"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 1
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-14",
+      "schema_version": 2,
+      "what": "Walk: sign in with a guest cart full of real choices, look at the cart, change it, sign out and in again",
+      "requirements": [
+        "R-4",
+        "R-12"
+      ],
+      "branches": [],
+      "walks": [
+        "Carry the guest cart over at sign-in"
+      ],
+      "defect_hypothesis": "state @ LoginPage.tsx:36 sign-in: odd results that a scripted case does not look for - a doubled item after a second sign-in, a stale badge, a message that disappears",
+      "impact_class": "data-loss",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "current-code:MyBooks/src/components/pages/LoginPage.tsx:36",
+      "oracle": "requirement:R-4",
+      "disposition": "manual-agent",
+      "reason": "regression: no - one-off walk of the function; every oddity is recorded",
+      "level": "e2e-ui",
+      "rung_basis": {
+        "kind": "judgement",
+        "ref": "a walk finds what no expected value was written for; the rules themselves are P-5"
+      },
+      "technique": "exploratory charter",
+      "risk_rationale": "sign-in is a P1 area and the merge is data-loss",
+      "risk_source_refs": [
+        "register:R-4",
+        "register:R-12"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "as a guest add 2 books, sign in, read the cart and badge",
+        "change a quantity, sign out, sign in again: nothing doubled",
+        "sign in with an empty guest cart"
+      ],
+      "test_level_rationale": "walked by hand on the live stand; the rule is automated in P-5, the failure in P-6",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-14",
+          "oracle_source_ref": "work/requirements-register.md#R-4",
+          "evidence_policy": {
+            "executed_by": "agent",
+            "evidence": "screenshots of cart and badge before and after sign-in, GET /api/cart body",
+            "required_fields": [
+              "steps taken",
+              "what was seen",
+              "every oddity"
+            ],
+            "inconclusive_when": "the stand cannot hold a guest session"
+          },
+          "behavior": "walk of sign-in with a guest cart records every oddity",
+          "observation_boundary": "live stand: cart page, badge and GET /api/cart",
+          "completion_condition": "the walk is finished and the notes are written",
+          "applicable_scenarios": [
+            "P14-c1"
+          ],
+          "oracle_status": "resolved",
+          "decision": "manual-agent",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "a walk of the function; the rules are automated elsewhere"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-4",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P14-c1"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-4",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P14-c1",
+            "surfaces": [
+              {
+                "id": "S-14",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P14-c1"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; a walk, no code.",
+        "entries": [
+          {
+            "obligation_id": "OB-14",
+            "disposition": "gap",
+            "rationale": "walked by hand",
+            "gap_reason": "no automated test planned for the walk"
+          }
+        ],
+        "planned_instance_ids": [],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 0
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-15",
+      "schema_version": 2,
+      "what": "Walk: add with real input - zero, huge, fraction, text, the last copy in stock, a book that sold out meanwhile",
+      "requirements": [
+        "R-5",
+        "R-6",
+        "R-7",
+        "R-8"
+      ],
+      "branches": [],
+      "walks": [
+        "Stock and quantity rules of adding"
+      ],
+      "defect_hypothesis": "boundary @ cartService.ts:35 add: odd inputs the schema row does not list - a quantity typed with spaces, two quick clicks, stock changed between page load and click",
+      "impact_class": "money",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "current-code:MyBooks/src/lib/services/cartService.ts:35",
+      "oracle": "requirement:R-7",
+      "disposition": "manual-agent",
+      "reason": "regression: no - one-off walk; rules are automated in P-7 to P-10",
+      "level": "e2e-ui",
+      "rung_basis": {
+        "kind": "judgement",
+        "ref": "double click and stale stock have no written expected value"
+      },
+      "technique": "exploratory charter",
+      "risk_rationale": "concurrency and order: double submit and a retry on the same add can oversell",
+      "risk_source_refs": [
+        "register:R-5",
+        "register:R-6",
+        "register:R-7",
+        "register:R-8"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "double click Add on the last copy",
+        "add after another tab bought the last copy",
+        "type 0, 1000, 2.5, text in the quantity box"
+      ],
+      "test_level_rationale": "walked by hand on the live stand; timing between two tabs is not deterministic enough for code",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-15",
+          "oracle_source_ref": "work/requirements-register.md#R-7",
+          "evidence_policy": {
+            "executed_by": "agent",
+            "evidence": "screenshots of messages and badge per input, cart body after a double click",
+            "required_fields": [
+              "inputs typed",
+              "response shown",
+              "cart after",
+              "every oddity"
+            ],
+            "inconclusive_when": "a second tab cannot be driven or stock cannot be set to the last copy"
+          },
+          "behavior": "walk of adding with real input records every oddity",
+          "observation_boundary": "live stand: messages, badge and cart body",
+          "completion_condition": "the walk is finished and the notes are written",
+          "applicable_scenarios": [
+            "P15-c1"
+          ],
+          "oracle_status": "resolved",
+          "decision": "manual-agent",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "double click and stale stock have no written expected value"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-7",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P15-c1"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-7",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P15-c1",
+            "surfaces": [
+              {
+                "id": "S-15",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P15-c1"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; a walk, no code.",
+        "entries": [
+          {
+            "obligation_id": "OB-15",
+            "disposition": "gap",
+            "rationale": "walked by hand",
+            "gap_reason": "no automated test planned for the walk"
+          }
+        ],
+        "planned_instance_ids": [],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 0
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-16",
+      "schema_version": 2,
+      "what": "Walk: two browsers, one guest and one signed in, add and change items and look for anything of the other",
+      "requirements": [
+        "R-9"
+      ],
+      "branches": [],
+      "walks": [
+        "Guest and user carts"
+      ],
+      "defect_hypothesis": "permission @ route.ts:15 owner: session cookie reuse after sign-out shows the previous cart, or a cleared cookie reopens a cart",
+      "impact_class": "access",
+      "impact": "severe",
+      "likelihood": "low",
+      "confidence": "low",
+      "observable": "current-code:MyBooks/src/app/api/cart/route.ts:15",
+      "oracle": "",
+      "disposition": "manual-agent",
+      "reason": "regression: no - one-off walk; owner rules are automated in P-11",
+      "level": "e2e-ui",
+      "rung_basis": {
+        "kind": "judgement",
+        "ref": "sign-out and cookie reuse sequences have no written expected value"
+      },
+      "technique": "exploratory charter",
+      "risk_rationale": "access class; cart left behind by sign-out is data the flow leaves behind",
+      "risk_source_refs": [
+        "register:R-9"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "guest adds, signs in, signs out: what the guest cart shows",
+        "second browser with the same account sees the same cart"
+      ],
+      "test_level_rationale": "walked by hand on the live stand with two browser profiles",
+      "design_review_required": true,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-16",
+          "oracle_source_ref": "work/requirements-register.md#R-9",
+          "evidence_policy": {
+            "executed_by": "agent",
+            "evidence": "screenshots of both browsers and cart bodies after sign-out",
+            "required_fields": [
+              "owner",
+              "cookie state",
+              "what each cart showed",
+              "every oddity"
+            ],
+            "inconclusive_when": "two separate browser profiles are not available"
+          },
+          "behavior": "walk of guest and signed-in carts in two browsers records every oddity",
+          "observation_boundary": "live stand: both browsers and cart bodies",
+          "completion_condition": "the walk is finished and the notes are written",
+          "applicable_scenarios": [
+            "P16-c1"
+          ],
+          "oracle_status": "resolved",
+          "decision": "manual-agent",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "sign-out and cookie reuse sequences have no written expected value"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-9",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P16-c1"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-9",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P16-c1",
+            "surfaces": [
+              {
+                "id": "S-16",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P16-c1"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; a walk, no code.",
+        "entries": [
+          {
+            "obligation_id": "OB-16",
+            "disposition": "gap",
+            "rationale": "walked by hand",
+            "gap_reason": "no automated test planned for the walk"
+          }
+        ],
+        "planned_instance_ids": [],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 0
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-17",
+      "schema_version": 2,
+      "what": "Cart page when GET /api/cart, GET /api/books/{bookId}, PUT or DELETE /api/cart/{itemId} fails (500, timeout): page alive, told in words, no silent loss",
+      "requirements": [
+        "R-14"
+      ],
+      "branches": [],
+      "walks": [],
+      "defect_hypothesis": "error-path @ CartPage.tsx:30 cart read: the response is read without its status, so a failure shows an empty or stale cart as if it were the truth",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "high",
+      "confidence": "medium",
+      "observable": "expected-contract:work/requirements-register.md:26",
+      "oracle": "",
+      "disposition": "automate",
+      "reason": "regression: yes - failure path of the cart page, likely red today",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "fault injection",
+      "risk_rationale": "an empty cart shown on a failed read tells the shopper the cart is gone; the unchecked responses were flagged by the scout",
+      "risk_source_refs": [
+        "register:R-14"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [
+        "outcome today is not stated by any fact"
+      ],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "CartPage GET /api/cart 500 and timeout: message, no empty-cart text",
+        "CartPage GET /api/books/{bookId} 500: cart lines still shown",
+        "PUT /api/cart/{itemId} 500 and timeout: message, quantity back to the stored value",
+        "DELETE /api/cart/{itemId} 500 and timeout: line stays and a message shows",
+        "AppProviders badge read (GET /api/cart) 500: page still shows"
+      ],
+      "test_level_rationale": "the page state under a failed call is rendered only; e2e-ui with route interception is the lowest rung",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "requests": [
+        {
+          "request": "GET /api/cart",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        },
+        {
+          "request": "GET /api/books/{bookId}",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        },
+        {
+          "request": "PUT /api/cart/{itemId}",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        },
+        {
+          "request": "DELETE /api/cart/{itemId}",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        }
+      ],
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-17",
+          "oracle_source_ref": "work/requirements-register.md#R-14",
+          "behavior": "cart page under failed reads and writes stays alive and tells the person",
+          "observation_boundary": "rendered cart page with each request failed",
+          "completion_condition": "the failed call has been handled and the page has settled",
+          "applicable_scenarios": [
+            "P17-c1",
+            "P17-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no test fails a cart call"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-14",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P17-c1",
+            "P17-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-14",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P17-c1",
+            "surfaces": [
+              {
+                "id": "S-17",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P17-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-17",
+            "disposition": "gap",
+            "rationale": "nothing fails a cart call",
+            "gap_reason": "no existing test intercepts a cart request"
+          }
+        ],
+        "planned_instance_ids": [
+          "P17-i1",
+          "P17-i2",
+          "P17-i3",
+          "P17-i4"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 4
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-18",
+      "schema_version": 2,
+      "what": "Wishlist page Move to cart when DELETE /api/wishlist/{bookId}, POST /api/cart or GET /api/wishlist fails (500, timeout): no success shown, book not left in both places unannounced",
+      "requirements": [
+        "R-13"
+      ],
+      "branches": [],
+      "walks": [],
+      "defect_hypothesis": "error-path @ WishlistPage.tsx:58 wishlist delete: the answer is ignored, so Moved to cart shows while the book stays in the wishlist",
+      "impact_class": "degraded",
+      "impact": "moderate",
+      "likelihood": "high",
+      "confidence": "medium",
+      "observable": "expected-contract:work/requirements-register.md:25",
+      "oracle": "",
+      "disposition": "automate",
+      "reason": "regression: yes - failure path of the move, likely red today",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "fault injection",
+      "risk_rationale": "two writes behind one click: the second can fail after the first succeeded and the page says done",
+      "risk_source_refs": [
+        "register:R-13"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [
+        "outcome today is not stated by any fact"
+      ],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "WishlistPage move: DELETE /api/wishlist/{bookId} 500 and timeout: no success message, the person is told",
+        "WishlistPage move: POST /api/cart 500 and timeout: book stays in the wishlist, told in words",
+        "WishlistPage remove button (line 38) DELETE 500: line stays and a message shows",
+        "WishlistPage GET /api/wishlist 500: page alive with a message"
+      ],
+      "test_level_rationale": "messages and lists are rendered only; e2e-ui with route interception is the lowest rung",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "requests": [
+        {
+          "request": "DELETE /api/wishlist/{bookId}",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        },
+        {
+          "request": "POST /api/cart",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        },
+        {
+          "request": "GET /api/wishlist",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        }
+      ],
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-18",
+          "oracle_source_ref": "work/requirements-register.md#R-13",
+          "behavior": "wishlist move under failed calls shows no success and does not leave the book in both places unannounced",
+          "observation_boundary": "rendered wishlist page with each request failed",
+          "completion_condition": "the failed call has been handled and the page has settled",
+          "applicable_scenarios": [
+            "P18-c1",
+            "P18-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no test fails a wishlist call"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-13",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P18-c1",
+            "P18-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-13",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P18-c1",
+            "surfaces": [
+              {
+                "id": "S-18",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P18-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no wishlist test.",
+        "entries": [
+          {
+            "obligation_id": "OB-18",
+            "disposition": "gap",
+            "rationale": "nothing fails a wishlist call",
+            "gap_reason": "no existing test intercepts a wishlist request"
+          }
+        ],
+        "planned_instance_ids": [
+          "P18-i1",
+          "P18-i2",
+          "P18-i3"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 3
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-19",
+      "schema_version": 2,
+      "what": "Catalog card Add to cart when POST /api/cart fails (500, timeout): page alive, told in words, badge unchanged",
+      "requirements": [
+        "R-1"
+      ],
+      "branches": [
+        "BN-1"
+      ],
+      "walks": [],
+      "defect_hypothesis": "error-path @ HomePage.tsx:120 add call: a failed add still shows the success message or bumps the badge",
+      "impact_class": "blocked-flow",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:13",
+      "oracle": "requirement:R-1",
+      "disposition": "automate",
+      "reason": "regression: yes - failure path of the main add",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "fault injection",
+      "risk_rationale": "main way into the cart; success shown on failure hides a lost add",
+      "risk_source_refs": [
+        "register:R-1",
+        "fact-5"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "HomePage POST /api/cart 500: error text, badge unchanged, list still shown",
+        "HomePage POST /api/cart timeout: same"
+      ],
+      "test_level_rationale": "toast and badge are rendered only; e2e-ui with route interception is the lowest rung",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "requests": [
+        {
+          "request": "POST /api/cart",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        }
+      ],
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-19",
+          "oracle_source_ref": "work/requirements-register.md#R-1",
+          "behavior": "catalog add under a failed POST shows an error and leaves the badge unchanged",
+          "observation_boundary": "rendered catalog page with POST /api/cart failed",
+          "completion_condition": "the failed call has been handled and the message is on screen",
+          "applicable_scenarios": [
+            "P19-c1",
+            "P19-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no test fails the add call"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-1",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P19-c1",
+            "P19-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-1",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P19-c1",
+            "surfaces": [
+              {
+                "id": "S-19",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P19-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-19",
+            "disposition": "gap",
+            "rationale": "nothing fails the add call",
+            "gap_reason": "no existing test intercepts a cart request"
+          }
+        ],
+        "planned_instance_ids": [
+          "P19-i1",
+          "P19-i2"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 2
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    },
+    {
+      "id": "TS-20",
+      "schema_version": 2,
+      "what": "Book page Add to cart and book read when POST /api/cart or GET /api/books/{bookId} fails (500, timeout): page alive, told in words",
+      "requirements": [
+        "R-2"
+      ],
+      "branches": [
+        "BN-2"
+      ],
+      "walks": [],
+      "defect_hypothesis": "error-path @ BookDetailPage.tsx:49 add call: a failed add shows the quantity success message, or a failed book read leaves a blank page",
+      "impact_class": "blocked-flow",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "low",
+      "observable": "expected-contract:work/requirements-register.md:14",
+      "oracle": "requirement:R-2",
+      "disposition": "automate",
+      "reason": "regression: yes - failure path of the book page add",
+      "fit": "new",
+      "level": "e2e-ui",
+      "technique": "fault injection",
+      "risk_rationale": "second way into the cart; same hidden-failure risk as the catalog",
+      "risk_source_refs": [
+        "register:R-2",
+        "fact-6"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [],
+      "unknowns": [],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "BookDetailPage POST /api/cart 500 and timeout: error text, no success message",
+        "BookDetailPage GET /api/books/{bookId} 500 and timeout: message, not a blank page"
+      ],
+      "test_level_rationale": "messages and page state are rendered only; e2e-ui with route interception is the lowest rung",
+      "design_review_required": false,
+      "source_conflict": false,
+      "oracle_unknown": false,
+      "requests": [
+        {
+          "request": "POST /api/cart",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        },
+        {
+          "request": "GET /api/books/{bookId}",
+          "failures": [
+            "500",
+            "timeout"
+          ]
+        }
+      ],
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-20",
+          "oracle_source_ref": "work/requirements-register.md#R-2",
+          "behavior": "book page add and read under failure tell the person and keep the page alive",
+          "observation_boundary": "rendered book page with each request failed",
+          "completion_condition": "the failed call has been handled and the message is on screen",
+          "applicable_scenarios": [
+            "P20-c1",
+            "P20-c2"
+          ],
+          "oracle_status": "resolved",
+          "decision": "new",
+          "execution_scope": "current_task",
+          "coverage_links": [],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-1",
+            "input_hash": "register-r1:badb51d2de11",
+            "rationale": "no test fails the add call"
+          },
+          "requirement_refs": [
+            {
+              "ref": "R-2",
+              "revision": "r1"
+            }
+          ],
+          "planned_check_refs": [
+            "P20-c1",
+            "P20-c2"
+          ],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-2",
+              "revision": "r1"
+            },
+            "controls": [],
+            "completion_ref": "P20-c1",
+            "surfaces": [
+              {
+                "id": "S-20",
+                "boundary": "UI",
+                "status": "planned",
+                "assertion_ref": "P20-c2"
+              }
+            ],
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan; tests/ holds no cart test.",
+        "entries": [
+          {
+            "obligation_id": "OB-20",
+            "disposition": "gap",
+            "rationale": "nothing fails the add call",
+            "gap_reason": "no existing test intercepts a cart request"
+          }
+        ],
+        "planned_instance_ids": [
+          "P20-i1",
+          "P20-i2",
+          "P20-i3"
+        ],
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 3
+        }
+      },
+      "coverage_contract_revision": "coverage-observation-v1"
+    }
+  ],
+  "candidates_walked": [
+    {
+      "candidates": [
+        "EX-1",
+        "EX-2"
+      ],
+      "none": "both are unit tests of pure helpers in the application repository (read only); they do not reach the service, the database or the API, so P-5, P-9 and P-12 name them in coverage_refs and add api rows"
+    }
+  ],
+  "branch_homes": [],
+  "walk_homes": [],
+  "request_homes": [
+    {
+      "request": "GET /api/books/{bookId}/related",
+      "failure": "*",
+      "reason": "related books are outside the cart register; no R describes them"
+    },
+    {
+      "request": "GET /api/books/{bookId}/reviews",
+      "failure": "*",
+      "reason": "reviews are outside the cart register; no R describes them"
+    },
+    {
+      "request": "DELETE /api/reviews/{id}",
+      "failure": "*",
+      "reason": "reviews are outside the cart register; no R describes them"
+    },
+    {
+      "request": "POST /api/wishlist",
+      "failure": "*",
+      "reason": "the heart button (WishlistButton) adds to the wishlist, not the cart; no R describes it"
+    },
+    {
+      "request": "GET /api/books",
+      "failure": "*",
+      "reason": "admin book list; the admin area is outside the cart register"
+    },
+    {
+      "request": "POST /api/categories",
+      "failure": "*",
+      "reason": "admin categories are outside the cart register"
+    },
+    {
+      "request": "PUT /api/categories/{id}",
+      "failure": "*",
+      "reason": "admin categories are outside the cart register"
+    },
+    {
+      "request": "DELETE /api/categories/{id}",
+      "failure": "*",
+      "reason": "admin categories are outside the cart register"
+    },
+    {
+      "request": "GET /api/categories",
+      "failure": "*",
+      "reason": "admin and catalog filter lists; no cart R describes them"
+    },
+    {
+      "request": "ANY /api/orders{*}",
+      "failure": "*",
+      "reason": "admin orders are outside the cart register"
+    },
+    {
+      "request": "PUT /api/books/{id}/cover",
+      "failure": "*",
+      "reason": "admin cover upload is outside the cart register"
+    },
+    {
+      "request": "DELETE /api/books/{id}",
+      "failure": "*",
+      "reason": "admin book delete is outside the cart register"
+    },
+    {
+      "request": "POST /api/orders/{orderId}/advance",
+      "failure": "*",
+      "reason": "admin orders are outside the cart register"
+    },
+    {
+      "request": "PATCH /api/orders/{orderId}",
+      "failure": "*",
+      "reason": "admin orders are outside the cart register"
+    },
+    {
+      "request": "DELETE /api/books/{id}/cover",
+      "failure": "*",
+      "reason": "admin cover delete is outside the cart register"
+    },
+    {
+      "request": "ANY /api/books{*}",
+      "failure": "*",
+      "reason": "catalog listing and search (HomePage:73); no R describes the list, only the card add"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+ "field_ids": {
+  "epic_link": [
+   "customfield_32201",
+   "customfield_14500"
+  ],
+  "fetched_at": "2026-10-27T21:50:25.806135Z"
+ },
+ "prefix_probes": {
+  "CR": {
+   "checked_at": "2026-10-27T21:58:34.947848Z",
+   "reason": "tracker answered 404 for the project while other tickets of this tracker were readable: local numbering (a document's own requirement or case ids), not a tracker project",
+   "result": "not_tracker"
+  },
+  "TP1": {
+   "checked_at": "2026-10-27T21:50:25.806135Z",
+   "reason": "known at S0 without a request: the story's own prefix, its parent or links, a /browse/ link in its text, or adapters.ticket.project_keys",
+   "result": "tracker"
+  }
+ },
+ "proof_key": "TP1-12586",
+ "reads_skipped": [],
+ "schema_version": 1,
+ "sources": [
+  {
+   "assessment_ref": null,
+   "canonical_ref": "https://example.org/browse/CR-004",
+   "content_hash": null,
+   "discovered_from": null,
+   "exclusion_or_error": "HTTP 404: written by the service itself",
+   "fetched_at": "2026-10-27T21:54:36.450415Z",
+   "gap_acceptance": {
+    "accepted": [
+     "unavailable: HTTP 404: written by the service itself"
+    ],
+    "accepted_points": [
+     {
+      "at": "2026-10-27T22:33:35.093850Z",
+      "by": "human",
+      "class": "gap",
+      "id": "source:unavailable",
+      "kind": "source",
+      "revision": null,
+      "shown": false,
+      "text": "unavailable: HTTP 404: written by the service itself",
+      "words": "CR-004 - dup method truth correlation rs lie slice.\nS interpreted unbroken.\nDa, blame - coherent gains."
+     }
+    ],
+    "at": "2026-10-27T22:33:35.093850Z",
+    "by": "human",
+    "words": "CR-004 - dup method truth correlation rs lie slice.\nS interpreted unbroken.\nDa, blame - coherent gains."
+   },
+   "human_review": {
+    "at": "2026-10-27T22:33:37.196519Z",
+    "by": "human",
+    "shown": {
+     "relevance": "unknown",
+     "status": "unavailable"
+    },
+    "words": "CR-004 - dup method truth correlation rs lie slice.\nS interpreted unbroken.\nDa, blame - coherent gains."
+   },
+   "inspection_ref": null,
+   "inspection_status": "unknown",
+   "materials": {
+    "attachments": {
+     "count": null,
+     "items": [],
+     "status": "unknown"
+    },
+    "comments": {
+     "count": null,
+     "status": "unknown"
+    }
+   },
+   "mentioned_ticket_keys": [],
+   "relation": "referenced",
+   "relation_evidence": null,
+   "relevance": "unknown",
+   "relevance_reason": "source could not be assessed",
+   "required": true,
+   "retry_at": null,
+   "retryable": false,
+   "revision": null,
+   "snapshot_ref": null,
+   "source_id": "SRC-3bf0fa9f5e2478d28bdc",
+   "status": "unavailable"
+  },
+  {
+   "assessment_ref": "sources/SRC-a4a01f76e6db46898144/9e64d42a381be43c/ticket.json",
+   "canonical_ref": "https://example.org/browse/TP1-12586",
+   "content_hash": "ce52fedb38073cc4eba80ebc6b146c2e67a2e0a47f0fb929b807c0a038aa08bb",
+   "discovered_from": null,
+   "exclusion_or_error": null,
+   "fetched_at": "2026-10-27T21:58:34.192680Z",
+   "human_review": {
+    "at": "2026-10-27T22:33:37.196519Z",
+    "by": "human",
+    "shown": {
+     "relevance": "relevant",
+     "status": "read"
+    },
+    "words": "CR-004 - dup method truth correlation rs lie slice.\nS interpreted unbroken.\nDa, blame - coherent gains."
+   },
+   "inspection_by": "code:snapshot",
+   "inspection_ref": "sources/SRC-a4a01f76e6db46898144/9e64d42a381be43c/ticket.json",
+   "inspection_status": "read",
+   "materials": {
+    "attachments": {
+     "count": 0,
+     "items": [],
+     "status": "read"
+    },
+    "comments": {
+     "count": 4,
+     "status": "read"
+    },
+    "external_media": {
+     "count": 0,
+     "items": [],
+     "status": "read"
+    }
+   },
+   "mentioned_ticket_keys": [
+    "TP1-13289"
+   ],
+   "relation": "task",
+   "relation_evidence": null,
+   "relevance": "relevant",
+   "relevance_reason": "explicit required source",
+   "required": true,
+   "revision": "2026-10-24T16:37:20.406+0000",
+   "snapshot_ref": "sources/SRC-a4a01f76e6db46898144/9e64d42a381be43c/ticket.json",
+   "source_id": "SRC-a4a01f76e6db46898144",
+   "status": "read"
+  },
+  {
+   "assessment_ref": "sources/SRC-fb6eba4fbc5e3ad00118/assessment/ticket.json",
+   "canonical_ref": "https://example.org/browse/TP1-13289",
+   "content_hash": null,
+   "discovered_from": null,
+   "exclusion_or_error": "Interval roadmap epic (Q3 knowledge bases/tool integrations); description names no requirement, constraint or observable for project change of an integration; no comments, no attachments",
+   "fetched_at": "2026-10-27T21:54:34.457784Z",
+   "human_review": {
+    "at": "2026-10-27T22:33:37.196519Z",
+    "by": "human",
+    "shown": {
+     "relevance": "not_relevant",
+     "status": "excluded"
+    },
+    "words": "CR-004 - dup method truth correlation rs lie slice.\nS interpreted unbroken.\nDa, blame - coherent gains."
+   },
+   "inspection_ref": null,
+   "inspection_status": "pending",
+   "materials": {
+    "attachments": {
+     "count": 0,
+     "items": [],
+     "status": "unknown"
+    },
+    "comments": {
+     "count": 0,
+     "status": "unknown"
+    }
+   },
+   "mentioned_ticket_keys": [],
+   "relation": "referenced",
+   "relation_evidence": null,
+   "relevance": "not_relevant",
+   "relevance_reason": "Interval roadmap epic (Q3 knowledge bases/tool integrations); description names no requirement, constraint or observable for project change of an integration; no comments, no attachments",
+   "required": true,
+   "revision": null,
+   "snapshot_ref": null,
+   "source_id": "SRC-fb6eba4fbc5e3ad00118",
+   "status": "excluded"
+  }
+ ]
+}

@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "note": "A refusal is an instruction, never a traceback (P3). Every command here takes a file a ROLE wrote, which means every refusal it prints is read by a model that cannot open a debugger and does not have the script in context: `KeyError: 'case'` tells it nothing about what to write. So each entry names the three things a refusal owes its reader - what is wrong (the message the script prints), what to write (`input`), and how to prove it landed (`verify`) - and `test_role_commands.py` feeds each command a deliberately broken file to check that it refuses that way instead of raising, and that it never accepts the broken file in silence. On TP1-13797 one such traceback cost 96 turns and fourteen rewritten input files, and an empty fragment merged with exit 0 left a role believing it had written its manifest. Entries are COMMANDS, not scripts: `prepare` and `write-block` of the same script fail differently and owe different instructions. A command whose whole input is flags is out of scope - argparse already prints usage and a choice list.",
+  "commands": {
+    "manual_evidence.py prepare": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "{\"case\": \"TC-1\", \"obligation_ids\": [\"OB-1\"]} - the case whose manual attempt is being prepared and the obligations it must satisfy. Both keys are required; neither is guessed from the task root.",
+      "verify": "the same command prints `required_actual_fields` for that case - that list is exactly what the record must carry."
+    },
+    "manual_evidence.py write-block": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--input <file>: the list of current records, or an object with `manual_checks: [...]`. One record per case, each exactly as `manual_evidence.py build` wrote it (`record.json` of the attempt, under work/evidence/manual/<case>/<attempt>/) - not assembled by hand. A record carries: schema_version 2, case, case_version, attempt_id, dispatch_id, source_revision, runtime_identity, obligation_ids, obligation_hashes, steps_actual, expected, actual, completion_condition, attempt_started_at, attempt_ended_at, result, runtime_before, runtime_after, evidence_policy, limitations[], gate_a_decision_ref, approved_policy_hash, then_quotes[] (when the case's request.json lists thens: a pass has one entry per Then, a fail at least one; none on an inconclusive), observations[] (required, [] when you saw nothing doubtful; each {step, expected, seen, evidence, quote}, plus \"surprise\": \"<id>\" when it cites a surprise line), evidence_refs[] (each with kind, phase, path, content_hash, captured_at, proves[], mask_acknowledged). The records of one block share dispatch_id, attempt_started_at, attempt_ended_at and source_revision. The recorder's own lines of the attempt are added by code from its files (never write them), and an observation that cites one names its id. [--observations-file <file>]: a JSON list of observations that replaces `observations` of the ONE record of the input.",
+      "verify": "manual_evidence.py validate --task-root <T> --input <one record> names every missing field before the block is written."
+    },
+    "manual_evidence.py export": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--input <file> with the same records as write-block (each must pass `validate`) and --output <file>, where the public copies are listed (required). An empty list exports nothing - which is a refusal, not an export.",
+      "verify": "the printed path holds one row per record; `validate` on any record names what is missing."
+    },
+    "manual_evidence.py build": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "no file: --task-root <T> --case <id> --result pass|fail|inconclusive --actual \"<what you saw, in the product's words>\" --masked [--limitation \"<what stopped or narrowed the check>\"] [--attempt a<n>] [--then-quote \"<n>=<words>\"]... [--then-seen \"<n>=<words>\"]... [--then-unreached <n>]... [--with-attempt a<n>] [--observations-file <JSON list of {step, expected, seen, evidence, quote[, surprise]}>; absent = none]. An observation that cites a surprise line names its id in `surprise` (the id of this attempt or of a `--with-attempt` one); every other surprise line reaches the analyst as a target `<case>#sur-<id>` of its own, and the record carries `surprises` and `surprise_detection` (`on`, `partial: ...`, `absent: ...` - not `on` means the page was not fully watched, so no surprise is not 'nothing happened'). --result is your own judgment and is never changed; a pass needs the capture line `capture post_action completion` and a quote for every Then of `request.json` `thens` (--then-quote: the words copied from a text capture of this attempt; --then-seen: a Then only the picture shows; --then-unreached: on a fail, a Then you never reached); a fail needs a quote for the Then it failed on; an inconclusive needs --limitation; --with-attempt joins an open attempt of another stand profile into the same record; --masked says what the captures show is masked or generated.",
+      "verify": "the printed JSON says written: true and names the block; a refused pass names what is missing, and the door is to capture the post_action again, to give the missing quote, or to record --result inconclusive."
+    },
+    "manual_evidence.py rejudge": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "no file: --task-root <T> --case <id> --of-attempt a<n> --result pass|fail|inconclusive --actual \"<what you saw, in the product's words>\" --reason \"<why the first verdict was wrong>\" [--then-quote \"<n>=<words>\"]... [--then-seen \"<n>=<words>\"]... [--then-unreached <n>]... [--completion <path>] [--limitation \"<what stopped the check>\"] [--masked]. A new record over the SAME evidence of an attempt already written, for a verdict that was wrong; no new capture is made. The quotes follow the same rules as `build`; --reason is required; --completion is the PATH of the post_action capture of that attempt that proves the completion (the path captures.jsonl holds), for a pass whose attempt never named it; an inconclusive needs --limitation in your words; an older attempt cannot be re-judged once a later attempt has a record (re-judge the newer one). The new record carries the old one's `surprises` and `surprise_detection` unchanged (nothing is run again).",
+      "verify": "the printed JSON says written: true, names the new attempt (`a<n>-r<k>`, the first record of the attempt is untouched; it is kept as `rejudge-<k>.json` in the attempt's folder) and the block; a refusal names the missing quote, reason, limitation or completion and its door."
+    },
+    "manual_capture.py ui": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --case <id> --steps-file <file> [--as <account>] [--session <actor>] [--attempt a<n>]: --session keeps that actor's browser profile between calls (calls of one --profile join one open attempt; leave --as out; the stand probe of gate A must have proved the sign-in), and `manual_capture.py session close --task-root <T> --case <id> [--attempt a<n>]` deletes the profiles - run it before `build`, which refuses a live profile. One step per line from the closed list in references/manual-capture-steps.json - goto <url>, end-session (no argument: deletes the cookies of this actor's browser context and the page stays open, as for a session that ran out; it says `0 cookies` when there were none), click <selector>, fill <selector> <text>, fill-account <selector> <actor> user|secret, drag <selector> dx dy, wait <ms>|<selector>, read <selector> [attr=<name>|style=<prop>|text], capture <pre_action|post_action|supporting> [label]. The file holds at least one goto (the first goto names the session's stand), and every goto must be on a configured stand; `capture post_action completion` proves the completion condition; never type a credential in a step - the code signs in (`--as` names the account), or `fill-account` types the account the factory resolves (a steps file with `fill-account` makes no code login, so leave `--as` out). An S7 analyst captures only with `--case settle-<place id>`, the place id as `place_answers.py list` prints it.",
+      "verify": "the printed JSON lists every capture with its phase and every step with its outcome; exit 0 means every step ran, 1 a step failed or timed out, 3 the stand could not be identified, or the login by code did not land (`do_not_retry`, owner `user`: the account was refused - make no further capture of any kind in this block, put the case in env_blocked[] with the printed `login by code: ...` line and halt the block, never `build`; owner `factory`: the recipe did not fit the page - sign in ONCE through `fill-account` steps in a new attempt, then the same halt if that fails)."
+    },
+    "manual_capture.py http": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --case <id> --method GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS --url <url on a configured stand> [--body-file <file>] [--header \"Name: value\"]... [--state-url <url>] [--phase pre_action|post_action|supporting] [--proves <word>]... [--as <account>] [--session <actor>: the request carries that session's cookies only in the same --profile's open attempt; without --profile it opens its own attempt and signs in again] [--attempt a<n>]. Without --phase the call is a post_action; `--proves completion` marks the completion condition reached; --state-url also saves a GET of that URL as the state; never put a credential in a header - the code signs in (`--as` names the account); to create a user, put `{generated_username}` and `{generated_password}` in the --body-file (only there): the factory fills them in and keeps the password out of every output. An S7 analyst captures only with `--case settle-<place id>`, the place id as `place_answers.py list` prints it.",
+      "verify": "the printed JSON lists the saved request_response (and state) with phase and hash; exit 0 means the call was answered, 1 it timed out, 3 the stand could not be identified (the case is env_blocked, no record)."
+    },
+    "place_answers.py write": {
+      "roles": [
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --dispatch <your dispatch id> --place <id from `place_answers.py list`, or new-<slug>> --file <answer.json> [--replace]: the file is one JSON object {\"place\": \"<the same id>\", \"answer\": \"bug|not_a_bug|requirement_silent|impossible\", \"expectation\": {\"source\": \"requirement|question|person|none\", \"id\": \"<R-n | question id | empty for source person: the quote is read against your dispatch's reason | empty>\", \"quote\": \"<verbatim from that source>\"}, \"seen\": {\"quote\": \"<words the stand showed>\", \"capture\": \"<task-relative path of a capture the recorder wrote for THIS place, case settle-<place id>>\"}, \"question\": \"<requirement_silent: the question for the person who decides, plain words>\", \"why\": \"<impossible: what the stand lacks | not_a_bug: why>\", \"draft\": \"<bug: the file name of the draft under work/bug-drafts/>\"}. A bug needs a source other than none and a draft; an answer you already gave needs --replace.",
+      "verify": "the printed JSON names the record (evidence/place-answer-<id>.json) and the register line; exit 2 prints every problem with its door, and writes nothing unless it says the register refused AFTER the record was kept (then the place reads `carrier missing` until a `--replace` lands the line); `place_answers.py list` shows the place as settled."
+    },
+    "walk_session.py open": {
+      "roles": [
+        "qa-failure-analyst",
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --walk <your dispatch id> --place settle --items <the items your brief's session line names> --actor guest: reopens the walk session of your own dispatch after a call said it ended (exit 3, dead or closed). The walk id stays the same and the attempts already made are kept; the driver opened the first one and closes it with your dispatch. A first look (the survey place) is reopened the same way with --place survey --items <the R-n ids or element ids your brief names> --env <the stand your brief names, exactly as the config names it>.",
+      "verify": "the printed JSON says status ready; a refusal or exit 3 names why it could not open, and then you capture with `manual_capture.py ui|http --case settle-<place id>`, or answer `impossible` with why the walk session could not be opened."
+    },
+    "first_look.py put": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --file <rows.yaml>: your first look, written ONCE after you walked the survey place. The file is block YAML, `rows:` with one mapping per requirement of the register (no row missing, none outside it): req (R-n), status (confirms | contradicts | missing | unreachable), blocked_by (product | access | nature; ONLY on a missing or unreachable row, never on confirms or contradicts), why (what you did and saw), evidence (a list of capture paths of THIS walk, as the walk commands printed them) and quote (words copied from those captures); only a `blocked_by: nature` row may cite no capture. Optional: path (url, steps, locators, api, data, roles, stand_needs) and a top-level `gaps:` list. The walk, the stand, the time and the heads are written by the code; whatever you send for them is ignored. There is no --null for you: the driver records an empty outcome.",
+      "verify": "the printed JSON says written true and the number of rows; a refusal (exit 2) lists every problem with its door, and writes nothing - fix the file and call again, or record what you saw as a gap in your handover and halt when it says the walk is not open or the code or register changed."
+    },
+    "reference_snapshot.py put": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --reference <the stand your brief names, exactly as the config names it> --items-file <items.yaml> [--replace]: what the OLD version does, written ONCE after you walked the reference stand in your walk session. The file is block YAML (or JSON): `items:` with one mapping per behaviour you saw - id (a plain id: letters, digits, . _ -; the cases cite it as `reference:<id>`), area, user_path (what a user does), observed (what the old version showed, in the product's words), evidence (a list of {path, quote}: a capture path of THIS walk, as the walk commands printed it, and words copied from that capture) and/or old_test (<file>:<line> of an old autotest), locators_portable (yes | no | unknown: say unknown when you did not check) - and a top-level `gaps:` list of lines; an empty `items: []` needs one gap line saying why nothing was seen (for example the old version could not be reached). A snapshot that already exists is replaced only with --replace: use it when your brief says the snapshot already exists and you walked the reference again. The walk, the time and the stand are taken by the code; whatever you send for them is ignored.",
+      "verify": "the printed line says `reference snapshot written` and the number of items and gap lines; a refusal (exit 2) lists every problem with its door and writes nothing - fix the file and call again, or record what you saw as a gap line and halt when it says no reference walk was opened."
+    },
+    "first_look.py show": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> [--json]: prints the first look written for this story (one line per requirement: id, status, blocked_by, why), its gaps and the state of the walk attempt; with --json the record, the attempt and the current keys as one JSON object. It changes nothing.",
+      "verify": "the output names the walk, the number of rows and whether the record is STALE; a line starting `first look: work/first-look.yaml does not exist` means nothing was written yet."
+    },
+    "walk_session.py item": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --walk <W> --item <case id> [--as <actor>]: opens the next attempt a<n> of that item of the walk the driver opened for you (<W> is your dispatch id; you never open or close a walk). A `step` opens the attempt by itself, so this is only for starting an item before its first step.",
+      "verify": "the printed JSON says status ok and names the attempt and its folder; a refusal names the door, and `walk_session.py status --task-root <T> --walk <W>` lists the items and what each has."
+    },
+    "walk_session.py step": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --walk <W> --item <case id, or your place id> (--line \"<one step>\" | --steps-file <file>) [--as <actor>] [--stop-on <rules>] [--final]: one step per line, in the step words of references/manual-capture-steps.json (goto, click, fill, fill-account, read, capture, ...); `end-session` (alone on its line) deletes the cookies of the actor the call acts as - the page stays open, as for a session that ran out - and says how many were deleted (`0 cookies` for a guest or an actor not signed in); a call holds 1 to max_batch_steps steps and a longer one is refused whole before any step runs. The call stops at the first deviation (a step that failed, a read that read otherwise, a surprise line a stop rule names) and says where; a stop is not a verdict. --stop-on adds or removes stop rules (kinds, status:<lo>-<hi>, default, none, +rule, -rule); --final takes the final snapshot after the last step of a call that did not stop. Never type a credential in a step: use `fill-account <selector> <actor> user|secret`.",
+      "verify": "the printed JSON is ONE object: status done (exit 0) or stopped (exit 1, with stopped_at, the steps not run and a snapshot of the page; the session stays ready), the surprise lines of the call, the captures and the file that holds the whole answer; exit 2 = refused, nothing was run; exit 3 = the session is not ready (`status` says why)."
+    },
+    "walk_session.py look": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --walk <W> --item <case id, or your place id> [--as <actor>] [--selector <S>]: stores what the page shows now as a text capture of that item's attempt - the words you may quote in your verdict. It is refused inside the sign-in window.",
+      "verify": "the printed JSON names the capture file and its outcome (status ok); the quote of a Then is copied from a capture like it."
+    },
+    "walk_session.py final": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --walk <W> --item <case id, or your place id> [--as <actor>]: takes the final snapshot and ONE screenshot of the item's page. A verdict that says `pass` needs a final taken after the item's last action; take it again after any later action.",
+      "verify": "the printed JSON says status ok and lists the look and the post_action capture it made; a verdict with a pass but no final after the last action is refused and names this command."
+    },
+    "walk_session.py verdict": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --walk <W> --item <case id> --file <verdict.json>: the file is one JSON object {\"thens\": [{\"n\": 1, \"result\": \"pass|fail|inconclusive|unreached\", \"quote\": \"<the words, copied from a capture of THIS item's attempt>\", \"capture\": \"<its path, optional>\"}], \"observations\": [{\"step\": ..., \"expected\": ..., \"seen\": ..., \"evidence\": ..., \"quote\": ...}], \"teardown\": \"done|not_done|none\", \"actual\": \"<what you saw, in the product's words>\", \"limitation\": \"<what stopped or narrowed the check>\"}. Every Then of the case gets a result; a pass or a fail quotes a capture of this attempt; `thens` is [] for a case with no Then; `observations` is [] when you saw nothing doubtful; `teardown` is required when the case names one; one verdict per item.",
+      "verify": "the printed JSON says status ok and names the result record (work/walks/<W>/<item>.json); a refusal lists every problem with its door and stores nothing, so send the corrected file again."
+    },
+    "walk_session.py claim": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --walk <W> --item <case id> --kind <what the record is, in your own words, one spelling per kind> (--instance <its id or name as the app shows it> | --all): say, BEFORE you change a record other walkers could also use, which one; --all is for a check whose Then reads the whole list other walkers change. A record another walker holds makes the call wait a little and then refuse naming the holder; a record changed earlier and not restored is refused at once.",
+      "verify": "the printed JSON says status ok and names the kind and the instance (an `--all` grant over records changed earlier adds a `note` line naming them); a refusal names the walk and the item that hold the record and a door: use another record, make one when this project's way allows it, or end the item inconclusive saying which record was held."
+    },
+    "walk_session.py done": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --walk <W>: say that your walking is over, after the verdict of every item you could give one for. It flushes the requests the recorder saw into the attempts; an item left without a verdict is recorded inconclusive by the driver.",
+      "verify": "the printed JSON says status ok and lists the items of the walk with the attempt each had."
+    },
+    "walk_session.py status": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --walk <W>: read-only, runs nothing and changes nothing; it is the call to make when another call was refused or the session did not answer.",
+      "verify": "the printed JSON says the walk's state (ready, dead, closed) and why, its actors, and for each item its attempt and the number of step calls; exit 3 with a reason and a door when the server of the walk is gone, exit 2 when no walk was ever opened under that id."
+    },
+    "manual_capture.py app": {
+      "roles": [
+        "qa-runner"
+      ],
+      "input": "--task-root <T> --case <id> --steps-file <file> [--surface <id>] [--attempt a<n>]: only when the brief lists it (the project has a device stand). One step per line from `app_steps` in references/manual-capture-steps.json - launch, click <selector>, fill <selector> <text>, fill-account <selector> <actor> user|secret, drag <selector> dx dy, wait <ms>|<selector>, read <selector> [attr=<name>|text], back, source [label], log [label], capture <pre_action|post_action|supporting> [label]; a selector is <strategy>=<value>; there is no goto and no --as (a device has no sign-in by code: type the account with fill-account). The forms are in references/manual-evidence-app.md.",
+      "verify": "the printed JSON lists every capture with its phase and every step with its outcome; exit 0 means every step ran, 1 a step failed, 2 refused (the line names the door), 3 the stand or the device could not be identified (the case is env_blocked, no record; halt the block, never build)."
+    },
+    "artifact_producer.py publish": {
+      "roles": [
+        "qa-failure-analyst",
+        "qa-bug-reporter",
+        "qa-case-designer",
+        "qa-requirements-tester"
+      ],
+      "input": "--kind readiness|triage|case|bug, --task-root <T>, --path <the artifact being published, relative to the task root, under work/ (bugs/ also for a bug)> and --input <the record it must match>. A readiness or triage artifact keeps its canonical name (requirements-readiness.json, triage.json); a case or a bug is named by its own frontmatter id. To replace a file that already exists add --expected-hash <sha256 of its current bytes>; without it the publish is refused. Publish never invents a path and never guesses the kind.",
+      "verify": "artifact_producer.py validate --kind <K> --task-root <T> --input <F> returns `valid: true` first; publish refuses anything validate would."
+    },
+    "artifact_producer.py validate-batch": {
+      "roles": [
+        "qa-failure-analyst",
+        "qa-bug-reporter",
+        "qa-case-designer",
+        "qa-requirements-tester"
+      ],
+      "input": "--task-root <T> and --input <batch.json>, where batch.json is {\"artifacts\": [{\"kind\": \"readiness|triage|case|bug\", \"path\": \"<task-relative path>\", \"data\": <the artifact object itself>}]}. Every item carries all three keys; \"data\" is the artifact, not a path to it. One artifact alone is not a batch: it goes to validate --kind <K> --input <file>.",
+      "verify": "the command prints valid: true; a refusal names the item index and the key (artifacts[0]: no \"data\") and the fingerprint repeats for the same defect."
+    },
+    "manifest_put.py --fragment": {
+      "roles": [
+        "qa-automator",
+        "qa-code-critic"
+      ],
+      "input": "a fragment of work/automation-manifest.json: the rows this window adds, under the keys the merge knows (`tests[]`, `then_bindings[]`, `unresolved[]`, `self_fixes[]`, `runs[]`, `obligation_bindings[]`, `review_receipt_ref`, ...). An object with no manifest key at all is not a fragment - the merge would bump a revision and add nothing. `retracted_instances[]` drops rows from `tests[]` by instance id — the one way a single test row leaves the manifest when the case's other rows are good (a renamed partition); one fragment cannot both send and retract the same id.",
+      "verify": "manifest_view.py --task <T> shows the rows the fragment added; the command prints the revision and the cases now in the manifest."
+    },
+    "critic_rollcall.py --store": {
+      "roles": [
+        "qa-case-critic"
+      ],
+      "input": "--store is the immutable case-version store the applied fixes are versioned into, and it only has a meaning together with --apply-fixes. Left out, the default is the story's own store.",
+      "verify": "critic_rollcall.py --apply-fixes --task-root <T> prints `applied` and `skipped` per finding; a skipped row names why."
+    },
+    "external_writes.py --record": {
+      "roles": [
+        "qa-bug-reporter",
+        "qa-retro-analyst"
+      ],
+      "input": "--record <proposal file> lies INSIDE the story (under the task root, which carries pipeline.json) - that is what routes it to a ticket. A proposal in a temp directory belongs to no story. With it: --external-id <ID> (required: the id the tracker gave), --url <link> (optional), and --remote-revision <revision> (required when the proposal carries a publication_key or lifecycle_key). The story must hold a current authorization for the write: before it, the record is refused (exit 2). A proposal that already holds a result is skipped (exit 0).",
+      "verify": "--preview prints what would be written and where, without writing it."
+    },
+    "case_versions.py --pin": {
+      "roles": [
+        "qa-case-designer",
+        "qa-automator"
+      ],
+      "input": "--pin takes TWO values, a case id and an immutable version that already exists in the store (`<store>/cases/<id>/<version>.json`). To create a version from a case file, pass --case-file (or --all for the whole story) instead - --pin does not author one.",
+      "verify": "case_versions.py --task-root <T> --verify names every case of the story that is not pinned. Exit 0 prints {\"verified\": true, \"cases\": n} with n >= 1; exit 1 is never a pass: no case file prints {\"verified\": false, \"cases\": 0, \"reason\": ...}, unpinned cases print a REJECT list."
+    },
+    "plan_row.py": {
+      "roles": [
+        "qa-test-strategist",
+        "qa-case-designer"
+      ],
+      "input": "--task <TICKET> (required) [--task-root <the story's folder>] --row <TS-n> --set <field>=<value>, repeatable: ONE field of ONE plan row of work/test-plan.json. `true`, `yes`, `on` and `1` are written as the boolean true, `false`, `no`, `off` and `0` as false (checked before anything else), any other whole number as a number, anything else as the string given. The row must already exist and the field must already be in it - this command changes a record, it does not invent one. To APPEND a row you wrote, --add-row <json|file>: the row's own object, with an id of its own and every field all the other rows carry; the values in it are yours, and the command refuses rather than filling one in. The plan is written whole exactly once, when it first appears; after that a row is changed through this command by whoever has a shell (the orchestrator or the driver), and by a role without Bash with Edit, one row's own lines at a time - code checks the plan when it is saved.",
+      "verify": "the command prints `<row>.<field>: <before> -> <after>` and how many other rows it left untouched, or `<row>: appended after <row>`; `--show` prints the row and writes nothing. The markdown table is the human's copy of the same row: the command names the line, and you Edit that one line if the change belongs in its words too. A role that edits the row itself sees the plan's invalid rows come back when the file is saved."
+    },
+    "execution_fingerprint.py": {
+      "roles": [
+        "qa-automator",
+        "qa-runner"
+      ],
+      "input": "the ONE argument is a path to your fingerprint specification file, never JSON on the command line. The file carries all six, and the command names every one missing, each file by its list and position (test_files[2]): source_revision (the revision the tests ran against), test_files, config_files, dependency_files (each a list of paths or {path, sha256} records (helper_files optional) for files that exist on disk now), runtime_provenance (the interpreter identity the runner recorded), profile_id (the profile the run belongs to). project_config is optional: the path of qa-factory/config.json, one of the config_files; with it config_sha hashes only that profile's execution-relevant configuration (references/config-projection.json), and without it every config file is hashed whole. The hashes are read from disk and compared - a claimed sha256 that is not its 64-hex digest is refused, a claimed sha256 that does not match the bytes is refused, and so is a file that is not there.",
+      "verify": "the command prints the fingerprint it computed; a mismatch names the file whose bytes changed, so prior evidence for that file is stale and its tests re-run."
+    },
+    "context_bundle.py": {
+      "roles": [
+        "qa-scout"
+      ],
+      "input": "the bundle is built with `--manifest <work/context-manifest.json> --output <work/context-bundle.json> --root <the story folder>` (--root is where work/source-inventory.json is read, and where a relative known_paths path or diff_path in the manifest resolves: give absolute paths, or paths relative to the story folder), then `--validate <work/context-bundle.json>` checks it; a refusal is about the manifest's own records and names the manifest field (context-manifest.json implementations[0].source_sha). A manifest with any of requirement_sources, coverage_search, existing_test_candidates makes a v2 bundle, and its records are checked: each requirement_sources entry needs source_id, relation, ref, revision, status and evidence_ref (source_id unique); each coverage_search entry needs repo, revision, changed_area, searched_paths, status and reason; each existing_test_candidates entry needs candidate_id (unique), repo, revision, path, selector, parameter_ids, level, assertion_refs, candidate_requirement_refs, origin and result_candidate_refs. Ids, refs, revisions, paths, levels and reasons are non-empty strings; parameter_ids, searched_paths, assertion_refs, candidate_requirement_refs and result_candidate_refs are lists of non-empty strings. relation, status and origin come from closed lists the refusal prints - the values are yours to choose from them, and the command never fills one in.",
+      "verify": "the command prints the bundle's own validation result; every refusal names the record and the field, and the manifest is changed field by field, not rewritten."
+    },
+    "red_sandbox.py --diagnostic": {
+      "roles": [
+        "qa-failure-analyst"
+      ],
+      "input": "--diagnostic --repo <project root> --request <file> --task-root <T> [--dispatch <your open S7 dispatch id>]: the request file is {\"label\": \"<name>\", \"instance_id\": \"<the red test's instance id>\", \"cases\": [\"<case>\"], \"thens_dropped\": [<Then numbers whose asserts the variant removes>], \"mutation\": {\"path\": \"<the test file>\", \"before_sha256\": \"<its sha256 now>\", \"replacement_utf8\": \"<the whole file without those lines>\"}}. All five keys are required and no other. The variant only REMOVES lines of the test's own function; a line added, changed or moved is refused, and the repository is never changed. One run per test and file bytes: a second request over the same bytes is answered already_run with the path of the first evidence.",
+      "verify": "the printed JSON says status passed, failed or already_run and names evidence/diagnostic-<label>.json; a failed run carries failure_line and no thens, so you write diagnostic.thens in the triage row from it; refused names what to change; not_executed means the stand did not answer and the Thens are not_reached, never held."
+    }
+  }
+}

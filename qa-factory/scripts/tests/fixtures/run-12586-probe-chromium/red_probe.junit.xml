@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="25.780" timestamp="2026-10-28T09:50:43.347792+01:00" hostname="HOST"><testcase classname="tests.ui.integrations.test_edit_integration" name="test_edit_integration_change_project_confirmation_modal[chromium]" time="25.628"><failure message="AssertionError: probe-test_edit_integration_change_project_confirmation_modal invert: not_none()&#10;Expected: not not None&#10;     but: but was &lt;id='x'&gt;">page = &lt;Page url='http://localhost:5173/integrations/user/edit'&gt;
+
+    @pytest.mark.ui
+    def test_edit_integration_change_project_confirmation_modal(page, integration_utils):
+        after_cancel = integration_utils.find_project_integration()
+&gt;       assert_that(after_cancel, __import__("hamcrest").is_not(not_none())
+
+    , "probe-test_edit_integration_change_project_confirmation_modal invert: not_none()")
+E       AssertionError: probe-test_edit_integration_change_project_confirmation_modal invert: not_none()
+E       Expected: not not None
+E            but: but was &lt;id='x'&gt;
+
+testproject1_test_harness\tests\ui\integrations\test_edit_integration.py:220: AssertionError</failure></testcase></testsuite></testsuites>

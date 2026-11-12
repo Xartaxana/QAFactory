@@ -1,0 +1,21 @@
+{
+  "key": "LOCAL-1",
+  "type": "",
+  "status": "",
+  "title": "Verify the \"Add to Cart\" functionality in the MyBooks application",
+  "description": "Check the \"Add to Cart\" functionality in the application: every path by which a product can get into the cart, and every scenario where this functionality is used.\n\nContext already available:\n- Existing stories, cases and bugs of this application: https://example.invalid/1\n- Application code: https://github.com/person-4/MyBooks\n- Stand: local docker",
+  "acceptance_criteria": [],
+  "comments": [],
+  "parent": null,
+  "subtasks": [],
+  "links": {
+    "merge_request": null,
+    "branch": null
+  },
+  "provenance": {
+    "source": "person_pasted",
+    "fetched_at": null,
+    "markup": "markdown",
+    "local_key": true
+  }
+}

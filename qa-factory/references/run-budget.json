@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "note": "The owner's run budget (D-0017, D-0018, D-0019), read by execution_request.py (covered, the --mine answer, the FLAKY cap) and run_suite.py (the --request answer, the rerun flags). A result of a test is reused while its bytes, the environment and the deployed version are unchanged; a person's word is the only door for a repeat. Closed variety lives here (FR-13); the FLAKY number is NOT here - it is contract.FLAKY_MIN_RERUNS, one source. A missing or unreadable file enforces nothing and says so: the run then behaves as it did before the budget.",
+  "result_purposes": ["initial", "repair_verify", "diagnostic"],
+  "result_purposes_note": "Purposes whose finished run is a result of the unmutated test. red_probe runs mutated code on purpose and is never one; flaky_diagnostic is counted by the FLAKY cap, not as a result.",
+  "exempt_purposes": ["red_probe", "flaky_diagnostic"],
+  "exempt_purposes_note": "Purposes that never reach the coverage answer.",
+  "flaky_stage": "S7",
+  "failed_result_policy": {
+    "covers_after_failures": 2,
+    "note": "How many failed results over identical inputs make a red final: 2 = one repeat of a red is allowed and recorded, the second is answered `already_run`; 1 = a red is final at once; 0 = a red never covers, only greens are answered."
+  },
+  "author_run_reading": "per_code_version",
+  "author_run_reading_note": "per_code_version = one run per code version of each instance: the author's own red, fix and run of the new bytes is the first run of those bytes. per_story = any result of the instance covers whatever its bytes are.",
+  "strip_reruns_purposes": ["red_probe", "flaky_diagnostic"],
+  "strip_reruns_purposes_note": "Purposes whose pytest command loses the rerun flags below: a probe must fail once, a flake series counts isolated runs. List every behavioral purpose here to strip them from every run; an empty list leaves the project's own command alone.",
+  "rerun_flags": ["--reruns", "--reruns-delay", "--only-rerun"],
+  "rerun_flags_regex": ["--only-rerun"],
+  "rerun_flags_regex_note": "Flags in rerun_flags that take a regular expression: the token after them is always their value. The others take a number, and only a number is removed with them.",
+  "shared_meaning": {
+    "source_sha": "the source revision differs",
+    "config_sha": "the execution-relevant configuration of this profile (qa-factory/config.json: its profile row, run, execution, the environment pointers, the stand's address) or a listed config file differs; after a factory release that changed the fingerprint rules, the first run under the new rules is reported here once",
+    "dependency_sha": "a dependency file differs",
+    "runtime_sha": "the stand's version identity differs",
+    "policy_revision": "the factory's fingerprint rule set differs (a result recorded under an earlier release is run once more)"
+  },
+  "shared_meaning_note": "Said after the name of the shared input that moved, in the `why` of a `covered` answer.",
+  "block": "already run on these bytes",
+  "words": {
+    "green": "Already run: {n} test(s) passed on {date} over these same bytes, on the same stand and version ({jobs}). Nothing was launched; that result stands for every later stage. Its summary: {summary}.",
+    "red": "Already run: {tests} failed on {date} over these same bytes, on the same stand and version. A second run of unchanged bytes proves nothing new and was not launched. Read the failure: run_suite.py --mine {case} --detail {first}. If a file this test depends on changed and the factory did not notice, name it in your digest; the orchestrator records a person's word that passes this (waiver.py, stage {stage}, block \"{block}\").",
+    "hint": "read the summary; nothing ran. A person's word passes a repeat (waiver.py, stage {stage}, block \"{block}\"): name the file that changed in your digest, and the orchestrator asks.",
+    "again_note": "`--again` no longer repeats a result: a repeat of a result is passed only by a person's word (waiver.py, stage {stage}, block \"{block}\").",
+    "partial_note": "ran only {run}; {covered} have a result on {date} over these same bytes ({jobs}) and were not run again",
+    "word_note": "{covered}: a result over these same bytes already exists; passed on a person's word: {word}",
+    "redeploy_note": "the stand now runs {identity} (source {source}); the earlier results were recorded on {old}: they are not reused, this run is due.",
+    "not_observed": "the stand's version cannot be observed right now ({error}): an earlier result cannot be trusted and a new run cannot start. This is the stand, not your test - say so in your digest as `environment`; `stand_health.py --probe --env {environment}`.",
+    "build_refused": "the stand does not run this story's build, so no run was started: {error}. This is the stand, not your test - say so in your digest as `environment`; nothing is run on a guess, and the person's word at the build question of the stage entry is the other door.",
+    "request_partial":"{covered}: a result over these same bytes already exists ({jobs}); take them out of selected_instance_ids and run the rest; a person's word passes it (waiver.py, stage {stage}, block \"{block}\").",
+    "flaky_stage": "flaky_diagnostic reruns belong to S7 triage (the story is in {stage}); a person's word passes it (waiver.py, stage {stage_asked}, block \"{block}\").",
+    "flaky_one": "a FLAKY rerun selects ONE failed test; this request selects {n}; a person's word passes it (waiver.py, stage {stage}, block \"{block}\").",
+    "flaky_cap": "{n} isolated reruns of {test} are recorded ({jobs}): the series is complete - decide from them; a person's word passes one more (waiver.py, stage {stage}, block \"{block}\").",
+    "unobserved_repeat": "the stand's version was not observed for this request, so the earlier run under this key cannot be answered as a result, and the key cannot be used again. This is the stand, not your test - say so in your digest as `environment`; `stand_health.py --probe --env {environment}`, then run again with `--mine`, which looks at the stand and takes a key of its own.",
+    "flaky_word_note": "a FLAKY rerun outside its limits; passed on a person's word: {word}",
+    "reruns_removed": "removed `{flags}` from this {purpose} run: a probe must fail once, a flake series counts isolated runs"
+  }
+}

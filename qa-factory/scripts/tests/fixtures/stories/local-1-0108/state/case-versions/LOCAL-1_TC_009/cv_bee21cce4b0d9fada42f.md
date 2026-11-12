@@ -1,0 +1,44 @@
+---
+id: LOCAL-1_TC_009
+title: A non-numeric quantity is rejected with an error and nothing is added
+area: cart
+priority: P2
+status: Draft
+channel: auto
+reuse_decision: new
+updated: 2026-11-02
+task: LOCAL-1
+covers: [R-10]
+defect_class: error-path
+basis: "requirement:R-10"
+then_oracles: [{"then": 1, "source": "requirement", "ref": "R-10"}, {"then": 2, "source": "requirement", "ref": "R-10"}, {"then": 3, "source": "requirement", "ref": "R-10"}]
+plan_row: TS-10
+reuse_reason: grep cart in tests/, core/, test-cases/ finds no file; new. Instance of LOCAL-1_TC_012 (P-non-numeric)
+preconditions: [{"id": "PC-1", "kind": "account", "what": "a signed-in seed user", "check": {"stand_account": "user"}}, {"id": "PC-2", "kind": "service", "what": "the stand UI address", "check": {"stand_frontend": "product page is driven in the browser"}}, {"id": "PC-3", "kind": "data", "what": "an in-stock book with stock 10, created by the case", "check": {"case_seeds": "one uniquely marked in-stock book"}}]
+---
+Requirements: R-10
+Plan row: TS-10
+
+red_lock: expected red until the product page stops turning non-numeric input into 1 (REF-5; owner-confirmed expected behaviour: error).
+
+## Given
+- PC-1, PC-2, PC-3. Empty cart for the marked book.
+
+## When
+1. Open the product page of B.
+2. Enter "abc" as a whole value in the quantity field (P-non-numeric), click "Add to Cart".
+
+## Then
+1. A visible validation or error message is shown.
+2. `GET /api/cart` holds no line for B after the click completes.
+3. The field is not silently replaced by a number; its content "abc" is kept whole (a number input may hold an empty value; then the message of Then 1 still appears) and it keeps focus.
+
+## Notes (self-probe)
+- Input of type number may refuse letters at the browser level: the case enters the text through the field and, if the browser drops it, records that fact; the add must still not produce a line for B.
+- Discriminator is the absent line (a coercion to 1 would add a copy).
+
+## Obligation coverage
+| obligation/part | oracle | boundary | Then/evidence | residual gap |
+|---|---|---|---|---|
+| OB-10 error shown | R-10 | page text | Then 1 | wording unspecified |
+| OB-10 nothing added | R-10 | GET /api/cart | Then 2, 3 | none |

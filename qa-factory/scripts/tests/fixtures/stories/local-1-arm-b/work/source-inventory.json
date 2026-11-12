@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "assessment_ref": "sources/SRC-5b289e26d85e2794df0a/776ea5d1fe9f/ticket.json",
+      "canonical_ref": "LOCAL-1",
+      "content_hash": "4f261b003c044caa55afe8a4c2edcf3f83ce0c0eac6ce5504eeb80fb7a95210a",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-05T00:27:23.201724Z",
+      "human_review": {
+        "at": "2026-11-05T00:31:28.381784Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "1) Jira ticket for the current story does not exist; the task is the one I described in the first message. The link https://example.invalid/1 shows all tickets already done; they can be used as project information.\n2) Stand ok."
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-5b289e26d85e2794df0a/776ea5d1fe9f/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "task",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "text recorded by the factory",
+      "required": true,
+      "revision": "sha256:776ea5d1fe9f",
+      "snapshot_ref": "sources/SRC-5b289e26d85e2794df0a/776ea5d1fe9f/ticket.json",
+      "source_id": "SRC-5b289e26d85e2794df0a",
+      "status": "read",
+      "text_source": true
+    },
+    {
+      "assessment_ref": "sources/SRC-9b765c409c31488a634c/4c438111734f/ticket.json",
+      "canonical_ref": "MyBooks/docs/openapi.json",
+      "content_hash": "4c438111734f268be59d7792b49f7afb05920b5d790d37310d9fda22d711fa2f",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-05T00:27:44.293111Z",
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-9b765c409c31488a634c/4c438111734f/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "normative",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "text recorded by the factory",
+      "required": false,
+      "revision": "sha256:4c438111734f",
+      "snapshot_ref": "sources/SRC-9b765c409c31488a634c/4c438111734f/ticket.json",
+      "source_id": "SRC-9b765c409c31488a634c",
+      "status": "read",
+      "text_source": true
+    },
+    {
+      "assessment_ref": "sources/SRC-7a03f1a608eb7f806360/bcabea6c1565/ticket.json",
+      "canonical_ref": "https://github.com/person-4/MyBooks",
+      "content_hash": "61d927dcd7b25d470d577bf4d8e0db9fbfa16b460cbd667a3379afaa4dd05ee7",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-05T00:28:28.408409Z",
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-7a03f1a608eb7f806360/bcabea6c1565/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "text recorded by the factory",
+      "required": false,
+      "revision": "sha256:bcabea6c1565",
+      "snapshot_ref": "sources/SRC-7a03f1a608eb7f806360/bcabea6c1565/ticket.json",
+      "source_id": "SRC-7a03f1a608eb7f806360",
+      "status": "read",
+      "text_source": true
+    },
+    {
+      "assessment_ref": "sources/SRC-1a8882c6347d792501ee/assessment/ticket.json",
+      "canonical_ref": "https://example.invalid/2/browse/REF-1",
+      "content_hash": null,
+      "discovered_from": null,
+      "exclusion_or_error": "not queried: search needed",
+      "fetched_at": "2026-11-05T00:27:56.578286Z",
+      "gap_acceptance": {
+        "accepted": [
+          "unavailable: not queried: search needed"
+        ],
+        "accepted_points": [
+          {
+            "at": "2026-11-05T00:33:38.791439Z",
+            "by": "human",
+            "class": "gap",
+            "id": "source:unavailable",
+            "kind": "source",
+            "revision": null,
+            "shown": false,
+            "text": "unavailable: not queried: search needed",
+            "words": "not needed"
+          }
+        ],
+        "at": "2026-11-05T00:33:38.791439Z",
+        "by": "human",
+        "words": "not needed"
+      },
+      "human_review": {
+        "at": "2026-11-05T00:31:28.381784Z",
+        "by": "human",
+        "shown": {
+          "relevance": "unknown",
+          "status": "unavailable"
+        },
+        "words": "1) Jira ticket for the current story does not exist; the task is the one I described in the first message. The link https://example.invalid/1 shows all tickets already done; they can be used as project information.\n2) Stand ok."
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 0,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "unknown",
+      "relevance_reason": "not queried: search needed",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-1a8882c6347d792501ee",
+      "status": "unavailable"
+    }
+  ]
+}

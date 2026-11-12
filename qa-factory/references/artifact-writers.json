@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "note": "One artifact, one writer. On TP1-13797 the ticket probe wrote its receipt into `source-inventory.json` - the file it was supposed to be adding to - and erased the sources the scout had collected. Nothing refused it, because nothing anywhere said who owns that file. This is that statement, and `test_artifact_writers.py` holds it: every artifact `stages.json` declares has an owner here, the owner exists, and a new artifact cannot be added without deciding whose it is. `machinery` names code that writes the same file as part of the owner's own mechanism (a controller projection, a reducer the owner calls) - it is not a second author, it is the same one. Anything else that needs something in the file asks the owner's command, or writes its own file.",
+  "artifacts": {
+    "qa-factory/local-tickets/": {
+      "writer": "ticket_adapter.py",
+      "machinery": [
+        "local_keys.py"
+      ],
+      "why": "the text of a story no tracker holds; never edited, never deleted"
+    },
+    "pipeline.json": {
+      "writer": "stage_done.py",
+      "machinery": [
+        "controller.py"
+      ],
+      "why": "state and journal in one call; the controller refreshes its own projection of it"
+    },
+    "work/context-manifest.json": {
+      "writer": "qa-scout (the role)",
+      "why": "the scout's own artifact, validated on write",
+      "rewrite": "Edit (the one field), after locating it with Grep -n",
+      "rewrite_cost": "4 whole rewrites plus 11 throwaway python patchers on TP1-13797, 37,222 tokens of call arguments; a point editor for this file is still owed (P17)"
+    },
+    "work/context-bundle.json": {
+      "writer": "context_bundle.py",
+      "why": "built and validated by code from the manifest"
+    },
+    "work/source-inventory.json": {
+      "writer": "ticket_adapter.py",
+      "why": "collect/peek/assess/inspect/accept-gap are its commands; a probe receipt goes to ticket-probe.json and never here (F8)"
+    },
+    "work/impl-diff.txt": {
+      "writer": "qa-scout (the role)",
+      "why": "written once from the MR or branch the person named"
+    },
+    "work/requirements-register.md": {
+      "writer": "qa-requirements-tester (the role)",
+      "machinery": [
+        "claim_projector.py"
+      ],
+      "why": "the register is the role's judgement; claim_projector.py copies the S3 planner's claims into it (a Register row, the ids entry and a `## Behaviour claims` row with origin S3-grounding) because the planner has no Bash and is not its writer: no role is added",
+      "rewrite": "Edit (one line per requirement row; several Edit calls in one turn)",
+      "rewrite_cost": "26 whole rewrites of it on TP1-13797 cost 22,684 tokens of call arguments, every one of them re-read on each later turn of the dispatch"
+    },
+    "work/requirements-readiness.json": {
+      "writer": "qa-requirements-tester (the role)",
+      "machinery": [
+        "question_register.py"
+      ],
+      "why": "the same dispatch writes both; question_register.py adds a raised before/now question (`--raise`, the S4 exit, the S3 claim projector) under its answers lock"
+    },
+    "understanding.md": {
+      "writer": "qa-requirements-tester (the role)",
+      "why": "the brief the person reads at gate A",
+      "rewrite": "Edit (the section that changed)",
+      "rewrite_cost": "20 whole rewrites on TP1-13797 cost 8,284 tokens of call arguments and reverted what earlier turns had put there"
+    },
+    "work/sizing.json": {
+      "writer": "sizing.py",
+      "why": "the arithmetic is code's; the role quotes it"
+    },
+    "test-plan.md": {
+      "writer": "qa-test-strategist (the role)",
+      "why": "the plan the person approves"
+    },
+    "work/test-plan.json": {
+      "writer": "qa-test-strategist (the role)",
+      "machinery": [
+        "planning_contract.py",
+        "plan_row.py"
+      ],
+      "read_by_section": "plan_rows",
+      "why": "written by the role, validated on write; plan_row.py changes one row of it in place (--set, --add-row, --put-row). `read_by_section` is not a writer: it names the section map the pre-tool guard prints when the file is read whole (artifact_sections.KINDS)"
+    },
+    "work/grounding.yaml": {
+      "writer": "qa-test-strategist (the role)",
+      "machinery": [
+        "grounding_table.py",
+        "base_slice.py"
+      ],
+      "read_by_section": "grounding",
+      "why": "the grounding table: rows, requirements and claims are the strategist's; code fills the index sections when the skeleton is built (each node that adds such a script names it in `machinery` in its own commit)"
+    },
+    "work/reference-snapshot.yaml": {
+      "writer": "reference_snapshot.py",
+      "why": "the old version of an S-c story as the S1 reference walk saw it; `put` validates that every item cites a capture of that walk or an old test, `--replace` is the door for a new walk"
+    },
+    "work/reference-behaviours.md": {
+      "writer": "gate_brief.py",
+      "why": "every behaviour of the old version the factory saw, by its words, marked carried over / differs / used by no test case; `write_gate_message` writes it beside gate A's message from the same facts as the block's count line, for a story whose reference snapshot was read; the person reads it, nobody edits it"
+    },
+    "work/blast-radius.json": {
+      "writer": "blast_radius.py",
+      "why": "the blast-radius index of the implementation diff, built by code from git objects of the recorded commit; `ensure` is the one writer (the CLI and brief_pack are its callers), the table copies it and the strategist only reads it"
+    },
+    "work/user-path-failures.json": {
+      "writer": "user_path_failures.py",
+      "why": "the full list of places of the code that swallow a failure (G2-14), written by code when the S2 brief is built; the tester only reads it and decides which place is on a user path"
+    },
+    "work/flow-requests.json": {
+      "writer": "user_path_failures.py",
+      "why": "the requests of the flow's code (`requests[]`: method, url_template, source, path, line, also_at), written by code when the S3 brief is built (`write_requests`, the one writer; `read_requests` the one reader); the strategist plans a row that fails each and the S3 exit owes it"
+    },
+    "work/base-slice/": {
+      "writer": "base_slice.py",
+      "why": "the text of the changed code as it was, read by code from git objects of a named base; the strategist only reads it, and the readers judge by recomputing it (`base_slice.collect`), never by these files"
+    },
+    "work/test-cases/critic-findings.md": {
+      "writer": "qa-case-critic (the role)",
+      "why": "the S4 critic's findings live beside the cases they review, one file per area and round; listed before the directory below so the designer's directory does not claim them"
+    },
+    "work/test-code/critic-findings.md": {
+      "writer": "qa-code-critic (the role)",
+      "why": "the old single findings file (a story from before)"
+    },
+    "work/test-code/critic-findings-*.md": {
+      "writer": "qa-code-critic (the role)",
+      "why": "the S5 critic's findings of ONE dispatch"
+    },
+    "work/s5-notes/S5-qa-code-critic-*.md": {
+      "writer": "qa-code-critic (the role)",
+      "why": "the notes of ONE critic dispatch"
+    },
+    "work/s5-notes/S5-qa-automator-*.md": {
+      "writer": "qa-automator (the role)",
+      "why": "the notes of ONE automator dispatch"
+    },
+    "work/s5-notes/": {
+      "writer": "qa-automator (the role)",
+      "why": "the S5 notes folder, one file per dispatch"
+    },
+    "work/test-cases/": {
+      "writer": "qa-case-designer (the role)",
+      "why": "cases are the designer's"
+    },
+    "state/story-case-links.json": {
+      "writer": "case_versions.py",
+      "why": "pinning is deterministic bookkeeping, never a role's"
+    },
+    "work/automation-manifest.json": {
+      "writer": "manifest_put.py",
+      "machinery": [
+        "manifest_from_tests.py",
+        "finalize_task.py"
+      ],
+      "why": "fragments are merged by code so two windows cannot overwrite each other"
+    },
+    "work/s5-plan.json": {
+      "writer": "qa-automator (the role)",
+      "machinery": [
+        "s5_plan.py"
+      ],
+      "why": "the plan for every case of S5 is the automator's decision (levels, shapes, consolidation); `s5_plan.py --init` writes only the skeleton and moves a stale plan to work/s5-plan.prev.json; a rework grows it in place; the critic and the windows only read it"
+    },
+    "work/s5-plan-reviews.json": {
+      "writer": "s5_plan.py",
+      "why": "the receipt of the plan the critic judged, written by `s5_plan.stamp_review` at the critic's `finish` before the review is accepted: the critic copies no hash, and no role writes this file"
+    },
+    "work/probe-models/": {
+      "writer": "qa-code-critic (the role)",
+      "why": "the critic's models: a file per dispatch, an entry per check (`alternative` on a reading's)"
+    },
+    "work/probes/alternative/": {
+      "writer": "probe_by_code.py",
+      "why": "the verdict of a Then under its declared reading B; never a live receipt"
+    },
+    "work/probes/": {
+      "writer": "probe_by_code.py",
+      "why": "a probe record is the tool's own receipt"
+    },
+    "work/probes/product/": {
+      "writer": "red_sandbox.py",
+      "why": "the verdict of a product probe (intended_failure, survived, probe_defect, incomplete) is the tool's own record; a repeat is answered from it"
+    },
+    "evidence/diagnostic-*.json": {
+      "writer": "red_sandbox.py",
+      "why": "the output of the failure analyst's ONE diagnostic run of a test without the asserts of the Thens behind its red one (`red_sandbox.py --diagnostic`) is the tool's own record: the analyst cites it from the triage row's `diagnostic` block and never writes it, and a repeat over the same test bytes is answered from it"
+    },
+    "work/run-report.json": {
+      "writer": "finalize_task.py",
+      "why": "reduced from immutable run blocks; never hand-written"
+    },
+    "work/evidence/": {
+      "writer": "run_suite.py",
+      "machinery": [
+        "manual_evidence.py",
+        "manual_capture.py",
+        "walk_session.py",
+        "runtime_probe.py"
+      ],
+      "why": "every writer here writes its OWN receipt file, never another's"
+    },
+    "state/driver-timings.jsonl": {
+      "writer": "driver_runner.py",
+      "machinery": [
+        "driver_timing.py"
+      ],
+      "why": "t-1937 P2-1: one line per timed driver step ({ts, stage, dispatch, step, seconds, error?}), appended by Driver.timing_write (one O_APPEND write, no read-modify-write); driver_timing.py is its one reader and prints the hops; a missing file means no timings recorded, never 0 s of overhead"
+    },
+    "state/walks/": {
+      "writer": "walk_session.py",
+      "why": "the kept-session server of a manual walk: its record state/walks/<W>.json (pid, port, token, state), its log, its profile folders under state/walks/<W>/sessions/, and the full answer of every step call under state/walks/<W>/batches/; nothing else writes here"
+    },
+    "state/window-files/": {
+      "writer": "window_files.py",
+      "why": "first-write ownership of a test file by an S5 window: one claim file per test file (`O_CREAT|O_EXCL`, so of two racing sessions one wins), written by the guard's `window_file_check` through `window_files.claim` and freed by `window_files.release` (the driver at a window's close; `window_files.py --task <task root> --release <window>` for the conductor); guard state, not a stage output (no stage lists it, so no dispatch hashes a claim as evidence); no role writes here and nothing else does"
+    },
+    "work/walks/": {
+      "writer": "walk_session.py",
+      "why": "the result record of each walked item work/walks/<W>/<item>.json (the verdict checked against the item's attempt, the final snapshot, the observations) and work/walks/<W>/timing.jsonl, written by the server when the walker sends its verdict (or by the driver's after-step for an item that never got one); the case record is reduced from it by manual_evidence.py record_from_walk and walk_timing.py only reads it; nothing else writes here"
+    },
+    "work/evidence/manual/settle-*/": {
+      "writer": "manual_capture.py",
+      "machinery": [
+        "walk_session.py"
+      ],
+      "why": "the one root of every capture of a place the failure analyst settles (case `settle-<place id>`, attempts aN): `manual_capture.py ui|http --case settle-<place id>` and the walk session's `settle` lane (`walk_session.py open --place settle`) write attempts here side by side, each its next aN; evidence on disk is never rewritten; the analyst never writes here by hand"
+    },
+    "work/evidence/manual/survey-*/": {
+      "writer": "walk_session.py",
+      "machinery": [
+        "manual_capture.py"
+      ],
+      "why": "the attempts of a first look walked in the session's `survey` lane (`walk_session.py open --place survey`, item `R-n` or an element id of the snapshot): work/evidence/manual/survey-<item>/aN/, each attempt its next aN, evidence on disk never rewritten; `capture_cited` reads them to tie a quote to the walk that took it. The role never writes here by hand"
+    },
+    "work/first-look.yaml": {
+      "writer": "first_look.py",
+      "why": "the record of the first look at the new version on the stand (t-2277 FL-2): `first_look.py put` writes it whole, from the walker's rows checked against the register and the walk (`walk_session.capture_cited`), with the fields only code owns (walk, stand, stand_build, source_head, register_hash, sides_met); `first_look.read` is its one reader. The walker never edits it by hand"
+    },
+    "state/first-look-attempt.json": {
+      "writer": "first_look.py",
+      "why": "the attempt that walks the first look (`first_look.py begin|end`, and `put` marks it written): the dispatch, the walk, the stand, the heads and the register hash it was opened on, the outcome and the failures to open; `due` reads it so a paid walk of the same code and register is not repeated. Nothing else writes it"
+    },
+    "evidence/control-*/": {
+      "writer": "walk_session.py",
+      "why": "the attempts of a control experiment walked in the session's `control` lane (`walk_session.py open --place control`): evidence/control-<id>/aN/, the folder a triage row's `control.evidence` names a file of. The DIRECTORY only: no `evidence/control-*.json` file exists and nothing writes one"
+    },
+    "evidence/place-answer-*.json": {
+      "writer": "place_answers.py",
+      "why": "the record of the failure analyst's answer for one place (`place_answers.py write`): code sets `writer`, `written_at`, `dispatch`, `replaces`; the analyst never writes it"
+    },
+    "work/evidence/manual/<case>/tried.md": {
+      "writer": "qa-runner (the role)",
+      "why": "the exploration log of a manual window: one row per cell the runner took, with the capture that shows it; the recorder's `build` reads it for citations and never writes it"
+    },
+    "work/triage.json": {
+      "writer": "qa-failure-analyst (the role)",
+      "machinery": [
+        "finalize_task.py",
+        "s7_pretriage.py",
+        "s7_reorder.py"
+      ],
+      "why": "a verdict with evidence is the analyst's; s7_pretriage.py writes only the rows marked `source: code` (a manual check whose own record says what stopped it), never over an analyst row; s7_reorder.py finish writes only `carried_attempts` and `carried_by: s7_reorder` on the row that asked for a `reorder`, after the edit was a pure move and the repair run stayed red; s7_reorder.py mark_fixed (the `mark-fixed` mode) writes only `fix_result: fixed` on such a carried row, once the critic approved"
+    },
+    "work/s7-reorder/": {
+      "writer": "s7_reorder.py",
+      "why": "the snapshot of the test file before an S7 reorder round (`s7_reorder.py start`) is the tool's own record: `finish` judges the edit against it, and no role writes it"
+    },
+    "work/bug-drafts/": {
+      "writer": "qa-failure-analyst (the role)",
+      "why": "a draft is not a bug; the reporter files it after gate B"
+    },
+    "work/place-answers/": {
+      "writer": "qa-failure-analyst (the role)",
+      "why": "your scratch for an answer, one file per place, passed to `place_answers.py write --file`; keys: `place`, `answer` (bug|not_a_bug|requirement_silent|impossible), `expectation` {`source` (requirement|question|person|none; not none for a bug), `id`, `quote`}, `seen` {`quote`, `capture`}, `question` (requirement_silent), `why` (impossible, not_a_bug), `draft` (bug), `walk` (optional)"
+    },
+    "project:bugs/": {
+      "writer": "qa-bug-reporter (the role)",
+      "why": "only after a gate B decision names the draft"
+    },
+    "work/ledger.json": {
+      "writer": "ledger.py",
+      "why": "generated, never authored"
+    },
+    "work/ledger.md": {
+      "writer": "ledger.py",
+      "why": "the same generator"
+    },
+    "work/review-debts.json": {
+      "writer": "ledger.py",
+      "why": "the windows that closed over a code-critic rejection at a spent repair limit; the driver calls ledger.write_review_debt at the person's answer, the ledger is the one reader"
+    },
+    "work/traceability.json": {
+      "writer": "traceability.py",
+      "why": "one row per requirement x case, generated"
+    },
+    "test-report.md": {
+      "writer": "qa-doc-scribe (the role)",
+      "machinery": [
+        "traceability.py"
+      ],
+      "why": "the scribe writes it; --close-gate-b appends the decision",
+      "rewrite": "Edit (the section that changed; --close-gate-b appends the decision itself)",
+      "rewrite_cost": "5 whole rewrites on TP1-13797 cost 32,115 tokens of call arguments - the report is long, so a rewrite is the most expensive single call a role makes"
+    },
+    "work/handoffs/": {
+      "writer": "handoff_init.py",
+      "machinery": [
+        "handoff_check.py",
+        "handoff_help.py"
+      ],
+      "why": "the form is created by code, filled by the role (field by field, or through <dispatch>.values.yaml, which handoff_check.py applies and renames), repaired and checked by code"
+    },
+    "state/findings/<dispatch>-digest-notes.md": {
+      "writer": "role_digest.py",
+      "why": "what a role wrote after the path line of its digest, kept whole (`file_notes`) so a finding in it reaches the conductor; the accepted digest names it as `notes: <path>`"
+    },
+    "work/digests/": {
+      "writer": "exit_gate.py",
+      "why": "the digest of every handoff the exit gate passed, filed under its dispatch id (`<id>.txt`; the role's own text beside it as `<id>.original.txt` when code mended the form); `story_step finish --digest -` reads it, no role writes it"
+    },
+    "interim-report.md": {
+      "writer": "interim_packet.py",
+      "why": "the packet a person reads while a story waits for the code (t-2181 PC-7); assembled by code from the sides, the manifest, the run blocks and the provisional rows, rebuilt on every entry to the wait; the driver calls it, no role writes it"
+    },
+    "retro.md": {
+      "writer": "qa-retro-analyst (the role)",
+      "machinery": [
+        "retro_numbers.py"
+      ],
+      "why": "prose by the role over numbers code computed; `numbers` mode writes it by code alone"
+    },
+    "project:obligations.md": {
+      "writer": "qa-retro-analyst (the role)",
+      "why": "the only carrier between stories"
+    },
+    "project:factory-backlog.md": {
+      "writer": "qa-retro-analyst (the role)",
+      "why": "what the factory owes itself"
+    },
+    "project:readiness.json": {
+      "writer": "readiness.py",
+      "why": "the probe writes its own result"
+    },
+    "work/proposals/": {
+      "writer": "external_writes.py",
+      "why": "a proposal and its receipt belong to the executor"
+    },
+    "work/exploratory-findings.jsonl": {
+      "writer": "exploratory_findings.py",
+      "why": "the one append-only writer of the findings register (`append`); investigation.py (`project`, `close_gaps`) and investigation_probe.py (`record`) call it and never write the file"
+    },
+    "work/evidence/investigation/": {
+      "writer": "investigation_probe.py",
+      "why": "the captures of an exploratory probe belong to the probe that took them; nothing else writes under this folder"
+    }
+  }
+}

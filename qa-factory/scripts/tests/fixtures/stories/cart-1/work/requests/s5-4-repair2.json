@@ -1,0 +1,123 @@
+{
+ "task": "CART-1",
+ "revision": "44",
+ "dispatch_id": "S5-qa-automator-4",
+ "profile_id": "web",
+ "purpose": "repair_verify",
+ "reason": "reorder only: red Then 2 assert moved last",
+ "idempotency_key": "S5-qa-automator-4:repair_verify:2",
+ "input_fingerprint": "3959095e401a353eaa463221cc3796a5aa3607a095535e1b415758cbb1fa191d",
+ "fingerprint_components": {
+  "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+  "test_content_sha": "0ef8ba9995bf8aecb7436c85eaa3aefbc25f03588dd50df28b672c99f0f44086",
+  "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+  "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+  "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+  "policy_revision": "config-projection-1"
+ },
+ "fingerprint_files": [
+  {
+   "path": "<path-1>\\test-automation-framework\\tests\\api\\cart\\cart-quote-order.spec.ts",
+   "sha256": "b5b9a49fc08486347b9e67cc940f2dc62bbcc8ecb6d51d7e16ade94b3c89e05c",
+   "kind": "test_files"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\clients\\cartApi.ts",
+   "sha256": "7649585511952857704de173d64092265562955e48127d1d304f3a8152ac897e",
+   "kind": "helper_files"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\fixtures\\cartApi.fixture.ts",
+   "sha256": "e405b974d079e9621543c9c7bffa212b4e73e381eff710c90d7723807c104c9c",
+   "kind": "helper_files"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\qa-factory\\config.json",
+   "sha256": "1f8afbe781d38451e08158a013f8901da1e97d606b14a97360924d6aab910041",
+   "kind": "config_files"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\playwright.config.ts",
+   "sha256": "e399f10b8f99a40354e440f503e6d49a9419420d5ca08ce8610fca98ab7d6947",
+   "kind": "config_files"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\package-lock.json",
+   "sha256": "0193ca801951b5674e4356c0cf20b110bdc06f5af312e313e8e2e7d1451cf9e5",
+   "kind": "dependency_files"
+  }
+ ],
+ "freshness": "fresh",
+ "remaining_budget": 1,
+ "selected_instance_ids": [
+  "@api @regression CART-1_TC_009 quote and order from cart"
+ ],
+ "current_scope_instance_ids": [
+  "@api @regression CART-1_TC_009 quote and order from cart"
+ ],
+ "runtime_required": true,
+ "target_kind": "deployed_stand",
+ "runtime_provenance": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T01:57:58Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  }
+ },
+ "runtime_probe": {
+  "argv": [
+   "node",
+   "-e",
+   "const sha=require('child_process').execSync('git -C ../MyBooks rev-parse HEAD').toString().trim();const o={\"profile_id\": \"web\", \"timestamp\": \"2026-10-31T01:57:58Z\", \"environment_id\": \"local\", \"expected_source_revision\": \"a25b0801669b97d76f96f5a981fdc9ad4525d63d\", \"observed_runtime_identity\": \"MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)\", \"result\": \"matched\", \"evidence_refs\": [\"qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json\"], \"provenance\": {\"technical_verification\": true, \"source_linkage\": \"exact\", \"deployed_source_revision\": \"a25b0801669b97d76f96f5a981fdc9ad4525d63d\"}};o.timestamp=new Date().toISOString().slice(0,19)+'Z';o.deployed=sha;o.provenance.deployed_source_revision=sha;o.result=sha===o.expected_source_revision?'matched':'mismatched';console.log(JSON.stringify(o))"
+  ],
+  "cwd": ".",
+  "timeout_s": 30
+ },
+ "command": {
+  "argv": [
+   "node",
+   "scripts/run-playwright.mjs",
+   "--junit={report_path}",
+   "--project=chromium"
+  ],
+  "cwd": ".",
+  "reporter": "junit-xml",
+  "report_path": "{report_path}",
+  "scope": "selected",
+  "repo_id": "test-automation-framework",
+  "selector_contract_verified": true,
+  "selector_args": {
+   "@api @regression CART-1_TC_009 quote and order from cart": [
+    "tests/api/cart/cart-quote-order.spec.ts"
+   ]
+  }
+ },
+ "instance_contracts": {
+  "@api @regression CART-1_TC_009 quote and order from cart": {
+   "report_test_id": "@api @regression CART-1_TC_009 quote and order from cart",
+   "parameters": {}
+  }
+ },
+ "execution": {
+  "schema_version": 1,
+  "reporter": {
+   "format": "junit-xml",
+   "path_template": "{report_path}"
+  },
+  "selection": {
+   "reason": "missing_fresh_evidence",
+   "evidence_refs": [
+    "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+   ]
+  }
+ }
+}

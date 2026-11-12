@@ -1,0 +1,183 @@
+{
+ "stages": {
+  "S0": {
+   "outcome": "accepted",
+   "handed": [],
+   "source": "events.jsonl seq 1 stage_transition done"
+  },
+  "S1": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S1-qa-scout-1.yaml",
+    "work/context-bundle.json",
+    "work/context-manifest.json",
+    "work/impl-diff.txt",
+    "work/source-inventory.json"
+   ],
+   "dispatch": "S1-qa-scout-1",
+   "source": "events.jsonl seq 6 accept; handed: required inputs of work/handoffs/S1-qa-scout-1.yaml"
+  },
+  "S2": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S2-qa-requirements-tester-1.yaml",
+    "work/requirements-register.md",
+    "work/requirements-readiness.json",
+    "understanding.md",
+    "work/sizing.json"
+   ],
+   "dispatch": "S2-qa-requirements-tester-1",
+   "source": "events.jsonl seq 11 accept; handed: required inputs of work/handoffs/S2-qa-requirements-tester-1.yaml"
+  },
+  "S3": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S3-qa-test-strategist-1.yaml",
+    "work/test-plan.json",
+    "test-plan.md",
+    "work/requirements-register.md"
+   ],
+   "dispatch": "S3-qa-test-strategist-1",
+   "source": "events.jsonl seq 16 accept; handed: required inputs of work/handoffs/S3-qa-test-strategist-1.yaml"
+  },
+  "S4": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/<the designer's dispatch>.yaml",
+    "<cases_root>/<area>/<case>.md",
+    "work/test-plan.json"
+   ],
+   "dispatch": "S4-qa-case-critic-2",
+   "source": "events.jsonl seq 32 accept; handed: required inputs of work/handoffs/S4-qa-case-critic-2.yaml"
+  },
+  "gateA": {
+   "decision": "approve",
+   "recorded_action": "approve_plan_and_cases",
+   "status": "approved",
+   "words": [
+    "gateA-20261031-0200.txt",
+    "gateA-probe-20261031-0201.txt",
+    "gateA-vcs-20261031-0201.txt"
+   ],
+   "source": "events.jsonl seq 34 decision; state/words/gateA-20261031-0200.txt, state/words/gateA-probe-20261031-0201.txt, state/words/gateA-vcs-20261031-0201.txt"
+  },
+  "S5": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/<the automator's dispatch>.yaml",
+    "work/automation-manifest.json",
+    "work/test-cases/<area>/<case>.md"
+   ],
+   "dispatch": "S5-qa-code-critic-7",
+   "source": "events.jsonl seq 114 accept; handed: required inputs of work/handoffs/S5-qa-code-critic-7.yaml"
+  },
+  "S6": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S6-qa-runner-2.yaml",
+    "work/run-report.json",
+    "work/automation-manifest.json",
+    "work/evidence/",
+    "test-plan.md"
+   ],
+   "dispatch": "S6-qa-runner-2",
+   "source": "events.jsonl seq 130 accept; handed: required inputs of work/handoffs/S6-qa-runner-2.yaml"
+  },
+  "S7": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S7-qa-failure-analyst-1.yaml",
+    "work/triage.json",
+    "work/automation-manifest.json",
+    "<the evidence paths named per repair>"
+   ],
+   "dispatch": "S7-qa-failure-analyst-1",
+   "source": "events.jsonl seq 135 accept; handed: required inputs of work/handoffs/S7-qa-failure-analyst-1.yaml"
+  },
+  "S8": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S8-qa-doc-scribe-1.yaml",
+    "test-report.md",
+    "work/ledger.json",
+    "work/traceability.json"
+   ],
+   "dispatch": "S8-qa-doc-scribe-1",
+   "source": "work/delivery-summary.json delivery_verdict",
+   "delivery": "no"
+  },
+  "gateB": {
+   "decision": "approve",
+   "recorded_action": "approve_delivery",
+   "status": "approved",
+   "words": [
+    "gateB-20261031-0600.txt"
+   ],
+   "source": "events.jsonl seq 142 decision; state/words/gateB-20261031-0600.txt"
+  },
+  "S9": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S9-qa-retro-analyst-1.yaml",
+    "retro.md",
+    "work/retro-numbers.json"
+   ],
+   "dispatch": "S9-qa-retro-analyst-1",
+   "source": "events.jsonl seq 146 accept; handed: required inputs of work/handoffs/S9-qa-retro-analyst-1.yaml"
+  }
+ },
+ "amendments": [
+  {
+   "stage": "S2",
+   "field": "outcome",
+   "recorded": "accepted",
+   "expected": "refused",
+   "names": [
+    "implementation-only",
+    "Branches",
+    "has no home"
+   ],
+   "why": "the run is of package 0.10.6; the behaviour-claim rule for implementation-only rows (G2-12, 0.10.8) and the branch accounting at the S2 exit (G2-11, 0.10.7) came after it, so today's S2 exit refuses this register by contract; the refusal parts `has no home` (the Source obligations table: every source obligation needs a requirement row) belong to the same 0.10.7 change as the Branches section",
+   "ref": "docs/tasks/specs/reviews/td-15-cart-1-reds.md D1; commits e6e6fee19, 3787c3b8d",
+   "accepted_by": "Lead, 2026-11-11"
+  },
+  {
+   "stage": "S4",
+   "field": "outcome",
+   "recorded": "accepted",
+   "expected": "refused",
+   "names": [
+    "implementation-only"
+   ],
+   "why": "the same rule as S2 read at the S4 exit: a Then that rests on an implementation-only requirement is refused since 0.10.8; the cases of the 0.10.6 run carry three such Thens",
+   "ref": "docs/tasks/specs/reports/td-15-walk-fix-report.md (S4 accepted); commit e6e6fee19",
+   "accepted_by": "Lead, 2026-11-11"
+  }
+ ],
+ "refusals": [
+  {
+   "stage": null,
+   "seq": 86,
+   "status": "incomplete",
+   "reason": "manifest has no tests[] instance for CART-1_TC_009; author must add it before the review window can be built"
+  },
+  {
+   "stage": null,
+   "seq": 94,
+   "status": "incomplete",
+   "reason": "manifest tests[] still has no CART-1_TC_009 row (16 tests, none TC_009) although the author reported adding it"
+  },
+  {
+   "stage": null,
+   "seq": 124,
+   "status": "blocked",
+   "reason": "env_blocked: no runtime probe registered; person said the stand runs the right version and the cases must not be skipped; waiver recorded"
+  },
+  {
+   "stage": null,
+   "seq": 127,
+   "status": "blocked",
+   "reason": "stand identity now confirmed by the person; catch-all runtime probe registered; retry TC_011 and TC_012"
+  }
+ ]
+}

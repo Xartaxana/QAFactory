@@ -1,0 +1,18 @@
+"scope[0].id": CART-1_TC_005
+"scope[0].state": unverified
+"scope[0].reason": probe refused (tooling); static review clean, red-fix legitimate_correction
+"scope[1].id": CART-1_TC_006
+"scope[1].state": unverified
+"scope[1].reason": probe refused (tooling); static review clean
+"scope[2].id": CART-1_TC_007
+"scope[2].state": unverified
+"scope[2].reason": probe refused (tooling); mechanical: assert count before destructure
+"scope[3].id": CART-1_TC_008
+"scope[3].state": unverified
+"scope[3].reason": probe refused (tooling); mechanical: assert count before destructure
+header.verdict: concerns
+review.outcome: unverified
+review.receipt_ref: work/windows/S5-qa-code-critic-3.json
+review.rounds_used: 0
+"probes.records[0].instance": "@api @regression CART-1_TC_005 cart isolation between owners"
+"probes.records[0].verdict": not_executed

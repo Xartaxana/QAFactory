@@ -1,0 +1,13 @@
+{
+  "verdict": "ready",
+  "goal_summary": "Checkout must refuse a coupon above the 50 percent cap and recalculate the cart total for every accepted coupon.",
+  "aspects": {
+    "boundary": {"status": "ready"},
+    "error_path": {"status": "ready"},
+    "concurrency": {"status": "n/a", "reason": "one coupon per cart, no shared state in the diff"}
+  },
+  "open_questions": [],
+  "register": {"total": 3, "by_source": {"story": 1, "ac": 2}},
+  "confidence": "high",
+  "witness": "register built from the story text, the parent feature STORY-9 and both AC"
+}

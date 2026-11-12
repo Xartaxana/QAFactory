@@ -1,0 +1,22 @@
+{
+ "title": "Move of an MS Teams integration into a project that already has one is rejected with 'Project mismatch', not by the singleton rule",
+ "impact": "degraded",
+ "violates": "requirement:R-10",
+ "case": "TC-003",
+ "plan_row": "TS-3",
+ "triage_ref": {
+  "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+  "attempt_id": "a96f5e653377735139aa"
+ },
+ "manual_steps": [
+  "Create projects A and B that you administer, each with its own MS Teams integration",
+  "Open A's MS Teams integration, change its Project to B and save (or PUT with project_name = B)",
+  "Observe a 4xx whose reason is 'Project mismatch' rather than a conflict/duplicate message",
+  "List MS Teams integrations of A and B to check nothing moved"
+ ],
+ "expected": "4xx rejection that is not the 'Project mismatch' text; B keeps one integration",
+ "actual": "400 'Project mismatch'; the singleton rule is not what rejects the move",
+ "confirmation": "unconfirmed",
+ "possible_duplicate": "ms-teams-move-project-mismatch (same root cause)",
+ "control_experiment": "not run: the stand has no build without the change"
+}

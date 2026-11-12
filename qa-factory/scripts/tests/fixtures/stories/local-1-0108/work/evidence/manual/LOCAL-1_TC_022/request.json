@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "request_kind": "manual_capture",
+  "case": "LOCAL-1_TC_022",
+  "case_version": "cv_a4950fa7ce5b6a69d58a",
+  "obligation_ids": [
+    "OB-24"
+  ],
+  "obligation_hashes": {
+    "OB-24": "c4ba33f1015f79771a0a24b3fb95fede59df602e35f9ed4884e6a10db0079bee"
+  },
+  "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "controller_revision": 239,
+  "gate_a_decision_ref": "gateA-LOCAL-1",
+  "evidence_policy": "api",
+  "completion_condition": "both actions settled",
+  "approved_policy_hash": "c6374e7e69b49594ac30be36048c520a87255663dbf816436957be6fe187ebc2",
+  "expected": [
+    "User is charged the price the owner defined during a price update"
+  ],
+  "thens": {
+    "1": "If Q7 = a (person's answer): the cart line for B is priced 6.00 (the price shown when the add was made, not the updated 8.00) and subtotal equals 6.00 x quantity; otherwise (before) the line is priced 8.00 and the shopper is told of the change.",
+    "2": "The add causes no error: the add response is a 2xx, not an unhandled 5xx, and the line price equals one of the two prices (6.00 or 8.00), never a third value or zero. Cart is read from `GET /api/cart` after both actions settled, for B only."
+  },
+  "covers": [
+    "R-24"
+  ],
+  "legacy_evidence_gaps": [],
+  "required_actual_fields": [
+    "steps_actual",
+    "actual",
+    "evidence_refs",
+    "runtime_before",
+    "runtime_after",
+    "attempt_started_at",
+    "attempt_ended_at",
+    "then_quotes"
+  ],
+  "actors": [
+    {
+      "id": "PC-1",
+      "what": "a signed-in seed user",
+      "check": {
+        "stand_account": "user"
+      }
+    },
+    {
+      "id": "PC-3",
+      "what": "an admin account that can update a book price",
+      "check": {
+        "stand_account": "admin"
+      }
+    }
+  ]
+}

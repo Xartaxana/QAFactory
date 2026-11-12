@@ -1,0 +1,105 @@
+{
+  "scope": [
+    "TC-001",
+    "TC-002",
+    "TC-003",
+    "TC-004",
+    "TC-005",
+    "TC-006",
+    "TC-007",
+    "TC-008",
+    "TC-009",
+    "TC-010",
+    "TC-011",
+    "TC-012",
+    "TC-014"
+  ],
+  "plan_revision": "468161e7fc39ef57",
+  "rows": {
+    "TS-1": {
+      "disposition": "automate",
+      "cases": [
+        "TC-001"
+      ]
+    },
+    "TS-2": {
+      "disposition": "automate",
+      "cases": [
+        "TC-002"
+      ]
+    },
+    "TS-3": {
+      "disposition": "automate",
+      "cases": [
+        "TC-003"
+      ]
+    },
+    "TS-4": {
+      "disposition": "automate",
+      "cases": [
+        "TC-004"
+      ]
+    },
+    "TS-5": {
+      "disposition": "automate",
+      "cases": [
+        "TC-005"
+      ]
+    },
+    "TS-6": {
+      "disposition": "automate",
+      "cases": [
+        "TC-006"
+      ]
+    },
+    "TS-7": {
+      "disposition": "automate",
+      "cases": [
+        "TC-007"
+      ]
+    },
+    "TS-8": {
+      "disposition": "automate",
+      "cases": [
+        "TC-008"
+      ]
+    },
+    "TS-9": {
+      "disposition": "automate",
+      "cases": [
+        "TC-009"
+      ]
+    },
+    "TS-10": {
+      "disposition": "manual-agent",
+      "cases": [
+        "TC-010"
+      ]
+    },
+    "TS-11": {
+      "disposition": "automate",
+      "cases": [
+        "TC-011"
+      ]
+    },
+    "TS-12": {
+      "disposition": "manual-agent",
+      "cases": [
+        "TC-012"
+      ]
+    },
+    "TS-13": {
+      "disposition": "skip",
+      "cases": [
+        "developers' component tests for StaleDataError and nested commit",
+        "regression run of B-7 and B-8 suites after the change"
+      ]
+    },
+    "TS-14": {
+      "disposition": "manual-agent",
+      "cases": [
+        "TC-014"
+      ]
+    }
+  }
+}

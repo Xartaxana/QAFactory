@@ -1,0 +1,42 @@
+{
+  "target": "story_run.py",
+  "test": "tests/test_story_run_refusals.py",
+  "mutations": {
+    "f1-promise-regardless": {
+      "old": "reach = unsaved or \"they are all listed here\"",
+      "new": "reach = \"they are all listed here\""
+    },
+    "f1-no-is-file-check": {
+      "old": "if not was_cut or (path is not None and path.is_file()):",
+      "new": "if not was_cut or path is not None:"
+    },
+    "f1-folder-is-enough": {
+      "old": "path.is_file()):\n            return text, was_cut, \"\"",
+      "new": "path.parent.is_dir()):\n            return text, was_cut, \"\""
+    },
+    "f1-stale-file-kept": {
+      "old": "path.unlink(missing_ok=True)",
+      "new": "pass"
+    },
+    "f1-dry-run-reason": {
+      "old": "\"this is a dry run, which writes no file\"",
+      "new": "\"the story is not known\""
+    },
+    "f1-blank-dispatch-reason": {
+      "old": "\"the dispatch has no name\"",
+      "new": "\"the story is not known\""
+    },
+    "f2-no-s1-after-the-resume": {
+      "old": "        self.s1_person(role, errors, digest, stage, dispatch)\n        if errors:\n            raise Refusal(",
+      "new": "        if errors:\n            raise Refusal("
+    },
+    "f2-gap-wins-over-review": {
+      "old": "                and not any(re.search(S1_REVIEW_RE, e, re.IGNORECASE) for e in errors):\n            raise Person(\"s1_gap\"",
+      "new": ":\n            raise Person(\"s1_gap\""
+    },
+    "f2-empty-set-refused": {
+      "old": "        if errors:\n            raise Refusal(f\"exit gate for",
+      "new": "        if True:\n            raise Refusal(f\"exit gate for"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "note": "Proposed word lists the stage roles may extend (spec t-1765 F-3 (b)). The words stay with their owners (grammar.py, contract.py, this file for the S2 verdict); this file carries only whether a list is open, the door, and the bans no door lifts. The stage critic judges every extension; code checks the form only.",
+  "door": {"prefix": "new:", "separator": " -- ", "word_re": "^[a-z][a-z0-9_-]{1,39}$", "min_reason_chars": 10},
+  "vocabularies": {
+    "defect_class": {"open": true, "words_from": "grammar.DEFECT_CLASSES + config.defect_classes_extra"},
+    "then_oracle": {"open": true, "words_from": "contract.THEN_ORACLE_WORDS", "never": ["code"]},
+    "s2_verdict": {"open": true, "words": ["ready", "blocked"]},
+    "handoff_field": {"open": true, "words_from": "handoffs/vocabulary.yaml: the options of the field; read by handoff_check for the contracts of handoff_check.OPEN_LIST_CONTRACTS: every list field of the S1-S4 forms, and only the fields of handoff_check.OPEN_LIST_FIELDS in the S5, S8 and S9 forms (the other list fields of those forms are routes and stay closed)"},
+    "fit": {"open": false, "note": "no closed check at S3; the S5 reader (fit_to_shapes) is X5-6"}
+  }
+}

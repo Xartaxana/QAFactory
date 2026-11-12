@@ -1,0 +1,9 @@
+{
+  "note": "`on_real` says whether a row of the kind may stand on a side that is already real (t-2277 J-C5): `first_look_only` - only as the accounting row of a red test, `assumed_from: first_look:<R-n>`, while the first-look record holds that requirement missing or unreachable because of the product; `never` - never (a substitute, an assumed contract or a copied reference value on a real side is a substitution of badly written code). A kind without `on_real` reads `never`. The grounding rule does not change: on a real side the row is accounting, not a license.",
+  "kinds": {
+    "placeholder_locator": {"what": "a selector or route of a screen the story's code does not have yet; how to reach the product, never what a Then expects", "on_real": "first_look_only"},
+    "assumed_contract": {"what": "a request or response shape the test assumes of a service whose code is not there yet", "on_real": "never"},
+    "side_substitute": {"what": "a mock, stub or fixture that stands in for a side of the product that is not real in this story", "on_real": "never"},
+    "reference_value": {"what": "a value or locator copied from the reference snapshot of the old product, kept while the new side is not real", "on_real": "never"}
+  }
+}

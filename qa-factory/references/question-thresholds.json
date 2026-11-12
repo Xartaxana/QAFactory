@@ -1,0 +1,12 @@
+{
+  "count": 6,
+  "share": "1/3",
+  "reason_words": {
+    "scope_or_structure": "an answer to some of these questions would change what the story covers or how the test plan is built, so the factory cannot go on by guessing",
+    "no_readings": "for some of these questions the factory could not name even two possible answers, so it cannot offer you a choice and needs your own words",
+    "dependent": "the answer to one of these questions changes another, so they have to be settled together",
+    "over_threshold": "too much of the story rests on questions nobody has answered yet",
+    "low_confidence": "the factory is not confident enough in its reading of the story to go on without you",
+    "blocking": "some of these questions are marked as blocking: the plan or the cases written next depend on their answers, so that work waits for them"
+  }
+}

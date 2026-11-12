@@ -1,0 +1,693 @@
+{
+  "schema_version": 1,
+  "app_root": "",
+  "app_root_note": "Resolves to the",
+  "protected_app_paths": [
+    "",
+    "",
+    ""
+  ],
+  "protected_app_note": "P-00: writes into",
+  "tests_root": "",
+  "tests_root_note": "This repository (this-project)",
+  "case_id_form": "",
+  "case_id_form_note": "The case id",
+  "code_repos": [
+    {
+      "name": "",
+      "path": "",
+      "default_branch": ""
+    },
+    {
+      "name": "",
+      "path": "",
+      "default_branch": ""
+    },
+    {
+      "name": "",
+      "path": "",
+      "default_branch": ""
+    }
+  ],
+  "code_repos_note": "Both checkouts verified",
+  "test_command_templates": {
+    "one_test": "",
+    "suite": "",
+    "quiet": ""
+  },
+  "test_command_templates_note": "Run from the",
+  "secret_file_patterns": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "secret_content_patterns": [
+    "",
+    "",
+    "",
+    ""
+  ],
+  "environment": {
+    "note": "Default stand for",
+    "env_file": "",
+    "base_url_key": "",
+    "user_key": "",
+    "secret_keys": [
+      "PLACEHOLDER_KEY_1"
+    ],
+    "health_path": "",
+    "health_url": "",
+    "health_expect": [
+      200,
+      302
+    ],
+    "health_note": "On the LOCAL",
+    "extra_keys": [
+      "PLACEHOLDER_KEY_1",
+      "PLACEHOLDER_KEY_2",
+      "PLACEHOLDER_KEY_3",
+      "PLACEHOLDER_KEY_4",
+      "PLACEHOLDER_KEY_5",
+      "PLACEHOLDER_KEY_6",
+      "PLACEHOLDER_KEY_7",
+      "PLACEHOLDER_KEY_8"
+    ],
+    "integrations": [
+      {
+        "name": "",
+        "keys": [
+          "PLACEHOLDER_KEY_1",
+          "PLACEHOLDER_KEY_2",
+          "PLACEHOLDER_KEY_3"
+        ],
+        "owner": "",
+        "health_url": ""
+      }
+    ],
+    "integrations_note": "AWS Parameter Store",
+    "extra_keys_note": "Preview-only keys were"
+  },
+  "test_data": {
+    "accounts_by_role": "",
+    "seeds": "",
+    "generators": "",
+    "pii_and_masking": "",
+    "cleanup_owner": "",
+    "shared_records": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "test_data_note": "Onboarding topic 3.",
+  "environments": [
+    {
+      "name": "",
+      "base_url": "",
+      "bring_up": "",
+      "credentials_by_role": {
+        "default_user": "",
+        "project_scoped_user": "",
+        "default_scoped_user": "",
+        "auditor": ""
+      },
+      "safe_to_break": true,
+      "frontend_url": "",
+      "auth": "",
+      "verified": "",
+      "limits": ""
+    },
+    {
+      "name": "",
+      "base_url": "",
+      "bring_up": "",
+      "credentials_by_role": {
+        "default_user": "",
+        "project_scoped_user": "",
+        "default_scoped_user": "",
+        "auditor": ""
+      },
+      "safe_to_break": true,
+      "frontend_url": "",
+      "auth": "",
+      "verified": ""
+    }
+  ],
+  "environments_note": "DEFAULT IS `localhost`",
+  "adapters": {
+    "ticket": {
+      "name": "",
+      "status": "",
+      "method": "",
+      "invoke": "",
+      "direct_api": {
+        "base_url": "",
+        "api_version": "",
+        "auth_type": "",
+        "username_ref": "",
+        "secret_ref": "",
+        "acceptance_criteria_fields": []
+      }
+    },
+    "test_management": {
+      "name": "",
+      "status": ""
+    },
+    "vcs": {
+      "name": "",
+      "status": "",
+      "method": ""
+    }
+  },
+  "adapters_note": "ticket: Jira project",
+  "external_writes": {
+    "bugs": "",
+    "cases": "",
+    "channels": {
+      "jira": {
+        "method": "",
+        "invoke": ""
+      }
+    }
+  },
+  "external_writes_note": "Delivery of the",
+  "pre_commit_commands": [
+    "",
+    "",
+    ""
+  ],
+  "pre_commit_note": "Equivalent to `make",
+  "run": {
+    "parallel": false,
+    "reporter": "",
+    "report_path": "",
+    "levels": {
+      "e2e-ui": [
+        ""
+      ],
+      "api": [
+        ""
+      ],
+      "unit": [
+        "",
+        ""
+      ]
+    }
+  },
+  "git_conventions": {
+    "branch": "",
+    "commit": "",
+    "mr_title": ""
+  },
+  "git_conventions_note": "Commit format holds",
+  "dod": "",
+  "impact_scale": {
+    "data-loss": {
+      "priority": "",
+      "severity": ""
+    },
+    "money": {
+      "priority": "",
+      "severity": ""
+    },
+    "access": {
+      "priority": "",
+      "severity": ""
+    },
+    "blocked-flow": {
+      "priority": "",
+      "severity": ""
+    },
+    "degraded": {
+      "priority": "",
+      "severity": ""
+    },
+    "cosmetic": {
+      "priority": "",
+      "severity": ""
+    },
+    "none": {
+      "priority": "",
+      "severity": ""
+    }
+  },
+  "impact_scale_note": "Canonical defect impact",
+  "execution": {
+    "verify_node_ids": false
+  },
+  "execution_note": "verify_node_ids disabled 2026-09-22",
+  "journal_path": "",
+  "cost": {
+    "note": "Full-session cost from",
+    "model_prices": {
+      "claude-opus": {
+        "input": 15.0,
+        "output": 75.0,
+        "cache_read": 1.5,
+        "cache_write_5m": 18.75,
+        "cache_write_1h": 30.0
+      },
+      "claude-sonnet": {
+        "input": 3.0,
+        "output": 15.0,
+        "cache_read": 0.3,
+        "cache_write_5m": 3.75,
+        "cache_write_1h": 6.0
+      },
+      "claude-haiku": {
+        "input": 1.0,
+        "output": 5.0,
+        "cache_read": 0.1,
+        "cache_write_5m": 1.25,
+        "cache_write_1h": 2.0
+      }
+    },
+    "human_wait_cap_s": 1800,
+    "model_prices_note": "List prices confirmed"
+  },
+  "cases_root": "",
+  "cases_root_note": "Where THIS project",
+  "run_reporter_note": "How a test",
+  "run_levels_note": "run.levels maps a",
+  "turns": {
+    "soft": 60,
+    "repeat": 30
+  },
+  "turns_note": "Turn budget per",
+  "factory_may_edit_strategy": true,
+  "factory_may_edit_strategy_note": "May qa-retro-analyst fold",
+  "supported_capabilities": [
+    "",
+    "",
+    "",
+    ""
+  ],
+  "profiles": [
+    {
+      "profile_id": "",
+      "revision": "",
+      "selected": true,
+      "adapter_id": "",
+      "adapter_version": "",
+      "roots": {
+        "test": ""
+      },
+      "capabilities": [
+        ""
+      ],
+      "dependency_ids": [
+        "",
+        ""
+      ],
+      "execution_prerequisites": {
+        "runtime": "",
+        "package_manager": "",
+        "dependency_state": "",
+        "hook_executables": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "commands": {
+        "one_test": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "suite": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "quiet": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "collect": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "lint": {
+          "argv": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "format": {
+          "argv": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        }
+      },
+      "selectors": {
+        "kind": "",
+        "verified": true,
+        "expression": "",
+        "note": "markers are registered"
+      },
+      "reporter": {
+        "kind": "",
+        "verified": true,
+        "report_path": "",
+        "note": "run_suite.py supplies --junitxml"
+      },
+      "quality_gates": {
+        "lint": {
+          "command": "",
+          "quality_kind": "",
+          "runs_tests": false
+        },
+        "format": {
+          "command": "",
+          "quality_kind": "",
+          "runs_tests": false
+        }
+      },
+      "extensions": {
+        "schema_version": ""
+      },
+      "conventions_refs": [
+        "",
+        "",
+        ""
+      ],
+      "environment_refs": [
+        "",
+        ""
+      ],
+      "data_refs": [
+        "",
+        ""
+      ],
+      "ownership_refs": [
+        ""
+      ]
+    },
+    {
+      "profile_id": "",
+      "revision": "",
+      "selected": true,
+      "adapter_id": "",
+      "adapter_version": "",
+      "roots": {
+        "test": ""
+      },
+      "capabilities": [
+        ""
+      ],
+      "dependency_ids": [
+        "",
+        "",
+        ""
+      ],
+      "execution_prerequisites": {
+        "runtime": "",
+        "package_manager": "",
+        "dependency_state": "",
+        "hook_executables": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "commands": {
+        "one_test": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "suite": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "quiet": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "collect": {
+          "argv": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "lint": {
+          "argv": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        },
+        "format": {
+          "argv": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "cwd": "",
+          "kind": "",
+          "scope": ""
+        }
+      },
+      "selectors": {
+        "kind": "",
+        "verified": true,
+        "expression": "",
+        "note": "ui marker on"
+      },
+      "reporter": {
+        "kind": "",
+        "verified": true,
+        "report_path": "",
+        "note": "run_suite.py supplies --junitxml"
+      },
+      "quality_gates": {
+        "lint": {
+          "command": "",
+          "quality_kind": "",
+          "runs_tests": false
+        },
+        "format": {
+          "command": "",
+          "quality_kind": "",
+          "runs_tests": false
+        }
+      },
+      "extensions": {
+        "schema_version": ""
+      },
+      "conventions_refs": [
+        "",
+        "",
+        ""
+      ],
+      "environment_refs": [
+        "",
+        ""
+      ],
+      "data_refs": [
+        "",
+        ""
+      ],
+      "ownership_refs": [
+        ""
+      ]
+    }
+  ],
+  "profiles_note": "Extensible execution contours.",
+  "implementation_repos": [
+    {
+      "repo_id": "",
+      "role": "",
+      "local_path": "",
+      "remote_identity": "",
+      "source_ref": "",
+      "source_sha": "",
+      "execution_profile_id": "",
+      "write_target": false,
+      "review_scope": "",
+      "readiness_evidence": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "repo_id": "",
+      "role": "",
+      "local_path": "",
+      "remote_identity": "",
+      "source_ref": "",
+      "source_sha": "",
+      "execution_profile_id": "",
+      "write_target": false,
+      "review_scope": "",
+      "readiness_evidence": [
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "implementation_repos_note": "One record per",
+  "adapter_capabilities": {
+    "pytest": [
+      "",
+      ""
+    ],
+    "pytest-playwright": [
+      ""
+    ],
+    "vitest": [
+      ""
+    ]
+  },
+  "adapter_capabilities_note": "Verified capability matrix",
+  "managed_dependencies": [
+    {
+      "dependency_id": "",
+      "upstream_source": "",
+      "exact_version_or_revision": "",
+      "integrity": null,
+      "location": "",
+      "executable": "",
+      "capability": "",
+      "consumer": "",
+      "owner": "",
+      "status": "",
+      "probe_evidence": ""
+    },
+    {
+      "dependency_id": "",
+      "upstream_source": "",
+      "exact_version_or_revision": "",
+      "integrity": null,
+      "location": "",
+      "executable": "",
+      "capability": "",
+      "consumer": "",
+      "owner": "",
+      "status": "",
+      "probe_evidence": ""
+    },
+    {
+      "dependency_id": "",
+      "upstream_source": "",
+      "exact_version_or_revision": "",
+      "integrity": null,
+      "location": "",
+      "executable": null,
+      "capability": "",
+      "consumer": "",
+      "owner": "",
+      "status": "",
+      "probe_evidence": ""
+    },
+    {
+      "dependency_id": "",
+      "upstream_source": "",
+      "exact_version_or_revision": "",
+      "integrity": null,
+      "location": "",
+      "executable": "",
+      "capability": "",
+      "consumer": "",
+      "owner": "",
+      "status": "",
+      "probe_evidence": ""
+    }
+  ],
+  "managed_dependencies_note": "On-demand catalogue only;"
+}

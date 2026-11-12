@@ -1,0 +1,111 @@
+# S3: the stage critic (qa-case-critic) hands its verdict on the plan back - to the test strategist for a repair round, or on to
+# S4. The same file serves both: `header.verdict` decides which (`ok` closes the stage, `concerns` sends it back; the table
+# that maps the word to the stage acceptance record is `vocabulary.stage_acceptance_verdicts`).
+#
+# What code reads here is DATA: the verdict word, the section `stage_acceptance` (failure_class, quote, witness_paths), the
+# places the critic did not look, the advice file it read. What the verdict MEANS is the critic's (spec t-1765 X2-1); the driver
+# records it with `stage_done.py --acceptance` and the strategist is sent back with this file and the artifact only.
+# Fill: write your fields as "path: value" lines to work/handoffs/S3-qa-case-critic-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s3-stage-critic-to-strategist
+stage: S3
+from_role: qa-case-critic
+to_role: qa-test-strategist          # on `ok` the same file closes S3 instead
+
+inputs:
+  - path: work/handoffs/<the strategist's dispatch>.yaml
+    what: the strategist's handoff for this stage, with its `tried` table
+    required: true
+  - path: work/test-plan.json
+    what: the plan under review
+    required: true
+  - path: test-plan.md
+    what: the plan as the person reads it
+    required: true
+  - path: work/requirements-register.md
+    what: the register the plan is read against
+    required: true
+  - path: work/advice-S3.json
+    what: what the stage's advisers printed (absent on a first run: say so in `advice_read`)
+    required: false
+
+inputs_read:
+  - path: work/handoffs/S3-qa-test-strategist-1.yaml
+    version: d44b3626ab87eab8
+  - path: work/test-plan.json
+    version: d5f5ecb85c8dcaae
+  - path: test-plan.md
+    version: a168b9f896129360
+  - path: work/requirements-register.md
+    version: 58081e5119e9cdda
+  - path: work/advice-S3.json
+    version: 852d5fb4b076b6d1
+
+required_when:
+  concerns: [stage_acceptance, questions]
+
+header:
+  role: qa-case-critic
+  stage: S3
+  window: LOCAL-1
+  verdict: ok
+
+# Owed on `concerns` (see `required_when`): the failure class and a verbatim quote (path#anchor, at most 300 characters).
+stage_acceptance:
+  failure_class: <spec|capability|data|tooling>
+  quote: "<the artifact's own words, with path#anchor>"
+  witness_paths:
+    - <task-relative path the verdict rests on, or omit when the acceptor cited no evidence paths>
+
+scope:
+  - id: TS-1..TS-20
+    state: approved
+    reason: every R-1..R-14 reaches a row; tried table covers risky R-4,R-7,R-10,R-12,R-14
+
+findings:
+  - id: <F-n>
+    where: <the plan row or requirement id>
+    problem: <what is wrong, one sentence>
+    expected: "<what the reviewer expects to see instead, concretely>"
+    fix: <what to do, one sentence>
+    check: <what shows the author it is satisfied, or a dash when nothing does>
+    blocking: <true|false>
+
+# One row per place the brief named and the critic did not look, with the reason; an empty list means everything named was looked at.
+not_looked:
+  - where: work/test-plan.json request_homes rows beyond the first four
+    why: read the first entries and the count of homes only; the rest were not compared against flow-requests.json one by one
+
+advice_read: "work/advice-S3.json: read, no records, nothing to weigh"
+advice_rejected:
+  - script: <the adviser>
+    why: "<one sentence: why its remark is not a defect>"
+
+# A question about the story's INTENT that no file settles (spec X2-6); the driver raises it into the register.
+questions: []   # person's repair (arm B 02:52): the critic asked nothing; the skeleton's template row was read as a question
+
+claims:
+  every_named_input_was_read: true
+  every_reject_carries_a_quote: true
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[0].version
+    source: "sha256 of work/handoffs/S3-qa-test-strategist-1.yaml"
+  - field: inputs_read[1].version
+    source: "sha256 of work/test-plan.json"
+  - field: inputs_read[2].version
+    source: "sha256 of test-plan.md"
+  - field: inputs_read[3].version
+    source: "sha256 of work/requirements-register.md"
+  - field: inputs_read[4].version
+    source: "sha256 of work/advice-S3.json"

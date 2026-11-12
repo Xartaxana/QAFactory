@@ -1,0 +1,14 @@
+{
+  "note": "How a host hands a subagent's final report back, and how it records that the worker ended, as data (AR-1, AR-5). Read through the ONE reader `host_adapter.report_forms()`, never through a name in code: by the context-delivery probe (`host_probe._assistant_texts`) and by the dispatch liveness (`dispatch_liveness`, with `worker_lifecycle.active_binding` asking the same question). `claude.handback_tool` is the tool call Claude Code returns a subagent's report with; it is matched EXACTLY, and its input strings are the child's words. `claude.handback_ack` is the host's own `tool_result` row that acknowledges that call: the field `success` of the result's JSON content equals `true` (same type, not the word). A child whose transcript ENDS with that call and its acknowledgement has handed back; a child resumed after one is not returned. `claude.finished_marker` is the sidecar file the host keeps beside a transcript (the transcript's name with `file_suffix` in place of its extension) and the field in it: `false` is the host's own `not finished` and always holds a return back; `true` is evidence only, and an absent file or field says nothing (older hosts write none). `claude.not_a_person_turn` says which `user` rows of the main transcript are NOT the person speaking, read by the cost capture (`cost_capture.user_line_kind`): a row with any of the `flags` set (a host meta line, a compaction summary) is not a turn, and a row whose text starts with one of the `notification_prefixes` is a background task reporting back, never the person's answer; a tool result is never a turn (it is told by its content block, not by data). `codex.completion_event` is the name of the Codex rollout event that ends a turn. A host whose rows cannot be read gives no forms for that host, and its callers then answer as they did before the rows existed. `launch_id_keys` is the one row that belongs to no host: the keys of the host's answer to the `Agent` call that carry the launch id, in priority order (the first non-empty one wins). `agentId` is the key Claude Code 2.1.309 answers with, background and foreground alike; `agent_id` and `id` keep the older records readable. It is read ONLY through `host_adapter.launch_id_of()` (`host_dispatch.record`, `agent_autobind`); a missing or malformed row is a refusal that names this file, never a default.",
+  "launch_id_keys": ["agentId", "agent_id", "id"],
+  "claude": {
+    "handback_tool": "SubagentHandback",
+    "handback_ack": {"field": "success", "value": true},
+    "finished_marker": {"file_suffix": ".meta.json", "field": "finished"},
+    "not_a_person_turn": {"flags": ["isMeta", "isCompactSummary"], "notification_prefixes": ["<task-notification>"]},
+    "person_question_tools": ["AskUserQuestion"]
+  },
+  "codex": {
+    "completion_event": "task_complete"
+  }
+}

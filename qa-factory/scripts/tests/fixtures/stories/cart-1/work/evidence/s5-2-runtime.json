@@ -1,0 +1,16 @@
+{
+ "profile_id": "web",
+ "timestamp": "2026-10-31T01:57:58Z",
+ "environment_id": "local",
+ "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+ "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+ "result": "matched",
+ "evidence_refs": [
+  "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+ ],
+ "provenance": {
+  "technical_verification": true,
+  "source_linkage": "exact",
+  "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ }
+}

@@ -1,0 +1,166 @@
+# S6 -> S7: the run is handed to the failure analyst.
+#
+# The analyst gives every failure a verdict with evidence, so what it needs is not the summary but
+# the join: which row, which instance, which artifact, on which build. A row the reducer could not
+# join to a manifest instance decided `execution_status` for a whole story once, and nothing said
+# it was a ghost - so this file names the ghosts too, and says which rerun superseded them.
+#
+# `env_blocked` rows carry a remedy and the `env_probe` line that failed. A blocked row with no
+# remedy is refused by `validate_artifacts.py`, and rightly: "the stand is wrong" with nothing to
+# do about it is not a finding, it is a shrug.
+schema_version: 1
+contract: s6-runner-to-analyst
+stage: S6
+from_role: qa-runner
+to_role: qa-failure-analyst
+
+inputs:
+  - path: work/handoffs/S6-qa-runner-4.yaml
+    what: this file
+    required: true
+  - path: work/run-report.json
+    what: the whole-story report, reduced by finalize_task.py and never hand-written
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances the rows join to, with their cases and obligations
+    required: true
+  - path: work/evidence/
+    what: the artifact behind every row - logs, screenshots, manual observations
+    required: true
+  - path: test-plan.md
+    what: each row's oracle
+    required: true
+
+inputs_read:
+  - path: work/automation-manifest.json
+    version: S5 windows 1-3
+    instances_handed: 5
+  - path: work/handoffs/S6-qa-runner-3.yaml
+    version: S6 manual windows 1-3 (TC-006..TC-012)
+    manual_cases_handed: 7
+  - path: evidence/runtime-provenance-api-20261027T023813Z.json
+    version: runtime provenance of profile api
+
+header:
+  role: qa-runner
+  stage: S6
+  window: TC-001,TC-002,TC-003,TC-004,TC-005
+  verdict: concerns
+
+run:
+  execution_status: passed
+  report: work/run-report.json
+  witness: qa-factory/artifacts/TP1-14857/evidence/runs/1a6f06f97370911e601c/repair_verify-1a6f06f97370911e601c-20261027-014410.json exit 0 1 passed
+  environment: local-docker
+  application_build: backend main as confirmed by the person (no version endpoint); runtime provenance matched for profile api
+  probe_before: evidence/runtime-provenance-api-20261027T023304Z.json
+  probe_after: evidence/runtime-provenance-api-20261027T023813Z.json
+  totals: "{\"error\": 9, \"failed\": 10, \"passed\": 12}"
+  # The reduced report counts every attempt the story ever made: on TP1-13797 `totals` read
+  # 69 not_run beside a current window of 20 rows. The next role is answering about THIS window,
+  # so the window's own numbers travel beside the story's.
+  window_totals: "{\"passed\": 5}"
+
+# One row per item executed or deliberately not executed. `state` from vocabulary.row_states:
+# passed, failed, error, skipped, not_run, passed_green (a reused receipt), inconclusive,
+# manual_skipped, env_blocked, broken_run, timeout.
+scope:
+  - id: TC-001
+    state: passed
+    reason: manual full reindex moves last_reindex_triggered_at; fresh run exit 0
+    case: TC-001
+    obligations: "OB-1-1,OB-1-2"
+    executed: fresh
+    rerun_reason: "run_suite did not answer reused; a fresh 5-test run was launched (provenance or fingerprint moved)"
+    evidence: evidence/runs/0117fd1eee7d97890142/repair_verify-0117fd1eee7d97890142-20261027-033451.json
+    duration: "196"
+  - id: TC-002
+    state: passed
+    reason: stamp visible during reindex and kept on completion; fresh run exit 0
+    case: TC-002
+    obligations: "OB-2-1"
+    executed: fresh
+    rerun_reason: "same fresh run as TC-001"
+    evidence: evidence/runs/0117fd1eee7d97890142/repair_verify-0117fd1eee7d97890142-20261027-033451.json
+    duration: "196"
+  - id: TC-003
+    state: passed
+    reason: two cache unrounded leave the later stamp; fresh run exit 0
+    case: TC-003
+    obligations: "OB-3-1"
+    executed: fresh
+    rerun_reason: "same fresh run as TC-001"
+    evidence: evidence/runs/0117fd1eee7d97890142/repair_verify-0117fd1eee7d97890142-20261027-033451.json
+    duration: "196"
+  - id: TC-004
+    state: passed
+    reason: datasource edit after reindex keeps the stamp; fresh run exit 0
+    case: TC-004
+    obligations: "OB-4-1"
+    executed: fresh
+    rerun_reason: "same fresh run as TC-001"
+    evidence: evidence/runs/0117fd1eee7d97890142/repair_verify-0117fd1eee7d97890142-20261027-033451.json
+    duration: "196"
+  - id: TC-005
+    state: passed
+    reason: git FAQ full reindex moves the stamp; fresh run exit 0
+    case: TC-005
+    obligations: "OB-5-1"
+    executed: fresh
+    rerun_reason: "same fresh run as TC-001"
+    evidence: evidence/runs/0117fd1eee7d97890142/repair_verify-0117fd1eee7d97890142-20261027-033451.json
+    duration: "196"
+
+# Manual-agent observations, compared with the Then as the case quoted it. This is the section
+# that makes `inconclusive` an answer instead of an improvisation.
+manual_observations:
+  - case: TC-006..TC-012
+    then: "open oracles OQ-3..OQ-9 / Q1..Q7; no expected value confirmed"
+    observed: "Manual probes TC-006..TC-012 hold raw captures only (work/evidence/manual/<case>/a1/) and are reported in S6-qa-runner-1, -2 and -3 forms; manual_checks in run-report.json is empty because manual_evidence.py prepare refuses each case (expectation unconfirmed). TC-006, TC-011, TC-012 inconclusive; TC-007, TC-008, TC-009, TC-010 env_blocked or not observable."
+    before_change: "not_recorded"
+    result: manual_skipped
+    evidence: work/evidence/manual/TC-006/a1/014-request-response.json
+    why_inconclusive: "Expectations are open owner questions; no record can be built until they are answered."
+
+# Rows blocked by the stand. Every one names the remedy - names only, never a value - and the
+# `env_probe.py` line that failed.
+env_blocked:
+  - id: TC-010
+    probe_line: "manual_capture.py ui: config.json has no profile e2e-ui whose command runs pytest"
+    remedy: "add a profiles[] entry with profile_id e2e-ui and a command such as poetry run pytest to qa-factory/config.json"
+    owner: user
+
+# Rows that exist in the report but are not evidence about this story: a ghost the reducer could
+# not join, superseded by a rerun under the real instance ids.
+superseded: []
+
+claims:
+  every_row_carries_an_evidence_path: true
+  every_blocked_row_names_a_remedy_and_the_probe_line: true
+  every_rerun_names_the_fingerprint_that_moved: false
+  no_comparison_was_fabricated_where_before_evidence_is_missing: true
+  handed_and_manual_human_cases_are_absent_by_design: true
+  the_report_was_reduced_by_code_not_written: true
+
+expected_of_the_receiver:
+  - "triage every `failed`, every `error`, and every `inconclusive` - an inconclusive check has
+     an owner and a next step and never reaches gate B untouched"
+  - "a red instance carrying `contradicts_requirement` is an APP_BUG by construction; the
+     expectation is never adjusted to the code"
+  - "a FLAKY verdict needs three isolated reruns of that one test and a named mechanism"
+
+unresolved: []
+
+blocked: {}
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: run.execution_status
+    source: "run-report.execution_status"
+  - field: run.witness
+    source: "automation-manifest.run_witness"
+  - field: run.totals
+    source: "run-report.totals"
+  - field: run.window_totals
+    source: "run-report.current_totals"

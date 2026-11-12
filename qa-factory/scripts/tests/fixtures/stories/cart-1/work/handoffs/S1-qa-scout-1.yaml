@@ -1,0 +1,145 @@
+# S1 -> S2: the scout hands the story's ground to the requirements tester.
+#
+# This is the handoff that cost the most on REF-1, and it cost it silently. The tester
+# received `impl-diff.txt` in its prompt, was told to slice it (Grep first), never opened the rest
+# of the hunks, and the register came back with 14 requirements where a full read gives 21. Nobody
+# refused anything: the four missing requirements simply were not there, and only a comparison
+# against another run found them.
+#
+# So this file does two things a path in a prompt cannot. It states the SIZE of what it hands over
+# - files and hunks, counted - so the tester's own handoff can answer `21 of 21` and the exit gate
+# can check it. And it states what the scout decided about every source, with the person's words on
+# the gaps, so the register knows which sources it is allowed to be silent about.
+# Fill: write your fields as "path: value" lines to work/handoffs/S1-qa-scout-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S1-qa-scout-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s1-scout-to-tester
+stage: S1
+from_role: qa-scout
+to_role: qa-requirements-tester
+
+inputs:
+  - path: work/handoffs/S1-qa-scout-1.yaml
+    what: this file
+    required: true
+  - path: work/context-bundle.json
+    what: the versioned sources, bounded search areas, existing test candidates - read FIRST
+    required: true
+  - path: work/context-manifest.json
+    what: referenced detail only; the bundle is the working document
+    required: true
+  - path: work/impl-diff.txt
+    what: the implementation, in full - see `implementation.diff` below for what full means
+    required: true          # absent only when implementation_source is `ungrounded`
+  - path: work/source-inventory.json
+    what: every source with its decision, the person's review and the accepted gaps
+    required: true
+
+header:
+  role: qa-scout
+  stage: S1
+  window: CART-1
+  verdict: concerns
+
+# What the story is grounded in, and how much of it there is. `hunks` is what the next role answers
+# `<read> of <handed>` against; `files` and `production_files` are terminal: they size the change,
+# and no field downstream is measured against them.
+implementation:
+  source: current-code
+  reference: MyBooks main a25b0801669b97d76f96f5a981fdc9ad4525d63d (current code, no diff)
+  diff:
+    path: work/impl-diff.txt
+    files: 0
+    hunks: 0
+    production_files: 0
+    bytes: 0
+  ac_code_conflict:
+    present: false
+    decision: none
+
+# One row per source. `state` from vocabulary.row_states, normally: found, not_found, blocked for
+# an unreachable one, `waived` for a gap the person passed, `subtask_in_progress`.
+scope:
+  - id: SRC-ad1a8a3b1d2d9cd1f90f
+    state: blocked  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: task text person-pasted; Jira CART-1 returns 404 (placeholder key)
+    relation: task
+    relevance: unknown
+    revision: none
+    read: none
+    attachments_inspected: -
+    # What was COLLECTED for this source and where it lies, task-relative: the merge
+    # requests the factory pulled through its own authenticated route, an attachment's
+    # evidence file, text the person pasted. Code fills this from the inventory; a dash
+    # means nothing was collected. The next role reads these the way it reads the diff -
+    # on REF-1 four precedent MRs were collected and named nowhere, and nothing
+    # downstream ever cited them.
+    material_collected: qa-factory/tickets/CART-1.md
+  - id: REF
+    state: not_found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: Jira project URL, no key; stories, cases, bugs left out
+    relation: mention
+    relevance: unknown
+    revision: none
+    read: none
+    attachments_inspected: -
+    # What was COLLECTED for this source and where it lies, task-relative: the merge
+    # requests the factory pulled through its own authenticated route, an attachment's
+    # evidence file, text the person pasted. Code fills this from the inventory; a dash
+    # means nothing was collected. The next role reads these the way it reads the diff -
+    # on REF-1 four precedent MRs were collected and named nowhere, and nothing
+    # downstream ever cited them.
+    material_collected: -
+
+# Sources the person spoke about. Their words are the authority - the check holds only a silent
+# pass, never a person's word, so this section is what lets the register be silent about a gap.
+person:
+  review_recorded: false
+  words: Go on without Jira (Recommended). Same pasted task text as ADD-TO-CART, re-keyed to CART-1; accept the gap. Stand stays local.
+  accepted_gaps:
+    - id: SRC-ad1a8a3b1d2d9cd1f90f
+      words: Go on without Jira (Recommended). Same pasted task text as ADD-TO-CART, re-keyed to CART-1 at the person's choice; accept the gap. Stand stays local.
+  late_sources: []
+
+artifacts:
+  context_bundle: work/context-bundle.json
+  context_manifest: work/context-manifest.json
+  impl_diff: work/impl-diff.txt
+  source_inventory: work/source-inventory.json
+  existing_coverage: "work/context-bundle.json existing_test_candidates: CAND-1 src/lib/cartRules.test.ts (unit, :5-:23), CAND-2 src/lib/validation/schemas.test.ts (unread)"
+
+claims:
+  every_source_carries_a_decision: true
+  every_unavailable_source_carries_the_recorded_words: false
+  diff_is_complete_not_truncated: true  # the whole change, not the first N lines
+  implementation_source_recorded_in_pipeline: false
+  # On REF-1 pipeline.implementation_source stayed `null` for the whole story although the
+  # manifest said `diff`: the S1 exit step that records it never ran, and nothing noticed. A fact
+  # the next stages depend on is a field of the handoff, not a side effect of a command.
+  existing_coverage_search_was_bounded_and_says_so: true  # partial stays partial
+
+# What this handoff REQUIRES of the receiving role, because the receiving role's own file answers
+# it field by field. This is not advice: `s2-tester-to-strategist.inputs_read` has a line for each
+# of these, written by the role as `<read> of <handed>`; no code compares the numbers. Which
+# requirement each hunk implements, or why it bears none, is the S3 grounding table
+# (work/grounding.yaml).
+expected_of_the_receiver:
+  - "read every one of the `hunks` above - a requirement derived from an unread hunk is a
+     requirement nobody wrote (REF-1: 14 of 21)"
+  - "a source this file marks `not_relevant` is not evidence; a source it marks `waived` may be
+     absent from the register, and the register says so"
+
+unresolved:
+  - id: SRC-ad1a8a3b1d2d9cd1f90f
+    reason: handed_to_person
+    detail: acceptance of the Jira 404 task-source gap is recorded by the conductor
+  - id: oracle
+    reason: expectation_unconfirmed
+    detail: only 2 generic ACs; oracle is current code, docs/AUTH.md, openapi summaries
+
+blocked:
+  field: person.words
+  problem: no person review of the sources recorded yet; a role never records a person's word. Sources SRC-ad1a8a3b1d2d9cd1f90f (Jira 404) and REF left out await the conductor's recorded acceptance
+  tried:
+    - "ticket_adapter.py collect CART-1 --relation task: HTTP 404, recorded unavailable"
+  data:
+    - work/source-inventory.json

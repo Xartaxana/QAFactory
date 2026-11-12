@@ -1,0 +1,147 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(?:Agent|Task|SendMessage|Bash|PowerShell|Write|Edit|MultiEdit|NotebookEdit|Read|Grep|Glob|mcp__.*|(?:.*\\.)?(?:collaboration|functions)?(?:apply_patch|exec_command|shell_command|write_stdin|exec|js|shell|local_shell|spawn_agent|send_input|send_message|followup_task|interrupt_agent|close_agent))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py guard_pre_tool.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py guard_pre_tool.py; exit $LASTEXITCODE"
+          }
+        ]
+      },
+      {
+        "matcher": "Agent|Task|SendMessage|.*spawn_agent|.*send_input|.*send_message|.*followup_task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py inject_context.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py inject_context.py; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*apply_patch|Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py validate_artifacts.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py validate_artifacts.py; exit $LASTEXITCODE"
+          }
+        ]
+      },
+      {
+        "matcher": "Agent|.*spawn_agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py host_dispatch.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py host_dispatch.py; exit $LASTEXITCODE"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py cost_capture.py --debounced",
+            "async": true,
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py cost_capture.py --debounced; exit $LASTEXITCODE"
+          }
+        ]
+      },
+      {
+        "matcher": "^(?:Bash|PowerShell|Write|Edit|MultiEdit|NotebookEdit|Agent|(?:.*\\.)?(?:collaboration|functions)?(?:apply_patch|exec_command|shell_command|write_stdin|exec|js|shell|local_shell|spawn_agent))$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py host_probe.py --hook",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py host_probe.py --hook; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py exit_gate.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py exit_gate.py; exit $LASTEXITCODE"
+          },
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py subagent_journal.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py subagent_journal.py; exit $LASTEXITCODE"
+          },
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py cost_capture.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py cost_capture.py; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py cost_capture.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py cost_capture.py; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py precompact_guard.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py precompact_guard.py; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py postcompact_reload.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py postcompact_reload.py; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py postcompact_reload.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py postcompact_reload.py; exit $LASTEXITCODE"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-py.cmd\" telemetry_hook.py native_context.py",
+            "commandWindows": "& \"$env:CLAUDE_PLUGIN_ROOT/hooks/run-py.cmd\" telemetry_hook.py native_context.py; exit $LASTEXITCODE",
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ]
+  }
+}

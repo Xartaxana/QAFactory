@@ -1,0 +1,26 @@
+{
+  "dependency_id": "microsoft-playwright-cli",
+  "upstream_source": "https://github.com/microsoft/playwright-cli",
+  "release_source": "https://github.com/microsoft/playwright-cli/releases/tag/v0.1.20",
+  "exact_version_or_revision": "0.1.20",
+  "package": "@playwright/cli@0.1.20",
+  "capability": "web_authoring",
+  "consumer": "selected web execution profiles only",
+  "owner": "project",
+  "executable": "playwright-cli",
+  "version_argv": ["playwright-cli", "--version"],
+  "install_argv": ["npm", "install", "-g", "@playwright/cli@0.1.20"],
+  "skill_install_argv": ["playwright-cli", "install", "--skills"],
+  "runtime_requirements": {
+    "node": ">=20",
+    "source": "https://github.com/microsoft/playwright/blob/main/docs/src/getting-started-cli.md"
+  },
+  "supported_platforms": {
+    "status": "upstream_not_explicit_for_cli",
+    "note": "QA Factory does not claim a live-tested OS matrix. Verify the selected host and browser runtime during profile activation."
+  },
+  "status": "unknown",
+  "install_policy": "catalogue_only_until_selected_and_explicitly_authorized",
+  "verified_on": "2026-09-17",
+  "notes": "External Microsoft package and upstream skill; never vendored into QA Factory. Browser emulation is not native-app coverage."
+}

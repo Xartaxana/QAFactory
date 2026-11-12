@@ -1,0 +1,12 @@
+{
+ "ticket": "SYN-1",
+ "acceptance_criteria": [
+  {
+   "id": "AC-1",
+   "text": "the cart shows the total"
+  }
+ ],
+ "implementation": {
+  "source": "ungrounded"
+ }
+}

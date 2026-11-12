@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites><testsuite name="jest" errors="0" failures="1" skipped="0" tests="1" time="5.0">
+<testcase classname="suite" name="opens" time="5.0"><failure message="Failed: Timeout (&gt;5s) from jest-junit">x</failure></testcase>
+</testsuite></testsuites>

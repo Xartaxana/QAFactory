@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that a non-numeric quantity is rejected with an error message and nothing is added to the cart.\n\n*Type:* negative  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512250",
+  "key": "REF-5",
+  "labels": [
+    "negative",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14492,
+    "fields_requested": "*all",
+    "sha256": "da4772388001291ea815a8942e7d919e33c1bd07e8c5da1f4511976f5be74dbc",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:10.910+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product with non-numeric quantity",
+  "type": "Test"
+}

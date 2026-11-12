@@ -1,0 +1,744 @@
+{
+  "ticket": "TP1-15045",
+  "parent_feature": {
+    "key": "TP1-14482",
+    "title": "Visual Workflow Diff for Revisions"
+  },
+  "acceptance_criteria": [
+    {
+      "id": "AC-1",
+      "source": "TP1-14482 AC1",
+      "text": "Version History button in the visual editor toolbar opens a popup with a single visual node graph diff for the selected revision; YAML diff is a separate popup from the YAML panel (two entry points, no toggle)"
+    },
+    {
+      "id": "AC-2",
+      "source": "TP1-14482 AC2",
+      "text": "Visual diff modal renders one node graph for the target revision with one set of zoom in/out, fit-view and drag-to-pan controls"
+    },
+    {
+      "id": "AC-3",
+      "source": "TP1-14482 AC3",
+      "text": "Node in target revision but not in the compared version: green border/marker (added)"
+    },
+    {
+      "id": "AC-4",
+      "source": "TP1-14482 AC4",
+      "text": "Node removed vs compared version: shown at former position with red border, REMOVED badge above, strikethrough label"
+    },
+    {
+      "id": "AC-5",
+      "source": "TP1-14482 AC5",
+      "text": "Node in both with differing config: amber/distinct border as modified, without exposing changed values inline"
+    },
+    {
+      "id": "AC-6",
+      "source": "TP1-14482 AC6",
+      "text": "Visual diff is an alternative alongside (not replacing) the textual diff, always compares exactly two revisions, read-only"
+    },
+    {
+      "id": "AC-7",
+      "source": "TP1-14482 AC7",
+      "text": "Restoring a version from YAML or Visual popup triggers Save-equivalent validation in background on restored content; issues inline; restore not reverted; nothing persisted"
+    },
+    {
+      "id": "TR-1",
+      "source": "TP1-14482 Technical Requirements",
+      "text": "POST /v1/workflows/{workflow_id}/validate runs the complete pre-persist pipeline (MCP access control, autonomous-mode guard, executor validation, guardrail existence/project/permission); 200 with advisory warnings or same structured errors as update"
+    },
+    {
+      "id": "TR-2",
+      "source": "TP1-14482 Technical Requirements",
+      "text": "Validate endpoint performs no database write (full dry-run)"
+    },
+    {
+      "id": "TR-3",
+      "source": "TP1-15045 scope items 13/14 (derived)",
+      "text": "Access, not-found and malformed-config handling of validate matches update (403/404/400)"
+    },
+    {
+      "id": "REG-1",
+      "source": "TP1-15045 scope item 15; TP1-8827",
+      "text": "Existing workflow versioning / text diff behaviour is not regressed"
+    }
+  ],
+  "implementation": {
+    "repo": "testproject1-backend",
+    "repo_id": "testproject1-backend",
+    "local_path": "../../testproject1",
+    "source": "diff",
+    "mr": "4214",
+    "branch": "TP1-14482_visual-workflow-diff",
+    "commit": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+    "source_sha": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+    "diff_path": "artifacts/TP1-15045/work/impl-diff-testproject1-backend.txt"
+  },
+  "implementations": [
+    {
+      "repo": "testproject1-backend",
+      "repo_id": "testproject1-backend",
+      "local_path": "../../testproject1",
+      "source": "diff",
+      "mr": "4214",
+      "branch": "TP1-14482_visual-workflow-diff",
+      "commit": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+      "source_sha": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+      "diff_path": "artifacts/TP1-15045/work/impl-diff-testproject1-backend.txt"
+    },
+    {
+      "repo": "testproject1-ui",
+      "repo_id": "testproject1-ui",
+      "local_path": "../../testproject1-ui",
+      "source": "diff",
+      "mr": "1881",
+      "branch": "TP1-14482_visual-workflow-diff",
+      "commit": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "source_sha": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "diff_path": "artifacts/TP1-15045/work/impl-diff-testproject1-ui.txt"
+    }
+  ],
+  "implementation_source": "diff",
+  "observables": [
+    {
+      "requirement": "AC-1",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/editor/EditorActions.tsx",
+      "line": 130,
+      "repo": "testproject1-ui",
+      "note": "Version History button in editor toolbar opens visual popup (onShowVisualVersionHistory)"
+    },
+    {
+      "requirement": "AC-1",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/EditWorkflowPage.tsx",
+      "line": 243,
+      "repo": "testproject1-ui",
+      "note": "WorkflowVisualVersionHistoryPopup mounted; YAML popup is separate at :235"
+    },
+    {
+      "requirement": "AC-1",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/components/WorkflowVersionHistoryPopup.tsx",
+      "line": 55,
+      "repo": "testproject1-ui",
+      "note": "YAML popup stays a separate entry point (VersionHistoryDiffView)"
+    },
+    {
+      "requirement": "AC-2",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/components/WorkflowVisualVersionHistoryPopup.tsx",
+      "line": 62,
+      "repo": "testproject1-ui",
+      "note": "prepareVisualDiffCanvas(selectedEntry.yaml_config, currentEditorYaml): selected revision vs CURRENT EDITOR YAML, not two picked revisions"
+    },
+    {
+      "requirement": "AC-2",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/editor/DiffCanvasControls.tsx",
+      "line": 103,
+      "repo": "testproject1-ui",
+      "note": "zoom in :103, fit view :106, zoom out (same component)"
+    },
+    {
+      "requirement": "AC-2",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/components/WorkflowVisualDiffView.tsx",
+      "line": 98,
+      "repo": "testproject1-ui",
+      "note": "panOnDrag"
+    },
+    {
+      "requirement": "AC-3",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/editor/nodes/diffChromeContext.ts",
+      "line": 22,
+      "repo": "testproject1-ui",
+      "note": "added -> '!border-success-primary'; badge labels :45-48"
+    },
+    {
+      "requirement": "AC-3",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/utils/workflowEditor/diffWorkflowGraphClassify.ts",
+      "line": 98,
+      "repo": "testproject1-ui",
+      "note": "node only in target -> status 'added'"
+    },
+    {
+      "requirement": "AC-4",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/utils/workflowEditor/diffWorkflowGraphClassify.ts",
+      "line": 100,
+      "repo": "testproject1-ui",
+      "note": "node only in baseline -> 'removed'"
+    },
+    {
+      "requirement": "AC-4",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/utils/workflowEditor/buildVisualDiffGraph.ts",
+      "line": 130,
+      "repo": "testproject1-ui",
+      "note": "removed node position = baselineMeta?.position ?? {x:0,y:0}"
+    },
+    {
+      "requirement": "AC-4",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/editor/nodes/diffChromeContext.ts",
+      "line": 23,
+      "repo": "testproject1-ui",
+      "note": "removed -> '!border-failed-secondary'"
+    },
+    {
+      "requirement": "AC-4",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/editor/nodes/DiffNodeWrapper.tsx",
+      "line": 77,
+      "repo": "testproject1-ui",
+      "note": "line-through on node label; badge span :63-71"
+    },
+    {
+      "requirement": "AC-5",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/editor/nodes/diffChromeContext.ts",
+      "line": 24,
+      "repo": "testproject1-ui",
+      "note": "modified -> '!border-aborted-primary' (amber token); badge MODIFIED :48"
+    },
+    {
+      "requirement": "AC-5",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/utils/workflowEditor/diffWorkflowGraphClassify.ts",
+      "line": 104,
+      "repo": "testproject1-ui",
+      "note": "config differs -> 'modified'; :124-125 a new state referencing a changed actor stays added"
+    },
+    {
+      "requirement": "AC-6",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/components/WorkflowVersionHistoryPopup.tsx",
+      "line": 55,
+      "repo": "testproject1-ui",
+      "note": "existing textual diff retained; TextDiffView.tsx and VersionHistoryDiffView.tsx touched by MR (regression surface)"
+    },
+    {
+      "requirement": "AC-6",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/components/WorkflowVisualDiffView.tsx",
+      "line": 94,
+      "repo": "testproject1-ui",
+      "note": "nodesDraggable={false} :94, elementsSelectable={false} :96 (read-only)"
+    },
+    {
+      "requirement": "AC-7",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/useWorkflowHistoryRestore.ts",
+      "line": 82,
+      "repo": "testproject1-ui",
+      "note": "restore -> validateWorkflow(workflowId, {...formValues, yaml_config}, ERROR_FORMAT_JSON); 400 with parsedError -> applyWorkflowBackendValidationError"
+    },
+    {
+      "requirement": "AC-7",
+      "kind": "api",
+      "source": "diff",
+      "path": "src/store/workflows.ts",
+      "line": 338,
+      "repo": "testproject1-ui",
+      "note": "POST v1/workflows/{id}/validate?error_format=json"
+    },
+    {
+      "requirement": "AC-7",
+      "kind": "ui",
+      "source": "diff",
+      "path": "src/pages/workflows/components/WorkflowVisualVersionHistoryPopup.tsx",
+      "line": 107,
+      "repo": "testproject1-ui",
+      "note": "canRestore = yaml_config != null only; no write-permission gate (MR 1881 review note flags it)"
+    },
+    {
+      "requirement": "TR-1",
+      "kind": "api",
+      "source": "diff",
+      "path": "src/testproject1/rest_api/routers/workflow.py",
+      "line": 575,
+      "repo": "testproject1-backend",
+      "note": "POST /workflows/{workflow_id}/validate, 200, ValidateWorkflowResponse"
+    },
+    {
+      "requirement": "TR-1",
+      "kind": "api",
+      "source": "diff",
+      "path": "src/testproject1/rest_api/routers/workflow.py",
+      "line": 103,
+      "repo": "testproject1-backend",
+      "note": "_run_pre_persist_update_validation shared: guardrail dry_run :112-119, MCP :130, autonomous guard :132-138, executor validate_for_update :139"
+    },
+    {
+      "requirement": "TR-1",
+      "kind": "api",
+      "source": "diff",
+      "path": "src/testproject1/rest_api/routers/workflow.py",
+      "line": 532,
+      "repo": "testproject1-backend",
+      "note": "update_workflow calls the same helper (parity requirement)"
+    },
+    {
+      "requirement": "TR-2",
+      "kind": "db",
+      "source": "diff",
+      "path": "src/testproject1/rest_api/routers/workflow.py",
+      "line": 581,
+      "repo": "testproject1-backend",
+      "note": "validate_workflow never calls workflow_service.update_workflow (compare :536); guardrail sync dry_run=True :118"
+    },
+    {
+      "requirement": "TR-3",
+      "kind": "api",
+      "source": "diff",
+      "path": "src/testproject1/rest_api/routers/workflow.py",
+      "line": 595,
+      "repo": "testproject1-backend",
+      "note": "validate: project_access_check :595, WRITE ability 403 :597-598, malformed config 400 :600-609, not found 404 :589-593"
+    }
+  ],
+  "related": [
+    {
+      "key": "TP1-14482",
+      "kind": "implementation",
+      "source": "parent of TP1-15045"
+    },
+    {
+      "key": "TP1-8827",
+      "kind": "mention",
+      "source": "named in TP1-14482 description (text diff baseline)"
+    }
+  ],
+  "subtasks": [],
+  "existing_tests": [
+    "C-UI-restore-validate",
+    "C-UI-visual-popup",
+    "C-UI-diffnode",
+    "C-UI-diffcontrols",
+    "C-UI-visualdiffview",
+    "C-UI-editoractions",
+    "C-BE-validate",
+    "C-BE-guardrail-dry-run",
+    "C-H-8827-api",
+    "C-H-8827-ui",
+    "C-H-edit-history",
+    "C-UI-1924-factory"
+  ],
+  "test_path": {
+    "layers": "api: pytest marker api via SDK + tests/utils/*_utils.py; ui: pytest-playwright POM under tests/ui/pageobject/workflows",
+    "fixtures": "tests/ui/workflows/conftest.py::test_workflow; tests/conftest.py client",
+    "page_objects": "testproject1_test_harness/tests/ui/pageobject/workflows/{edit_workflow_page,workflow_version_history_popup,workflow_config_panel}.py; no visual-diff page object",
+    "data": "tests/test_data/ and tests/ui/test_data/workflows_test_data.py",
+    "fit": "visual-diff and validate have no harness case: new files plus an SDK method, or extend tests/workflow/test_workflow_version_history.py"
+  },
+  "area_bugs": [],
+  "conflicts": [
+    {
+      "id": "F-ac6-two-revisions",
+      "quotes": [
+        "AC6: 'always compares exactly two revisions at a time'",
+        "code: prepareVisualDiffCanvas(selectedEntry.yaml_config ?? '', currentEditorYaml)"
+      ],
+      "path": "src/pages/workflows/components/WorkflowVisualVersionHistoryPopup.tsx",
+      "line": 62
+    }
+  ],
+  "environment": "localhost",
+  "stand_facts": {
+    "api": "localhost:8080 /v1/config 200; openapi lists /v1/workflows/{workflow_id}/validate; unauthenticated POST 401",
+    "backend_checkout_head": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+    "note": "UI build of MR 1881 on the local stand not verified"
+  },
+  "requirement_sources": [
+    {
+      "source_id": "SRC-ca56bd10fb494da41f68",
+      "relation": "task",
+      "ref": "TP1-15045",
+      "revision": "2026-09-18T08:23:41.338+0000",
+      "status": "read",
+      "evidence_ref": "work/source-inventory.json"
+    },
+    {
+      "source_id": "SRC-10736937983fb5fc140e",
+      "relation": "parent",
+      "ref": "TP1-14482",
+      "revision": "2026-09-18T08:17:35.665+0000",
+      "status": "read",
+      "evidence_ref": "work/source-inventory.json"
+    },
+    {
+      "source_id": "SRC-17834d1ee493f8b48161",
+      "relation": "normative",
+      "ref": "TP1-8827",
+      "revision": "jira-2026-09-20",
+      "status": "read",
+      "evidence_ref": "work/source-inventory.json"
+    },
+    {
+      "source_id": "MR-be-4214",
+      "relation": "technical",
+      "ref": "testproject1!4214",
+      "revision": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+      "status": "read",
+      "evidence_ref": "work/mr-testproject1_-_merge_requests_4214.json"
+    },
+    {
+      "source_id": "MR-ui-1881",
+      "relation": "technical",
+      "ref": "testproject1-ui!1881",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "status": "read",
+      "evidence_ref": "work/mr-testproject1-ui_-_merge_requests_1881.json"
+    },
+    {
+      "source_id": "MR-ui-1924",
+      "relation": "referenced",
+      "ref": "testproject1-ui!1924 (draft QA-evaluation test MR, not a product change)",
+      "revision": "135699ae2c182eccd49ba6c66f469fc1c55359f1",
+      "status": "read",
+      "evidence_ref": "work/mr-testproject1-ui_-_merge_requests_1924.json"
+    },
+    {
+      "source_id": "EXT-sharepoint-demo",
+      "relation": "referenced",
+      "ref": "SharePoint demo video for TP1-14482",
+      "revision": "unknown",
+      "status": "unavailable",
+      "evidence_ref": "work/source-inventory.json"
+    },
+    {
+      "source_id": "EXT-gh-docs-387",
+      "relation": "referenced",
+      "ref": "github testproject1-ai/docs PR 387 (user-guide docs for version history)",
+      "revision": "87875ba0e9de1dc8441455833943269bd082564f",
+      "status": "read",
+      "evidence_ref": "work/gh-docs-pr387.json"
+    }
+  ],
+  "coverage_search": [
+    {
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "changed_area": "workflow visual diff / version history / restore-validate (src/pages/workflows, src/utils/workflowEditor, src/store/workflows.ts)",
+      "searched_paths": [
+        "src/**/__tests__/** in MR 1881 diff",
+        "src/pages/workflows/__tests__/EditWorkflowPage.versionHistory.test.tsx"
+      ],
+      "status": "partial",
+      "reason": "GitLab collapsed the diff of several files (store, utils/workflowEditor and their tests); their assertions were not read"
+    },
+    {
+      "repo": "testproject1-backend",
+      "revision": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+      "changed_area": "POST /workflows/{id}/validate, _run_pre_persist_update_validation, GuardrailService dry_run",
+      "searched_paths": [
+        "tests/testproject1/rest_api/routers/test_workflow.py",
+        "tests/testproject1/service/guardrail/test_guardrail_service.py"
+      ],
+      "status": "complete",
+      "reason": "grep of def test_.*validate / dry_run / assert_not_called on branch head; positive control: it lists 10+ validate tests"
+    },
+    {
+      "repo": "tests",
+      "revision": "9a6a1a7927ed2e41b66765f28581e864b468a2bb",
+      "changed_area": "workflow version history (harness)",
+      "searched_paths": [
+        "testproject1_test_harness/tests/workflow/test_workflow_version_history.py",
+        "testproject1_test_harness/tests/ui/workflows/test_workflow_version_history.py",
+        "testproject1_test_harness/tests/ui/pageobject/workflows/workflow_version_history_popup.py",
+        "../sdk/testproject1-python/src/testproject1_sdk/services/workflow.py"
+      ],
+      "status": "partial",
+      "reason": "No visual-diff or validate coverage found in harness; SDK has no validate method. Test bodies not read line by line; no TMS/test-cases store configured"
+    }
+  ],
+  "existing_test_candidates": [
+    {
+      "candidate_id": "C-UI-restore-validate",
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "path": "src/pages/workflows/__tests__/EditWorkflowPage.versionHistory.test.tsx",
+      "selector": "it: calls validateWorkflow after restore (:259); opens issues panel when validateWorkflow returns 400 (:273); does not open issues panel or PUT on 200 validate (:312)",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-7"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-UI-visual-popup",
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "path": "src/pages/workflows/components/__tests__/WorkflowVisualVersionHistoryPopup.test.tsx",
+      "selector": "whole file",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-1",
+        "AC-2"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-UI-diffnode",
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "path": "src/pages/workflows/editor/nodes/__tests__/DiffNodeWrapper.test.tsx",
+      "selector": "whole file",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-3",
+        "AC-4",
+        "AC-5"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-UI-diffcontrols",
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "path": "src/pages/workflows/editor/__tests__/DiffCanvasControls.test.tsx",
+      "selector": "whole file",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-2"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-UI-visualdiffview",
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "path": "src/pages/workflows/components/__tests__/WorkflowVisualDiffView.test.tsx",
+      "selector": "whole file",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-2",
+        "AC-6"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-UI-editoractions",
+      "repo": "testproject1-ui",
+      "revision": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+      "path": "src/pages/workflows/editor/__tests__/EditorActions.test.tsx",
+      "selector": "whole file",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-1"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-BE-validate",
+      "repo": "testproject1-backend",
+      "revision": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+      "path": "tests/testproject1/rest_api/routers/test_workflow.py",
+      "selector": "test_validate_workflow_valid_config; _missing_assistant; _no_permissions; _not_found; _load_error_not_mapped_to_404; _dry_runs_guardrail_assignment_checks; _guardrail_403_wrapped_as_400 (ASGI router, services mocked)",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "TR-1",
+        "TR-2",
+        "TR-3"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-BE-guardrail-dry-run",
+      "repo": "testproject1-backend",
+      "revision": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+      "path": "tests/testproject1/service/guardrail/test_guardrail_service.py",
+      "selector": "test_dry_run_validates_without_writing (:639)",
+      "parameter_ids": [],
+      "level": "unit",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "TR-2"
+      ],
+      "origin": "added_in_change",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-H-8827-api",
+      "repo": "tests",
+      "revision": "9a6a1a7927ed2e41b66765f28581e864b468a2bb",
+      "path": "testproject1_test_harness/tests/workflow/test_workflow_version_history.py",
+      "selector": "8827_TC_003..005: semantic yaml change, PUT deleted 404, SDK 404",
+      "parameter_ids": [],
+      "level": "api",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "REG-1"
+      ],
+      "origin": "existing",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-H-8827-ui",
+      "repo": "tests",
+      "revision": "9a6a1a7927ed2e41b66765f28581e864b468a2bb",
+      "path": "testproject1_test_harness/tests/ui/workflows/test_workflow_version_history.py",
+      "selector": "test_version_history_button_accessible_from_visual_editor (8827_TC_002)",
+      "parameter_ids": [],
+      "level": "e2e-ui",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-1",
+        "REG-1"
+      ],
+      "origin": "existing",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-H-edit-history",
+      "repo": "tests",
+      "revision": "9a6a1a7927ed2e41b66765f28581e864b468a2bb",
+      "path": "testproject1_test_harness/tests/ui/workflows/test_edit_workflow.py",
+      "selector": "test_edit_workflow_yaml_editor_functionality_with_history (:170) uses WorkflowVersionHistoryPopup POM",
+      "parameter_ids": [],
+      "level": "e2e-ui",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "REG-1"
+      ],
+      "origin": "existing",
+      "result_candidate_refs": []
+    },
+    {
+      "candidate_id": "C-UI-1924-factory",
+      "repo": "testproject1-ui",
+      "revision": "135699ae2c182eccd49ba6c66f469fc1c55359f1",
+      "path": "src/pages/workflows/**/__tests__/*.test.tsx",
+      "selector": "7 test files, +348/-43 vs MR 1881; draft evaluation tests, MR 1924 build failed, not merge-ready",
+      "parameter_ids": [],
+      "level": "component",
+      "assertion_refs": [],
+      "candidate_requirement_refs": [
+        "AC-1",
+        "AC-2",
+        "AC-3",
+        "AC-4",
+        "AC-5",
+        "AC-7"
+      ],
+      "origin": "unknown",
+      "result_candidate_refs": []
+    }
+  ],
+  "changed_areas": [
+    "testproject1: src/testproject1/rest_api/routers/workflow.py, src/testproject1/service/guardrail/guardrail_service.py",
+    "testproject1-ui: src/pages/workflows/**, src/utils/workflowEditor/**, src/store/workflows.ts, src/components/form/VersionedField/**, src/components/TextDiffView/**"
+  ],
+  "known_paths": [
+    "qa-factory/artifacts/TP1-15045/work/source-inventory.json",
+    "qa-factory/artifacts/TP1-15045/work/impl-diff-testproject1-backend.txt",
+    "qa-factory/artifacts/TP1-15045/work/impl-diff-testproject1-ui.txt",
+    "qa-factory/artifacts/TP1-15045/work/test-mr-1924-diff.txt"
+  ],
+  "unresolved_facts": [
+    {
+      "id": "F-sharepoint-video",
+      "reason": "missing_evidence",
+      "detail": "Demo video linked in an TP1-14482 comment is behind EXAMPLE SSO; ACCEPTED GAP: person said (recorded by orchestrator) to proceed without the video; not a read source; affected oracle: visual look of the demo only"
+    },
+    {
+      "id": "F-ac6-two-revisions",
+      "reason": "contradiction",
+      "detail": "AC6 says exactly two revisions are compared; visual popup compares the selected history entry with the current editor YAML (WorkflowVisualVersionHistoryPopup.tsx:62). Owner decision needed"
+    },
+    {
+      "id": "F-restore-permission",
+      "reason": "missing_evidence",
+      "detail": "MR 1881 review note: Restore permission gate removed (canRestore only checks yaml_config, popup:107 and WorkflowVersionHistoryPopup.tsx:81); not stated in ACs; localhost has one superadmin so a read-only user needs preview"
+    },
+    {
+      "id": "F-removed-position",
+      "reason": "missing_evidence",
+      "detail": "Removed node falls back to {0,0} without baseline layout meta (buildVisualDiffGraph.ts:130); former-position oracle for YAML without layout meta unknown"
+    },
+    {
+      "id": "F-collapsed-diffs",
+      "reason": "missing_evidence",
+      "detail": "GitLab returned empty diffs for ~15 UI files and backend test_workflow.py; read through git on the pinned head only where observables were needed"
+    },
+    {
+      "id": "F-guardrail-dry-run-lines",
+      "reason": "missing_evidence",
+      "detail": "guardrail_service.py dry_run line numbers not resolved (observable not recorded)"
+    },
+    {
+      "id": "F-sdk-validate-missing",
+      "reason": "missing_evidence",
+      "detail": "testproject1-sdk-python has no workflow validate or versions method; SDK extension needed before any API test"
+    }
+  ],
+  "constraints": [
+    "localhost: single superadmin, no role matrix, no AWS",
+    "P-00: testproject1 and testproject1-ui are read-only",
+    "MR 1924 is evaluation-only, not product coverage"
+  ],
+  "source_sha": {
+    "testproject1-backend": "0cc6c4f1104985cf1fcf338e09172c41cc01c82d",
+    "testproject1-ui": "e6532059cc2a965c0a37ba1a40cd481652d40481",
+    "tests": "9a6a1a7927ed2e41b66765f28581e864b468a2bb"
+  },
+  "area_bug_note": "qa-factory/bugs and test-cases/ do not exist: nothing found, no store to positive-control",
+  "trail": {
+    "batches": [
+      "refresh recheck TP1-14482: revision 2026-09-18T08:17:35.665+0000; live get diffed against stored snapshot: title, description (6552 chars), acceptance criteria, 3 comments, 6 attachments identical, no requirement or AC text changed; source re-assessed relevant",
+      "ticket_adapter get/collect/peek/assess/inspect on 15045, 14482, 8827 and 55 mentioned keys (53 excluded/not found)",
+      "vcs_evidence MR 4214, 1881, 1924 (complete, revision pinned)",
+      "read review attachments 1227b3d7 lines 285-384 and fe1bab5b lines 21-90; image e2211798",
+      "git show origin/TP1-14482_visual-workflow-diff: workflow.py 100-145 and 498-622; store/workflows.ts 336-362; useWorkflowHistoryRestore.ts 55-110; DiffNodeWrapper.tsx 40-110; git grep observables in src/pages/workflows and src/utils/workflowEditor",
+      "grep harness version_history tests, sdk services/workflow.py, test names in EditWorkflowPage.versionHistory.test.tsx and test_workflow.py",
+      "env_probe localhost; curl openapi for /validate"
+    ],
+    "counters": {
+      "batches_per_repo": {
+        "testproject1": 3,
+        "testproject1-ui": 4,
+        "tests": 2
+      }
+    }
+  },
+  "witness": "trail lists every search and range read; observables carry path:line on pinned MR heads"
+}

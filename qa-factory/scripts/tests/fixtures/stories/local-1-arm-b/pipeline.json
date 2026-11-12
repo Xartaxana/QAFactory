@@ -1,0 +1,843 @@
+{
+  "ticket": "LOCAL-1",
+  "parent_feature": null,
+  "size": "L",
+  "environment": "local",
+  "environment_pending": false,
+  "implementation_source": "current-code",
+  "warnings": [
+    "this run is an experiment: nothing leaves the project — no merge request, no tracker write; bugs stay as files",
+    "S0: ticket LOCAL-1 has no section named Acceptance Criteria, What needs to be tested, AC; the requirements are read from its description, comments, attachments and linked tickets",
+    "no change to ground on: tests are grounded on the current code, how it behaves now, not what is expected (the person's word)"
+  ],
+  "stages": {
+    "S0": {
+      "status": "done",
+      "started": "2026-11-05T00:25:06+00:00",
+      "finished": "2026-11-05T00:25:06+00:00",
+      "role": null,
+      "digest": "preflight green, env=local",
+      "imported": true,
+      "reason": "preflight green, env=local"
+    },
+    "S1": {
+      "status": "done",
+      "dispatch_id": "S1-qa-scout-1",
+      "stage_started": 1793838323.9300015,
+      "stage_finished": 1793838847.5902922,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T00:25:23+00:00",
+      "role": "qa-scout",
+      "digest": "qa-scout S1 S1-qa-scout-1 · ok\nSRC-5b289e26d85e2794df0a · found · LOCAL-1 text read; no AC, comments or attachments\nSRC-9b765c409c31488a634c · found · openapi cart section read\nSRC-7a03f1a608eb7f806360 · found · read via local checkout, not the GitHub page\nSRC-1a8882c6347d792501ee · waived · project information only; not queried, person accepted\nwork/context-manifest.json",
+      "reason": "qa-scout S1 S1-qa-scout-1 · ok\nSRC-5b289e26d85e2794df0a · found · LOCAL-1 text read; no AC, comments or attachments\nSRC-9b765c409c31488a634c · found · openapi cart section read\nSRC-7a03f1a608eb7f806360 · found · read via local checkout, not the GitHub page\nSRC-1a8882c6347d792501ee · waived · project information only; not queried, person accepted\nwork/context-manifest.json",
+      "agent_id": "a91d9f43-0766-48aa-accb-f1f6faa64f8d",
+      "finished": "2026-11-05T00:34:11+00:00",
+      "later_work_status": "pending",
+      "active_dispatch_id": "S1-qa-scout-2",
+      "later_work_settled": true
+    },
+    "S2": {
+      "status": "done",
+      "dispatch_id": "S2-qa-case-critic-2",
+      "stage_started": 1793838859.416584,
+      "stage_finished": 1793841657.88495,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T00:34:19+00:00",
+      "role": "qa-requirements-tester",
+      "digest": "stopped on the question threshold: 11 open question(s)",
+      "reason": "qa-case-critic S2 S2-qa-case-critic-2 · concerns\nregister · reviewed · inputs_read now names the tester's real form; sha256 not added\nwork/handoffs/S2-qa-case-critic-2.values.yaml\nThe fix is only partly done. I replaced the placeholder with work/handoffs/S2-qa-requirements-tester-1.yaml in a values file. I left out its sha256 because I have no shell here to compute it, and I didn't want to invent one. The driver will need to add the hash.\nMy earlier review is unchanged: ok, with finding F-1 (not blocking) and one not_looked row for the cited MyBooks source lines.\nThere was no S2-qa-case-critic-2.yaml form in the handoffs folder, only the -1 form. So the values file is named for dispatch 2, and I haven't confirmed the checker will pick it up.",
+      "agent_id": "b92acda8-fb93-417e-a2ba-164de44652da",
+      "released_by_person": true,
+      "finished": "2026-11-05T02:15:46+00:00",
+      "later_work_status": "pending",
+      "active_dispatch_id": "S2-qa-requirements-tester-2",
+      "rework": true,
+      "rework_status": "blocked",
+      "rework_reason": "stopped on the question threshold: 11 open question(s)",
+      "later_work_settled": true
+    },
+    "S3": {
+      "status": "done",
+      "dispatch_id": "S3-qa-case-critic-1",
+      "stage_started": 1793841833.5498714,
+      "stage_finished": 1793843574.2228968,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T01:23:53+00:00",
+      "role": "qa-case-critic",
+      "digest": "qa-case-critic S3 S3-qa-case-critic-1 · ok\nTS-1..TS-20 · approved · all of R-1..R-14 reach a row; tried table covers the risky R's\nqa-factory/artifacts/LOCAL-1/work/handoffs/S3-qa-case-critic-1.yaml",
+      "reason": "qa-case-critic S3 S3-qa-case-critic-1 · ok\nTS-1..TS-20 · approved · all of R-1..R-14 reach a row; tried table covers the risky R's\nqa-factory/artifacts/LOCAL-1/work/handoffs/S3-qa-case-critic-1.yaml",
+      "agent_id": "603e2d78-d16c-4e7d-a68b-d7d958790c5c",
+      "finished": "2026-11-05T01:53:01+00:00",
+      "later_work_status": "pending",
+      "active_dispatch_id": "S3-qa-test-strategist-2",
+      "later_work_settled": true
+    },
+    "S4": {
+      "status": "done",
+      "dispatch_id": "S4-qa-case-critic-2",
+      "stage_started": 1793843595.20734,
+      "stage_finished": 1793846081.3461885,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T01:53:15+00:00",
+      "role": "qa-case-critic",
+      "digest": "",
+      "reason": "",
+      "agent_id": "53f0f4c1-dd28-4549-aee3-b14beab2e28c"
+    },
+    "S5": {
+      "status": "done",
+      "dispatch_id": "S5-qa-code-critic-14",
+      "stage_started": 1793846528.0355759,
+      "stage_finished": 1793894331.625109,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T02:42:08+00:00",
+      "role": "qa-code-critic",
+      "digest": "qa-code-critic S5 S5-qa-code-critic-14 · ok\nLOCAL-1_TC_001 · unverified · static clean; probe unreadable (tooling), accepted by person; stock-0 red per req\nLOCAL-1_TC_002 · unverified · static clean; probe unreadable (tooling), accepted by person\nwork/automation-manifest.json",
+      "reason": "qa-code-critic S5 S5-qa-code-critic-14 · ok\nLOCAL-1_TC_001 · unverified · static clean; probe unreadable (tooling), accepted by person; stock-0 red per req\nLOCAL-1_TC_002 · unverified · static clean; probe unreadable (tooling), accepted by person\nwork/automation-manifest.json",
+      "agent_id": "3acf5183-08c7-4b17-a67d-c3098c77a415",
+      "active_dispatch_id": "S5-qa-automator-14",
+      "finished": "2026-11-05T15:59:19+00:00"
+    },
+    "S6": {
+      "status": "pending",
+      "dispatch_id": "S6-qa-runner-5",
+      "stage_started": 1793861753.4703715,
+      "stage_finished": null,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T06:55:53+00:00",
+      "role": "qa-runner",
+      "digest": "qa-runner S6 S6-qa-runner-4 · halt\nLOCAL-1_TC_015 · blocked · sign-in by code refused (harness_command); owner user, nothing walked\nwork/run-report.json",
+      "reason": "the runner stopped; S6 awaits the acceptance of qa-failure-analyst, which judges the run report and the case records from its own form",
+      "agent_id": "004d0cd6-5682-4c5e-b6cb-470a43c8a904",
+      "repaired_by_recover": true
+    },
+    "S7": {
+      "status": "pending",
+      "dispatch_id": "S7-qa-failure-analyst-5",
+      "stage_started": 1793862876.789911,
+      "stage_finished": null,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T07:14:36+00:00",
+      "role": "qa-failure-analyst",
+      "digest": "",
+      "reason": "the failure analyst finished; 1 observations the run left open are not investigated yet; before the close those only the factory has written are recorded as coverage gaps and those the analyst wrote are left as the analyst recorded them (gate B is already decided)",
+      "agent_id": "47149461-e46f-4391-817f-908e63bb49fa",
+      "repaired_by_recover": true
+    },
+    "S8": {
+      "status": "pending",
+      "dispatch_id": "S8-qa-doc-scribe-1",
+      "stage_started": 1793863573.8824117,
+      "stage_finished": 1793863919.2910657,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T07:26:13+00:00",
+      "role": "qa-doc-scribe",
+      "digest": "qa-doc-scribe S8 S8-qa-doc-scribe-1 · ok\nLOCAL-1_TC_001 · handed · assert stricter than R-1; left with person\nLOCAL-1_TC_002 · unverified · green, critic could not verify; left with person\nLOCAL-1_TC_003 · green · proven\nLOCAL-1_TC_004 · green · proven\nLOCAL-1_TC_005 · green · proven\nLOCAL-1_TC_006 · found · product bug: merge never answers; unverified\nLOCAL-1_TC_007 · green · proven\nLOCAL-1_TC_008 · green · proven\nLOCAL-1_TC_009 · green · proven\nLOCAL-1_TC_010 · green · proven\nLOCAL-1_TC_011 · green · proven\nLOCAL-1_TC_012 · green · proven\nLOCAL-1_TC_013 · green · proven\nLOCAL-1_TC_014 · unresolved · no run result recorded\nLOCAL-1_TC_015 · unresolved · no run result recorded\nLOCAL-1_TC_016 · unresolved · no run result recorded\nLOCAL-1_TC_017 · found · product bug: failed cart read shows empty text\nLOCAL-1_TC_018 · found · product bug: wishlist failures silent\nLOCAL-1_TC_019 · unverified · green, critic could not verify; left with person\nLOCAL-1_TC_020 · unverified · green, critic could not verify; left with person\nqa-factory/artifacts/LOCAL-1/test-report.md",
+      "reason": "runs again after the rework S5-qa-automator-15 of S5",
+      "agent_id": "1dc0383d-aac7-4e6d-813e-9371942c5633",
+      "finished": "2026-11-05T07:32:17+00:00",
+      "active_dispatch_id": "S8-qa-bug-reporter-1",
+      "rerun_after": "S5-qa-automator-15"
+    },
+    "S9": {
+      "status": "done",
+      "dispatch_id": "S9-qa-retro-analyst-1",
+      "stage_started": 1793864792.1111698,
+      "stage_finished": 1793864971.6830623,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-05T07:46:32+00:00",
+      "role": "qa-retro-analyst",
+      "digest": "qa-retro-analyst S9 S9-qa-retro-analyst-1 · concerns\nLOCAL-1_TC_001 · failed · ASSERT_STRICTER in triage\nLOCAL-1_TC_002 · passed · green\nLOCAL-1_TC_003 · passed · green; review skipped\nLOCAL-1_TC_004 · passed · green; review skipped\nLOCAL-1_TC_005 · passed · green; sensitivity proof missing\nLOCAL-1_TC_006 · failed · untriaged failure\nLOCAL-1_TC_007 · passed · green; sensitivity proof missing\nLOCAL-1_TC_008 · passed · green; sensitivity proof missing\nLOCAL-1_TC_009 · passed · green; sensitivity proof missing\nLOCAL-1_TC_010 · passed · green\nLOCAL-1_TC_011 · passed · green\nLOCAL-1_TC_012 · passed · green\nLOCAL-1_TC_013 · passed · green\nLOCAL-1_TC_014 · manual_skipped · preparation TypeError, never hand-checked\nLOCAL-1_TC_015 · manual_skipped · preparation TypeError, never hand-checked\nLOCAL-1_TC_016 · manual_skipped · preparation TypeError, never hand-checked\nLOCAL-1_TC_017 · failed · APP_BUG on some rows, others untriaged\nLOCAL-1_TC_018 · failed · APP_BUG\nLOCAL-1_TC_019 · passed · green; review unverified\nLOCAL-1_TC_020 · passed · green; review unverified\nqa-factory/artifacts/LOCAL-1/retro.md",
+      "reason": "qa-retro-analyst S9 S9-qa-retro-analyst-1 · concerns\nLOCAL-1_TC_001 · failed · ASSERT_STRICTER in triage\nLOCAL-1_TC_002 · passed · green\nLOCAL-1_TC_003 · passed · green; review skipped\nLOCAL-1_TC_004 · passed · green; review skipped\nLOCAL-1_TC_005 · passed · green; sensitivity proof missing\nLOCAL-1_TC_006 · failed · untriaged failure\nLOCAL-1_TC_007 · passed · green; sensitivity proof missing\nLOCAL-1_TC_008 · passed · green; sensitivity proof missing\nLOCAL-1_TC_009 · passed · green; sensitivity proof missing\nLOCAL-1_TC_010 · passed · green\nLOCAL-1_TC_011 · passed · green\nLOCAL-1_TC_012 · passed · green\nLOCAL-1_TC_013 · passed · green\nLOCAL-1_TC_014 · manual_skipped · preparation TypeError, never hand-checked\nLOCAL-1_TC_015 · manual_skipped · preparation TypeError, never hand-checked\nLOCAL-1_TC_016 · manual_skipped · preparation TypeError, never hand-checked\nLOCAL-1_TC_017 · failed · APP_BUG on some rows, others untriaged\nLOCAL-1_TC_018 · failed · APP_BUG\nLOCAL-1_TC_019 · passed · green; review unverified\nLOCAL-1_TC_020 · passed · green; review unverified\nqa-factory/artifacts/LOCAL-1/retro.md",
+      "agent_id": "32534149-18d8-40be-bd3f-17c7bd391afe",
+      "finished": "2026-11-05T07:49:55+00:00"
+    }
+  },
+  "gates": {
+    "A": {
+      "id": "gateA-LOCAL-1",
+      "gate": "A",
+      "action": "approve_plan_and_cases",
+      "status": "approved",
+      "authorization_source": "approve\nQ13: a\nvcs-test-repo: commit\nopen_questions-1: accept Q1 was answered at S2 (a); the defect is the label form of its readings, a factory matter, not a question\nopen_questions-2: accept Q2 was answered at S2 (a); same label-form defect\nopen_questions-3: accept Q3 was answered at S2 (a); same label-form defect",
+      "source_revision": "4f261b003c044caa55afe8a4c2edcf3f83ce0c0eac6ce5504eeb80fb7a95210a",
+      "input_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+      "scope": [
+        "LOCAL-1_TC_001",
+        "LOCAL-1_TC_002",
+        "LOCAL-1_TC_003",
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009",
+        "LOCAL-1_TC_010",
+        "LOCAL-1_TC_011",
+        "LOCAL-1_TC_012",
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_014",
+        "LOCAL-1_TC_015",
+        "LOCAL-1_TC_016",
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018",
+        "LOCAL-1_TC_019",
+        "LOCAL-1_TC_020"
+      ],
+      "plan_content_hash": "a6ec0212feb7f588a7bb3040bf09144777e54016b24e3c41ff513b2b520ef1cd",
+      "plan_semantic_hash": "a6ec0212feb7f588a7bb3040bf09144777e54016b24e3c41ff513b2b520ef1cd",
+      "oracle_content_hashes": {
+        "OB-1": "fad42d75ebacb65bb3a05534417d2f3c712de278fc0ac170d091cc5f2f55f100",
+        "OB-2": "57ed98f1654ba713aa85f1bf6b969f3395ab10aa47b5c23e56580f11bdb5864c",
+        "OB-3": "6995edbf3cc4722dc812b5ff4b35e7550e73a16f66000b604096b623210ac757",
+        "OB-4": "214787c15da01ef39fd7cbd99be8be63fcca81e47976c511ddafe07503abfecb",
+        "OB-5": "ed15a3f4eda9db1bd9e6f737ec9ba7f352a56f25d20b8cf1f5e4990989f8d2ef",
+        "OB-6": "9123422bd9ca64e64f29443cd48d00c6463be4b391d2a98afb1efe261f472949",
+        "OB-7": "051e16151185578e78e9e68ae2a63f151fffb5f3f6ef0a6513db8bf74c170a3c",
+        "OB-8": "08ca3a585bd7fa32d43f3bd60ddee73084d62c9cbda07732536e524f548c252b",
+        "OB-9": "6e5adf35d622941b208707c275127915a9db043c230bc261b0d2bc51493e4e69",
+        "OB-10": "883d41a2e44b667cf61f20f4dc05c33e1193112a3b30d8243605aad81c14b7ca",
+        "OB-11": "54ad74647b67aa651598f8b985ff0b14da8649595a870d0b32cd317b9f0fd56d",
+        "OB-12": "eff2d45132ab69efe3b439865de102365c1a9ca2bd54b908554d80448c087d32",
+        "OB-13": "491a86a27bc47bb625b2396133644eb3e9fcada60ce9b98abd932e9a006faae8",
+        "OB-14": "24d0e03030bc68f5455c2ce9051ef563b7fc34f6c052eacacbdd9850677cf7f8",
+        "OB-15": "5cdb693a4fddbd57f49198c2b8d29104b7a818ca90c4f3d5d697653dce512c58",
+        "OB-16": "e95d69d0ed80e7af03f00a956840cbc8c3db53f15ce671f6a987f01132661929",
+        "OB-17": "a51965d1c05400a37d3b85443b7a4f00a8ecc7fbbb8d0b99fc9d0616270ca50c",
+        "OB-18": "1e167c358954b97cf43ba5659f73a8d322ed69075abe5dbd9735e19fdea29610",
+        "OB-19": "fb34e8da1c62c00a72e1fc5df9ddb1fbc93e2c54d46f61cc2a42e55988816bcf",
+        "OB-20": "1480e5c6bb8fc03aa651bd478881853597310bf554065a89deb56330ea5fe2ec"
+      },
+      "coverage_contract_revisions": [
+        "coverage-observation-v1"
+      ],
+      "lifecycle_actions_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_inventory_hash": "136e6645e546c14bcf82a4c0ae01767826f4cd1dfe5510c7046ef979837c6e9d",
+      "source_completeness": {
+        "complete": false,
+        "gate_blocked": false,
+        "pending": [],
+        "unavailable": [],
+        "incomplete_materials": [],
+        "unavailable_materials": [],
+        "accepted_gaps": [
+          "SRC-1a8882c6347d792501ee"
+        ],
+        "review_missing": false,
+        "unreviewed": [],
+        "awaiting_review": false,
+        "open_points": {},
+        "closed_by_person": {
+          "SRC-1a8882c6347d792501ee": [
+            "source:unavailable"
+          ]
+        },
+        "closed_by_class": {},
+        "defaulted_points": {},
+        "defaulted_gaps": [],
+        "gap_class_problem": "",
+        "left_out_by_word": {},
+        "earlier_rule_line": "",
+        "earlier_rule_sources": []
+      },
+      "design_reviews": [
+        {
+          "plan_row": "TS-5",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_63c288a61eb8991687ce"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-6",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_53582e9fd2b6ca89c1d8"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-7",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_c9db7e5d30cd72586fd9"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-9",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_076607482889f76c8067"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-11",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_1034782aa1322af81825"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-12",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_449be24f68e1f4525921"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-13",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_a66f995d657e98e066b3"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-14",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_6a7b2dde6d47ad7bccd9"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-15",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_d5f8d0a9c43032173271"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-16",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+          "case_versions": [
+            "cv_f3d9f6c5056b38862707"
+          ],
+          "input_hash": "c477d8b40808a825f90cb9a437bce96a53d53b0caf809f6fddd440159647b2da",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        }
+      ],
+      "decision": "approved"
+    },
+    "B": {
+      "id": "gateB-LOCAL-1",
+      "gate": "B",
+      "action": "approve_delivery",
+      "status": "stale",
+      "authorization_source": "file 1, 2, 3, 4, 5, 6, 7 as drafts in the project's markdown only (this is a comparison run, nothing leaves the project)\ndelivery-1: deliver with known gaps",
+      "source_revision": "4f261b003c044caa55afe8a4c2edcf3f83ce0c0eac6ce5504eeb80fb7a95210a",
+      "input_revision": "sha256:d5f5ecb85c8dcaae73011d7efc79135dffc0be73b35b88333447f69cbe5a830f",
+      "scope": [
+        "LOCAL-1_TC_001",
+        "LOCAL-1_TC_002",
+        "LOCAL-1_TC_003",
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009",
+        "LOCAL-1_TC_010",
+        "LOCAL-1_TC_011",
+        "LOCAL-1_TC_012",
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_014",
+        "LOCAL-1_TC_015",
+        "LOCAL-1_TC_016",
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018",
+        "LOCAL-1_TC_019",
+        "LOCAL-1_TC_020"
+      ],
+      "selected_drafts": [],
+      "orders": {
+        "bugs": "not_ordered",
+        "mr": "not_ordered"
+      },
+      "decided_seq": 257,
+      "decided_at": "2026-11-05T07:36:26+00:00",
+      "orders_settled": {
+        "bugs": {
+          "outcome": "done",
+          "dispatch_id": "S8-qa-bug-reporter-1",
+          "seq": 260,
+          "at": "2026-11-05T07:41:29+00:00"
+        },
+        "mr": {
+          "outcome": "cancelled",
+          "seq": 261,
+          "at": "2026-11-05T07:42:00+00:00",
+          "ref": "nothing outward (experiment): no branch, commit, push, merge request or tracker write",
+          "reason_code": "no_trace"
+        }
+      },
+      "decision": "stale",
+      "orders_due": []
+    }
+  },
+  "halts": [
+    {
+      "stage": "S2",
+      "reason": "stopped on the question threshold: 11 open question(s)",
+      "at": "2026-11-05T02:15:46+00:00",
+      "resolved": false
+    },
+    {
+      "stage": "S6",
+      "reason": "qa-runner S6 S6-qa-runner-3 · halt\nLOCAL-1_TC_014 · blocked · sign-in by code refused before any capture; case not walked\nwork/run-report.json",
+      "at": "2026-11-05T16:35:23+00:00",
+      "resolved": true,
+      "resolved_at": "2026-11-05T16:40:13+00:00"
+    },
+    {
+      "stage": "S6",
+      "reason": "qa-runner S6 S6-qa-runner-3 · halt\nLOCAL-1_TC_014 · blocked · env_blocked lane can't be written; reducer needs a built record\nwork/run-report.json",
+      "at": "2026-11-05T17:00:23+00:00",
+      "resolved": true,
+      "resolved_at": "2026-11-05T17:04:55+00:00"
+    },
+    {
+      "stage": "S6",
+      "reason": "qa-runner S6 S6-qa-runner-4 · halt\nLOCAL-1_TC_015 · blocked · sign-in by code refused (harness_command); owner user, nothing walked\nwork/run-report.json",
+      "at": "2026-11-05T17:14:38+00:00",
+      "resolved": true,
+      "resolved_at": "2026-11-05T17:18:35+00:00"
+    }
+  ],
+  "no_trace": true,
+  "source_inventory_required": true,
+  "controller_revision": 313,
+  "run_mode": {
+    "mode": "driver",
+    "plugin_root": "<path-1>\\pkg-b\\ai-packages\\qa-factory",
+    "plugin_version": "0.10.9",
+    "since": "2026-11-05T00:25:21+00:00"
+  },
+  "stage_overrides": [
+    {
+      "stage": "S2",
+      "match": "the verdict word of the stage critic is unreadable",
+      "decision": "go on",
+      "at": "2026-11-05T01:15:32+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "Q1",
+      "decision": "accept - the person wrote: open_questions-1: accept Q1 was answered at S2 (a); the defect is the label form of its readings, a factory matter, not a question",
+      "at": "2026-11-05T02:38:30+00:00",
+      "by": "driver"
+    },
+    {
+      "stage": "S5",
+      "match": "Q2",
+      "decision": "accept - the person wrote: open_questions-2: accept Q2 was answered at S2 (a); same label-form defect",
+      "at": "2026-11-05T02:38:32+00:00",
+      "by": "driver"
+    },
+    {
+      "stage": "S5",
+      "match": "Q3",
+      "decision": "accept - the person wrote: open_questions-3: accept Q3 was answered at S2 (a); same label-form defect",
+      "at": "2026-11-05T02:38:35+00:00",
+      "by": "driver"
+    },
+    {
+      "stage": "S5",
+      "match": "test repository state: 5cd21eb10194",
+      "decision": "accept - the person wrote: commit",
+      "at": "2026-11-05T02:39:42+00:00",
+      "by": "human",
+      "why_person": "risk"
+    },
+    {
+      "stage": "S5",
+      "match": "not receipted",
+      "decision": "go on: accept the TC_001/TC_002 window without review receipts. The probe cannot read three tests (the success toast disappears by itself; the failure place of the out-of-stock button test was not found) - a gap of the factory tooling, not a verdict on the tests. They stay unverified and appear as open items in the report and the debt list; the stock-0 red test goes to S7 triage.",
+      "at": "2026-11-05T03:45:03+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "round pass 3 for qa-automator on S5:c25d47eb1bcb",
+      "decision": "rework\n\nOne more round for TC_001 and TC_002: the earlier rejections named no typed finding, so the author could not know what to fix. The author has written the tests again; the code reviewer reviews them now and names each finding with its cause.",
+      "at": "2026-11-05T15:09:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "round pass 3 for qa-code-critic on S5:9d0e27dd004f",
+      "decision": "rework\n\nOne more round for TC_001 and TC_002: the earlier rejections named no typed finding, so the author could not know what to fix. The author has written the tests again; the code reviewer reviews them now and names each finding with its cause.",
+      "at": "2026-11-05T15:09:35+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "S5 window record is incomplete: @regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4: probe is missing for a new_or_changed instance",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:37:32+00:00",
+      "by": "human",
+      "why_person": "gate_word"
+    },
+    {
+      "stage": "S5",
+      "match": "@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line: probe is missing for a new_or_changed instance",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:37:35+00:00",
+      "by": "human",
+      "why_person": "gate_word"
+    },
+    {
+      "stage": "S5",
+      "match": "@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line: probe is missing for a new_or_changed instance",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:37:39+00:00",
+      "by": "human",
+      "why_person": "gate_word"
+    },
+    {
+      "stage": "S5",
+      "match": "@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4: probe is missing for a new_or_changed instance — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:48:42+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line: probe is missing for a new_or_changed instance — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:48:46+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line: probe is missing for a new_or_changed instance — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:48:49+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe_evidence:@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:48:52+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe_evidence:@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:48:55+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe_evidence:@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4 — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:48:58+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe_mutation_kind:@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:01+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe_mutation_kind:@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:04+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe_mutation_kind:@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4 — no sensitivity receipt reaches this instance through the row's `sensitivity_proof.receipt_ref` or the manifest's `obligation_bindings[].probe_receipt_ref`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:07+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "review:@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line — the manifest row carries no `critic_verdict`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:12+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "review:@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line — the manifest row carries no `critic_verdict`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:19+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "review:@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4 — the manifest row carries no `critic_verdict`",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:23+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "semantic_sensitivity:@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line — the probe's obligations, assertion or defect location do not match the instance's",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:26+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "semantic_sensitivity:@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line — the probe's obligations, assertion or defect location do not match the instance's",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:30+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "semantic_sensitivity:@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4 — the probe's obligations, assertion or defect location do not match the instance's",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "sensitivity:@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line — the sensitivity receipt does not show the intended assertion failure",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:36+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "sensitivity:@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line — the sensitivity receipt does not show the intended assertion failure",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:39+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "sensitivity:@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4 — the sensitivity receipt does not show the intended assertion failure",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:49:42+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "*",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:53:20+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: LOCAL-1_TC_001",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:57:17+00:00",
+      "by": "human",
+      "class": "probe_gap_accepted"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: LOCAL-1_TC_002",
+      "decision": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:57:22+00:00",
+      "by": "human",
+      "class": "probe_gap_accepted"
+    },
+    {
+      "stage": "S6",
+      "match": "run-report.json: LOCAL-1_TC_014 is `manual-agent` in the plan (TS-14) but appears in no lane of this report — not in results[], manual_checks[], skipped[], impossible[], env_blocked[] or manual_skipped[]. A case left out reads as untested",
+      "decision": "go on\n\nLOCAL-1_TC_014 stays not walked: the recorder refused the seed call before anything was sent and then refused the walk through the screens because of that first refusal. This is a gap of the factory's tool, not a result about the product. Keep the case in the report as not tested, with this reason, and go on to the next cases.",
+      "at": "2026-11-05T16:57:57+00:00",
+      "by": "human",
+      "why_person": "gate_word"
+    },
+    {
+      "stage": "S6",
+      "match": "run-report.json: LOCAL-1_TC_015 is `manual-agent` in the plan (TS-15) but appears in no lane of this report — not in results[], manual_checks[], skipped[], impossible[], env_blocked[] or manual_skipped[]. A case left out reads as untested",
+      "decision": "go on\n\nThe case stays not walked: the recorder refused the sign-in before anything was sent and the report has no lane the runner can write such a case into. This is a gap of the factory's tool, not a result about the product. Keep the case in the report as not tested, with this reason, and go on.",
+      "at": "2026-11-05T17:29:35+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S7",
+      "match": "stage acceptance",
+      "decision": "retry\n\nThe stage acceptance of S6 and of S7 is passed by my recorded words; look again and go on to the report.",
+      "at": "2026-11-05T18:52:24+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S6",
+      "match": "stage acceptance",
+      "decision": "retry\n\nThe stage acceptance of S6 and of S7 is passed by my recorded words; look again and go on to the report.",
+      "at": "2026-11-05T18:52:20+00:00",
+      "by": "human"
+    }
+  ],
+  "acceptance": {
+    "S2": [
+      {
+        "stage": "S2",
+        "role": "qa-requirements-tester",
+        "acceptor": "qa-case-critic",
+        "reviewed_dispatch": "S2-qa-requirements-tester-1",
+        "verdict": "accept",
+        "failure_class": null,
+        "quote": "work/requirements-register.md#register R-10: contradicts PATCH vs PUT carried in Contradiction matrix and Q2",
+        "witness_paths": [
+          "work/requirements-register.md"
+        ],
+        "at": "2026-11-05T02:20:50"
+      }
+    ],
+    "S3": [
+      {
+        "stage": "S3",
+        "role": "qa-test-strategist",
+        "acceptor": "qa-case-critic",
+        "reviewed_dispatch": "S3-qa-test-strategist-1",
+        "verdict": "accept",
+        "failure_class": null,
+        "quote": "<the artifact's own words, with path#anchor>",
+        "witness_paths": [
+          "<task-relative path the verdict rests on, or omit when the acceptor cited no evidence paths>"
+        ],
+        "at": "2026-11-05T02:52:46"
+      }
+    ],
+    "S4": [
+      {
+        "stage": "S4",
+        "role": "qa-case-designer",
+        "acceptor": "qa-case-critic",
+        "reviewed_dispatch": "S4-qa-case-designer-1",
+        "verdict": "accept",
+        "failure_class": null,
+        "quote": "state/case-versions/LOCAL-1_TC_007/cv_123c0496becbde9af1c8.md#Then: P-first: the first add answers the status that Q4 gives for a new cart line.",
+        "witness_paths": [
+          "work/test-cases/critic-findings.md"
+        ],
+        "at": "2026-11-05T03:08:48"
+      },
+      {
+        "stage": "S4",
+        "role": "qa-case-designer",
+        "acceptor": "qa-case-critic",
+        "reviewed_dispatch": "S4-qa-case-designer-2",
+        "verdict": "accept",
+        "failure_class": null,
+        "quote": "<the artifact's own words, with path#anchor>",
+        "witness_paths": [
+          "<task-relative path the verdict rests on, or omit when the acceptor cited no evidence paths>"
+        ],
+        "at": "2026-11-05T03:34:30"
+      }
+    ],
+    "S6": [
+      {
+        "stage": "S6",
+        "role": "qa-runner",
+        "acceptor": "qa-failure-analyst",
+        "reviewed_dispatch": "S6-qa-runner-5",
+        "verdict": "accept",
+        "failure_class": null,
+        "quote": "",
+        "witness_paths": [],
+        "at": "2026-11-05T19:31:08"
+      }
+    ],
+    "S7": [
+      {
+        "stage": "S7",
+        "role": "qa-failure-analyst",
+        "acceptor": "driver",
+        "reviewed_dispatch": "S7-qa-failure-analyst-5",
+        "verdict": "accept",
+        "failure_class": null,
+        "quote": "by: person - retry The stage acceptance of S6 and of S7 is passed by my recorded words; look again and go on to the report.",
+        "witness_paths": [
+          "work/handoffs/S7-qa-failure-analyst-5.yaml"
+        ],
+        "at": "2026-11-05T19:53:02"
+      }
+    ]
+  },
+  "size_initial": "L",
+  "size_final": "L",
+  "first_test_run_at": "2026-11-05T02:46:44+00:00",
+  "acceptance_awaits": {
+    "S7": "S7-qa-failure-analyst-5"
+  },
+  "closed_at": "2026-11-05T07:42:00+00:00",
+  "closed_by": "gate B + S8 done",
+  "reopened_at": "2026-11-05T14:58:14+00:00",
+  "reopened_by_words": "Rerun after the factory fix batch. S5: write the tests of TC_001 and TC_002 again; the critic's earlier rejections named no typed finding, so treat them as unreviewed. Then S6 again: the manual-agent cases TC_014, TC_015 and TC_016 were never walked because their preparation failed; walk each of them this time. Gate A stays as approved.\n",
+  "remarks": [
+    {
+      "stage": "S5",
+      "text": "go on\n\nI accept that the three tests are not probed here: the probe tool cannot read the Playwright run, which is a tooling gap and not a verdict on the tests. They stay unverified in the report.",
+      "at": "2026-11-05T15:45:06+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S6",
+      "text": "go on without it\n\nThis case stays not walked: the recorder refused the sign-in before anything was sent, which is a gap of the factory's tool and not a result about the product. Do not capture it again and do not try to write it into a lane it does not fit. Finish this block as it is and hand over without a halt, so the next step can start.",
+      "at": "2026-11-05T17:17:40+00:00",
+      "by": "human"
+    }
+  ]
+}

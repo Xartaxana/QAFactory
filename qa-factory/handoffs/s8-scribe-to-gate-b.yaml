@@ -1,0 +1,165 @@
+# S8 -> GATE B: the scribe hands the story to the person.
+#
+# The receiving role here is a human being, and the failure mode is the opposite of every other
+# handoff: not too little, too much. On TP1-13958 the same text reached the person three times
+# over; on TP1-15045 the machine ledger was pasted beside eighteen green tests and read
+# "verified 0". So this file is a contract about WHAT IS SHOWN AND WHAT IS NOT, and it lists, per
+# section, the code that prints it - because every part of the gate message is quoted, never
+# composed.
+#
+# The rule that decides the hard cases: a reason whose owner is the factory is REPORTED, never put
+# to the person as a choice. Nothing is wanted from them for the factory's own defects.
+#
+# The report has eleven sections, in this order (grammar.REPORT_SECTIONS): Proven, Product bugs,
+# Left with you, Open questions, Not proven, Decided at gate A, Decided at gate B, Factory defects,
+# Size, Where to look, Appendix. Code renders most of them (report_facts.py); "Decided at gate B"
+# exists only after the gate, so this message never quotes it.
+schema_version: 1
+contract: s8-scribe-to-gate-b
+stage: S8
+from_role: qa-doc-scribe
+to_role: person
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: test-report.md
+    what: the long form - the person reads it, the message quotes three of its sections
+    required: true
+  - path: work/ledger.json
+    what: delivery_verdict (yes, after_checks or no), its reasons grouped by owner, left_items and blocked_by
+    required: true
+  - path: work/traceability.json
+    what: one row per requirement x case, rendered for the message
+    required: true
+
+inputs_read:
+  - path: work/handoffs/<the author's dispatch>.yaml
+    version: <its window id>
+    drafts_received: <n>
+  - path: work/ledger.json
+    version: <hash>
+    rows: <n>
+
+# The analyst's handoff is ACCEPTED by this role (X7-6b, stage S7 `acceptance_by`): the verdict word below is read for it. `ok` accepts it (no
+# quote needed); `concerns` sends it back to the analyst for one repair round and makes the report written from it stale - then the section
+# `stage_acceptance` is owed (see `required_when`). The analyst's form is named in `inputs_read` above. A concern about your own REPORT
+# belongs in `unresolved`, not in the verdict word: only a `concerns` with a `stage_acceptance` section reopens S7.
+required_when:
+  concerns: [stage_acceptance]
+
+header:
+  role: qa-doc-scribe
+  stage: S8
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+# Acceptance of the analyst's handoff (X7-6b), owed on `header.verdict: concerns`: the failure class and a verbatim quote (path#anchor, at
+# most 300 characters) of the analyst's artifact; the driver records it with `stage_done.py --acceptance`.
+stage_acceptance:
+  failure_class: <spec|capability|data|tooling>
+  quote: "<the analyst's own words, with path#anchor>"
+  witness_paths:
+    - <task-relative path the verdict rests on, or omit when none>
+
+delivery:
+  ready: <yes|after_checks|no>             # the ledger's `delivery_verdict` word; `after_checks` = ready once the person finishes the checks left with them
+  reasons_by_owner:
+    product: ["<reason>"]
+    person: ["<reason>"]
+    stand: ["<reason>"]
+    factory: ["<reason - reported, never asked>"]
+  blocked_by: "<the ledger's own list; exactly ['factory'] is said in the first sentence>"
+
+# What the message carries, in this order, each one quoted from the command named. A section with
+# nothing to print is omitted; a section is never summarised and never rebuilt from memory.
+message_sections:
+  - id: verdict
+    source: test-report.md, the verdict paragraph above the first section and the delivery_ready line (yes, after_checks or no)
+  - id: traceability
+    source: "traceability.py --task <TICKET> --render"
+    rule: every row, sorted by R then TC - a row not shown reads as passed
+  - id: product_bugs_left_with_you_not_proven
+    source: "test-report.md, the sections ## Product bugs, ## Left with you and ## Not proven as written"
+  - id: run_these_yourself
+    source: "gate_brief.py --gate B"
+    rule: the cases the person took over at gate A, with the exact command; not a question
+  - id: stand_gaps
+    source: "gate_brief.py --gate B"
+    rule: one card per blocked_by_env row and per env_blocked run row, verbatim
+  - id: decisions_per_gap
+    source: work/ledger.json
+    rule: one line per row that is not passed_green AND whose owner is the person
+  - id: bugs_to_file
+    source: "gate_brief.py --gate B"
+    rule: numbered and self-contained; the answer comes back by number
+  - id: open_before_the_mr
+    source: "gate_brief.py --gate B"
+    rule: not a block; if the person says open it anyway, these lines go into the MR description
+  - id: judge
+    source: "gate_brief.py --gate B"
+    rule: only when a judge is configured
+
+not_shown:
+  - "the machine ledger - it is bookkeeping, and it reads nothing like what the person sees"
+  - "Proven, Factory defects, Size, Where to look - detail behind a decision, already in the report"
+  - "Open questions, Decided at gate A - the report's own record; the same facts reach the message
+     through open_before_the_mr and the one line per gap accepted at gate A, never by pasting these
+     sections"
+  - "anything already accepted at gate A: it is shown as one line of what was decided, never asked
+     a second time"
+
+# The questions the person is actually being asked, each with its closed set of answers and the
+# command that records the answer. A question with no recording command does not belong at a gate.
+questions:
+  - id: <gap or bug or delivery item>
+    question: "<as the section words it>"
+    answers: "<the closed set - e.g. fix now | verify elsewhere | defer with a reminder | accept>"
+    records_with: "waiver.py --task <T> --stage <S> --block \"<the exact block text code reads>\""
+
+# The rehearsal that must be green before the person is asked anything at all.
+rehearsal:
+  ran: <true|false>
+  factory_fixable_open: <n>        # must be 0 - stage_done refuses S8 while one is open
+  person_decides: "<the findings that became questions above>"
+  factory_defect: "<stated plainly, in the words its fix prints; the person's word that passes it is recorded by the conductor>"
+
+artifacts:
+  report: test-report.md
+  ledger: work/ledger.json
+  ledger_human: work/ledger.md
+  traceability: work/traceability.json
+  delivery_summary: work/delivery-summary.md
+
+claims:
+  every_section_is_quoted_from_the_command_named: <true|false>
+  no_factory_owned_reason_is_put_to_the_person_as_a_choice: <true|false>
+  no_gate_a_decision_is_asked_again: <true|false>
+  the_bug_list_is_built_by_code_and_numbered: <true|false>
+  traceability_table_exists_on_disk: <true|false>   # work/traceability.json was never written on
+                                                    # TP1-13797 and no check asked for it
+  s8_was_closed_before_the_gate_was_asked: <true|false>
+
+# For each claim you made in the report, the code block it rests on (claim x code block; spec t-1765 X7-7): the person at gate B
+# can follow it. Empty only with `tried_note` saying why nothing was tried. Never relaxed by `required_when` or by the verdict.
+# Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: <the claim of the report, in a few words>
+    technique: <the code block or tool output the claim rests on>
+    observation: <what it shows, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <row or item>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

@@ -1,0 +1,1 @@
+preconditions: [{"id": "PC-1", "kind": "account", "what": "a user who administers some projects but not all, with an integration", "partitions": ["P-partial-admin"], "check": {"none": "only one role (default user) is held by the stand; a person says whether a partial-admin account exists"}}]

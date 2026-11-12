@@ -1,0 +1,16 @@
+qa-automator S5 CART-1_TC_010 (window 4 of 4, e2e-ui) · concerns
+CART-1_TC_010 · green · new e2e test passes on the live stand (1 passed); probe gap left to the critic …
+qa-factory/artifacts/CART-1/work/handoffs/S5-qa-automator-7.yaml
+Files written or changed:
+tests/e2e/cart/add-to-cart.spec.ts (new test)
+core/pages/CartPage.ts (new page object)
+core/pages/HomePage.ts (search, card add and cart-badge actions added)
+qa-factory/artifacts/CART-1/work/test-cases/cart/CART-1_TC_010.md (copy of the pinned case, byte-identical)
+qa-factory/artifacts/CART-1/work/frag-s5-7.json (manifest fragment, merged through manifest_put.py)
+Run: one scoped run, 1 passed, exit 0. Summary is qa-factory/artifacts/CART-1/evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.json.
+Handoff form: handoff_check.py reports it complete (68 fields).
+Remaining check output: after the reparse and the form, the last s5_precheck pass printed no findings. The same output also carries a "no verdict" note on the expectation-change claim, caused by the red TC_009 test. It is not a finding for this window.
+Branch check: I did not run the ancestry command. Commit a25b080 is not in this repo; it is in the MyBooks checkout, which the runtime probe confirmed at that exact HEAD (matched before and after the run).
+Manifest: the fragment has the tests[] row, then_bindings for Then 1-3, obligation OB-10 binding, PR-2 applied, one function-name deviation (planned T-10, the title carries the tag and case id), runs[] and run_witness.
+Concern: the probe is unprobed because probe_by_code cannot read Playwright TypeScript. I recorded sensitivity_proof_missing_reason instead.
+Test design: the shopper signs in through the UI in a fresh session. Own book comes from the ownBooks fixture and the cart is cleared through the verifiedUser API fixture. Then 2 compares the badge text to the quantity sum read from GET /api/cart.

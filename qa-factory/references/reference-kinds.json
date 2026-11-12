@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of reference kinds (FR-13): how a link found in a ticket's text is classified by host and path. Read by scripts/ticket_light.py. `hosts` empty means any host; otherwise the link host must equal one of them or end with a dot plus one of them. `path_regexes` are matched with re.search against the link path. RULE SHAPE: a rule that only names a path marker is matched on the path SUFFIX, `(?:^|/)<marker>/` - never `^/<marker>/` - so a tracker or wiki behind a context path (https://host/jira/browse/ABC-5) is still read; the loader refuses a marker rule that starts with `^/` and captures nothing, naming the key. A rule that captures the project path (merge_request, gitlab_issue, pull_request: group 1 is the project path, group 2 the number) stays anchored at the path start, because the capture must begin there. For kind ticket the rule names ONLY the marker and the code appends the key shape from ticket_light.KEY_RE, so the key is group 1 and has one source (a ticket rule with a capture group of its own is refused); source_inventory builds its /browse/KEY finder from the same rules. A link that matches no kind is kind `url`. Whether the HOST is one the factory may fetch from is decided by the project's config (tracker base_url, implementation_repos remote_identity, code_repos, environments), never here: an unknown host is listed for the person and never fetched. OPTIONAL FIELD `is_change` (a bool, true or false; absent means false): the kind is a change to the code that a test can be grounded on (merge_request, pull_request). Read by ticket_light.change_kinds, the one reader; the driver asks the no-change question of a local story only when its ticket-references.json holds no row of such a kind (SS1-13). A value that is not a bool is refused, naming the kind.",
+  "kinds": [
+    {
+      "kind": "ticket",
+      "hosts": [],
+      "path_regexes": ["(?:^|/)browse/"]
+    },
+    {
+      "kind": "merge_request",
+      "hosts": [],
+      "is_change": true,
+      "path_regexes": ["^/(.+?)/-/merge_requests/([0-9]+)"]
+    },
+    {
+      "kind": "gitlab_issue",
+      "hosts": [],
+      "path_regexes": ["^/(.+?)/-/issues/([0-9]+)"]
+    },
+    {
+      "kind": "pull_request",
+      "hosts": ["github.com"],
+      "is_change": true,
+      "path_regexes": ["^/([^/]+/[^/]+)/pull/([0-9]+)"]
+    },
+    {
+      "kind": "confluence",
+      "hosts": [],
+      "path_regexes": ["(?:^|/)display/", "(?:^|/)pages/", "/wiki/spaces/"]
+    },
+    {
+      "kind": "figma",
+      "hosts": ["figma.com"],
+      "path_regexes": ["^/(file|design|proto|board|make)/"]
+    }
+  ]
+}

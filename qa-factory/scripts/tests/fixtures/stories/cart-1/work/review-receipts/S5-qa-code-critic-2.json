@@ -1,0 +1,599 @@
+{
+  "schema_version": 2,
+  "receipt_kind": "s5_review_window",
+  "immutable": true,
+  "reviewer_dispatch_id": "S5-qa-code-critic-2",
+  "author_dispatch_id": "S5-qa-automator-2",
+  "input_hash": "ffc7c3737535a405008987b7660a0d29e57055aa7d7cb7f794ee3ac77ae6c40d",
+  "scope_instances": {
+    "CART-1_TC_001": [
+      "@api @regression CART-1_TC_001 add unknown or sold-out book rejected"
+    ],
+    "CART-1_TC_002": [
+      "@api @regression CART-1_TC_002 add beyond stock rejected"
+    ],
+    "CART-1_TC_003": [
+      "@api @regression CART-1_TC_003 repeat add accumulates"
+    ],
+    "CART-1_TC_004": [
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]"
+    ]
+  },
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "input_hash": "a25b727396ccf9edcb9a18d2cea2a2842ea7f908db55c91650778386fdd24900",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "29b84ab7c852bbcd94cf3dbe248c20a599a17808c267f63ece5f857a57979c72"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "obligation_hash": "5a9b0972ab1e9b61a2cefdfd51c426bbc5daf68fd4ae90804f39a4b1ae5b276f",
+      "assertion_id": "tests/api/cart/add-rejections.spec.ts:22",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_001",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "a25b727396ccf9edcb9a18d2cea2a2842ea7f908db55c91650778386fdd24900"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_001",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:06+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-rejections.spec.ts:22"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "input_hash": "88321178eebeb2f67acce0139b58deb80ac30fab4bb34a70a9745d6685b7bb15",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-2",
+          "obligation_hash": "699a11a2c0930d9737b6105f556584cabce1e2b46a804bdc02d0a36675eb9b1d"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2"
+      ],
+      "obligation_hash": "eac2de95c53912cf9c6c7ff04e376cf6819c2fde45c22239d58ab44f08789c79",
+      "assertion_id": "tests/api/cart/add-stock-limit.spec.ts:18",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_002",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "88321178eebeb2f67acce0139b58deb80ac30fab4bb34a70a9745d6685b7bb15"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_002",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:08+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-stock-limit.spec.ts:18"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "input_hash": "e5defa4cec2d0bcecd5032cfe22d415956d584e0cb268fb1182194c758f14cce",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-3",
+          "obligation_hash": "b377588045ae4920e879065c2bb608923576f8d465187383a0656de795a6dfec"
+        }
+      ],
+      "obligation_ids": [
+        "OB-3"
+      ],
+      "obligation_hash": "1e0c78cb0aaa9aba8619f452b8f772cf7504338c65ef0d044342981b3ef54181",
+      "assertion_id": "tests/api/cart/add-accumulate.spec.ts:15",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_003",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "e5defa4cec2d0bcecd5032cfe22d415956d584e0cb268fb1182194c758f14cce"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_003",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:09+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-accumulate.spec.ts:15"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:34",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:34"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:34",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:34"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "e256deefba085dc501d09e76ea6e904fc802a99203de09332fccbf4da8fb56ca",
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json",
+          "sha256": "db29f959e00a96f2ce56be93704e4db7385f9572f91a537d5028f6723d1b134b"
+        },
+        {
+          "path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+          "sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_004",
+        "words": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+        "at": "2026-10-31T09:26:10+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/add-boundaries.spec.ts:55"
+      ]
+    }
+  ],
+  "receipt_hash": "ba3010e8f5091b14a77f87b746e98f9d9300cf4fe4be31841e04a353cb99d7bf"
+}

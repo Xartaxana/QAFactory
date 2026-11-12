@@ -1,0 +1,186 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*User Story*\r\nAs a shopper, I want to add products to my cart from the product page so that I can buy them later.\r\n\r\n*Business Value*\r\nCore purchase funnel — increases cart creation and revenue.\r\n\r\n*Acceptance Criteria (Gherkin)*\r\nScenario: Add simple product to cart\r\n  Given I am on a product page of an in-stock item\r\n  When I click \"Add to Cart\"\r\n  Then the item should appear in my cart with correct price and quantity = 1\r\n\r\nScenario: Add out-of-stock product\r\n  Given the product is out of stock\r\n  When I click \"Add to Cart\"\r\n  Then I should see an \"Out of stock\" message and no item is added\r\n\r\nScenario: Add multiple quantities\r\n  Given I select quantity = 3\r\n  When I add the product to my cart\r\n  Then the cart should show quantity = 3 and the correct subtotal\r\n\r\n*QA Notes*\r\n\r\n* Validate price sync with backend.\r\n* Ensure guest carts persist using cookies/local storage.",
+  "id": "13521510",
+  "key": "REF-10",
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-16",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add in-stock book to cart with quantity 1",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-17",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add three copies of a book to cart",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-15",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject adding an out-of-stock book",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-11",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject adding quantity above available stock",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-18",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject second add when cart plus new quantity exceeds stock",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-1",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject quantity 0 when adding to cart",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-19",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject adding a second copy of a single-stock book",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-9",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject raising cart quantity above stock",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-4",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject quantity -1 when adding to cart",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-20",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Reject quantity 1.5 when adding to cart",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-13",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product to cart as guest user",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-21",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product to cart as logged-in user",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-14",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Verify price sync with backend",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-22",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add multiple different products to cart",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-12",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add same product multiple times",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-3",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product to cart from quick view",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-23",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product with maximum allowed quantity",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-5",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product with non-numeric quantity",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-6",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product during price update",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-7",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product with network interruption",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-8",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product with session timeout",
+        "type": "Tests"
+      },
+      {
+        "key": "REF-24",
+        "relation": "tested by",
+        "status": "Open",
+        "summary": "Add product with extremely large quantity",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Low",
+  "provenance": {
+    "bytes": 40594,
+    "fields_requested": "*all",
+    "sha256": "a3bff387fe54696dfbde47b0d8c68a9ff73a85a304e6d290223392877dc11232",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:20.795+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add Product to Shopping Cart",
+  "type": "Story"
+}

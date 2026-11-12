@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "note": "Machine-readable form of references/stage-model.md. stage_guard.py, exit_gate.py and inject_context.py read this file plus the story's pipeline.json; no role name is hardcoded in their Python. 'role' is the stage's primary role (null when the stage is orchestrator+code only); 'roles' is the complete list — S4, S5 and S8 each run two roles. 'inputs'/'outputs' are artifact names relative to qa-factory/artifacts/<TICKET>/ unless prefixed with 'project:' (relative to qa-factory/); a trailing '/' marks a directory whose presence (not a fixed filename) is the signal. 'required_outputs' is the subset of 'outputs' whose absence at handover (SubagentStop) is a failure — exit_gate.py enforces it. Top-level 'witness' maps every one of the twelve roles to the single artifact that best proves its work handed off; 'detectors' on a stage names extra code-level acceptance scripts exit_gate.py re-runs for a role in that stage, keyed by role (run as a bare `python <script>` from the project root, so a detector finds the running story itself). S4 lists state/story-case-links.json under 'outputs' but not under 'required_outputs': case_versions.py writes it, the designer has no Bash, and on TP1-15045 the designer was blocked twice for not running a bookkeeping script the orchestrator then ran for it. S4's 'work/test-cases/' is the story's own store: on a project with config.cases_root the cases are in the project's library instead, so a reader of this output (exit_gate.py, the resume rule) resolves it through contract.cases_root before calling S4 unfinished.",
+  "stages": [
+    {
+      "id": "S0",
+      "name": "Start and preflight",
+      "rework_mode": "fresh",
+      "role": null,
+      "roles": [],
+      "requires": [],
+      "gate_before": null,
+      "inputs": [
+        "project:config.json"
+      ],
+      "outputs": [
+        "pipeline.json",
+        "project:readiness.json"
+      ],
+      "required_outputs": [
+        "pipeline.json"
+      ]
+    },
+    {
+      "id": "S1",
+      "name": "Context and grounding",
+      "rework_mode": "fresh",
+      "role": "qa-scout",
+      "roles": [
+        "qa-scout"
+      ],
+      "requires": [
+        "S0"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "pipeline.json"
+      ],
+      "optional_dispatches": [
+        {
+          "role": "qa-runner",
+          "purpose": "reference_walk",
+          "output": "work/reference-snapshot.yaml"
+        }
+      ],
+      "outputs": [
+        "work/context-manifest.json",
+        "work/context-bundle.json",
+        "work/impl-diff.txt",
+        "work/reference-snapshot.yaml"
+      ],
+      "required_outputs": [
+        "work/context-manifest.json",
+        "work/context-bundle.json"
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "Understanding and size",
+      "rework_mode": "fresh",
+      "role": "qa-requirements-tester",
+      "roles": [
+        "qa-requirements-tester",
+        "qa-case-critic"
+      ],
+      "acceptance_by": "qa-case-critic",
+      "requires": [
+        "S1"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "work/context-bundle.json",
+        "work/reference-snapshot.yaml"
+      ],
+      "outputs": [
+        "work/requirements-register.md",
+        "work/requirements-readiness.json",
+        "understanding.md"
+      ],
+      "required_outputs": [
+        "work/requirements-register.md",
+        "work/requirements-readiness.json",
+        "understanding.md"
+      ],
+      "detectors": {
+        "qa-requirements-tester": [
+          "sizing.py",
+          "branch_accounting.py"
+        ]
+      },
+      "advice": [
+        "sizing.py"
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Plan",
+      "rework_mode": "fresh",
+      "role": "qa-test-strategist",
+      "roles": [
+        "qa-test-strategist",
+        "qa-case-critic"
+      ],
+      "acceptance_by": "qa-case-critic",
+      "requires": [
+        "S2"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "work/requirements-register.md",
+        "work/context-bundle.json",
+        "project:strategy/test-strategy.md",
+        "work/first-look.yaml"
+      ],
+      "optional_dispatches": [
+        {
+          "role": "qa-runner",
+          "purpose": "first_look",
+          "output": "work/first-look.yaml",
+          "before": "window 1"
+        }
+      ],
+      "outputs": [
+        "test-plan.md",
+        "work/test-plan.json",
+        "work/grounding.yaml"
+      ],
+      "required_outputs": [
+        "test-plan.md",
+        "work/test-plan.json"
+      ],
+      "detectors": {
+        "qa-test-strategist": [
+          "planning_contract.py",
+          "branch_accounting.py"
+        ]
+      }
+    },
+    {
+      "id": "S4",
+      "name": "Cases",
+      "rework_mode": "fresh",
+      "role": "qa-case-designer",
+      "roles": [
+        "qa-case-designer",
+        "qa-case-critic"
+      ],
+      "acceptance_by": "qa-case-critic",
+      "requires": [
+        "S3"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "test-plan.md",
+        "work/test-plan.json",
+        "work/requirements-register.md",
+        "work/first-look.yaml"
+      ],
+      "outputs": [
+        "work/test-cases/",
+        "state/story-case-links.json"
+      ],
+      "required_outputs": [
+        "work/test-cases/"
+      ],
+      "detectors": {
+        "qa-case-critic": [
+          "critic_rollcall.py",
+          "branch_accounting.py"
+        ]
+      }
+    },
+    {
+      "id": "S5",
+      "name": "Automation",
+      "rework_mode": "resume",
+      "role": "qa-automator",
+      "roles": [
+        "qa-automator",
+        "qa-code-critic"
+      ],
+      "requires": [
+        "S4"
+      ],
+      "gate_before": "A",
+      "inputs": [
+        "state/story-case-links.json",
+        "test-plan.md",
+        "work/context-bundle.json",
+        "work/first-look.yaml"
+      ],
+      "outputs": [
+        "work/automation-manifest.json",
+        "work/evidence/",
+        "work/s5-plan.json",
+        "work/s5-notes/"
+      ],
+      "required_outputs": [
+        "work/automation-manifest.json"
+      ],
+      "detectors": {
+        "qa-automator": [
+          "s5_precheck.py",
+          "branch_accounting.py"
+        ]
+      }
+    },
+    {
+      "id": "S6",
+      "name": "Run",
+      "rework_mode": "fresh",
+      "role": "qa-runner",
+      "roles": [
+        "qa-runner"
+      ],
+      "acceptance_by": "qa-failure-analyst",
+      "requires": [
+        "S5"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "work/automation-manifest.json",
+        "state/story-case-links.json",
+        "work/first-look.yaml"
+      ],
+      "outputs": [
+        "work/run-report.json",
+        "work/evidence/",
+        "work/evidence/manual/<case>/tried.md"
+      ],
+      "required_outputs": [
+        "work/run-report.json"
+      ]
+    },
+    {
+      "id": "S7",
+      "name": "Triage",
+      "rework_mode": "fresh",
+      "role": "qa-failure-analyst",
+      "roles": [
+        "qa-failure-analyst"
+      ],
+      "acceptance_by": "qa-doc-scribe",
+      "requires": [
+        "S6"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "work/run-report.json",
+        "work/automation-manifest.json",
+        "work/evidence/",
+        "work/first-look.yaml"
+      ],
+      "outputs": [
+        "work/triage.json",
+        "work/bug-drafts/"
+      ],
+      "required_outputs": [
+        "work/triage.json"
+      ]
+    },
+    {
+      "id": "S8",
+      "name": "Results",
+      "rework_mode": "fresh",
+      "role": "qa-doc-scribe",
+      "roles": [
+        "qa-doc-scribe",
+        "qa-bug-reporter"
+      ],
+      "requires": [
+        "S7"
+      ],
+      "gate_before": null,
+      "inputs": [
+        "work/ledger.json",
+        "work/triage.json",
+        "work/run-report.json",
+        "test-plan.md"
+      ],
+      "outputs": [
+        "work/ledger.json",
+        "work/ledger.md",
+        "test-report.md",
+        "work/proposals/",
+        "project:bugs/",
+        "project:obligations.md"
+      ],
+      "required_outputs": [
+        "work/ledger.json",
+        "work/ledger.md",
+        "test-report.md"
+      ],
+      "gate_orders": {
+        "bugs": {
+          "gate": "B",
+          "executor": {
+            "stage": "S8",
+            "role": "qa-bug-reporter"
+          }
+        },
+        "mr": {
+          "gate": "B",
+          "executor": "delivery"
+        }
+      },
+      "detectors": {
+        "qa-doc-scribe": [
+          "check_coverage.py"
+        ]
+      }
+    },
+    {
+      "id": "S9",
+      "name": "Closure and retro",
+      "rework_mode": "fresh",
+      "role": "qa-retro-analyst",
+      "roles": [
+        "qa-retro-analyst"
+      ],
+      "requires": [
+        "S8"
+      ],
+      "gate_before": "B",
+      "inputs": [
+        "pipeline.json",
+        "project:records/journal.jsonl",
+        "project:state/cost/",
+        "work/retro-numbers.json"
+      ],
+      "outputs": [
+        "retro.md",
+        "project:obligations.md",
+        "project:factory-backlog.md"
+      ],
+      "required_outputs": [
+        "retro.md"
+      ]
+    }
+  ],
+  "gates": {
+    "A": {
+      "after": "S4"
+    },
+    "B": {
+      "after": "S8"
+    }
+  },
+  "witness": {
+    "qa-scout": "work/context-manifest.json",
+    "qa-requirements-tester": "work/requirements-readiness.json",
+    "qa-test-strategist": "test-plan.md",
+    "qa-case-designer": "work/test-cases/",
+    "qa-case-critic": "state/story-case-links.json",
+    "qa-automator": "work/automation-manifest.json",
+    "qa-code-critic": "work/automation-manifest.json",
+    "qa-runner": "work/run-report.json",
+    "qa-failure-analyst": "work/triage.json",
+    "qa-doc-scribe": "test-report.md",
+    "qa-bug-reporter": "project:bugs/",
+    "qa-retro-analyst": "retro.md"
+  }
+}

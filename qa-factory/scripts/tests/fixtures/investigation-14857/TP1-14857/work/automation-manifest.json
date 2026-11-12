@@ -1,0 +1,724 @@
+{
+  "tests": [
+    {
+      "case": "TC-001",
+      "covers": [
+        "TC-001"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "TC-001",
+          "version": "cv_334a9fa12753b8be6a34"
+        }
+      ],
+      "requirements": [
+        "R-1",
+        "R-4"
+      ],
+      "plan_row": "TS-1",
+      "file": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py",
+      "marker": "TC-001",
+      "test": "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "instance_id": "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "obligation_ids": [
+        "OB-1-1",
+        "OB-1-2"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1-1",
+          "obligation_hash": "721eca615a164a1889c94264529e119f41eceabc431d818d01f8936b549ba01c"
+        },
+        {
+          "obligation_id": "OB-1-2",
+          "obligation_hash": "bbf26aa3d0b05d0b5922c5ab02d01d19438ddf89503398487fcffcfc1644e2f7"
+        }
+      ],
+      "trace_binding": {
+        "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+        "assertion_refs": [
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:94-135"
+        ],
+        "test_content_sha": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "TC-001"
+      ],
+      "generated_from": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py"
+      ],
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 935f550a3a23",
+        "base": {
+          "kind": "s0",
+          "sha": "935f550a3a236d9b9e46f36eebc526d65018ba18"
+        },
+        "measured_on": {
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b",
+          "testproject1_test_harness/tests/conftest.py": "1072025babfdcf12bb5974d7619804c8e78d634802b28c61d8d6d2f314a4366a",
+          "testproject1_test_harness/tests/assistant/datasource/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/assistant/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/__init__.py": "357ac43d042104f7dd264f7894f79bb74753cf572844f3c31a4682e7479a8322",
+          "testproject1_test_harness/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/test_data/git_datasource_test_data.py": "13df0bf28fdf36e25630b13e6cf773637f2f84310147538f5207e2da8314bf68",
+          "testproject1_test_harness/tests/utils/base_utils.py": "14bd904e180ba5c776e7601351eb9c14f17ea16a1902b4b92b6faa2ee3cda65d",
+          "testproject1_test_harness/tests/utils/client_factory.py": "bbd20e60bc58968dd472451ea4f22244ee43342df4124a249ce8eae9807506a4",
+          "testproject1_test_harness/tests/utils/datasource_utils.py": "8bc603fdc724f54057b9fc3b943c62e5ebe2d9732a667e4a0dd70c8fe2f20839",
+          "testproject1_test_harness/tests/utils/credentials_manager.py": "1e08f75d46fddbc59b01d0ff97def3428d91f64b311cb15a626ca7f69137df60",
+          "testproject1_test_harness/tests/utils/confluence_seed.py": "b0797573e26cc821ef3cd01604aa0ead6bfeaf320d684cb6522e8a45c61c9ba4",
+          "testproject1_test_harness/tests/utils/jira_seed.py": "bdabc0def3f249d7ef869ad41dbc2d68e67af3a8ca8b6321bc679e815c9c158e",
+          "testproject1_test_harness/tests/utils/aws_parameters_store.py": "5904fca0ad910f09b3e6594a95edb191dadc3144329e4815b2e39ceb28120220",
+          "testproject1_test_harness/tests/utils/env_resolver.py": "a3f52522985830a63433ef9937ef158868647a8c7c93a22bcc5bda2081a103a8",
+          "testproject1_test_harness/tests/utils/ado_seed.py": "6047b7b16a744989b26d6e7b4407be6bea217932922ebc847c5897ce0933f4e5",
+          "testproject1_test_harness/tests/utils/logger_util.py": "7b00eb24a3e1ffbf963d4a8974e7f8c7dde6cc0e6032accaa219ad962c0d3954",
+          "testproject1_test_harness/tests/utils/project_utils.py": "51f1a8ec23b975bda6e7c98e8c089be8b14f40923ac5d2dbe8ec2d8bcf6ab518",
+          "testproject1_test_harness/pytest.ini": "1849e3d762ec37fe8da9d945bc57015c5ffdfaf6a2f4579d876bbacf897079ff",
+          "pyproject.toml": "507e1dd42481ff88d1cbe6c36f903b12f192fa77b1878b2b9828949cafff40a6"
+        },
+        "measured_by": "manifest_from_tests.py",
+        "measured_at": "2026-10-27T00:57:47+00:00"
+      },
+      "profile_id": "api",
+      "assertion_id": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:92",
+      "defect_location": "src/testproject1/datasource/base_datasource_processor.py:132",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-001",
+      "sensitivity_proof": {
+        "receipt_ref": {
+          "path": "work/sensitivity-receipts/test_manual_full_reindex_moves_last_indexed_and_keeps_it-live-93bd4ab19a1be4fa.json",
+          "sha256": "6917a703386ff9969cea28865ba01e741fd59afad113ffd3892b833811bdc465"
+        }
+      },
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "TC-002",
+      "covers": [
+        "TC-002"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "TC-002",
+          "version": "cv_0c84ad6c735421cc4073"
+        }
+      ],
+      "requirements": [
+        "R-2",
+        "R-3",
+        "R-7"
+      ],
+      "plan_row": "TS-2",
+      "file": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py",
+      "marker": "TC-002",
+      "test": "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "instance_id": "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "obligation_ids": [
+        "OB-2-1"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-2-1",
+          "obligation_hash": "f44b3ab7e2b2c71eaf301d056735862210e776580f01c741ed0c28bbc9986e47"
+        }
+      ],
+      "trace_binding": {
+        "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+        "assertion_refs": [
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:171-190"
+        ],
+        "test_content_sha": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "TC-002"
+      ],
+      "generated_from": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py"
+      ],
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 935f550a3a23",
+        "base": {
+          "kind": "s0",
+          "sha": "935f550a3a236d9b9e46f36eebc526d65018ba18"
+        },
+        "measured_on": {
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b",
+          "testproject1_test_harness/tests/conftest.py": "1072025babfdcf12bb5974d7619804c8e78d634802b28c61d8d6d2f314a4366a",
+          "testproject1_test_harness/tests/assistant/datasource/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/assistant/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/__init__.py": "357ac43d042104f7dd264f7894f79bb74753cf572844f3c31a4682e7479a8322",
+          "testproject1_test_harness/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/test_data/git_datasource_test_data.py": "13df0bf28fdf36e25630b13e6cf773637f2f84310147538f5207e2da8314bf68",
+          "testproject1_test_harness/tests/utils/base_utils.py": "14bd904e180ba5c776e7601351eb9c14f17ea16a1902b4b92b6faa2ee3cda65d",
+          "testproject1_test_harness/tests/utils/client_factory.py": "bbd20e60bc58968dd472451ea4f22244ee43342df4124a249ce8eae9807506a4",
+          "testproject1_test_harness/tests/utils/datasource_utils.py": "8bc603fdc724f54057b9fc3b943c62e5ebe2d9732a667e4a0dd70c8fe2f20839",
+          "testproject1_test_harness/tests/utils/credentials_manager.py": "1e08f75d46fddbc59b01d0ff97def3428d91f64b311cb15a626ca7f69137df60",
+          "testproject1_test_harness/tests/utils/confluence_seed.py": "b0797573e26cc821ef3cd01604aa0ead6bfeaf320d684cb6522e8a45c61c9ba4",
+          "testproject1_test_harness/tests/utils/jira_seed.py": "bdabc0def3f249d7ef869ad41dbc2d68e67af3a8ca8b6321bc679e815c9c158e",
+          "testproject1_test_harness/tests/utils/aws_parameters_store.py": "5904fca0ad910f09b3e6594a95edb191dadc3144329e4815b2e39ceb28120220",
+          "testproject1_test_harness/tests/utils/env_resolver.py": "a3f52522985830a63433ef9937ef158868647a8c7c93a22bcc5bda2081a103a8",
+          "testproject1_test_harness/tests/utils/ado_seed.py": "6047b7b16a744989b26d6e7b4407be6bea217932922ebc847c5897ce0933f4e5",
+          "testproject1_test_harness/tests/utils/logger_util.py": "7b00eb24a3e1ffbf963d4a8974e7f8c7dde6cc0e6032accaa219ad962c0d3954",
+          "testproject1_test_harness/tests/utils/project_utils.py": "51f1a8ec23b975bda6e7c98e8c089be8b14f40923ac5d2dbe8ec2d8bcf6ab518",
+          "testproject1_test_harness/pytest.ini": "1849e3d762ec37fe8da9d945bc57015c5ffdfaf6a2f4579d876bbacf897079ff",
+          "pyproject.toml": "507e1dd42481ff88d1cbe6c36f903b12f192fa77b1878b2b9828949cafff40a6"
+        },
+        "measured_by": "manifest_from_tests.py",
+        "measured_at": "2026-10-27T00:57:47+00:00"
+      },
+      "profile_id": "api",
+      "assertion_id": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:172",
+      "defect_location": "src/testproject1/datasource/base_datasource_processor.py:132",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-002",
+      "sensitivity_proof": {
+        "receipt_ref": {
+          "path": "work/sensitivity-receipts/test_last_indexed_is_visible_during_reindex_and_completion_keeps_it-live-ed9c5497571fb7b3.json",
+          "sha256": "a21d9f895699a063d2dc86421c948d7f71d7e95c7e01ec71229ed4a5f5911389"
+        }
+      },
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "TC-003",
+      "covers": [
+        "TC-003"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "TC-003",
+          "version": "cv_f4f31f192665e1f68993"
+        }
+      ],
+      "requirements": [
+        "R-17",
+        "R-4"
+      ],
+      "plan_row": "TS-3",
+      "file": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py",
+      "marker": "TC-003",
+      "test": "test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "instance_id": "test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "obligation_ids": [
+        "OB-3-1"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-3-1",
+          "obligation_hash": "50cf1fc4645918cbc40df40be27c889cead4e7fe7fc50bc6acd3fca134f81c0b"
+        }
+      ],
+      "trace_binding": {
+        "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+        "assertion_refs": [
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:218-245"
+        ],
+        "test_content_sha": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "TC-003"
+      ],
+      "generated_from": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py"
+      ],
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 935f550a3a23",
+        "base": {
+          "kind": "s0",
+          "sha": "935f550a3a236d9b9e46f36eebc526d65018ba18"
+        },
+        "measured_on": {
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b",
+          "testproject1_test_harness/tests/conftest.py": "1072025babfdcf12bb5974d7619804c8e78d634802b28c61d8d6d2f314a4366a",
+          "testproject1_test_harness/tests/assistant/datasource/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/assistant/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/__init__.py": "357ac43d042104f7dd264f7894f79bb74753cf572844f3c31a4682e7479a8322",
+          "testproject1_test_harness/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/test_data/git_datasource_test_data.py": "13df0bf28fdf36e25630b13e6cf773637f2f84310147538f5207e2da8314bf68",
+          "testproject1_test_harness/tests/utils/base_utils.py": "14bd904e180ba5c776e7601351eb9c14f17ea16a1902b4b92b6faa2ee3cda65d",
+          "testproject1_test_harness/tests/utils/client_factory.py": "bbd20e60bc58968dd472451ea4f22244ee43342df4124a249ce8eae9807506a4",
+          "testproject1_test_harness/tests/utils/datasource_utils.py": "8bc603fdc724f54057b9fc3b943c62e5ebe2d9732a667e4a0dd70c8fe2f20839",
+          "testproject1_test_harness/tests/utils/credentials_manager.py": "1e08f75d46fddbc59b01d0ff97def3428d91f64b311cb15a626ca7f69137df60",
+          "testproject1_test_harness/tests/utils/confluence_seed.py": "b0797573e26cc821ef3cd01604aa0ead6bfeaf320d684cb6522e8a45c61c9ba4",
+          "testproject1_test_harness/tests/utils/jira_seed.py": "bdabc0def3f249d7ef869ad41dbc2d68e67af3a8ca8b6321bc679e815c9c158e",
+          "testproject1_test_harness/tests/utils/aws_parameters_store.py": "5904fca0ad910f09b3e6594a95edb191dadc3144329e4815b2e39ceb28120220",
+          "testproject1_test_harness/tests/utils/env_resolver.py": "a3f52522985830a63433ef9937ef158868647a8c7c93a22bcc5bda2081a103a8",
+          "testproject1_test_harness/tests/utils/ado_seed.py": "6047b7b16a744989b26d6e7b4407be6bea217932922ebc847c5897ce0933f4e5",
+          "testproject1_test_harness/tests/utils/logger_util.py": "7b00eb24a3e1ffbf963d4a8974e7f8c7dde6cc0e6032accaa219ad962c0d3954",
+          "testproject1_test_harness/tests/utils/project_utils.py": "51f1a8ec23b975bda6e7c98e8c089be8b14f40923ac5d2dbe8ec2d8bcf6ab518",
+          "testproject1_test_harness/pytest.ini": "1849e3d762ec37fe8da9d945bc57015c5ffdfaf6a2f4579d876bbacf897079ff",
+          "pyproject.toml": "507e1dd42481ff88d1cbe6c36f903b12f192fa77b1878b2b9828949cafff40a6"
+        },
+        "measured_by": "manifest_from_tests.py",
+        "measured_at": "2026-10-27T00:57:47+00:00"
+      },
+      "profile_id": "api",
+      "assertion_id": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:217",
+      "defect_location": "src/testproject1/rest_api/models/index.py",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-003",
+      "sensitivity_proof": {
+        "receipt_ref": {
+          "path": "work/sensitivity-receipts/test_two_cache_manual_unrounded_leave_the_later_last_indexed-live-fe3c7486d0d23bfa.json",
+          "sha256": "eaaf6612e10090b817b90d07947d37800a09f048ac08f75ad4dc899ca98e1beb"
+        }
+      },
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "TC-004",
+      "covers": [
+        "TC-004"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "TC-004",
+          "version": "cv_d3eddcbfa18215dbcd17"
+        }
+      ],
+      "requirements": [
+        "R-4"
+      ],
+      "plan_row": "TS-4",
+      "file": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py",
+      "marker": "TC-004",
+      "test": "test_datasource_edit_after_reindex_keeps_last_indexed",
+      "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_datasource_edit_after_reindex_keeps_last_indexed",
+      "instance_id": "test_datasource_edit_after_reindex_keeps_last_indexed",
+      "obligation_ids": [
+        "OB-4-1"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4-1",
+          "obligation_hash": "0e53aef4bed3610fa09a340f1f387a2df6930aebc34ef7a19d070bd736d51599"
+        }
+      ],
+      "trace_binding": {
+        "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_datasource_edit_after_reindex_keeps_last_indexed",
+        "assertion_refs": [
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:317-348"
+        ],
+        "test_content_sha": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "TC-004"
+      ],
+      "generated_from": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py"
+      ],
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 935f550a3a23",
+        "base": {
+          "kind": "s0",
+          "sha": "935f550a3a236d9b9e46f36eebc526d65018ba18"
+        },
+        "measured_on": {
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b",
+          "testproject1_test_harness/tests/conftest.py": "1072025babfdcf12bb5974d7619804c8e78d634802b28c61d8d6d2f314a4366a",
+          "testproject1_test_harness/tests/assistant/datasource/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/assistant/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/__init__.py": "357ac43d042104f7dd264f7894f79bb74753cf572844f3c31a4682e7479a8322",
+          "testproject1_test_harness/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/test_data/git_datasource_test_data.py": "13df0bf28fdf36e25630b13e6cf773637f2f84310147538f5207e2da8314bf68",
+          "testproject1_test_harness/tests/utils/base_utils.py": "14bd904e180ba5c776e7601351eb9c14f17ea16a1902b4b92b6faa2ee3cda65d",
+          "testproject1_test_harness/tests/utils/client_factory.py": "bbd20e60bc58968dd472451ea4f22244ee43342df4124a249ce8eae9807506a4",
+          "testproject1_test_harness/tests/utils/datasource_utils.py": "8bc603fdc724f54057b9fc3b943c62e5ebe2d9732a667e4a0dd70c8fe2f20839",
+          "testproject1_test_harness/tests/utils/credentials_manager.py": "1e08f75d46fddbc59b01d0ff97def3428d91f64b311cb15a626ca7f69137df60",
+          "testproject1_test_harness/tests/utils/confluence_seed.py": "b0797573e26cc821ef3cd01604aa0ead6bfeaf320d684cb6522e8a45c61c9ba4",
+          "testproject1_test_harness/tests/utils/jira_seed.py": "bdabc0def3f249d7ef869ad41dbc2d68e67af3a8ca8b6321bc679e815c9c158e",
+          "testproject1_test_harness/tests/utils/aws_parameters_store.py": "5904fca0ad910f09b3e6594a95edb191dadc3144329e4815b2e39ceb28120220",
+          "testproject1_test_harness/tests/utils/env_resolver.py": "a3f52522985830a63433ef9937ef158868647a8c7c93a22bcc5bda2081a103a8",
+          "testproject1_test_harness/tests/utils/ado_seed.py": "6047b7b16a744989b26d6e7b4407be6bea217932922ebc847c5897ce0933f4e5",
+          "testproject1_test_harness/tests/utils/logger_util.py": "7b00eb24a3e1ffbf963d4a8974e7f8c7dde6cc0e6032accaa219ad962c0d3954",
+          "testproject1_test_harness/tests/utils/project_utils.py": "51f1a8ec23b975bda6e7c98e8c089be8b14f40923ac5d2dbe8ec2d8bcf6ab518",
+          "testproject1_test_harness/pytest.ini": "1849e3d762ec37fe8da9d945bc57015c5ffdfaf6a2f4579d876bbacf897079ff",
+          "pyproject.toml": "507e1dd42481ff88d1cbe6c36f903b12f192fa77b1878b2b9828949cafff40a6"
+        },
+        "measured_by": "manifest_from_tests.py",
+        "measured_at": "2026-10-27T00:57:47+00:00"
+      },
+      "profile_id": "api",
+      "assertion_id": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:280",
+      "defect_location": "src/testproject1/rest_api/routers/index/code_repositories.py",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-004",
+      "sensitivity_proof": {
+        "receipt_ref": {
+          "path": "work/sensitivity-receipts/test_datasource_edit_after_reindex_keeps_last_indexed-live-508853b1f176827d.json",
+          "sha256": "0f1ebe0a3912491a21452d748c744cea22a12102cbdb6ee4b8864d78854ef501"
+        }
+      },
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "TC-005",
+      "covers": [
+        "TC-005"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "TC-005",
+          "version": "cv_b9952b332d545cb207bb"
+        }
+      ],
+      "requirements": [
+        "R-9",
+        "R-1"
+      ],
+      "plan_row": "TS-5",
+      "file": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py",
+      "marker": "TC-005",
+      "test": "test_git_faq_full_reindex_moves_last_indexed",
+      "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_git_faq_full_reindex_moves_last_indexed",
+      "instance_id": "test_git_faq_full_reindex_moves_last_indexed",
+      "obligation_ids": [
+        "OB-5-1"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-5-1",
+          "obligation_hash": "27c0acdd3862d665ae1cb741e73369120d6336a0888a53ceb25d81f8d975bacd"
+        }
+      ],
+      "trace_binding": {
+        "selector": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py::test_git_faq_full_reindex_moves_last_indexed",
+        "assertion_refs": [
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:276-300"
+        ],
+        "test_content_sha": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "TC-005"
+      ],
+      "generated_from": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py"
+      ],
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 935f550a3a23",
+        "base": {
+          "kind": "s0",
+          "sha": "935f550a3a236d9b9e46f36eebc526d65018ba18"
+        },
+        "measured_on": {
+          "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py": "68fb101dbd5cff1e46ce8669e72d803a683ec544e1365418f1f95cc9bba59c0b",
+          "testproject1_test_harness/tests/conftest.py": "1072025babfdcf12bb5974d7619804c8e78d634802b28c61d8d6d2f314a4366a",
+          "testproject1_test_harness/tests/assistant/datasource/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/assistant/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/__init__.py": "357ac43d042104f7dd264f7894f79bb74753cf572844f3c31a4682e7479a8322",
+          "testproject1_test_harness/__init__.py": "dbf169f113d603d3090cb13799192b79fc56d68e3e25c8ab03596d77107f06e1",
+          "testproject1_test_harness/tests/test_data/git_datasource_test_data.py": "13df0bf28fdf36e25630b13e6cf773637f2f84310147538f5207e2da8314bf68",
+          "testproject1_test_harness/tests/utils/base_utils.py": "14bd904e180ba5c776e7601351eb9c14f17ea16a1902b4b92b6faa2ee3cda65d",
+          "testproject1_test_harness/tests/utils/client_factory.py": "bbd20e60bc58968dd472451ea4f22244ee43342df4124a249ce8eae9807506a4",
+          "testproject1_test_harness/tests/utils/datasource_utils.py": "8bc603fdc724f54057b9fc3b943c62e5ebe2d9732a667e4a0dd70c8fe2f20839",
+          "testproject1_test_harness/tests/utils/credentials_manager.py": "1e08f75d46fddbc59b01d0ff97def3428d91f64b311cb15a626ca7f69137df60",
+          "testproject1_test_harness/tests/utils/confluence_seed.py": "b0797573e26cc821ef3cd01604aa0ead6bfeaf320d684cb6522e8a45c61c9ba4",
+          "testproject1_test_harness/tests/utils/jira_seed.py": "bdabc0def3f249d7ef869ad41dbc2d68e67af3a8ca8b6321bc679e815c9c158e",
+          "testproject1_test_harness/tests/utils/aws_parameters_store.py": "5904fca0ad910f09b3e6594a95edb191dadc3144329e4815b2e39ceb28120220",
+          "testproject1_test_harness/tests/utils/env_resolver.py": "a3f52522985830a63433ef9937ef158868647a8c7c93a22bcc5bda2081a103a8",
+          "testproject1_test_harness/tests/utils/ado_seed.py": "6047b7b16a744989b26d6e7b4407be6bea217932922ebc847c5897ce0933f4e5",
+          "testproject1_test_harness/tests/utils/logger_util.py": "7b00eb24a3e1ffbf963d4a8974e7f8c7dde6cc0e6032accaa219ad962c0d3954",
+          "testproject1_test_harness/tests/utils/project_utils.py": "51f1a8ec23b975bda6e7c98e8c089be8b14f40923ac5d2dbe8ec2d8bcf6ab518",
+          "testproject1_test_harness/pytest.ini": "1849e3d762ec37fe8da9d945bc57015c5ffdfaf6a2f4579d876bbacf897079ff",
+          "pyproject.toml": "507e1dd42481ff88d1cbe6c36f903b12f192fa77b1878b2b9828949cafff40a6"
+        },
+        "measured_by": "manifest_from_tests.py",
+        "measured_at": "2026-10-27T00:57:47+00:00"
+      },
+      "profile_id": "api",
+      "assertion_id": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:294",
+      "defect_location": "testproject1/src/testproject1/datasource/git_faq/git_faq_datasource_processor.py",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-005",
+      "sensitivity_proof": {
+        "receipt_ref": {
+          "path": "work/sensitivity-receipts/test_git_faq_full_reindex_moves_last_indexed-live-68d4b367fedb47b7.json",
+          "sha256": "b256c17814b8057e9675721b22e0f32e97876f2efd9dbe50f38c9e385349c7e0"
+        }
+      },
+      "critic_verdict": "approved"
+    }
+  ],
+  "then_bindings": [
+    {
+      "case": "TC-001",
+      "then": 1,
+      "instance_id": "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:94-135",
+      "status": "covered"
+    },
+    {
+      "case": "TC-001",
+      "then": 2,
+      "instance_id": "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:94-135",
+      "status": "covered"
+    },
+    {
+      "case": "TC-001",
+      "then": 3,
+      "instance_id": "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:94-135",
+      "status": "covered"
+    },
+    {
+      "case": "TC-002",
+      "then": 1,
+      "instance_id": "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:171-190",
+      "status": "covered"
+    },
+    {
+      "case": "TC-002",
+      "then": 2,
+      "instance_id": "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:171-190",
+      "status": "covered"
+    },
+    {
+      "case": "TC-003",
+      "then": 1,
+      "instance_id": "test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:218-245",
+      "status": "covered"
+    },
+    {
+      "case": "TC-003",
+      "then": 2,
+      "instance_id": "test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:218-245",
+      "status": "covered"
+    },
+    {
+      "case": "TC-005",
+      "then": 1,
+      "instance_id": "test_git_faq_full_reindex_moves_last_indexed",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:276-300",
+      "status": "covered"
+    },
+    {
+      "case": "TC-005",
+      "then": 2,
+      "instance_id": "test_git_faq_full_reindex_moves_last_indexed",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:276-300",
+      "status": "covered"
+    },
+    {
+      "case": "TC-004",
+      "then": 1,
+      "instance_id": "test_datasource_edit_after_reindex_keeps_last_indexed",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:317-348",
+      "status": "covered"
+    },
+    {
+      "case": "TC-004",
+      "then": 2,
+      "instance_id": "test_datasource_edit_after_reindex_keeps_last_indexed",
+      "assertion_ref": "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:317-348",
+      "status": "covered"
+    }
+  ],
+  "revision": 19,
+  "unresolved": [],
+  "run_witness": "qa-factory/artifacts/TP1-14857/evidence/runs/1a6f06f97370911e601c/repair_verify-1a6f06f97370911e601c-20261027-014410.json exit 0 1 passed",
+  "obligation_bindings": [
+    {
+      "obligation_id": "OB-1-1",
+      "obligation_hash": "721eca615a164a1889c94264529e119f41eceabc431d818d01f8936b549ba01c",
+      "instance_ids": [
+        "test_manual_full_reindex_moves_last_indexed_and_keeps_it"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:92-133"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-001",
+      "code_validity": "valid",
+      "sensitivity": "proven",
+      "proof_kind": "executed_red_probe",
+      "probe_receipt_ref": "work/sensitivity-receipts/test_manual_full_reindex_moves_last_indexed_and_keeps_it-live-93bd4ab19a1be4fa.json",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-1.json"
+    },
+    {
+      "obligation_id": "OB-1-2",
+      "obligation_hash": "bbf26aa3d0b05d0b5922c5ab02d01d19438ddf89503398487fcffcfc1644e2f7",
+      "instance_ids": [
+        "test_manual_full_reindex_moves_last_indexed_and_keeps_it"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:92-133"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-001",
+      "code_validity": "valid",
+      "sensitivity": "proven",
+      "proof_kind": "executed_red_probe",
+      "probe_receipt_ref": "work/sensitivity-receipts/test_manual_full_reindex_moves_last_indexed_and_keeps_it-live-93bd4ab19a1be4fa.json",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-1.json"
+    },
+    {
+      "obligation_id": "OB-2-1",
+      "obligation_hash": "f44b3ab7e2b2c71eaf301d056735862210e776580f01c741ed0c28bbc9986e47",
+      "instance_ids": [
+        "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:169-190"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-002",
+      "code_validity": "valid",
+      "sensitivity": "proven",
+      "proof_kind": "executed_red_probe",
+      "probe_receipt_ref": "work/sensitivity-receipts/test_last_indexed_is_visible_during_reindex_and_completion_keeps_it-live-ed9c5497571fb7b3.json",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-1.json"
+    },
+    {
+      "obligation_id": "OB-3-1",
+      "obligation_hash": "50cf1fc4645918cbc40df40be27c889cead4e7fe7fc50bc6acd3fca134f81c0b",
+      "instance_ids": [
+        "test_two_cache_manual_unrounded_leave_the_later_last_indexed"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:216-247"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-003",
+      "code_validity": "valid",
+      "sensitivity": "proven",
+      "proof_kind": "executed_red_probe",
+      "probe_receipt_ref": "work/sensitivity-receipts/test_two_cache_manual_unrounded_leave_the_later_last_indexed-live-fe3c7486d0d23bfa.json",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-1.json"
+    },
+    {
+      "obligation_id": "OB-4-1",
+      "obligation_hash": "0e53aef4bed3610fa09a340f1f387a2df6930aebc34ef7a19d070bd736d51599",
+      "instance_ids": [
+        "test_datasource_edit_after_reindex_keeps_last_indexed"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:260-290"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-004",
+      "code_validity": "valid",
+      "sensitivity": "proven",
+      "proof_kind": "executed_red_probe",
+      "probe_receipt_ref": "work/sensitivity-receipts/test_datasource_edit_after_reindex_keeps_last_indexed-live-508853b1f176827d.json",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-1.json"
+    },
+    {
+      "obligation_id": "OB-5-1",
+      "obligation_hash": "27c0acdd3862d665ae1cb741e73369120d6336a0888a53ceb25d81f8d975bacd",
+      "instance_ids": [
+        "test_git_faq_full_reindex_moves_last_indexed"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "testproject1_test_harness/tests/assistant/datasource/test_code_datasource_last_indexed.py:274-298"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-005",
+      "code_validity": "valid",
+      "sensitivity": "proven",
+      "proof_kind": "executed_red_probe",
+      "probe_receipt_ref": "work/sensitivity-receipts/test_git_faq_full_reindex_moves_last_indexed-live-68d4b367fedb47b7.json",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    }
+  ],
+  "expectation_changes": [
+    {
+      "functions": [
+        "test_code_datasource_last_indexed.test_datasource_edit_after_reindex_keeps_last_indexed",
+        "test_code_datasource_last_indexed.test_last_indexed_is_visible_during_reindex_and_completion_keeps_it"
+      ],
+      "red_attempt": "ea62110e906cf9ead00c",
+      "green_attempt": "858563f097d411b4ad53",
+      "then_refs": [
+        {
+          "case": "TC-004",
+          "then": 1
+        },
+        {
+          "case": "TC-002",
+          "then": 1
+        }
+      ],
+      "what_changed": "red run was a setup error (GitLab seed fixtures and missing GitLab credentials); fixtures replaced by a public-repo datasource and the reindex wait made settle-aware (an update_date bump is not completion); no assertion value changed",
+      "reason": "no Then value changed; only test setup and the completion wait were repaired",
+      "critic_verdict": "legitimate_correction",
+      "critic_note": "Red was a setup error (GitLab fixtures/credentials); only setup and wait changed, no expected value."
+    },
+    {
+      "functions": [
+        "test_code_datasource_last_indexed.test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+        "test_code_datasource_last_indexed.test_two_cache_manual_unrounded_leave_the_later_last_indexed"
+      ],
+      "red_attempt": "ea62110e906cf9ead00c",
+      "green_attempt": "b94cbd8435119254af6d",
+      "then_refs": [
+        {
+          "case": "TC-001",
+          "then": 2
+        },
+        {
+          "case": "TC-003",
+          "then": 1
+        }
+      ],
+      "what_changed": "red run was a setup error (GitLab seed fixtures and missing GitLab credentials); fixtures replaced by a public-repo datasource and the reindex wait made settle-aware (an update_date bump is not completion); no assertion value changed",
+      "reason": "no Then value changed; only test setup and the completion wait were repaired",
+      "critic_verdict": "legitimate_correction",
+      "critic_note": "Setup error red; setup and wait repaired, assertions unchanged in value."
+    },
+    {
+      "function": "test_code_datasource_last_indexed.test_git_faq_full_reindex_moves_last_indexed",
+      "red_attempt": "5958d3de3cb11a945715",
+      "green_attempt": "1a6f06f97370911e601c",
+      "then_refs": [
+        {
+          "case": "TC-005",
+          "then": 1
+        },
+        {
+          "case": "TC-005",
+          "then": 2
+        }
+      ],
+      "what_changed": "fixture repo link weights/Hello-World (no .md file) -> weights/Knows-Knife (has README.md); no assertion changed",
+      "reason": "red was a fixture setup error (NoChunksImported, Git FAQ indexes only *.md); the Then values are untouched",
+      "critic_verdict": "legitimate_correction",
+      "critic_note": "Red was a fixture setup error (NoChunksImported: Git FAQ indexes only *.md); only the repo link changed, Then 1 and 2 assertions untouched and still discriminate."
+    }
+  ],
+  "probe": {
+    "layers": "ok",
+    "reuse": "ok",
+    "then_channel": "ok",
+    "duplicates": "none",
+    "own_data": "yes",
+    "collected": 1
+  }
+}

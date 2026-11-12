@@ -1,0 +1,48 @@
+{
+  "tests": [],
+  "then_bindings": [],
+  "revision": 28,
+  "plan_remarks": [],
+  "deviations": [],
+  "obligation_bindings": [],
+  "unresolved": [
+    {
+      "case": "TC-002",
+      "reason": "contradicts_requirement",
+      "requirement": "R-5",
+      "expected": "PUT 2xx moving an MS Teams integration",
+      "observed": "400 Project mismatch",
+      "instance_ids": [
+        "test_put_project_change_moves_ms_teams_integration"
+      ],
+      "thens": [
+        1
+      ],
+      "detail": "R-5 expects 2xx; observed 400 Project mismatch"
+    },
+    {
+      "case": "TC-003",
+      "reason": "contradicts_requirement",
+      "requirement": "R-10",
+      "expected": "4xx rejection other than Project mismatch",
+      "observed": "400 Project mismatch",
+      "instance_ids": [
+        "test_put_project_change_into_project_with_ms_teams_is_rejected"
+      ],
+      "thens": [
+        2
+      ],
+      "detail": "R-10 rejection reason must not be Project mismatch; observed it is"
+    }
+  ],
+  "runs": [],
+  "run_witness": "qa-factory/artifacts/TP1-12586/evidence/runs/e2b4dcf0bcb2a2eef000/initial-e2b4dcf0bcb2a2eef000-20261028-094416.json exit 0 2 passed",
+  "probe": {
+    "layers": "ok",
+    "reuse": "ok",
+    "then_channel": "ok",
+    "duplicates": "none",
+    "own_data": "yes",
+    "collected": 2
+  }
+}

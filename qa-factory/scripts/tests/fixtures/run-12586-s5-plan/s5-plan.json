@@ -1,0 +1,511 @@
+{
+  "schema": 1,
+  "scope_hash": "742fa9a2aa12bc24af36d53a8b7ed7766258d809e6c4cb27d578cfdd90065e1a",
+  "gate_a_plan_hash": "b871e0e3be1870292abf7855426ba0d1de0e5d3514370db3b20d1af7cb793da1",
+  "cases": [
+    {
+      "case": "TC-001",
+      "requirements": [
+        "R-3",
+        "R-7"
+      ],
+      "s3": {
+        "row": "TS-1",
+        "level": "api",
+        "fit": "param T4",
+        "oracle": "requirement:R-3"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-move: the PUT answers 2xx (completion condition)."
+        },
+        {
+          "n": 2,
+          "text": "The target project list holds an integration with the same id as before."
+        },
+        {
+          "n": 3,
+          "text": "The source project list holds no integration with that id (moved, not copied)."
+        },
+        {
+          "n": 4,
+          "text": "The moved integration is readable by id with the new alias and a further PUT on it succeeds (still usable)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-002",
+      "requirements": [
+        "R-5",
+        "R-6"
+      ],
+      "s3": {
+        "row": "TS-2",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-5"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-msteams-move: the PUT answers 2xx, not 400 \"Project mismatch\"."
+        },
+        {
+          "n": 2,
+          "text": "The PUT response (or a GET by id) reports the target project."
+        },
+        {
+          "n": 3,
+          "text": "The target project list holds exactly one MS Teams integration, the same id."
+        },
+        {
+          "n": 4,
+          "text": "The source project list holds no MS Teams integration (not copied)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-003",
+      "requirements": [
+        "R-10"
+      ],
+      "s3": {
+        "row": "TS-3",
+        "level": "api",
+        "fit": "extend T3",
+        "oracle": "requirement:R-10"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-occupied: the PUT is rejected with a 4xx (conflict or validation), not 2xx."
+        },
+        {
+          "n": 2,
+          "text": "The rejection reason is not the \"Project mismatch\" text (so the case cannot pass vacuously while TC-002 is red)."
+        },
+        {
+          "n": 3,
+          "text": "B still holds exactly one MS Teams integration, its original id."
+        },
+        {
+          "n": 4,
+          "text": "A still holds its own MS Teams integration, unchanged."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-004",
+      "requirements": [
+        "R-13"
+      ],
+      "s3": {
+        "row": "TS-4",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-13"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-nonadmin-target: the PUT answers 4xx with a message that names the permission problem."
+        },
+        {
+          "n": 2,
+          "text": "P-norole-target: the PUT answers 4xx."
+        },
+        {
+          "n": 3,
+          "text": "After the rejections the integration is still in the source with all fields unchanged (before/after compare)."
+        },
+        {
+          "n": 4,
+          "text": "The target list holds no new record."
+        },
+        {
+          "n": 5,
+          "text": "Positive control: the admin of both projects gets 2xx and the integration is in the target (proves the rejection is about the permission, not the input)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-005",
+      "requirements": [
+        "R-15",
+        "R-11"
+      ],
+      "s3": {
+        "row": "TS-5",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-15"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-user-move: the PUT answers 2xx."
+        },
+        {
+          "n": 2,
+          "text": "I1 is listed in the target project and no longer in the user-scope list."
+        },
+        {
+          "n": 3,
+          "text": "P-user-collision: the PUT is rejected with a 4xx."
+        },
+        {
+          "n": 4,
+          "text": "I2's changed field keeps its old value (neither half landed)."
+        },
+        {
+          "n": 5,
+          "text": "I2 is still where it was and the target holds no extra record for it."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-006",
+      "requirements": [
+        "R-11",
+        "R-8"
+      ],
+      "s3": {
+        "row": "TS-6",
+        "level": "api",
+        "fit": "param T4",
+        "oracle": "requirement:R-11"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-fail: the PUT answers 4xx."
+        },
+        {
+          "n": 2,
+          "text": "The error body states in clear words why the move was refused (not a bare 500 or empty message)."
+        },
+        {
+          "n": 3,
+          "text": "S still has F = f0."
+        },
+        {
+          "n": 4,
+          "text": "S is listed in the source and absent from the target."
+        },
+        {
+          "n": 5,
+          "text": "P-ok (positive control): both changes land, F = f1 and S is in the clean target."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-007",
+      "requirements": [
+        "R-12"
+      ],
+      "s3": {
+        "row": "TS-7",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-12"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-linked: D1 has its setting_id cleared (empty)."
+        },
+        {
+          "n": 2,
+          "text": "P-control: D2 keeps setting_id = I2."
+        },
+        {
+          "n": 3,
+          "text": "I1 is intact in the target (same id, same alias)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-008",
+      "requirements": [
+        "R-1",
+        "R-2",
+        "R-4",
+        "R-14"
+      ],
+      "s3": {
+        "row": "TS-8",
+        "level": "e2e-ui",
+        "fit": "extend T5",
+        "oracle": "requirement:R-1"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The Project dropdown is enabled on the edit page of an existing integration (R-1, R-2)."
+        },
+        {
+          "n": 2,
+          "text": "P-changed-confirm and P-changed-cancel: pressing Save with a changed project shows a modal titled \"Change integration project?\" before any request is sent."
+        },
+        {
+          "n": 3,
+          "text": "P-changed-cancel: no save request is made and the API shows the integration still in the source, fields unchanged."
+        },
+        {
+          "n": 4,
+          "text": "P-changed-confirm: the API read-back shows the integration in the target project and absent from the source."
+        },
+        {
+          "n": 5,
+          "text": "P-unchanged: no modal appears and the alias is saved."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-009",
+      "requirements": [
+        "R-16"
+      ],
+      "s3": {
+        "row": "TS-9",
+        "level": "e2e-ui",
+        "fit": "extend T5",
+        "oracle": "requirement:R-16"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-project-change: the stored non-secret credential fields equal the values loaded before the edit, and the integration is in the target."
+        },
+        {
+          "n": 2,
+          "text": "P-alias-only: the stored non-secret credential fields still equal the loaded values."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "TC-011",
+      "requirements": [
+        "R-9"
+      ],
+      "s3": {
+        "row": "TS-11",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-9"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-source and P-target: every creation setting of both projects equals its value before the move."
+        },
+        {
+          "n": 2,
+          "text": "The source integration list lost exactly the moved id and nothing else."
+        },
+        {
+          "n": 3,
+          "text": "The target integration list gained exactly the moved id and nothing else."
+        }
+      ],
+      "remainders": []
+    }
+  ],
+  "tests": [
+    {
+      "id": "test_put_project_change_moves_integration",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_moves_integration",
+      "cases": [
+        "TC-001"
+      ],
+      "level": "api",
+      "shape": "parameterize",
+      "data": "own",
+      "assert": "PUT status 2xx; id in target list; absent from source list; GET by id shows new alias and a second PUT succeeds",
+      "thens": [
+        "TC-001#1",
+        "TC-001#2",
+        "TC-001#3",
+        "TC-001#4"
+      ]
+    },
+    {
+      "id": "test_put_project_change_moves_ms_teams_integration",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_moves_ms_teams_integration",
+      "cases": [
+        "TC-002"
+      ],
+      "level": "api",
+      "shape": "new",
+      "data": "own",
+      "assert": "PUT 2xx not Project mismatch; response project is target; target list has exactly one MS Teams same id; source has none",
+      "thens": [
+        "TC-002#1",
+        "TC-002#2",
+        "TC-002#3",
+        "TC-002#4"
+      ]
+    },
+    {
+      "id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "file": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py",
+      "function": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "cases": [
+        "TC-003"
+      ],
+      "level": "api",
+      "shape": "extend",
+      "data": "own",
+      "assert": "PUT 4xx; B keeps one MS Teams with original id; A's unchanged (these run first); then the reason-not-Project-mismatch assert last, own line, marked known defect (qa Then 2)",
+      "thens": [
+        "TC-003#1",
+        "TC-003#2",
+        "TC-003#3",
+        "TC-003#4"
+      ],
+      "extends": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::test_create_ms_teams_integration_duplicate_returns_409"
+    },
+    {
+      "id": "test_put_project_change_requires_admin_in_target",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_requires_admin_in_target",
+      "cases": [
+        "TC-004"
+      ],
+      "level": "api",
+      "shape": "new",
+      "data": "own",
+      "assert": "4xx with permission message for non-admin and no-role targets; source fields unchanged; target empty; admin of both gets 2xx",
+      "thens": [
+        "TC-004#1",
+        "TC-004#2",
+        "TC-004#3",
+        "TC-004#4",
+        "TC-004#5"
+      ]
+    },
+    {
+      "id": "test_put_project_change_from_user_scope_and_collision",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_from_user_scope_and_collision",
+      "cases": [
+        "TC-005"
+      ],
+      "level": "api",
+      "shape": "new",
+      "data": "own",
+      "assert": "I1 2xx and in target not user list; I2 PUT 4xx, field keeps old value, still in place, target no extra record",
+      "thens": [
+        "TC-005#1",
+        "TC-005#2",
+        "TC-005#3",
+        "TC-005#4",
+        "TC-005#5"
+      ]
+    },
+    {
+      "id": "test_put_project_change_failing_move_persists_nothing",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_failing_move_persists_nothing",
+      "cases": [
+        "TC-006"
+      ],
+      "level": "api",
+      "shape": "parameterize",
+      "data": "own",
+      "assert": "fail: 4xx, clear error body, F=f0, S in source not target; ok: F=f1 and S in clean target",
+      "thens": [
+        "TC-006#1",
+        "TC-006#2",
+        "TC-006#3",
+        "TC-006#4",
+        "TC-006#5"
+      ]
+    },
+    {
+      "id": "test_put_project_change_clears_dependent_setting_link",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_clears_dependent_setting_link",
+      "cases": [
+        "TC-007"
+      ],
+      "level": "api",
+      "shape": "new",
+      "data": "own",
+      "assert": "D1 setting_id empty; D2 keeps setting_id I2; I1 in target with same id and alias",
+      "thens": [
+        "TC-007#1",
+        "TC-007#2",
+        "TC-007#3"
+      ]
+    },
+    {
+      "id": "test_edit_integration_change_project_confirmation_modal",
+      "file": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py",
+      "function": "test_edit_integration_change_project_confirmation_modal",
+      "cases": [
+        "TC-008"
+      ],
+      "level": "e2e-ui",
+      "shape": "extend",
+      "data": "own",
+      "assert": "dropdown enabled; modal titled Change integration project? on changed save; cancel leaves source via API; confirm moves via API; unchanged saves alias with no modal",
+      "thens": [
+        "TC-008#1",
+        "TC-008#2",
+        "TC-008#3",
+        "TC-008#4",
+        "TC-008#5"
+      ],
+      "extends": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py::test_edit_integration_update_alias"
+    },
+    {
+      "id": "test_edit_integration_project_change_keeps_credential_fields",
+      "file": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py",
+      "function": "test_edit_integration_project_change_keeps_credential_fields",
+      "cases": [
+        "TC-009"
+      ],
+      "level": "e2e-ui",
+      "shape": "extend",
+      "data": "own",
+      "assert": "non-secret credential fields read via API equal loaded values; integration in target on project change",
+      "thens": [
+        "TC-009#1",
+        "TC-009#2"
+      ],
+      "extends": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py::test_edit_integration_update_credentials"
+    },
+    {
+      "id": "test_put_project_change_leaves_project_settings_and_lists_intact",
+      "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+      "function": "test_put_project_change_leaves_project_settings_and_lists_intact",
+      "cases": [
+        "TC-011"
+      ],
+      "level": "api",
+      "shape": "new",
+      "data": "own",
+      "assert": "creation settings of both projects unchanged; source list lost only moved id; target gained only moved id",
+      "thens": [
+        "TC-011#1",
+        "TC-011#2",
+        "TC-011#3"
+      ]
+    }
+  ],
+  "fixtures": [],
+  "refactor": ""
+}

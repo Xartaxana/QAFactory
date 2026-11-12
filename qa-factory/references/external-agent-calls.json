@@ -1,0 +1,4 @@
+{
+  "note": "How cost_capture.py recognizes a call to an external agent in a transcript's shell command, so the price can say what it does not know. One row per agent CLI. command_re runs on the lower-cased command, consumer_re on the original command and must have one group (the consumer's name, [A-Za-z0-9_.-]{1,128}; anything else, or no match, gets unknown_consumer_label). id and call_id_prefix match [a-z0-9][a-z0-9_.-]{0,63} and are unique across rows. The package ships no row: which agent CLI a project calls is the project's word. A project adds rows under cost.external_agent_forms in qa-factory/config.json, same shape; a project row cannot reuse a package id or prefix. A call of a CLI that no row names is a shell command like any other, and the price names the forms it counted for (recognized_forms).",
+  "forms": []
+}

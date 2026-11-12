@@ -1,0 +1,599 @@
+{
+  "ticket": "LOCAL-1",
+  "parent_feature": null,
+  "size": "L",
+  "environment": "local",
+  "environment_pending": false,
+  "implementation_source": "current-code",
+  "warnings": [
+    "env_probe login: failed - node did not finish within 60s (the login test passes in ~80s); passed by the person's word"
+  ],
+  "stages": {
+    "S0": {
+      "status": "done",
+      "started": "2026-11-01T22:09:10Z",
+      "finished": "2026-11-01T22:09:15+00:00",
+      "role": null,
+      "digest": "preflight green, env=local",
+      "imported": true,
+      "reason": "preflight green, env=local"
+    },
+    "S1": {
+      "status": "done",
+      "role": "qa-scout",
+      "digest": "qa-scout S1 halt · qa-factory/artifacts/LOCAL-1/work/context-manifest.json · requirement/code conflict: \"REF-1/REF-2: quantity must be a whole number from 1 up to stock; 0 must be rejected\" vs \"onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}\" at MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "dispatch_id": "S1-qa-scout-1",
+      "stage_started": 1793571140.6264331,
+      "stage_finished": 1793572985.6899374,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-01T22:12:20+00:00",
+      "reason": "qa-scout S1 halt · qa-factory/artifacts/LOCAL-1/work/context-manifest.json · requirement/code conflict: \"REF-1/REF-2: quantity must be a whole number from 1 up to stock; 0 must be rejected\" vs \"onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}\" at MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "agent_id": "a891381fa56170316",
+      "finished": "2026-11-01T22:43:09+00:00"
+    },
+    "S2": {
+      "status": "done",
+      "dispatch_id": "S2-qa-requirements-tester-1",
+      "stage_started": 1793573018.6433675,
+      "stage_finished": 1793573562.5089798,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-01T22:43:38+00:00",
+      "role": "qa-requirements-tester",
+      "digest": "qa-requirements-tester S2 LOCAL-1 · ok · qa-factory/artifacts/LOCAL-1/work/requirements-register.md · size L",
+      "reason": "qa-requirements-tester S2 LOCAL-1 · ok · qa-factory/artifacts/LOCAL-1/work/requirements-register.md · size L",
+      "agent_id": "a41fceb3412791d61",
+      "finished": "2026-11-01T22:52:46+00:00"
+    },
+    "S3": {
+      "status": "done",
+      "dispatch_id": "S3-qa-test-strategist-3",
+      "stage_started": 1793573586.6465414,
+      "stage_finished": 1793576823.1142888,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-01T22:53:06+00:00",
+      "role": "qa-test-strategist",
+      "digest": "qa-test-strategist S3 TS-24..26 · ok · qa-factory/artifacts/LOCAL-1/test-plan.md",
+      "reason": "qa-test-strategist S3 TS-24..26 · ok · qa-factory/artifacts/LOCAL-1/test-plan.md",
+      "agent_id": "afec8f8ba33650d83",
+      "finished": "2026-11-01T23:47:11+00:00",
+      "later_work_status": "running",
+      "active_dispatch_id": "S3-qa-test-strategist-3"
+    },
+    "S4": {
+      "status": "done",
+      "dispatch_id": "S4-qa-case-critic-2",
+      "stage_started": 1793575071.6316571,
+      "stage_finished": 1793576467.9199355,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-01T23:17:51+00:00",
+      "role": "qa-case-critic",
+      "digest": "",
+      "reason": "",
+      "agent_id": "a80665055cb4d4f22",
+      "later_work_status": "pending",
+      "active_dispatch_id": "S4-qa-case-designer-3",
+      "later_work_settled": true
+    },
+    "S5": {
+      "status": "done",
+      "dispatch_id": "S5-qa-code-critic-14",
+      "stage_started": 1793579765.6737275,
+      "stage_finished": 1793595092.011704,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-02T00:36:05+00:00",
+      "role": "qa-code-critic",
+      "digest": "qa-code-critic S5 window 8 re-look (LOCAL-1_TC_020, LOCAL-1_TC_021) · concerns · TC_020 approved (red on price only, contradicts_requirement), TC_021 unverified (static, TS probe gap accepted by person) · qa-factory/artifacts/LOCAL-1/work/test-code/critic-findings-w8b.md",
+      "reason": "qa-code-critic S5 window 8 re-look (LOCAL-1_TC_020, LOCAL-1_TC_021) · concerns · TC_020 approved (red on price only, contradicts_requirement), TC_021 unverified (static, TS probe gap accepted by person) · qa-factory/artifacts/LOCAL-1/work/test-code/critic-findings-w8b.md",
+      "agent_id": "a6b6d4bee07311ecb",
+      "repaired_by_recover": true,
+      "finished": "2026-11-02T04:51:40+00:00"
+    },
+    "S6": {
+      "status": "done",
+      "dispatch_id": "S6-qa-runner-2",
+      "stage_started": 1793595133.144633,
+      "stage_finished": 1793610770.1501207,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-02T04:52:13+00:00",
+      "role": "qa-runner",
+      "digest": "qa-runner S6 LOCAL-1_TC_022 · halt · TC_022 env_blocked (manual_capture.login.http not recorded), person accepted the gap for TC_022 and TC_023 · qa-factory/artifacts/LOCAL-1/work/handoffs/S6-qa-runner-2.yaml",
+      "reason": "qa-runner S6 LOCAL-1_TC_022 · halt · TC_022 env_blocked (manual_capture.login.http not recorded), person accepted the gap for TC_022 and TC_023 · qa-factory/artifacts/LOCAL-1/work/handoffs/S6-qa-runner-2.yaml",
+      "agent_id": "aeaca99e255df478b",
+      "finished": "2026-11-02T09:13:01+00:00"
+    },
+    "S7": {
+      "status": "done",
+      "dispatch_id": "S7-qa-failure-analyst-2",
+      "stage_started": 1793610838.800856,
+      "stage_finished": 1793612889.474991,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-02T09:13:58+00:00",
+      "role": "qa-failure-analyst",
+      "digest": "qa-failure-analyst S7 LOCAL-1 rework (dispatch 2) · ok · three quantity-coercion drafts merged into one qty-invalid-input-coerced (TC_007/008/009/012), verdicts unchanged · qa-factory/artifacts/LOCAL-1/work/bug-drafts/qty-invalid-input-coerced.json",
+      "reason": "qa-failure-analyst S7 LOCAL-1 rework (dispatch 2) · ok · three quantity-coercion drafts merged into one qty-invalid-input-coerced (TC_007/008/009/012), verdicts unchanged · qa-factory/artifacts/LOCAL-1/work/bug-drafts/qty-invalid-input-coerced.json",
+      "agent_id": "a47dfb0af301d3bcd",
+      "finished": "2026-11-02T09:48:21+00:00",
+      "later_work_status": "running",
+      "active_dispatch_id": "S7-qa-failure-analyst-2"
+    },
+    "S8": {
+      "status": "done",
+      "dispatch_id": "S8-qa-bug-reporter-1",
+      "stage_started": 1793612026.1832223,
+      "stage_finished": 1793614242.5696685,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-02T09:33:46+00:00",
+      "role": "qa-bug-reporter",
+      "digest": "qa-bug-reporter S8 LOCAL-1 · ok · qty-invalid-input-coerced filed as BUG-1 (merged scope, unconfirmed, markdown) · qa-factory/artifacts/LOCAL-1/bugs/BUG-1.md",
+      "reason": "qa-bug-reporter S8 LOCAL-1 · ok · qty-invalid-input-coerced filed as BUG-1 (merged scope, unconfirmed, markdown) · qa-factory/artifacts/LOCAL-1/bugs/BUG-1.md",
+      "agent_id": "aae27013a1d6c444d",
+      "finished": "2026-11-02T10:10:53+00:00",
+      "later_work_status": "running",
+      "active_dispatch_id": "S8-qa-bug-reporter-1"
+    },
+    "S9": {
+      "status": "done",
+      "dispatch_id": "S9-qa-retro-analyst-1",
+      "stage_started": 1793614473.1447198,
+      "stage_finished": 1793614797.3966904,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-11-02T10:14:33+00:00",
+      "role": "qa-retro-analyst",
+      "digest": "qa-retro-analyst S9 LOCAL-1 · concerns · retro written, FB-1..FB-6, answer declined",
+      "reason": "qa-retro-analyst S9 LOCAL-1 · concerns · retro written, FB-1..FB-6, answer declined",
+      "agent_id": "a46a283fe417bf058",
+      "finished": "2026-11-02T10:21:06+00:00"
+    }
+  },
+  "gates": {
+    "A": {
+      "id": "gateA-LOCAL-1",
+      "gate": "A",
+      "action": "approve_plan_and_cases",
+      "status": "approved",
+      "authorization_source": "approve\nR-8: a\nR-9: a\nR-10: a\nQ1: a\nQ2: a\nQ3: a\nQ4: b\nQ5: a\nQ6: a\nQ7: a\nQ8: a\nQ9: b\nvcs-1: accept go on on this branch as the person said\ncase_environment-1: accept gap accepted by the person\ncase_environment-2: accept gap accepted by the person, quick view is not implemented and goes in the test report as a gap\ncase_environment-3: accept gap accepted by the person\ncase_environment-4: accept gap accepted by the person\ncase_environment-5: accept gap accepted by the person\n",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "input_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+      "scope": [
+        "LOCAL-1_TC_001",
+        "LOCAL-1_TC_002",
+        "LOCAL-1_TC_003",
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009",
+        "LOCAL-1_TC_010",
+        "LOCAL-1_TC_011",
+        "LOCAL-1_TC_012",
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_014",
+        "LOCAL-1_TC_015",
+        "LOCAL-1_TC_016",
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018",
+        "LOCAL-1_TC_019",
+        "LOCAL-1_TC_020",
+        "LOCAL-1_TC_021",
+        "LOCAL-1_TC_022",
+        "LOCAL-1_TC_023",
+        "LOCAL-1_TC_024"
+      ],
+      "plan_content_hash": "985bf60d1f2bc8ef216d17139f9c494a40ffada92530b1ed7475da0f687acc5f",
+      "plan_semantic_hash": "985bf60d1f2bc8ef216d17139f9c494a40ffada92530b1ed7475da0f687acc5f",
+      "oracle_content_hashes": {
+        "OB-1": "26d00a8a06ed67071a940a4acd5fa653b1730a7a0cd0c8a7dc236bca9d475895",
+        "OB-2": "475f622d2481f4148151046de1b16ecb680ce4b53b5dbfdec0aa1c107b4d4954",
+        "OB-3": "79999dad6768492a7f63a434d1ae1a96be97a30d9e50e90e3d185165b82aa785",
+        "OB-4": "db850b530fa4253cc86a119206fe98701490053842c26fcfd50e13718527a7ce",
+        "OB-5": "a9ea7ef3ca78825c6fe52af33938b30ebe18cc6dc70fadbe8ef388f0488c90b2",
+        "OB-6": "643cd09084fc942aeacf5500e0b958eed0ad9f67c84965698c33cbadc0b1f354",
+        "OB-7": "2dcc2c068f79fee16e9ea30389e424f8242d1410336021d3f122834a4bb1bfe4",
+        "OB-8": "c623fd662658c726a9b95a090c1bd76f3a64a8289e4421228ddd9f4b5864a472",
+        "OB-9": "dcec3af7577d2551fbcade62a016006c7f3bbf777620822b5d10ce1e87773879",
+        "OB-10": "1fda18199f58656ad5eb85eeb8907607227059f59fa8532cafa206674d7db0b4",
+        "OB-11": "23159c804b15964c58c16e074f51889637fd78175bccd2685f866e2902fea2f4",
+        "OB-12": "907a561e65a269d4851488589c36ad2701462d82ac03c997c0fd977e219e25b0",
+        "OB-13": "3d360827414a2574c5ccecd0e3b1281ea7d0ad81ce883f47c4f3efb15ea9da68",
+        "OB-14": "e555f1ac0fa113db73b50ae5631aaaf37414ca7f084b431d4d0e873629a1bdb8",
+        "OB-15": "042b9bd4b18657423f6ef43c9c61cfb9dfd1a4213ba336da5c8f25f4d5c6dafb",
+        "OB-16": "edb580f4f7193278bd5b0749d1c929a73027f19eb1c60e85f33fa0c1420d69c8",
+        "OB-17": "7d11405161b0f7c91505156dca75b7da4c9903fa7b47379dafc5a7cc9c96b471",
+        "OB-18": "4280bd12e54bac8e6809df437af57f7eccafa665b8d1cb6f81aea93a5e8985dd",
+        "OB-19": "6b5ed72500d4223d5d1bc79d022f825441655ff9f465fa3240cad4788dd309d2",
+        "OB-20": "6a95276c95f770a9f186710ba9695b03c4253506d12956f90780bf94b78ae2ec",
+        "OB-21": "ba91f2834854442bec47657d71048a4492ad2c99c90ce269fc122c25555176c5",
+        "OB-22": "f41eb7af6864249b55ac12fcf6e0cec45cd5731beaddab0ff9308826a2e83cdc",
+        "OB-23": "2befa2b8a9bc978177d1ba722e6442d59f4512a6c385897e147e09b38f79d1c9",
+        "OB-24": "7d67144b4b15a44080b7989f0153a997ae36f3431a8b8ee89b13729b76bb66f6",
+        "OB-25": "0014d9b73187374316a2b3fa2ab10a93bad751dd8d583bbdeb64120987621374",
+        "OB-26": "c48cd4b758c8378fec1fd2155cdcfd326a2e6eac528f71322a8f75a483268a9d"
+      },
+      "coverage_contract_revisions": [
+        "coverage-observation-v1"
+      ],
+      "lifecycle_actions_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_inventory_hash": "706f08f4a9eec67b0c8a1784260630e459cdb60c837c2fac0320007ab70515f9",
+      "source_completeness": {
+        "complete": true,
+        "gate_blocked": false,
+        "pending": [],
+        "unavailable": [],
+        "incomplete_materials": [],
+        "unavailable_materials": [],
+        "accepted_gaps": [],
+        "review_missing": false,
+        "unreviewed": [],
+        "awaiting_review": false,
+        "open_points": {},
+        "closed_by_person": {},
+        "closed_by_class": {},
+        "defaulted_points": {},
+        "defaulted_gaps": [],
+        "gap_class_problem": "",
+        "left_out_by_word": {},
+        "earlier_rule_line": "",
+        "earlier_rule_sources": []
+      },
+      "design_reviews": [
+        {
+          "plan_row": "TS-2",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_d0150be267e7a21396f3"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-4",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_7396ea6d54e97abb53b5"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-5",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_1e2fe984a158845705a5"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-8",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_046af312329b03af6938"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-9",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_399811ae764fa23a33a4"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-10",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_a7a0796939a1b5bab25c"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-11",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_f2470b6bb042dcf661ab"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-14",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_4efddd5f3c4f2fcbeb17"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-20",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_52d16ccfe2ee80471805"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-21",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_3599058ee1132918ddd6"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-22",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_aef96c10539e27125a3e"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-3",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-23",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": ""
+        },
+        {
+          "plan_row": "TS-24",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_a4950fa7ce5b6a69d58a"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-3",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-25",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_40471d01020e7ac541ec"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-3",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-26",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+          "case_versions": [
+            "cv_d7043e87970cb8083dca"
+          ],
+          "input_hash": "98df7f9cc32fe5ba226f372c0e701b0e4c1dbc28e509ba5054352903eec30e38",
+          "author_dispatch_id": "S4-qa-case-designer-3",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        }
+      ],
+      "decision": "approved"
+    },
+    "B": {
+      "id": "gateB-LOCAL-1",
+      "gate": "B",
+      "action": "approve_delivery",
+      "status": "approved",
+      "authorization_source": "MR ne nado\nApproved\n",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "input_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+      "scope": [
+        "LOCAL-1_TC_001",
+        "LOCAL-1_TC_002",
+        "LOCAL-1_TC_003",
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009",
+        "LOCAL-1_TC_010",
+        "LOCAL-1_TC_011",
+        "LOCAL-1_TC_012",
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_014",
+        "LOCAL-1_TC_015",
+        "LOCAL-1_TC_016",
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018",
+        "LOCAL-1_TC_019",
+        "LOCAL-1_TC_020",
+        "LOCAL-1_TC_021",
+        "LOCAL-1_TC_022",
+        "LOCAL-1_TC_023",
+        "LOCAL-1_TC_024"
+      ],
+      "selected_drafts": [
+        "qty-invalid-input-coerced"
+      ],
+      "orders": {
+        "bugs": "done",
+        "mr": "not_ordered"
+      },
+      "decided_seq": 263,
+      "decided_at": "2026-11-02T10:07:51+00:00",
+      "orders_settled": {
+        "bugs": {
+          "outcome": "done",
+          "dispatch_id": "S8-qa-bug-reporter-1",
+          "seq": 266,
+          "at": "2026-11-02T10:10:42+00:00"
+        }
+      },
+      "decision": "approved",
+      "orders_due": []
+    }
+  },
+  "halts": [],
+  "stage_overrides": [
+    {
+      "stage": "S0",
+      "match": "the login this project records was refused",
+      "decision": "Idti dalshe po moemu slovu (login verified manually: the login test passes in ~80s, the probe limit is 60s)",
+      "at": "2026-11-01T22:09:13+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "test repository state: 5cd21eb10194",
+      "decision": "Idti dalshe na etoi vetke (repozitorii s 6 nezakommichennymi izmeneniyami).\nProbely v plane (TS-7, TS-23..26): prinyat, uchityvaya moi otvety.\nQ4 b, no v otchete po testirovaniyu dolzhno byt zaneseno kak probel, chto funktsiya bystrogo prosmotra ne realizovana.\nQ5 a.\nThen 1 of LOCAL-1_TC_021 (guest cart merge): kolichestvo ne ravno 1. Ono ravno tomu kolichestvu, kotoroe dobavil gost (nuzhno proverit, chto nastoyaschee kolichestvo ne prevraschaetsya v 1).\nQ7 - pravilnoe povedenie opisano v trebovaniyakh: dobavlenie tovara v moment obnovleniya ego tseny ne vyzyvaet oshibok, i s polzovatelya vzimaetsya tsena, kotoraya otobrazhalas v moment dobavleniya. Primer: dobavili knigu po 6$, poka dobavlyali tsena stala 8$ - v korzine dolzhna ostatsya tsena 6$.\nQ8 a (no dobavlyaetsya ne odin tovar, a stolko, skolko vybral polzovatel. Esli pri vosstanovlenii seti ne poluchilos dobavit tovary, to polzovatelyu vykhodit soobschenie s prosboi poprobovat esche raz).\nQ9 Adding after session expiry asks for login, and the product is added after re-authentication.\nOstalnoe soglasna s rekomendatsiyami: R-8 a, R-9 a, R-10 a, Q1 a, Q2 a, Q3 a, Q6 a; adres UI stenda - BASE_URL iz .env.",
+      "at": "2026-11-02T00:34:24+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "TS-7 carries a declared gap the next stage cannot close",
+      "decision": "Idti dalshe na etoi vetke (repozitorii s 6 nezakommichennymi izmeneniyami).\nProbely v plane (TS-7, TS-23..26): prinyat, uchityvaya moi otvety.\nQ4 b, no v otchete po testirovaniyu dolzhno byt zaneseno kak probel, chto funktsiya bystrogo prosmotra ne realizovana.\nQ5 a.\nThen 1 of LOCAL-1_TC_021 (guest cart merge): kolichestvo ne ravno 1. Ono ravno tomu kolichestvu, kotoroe dobavil gost (nuzhno proverit, chto nastoyaschee kolichestvo ne prevraschaetsya v 1).\nQ7 - pravilnoe povedenie opisano v trebovaniyakh: dobavlenie tovara v moment obnovleniya ego tseny ne vyzyvaet oshibok, i s polzovatelya vzimaetsya tsena, kotoraya otobrazhalas v moment dobavleniya. Primer: dobavili knigu po 6$, poka dobavlyali tsena stala 8$ - v korzine dolzhna ostatsya tsena 6$.\nQ8 a (no dobavlyaetsya ne odin tovar, a stolko, skolko vybral polzovatel. Esli pri vosstanovlenii seti ne poluchilos dobavit tovary, to polzovatelyu vykhodit soobschenie s prosboi poprobovat esche raz).\nQ9 Adding after session expiry asks for login, and the product is added after re-authentication.\nOstalnoe soglasna s rekomendatsiyami: R-8 a, R-9 a, R-10 a, Q1 a, Q2 a, Q3 a, Q6 a; adres UI stenda - BASE_URL iz .env.",
+      "at": "2026-11-02T00:34:25+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "TS-23 carries a declared gap the next stage cannot close",
+      "decision": "Idti dalshe na etoi vetke (repozitorii s 6 nezakommichennymi izmeneniyami).\nProbely v plane (TS-7, TS-23..26): prinyat, uchityvaya moi otvety.\nQ4 b, no v otchete po testirovaniyu dolzhno byt zaneseno kak probel, chto funktsiya bystrogo prosmotra ne realizovana.\nQ5 a.\nThen 1 of LOCAL-1_TC_021 (guest cart merge): kolichestvo ne ravno 1. Ono ravno tomu kolichestvu, kotoroe dobavil gost (nuzhno proverit, chto nastoyaschee kolichestvo ne prevraschaetsya v 1).\nQ7 - pravilnoe povedenie opisano v trebovaniyakh: dobavlenie tovara v moment obnovleniya ego tseny ne vyzyvaet oshibok, i s polzovatelya vzimaetsya tsena, kotoraya otobrazhalas v moment dobavleniya. Primer: dobavili knigu po 6$, poka dobavlyali tsena stala 8$ - v korzine dolzhna ostatsya tsena 6$.\nQ8 a (no dobavlyaetsya ne odin tovar, a stolko, skolko vybral polzovatel. Esli pri vosstanovlenii seti ne poluchilos dobavit tovary, to polzovatelyu vykhodit soobschenie s prosboi poprobovat esche raz).\nQ9 Adding after session expiry asks for login, and the product is added after re-authentication.\nOstalnoe soglasna s rekomendatsiyami: R-8 a, R-9 a, R-10 a, Q1 a, Q2 a, Q3 a, Q6 a; adres UI stenda - BASE_URL iz .env.",
+      "at": "2026-11-02T00:34:27+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "TS-26 carries a declared gap the next stage cannot close",
+      "decision": "Idti dalshe na etoi vetke (repozitorii s 6 nezakommichennymi izmeneniyami).\nProbely v plane (TS-7, TS-23..26): prinyat, uchityvaya moi otvety.\nQ4 b, no v otchete po testirovaniyu dolzhno byt zaneseno kak probel, chto funktsiya bystrogo prosmotra ne realizovana.\nQ5 a.\nThen 1 of LOCAL-1_TC_021 (guest cart merge): kolichestvo ne ravno 1. Ono ravno tomu kolichestvu, kotoroe dobavil gost (nuzhno proverit, chto nastoyaschee kolichestvo ne prevraschaetsya v 1).\nQ7 - pravilnoe povedenie opisano v trebovaniyakh: dobavlenie tovara v moment obnovleniya ego tseny ne vyzyvaet oshibok, i s polzovatelya vzimaetsya tsena, kotoraya otobrazhalas v moment dobavleniya. Primer: dobavili knigu po 6$, poka dobavlyali tsena stala 8$ - v korzine dolzhna ostatsya tsena 6$.\nQ8 a (no dobavlyaetsya ne odin tovar, a stolko, skolko vybral polzovatel. Esli pri vosstanovlenii seti ne poluchilos dobavit tovary, to polzovatelyu vykhodit soobschenie s prosboi poprobovat esche raz).\nQ9 Adding after session expiry asks for login, and the product is added after re-authentication.\nOstalnoe soglasna s rekomendatsiyami: R-8 a, R-9 a, R-10 a, Q1 a, Q2 a, Q3 a, Q6 a; adres UI stenda - BASE_URL iz .env.",
+      "at": "2026-11-02T00:34:29+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: tooling:typescript",
+      "decision": "Da (mozhno ostavit TypeScript-testy bez mutatsionnoi proby: instrument prob ne chitaet TypeScript; v otchete pometit zelenye testy kak ne proverennye mutatsiei)",
+      "at": "2026-11-02T01:49:32+00:00",
+      "by": "human",
+      "class": "probe_gap_accepted"
+    },
+    {
+      "stage": "S5",
+      "match": "is bound to no instance that covers it and no remainder or",
+      "decision": "Da (na vremya napisaniya okon 2-8 prinyat otsutstvie privyazok u Then keisov vne tekuschego okna; privyazki proveryayutsya po polnomu naboru testov v kontse S5)",
+      "at": "2026-11-02T02:30:45+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "decision": "Da (mozhno ostavit TypeScript-testy bez mutatsionnoi proby: instrument prob ne chitaet TypeScript; v otchete pometit zelenye testy kak ne proverennye mutatsiei)",
+      "at": "2026-11-02T02:34:38+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "decision": "Da (mozhno ostavit TypeScript-testy bez mutatsionnoi proby: instrument prob ne chitaet TypeScript; v otchete pometit zelenye testy kak ne proverennye mutatsiei)",
+      "at": "2026-11-02T02:34:41+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "not receipted",
+      "decision": "Da (prinyat vse okna S5 bez kvitantsii revyu: instrumenty fabriki rasschitany na pytest, proekt na TypeScript/Playwright; kritik chitaet kod, krasnye ostayutsya krasnymi, zelenye bez mutatsionnoi proby pomechayutsya v otchete)",
+      "at": "2026-11-02T02:40:05+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "decision": "Da (mozhno ostavit TypeScript-testy bez mutatsionnoi proby: instrument prob ne chitaet TypeScript; v otchete pometit zelenye testy kak ne proverennye mutatsiei)",
+      "at": "2026-11-02T04:42:30+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S6",
+      "match": "derived scope",
+      "decision": "Prinyat kak probel (Rekomenduyu): TC_022 i TC_023 ostayutsya neproverennymi, instrument ruchnoi proverki ne umeet vkhodit na stend; konfig ne trogat; v otchete dlya gate B otmetit kak probel stenda.",
+      "at": "2026-11-02T09:12:44+00:00",
+      "by": "human"
+    }
+  ],
+  "run_mode": {
+    "mode": "desktop",
+    "plugin_root": "<path-2>\\ai-packages\\qa-factory",
+    "plugin_version": "0.10.8",
+    "since": "2026-11-01T22:11:03+00:00"
+  },
+  "controller_revision": 272,
+  "remarks": [
+    {
+      "stage": "S1",
+      "text": "Testirovat po trebovaniyu: proverit testom, chto 0 otklonyaetsya (UI seichas prevraschaet 0 v 1 - eto kandidat v bag na geite B). Test sdelat s neskolkimi variantami kolichestva po klassam ekvivalentnosti: 10, 234, chisla, soderzhaschie nol, mnogoznachnye chisla, i drugie klassy (0, 1, granitsa sklada, vyshe sklada, otritsatelnye, netselye, nechislovoi vvod).\nScope: tolko funktsional popadaniya tovara v korzinu (vse puti dobavleniya i stsenarii, gde on ispolzuetsya). REF-3 (quick view) vne scope, esli on ne dobavlyaet v korzinu. Lyuboe nesootvetstvie trebovaniyam, logike ili idee prilozheniya vnutri add-to-cart proveryaem testom obyazatelno.",
+      "at": "2026-11-01T22:41:19+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S4",
+      "text": "Idti dalshe na etoi vetke (repozitorii s 6 nezakommichennymi izmeneniyami).\nProbely v plane (TS-7, TS-23..26): prinyat, uchityvaya moi otvety.\nQ4 b, no v otchete po testirovaniyu dolzhno byt zaneseno kak probel, chto funktsiya bystrogo prosmotra ne realizovana.\nQ5 a.\nThen 1 of LOCAL-1_TC_021 (guest cart merge): kolichestvo ne ravno 1. Ono ravno tomu kolichestvu, kotoroe dobavil gost (nuzhno proverit, chto nastoyaschee kolichestvo ne prevraschaetsya v 1).\nQ7 - pravilnoe povedenie opisano v trebovaniyakh: dobavlenie tovara v moment obnovleniya ego tseny ne vyzyvaet oshibok, i s polzovatelya vzimaetsya tsena, kotoraya otobrazhalas v moment dobavleniya. Primer: dobavili knigu po 6$, poka dobavlyali tsena stala 8$ - v korzine dolzhna ostatsya tsena 6$.\nQ8 a (no dobavlyaetsya ne odin tovar, a stolko, skolko vybral polzovatel. Esli pri vosstanovlenii seti ne poluchilos dobavit tovary, to polzovatelyu vykhodit soobschenie s prosboi poprobovat esche raz).\nQ9 Adding after session expiry asks for login, and the product is added after re-authentication.\nOstalnoe soglasna s rekomendatsiyami: R-8 a, R-9 a, R-10 a, Q1 a, Q2 a, Q3 a, Q6 a; adres UI stenda - BASE_URL iz .env.",
+      "at": "2026-11-02T00:27:15+00:00",
+      "by": "human"
+    }
+  ],
+  "size_initial": "L",
+  "size_final": "L",
+  "first_test_run_at": "2026-11-02T01:28:59+00:00",
+  "closed_at": "2026-11-02T10:10:42+00:00",
+  "closed_by": "gate B + S8 done"
+}

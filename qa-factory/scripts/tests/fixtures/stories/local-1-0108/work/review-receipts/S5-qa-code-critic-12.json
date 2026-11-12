@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "receipt_kind": "s5_review_window",
+  "immutable": true,
+  "reviewer_dispatch_id": "S5-qa-code-critic-12",
+  "author_dispatch_id": "S5-qa-automator-12",
+  "input_hash": "162033d5429dcc957cc480cbf64624c5266ada15931debb285b2e35a061ce45a",
+  "scope_instances": {
+    "LOCAL-1_TC_019": [
+      "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+    ]
+  },
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "input_hash": "31935c5f4d1a5d00fc10cebd1ff8e3bbddd06d58c95fd19a7a7de21c556a7c57",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-20"
+        }
+      ],
+      "obligation_ids": [
+        "OB-20"
+      ],
+      "obligation_hash": "0614e8211abfdc174b1364d6700838d69d1260f491affe88f2871c89d9d73c72",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:416",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_019",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "31935c5f4d1a5d00fc10cebd1ff8e3bbddd06d58c95fd19a7a7de21c556a7c57"
+      },
+      "instance_identity": {
+        "instance_content_sha": "25561208c9373c91f06e90b563833386ab854df4b3584c3af4e03f83e0700a18",
+        "instance_code_sha": "56a65841da2355e1ccedc0f07142049950794ab68f93adbb2c28257ca26dd77a",
+        "job_id": "0296b632887a0e52678d"
+      },
+      "outcome": "failed",
+      "execution_fingerprint": "3968480b0bc4b6e9f1c023230b1db744bf0d26b8ce930dc153ed965b051e627b",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T042731745166Z-0296b632887a0e52678d.json",
+          "sha256": "41b4760e7f4ed904414ab5f35780f86c08ef65d0e1a90a14588377da91bd3009"
+        },
+        {
+          "path": "evidence/runs/0296b632887a0e52678d/repair_verify-0296b632887a0e52678d-20261102-052702.junit.xml",
+          "sha256": "bd5fc623409e1eab81d7895bf7c78c772841214710b8d9565d9ac20d0187132a"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "25561208c9373c91f06e90b563833386ab854df4b3584c3af4e03f83e0700a18",
+        "instance_code_sha": "56a65841da2355e1ccedc0f07142049950794ab68f93adbb2c28257ca26dd77a",
+        "attempt_id": "0296b632887a0e52678d"
+      },
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_019",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:416"
+      ]
+    }
+  ],
+  "receipt_hash": "95d18aea72bd6823e8b287a820d2d7939d33b42656a190314dbc2a13b24d694e"
+}

@@ -1,0 +1,140 @@
+{
+  "dispatched": true,
+  "request": {
+    "id": "S5-qa-automator-6",
+    "stage": "S5",
+    "role": "qa-automator",
+    "scope": [
+      "CART-1_TC_009"
+    ],
+    "input_hash": "ffc7c3737535a405008987b7660a0d29e57055aa7d7cb7f794ee3ac77ae6c40d",
+    "known_paths": {
+      "task_root": "{project_root}/qa-factory/artifacts/CART-1",
+      "plan": "{project_root}/qa-factory/artifacts/CART-1/work/test-plan.json",
+      "source_inventory": "{project_root}/qa-factory/artifacts/CART-1/work/source-inventory.json",
+      "manifest": "{project_root}/qa-factory/artifacts/CART-1/work/context-manifest.json",
+      "bundle": "{project_root}/qa-factory/artifacts/CART-1/work/context-bundle.json",
+      "plugin_root": "{plugin_root}",
+      "project_root": "{project_root}",
+      "scripts_root": "{plugin_root}/scripts",
+      "python_executable": "{python}",
+      "repository_roots": {
+        "MyBooks": "<path-1>\\MyBooks"
+      },
+      "entrypoints": {
+        "controller": "{plugin_root}/scripts/controller.py",
+        "run_suite": "{plugin_root}/scripts/run_suite.py",
+        "manual_evidence": "{plugin_root}/scripts/manual_evidence.py",
+        "artifact_packet": "{plugin_root}/scripts/artifact_packet.py",
+        "readiness": "{plugin_root}/scripts/readiness.py",
+        "env_probe": "{plugin_root}/scripts/env_probe.py",
+        "finalize_task": "{plugin_root}/scripts/finalize_task.py",
+        "stage_done": "{plugin_root}/scripts/stage_done.py",
+        "ticket_adapter": "{plugin_root}/scripts/ticket_adapter.py"
+      },
+      "package_fingerprint": "9c4805f9caa4b8536450f420004c0fa5161b0e351fa698b5b7ec1870e150b7c0",
+      "package_version": "0.10.6"
+    },
+    "budget": {},
+    "purpose": "repair_verify",
+    "rework_of": "S5-qa-automator-5",
+    "reason": "tests[] row for CART-1_TC_009 is NOT in the manifest (revision 23: 16 tests, none TC_009; only the unresolved contradicts_requirement row). Re-send it via manifest_put.py and verify by reading the manifest back.",
+    "expected_revision": 94,
+    "idempotency_key": "dispatch:S5-qa-automator-6",
+    "agent_id": "a6c82b3180c739f97",
+    "case_version_links": [
+      {
+        "case_id": "CART-1_TC_009",
+        "version": "cv_2b3ebd621560f9547704",
+        "content_hash": "2b3ebd621560f95477045a3ebff716e714cfecf0d13bfd98a33030b2e175aba4",
+        "path": "state/case-versions/CART-1_TC_009/cv_2b3ebd621560f9547704.md",
+        "store_provenance": {
+          "content_hash": "2b3ebd621560f95477045a3ebff716e714cfecf0d13bfd98a33030b2e175aba4",
+          "source_name": "CART-1_TC_009.md",
+          "source_path": "test-cases/cart/CART-1_TC_009.md"
+        },
+        "area": "cart"
+      }
+    ],
+    "repair_cause": "test_defect",
+    "read_first": [
+      "work/s5-notes.md"
+    ]
+  },
+  "receipt": {
+    "schema_version": 2,
+    "event_id": "19edc2a012704a0e98ca8bb838ebc357",
+    "task_id": "CART-1",
+    "sequence": 95,
+    "expected_revision": 94,
+    "idempotency_key": "dispatch:S5-qa-automator-6",
+    "previous_hash": "49b7b630c584e735d2805ae4616b426088783d28821f1306e2114f134c6c19ad",
+    "created_at": 1793442465.3058438,
+    "type": "dispatch",
+    "payload": {
+      "id": "S5-qa-automator-6",
+      "stage": "S5",
+      "role": "qa-automator",
+      "scope": [
+        "CART-1_TC_009"
+      ],
+      "input_hash": "ffc7c3737535a405008987b7660a0d29e57055aa7d7cb7f794ee3ac77ae6c40d",
+      "known_paths": {
+        "task_root": "<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1",
+        "plan": "<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\work\\test-plan.json",
+        "source_inventory": "<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\work\\source-inventory.json",
+        "manifest": "<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\work\\context-manifest.json",
+        "bundle": "<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\work\\context-bundle.json",
+        "plugin_root": "<path-2>\\ai-packages\\qa-factory",
+        "project_root": "<path-1>\\test-automation-framework",
+        "scripts_root": "<path-2>\\ai-packages\\qa-factory\\scripts",
+        "python_executable": "<home>\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "repository_roots": {
+          "MyBooks": "<path-1>\\MyBooks"
+        },
+        "entrypoints": {
+          "controller": "<path-2>\\ai-packages\\qa-factory\\scripts\\controller.py",
+          "run_suite": "<path-2>\\ai-packages\\qa-factory\\scripts\\run_suite.py",
+          "manual_evidence": "<path-2>\\ai-packages\\qa-factory\\scripts\\manual_evidence.py",
+          "artifact_packet": "<path-2>\\ai-packages\\qa-factory\\scripts\\artifact_packet.py",
+          "readiness": "<path-2>\\ai-packages\\qa-factory\\scripts\\readiness.py",
+          "env_probe": "<path-2>\\ai-packages\\qa-factory\\scripts\\env_probe.py",
+          "finalize_task": "<path-2>\\ai-packages\\qa-factory\\scripts\\finalize_task.py",
+          "stage_done": "<path-2>\\ai-packages\\qa-factory\\scripts\\stage_done.py",
+          "ticket_adapter": "<path-2>\\ai-packages\\qa-factory\\scripts\\ticket_adapter.py"
+        },
+        "package_fingerprint": "9c4805f9caa4b8536450f420004c0fa5161b0e351fa698b5b7ec1870e150b7c0",
+        "package_version": "0.10.6"
+      },
+      "budget": {},
+      "purpose": "repair_verify",
+      "rework_of": "S5-qa-automator-5",
+      "reason": "tests[] row for CART-1_TC_009 is NOT in the manifest (revision 23: 16 tests, none TC_009; only the unresolved contradicts_requirement row). Re-send it via manifest_put.py and verify by reading the manifest back.",
+      "agent_id": "a6c82b3180c739f97",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704",
+          "content_hash": "2b3ebd621560f95477045a3ebff716e714cfecf0d13bfd98a33030b2e175aba4",
+          "path": "state/case-versions/CART-1_TC_009/cv_2b3ebd621560f9547704.md",
+          "store_provenance": {
+            "content_hash": "2b3ebd621560f95477045a3ebff716e714cfecf0d13bfd98a33030b2e175aba4",
+            "source_name": "CART-1_TC_009.md",
+            "source_path": "test-cases/cart/CART-1_TC_009.md"
+          },
+          "area": "cart"
+        }
+      ],
+      "repair_cause": "test_defect",
+      "read_first": [
+        "work/s5-notes.md"
+      ],
+      "resolved_model": {
+        "model": "inherit",
+        "effort": "inherit"
+      }
+    },
+    "event_hash": "ee69a93f275fde02dba5868bbe1e8f327adb93da2a3a4287f74a24eec484f9a1"
+  },
+  "next": "story_step.py materialize --task CART-1 --dispatch-id S5-qa-automator-6"
+}

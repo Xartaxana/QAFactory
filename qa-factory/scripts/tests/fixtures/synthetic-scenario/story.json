@@ -1,0 +1,19 @@
+{
+  "id": "synthetic-scenario",
+  "task": "SYN-1",
+  "synthetic": true,
+  "walker_fixture": true,
+  "package_version": "0.10.9",
+  "walk": [
+    {"stage": "S1", "role": "qa-scout", "door": {"kind": "exit_gate"}, "facets": ["accepted", "handed"],
+     "final_state": true,
+     "next": {"stage": "S2", "role": "qa-requirements-tester"}},
+    {"stage": "S1manifest", "door": {"kind": "joint", "file": "work/context-manifest.json"}, "facets": ["accepted", "question"]},
+    {"stage": "gateA", "door": {"kind": "gate", "gate": "A", "cut_before_seq": 5, "words_file": "state/words/gate-a.txt"},
+     "facets": ["question", "decision"]},
+    {"stage": "S8", "door": {"kind": "delivery"}, "facets": ["delivery"]}
+  ],
+  "not_walked": [
+    {"stage": "S2", "facet": "accepted", "why": "the hand-assembled run holds no S2 dispatch"}
+  ]
+}

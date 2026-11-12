@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that a signed-in user can add an in-stock book to the cart and that the cart is still there after logging out and logging in again.\n\n*Type:* positive  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* A regular user account is available (sign in with it; never use the admin account)\n* Application is reachable (local disposable environment)\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* Book \"1984\" is in stock (stock >= 1) at $13.99; read the real price and stock at run time\n\n*Test data:*\n* Book: 1984\n* Price: $13.99\n* Quantity: 1\n\n*Steps & Expected results:*\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; cart badge is absent or 0\n# On the catalog page type \"1984\" into the search box and click Search  \n   *Expected:* A catalog card titled \"1984\" is listed\n# Open the detail page of \"1984\"  \n   *Expected:* Detail page opens with heading \"1984\", price $13.99 and an In Stock badge\n# Check the Quantity field  \n   *Expected:* Value is 1\n# Click Add to Cart  \n   *Expected:* Cart badge in the navigation shows 1\n# Open the cart  \n   *Expected:* Exactly one line \"1984\" is listed\n# Read the line quantity, price and subtotal  \n   *Expected:* Quantity 1, price $13.99, subtotal $13.99\n# Click Logout  \n   *Expected:* The Login button is visible and the Logout button is absent\n# Open the login page and sign in again with the same regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart  \n   *Expected:* Exactly one line \"1984\" is listed\n# Read the line quantity, price and subtotal  \n   *Expected:* Quantity 1, price $13.99, subtotal $13.99; cart badge shows 1 (cart persisted)\n\n*Postconditions:*\n* Cart contains one line \"1984\" with quantity 1 and subtotal $13.99 after logout and login\n* Cart is emptied afterwards\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512154",
+  "key": "REF-21",
+  "labels": [
+    "positive",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 16361,
+    "fields_requested": "*all",
+    "sha256": "a6ca66e83ebcca21ac9bdaf180fb382633ece0700f1c7f2c0d9d927a3da836b3",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-15T13:27:51.196+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product to cart as logged-in user",
+  "type": "Test"
+}

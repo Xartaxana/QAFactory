@@ -1,0 +1,8 @@
+{
+  "ticket": "TP1-12586",
+  "size": "XXL",
+  "environment": "local-docker",
+  "gate_waivers": [],
+  "stage_overrides": [],
+  "warnings": []
+}

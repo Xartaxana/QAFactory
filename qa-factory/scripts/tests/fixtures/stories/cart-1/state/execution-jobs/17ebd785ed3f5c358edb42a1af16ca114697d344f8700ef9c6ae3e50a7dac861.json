@@ -1,0 +1,209 @@
+{
+  "job_id": "6b183c7a8fd8088f1c50",
+  "idempotency_key": "S5-qa-automator-3:initial:1",
+  "request_digest": "6b183c7a8fd8088f1c5058bbb2a421c6cedcd996f795bcefdc8ce1670394dd7c",
+  "status": "completed",
+  "created_at": "2026-10-31T09:32:17+00:00",
+  "request": {
+    "task": "CART-1",
+    "revision": "44",
+    "dispatch_id": "S5-qa-automator-3",
+    "profile_id": "web",
+    "purpose": "initial",
+    "reason": "first run of window 2's new cart API tests, one scoped Playwright run",
+    "idempotency_key": "S5-qa-automator-3:initial:1",
+    "input_fingerprint": "fc5c97394d31eaafd9737b75ba763ec08dc709bde9ff3e04401faa2fa589a233",
+    "fingerprint_components": {
+      "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+      "test_content_sha": "8d50f39144c76fe16dab930887b010d0a764224984cab748c7422efbfa7e2474",
+      "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+      "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+      "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+      "policy_revision": "config-projection-1"
+    },
+    "fingerprint_files": [
+      {
+        "path": "<path-1>\\test-automation-framework\\tests\\api\\cart\\cart-isolation.spec.ts",
+        "sha256": "d1b4dcfa5653375458fc33b7e21a9d6d8f0f008578dcd5646ccd74f48ae803e7",
+        "kind": "test_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\tests\\api\\cart\\cart-merge.spec.ts",
+        "sha256": "fcbcf75292c6c69147c19dd4811eb0e33caeb25a76ca00d90afbc50c8d376063",
+        "kind": "test_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\tests\\api\\cart\\cart-update-delete.spec.ts",
+        "sha256": "251f7d6006487a4717362be19f4670da213582265394b795956bb9ba10325b3e",
+        "kind": "test_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\tests\\api\\cart\\cart-ownership.spec.ts",
+        "sha256": "e6ebd27c2ddda0e970da14e1640a72f79062465a5cce455171036528e2db7be4",
+        "kind": "test_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\clients\\cartApi.ts",
+        "sha256": "9e1cc74e6a2c5da7c7704ff37e674f39fb70a6e66fa76d1333bffe6de54194ca",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\fixtures\\cartApi.fixture.ts",
+        "sha256": "eb49a560e1ca901cf2f16a1309e60aaf2b83aed33da0455b1f0eb1ba0faf6446",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\qa-factory\\config.json",
+        "sha256": "1f8afbe781d38451e08158a013f8901da1e97d606b14a97360924d6aab910041",
+        "kind": "config_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\playwright.config.ts",
+        "sha256": "e399f10b8f99a40354e440f503e6d49a9419420d5ca08ce8610fca98ab7d6947",
+        "kind": "config_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\package-lock.json",
+        "sha256": "0193ca801951b5674e4356c0cf20b110bdc06f5af312e313e8e2e7d1451cf9e5",
+        "kind": "dependency_files"
+      }
+    ],
+    "freshness": "fresh",
+    "remaining_budget": 1,
+    "selected_instance_ids": [
+      "@api @regression CART-1_TC_005 cart isolation between owners",
+      "@api @regression CART-1_TC_006 guest cart merge on login",
+      "@api @regression CART-1_TC_007 update and delete cart item",
+      "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+    ],
+    "current_scope_instance_ids": [
+      "@api @regression CART-1_TC_005 cart isolation between owners",
+      "@api @regression CART-1_TC_006 guest cart merge on login",
+      "@api @regression CART-1_TC_007 update and delete cart item",
+      "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+    ],
+    "runtime_required": true,
+    "target_kind": "deployed_stand",
+    "runtime_provenance": {
+      "profile_id": "web",
+      "timestamp": "2026-10-31T01:57:58Z",
+      "environment_id": "local",
+      "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+      "result": "matched",
+      "evidence_refs": [
+        "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "exact",
+        "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+      }
+    },
+    "runtime_probe": {
+      "argv": [
+        "node",
+        "-e",
+        "const sha=require('child_process').execSync('git -C ../MyBooks rev-parse HEAD').toString().trim();const o={\"profile_id\": \"web\", \"timestamp\": \"2026-10-31T01:57:58Z\", \"environment_id\": \"local\", \"expected_source_revision\": \"a25b0801669b97d76f96f5a981fdc9ad4525d63d\", \"observed_runtime_identity\": \"MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)\", \"result\": \"matched\", \"evidence_refs\": [\"qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json\"], \"provenance\": {\"technical_verification\": true, \"source_linkage\": \"exact\", \"deployed_source_revision\": \"a25b0801669b97d76f96f5a981fdc9ad4525d63d\"}};o.timestamp=new Date().toISOString().slice(0,19)+'Z';o.deployed=sha;o.provenance.deployed_source_revision=sha;o.result=sha===o.expected_source_revision?'matched':'mismatched';console.log(JSON.stringify(o))"
+      ],
+      "cwd": "<path-1>\\test-automation-framework",
+      "timeout_s": 30
+    },
+    "command": {
+      "argv": [
+        "node",
+        "scripts/run-playwright.mjs",
+        "--junit={report_path}",
+        "--project=chromium"
+      ],
+      "cwd": "<path-1>\\test-automation-framework",
+      "reporter": "junit-xml",
+      "report_path": "{report_path}",
+      "scope": "selected",
+      "repo_id": "test-automation-framework",
+      "selector_contract_verified": true,
+      "selector_args": {
+        "@api @regression CART-1_TC_005 cart isolation between owners": [
+          "tests/api/cart/cart-isolation.spec.ts"
+        ],
+        "@api @regression CART-1_TC_006 guest cart merge on login": [
+          "tests/api/cart/cart-merge.spec.ts"
+        ],
+        "@api @regression CART-1_TC_007 update and delete cart item": [
+          "tests/api/cart/cart-update-delete.spec.ts"
+        ],
+        "@api @regression CART-1_TC_008 foreign cart item mutation denied": [
+          "tests/api/cart/cart-ownership.spec.ts"
+        ]
+      }
+    },
+    "instance_contracts": {
+      "@api @regression CART-1_TC_005 cart isolation between owners": {
+        "report_test_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+        "parameters": {}
+      },
+      "@api @regression CART-1_TC_006 guest cart merge on login": {
+        "report_test_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+        "parameters": {}
+      },
+      "@api @regression CART-1_TC_007 update and delete cart item": {
+        "report_test_id": "@api @regression CART-1_TC_007 update and delete cart item",
+        "parameters": {}
+      },
+      "@api @regression CART-1_TC_008 foreign cart item mutation denied": {
+        "report_test_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+        "parameters": {}
+      }
+    },
+    "execution": {
+      "schema_version": 1,
+      "reporter": {
+        "format": "junit-xml",
+        "path_template": "{report_path}"
+      },
+      "selection": {
+        "reason": "missing_fresh_evidence",
+        "evidence_refs": [
+          "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+        ]
+      }
+    },
+    "resolved_argv": [
+      "node",
+      "scripts/run-playwright.mjs",
+      "--junit={report_path}",
+      "--project=chromium",
+      "tests/api/cart/cart-isolation.spec.ts",
+      "tests/api/cart/cart-merge.spec.ts",
+      "tests/api/cart/cart-update-delete.spec.ts",
+      "tests/api/cart/cart-ownership.spec.ts"
+    ],
+    "runtime_probe_before": {
+      "profile_id": "web",
+      "timestamp": "2026-10-31T09:32:16Z",
+      "environment_id": "local",
+      "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+      "result": "matched",
+      "evidence_refs": [
+        "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "exact",
+        "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+      },
+      "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  },
+  "updated_at": "2026-10-31T09:32:49+00:00",
+  "runner_pid": 33504,
+  "runner_started_at": "2026-10-31T09:32:15.432750+00:00",
+  "child_pid": 16460,
+  "child_started_at": "2026-10-31T09:32:21.794700+00:00",
+  "execution_status": "failed",
+  "freshness": "fresh",
+  "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\initial-6b183c7a8fd8088f1c50-20261031-103221.json",
+  "run_block": "qa-factory\\artifacts\\CART-1\\work\\run-blocks\\20261031T093249959623Z-6b183c7a8fd8088f1c50.json",
+  "baseline_receipt": null
+}

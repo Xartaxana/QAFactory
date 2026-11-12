@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "task_id": "TP1-13877",
+  "links": [
+    {
+      "case_id": "TP1-13877_TC_001",
+      "version": "cv_a5e9accf6e64842e07fd",
+      "content_hash": "a5e9accf6e64842e07fda43eae2e6111d827707d4f22f7d9d59931a62532057f",
+      "path": "state/case-versions/TP1-13877_TC_001/cv_a5e9accf6e64842e07fd.md",
+      "store_provenance": {
+        "content_hash": "a5e9accf6e64842e07fda43eae2e6111d827707d4f22f7d9d59931a62532057f",
+        "source_name": "TP1-13877_TC_001.md",
+        "source_path": "qa-factory/artifacts/TP1-13877/work/test-cases/code-executor/TP1-13877_TC_001.md"
+      },
+      "area": "code-executor"
+    },
+    {
+      "case_id": "TP1-13877_TC_002",
+      "version": "cv_6d45580a4e90d79c4056",
+      "content_hash": "6d45580a4e90d79c40566eab668372b93512bb3ed3ca86a4b1a62cf3364e9d7d",
+      "path": "state/case-versions/TP1-13877_TC_002/cv_6d45580a4e90d79c4056.md",
+      "store_provenance": {
+        "content_hash": "6d45580a4e90d79c40566eab668372b93512bb3ed3ca86a4b1a62cf3364e9d7d",
+        "source_name": "TP1-13877_TC_002.md",
+        "source_path": "qa-factory/artifacts/TP1-13877/work/test-cases/code-executor/TP1-13877_TC_002.md"
+      },
+      "area": "code-executor"
+    },
+    {
+      "case_id": "TP1-13877_TC_003",
+      "version": "cv_dc156dc254a2f1038f05",
+      "content_hash": "dc156dc254a2f1038f0505cb29f3f01c759bdf170b96c94313b31bc0366b49c9",
+      "path": "state/case-versions/TP1-13877_TC_003/cv_dc156dc254a2f1038f05.md",
+      "store_provenance": {
+        "content_hash": "dc156dc254a2f1038f0505cb29f3f01c759bdf170b96c94313b31bc0366b49c9",
+        "source_name": "TP1-13877_TC_003.md",
+        "source_path": "qa-factory/artifacts/TP1-13877/work/test-cases/code-executor/TP1-13877_TC_003.md"
+      },
+      "area": "code-executor"
+    }
+  ],
+  "history": []
+}

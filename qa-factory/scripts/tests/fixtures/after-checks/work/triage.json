@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "task_id": "QA-1",
+  "triage": [
+    {
+      "instance_id": "TC-002",
+      "attempt_id": "a1",
+      "case": "TC-002",
+      "verdict": "NOT_EXECUTED",
+      "source": "code",
+      "from": {
+        "artifact": "work/run-report.json",
+        "state": "inconclusive",
+        "pointer": "current_manual_checks[case=TC-002, attempt=a1]"
+      },
+      "limitation": ["the order record page returned 503 for the whole window"],
+      "evidence": ["evidence/tc-002-order-record.txt"]
+    }
+  ]
+}

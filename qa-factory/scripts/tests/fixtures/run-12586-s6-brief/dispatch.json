@@ -1,0 +1,16 @@
+{
+  "id": "S6-qa-runner-2",
+  "stage": "S6",
+  "role": "qa-runner",
+  "scope": ["TC-010", "TC-012", "TC-014"],
+  "budget": {},
+  "execution_kind": "manual",
+  "manual_case_ids": ["TC-010", "TC-012", "TC-014"],
+  "purpose": "manual",
+  "status": "running",
+  "request_binding": {
+    "purpose": "manual",
+    "execution_kind": "manual",
+    "manual_case_ids": ["TC-010", "TC-012", "TC-014"]
+  }
+}

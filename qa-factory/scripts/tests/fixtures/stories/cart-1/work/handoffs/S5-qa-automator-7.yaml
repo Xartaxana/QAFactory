@@ -1,0 +1,141 @@
+# S5: the automator hands one window to the code critic.
+#
+# This file is the contract AND the form. `handoff_init.py --contract s5-automator-to-critic
+# --dispatch <id>` copies it into `work/handoffs/S5-qa-automator-7.yaml` with every value replaced by
+# `<fill>`; the automator fills it; `handoff_check.py --file <...>` refuses with the field, the
+# problem and the allowed values; `story_step finish` accepts the window only when the check is
+# green, and the file itself becomes evidence. The critic reads THIS file and nothing else has
+# to be hunted for.
+# Fill: write your fields as "path: value" lines to work/handoffs/S5-qa-automator-7.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S5-qa-automator-7.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s5-automator-to-critic
+stage: S5
+from_role: qa-automator
+to_role: qa-code-critic
+
+# What the receiving role must read before it starts, and what it confirms it read.
+# The critic's own handoff carries `inputs_read` with one line per entry here.
+inputs:
+  - path: work/handoffs/S5-qa-automator-7.yaml
+    what: this file
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances this window added or changed, with their case links and obligations
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every approved case in `scope`, at the pinned version named here
+    required: true
+  - path: <test files listed in artifacts.tests>
+    what: the code this window wrote
+    required: true
+  - path: work/probes/<instance>.json
+    what: one code probe per new or changed instance, when the automator ran them
+    required: false
+
+# The head of the handoff: the same three facts the digest line carries.
+header:
+  role: qa-automator
+  stage: S5
+  window: CART-1_TC_010
+  verdict: concerns
+
+# One row per item in scope. `id` is a case id or an instance id; `state` comes from
+# vocabulary.row_states and must be allowed for qa-automator; `reason` is at most 80
+# characters and is a verdict, never an explanation — the explanation lives in the artifact.
+scope:
+  - id: CART-1_TC_010
+    state: green  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: green on first run; probe gap (TS) left to critic
+    # The three facts the review needs and the manifest did not give it on REF-1:
+    # ten instances carried TWO case versions and the critic could not tell which one it was
+    # reviewing; no instance named an obligation; nothing said which instances this window
+    # wrote, so "probe every new or changed instance" had no list.
+    origin: new  # reused = an earlier window's instance, not re-probed
+    case_version: cv_514d05efe43b2506bb5f
+    obligations: OB-10
+
+# The files this window produced or changed. The receiving role is entitled to every one of
+# them; `story_step finish` checks that each exists and is not empty, so a receipt can no
+# longer be left behind (the critic's findings file was, on REF-1).
+artifacts:
+  manifest: work/automation-manifest.json
+  # The identity of the stand these instances ran against: the critic re-probes on the same
+  # stand, and a probe on another build proves nothing. `runtime_probe.py` writes it.
+  runtime_provenance: qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json
+  tests:
+    - tests/e2e/cart/add-to-cart.spec.ts
+    - core/pages/CartPage.ts
+    - core/pages/HomePage.ts
+  run_witness: qa-factory/artifacts/CART-1/evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.json
+  probes:
+    - <work/probes/<instance>.json, one per new or changed instance, or the empty list>
+  notes: work/s5-notes.md
+
+# What the automator asserts about the window, in the factory's own words. Code verifies two of
+# these keys today: every_instance_names_its_current_case_version and
+# every_expectation_change_after_red_is_recorded - a false claim there is caught before the
+# critic spends a turn on it. The other three are the role's own statement; nothing checks them yet.
+claims:
+  every_case_in_scope_has_an_instance: true  # false needs `unresolved` below
+  every_instance_names_its_current_case_version: true  # a stale link is a finding, not a detail
+  every_instance_ran: true
+  every_expectation_change_after_red_is_recorded: true  # a test that failed and later passed on changed code has a row in the manifest's expectation_changes[] saying what changed and why; a failure by requirement is handed over RED instead
+  manifest_matches_the_tests: true  # manifest_from_tests.py is the writer
+
+# Written against a PLAN (the stage began with the plan dispatch, purpose `s5_plan`, and the code critic's remarks on it).
+# A window of a story whose S5 began without a plan leaves both sections out, or empty: they are not required.
+#
+# One row for each remark the brief hands this window - by the remark's `id`, `applied` (the code does what the remark
+# asked) or `not_applicable` (it does not, and `reason` says why in at most 80 characters). The critic of the window judges
+# whether the reason is true. A remark with no row, or with two, is a finding of the author's own precheck.
+plan_remarks:
+  - id: PR-2
+    row: applied
+    reason: CartApi and cartApi fixtures from core reused; no per-spec copy
+
+# One row for each place where the code is not what the plan said: a test in another file or function, another shape or level,
+# a different count of parameters, a fixture the plan did not name, a Then moved to a remainder. A difference with a row is a
+# decision the critic of the window can read; a difference with no row is a finding. The empty list says the code is the plan.
+deviations:
+  - test: "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page"
+    from: function
+    planned: "tests/e2e/cart/add-to-cart.spec.ts::CART-1_TC_010 add from catalog shows badge and cart page"
+    reason: title carries the tag and case id per framework-rules
+
+# Items left open on purpose. Empty list is a valid answer; a non-empty one is copied into the
+# stage's completion, so the controller no longer asks for it separately.
+unresolved:
+  - id: <case or instance id>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>   # the critic checks it: for an instance that RAN and failed, `detail` names the control you did that shows the stand, not the product, blocked it
+    # The next two are for `blocked_by_env` rows: one row per case.
+    instance_ids: <only when blocked_by_env: every instance the stand blocked, comma separated>   # the critic checks the list is complete: an instance missing from it reads as a plain failure
+    remedy: <only when blocked_by_env: kind, where, change, restart - names only>   # the critic checks it names an exact fix and carries no credential value
+
+# What the critic must look at first, in the author's own words. This is the only free text
+# in the file and it is capped at ten lines.
+for_the_reviewer:
+  - New CartPage page object and HomePage card/badge actions; login through UI in a fresh session, cart cleared via verifiedUser API fixture.
+  - Then 2 reads the sum through GET /api/cart and compares to the badge text; asserts are soft so Then 1-3 stay independent.
+  - "Probe gap: probe_by_code cannot read Playwright TS; left to the critic per conductor note."
+
+# Filled ONLY when the role cannot fill the rest. `handoff_help.py --file <this file>` sends
+# it to the conductor with the contract, the refusal and the vocabulary; the conductor answers
+# with the correction or asks the person. The role never goes to the person directly.
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: artifacts.tests[]
+    source: "automation-manifest.tests[].file"
+  - field: artifacts.run_witness
+    source: "automation-manifest.run_witness"
+  - field: claims.every_instance_names_its_current_case_version
+    source: "verified by handoff_check.CLAIMS"

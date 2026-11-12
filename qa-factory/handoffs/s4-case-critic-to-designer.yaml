@@ -1,0 +1,137 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces: A REFUSAL THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A
+# REFUSAL, IT IS A RIDDLE. The author guesses, every guess is a round, and S4 allows two. So every
+# finding carries the expected state in the reviewer's own words and, where one exists, the way
+# the author can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the author's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# The author row only; add a row per further input you read, with the version read (a re-pinned case is not this window).
+inputs_read:
+  - path: work/handoffs/<the author's dispatch>.yaml
+    version: <the pinned cv_ id, or the file's sha256>
+
+required_when:
+  concerns: [stage_acceptance, questions]
+
+rows_owed_when:
+  concerns: [findings]
+  review: [findings]
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: <the case ids under review>
+  verdict: <one of vocabulary.header_verdicts>
+
+review:
+  outcome: <one of vocabulary.critic_verdicts>      # approved | approved_with_fixes | rejected
+  rollcall: <n of m reviewed - the number critic_rollcall.py computed, never typed>
+  findings_file: work/test-cases/critic-findings.md   # required; the stage is not receipted without it
+  rounds_used: <which round of the two this was>
+  rubric_covered: "<the dimensions of the eight actually applied, by name>"
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: <case id>
+    state: <one of vocabulary.row_states>
+    reason: <= 80 characters>
+    case_version: <the pinned version reviewed>
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: <F-n>
+    case: <case id>
+    where: <the section or step of the case, or a line>
+    problem: <what is wrong, one sentence>
+    expected: "<what the reviewer expects to see instead, concretely - the Then line, the
+                precondition, the oracle, the value>"
+    fix: <what to do, one sentence>
+    check: <what shows the author it is satisfied, or a dash when nothing does>
+    dimension: <the rubric dimension this comes from>
+    blocking: <true|false>
+    replacement:
+      old: "<the exact text to replace, or omit the block entirely>"
+      new: "<the exact text to put there>"
+
+# What the review could not settle: an `unverified` with a named cause beats a verdict the
+# evidence does not carry.
+unverified:
+  - id: <case id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or access would>
+
+# Stage acceptance (X2-7), owed on `header.verdict: concerns` (see `required_when`): the failure class and a verbatim quote
+# (path#anchor, at most 300 characters); the driver records it with `stage_done.py --acceptance`.
+stage_acceptance:
+  failure_class: <spec|capability|data|tooling>
+  quote: "<the artifact's own words, with path#anchor>"
+  witness_paths:
+    - <task-relative path the verdict rests on, or omit when the acceptor cited no evidence paths>
+
+# One row per place the brief named and the critic did not look at, with the reason; an empty list means all were seen.
+not_looked:
+  - where: <path or area>
+    why: "<one sentence>"
+
+advice_read: "<work/advice-S4.json, or a dash and the reason it was absent>"
+advice_rejected:
+  - script: <the adviser>
+    why: "<one sentence: why its remark is not a defect>"
+
+# An INTENT question no file settles (X2-6); `[]` is a legal answer; the driver raises it into the register.
+questions:
+  - question: "<the question, in plain words>"
+    read:
+      - <path#anchor the critic read before asking>
+    recommendation: "<what the work goes on with meanwhile>"
+    options:
+      - reading: "<one possible answer>"
+        if_chosen: "<what changes in the work if this is the answer>"
+      - reading: "<another possible answer>"
+        if_chosen: "<what changes in the work if this is the answer>"
+    severity: <blocker|major|minor>   # major and minor do not block; anything else blocks
+    owner_role: <the role the answer concerns>
+    why_person: <the class of person-owned.json, or omit when none>
+
+claims:
+  every_case_of_the_review_scope_has_a_row: <true|false>
+  every_finding_names_expected_and_check: <true|false>
+  the_verdict_was_computed_by_rollcall_not_typed: <true|false>
+  no_case_outside_the_review_scope_was_reviewed: <true|false>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

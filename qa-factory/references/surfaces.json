@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of the things the factory can test on: how each is driven and how its stand is checked. Read only by scripts/surfaces.py. A value a project can bring that this table lacks is a hint to a role, never a refusal (AR-2). The commands and patterns of a row are labelled by what was read: the Android device row and the Appium server row follow a real project's tooling read at a recorded revision (docs/tasks/specs/reports/t-524-ep1-41a-report.md); the iOS row and the W3C element and snapshot paths are general knowledge, not read from a real tool, and no row has run on a device (FR-33).",
+  "tool_timeout_s": 10,
+  "not_surfaces": ["unit", "event", "manual"],
+  "words": {
+    "unknown_word": "This project declares a test surface called \"{word}\" that the factory has no way to drive: those cases go to a person. If it is a kind of surface the factory should know, record it as a finding.",
+    "no_stand":"This project runs native-application tests, but no stand for an agent's hands is described: those cases go to a person. Describe the device stand by running the onboarding again."
+  },
+  "drivers": {
+    "appium": {
+      "status_path": "/status",
+      "ready_field": "value.ready",
+      "session_path": "/session",
+      "default_base_path": "/",
+      "session_defaults": {"appium:noReset": true, "appium:newCommandTimeout": 300},
+      "deep_session_defaults": {"appium:newCommandTimeout": 30},
+      "max_body": 1048576,
+      "snapshot_max_body": 16777216,
+      "session_timeout_s": 120
+    }
+  },
+  "surfaces": {
+    "web": {"capability": "web", "hands": "browser", "fits_levels": []},
+    "api": {"capability": "api", "hands": "http", "fits_levels": []},
+    "cli": {
+      "capability": "cli", "hands": "none", "words_only_alone": true,
+      "words": "Agent checks on a command-line application are not supported: those cases go to a person."
+    },
+    "desktop": {
+      "capability": "desktop", "hands": "none",
+      "words": "Agent checks on a desktop application are not supported: those cases go to a person."
+    },
+    "android": {
+      "capability": "native", "hands": "driver", "driver": "appium", "fits_levels": ["e2e-ui"], "host_os": [],
+      "session": {"platformName": "Android", "appium:automationName": "UiAutomator2", "app_id_capability": "appium:appPackage", "activity_capability": "appium:appActivity", "app_id_param": "appId", "device_capability": "appium:udid"},
+      "selectors": ["accessibility id", "id", "xpath", "-android uiautomator"],
+      "tool": "adb",
+      "devices": {"argv": ["adb", "devices"], "header_re": "^List of devices attached", "row_re": "^(\\S+)\\s+device\\s*$", "other_row_re": "^(\\S+)\\s+(offline|unauthorized)\\s*$"},
+      "installed_build": {"argv": ["adb", "-s", "{device}", "shell", "dumpsys", "package", "{app_id}"], "version_re": "versionName=(\\S+)", "code_re": "versionCode=(\\S+)",
+        "artifact": {
+          "note": "The file the device holds, to tell a rebuild with the same version (EP1-41e). The two command forms (`pm path`, `sha256sum`) were read at the recorded revision (t-524-ep1-41a-report.md row [3]); the two patterns and the several `package:` lines of a split install are general knowledge, not read from a real tool.",
+          "path_argv": ["adb", "-s", "{device}", "shell", "pm", "path", "{app_id}"], "path_re": "^package:(\\S+)",
+          "sha_argv": ["adb", "-s", "{device}", "shell", "sha256sum", "{path}"], "sha_re": "^([0-9a-f]{64})"
+        }},
+      "log": {"argv": ["adb", "-s", "{device}", "logcat", "-d", "-t", "{tail}"], "tail_lines": 200}
+    },
+    "ios": {
+      "capability": "native", "hands": "driver", "driver": "appium", "fits_levels": ["e2e-ui"], "host_os": ["darwin"],
+      "words": "iOS: only a booted simulator is read (simctl), no real device is promised; this road has not been run on a real project.",
+      "session": {"platformName": "iOS", "appium:automationName": "XCUITest", "app_id_capability": "appium:bundleId", "app_id_param": "bundleId", "device_capability": "appium:udid"},
+      "selectors": ["accessibility id", "id", "xpath", "-ios predicate string", "-ios class chain"],
+      "tool": "xcrun",
+      "devices": {"argv": ["xcrun", "simctl", "list", "devices", "booted"], "header_re": "^== Devices ==", "row_re": "\\(([0-9A-F-]{36})\\) \\(Booted\\)"},
+      "installed_build": null,
+      "log": null
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "requests": [
+    {
+      "method": "GET",
+      "url_template": "/api/books/{bookId}/related",
+      "source": "code",
+      "path": "MyBooks/src/components/RelatedBooks.tsx",
+      "line": 14,
+      "also_at": []
+    },
+    {
+      "method": "GET",
+      "url_template": "/api/books/{bookId}/reviews",
+      "source": "code",
+      "path": "MyBooks/src/components/ReviewsSection.tsx",
+      "line": 42,
+      "also_at": []
+    },
+    {
+      "method": "DELETE",
+      "url_template": "/api/reviews/{id}",
+      "source": "code",
+      "path": "MyBooks/src/components/ReviewsSection.tsx",
+      "line": 95,
+      "also_at": []
+    },
+    {
+      "method": "GET",
+      "url_template": "/api/wishlist",
+      "source": "code",
+      "path": "MyBooks/src/components/WishlistButton.tsx",
+      "line": 25,
+      "also_at": [
+        "MyBooks/src/components/pages/WishlistPage.tsx:24"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "url_template": "/api/wishlist/{bookId}",
+      "source": "code",
+      "path": "MyBooks/src/components/WishlistButton.tsx",
+      "line": 42,
+      "also_at": [
+        "MyBooks/src/components/pages/WishlistPage.tsx:38",
+        "MyBooks/src/components/pages/WishlistPage.tsx:58"
+      ]
+    },
+    {
+      "method": "POST",
+      "url_template": "/api/wishlist",
+      "source": "code",
+      "path": "MyBooks/src/components/WishlistButton.tsx",
+      "line": 43,
+      "also_at": []
+    },
+    {
+      "method": "GET",
+      "url_template": "/api/books",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 102,
+      "also_at": []
+    },
+    {
+      "method": "GET",
+      "url_template": "/api/categories",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 119,
+      "also_at": [
+        "MyBooks/src/components/pages/HomePage.tsx:62"
+      ]
+    },
+    {
+      "method": "POST",
+      "url_template": "/api/categories",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 128,
+      "also_at": []
+    },
+    {
+      "method": "PUT",
+      "url_template": "/api/categories/{id}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 146,
+      "also_at": []
+    },
+    {
+      "method": "DELETE",
+      "url_template": "/api/categories/{id}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 163,
+      "also_at": []
+    },
+    {
+      "method": null,
+      "url_template": "/api/orders{*}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 178,
+      "also_at": []
+    },
+    {
+      "method": "PUT",
+      "url_template": "/api/books/{id}/cover",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 214,
+      "also_at": []
+    },
+    {
+      "method": "DELETE",
+      "url_template": "/api/books/{id}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 252,
+      "also_at": []
+    },
+    {
+      "method": "POST",
+      "url_template": "/api/orders/{orderId}/advance",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 270,
+      "also_at": []
+    },
+    {
+      "method": "PATCH",
+      "url_template": "/api/orders/{orderId}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 284,
+      "also_at": []
+    },
+    {
+      "method": "DELETE",
+      "url_template": "/api/books/{id}/cover",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/AdminPage.tsx",
+      "line": 321,
+      "also_at": []
+    },
+    {
+      "method": "GET",
+      "url_template": "/api/books/{bookId}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 29,
+      "also_at": [
+        "MyBooks/src/components/pages/CartPage.tsx:36"
+      ]
+    },
+    {
+      "method": "POST",
+      "url_template": "/api/cart",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 49,
+      "also_at": [
+        "MyBooks/src/components/pages/HomePage.tsx:120",
+        "MyBooks/src/components/pages/WishlistPage.tsx:48"
+      ]
+    },
+    {
+      "method": "GET",
+      "url_template": "/api/cart",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/CartPage.tsx",
+      "line": 30,
+      "also_at": [
+        "MyBooks/src/components/providers/AppProviders.tsx:37"
+      ]
+    },
+    {
+      "method": "PUT",
+      "url_template": "/api/cart/{itemId}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/CartPage.tsx",
+      "line": 62,
+      "also_at": []
+    },
+    {
+      "method": "DELETE",
+      "url_template": "/api/cart/{itemId}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/CartPage.tsx",
+      "line": 82,
+      "also_at": []
+    },
+    {
+      "method": null,
+      "url_template": "/api/books{*}",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/HomePage.tsx",
+      "line": 73,
+      "also_at": []
+    },
+    {
+      "method": "POST",
+      "url_template": "/api/cart/merge",
+      "source": "code",
+      "path": "MyBooks/src/components/pages/LoginPage.tsx",
+      "line": 36,
+      "also_at": []
+    }
+  ],
+  "unmeasured": [
+    "MyBooks/src/components/pages/AdminPage.tsx: 1 call site(s) whose address is not a literal: 195",
+    "MyBooks/src/components/ReviewsSection.tsx: 1 call site(s) whose address is not a literal: 72"
+  ],
+  "checked": [
+    "MyBooks/src/app/api/cart/route.ts",
+    "MyBooks/src/components/pages/BookDetailPage.tsx",
+    "MyBooks/src/components/pages/CartPage.tsx",
+    "MyBooks/src/components/pages/HomePage.tsx",
+    "MyBooks/src/components/pages/LoginPage.tsx",
+    "MyBooks/src/components/pages/WishlistPage.tsx",
+    "MyBooks/src/components/providers/AppProviders.tsx",
+    "MyBooks/src/lib/services/cartService.ts",
+    "MyBooks/src/lib/validation/schemas.ts",
+    "MyBooks/src/components/pages/AdminPage.tsx",
+    "MyBooks/src/components/WishlistButton.tsx",
+    "MyBooks/src/components/RelatedBooks.tsx",
+    "MyBooks/src/components/ReviewsSection.tsx"
+  ]
+}

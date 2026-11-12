@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "note": "Every question the factory may put to a System One judge, in one reviewable place. judge.py reads this file; no question text lives in Python. `stage` is where it is asked, `replaces` names the LLM judgment it stands in for when `judge.mode` is `on`, `undecided` says who gets the item when the answer is under its threshold. A noul decides true at `true_at` and false at `false_at`; a choice or score decides at `confidence`. Anything that narrows scope keeps 0.9 or stricter. State paths in backticks refer to keys of the state object the named script assembles. Answers never lift a block, pass a gate or authorise a write. Calibration rule learned on TP1-15045: a question reads its subject directly from a small state (`requirement`, `case`, `comment`, one pair of statements), never through an id looked up in a large shared state - over one shared state the judge answered `ui` with 0.9 confidence for rows whose text was not a requirement at all, because the story description beside them said so. `enabled: false` with a `calibration` note records a question that was tried and failed; judge.py never sends it. A `calibration` note on an enabled question records what it was checked against. `advisory_only: true` keeps a question a hint even when judge.mode is `on`.",
+  "judgments": [
+    {
+      "id": "judge_probe",
+      "stage": "S0",
+      "type": "noul",
+      "replaces": "nothing - reachability probe of the judge itself",
+      "undecided": "ignored",
+      "instructions": "Does the text say that the tests passed?",
+      "thresholds": {
+        "true_at": 0.8,
+        "false_at": 0.2
+      }
+    },
+    {
+      "id": "source_relevant",
+      "stage": "S1",
+      "script": "judge_sources.py",
+      "type": "noul",
+      "replaces": "qa-scout `assess --relevance` on a peeked mention",
+      "undecided": "qa-scout assesses it, as without a judge",
+      "instructions": {
+        "question": "Would a tester of the story in `story` need the ticket in `candidate` to know what behaviour to expect or to check?",
+        "compare": [
+          "story.title",
+          "story.description",
+          "story.acceptance_criteria",
+          "candidate.title",
+          "candidate.description",
+          "candidate.acceptance_criteria"
+        ],
+        "focus": "Same feature or user-visible behaviour, a requirement or defect the story implements, changes, restores or depends on."
+      },
+      "criteria": {
+        "true": "`candidate` defines, constrains or reports behaviour of the same feature that `story` changes, or `story` cannot be verified without it.",
+        "false": "`candidate` is about a different feature, is only organisational (release, planning, access, environment request), or merely shares a product area or a person with `story`."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.08
+      }
+    },
+    {
+      "id": "source_relation",
+      "stage": "S1",
+      "script": "judge_sources.py",
+      "type": "choice",
+      "replaces": "the reason text qa-scout writes beside a relevance decision",
+      "undecided": "reason records the leaning option as unconfirmed",
+      "instructions": "What is the ticket in `candidate` to the story in `story`?",
+      "criteria": {
+        "defines_behaviour": "States requirements, acceptance criteria or a design for behaviour the story implements or changes.",
+        "defect_in_scope": "Reports a defect in the behaviour the story implements or changes.",
+        "sibling_same_feature": "Another work item of the same feature; shares the feature but specifies different behaviour.",
+        "dependency": "Something the story technically depends on or that blocks it, without describing the story's behaviour.",
+        "unrelated": "A different feature, or organisational work with no bearing on what the story's behaviour should be."
+      },
+      "thresholds": {
+        "confidence": 0.6
+      }
+    },
+    {
+      "id": "comment_changes_requirements",
+      "stage": "S2",
+      "script": "judge_requirements.py",
+      "type": "noul",
+      "replaces": "qa-requirements-tester reading every comment to find the ones that alter scope",
+      "undecided": "the comment is listed for the role to read",
+      "instructions": "Does the comment in `comment` add, remove, change or clarify expected behaviour or acceptance criteria of the work described in `story`?",
+      "criteria": {
+        "true": "The comment states or changes what the product must do, a decision about scope, an agreed exception, or an answer to a requirements question.",
+        "false": "The comment is status, scheduling, review logistics, a link with no statement, or a greeting."
+      },
+      "thresholds": {
+        "true_at": 0.7,
+        "false_at": 0.05
+      },
+      "calibration": "2026-09-21, 8 comments of TP1-15045/14482/8827: scope-changing comments 0.91-0.96, logistics 0.03-0.04."
+    },
+    {
+      "id": "requirements_contradict",
+      "stage": "S2",
+      "script": "judge_requirements.py",
+      "type": "choice",
+      "replaces": "one cell of the qa-requirements-tester contradiction matrix",
+      "undecided": "the pair is listed for the role as `possible`",
+      "instructions": "How do `statement_1` and `statement_2` relate?",
+      "criteria": {
+        "opposite": "They talk about the same thing and say opposite or incompatible things about it.",
+        "consistent": "They talk about the same thing and agree.",
+        "different": "They talk about different things."
+      },
+      "thresholds": {
+        "confidence": 0.8
+      },
+      "calibration": "2026-09-21, TP1-15045 register plus three planted conflicts (restore reverted vs not reverted; nodes draggable vs read-only; added node green vs red): planted pairs `opposite` 1.0, real pairs `opposite` <= 0.02. One pair per request; a conflict noul over a shared state did not separate them."
+    },
+    {
+      "id": "requirement_observable_in",
+      "stage": "S2",
+      "script": "judge_requirements.py",
+      "type": "choice",
+      "replaces": "the first guess of the register's observable-in column; the role still cites path:line",
+      "undecided": "column left for the role",
+      "instructions": "Through which channel can an outside tester observe whether the requirement in `requirement` holds?",
+      "criteria": {
+        "ui": "Visible in the product's user interface: a screen, control, message, layout or navigation.",
+        "api": "Visible in an API request or response: status code, payload, header, error body.",
+        "data": "Visible only in stored data, a file, a log or an emitted event.",
+        "not_observable": "An internal quality or intent with no outcome an outside tester can observe as stated."
+      },
+      "thresholds": {
+        "confidence": 0.75
+      },
+      "calibration": "2026-09-21, TP1-15045: 14 of 15 rows decided and matching the register; the undecided one (R-15) was the story's open owner question."
+    },
+    {
+      "id": "requirement_verifiable",
+      "stage": "S2",
+      "script": "judge_requirements.py",
+      "type": "noul",
+      "replaces": "the register's ambiguity screen that produces questions to the owner",
+      "undecided": "the requirement is listed for the role as `check wording`",
+      "instructions": "Does the requirement in `requirement` name an outcome that a tester can check as pass or fail?",
+      "criteria": {
+        "true": "It names what is shown, returned, stored or refused, so a check can pass or fail.",
+        "false": "The outcome is left open: it only says 'works', 'correctly', 'appropriately', 'as expected', 'user-friendly' or similar."
+      },
+      "thresholds": {
+        "true_at": 0.8,
+        "false_at": 0.2
+      }
+    },
+    {
+      "id": "plan_row_intent",
+      "stage": "S3",
+      "script": "judge_plan.py",
+      "type": "noul",
+      "replaces": "automation-candidacy input 1 (intent / definition of done) for a plan row",
+      "undecided": "qa-test-strategist decides the input",
+      "instructions": "Does the story in `story` state or clearly imply that the behaviour of the requirement in `requirement` must be covered by an automated test before the story is done?",
+      "thresholds": {
+        "true_at": 0.8,
+        "false_at": 0.15
+      },
+      "enabled": false,
+      "calibration": "rejected 2026-09-21 on TP1-15045: 15 of 15 answers between 0.18 and 0.73, none decided. Whether a story demands automation is not stated per requirement; the input stays with qa-test-strategist."
+    },
+    {
+      "id": "plan_row_damage",
+      "stage": "S3",
+      "script": "judge_plan.py",
+      "type": "score",
+      "replaces": "the starting `impact` of the plan rows of one requirement (risk-policy.md: low, moderate, severe)",
+      "undecided": "qa-test-strategist assigns it",
+      "instructions": "If the behaviour in `requirement` were silently broken in production, how bad is it for a user of this product?",
+      "criteria": [
+        {
+          "summary": "low",
+          "signals": "Looks wrong or is inconvenient; every task can still be completed and nothing false is shown or stored."
+        },
+        {
+          "summary": "moderate",
+          "signals": "A task of this feature cannot be completed or needs a workaround; the effect is visible and reversible."
+        },
+        {
+          "summary": "severe",
+          "signals": "Unauthorized access, exposed or destroyed data, a false result the user may act on, or lost work."
+        }
+      ],
+      "thresholds": {
+        "confidence": 0.6
+      },
+      "advisory_only": true,
+      "calibration": "2026-09-21, TP1-15045: 7 of 15 decided, 5 of those equal the strategist's impact, R-10 severe against moderate. Impact needs product context the requirement text does not carry: shown to the strategist as a hint in every mode."
+    },
+    {
+      "id": "plan_row_level",
+      "stage": "S3",
+      "script": "judge_plan.py",
+      "type": "choice",
+      "replaces": "the first guess of a plan row's pyramid level",
+      "undecided": "qa-test-strategist assigns it",
+      "instructions": "What is the lowest test level at which the requirement in `requirement` can be fully verified?",
+      "criteria": {
+        "unit": "Pure logic of one function or class; no running service, database or browser needed.",
+        "component": "One UI component or one module rendered or called in isolation with stubs.",
+        "api": "A request to the running backend and its response or stored effect.",
+        "e2e": "Only observable through the real user interface wired to the running backend."
+      },
+      "thresholds": {
+        "confidence": 0.7
+      },
+      "calibration": "2026-09-21, TP1-15045: every decided level (8 of 15) equals the level qa-test-strategist chose; the undecided ones split e2e against component."
+    },
+    {
+      "id": "case_atomic",
+      "stage": "S4",
+      "script": "judge_cases.py",
+      "rubric_dimension": 2,
+      "type": "noul",
+      "replaces": "qa-case-critic rubric dimension 2 (atomicity) for one case",
+      "undecided": "qa-case-critic scores the dimension for this case",
+      "instructions": "Does the test case in `case` verify exactly one scenario?",
+      "criteria": {
+        "true": "One Given-When-Then flow with one triggering action and outcomes of that one action.",
+        "false": "Several independent triggering actions, several unrelated outcomes, or 'and also verify' of a different behaviour."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      },
+      "enabled": false,
+      "calibration": "rejected 2026-09-21 on the 15 pinned cases of TP1-15045: 4 `fail` and 11 undecided, none passed, on cases the critic scored atomic. This factory's cases walk one scenario through several numbered When steps with one Then per step; the judge reads the steps as several scenarios. Dimension 2 stays with qa-case-critic."
+    },
+    {
+      "id": "case_then_observable",
+      "stage": "S4",
+      "script": "judge_cases.py",
+      "rubric_dimension": 3,
+      "type": "noul",
+      "replaces": "qa-case-critic rubric dimension 3 (clarity) for one case",
+      "undecided": "qa-case-critic scores the dimension for this case",
+      "instructions": "Is every expected result (Then) of the test case in `case` a concrete outcome a tester can observe and compare, such as a named element, text, status code, field value or stored record?",
+      "criteria": {
+        "true": "Each Then names what is observed and the value or state expected.",
+        "false": "Some Then says 'works', 'is correct', 'as expected', 'successfully', or names no observable value."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-21, TP1-15045: 8 of 15 pass at 0.85; the lowest scores include TC-014, where the critic found a Then saying only `4xx`. Useful as an ordering of the critic's attention; too few clean cases to shorten the review much."
+    },
+    {
+      "id": "case_matches_row",
+      "stage": "S4",
+      "script": "judge_cases.py",
+      "rubric_dimension": 7,
+      "type": "noul",
+      "replaces": "qa-case-critic rubric dimension 7 (completeness against the plan) for one case-row pair",
+      "undecided": "qa-case-critic checks the pair",
+      "instructions": "Does the test case in `case` actually check the condition described by the plan row in `plan_row`?",
+      "criteria": {
+        "true": "The case's When exercises the row's condition and its Then checks the row's expected outcome.",
+        "false": "The case checks a different condition, only part of the row, or never asserts the row's outcome."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      }
+    },
+    {
+      "id": "case_negative_reachable",
+      "stage": "S4",
+      "script": "judge_cases.py",
+      "rubric_dimension": 5,
+      "type": "noul",
+      "replaces": "qa-case-critic rubric dimension 5 (negative scenarios are reachable) for one negative case",
+      "undecided": "qa-case-critic scores the dimension for this case",
+      "instructions": "Do the Given and When of the test case in `case` say concretely how a tester brings the product into the failing or refused situation it targets?",
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      }
+    },
+    {
+      "id": "case_catches_seeded_defect",
+      "stage": "S4",
+      "script": "judge_cases.py",
+      "rubric_dimension": 8,
+      "type": "noul",
+      "replaces": "qa-case-critic rubric dimension 8 (seed the defect) for one case; a `true` is a design analysis, never an executed probe",
+      "undecided": "qa-case-critic seeds the defect for this case",
+      "instructions": "Suppose the product ignores the behaviour described in `plan_row` and does nothing, or does the old behaviour. Would at least one expected result (Then) of the test case in `case` then fail?",
+      "criteria": {
+        "true": "A Then compares against an outcome that only the required behaviour produces.",
+        "false": "Every Then would still hold if the behaviour were missing, for example it only checks that a page opens or that no error appears."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.15
+      },
+      "calibration": "2026-09-21, TP1-15045: 7 of 15 pass at 0.9. A pass is a design analysis and never replaces the critic's sensitivity record for a design-review row."
+    }
+  ]
+}

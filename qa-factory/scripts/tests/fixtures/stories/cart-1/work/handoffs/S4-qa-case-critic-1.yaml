@@ -1,0 +1,117 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces is the one the whole factory pays for when it is missing: A REFUSAL
+# THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A REFUSAL, IT IS A RIDDLE. The author then
+# guesses, and every guess is a round - and S4 allows two. So every finding carries, beside the
+# problem, the expected state in the reviewer's own words and, where one exists, the way the author
+# can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-critic-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the designer's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# One line per entry of the designer's `inputs`, with the version read. A review of a case that
+# has since been re-pinned is not a review of this window.
+inputs_read:
+  - path: qa-factory/artifacts/CART-1/state/case-versions/CART-1_TC_005/cv_e4ffb26106421321c1a6.md
+    version: cv_e4ffb26106421321c1a6
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: CART-1_TC_005,CART-1_TC_006,CART-1_TC_008,CART-1_TC_009
+  verdict: concerns
+
+review:
+  outcome: rejected  # approved | approved_with_fixes | rejected
+  rollcall: 4 of 4 reviewed
+  findings_file: work/test-cases/critic-findings.md   # required; the stage is not receipted without it
+  rounds_used: 1
+  rubric_covered: coverage, atomicity, clarity, edge cases, negative scenarios, traceability, completeness, contradicts_source, seed the defect
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: CART-1_TC_005
+    state: reject
+    reason: guest cookie never sent with signed-in read; seeded defect passes
+    case_version: cv_e4ffb26106421321c1a6
+  - id: CART-1_TC_006
+    state: approve_with_concerns
+    reason: seed secret precondition missing; B3 stock wording; Then 5 unbounded
+    case_version: cv_1046d3cf7f7a7093f601
+  - id: CART-1_TC_008
+    state: approve
+    reason: before/after read plus positive control; seeded defect fails Then
+    case_version: cv_ce42982f1616cbc645f9
+  - id: CART-1_TC_009
+    state: approve_with_concerns
+    reason: bare 4xx Thens, paths unbound, seed secret and account unchecked
+    case_version: cv_a9ed3ec0883c46ec8f19
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: F-1
+    case: CART-1_TC_005
+    where: When 3 / Then 2
+    problem: Signed-in U's jar does not carry G1's guest cookie, so a user query that also matches sessionId is not exercised.
+    expected: U signs in in a jar that also holds G1's bookstore_session_id; its GET /api/cart payload has no row for B.
+    fix: Add a When step and Then for the signed-in request carrying the guest cookie.
+    check: Planting sessionId matching in the user branch of ownerWhere makes the new Then fail.
+    dimension: seed the defect
+    blocking: true
+    replacement:
+      old: "3. U (signed in, no merge called): GET /api/cart."
+      new: "3. U (signed in, no merge called, jar also holding G1's bookstore_session_id cookie): GET /api/cart."
+
+# What the review could not settle. An honest `unverified` with a named cause is worth more than a
+# verdict the evidence does not carry - and it is a word of the vocabulary, not an improvisation.
+unverified:
+  - id: <case id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or access would>
+
+claims:
+  every_case_of_the_review_scope_has_a_row: true
+  every_finding_names_expected_and_check: true
+  the_verdict_was_computed_by_rollcall_not_typed: true
+  no_case_outside_the_review_scope_was_reviewed: true
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: review.rollcall
+    source: "critic_rollcall.derive"

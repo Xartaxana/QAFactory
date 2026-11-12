@@ -1,0 +1,39 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "**Precondition**: User is on product page of an in-stock item\n\n**Steps**:\n1. Click \"Add to Cart\" button\n\n**Expected Result**: Item appears in cart with correct price and quantity = 1\n\n*Related to user story: REF-10*",
+  "id": "13527978",
+  "key": "REF-28",
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-16",
+        "relation": "duplicates",
+        "status": "Open",
+        "summary": "Add in-stock book to cart with quantity 1",
+        "type": "Duplicate"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14658,
+    "fields_requested": "*all",
+    "sha256": "acbc782eb56b16f0a61d64006edcd34e74af3878cc2f3848cf349932eea38c32",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T11:46:50.775+0000",
+  "status": "Closed",
+  "subtasks": [],
+  "title": "TC-P1: Successfully add in-stock item to cart",
+  "type": "Test"
+}

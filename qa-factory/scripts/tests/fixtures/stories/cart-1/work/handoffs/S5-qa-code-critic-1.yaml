@@ -1,0 +1,120 @@
+# S5: the code critic hands its review of the PLAN back - to the automator when a remark blocks the windows,
+# or on to the windows when none does. The same file serves both: `review.outcome` decides which.
+#
+# This is the review of `work/s5-plan.json` (the plan dispatch, purpose `s5_plan`), not of any code: the
+# critic judges the plan's intent - every case answered, the level and the shape of each test, the oracle,
+# the data, the consolidation - before a line of a test exists. Code is judged later, window by window,
+# through s5-critic-to-automator.yaml, against this plan and the remarks written here.
+#
+# A remark is `blocker` or `remark`. A BLOCKER is what the automator of a window cannot put right inside
+# its own window (the plan answers the wrong case, the level cannot observe the Then); consolidation
+# across cases is never a blocker: the windows follow the plan. Everything else is a `remark`, and a
+# remark travels into the window it concerns, where the automator answers it with one row. The windows
+# see the remarks, never a rewritten plan.
+#
+# Code stamps the plan the critic judged (`s5_plan.py stamp_review` writes the receipt at `finish`): the
+# critic does not copy a hash, and the form carries none.
+# Fill: write your fields as "path: value" lines to work/handoffs/S5-qa-code-critic-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S5-qa-code-critic-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s5-critic-plan-to-automator
+stage: S5
+from_role: qa-code-critic
+to_role: qa-automator            # on `approved` or `approved_with_remarks` the plan goes on to the windows instead
+
+inputs:
+  - path: work/handoffs/<the automator's dispatch>.yaml
+    what: the author's handoff for the plan
+    required: true
+  - path: work/s5-plan.json
+    what: the plan under review
+    required: true
+  - path: work/test-plan.json
+    what: the S3 rows the plan answers
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every case in scope at its pinned version
+    required: true
+
+# Proof that the review read what it was handed. One line per entry of the author's `inputs`, with the
+# version or the content it read - a review of a file that has since changed is not a review of this plan.
+inputs_read:
+  - path: work/s5-plan.json
+    version: scope_hash 242b2ad2
+
+header:
+  role: qa-code-critic
+  stage: S5
+  window: CART-1_TC_001,CART-1_TC_002,CART-1_TC_003,CART-1_TC_004,CART-1_TC_005,CART-1_TC_006,CART-1_TC_007,CART-1_TC_008,CART-1_TC_009,CART-1_TC_010
+  verdict: concerns
+
+# The review's own conclusion about the plan. `approved`: no remark. `approved_with_remarks`: remarks
+# only, none a blocker. `blocked`: at least one blocker, and the plan goes back to its author for those rows.
+review:
+  outcome: approved_with_remarks
+
+# One row per case reviewed. `state` from vocabulary.row_states, allowed for qa-code-critic: reviewed,
+# unverified, review_skipped; `reason` is a verdict of at most 80 characters, the explanation is the remark.
+scope:
+  - id: CART-1_TC_001
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_002
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_003
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_004
+    state: reviewed
+    reason: 9 partitions; parameterize
+  - id: CART-1_TC_005
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_006
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_007
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_008
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_009
+    state: reviewed
+    reason: ok
+  - id: CART-1_TC_010
+    state: reviewed
+    reason: e2e justified by badge and cart page
+
+# What the author (or, later, the window) must change. A remark that does not say what the critic expects
+# is not a remark, it is a riddle: so every one carries `expected` - the condition the author can check its
+# own row against - and `check`, the critic's check that raised it. The empty list is the answer to an
+# `approved` plan. `case`, `test` and `then` say where the remark points; a dash on all three means the
+# plan as a whole, and a remark of that kind goes to every window.
+remarks:
+  - id: PR-1
+    case: CART-1_TC_004
+    test: T-4
+    then: "CART-1_TC_004#2"
+    kind: remark
+    check: K-2
+    problem: Nine partitions share one setup and action but the plan is shape new with one body.
+    expected: shape parameterize; one parameter per partition, ids name the partition, Thens 2-4 asserted per parameter so one 5xx does not hide the others.
+    fix: Parameterize in the window and declare the deviation.
+  - id: PR-2
+    case: -
+    test: -
+    then: -
+    kind: remark
+    check: K-10
+    problem: Boilerplate assert text on every test (mentions UI badge for API tests); shared helpers promised but not named per test.
+    expected: One cart API client and one guest-jar helper in core reused by T-1..T-9, no per-spec copies; Then values from R-n and case, never the code.
+    fix: Create the helpers once and use them in every window.
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

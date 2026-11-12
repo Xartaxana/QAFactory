@@ -1,0 +1,11 @@
+{"at": "2026-10-31T12:02:33+00:00", "command": "ui", "step": "goto http://localhost:3000/login", "outcome": "ok", "detail": "0.48 s"}
+{"at": "2026-10-31T12:02:34+00:00", "command": "ui", "step": "fill-account [data-testid=login-email-input] user user", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:34+00:00", "command": "ui", "step": "fill-account [data-testid=login-password-input] user secret", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:34+00:00", "command": "ui", "step": "click [data-testid=login-submit-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:37+00:00", "command": "ui", "step": "wait 3000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:38+00:00", "command": "ui", "step": "goto http://localhost:3000/wishlist", "outcome": "ok", "detail": "0.44 s"}
+{"at": "2026-10-31T12:02:38+00:00", "command": "ui", "step": "read [data-testid=wishlist-move-113] style=cursor", "outcome": "ok", "detail": "not-allowed"}
+{"at": "2026-10-31T12:02:39+00:00", "command": "ui", "step": "read [data-testid=wishlist-remove-113] style=cursor", "outcome": "ok", "detail": "pointer"}
+{"at": "2026-10-31T12:02:39+00:00", "command": "ui", "step": "read [data-testid=wishlist-move-113] style=opacity", "outcome": "ok", "detail": "1"}
+{"at": "2026-10-31T12:02:39+00:00", "command": "ui", "step": "read [data-testid=wishlist-remove-113] style=opacity", "outcome": "ok", "detail": "1"}
+{"at": "2026-10-31T12:03:10+00:00", "command": "ui", "step": "click [data-testid=wishlist-move-113]", "outcome": "failed", "detail": "[data-testid=wishlist-move-113] was found but is not enabled; screenshot: work/evidence/manual/CART-1_TC_012/a9/005-failed-step.png; Playwright said: Locator.click: Timeout 30000ms exceeded."}

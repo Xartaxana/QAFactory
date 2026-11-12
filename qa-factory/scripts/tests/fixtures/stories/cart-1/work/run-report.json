@@ -1,0 +1,3029 @@
+{
+  "schema_version": 2,
+  "task_id": "CART-1",
+  "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "head": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "controller_revision": 147,
+  "reducer": {
+    "name": "finalize_task",
+    "sources": [
+      {
+        "id": "446b57460fbe233362ab-reparse-9e61821ee753",
+        "source": "run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json"
+      },
+      {
+        "id": "6b183c7a8fd8088f1c50",
+        "source": "run-blocks/20261031T093249959623Z-6b183c7a8fd8088f1c50.json"
+      },
+      {
+        "id": "d67215ba124bbc6b138b-reparse-f6cc89666345",
+        "source": "run-blocks/d67215ba124bbc6b138b-reparse-f6cc89666345.json"
+      },
+      {
+        "id": "4d9f931528dfe8f92f72",
+        "source": "run-blocks/20261031T101747416616Z-4d9f931528dfe8f92f72.json"
+      },
+      {
+        "id": "4bfb53e668563c7768a5",
+        "source": "run-blocks/20261031T101845416647Z-4bfb53e668563c7768a5.json"
+      },
+      {
+        "id": "c7f56259e689c93a9ddf-reparse-a0cb4a33e66f",
+        "source": "run-blocks/c7f56259e689c93a9ddf-reparse-a0cb4a33e66f.json"
+      },
+      {
+        "id": "c9286026d096394cd0e6-reparse-dba7e3576bb8",
+        "source": "run-blocks/c9286026d096394cd0e6-reparse-dba7e3576bb8.json"
+      },
+      {
+        "id": "2605aa2460823ce36b05-reparse-6022db6dd917",
+        "source": "run-blocks/2605aa2460823ce36b05-reparse-6022db6dd917.json"
+      },
+      {
+        "id": "manual-f82a6d59d3b723e90cdc",
+        "source": "manual-blocks/manual-f82a6d59d3b723e90cdc912e7bba88a8c3ca4b4281f30793a5b85e79888363ff.json"
+      },
+      {
+        "id": "manual-0e23143fcad1b614417f",
+        "source": "manual-blocks/manual-0e23143fcad1b614417fb948ee5fad7d82704eabefddc1e812637fd8e3eedfc3.json"
+      }
+    ]
+  },
+  "execution_status": "failed",
+  "results": [
+    {
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "test_id": "api\\cart\\add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_001",
+          "version": "cv_4752342fab279cf316cc"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "test_id": "api\\cart\\add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_002",
+          "version": "cv_aaed235e685cdb6d3318"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "test_id": "api\\cart\\add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_003",
+          "version": "cv_0f8aaebc21c72b94456c"
+        }
+      ],
+      "obligation_ids": [
+        "OB-3"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "446b57460fbe233362ab",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "265c12cfaac33e6140176ef3b7eabb85ecba3b637aa7a58f6735346e75b2e650",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "a735ae3ad25f52c7a97b299b8d22a24c1b8d8a1fbc63aff58e021ae7c697887a",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_005",
+          "version": "cv_3767896d512c623e0b59"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "6b183c7a8fd8088f1c50",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "fc5c97394d31eaafd9737b75ba763ec08dc709bde9ff3e04401faa2fa589a233",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "8d50f39144c76fe16dab930887b010d0a764224984cab748c7422efbfa7e2474",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_006",
+          "version": "cv_3736b2c697846070acdd"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "6b183c7a8fd8088f1c50",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "fc5c97394d31eaafd9737b75ba763ec08dc709bde9ff3e04401faa2fa589a233",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "8d50f39144c76fe16dab930887b010d0a764224984cab748c7422efbfa7e2474",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_007",
+          "version": "cv_2d9d27c7521bc3c4edcf"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "6b183c7a8fd8088f1c50",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "fc5c97394d31eaafd9737b75ba763ec08dc709bde9ff3e04401faa2fa589a233",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "8d50f39144c76fe16dab930887b010d0a764224984cab748c7422efbfa7e2474",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_008",
+          "version": "cv_ce42982f1616cbc645f9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "6b183c7a8fd8088f1c50",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "fc5c97394d31eaafd9737b75ba763ec08dc709bde9ff3e04401faa2fa589a233",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "8d50f39144c76fe16dab930887b010d0a764224984cab748c7422efbfa7e2474",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_005",
+          "version": "cv_3767896d512c623e0b59"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_006",
+          "version": "cv_3736b2c697846070acdd"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_007",
+          "version": "cv_2d9d27c7521bc3c4edcf"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_008",
+          "version": "cv_ce42982f1616cbc645f9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "4d9f931528dfe8f92f72",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "a494558df7324ea529f3c41046e5d6f6cb7a646ecc9db5ede49bc1ddad560305",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "f010905d7bd1a2dd0a7f7d6a6ea89f4739c99669ad796102ab7870a41a28c537",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "4bfb53e668563c7768a5",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "28561dc2ff25ad7550dcfbc5258a779cf7d75eb5ed4476b462e8f151f7c46b2e",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "c9c5fe8e02dcda215a8ee254a5ae323e5e9ced66f42752d913d7c169f69f005f",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "parameters": {},
+      "status": "failed",
+      "reason": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart",
+      "report_matched": true,
+      "attempt_id": "c7f56259e689c93a9ddf",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "3959095e401a353eaa463221cc3796a5aa3607a095535e1b415758cbb1fa191d",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "0ef8ba9995bf8aecb7436c85eaa3aefbc25f03588dd50df28b672c99f0f44086",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "test_id": "e2e\\cart\\add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_010",
+          "version": "cv_514d05efe43b2506bb5f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "c9286026d096394cd0e6",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "0e0709a5db9c7083d1569103b2dce82fbefeff70ca8fbc0dd42149cd6d81dc23",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "69e7e29238f0c4d32ba5f65db37394bc6adafd7e23295fddd232507ade5f4bda",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "test_id": "api\\cart\\add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_001",
+          "version": "cv_4752342fab279cf316cc"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "test_id": "api\\cart\\add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_002",
+          "version": "cv_aaed235e685cdb6d3318"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "test_id": "api\\cart\\add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_003",
+          "version": "cv_0f8aaebc21c72b94456c"
+        }
+      ],
+      "obligation_ids": [
+        "OB-3"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_005",
+          "version": "cv_3767896d512c623e0b59"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_006",
+          "version": "cv_3736b2c697846070acdd"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_007",
+          "version": "cv_2d9d27c7521bc3c4edcf"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_008",
+          "version": "cv_ce42982f1616cbc645f9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "parameters": {},
+      "status": "failed",
+      "reason": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "test_id": "e2e\\cart\\add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_010",
+          "version": "cv_514d05efe43b2506bb5f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    }
+  ],
+  "current_results": [
+    {
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "test_id": "api\\cart\\add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_001",
+          "version": "cv_4752342fab279cf316cc"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "test_id": "api\\cart\\add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_002",
+          "version": "cv_aaed235e685cdb6d3318"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "test_id": "api\\cart\\add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_003",
+          "version": "cv_0f8aaebc21c72b94456c"
+        }
+      ],
+      "obligation_ids": [
+        "OB-3"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "test_id": "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_005",
+          "version": "cv_3767896d512c623e0b59"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_006",
+          "version": "cv_3736b2c697846070acdd"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_007",
+          "version": "cv_2d9d27c7521bc3c4edcf"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_008",
+          "version": "cv_ce42982f1616cbc645f9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "parameters": {},
+      "status": "failed",
+      "reason": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "test_id": "e2e\\cart\\add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_010",
+          "version": "cv_514d05efe43b2506bb5f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    }
+  ],
+  "manual_checks": [
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_011",
+      "case_version": "cv_de13157c14b004fc1bbd",
+      "obligation_ids": [
+        "OB-11"
+      ],
+      "obligation_hashes": {
+        "OB-11": "819116770cedf51734680f7504f05793a5c44ddf8ec1f8362c78351df38867df"
+      },
+      "attempt_id": "a7",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.60 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.37 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.24 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/books/110 -> ok: 0.37 s",
+        "capture pre_action d3-detail-before -> ok",
+        "fill [data-testid=book-detail-quantity-input] 2 -> ok",
+        "click [data-testid=book-detail-add-to-cart-button] -> ok",
+        "read body text -> ok: 2 copies added to cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MAY ALSO LIKE QA CART1...",
+        "capture post_action d3-added-toast -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.65 s",
+        "capture post_action cart-after-valid -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+        "goto http://localhost:3000/books/110 -> ok: 0.55 s",
+        "fill [data-testid=book-detail-quantity-input] 4 -> ok",
+        "click [data-testid=book-detail-add-to-cart-button] -> ok",
+        "read body text -> ok: Only 3 in stock and 2 already in your cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MA...",
+        "capture post_action d3-above-stock-toast -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.47 s",
+        "capture post_action cart-after-above-stock -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+        "goto http://localhost:3000/books/111 -> ok: 0.47 s",
+        "read [data-testid=book-detail-add-to-cart-button] attr=disabled -> ok",
+        "read [data-testid=book-detail-stock] text -> ok: Out of Stock",
+        "capture post_action completion -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.40 s",
+        "capture supporting cart-final -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove"
+      ],
+      "expected": [
+        "detail-page add with quantity"
+      ],
+      "actual": "Signed in as the seed user with an emptied cart. D3 (stock 3), qty 2, Add to Cart: toast '2 copies added to cart'; cart page lists D3 with subtotal $20.00 (2 x $10.00). D3 qty 4: error toast 'Only 3 in stock and 2 already in your cart'; cart page still shows D3 at $20.00 (qty 2). D0 (stock 0): stock badge and button label read 'Out of Stock', the button is labelled Out of Stock and D0 is absent from the final cart (only D3 listed); the disabled attribute read returned an empty string for both enabled and sold-out buttons, so the disabled state itself rests on the label and the page screenshot.",
+      "completion_condition": "toast shown or button disabled state read",
+      "attempt_started_at": "2026-10-31T11:59:51+00:00",
+      "attempt_ended_at": "2026-10-31T12:00:18+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T11:59:51+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T115951Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:00:18+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120018Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/001-supporting-cart-empty-before.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:03+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/002-pre_action-d3-detail-before.png",
+          "content_hash": "8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:00:05+00:00",
+          "proves": [
+            "d3-detail-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/003-read-body.txt",
+          "content_hash": "6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:05+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/004-post_action-d3-added-toast.png",
+          "content_hash": "c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:06+00:00",
+          "proves": [
+            "d3-added-toast"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/005-post_action-cart-after-valid.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:08+00:00",
+          "proves": [
+            "cart-after-valid"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/006-read--data-testid-cart-items-list.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:08+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/007-read-body.txt",
+          "content_hash": "7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:10+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/008-post_action-d3-above-stock-toast.png",
+          "content_hash": "f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:11+00:00",
+          "proves": [
+            "d3-above-stock-toast"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/009-post_action-cart-after-above-stock.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:12+00:00",
+          "proves": [
+            "cart-after-above-stock"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/010-read--data-testid-cart-items-list.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:12+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/011-read--data-testid-book-detail-add-to-car.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "read [data-testid=book-detail-add-to-cart-button] attr=disabled"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/012-read--data-testid-book-detail-stock.txt",
+          "content_hash": "58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "read [data-testid=book-detail-stock]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/013-post_action-completion.png",
+          "content_hash": "9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/014-supporting-cart-final.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:16+00:00",
+          "proves": [
+            "cart-final"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/015-read--data-testid-cart-items-list.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:16+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "758479ba59b0024c0867c81fd78b4ae1d738be292524109c59941c5f93aa90ce",
+      "before_change": {
+        "r": "R-1",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      }
+    },
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_012",
+      "case_version": "cv_8ad20339348408e4f727",
+      "obligation_ids": [
+        "OB-12"
+      ],
+      "obligation_hashes": {
+        "OB-12": "3b06ff9048c35d9212986d41ab272cbeb9cab5e905f3b562e82e57227df58af5"
+      },
+      "attempt_id": "a8",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.73 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.30 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/books/112 -> ok: 0.61 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/books/113 -> ok: 0.38 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.57 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.45 s",
+        "capture pre_action wishlist-before -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove QA CART1 W1 QA Runner $10.00 Move to cart Remove",
+        "click [data-testid=wishlist-move-112] -> ok",
+        "read body text -> ok: Moved to cart bookstore Home Cart 1 Wishlist Profile Logout SAVED Wishlist QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove bookstore A curated catalog of books, delivered. © 2026 Bookstore. All rights reserved.",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.57 s",
+        "capture post_action wishlist-after-reload -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove",
+        "read [data-testid=wishlist-move-113] text -> ok: Move to cart",
+        "read [data-testid=wishlist-move-113] attr=disabled -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.41 s",
+        "capture post_action completion -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 W1 QA Runner $10.00 each QUANTITY Subtotal: $10.00 Remove"
+      ],
+      "expected": [
+        "move to cart adds and removes"
+      ],
+      "actual": "Seed user, cart emptied, wishlist held W1 (in stock) and W0 (stock 0). Move to cart on W1: toast 'Moved to cart'; after reload the wishlist lists only W0; cart page lists W1 qty 1 (subtotal $10.00 at $10.00 each) and not W0. W0 row shows an Out of Stock badge; its Move to cart button is disabled (separate diagnostic attempt a9, not in the record: click refused as 'not enabled', cursor not-allowed).",
+      "completion_condition": "wishlist item gone after move",
+      "attempt_started_at": "2026-10-31T12:01:33+00:00",
+      "attempt_ended_at": "2026-10-31T12:02:04+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:01:33+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120133Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:02:03+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120203Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/001-supporting-cart-empty-before.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:54+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/002-pre_action-wishlist-before.png",
+          "content_hash": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "wishlist-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/003-read--data-testid-wishlist-list.txt",
+          "content_hash": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/004-read-body.txt",
+          "content_hash": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:56+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/005-post_action-wishlist-after-reload.png",
+          "content_hash": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "wishlist-after-reload"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/006-read--data-testid-wishlist-list.txt",
+          "content_hash": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/007-read--data-testid-wishlist-move-113.txt",
+          "content_hash": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/008-read--data-testid-wishlist-move-113.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:01+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113] attr=disabled"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/009-post_action-completion.png",
+          "content_hash": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/010-read--data-testid-cart-items-list.txt",
+          "content_hash": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "d02807eff8ef5aa131366b6f749ec279e675cd174156712b50b6f8b45fc2bd7f",
+      "before_change": {
+        "r": "R-14",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      }
+    }
+  ],
+  "current_manual_checks": [
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_011",
+      "case_version": "cv_de13157c14b004fc1bbd",
+      "obligation_ids": [
+        "OB-11"
+      ],
+      "obligation_hashes": {
+        "OB-11": "819116770cedf51734680f7504f05793a5c44ddf8ec1f8362c78351df38867df"
+      },
+      "attempt_id": "a7",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.60 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.37 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.24 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/books/110 -> ok: 0.37 s",
+        "capture pre_action d3-detail-before -> ok",
+        "fill [data-testid=book-detail-quantity-input] 2 -> ok",
+        "click [data-testid=book-detail-add-to-cart-button] -> ok",
+        "read body text -> ok: 2 copies added to cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MAY ALSO LIKE QA CART1...",
+        "capture post_action d3-added-toast -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.65 s",
+        "capture post_action cart-after-valid -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+        "goto http://localhost:3000/books/110 -> ok: 0.55 s",
+        "fill [data-testid=book-detail-quantity-input] 4 -> ok",
+        "click [data-testid=book-detail-add-to-cart-button] -> ok",
+        "read body text -> ok: Only 3 in stock and 2 already in your cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MA...",
+        "capture post_action d3-above-stock-toast -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.47 s",
+        "capture post_action cart-after-above-stock -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+        "goto http://localhost:3000/books/111 -> ok: 0.47 s",
+        "read [data-testid=book-detail-add-to-cart-button] attr=disabled -> ok",
+        "read [data-testid=book-detail-stock] text -> ok: Out of Stock",
+        "capture post_action completion -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.40 s",
+        "capture supporting cart-final -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove"
+      ],
+      "expected": [
+        "detail-page add with quantity"
+      ],
+      "actual": "Signed in as the seed user with an emptied cart. D3 (stock 3), qty 2, Add to Cart: toast '2 copies added to cart'; cart page lists D3 with subtotal $20.00 (2 x $10.00). D3 qty 4: error toast 'Only 3 in stock and 2 already in your cart'; cart page still shows D3 at $20.00 (qty 2). D0 (stock 0): stock badge and button label read 'Out of Stock', the button is labelled Out of Stock and D0 is absent from the final cart (only D3 listed); the disabled attribute read returned an empty string for both enabled and sold-out buttons, so the disabled state itself rests on the label and the page screenshot.",
+      "completion_condition": "toast shown or button disabled state read",
+      "attempt_started_at": "2026-10-31T11:59:51+00:00",
+      "attempt_ended_at": "2026-10-31T12:00:18+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T11:59:51+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T115951Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:00:18+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120018Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/001-supporting-cart-empty-before.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:03+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/002-pre_action-d3-detail-before.png",
+          "content_hash": "8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:00:05+00:00",
+          "proves": [
+            "d3-detail-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/003-read-body.txt",
+          "content_hash": "6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:05+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/004-post_action-d3-added-toast.png",
+          "content_hash": "c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:06+00:00",
+          "proves": [
+            "d3-added-toast"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/005-post_action-cart-after-valid.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:08+00:00",
+          "proves": [
+            "cart-after-valid"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/006-read--data-testid-cart-items-list.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:08+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/007-read-body.txt",
+          "content_hash": "7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:10+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/008-post_action-d3-above-stock-toast.png",
+          "content_hash": "f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:11+00:00",
+          "proves": [
+            "d3-above-stock-toast"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/009-post_action-cart-after-above-stock.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:12+00:00",
+          "proves": [
+            "cart-after-above-stock"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/010-read--data-testid-cart-items-list.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:12+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/011-read--data-testid-book-detail-add-to-car.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "read [data-testid=book-detail-add-to-cart-button] attr=disabled"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/012-read--data-testid-book-detail-stock.txt",
+          "content_hash": "58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "read [data-testid=book-detail-stock]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/013-post_action-completion.png",
+          "content_hash": "9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/014-supporting-cart-final.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:16+00:00",
+          "proves": [
+            "cart-final"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_011/a7/015-read--data-testid-cart-items-list.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:16+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "758479ba59b0024c0867c81fd78b4ae1d738be292524109c59941c5f93aa90ce",
+      "before_change": {
+        "r": "R-1",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      },
+      "current_obligation_ids": [
+        "OB-11"
+      ],
+      "evidence_validated": true
+    },
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_012",
+      "case_version": "cv_8ad20339348408e4f727",
+      "obligation_ids": [
+        "OB-12"
+      ],
+      "obligation_hashes": {
+        "OB-12": "3b06ff9048c35d9212986d41ab272cbeb9cab5e905f3b562e82e57227df58af5"
+      },
+      "attempt_id": "a8",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.73 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.30 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/books/112 -> ok: 0.61 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/books/113 -> ok: 0.38 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.57 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.45 s",
+        "capture pre_action wishlist-before -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove QA CART1 W1 QA Runner $10.00 Move to cart Remove",
+        "click [data-testid=wishlist-move-112] -> ok",
+        "read body text -> ok: Moved to cart bookstore Home Cart 1 Wishlist Profile Logout SAVED Wishlist QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove bookstore A curated catalog of books, delivered. © 2026 Bookstore. All rights reserved.",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.57 s",
+        "capture post_action wishlist-after-reload -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove",
+        "read [data-testid=wishlist-move-113] text -> ok: Move to cart",
+        "read [data-testid=wishlist-move-113] attr=disabled -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.41 s",
+        "capture post_action completion -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 W1 QA Runner $10.00 each QUANTITY Subtotal: $10.00 Remove"
+      ],
+      "expected": [
+        "move to cart adds and removes"
+      ],
+      "actual": "Seed user, cart emptied, wishlist held W1 (in stock) and W0 (stock 0). Move to cart on W1: toast 'Moved to cart'; after reload the wishlist lists only W0; cart page lists W1 qty 1 (subtotal $10.00 at $10.00 each) and not W0. W0 row shows an Out of Stock badge; its Move to cart button is disabled (separate diagnostic attempt a9, not in the record: click refused as 'not enabled', cursor not-allowed).",
+      "completion_condition": "wishlist item gone after move",
+      "attempt_started_at": "2026-10-31T12:01:33+00:00",
+      "attempt_ended_at": "2026-10-31T12:02:04+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:01:33+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120133Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:02:03+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120203Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/001-supporting-cart-empty-before.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:54+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/002-pre_action-wishlist-before.png",
+          "content_hash": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "wishlist-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/003-read--data-testid-wishlist-list.txt",
+          "content_hash": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/004-read-body.txt",
+          "content_hash": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:56+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/005-post_action-wishlist-after-reload.png",
+          "content_hash": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "wishlist-after-reload"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/006-read--data-testid-wishlist-list.txt",
+          "content_hash": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/007-read--data-testid-wishlist-move-113.txt",
+          "content_hash": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/008-read--data-testid-wishlist-move-113.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:01+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113] attr=disabled"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/009-post_action-completion.png",
+          "content_hash": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/010-read--data-testid-cart-items-list.txt",
+          "content_hash": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "d02807eff8ef5aa131366b6f749ec279e675cd174156712b50b6f8b45fc2bd7f",
+      "before_change": {
+        "r": "R-14",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      },
+      "current_obligation_ids": [
+        "OB-12"
+      ],
+      "evidence_validated": true
+    }
+  ],
+  "impossible": [],
+  "env_blocked": [],
+  "current_env_blocked": [],
+  "evidence": [
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/446b57460fbe233362ab/initial-446b57460fbe233362ab-20261031-030101.junit.xml",
+      "report_sha256": "805d4eb417030bfd3dfe3036f0d6568ba54d62fde437dfe058b3016e3ed6fd6e"
+    },
+    {
+      "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\initial-6b183c7a8fd8088f1c50-20261031-103221.json",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/6b183c7a8fd8088f1c50/initial-6b183c7a8fd8088f1c50-20261031-103221.junit.xml",
+      "report_sha256": "c939049e8d0e92ac4c902a1b385cd705040cd7b8dad7ad0665fc00d4582382b0"
+    },
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+      "report_sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+    },
+    {
+      "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\4d9f931528dfe8f92f72\\initial-4d9f931528dfe8f92f72-20261031-111729.json",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/4d9f931528dfe8f92f72/initial-4d9f931528dfe8f92f72-20261031-111729.junit.xml",
+      "report_sha256": "bb39aea6a291f2effe42ef372f9230cdd940d4e7ba07dd72e600e7ffefeff83c"
+    },
+    {
+      "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\4bfb53e668563c7768a5\\repair_verify-4bfb53e668563c7768a5-20261031-111832.json",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/4bfb53e668563c7768a5/repair_verify-4bfb53e668563c7768a5-20261031-111832.junit.xml",
+      "report_sha256": "1e0eb5b18fc88af0a1da8287184a65c3ddd0bfa65eda979eece0979d00887dbc"
+    },
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/c7f56259e689c93a9ddf/repair_verify-c7f56259e689c93a9ddf-20261031-112433.junit.xml",
+      "report_sha256": "0fe121fd65bb1d1b925b879b2f8bcc421ff3abd9db720490a38eb3dd8d581474"
+    },
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.junit.xml",
+      "report_sha256": "55b41d35cac7bf3ed14b2c2bb5d587bc3194ec509c8c670af68ed52851edbc02"
+    },
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.junit.xml",
+      "report_sha256": "b3db605e9b6595398ab24964c08c97842874ba420e50bad657251ae2679764bd"
+    }
+  ],
+  "env_preflight": "pass",
+  "totals": {
+    "failed": 2,
+    "not_run": 6,
+    "passed": 34
+  },
+  "current_totals": {
+    "failed": 1,
+    "passed": 19
+  },
+  "attempt_order": "ordered_by_attempt_started_at",
+  "factory_findings": [],
+  "witness": "run_suite summaries: qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\initial-6b183c7a8fd8088f1c50-20261031-103221.json; qa-factory\\artifacts\\CART-1\\evidence\\runs\\4d9f931528dfe8f92f72\\initial-4d9f931528dfe8f92f72-20261031-111729.json; qa-factory\\artifacts\\CART-1\\evidence\\runs\\4bfb53e668563c7768a5\\repair_verify-4bfb53e668563c7768a5-20261031-111832.json | execution_status=failed | totals: failed=2, not_run=6, passed=34"
+}

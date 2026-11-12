@@ -1,0 +1,181 @@
+# S7: the failure analyst hands a repair to the automator.
+#
+# Only three verdicts are ever repaired - TEST_BUG, TEST_BUG:collection and FLAKY - and the cap is
+# two rounds per test. With two rounds to spend, a finding that does not say what the reviewer
+# expects costs half the budget on a guess. So this file carries the same `expected` and `check`
+# as the S5 review, plus the one thing a triage finding has and a review finding does not: the
+# EVIDENCE the verdict rests on, by path, because the author is being told its own test is wrong
+# and is entitled to see why.
+#
+# What is NOT here matters as much. An APP_BUG never reaches the automator: the expectation is not
+# adjusted to the code, ever. A CASE_DEFECT goes back to the designer through `controller.py
+# --operation rework`, not here.
+#
+# NOTHING TO REPAIR is a result, not a gap (FR-23). When the triage holds no TEST_BUG, no
+# TEST_BUG:collection and no FLAKY row, leave `scope` empty (`scope: []`, `repairs: []`) and list
+# EVERY triage row under `not_for_repair`. The check accepts the empty `scope` only while
+# `work/triage.json` agrees: it reads, it holds at least one row, no row carries a repair verdict
+# (a FLAKY row already fixed still counts as one), and every row is listed below - and nothing is
+# listed that the triage does not hold. With no triage row at all, only a run report that shows no
+# failed result and no manual check that failed or was inconclusive passes. `handoff_check.py --fix`
+# opens the `not_for_repair` rows (id, verdict) from the triage; you write `where_it_went`. In the
+# header, `window: none` says the same and is accepted only with an empty `scope`.
+#
+# A triage row marked `source: code` (verdict NOT_EXECUTED: code wrote it for a manual check whose
+# own record says what stopped it) is a triage row like any other here: list it under
+# `not_for_repair`, `where_it_went` naming the stage that owns it. You may replace it in the triage
+# with your own row; code never writes over yours.
+schema_version: 1
+contract: s7-analyst-to-automator
+stage: S7
+from_role: qa-failure-analyst
+to_role: qa-automator
+
+# The contract's own exception to "every handover has items" (handoff.null_outcomes). The check reads
+# it; it is not a field you fill.
+null_outcome:
+  scope:
+    condition: triage_has_no_repair
+    params:
+      repair_verdicts: [TEST_BUG, "TEST_BUG:collection", FLAKY]
+      listed_in: not_for_repair
+    words:
+      header.window:
+        word: none
+        means: "nothing is handed for repair"
+    source: work/triage.json
+
+inputs:
+  - path: work/handoffs/S7-qa-failure-analyst-1.yaml
+    what: this file
+    required: true
+  - path: work/triage.json
+    what: the verdict row behind every repair below
+    required: true
+  - path: work/automation-manifest.json
+    what: the instance, its case link and its selector
+    required: true
+  - path: <the evidence paths named per repair>
+    what: the log, the artifact or the rerun series the verdict rests on
+    required: true
+
+inputs_read:
+  - path: work/run-report.json
+    version: 7556d8137ac68946
+    failures: 7
+  - path: work/evidence/runtime-provenance-api-20261026T212438Z.json
+    version: local-docker-mr4566-content-match
+
+header:
+  role: qa-failure-analyst
+  stage: S7
+  window: TP1-14857
+  verdict: concerns
+
+# One row per repair. `state` is the triage verdict and comes from the restricted part of
+# vocabulary.row_states - only this role may write one. No repair at all: `scope: []`, see the top.
+scope:
+  - id: <instance id>
+    state: <TEST_BUG|TEST_BUG:collection|FLAKY>
+    reason: <= 80 characters>
+    case: <case id>
+    round: <r of 2>
+
+repairs:
+  - id: <instance id>
+    verdict: <TEST_BUG|TEST_BUG:collection|FLAKY>
+    evidence: <path of the log or artifact the verdict rests on>
+    problem: <what the test does wrong, one sentence - about the test, never about the product>
+    expected: "<what the test should do instead, concretely - the assertion, the fixture, the
+                wait condition, the selector>"
+    fix: <what to change, one sentence>
+    check: <the command that shows the author it is satisfied - normally the repair_verify run>
+    mechanism: <one of vocabulary.flaky_mechanisms - isolation|race|timing|shared_state|teardown|environment|unknown>   # FLAKY only
+    rerun_series: <path of the three isolated reruns that proved the flakiness>    # FLAKY only
+    then_lines: "<the Then lines as they stand now - they must read the same after the fix>"
+
+# The verdicts that are NOT repaired, listed so the automator can see its window is complete and
+# does not go looking for work that is not its own. With an empty `scope` this list is the whole
+# triage: one row per triage row, by its instance id (a manual check, by its case id).
+not_for_repair:
+  - id: TC-006
+    verdict: NOT_EXECUTED
+    where_it_went: "orchestrator: owner question OQ-4 at gate B, no draft"
+  - id: TC-007
+    verdict: ENV_ISSUE
+    where_it_went: "user: enable concurrency flag (env remedy), gate B"
+  - id: TC-008
+    verdict: ENV_ISSUE
+    where_it_went: "user: enable concurrency flag (env remedy), gate B"
+  - id: TC-009
+    verdict: ENV_ISSUE
+    where_it_went: "user: provider/stub on stand, gate B"
+  - id: TC-010
+    verdict: ENV_ISSUE
+    where_it_went: "factory: e2e-ui profile, gate B"
+  - id: TC-011
+    verdict: NOT_EXECUTED
+    where_it_went: "orchestrator: owner question OQ-5 at gate B"
+  - id: TC-012
+    verdict: NOT_EXECUTED
+    where_it_went: "orchestrator: owner question OQ-3 plus log check, gate B"
+
+rules:
+  - "retry annotations and sleeps are forbidden"
+  - "the Then lines before and after the fix must match - a repair that changes the expectation
+     is not a repair, it is a new case and it needs the designer"
+  - "after each round, rerun ONLY the failed instance, through a typed repair_verify request"
+  - "two rounds, then the test is `not_verified_flaky` and `delivery_ready` turns to no -
+     quarantine is a gate B decision with a debt file and a trigger, never yours"
+
+claims:
+  every_repair_names_evidence_expected_and_check: true
+  no_app_bug_was_handed_for_repair: true
+  every_flaky_verdict_carries_three_isolated_reruns_and_a_mechanism: true
+
+unresolved:
+  - id: <instance id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[0].version
+    source: "sha256 of work/run-report.json"
+  - field: not_for_repair[0].id
+    source: "work/triage.json"
+  - field: not_for_repair[0].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[1].id
+    source: "work/triage.json"
+  - field: not_for_repair[1].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[2].id
+    source: "work/triage.json"
+  - field: not_for_repair[2].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[3].id
+    source: "work/triage.json"
+  - field: not_for_repair[3].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[4].id
+    source: "work/triage.json"
+  - field: not_for_repair[4].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[5].id
+    source: "work/triage.json"
+  - field: not_for_repair[5].verdict
+    source: "work/triage.json"
+  - field: not_for_repair[6].id
+    source: "work/triage.json"
+  - field: not_for_repair[6].verdict
+    source: "work/triage.json"

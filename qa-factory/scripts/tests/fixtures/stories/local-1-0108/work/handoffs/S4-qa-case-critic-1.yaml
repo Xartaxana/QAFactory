@@ -1,0 +1,139 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces is the one the whole factory pays for when it is missing: A REFUSAL
+# THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A REFUSAL, IT IS A RIDDLE. The author then
+# guesses, and every guess is a round - and S4 allows two. So every finding carries, beside the
+# problem, the expected state in the reviewer's own words and, where one exists, the way the author
+# can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-critic-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the designer's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# One line per entry of the designer's `inputs`, with the version read. A review of a case that
+# has since been re-pinned is not a review of this window.
+inputs_read:
+  - path: work/test-plan.json
+    version: plan-as-dispatched
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: LOCAL-1_TC_002,LOCAL-1_TC_004,LOCAL-1_TC_005,LOCAL-1_TC_007,LOCAL-1_TC_008,LOCAL-1_TC_009,LOCAL-1_TC_010,LOCAL-1_TC_013,LOCAL-1_TC_019,LOCAL-1_TC_020,LOCAL-1_TC_021
+  verdict: concerns
+
+review:
+  outcome: rejected  # approved | approved_with_fixes | rejected
+  rollcall: 11 of 11 reviewed
+  findings_file: work/test-cases/critic-findings.md  # required; the stage is not receipted without it
+  rounds_used: 1
+  rubric_covered: coverage, atomicity, clarity, edge cases, negative scenarios, traceability, completeness, 7b, 7c, seed the defect
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: LOCAL-1_TC_002
+    state: approve_with_concerns
+    reason: 4xx status unsourced; UI and API mixed; BN-1 mapped to wrong Then
+    case_version: cv_b1bc465e7b4fe662df6b
+  - id: LOCAL-1_TC_004
+    state: approve
+    reason: independent oracle, seeded defect fails
+    case_version: cv_7396ea6d54e97abb53b5
+  - id: LOCAL-1_TC_005
+    state: approve_with_concerns
+    reason: cookie lifetime defect would pass
+    case_version: cv_4872e611dc16e8743b94
+  - id: LOCAL-1_TC_007
+    state: approve_with_concerns
+    reason: keeps-focus clause has no source
+    case_version: cv_a8d8ce12d23dee27a5f5
+  - id: LOCAL-1_TC_008
+    state: approve_with_concerns
+    reason: two partitions in one case; focus clause unsourced
+    case_version: cv_255425b7f510662279ea
+  - id: LOCAL-1_TC_009
+    state: approve_with_concerns
+    reason: abc entry into number input unreachable by fill
+    case_version: cv_bee21cce4b0d9fada42f
+  - id: LOCAL-1_TC_010
+    state: approve
+    reason: boundary and independent read hold
+    case_version: cv_f2470b6bb042dcf661ab
+  - id: LOCAL-1_TC_013
+    state: approve
+    reason: holds under both readings of maximum
+    case_version: cv_4efddd5f3c4f2fcbeb17
+  - id: LOCAL-1_TC_019
+    state: approve_with_concerns
+    reason: quantity defect unseen until Q6 answered
+    case_version: cv_061ff32d4f980534f19e
+  - id: LOCAL-1_TC_020
+    state: reject
+    reason: move button disabled for out-of-stock; error branch unreachable
+    case_version: cv_dd98d90cfb82ccb4f79b
+  - id: LOCAL-1_TC_021
+    state: approve_with_concerns
+    reason: Then 1 oracle R-6 does not cover merge; admin precondition missing
+    case_version: cv_0a4ed2ae7c393ccea8b6
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: F-1
+    case: LOCAL-1_TC_020
+    where: When step 2 and Then 3
+    problem: "WishlistPage.tsx:96 disables the move button when stock is 0, so the refused-add branch is never reached"
+    expected: X is in stock when the page renders; stock then drops to 0 before the click; the add is refused and X stays on the wishlist
+    fix: Change the seeding so the refusal is reachable and add the stock-changing precondition
+    check: the click on X is on an enabled control and the add answers 4xx
+    dimension: seed the defect
+    blocking: true
+    replacement:
+      old: 2. Click "move to cart" for X (the add is refused).
+      new: 2. With X still in stock on the rendered page, set X stock to 0 through the stand, then click "move to cart" for X (the add is refused).
+
+# What the review could not settle. An honest `unverified` with a named cause is worth more than a
+# verdict the evidence does not carry - and it is a word of the vocabulary, not an improvisation.
+unverified:
+  - id: <case id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or access would>
+
+claims:
+  every_case_of_the_review_scope_has_a_row: true
+  every_finding_names_expected_and_check: true
+  the_verdict_was_computed_by_rollcall_not_typed: false
+  no_case_outside_the_review_scope_was_reviewed: true
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

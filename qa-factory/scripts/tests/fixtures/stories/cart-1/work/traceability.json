@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "task": "CART-1",
+  "rows": [
+    {
+      "requirement": "R-1",
+      "what": "A signed-in shopper adds a book from the catalog card and sees it in the badge ...",
+      "case": "CART-1_TC_010",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+          "file": "tests/e2e/cart/add-to-cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-1",
+      "what": "Book detail page adds the chosen quantity and handles above-stock and ...",
+      "case": "CART-1_TC_011",
+      "then": [],
+      "tests": [],
+      "level": "e2e-ui",
+      "shape": "",
+      "result": "not run",
+      "bug": "",
+      "basis": "server rule covered by TS-2"
+    },
+    {
+      "requirement": "R-2",
+      "what": "A signed-in shopper adds a book from the catalog card and sees it in the badge ...",
+      "case": "CART-1_TC_010",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+          "file": "tests/e2e/cart/add-to-cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-2",
+      "what": "Book detail page adds the chosen quantity and handles above-stock and ...",
+      "case": "CART-1_TC_011",
+      "then": [],
+      "tests": [],
+      "level": "e2e-ui",
+      "shape": "",
+      "result": "not run",
+      "bug": "",
+      "basis": "server rule covered by TS-2"
+    },
+    {
+      "requirement": "R-3",
+      "what": "Adding an unknown book or a book with stock 0 to the cart is rejected with the ...",
+      "case": "CART-1_TC_001",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+          "file": "tests/api/cart/add-rejections.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-4",
+      "what": "Cart quantity never exceeds stock: equal to stock is accepted, one more is ...",
+      "case": "CART-1_TC_002",
+      "then": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+          "file": "tests/api/cart/add-stock-limit.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-5",
+      "what": "Adding a book already in the cart increments the one existing row",
+      "case": "CART-1_TC_003",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+          "file": "tests/api/cart/add-accumulate.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-6",
+      "what": "Add to cart validates quantity 1..999 and positive integer bookId with a stable ...",
+      "case": "CART-1_TC_004",
+      "then": [
+        1
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "parameterize",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-6",
+      "what": "Add to cart validates quantity 1..999 and positive integer bookId with a stable ...",
+      "case": "CART-1_TC_004",
+      "then": [
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        },
+        {
+          "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+          "file": "tests/api/cart/add-boundaries.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "parameterize",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-7",
+      "what": "A guest cookie cart is separate from the signed-in account cart and from other ...",
+      "case": "CART-1_TC_005",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+          "file": "tests/api/cart/cart-isolation.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-8",
+      "what": "Guest cart merge keeps the higher quantity, caps at stock and drops stock 0 rows",
+      "case": "CART-1_TC_006",
+      "then": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+          "file": "tests/api/cart/cart-merge.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-9",
+      "what": "Registration does not call merge and does not sign in; what happens to the ...",
+      "case": "",
+      "then": [],
+      "tests": [],
+      "level": "",
+      "shape": "",
+      "result": "not planned",
+      "bug": "",
+      "basis": "no plan row names this requirement and no reason is recorded"
+    },
+    {
+      "requirement": "R-10",
+      "what": "A signed-in shopper adds a book from the catalog card and sees it in the badge ...",
+      "case": "CART-1_TC_010",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+          "file": "tests/e2e/cart/add-to-cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-11",
+      "what": "Changing a cart quantity sets it within stock, rejects above stock, and ...",
+      "case": "CART-1_TC_007",
+      "then": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+          "file": "tests/api/cart/cart-update-delete.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-12",
+      "what": "Another owner's cart item cannot be changed or removed and the owner's cart ...",
+      "case": "CART-1_TC_008",
+      "then": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+          "file": "tests/api/cart/cart-ownership.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-13",
+      "what": "Cart page with an emptied quantity input or a failed cart/book fetch: expected ...",
+      "case": "",
+      "then": [],
+      "tests": [],
+      "level": "",
+      "shape": "",
+      "result": "not planned",
+      "bug": "",
+      "basis": "no plan row names this requirement and no reason is recorded"
+    },
+    {
+      "requirement": "R-14",
+      "what": "Wishlist move to cart adds one copy to the cart and removes the wishlist item",
+      "case": "CART-1_TC_012",
+      "then": [],
+      "tests": [],
+      "level": "e2e-ui",
+      "shape": "",
+      "result": "not run",
+      "bug": "",
+      "basis": "degraded impact does not earn e2e code"
+    },
+    {
+      "requirement": "R-15",
+      "what": "Checkout quote reads the owner's cart and a successful order clears it",
+      "case": "CART-1_TC_009",
+      "then": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tests": [
+        {
+          "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+          "file": "tests/api/cart/cart-quote-order.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged ASSERT_STRICTER: no reason recorded; no bug, left with you"
+    },
+    {
+      "requirement": "R-16",
+      "what": "Concurrent adds of the same book must not create duplicate rows or exceed stock ...",
+      "case": "",
+      "then": [],
+      "tests": [],
+      "level": "",
+      "shape": "",
+      "result": "not planned",
+      "bug": "",
+      "basis": "no plan row names this requirement and no reason is recorded"
+    }
+  ],
+  "legend": {
+    "pass": "every test of the row is green in the current run, or the check an agent made by hand was recorded as passed",
+    "bug": "a product defect; the bug record is named beside it",
+    "wait": "handed to a person - planned manual, automated where the factory has no access, or an expected value nobody confirmed yet (it waits for your answer)",
+    "blocked": "the stand stops the test before its own checks",
+    "not run": "no green or red result of the current run is recorded for it; the basis says what the run recorded, if anything",
+    "unreachable": "the scenario cannot occur in the product as it is built",
+    "deferred": "a person's recorded decision put it aside",
+    "not planned": "a register requirement no plan row plans: none names it, or its plan row says it cannot be verified"
+  },
+  "bugs": [],
+  "bugs_outside_home": []
+}

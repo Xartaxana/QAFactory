@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of request call sites read by scripts/user_path_failures.py (flow_requests, AR-1, FR-13). A call row says how one request is spelled in code: `start` finds the call on a line (it never carries the comment guard, `comment` does, so one line may hold several calls), the group `url` is the address and the group `method` (or `method_in_window` in the next `window_lines` lines, stopping before the next call) the verb. An interpolation becomes a placeholder named after the template variable (`name_of`, else `unnamed_as`); a concatenated operand the same way (`concat_tail`); the query string is cut. A client of a project that this table does not hold is the strategist's to add (AR-2); a new shape is a row here, never a list in code. A row that does not compile is named as not measured, the others still run.",
+  "languages": [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".vue"],
+  "comment": "^\\s*(?://|/\\*|\\*|#)",
+  "calls": [
+    {
+      "id": "fetch",
+      "start": "\\bfetch\\s*\\(\\s*(?P<q>['\"`])(?P<url>[^'\"`]*)(?P=q)",
+      "bare_call": "\\bfetch\\s*\\(\\s*(['\"`])[^'\"`]*\\1(?:\\s*\\+\\s*[\\w.$\\[\\]()]+)*\\s*\\)",
+      "bare_method": "GET",
+      "method_in_window": "\\bmethod\\s*:\\s*['\"`](?P<method>[A-Za-z]+)['\"`]",
+      "window_lines": 8
+    },
+    {
+      "id": "client_verb",
+      "start": "(?<![\\w$])[\\w$]+\\.(?P<method>get|post|put|patch|delete|head)\\s*\\(\\s*(?P<q>['\"`])(?P<url>[^'\"`]*)(?P=q)",
+      "url_accept": "^(?:/|https?://|\\{)",
+      "window_lines": 1
+    }
+  ],
+  "non_literal": "\\b(?:fetch|axios(?:\\.\\w+)?)\\s*\\(",
+  "interpolation": "\\$\\{(?P<expr>[^}]*)\\}",
+  "interpolation_open": "${",
+  "name_of": "^\\s*(?:[A-Za-z_$][\\w$]*\\??\\.)*(?P<name>[A-Za-z_$][\\w$]*)\\s*$",
+  "named_as": "{<name>}",
+  "unnamed_as": "{*}",
+  "concat_tail": "^\\s*\\+\\s*(?P<expr>[^,;)]*)",
+  "query_mark": "?",
+  "glob_match": "\\{[^{}]*\\}",
+  "glob_as": "*"
+}

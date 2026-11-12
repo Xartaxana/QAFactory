@@ -1,0 +1,6 @@
+{
+  "token_env": ["GITLAB_TOKEN", "GITLAB_ACCESS_TOKEN", "OAUTH_TOKEN"],
+  "host_line": "^(?P<host>[A-Za-z0-9][A-Za-z0-9.-]*(?::\\d+)?)\\s*$",
+  "token_present": ["\\bToken found in\\b", "\\bToken: "],
+  "token_absent": ["\\bNo token found\\b", "\\bNo token provided\\b"]
+}

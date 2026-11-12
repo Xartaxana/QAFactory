@@ -1,0 +1,16 @@
+- **Q7** [major, owner po_ba] May a user move their own user-scope integration into a project where they have no admin role, and what must the system answer?
+  - the source says: "Changing the project of an existing project-scope integration requires admin permission on the target project" — requirements-register R-13 (project scope only)
+  - before the change: unknown — user_settings.py before the change
+  - now: no target permission check in update_user_setting — diff:src/testproject1/rest_api/routers/user_settings.py:247
+  - a) Intended: the behaviour now is the expected one (no target permission check in update_user_setting). (from claim)
+    if chosen: The expected value of the Then is the behaviour now (no target permission check in update_user_setting); the Then is checked against it.
+    what changes if you choose a:
+    - Then 1 of TC-014 (Outcome of moving a user-scope integration into a project the user does not administer is recorded) would read: "If U has no admin role on the target: the PUT is rejected with 4xx and the integration stays in its origin"
+  - b) A regression: the behaviour before the change is the expected one - unknown; say what it was. (from claim)
+    if chosen: The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.
+    what changes if you choose b:
+    - Then 1 of TC-014 (Outcome of moving a user-scope integration into a project the user does not administer is recorded) would read: "If a user-scope move needs no target permission: the PUT answers 2xx and the integration is in the target"
+  - if you write `Q7: not needed`, what changes:
+    - Then 1 of TC-014 (Outcome of moving a user-scope integration into a project the user does not administer is recorded): nothing is asserted here for this answer.
+  - or your own wording — the readings are what the sources say, not a closed list of answers.
+  <!-- card Q7 445cb4c07a2b4ff6b3eda1cde4f8d3fbde94df4c1bd5991319a3d320711307f1 -->

@@ -1,0 +1,14 @@
+{
+  "_comment": "Closed variety (FR-13): the dependency-provisioning steps a red-probe request may ask for inside its DISPOSABLE clone (FB-27). Read by scripts/red_sandbox.py setup_kinds() only. A clone of a Node/Playwright project has no node_modules (git-ignored, never copied), so a TS/JS probe cannot run until the clone is provisioned; the request opts in with `sandbox_setup: [{\"kind\": <row>, \"cwd\": <relative dir of the clone>, <pin field>: <sha256>, ...}]` and may name nothing else. Per row: `argv` the command, verbatim, never shell; `platform_argv` an optional {os.name: argv} override (Windows resolves npm through npm.cmd); `env` variables laid over the process environment for that command (they cannot change WHICH program runs: argv[0] is resolved on the PATH of the machine, and a new program in this table is a reviewed diff); `pins` the files, by name in cwd, whose sha256 the request MUST state (under the named request field) and which must be unchanged before and after the command; `must_not_preexist` the directories the command creates - one already there (or a link to a shared tree) means this is not a fresh materialization and the step is refused, and one the command did not create after exit 0 is a failed install; `timeout_s` the command's wall-clock cap (1 to 3600) - the caps of all rows of one call must add up to at most the project's `sandbox.install_timeout_s` (default 540); `receipt` facts copied into the dependency_setup receipt (and from there into the sensitivity proof) so a reader knows what the step did NOT do. The package download cache of the user (~/.npm) is outside the clone and is not an install: it is named as `download_cache: user`. A kind this table lacks (yarn, pnpm, poetry ...) is refused with the door: probe without sandbox_setup and file the gap. Setup is lock-pinned provisioning, never arbitrary shell.",
+  "kinds": {
+    "npm_ci": {
+      "argv": ["npm", "ci", "--ignore-scripts", "--no-audit", "--no-fund"],
+      "platform_argv": {"nt": ["npm.cmd", "ci", "--ignore-scripts", "--no-audit", "--no-fund"]},
+      "env": {"PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"},
+      "pins": {"package.json": "package_sha256", "package-lock.json": "lock_sha256"},
+      "must_not_preexist": ["node_modules"],
+      "timeout_s": 240,
+      "receipt": {"browser_downloads": false, "lifecycle_scripts": false, "download_cache": "user"}
+    }
+  }
+}

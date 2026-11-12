@@ -1,0 +1,37 @@
+header.verdict: concerns
+review.outcome: rejected
+review.rounds_used: 1
+review.rubric_covered: "coverage, atomicity, clarity, edge cases, negative scenarios, traceability, completeness, contradicts_source, seed the defect"
+"scope[0].id": CART-1_TC_005
+"scope[0].state": reject
+"scope[0].reason": guest cookie never sent with signed-in read; seeded defect passes
+"scope[0].case_version": cv_e4ffb26106421321c1a6
+"scope[1].id": CART-1_TC_006
+"scope[1].state": approve_with_concerns
+"scope[1].reason": seed secret precondition missing; B3 stock wording; Then 5 unbounded
+"scope[1].case_version": cv_1046d3cf7f7a7093f601
+"scope[2].id": CART-1_TC_008
+"scope[2].state": approve
+"scope[2].reason": before/after read plus positive control; seeded defect fails Then
+"scope[2].case_version": cv_ce42982f1616cbc645f9
+"scope[3].id": CART-1_TC_009
+"scope[3].state": approve_with_concerns
+"scope[3].reason": bare 4xx Thens, paths unbound, seed secret and account unchecked
+"scope[3].case_version": cv_a9ed3ec0883c46ec8f19
+"findings[0].id": F-1
+"findings[0].case": CART-1_TC_005
+"findings[0].where": "When 3 / Then 2"
+"findings[0].problem": "Signed-in U's jar does not carry G1's guest cookie, so a user query that also matches sessionId is not exercised."
+"findings[0].expected": "U signs in in a jar that also holds G1's bookstore_session_id; its GET /api/cart payload has no row for B."
+"findings[0].fix": "Add a When step and Then for the signed-in request carrying the guest cookie."
+"findings[0].check": "Planting sessionId matching in the user branch of ownerWhere makes the new Then fail."
+"findings[0].dimension": seed the defect
+"findings[0].blocking": true
+"findings[0].replacement.old": "3. U (signed in, no merge called): GET /api/cart."
+"findings[0].replacement.new": "3. U (signed in, no merge called, jar also holding G1's bookstore_session_id cookie): GET /api/cart."
+"claims.every_case_of_the_review_scope_has_a_row": true
+"claims.every_finding_names_expected_and_check": true
+"claims.the_verdict_was_computed_by_rollcall_not_typed": true
+"claims.no_case_outside_the_review_scope_was_reviewed": true
+"inputs_read[0].path": qa-factory/artifacts/CART-1/state/case-versions/CART-1_TC_005/cv_e4ffb26106421321c1a6.md
+"inputs_read[0].version": cv_e4ffb26106421321c1a6

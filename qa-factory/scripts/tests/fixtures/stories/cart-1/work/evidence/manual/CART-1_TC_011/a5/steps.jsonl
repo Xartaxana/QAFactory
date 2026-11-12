@@ -1,0 +1,37 @@
+{"at": "2026-10-31T11:56:59+00:00", "command": "ui", "step": "goto http://localhost:3000/login", "outcome": "ok", "detail": "0.59 s"}
+{"at": "2026-10-31T11:56:59+00:00", "command": "ui", "step": "fill-account [data-testid=login-email-input] admin user", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:56:59+00:00", "command": "ui", "step": "fill-account [data-testid=login-password-input] admin secret", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:56:59+00:00", "command": "ui", "step": "click [data-testid=login-submit-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:03+00:00", "command": "ui", "step": "wait 3000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:03+00:00", "command": "ui", "step": "goto http://localhost:3000/admin", "outcome": "ok", "detail": "0.40 s"}
+{"at": "2026-10-31T11:57:04+00:00", "command": "ui", "step": "click [data-testid=admin-books-tab]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:06+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:06+00:00", "command": "ui", "step": "fill [data-testid=admin-book-title-input] \"QA CART1 D3\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:07+00:00", "command": "ui", "step": "fill [data-testid=admin-book-author-input] \"QA Runner\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:07+00:00", "command": "ui", "step": "fill [data-testid=admin-book-isbn-input] \"QA-C1-D3\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:08+00:00", "command": "ui", "step": "fill [data-testid=admin-book-price-input] 10", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:08+00:00", "command": "ui", "step": "fill [data-testid=admin-book-stock-input] 3", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:08+00:00", "command": "ui", "step": "click [data-testid=admin-save-book-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:10+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:11+00:00", "command": "ui", "step": "fill [data-testid=admin-book-title-input] \"QA CART1 D0\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:11+00:00", "command": "ui", "step": "fill [data-testid=admin-book-author-input] \"QA Runner\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:11+00:00", "command": "ui", "step": "fill [data-testid=admin-book-isbn-input] \"QA-C1-D0\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:11+00:00", "command": "ui", "step": "fill [data-testid=admin-book-price-input] 10", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:11+00:00", "command": "ui", "step": "fill [data-testid=admin-book-stock-input] 0", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:12+00:00", "command": "ui", "step": "click [data-testid=admin-save-book-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:14+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:14+00:00", "command": "ui", "step": "fill [data-testid=admin-book-title-input] \"QA CART1 W1\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:14+00:00", "command": "ui", "step": "fill [data-testid=admin-book-author-input] \"QA Runner\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:14+00:00", "command": "ui", "step": "fill [data-testid=admin-book-isbn-input] \"QA-C1-W1\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:15+00:00", "command": "ui", "step": "fill [data-testid=admin-book-price-input] 10", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:15+00:00", "command": "ui", "step": "fill [data-testid=admin-book-stock-input] 5", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:15+00:00", "command": "ui", "step": "click [data-testid=admin-save-book-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:17+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:18+00:00", "command": "ui", "step": "fill [data-testid=admin-book-title-input] \"QA CART1 W0\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:18+00:00", "command": "ui", "step": "fill [data-testid=admin-book-author-input] \"QA Runner\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:18+00:00", "command": "ui", "step": "fill [data-testid=admin-book-isbn-input] \"QA-C1-W0\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:19+00:00", "command": "ui", "step": "fill [data-testid=admin-book-price-input] 10", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:19+00:00", "command": "ui", "step": "fill [data-testid=admin-book-stock-input] 0", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:20+00:00", "command": "ui", "step": "click [data-testid=admin-save-book-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:22+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:57:23+00:00", "command": "ui", "step": "capture supporting created", "outcome": "ok", "detail": ""}

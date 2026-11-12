@@ -1,0 +1,234 @@
+# S4: the case designer hands the pinned cases to the case critic.
+#
+# The critic reviews PINNED versions and nothing else, so this file names the version of every
+# case it hands over. Pinning is the orchestrator's step (`case_versions.py --all`, then
+# `--verify`), and the designer has no Bash - which is exactly why the version has to arrive in
+# writing: on a project with its own case store, a story folder searched for cases pinned nothing
+# and the gate approved an empty set.
+#
+# `review_scope` is the second reason this file exists. Nothing computes the critic's scope for it;
+# a critic left to choose its own reviews whatever it happens to read.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-designer-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s4-designer-to-case-critic
+stage: S4
+from_role: qa-case-designer
+to_role: qa-case-critic
+
+inputs:
+  - path: work/handoffs/S4-qa-case-designer-1.yaml
+    what: this file
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in `scope`, at the pinned version named here
+    required: true
+  - path: work/test-plan.json
+    what: the rows these cases answer, with their obligations and oracles
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle behind the plan row - an existing test is never one
+    required: true
+  - path: state/story-case-links.json
+    what: the pins, written by case_versions.py
+    required: true
+
+inputs_read:
+  - path: work/test-plan.json
+    version: factory-starter-v1
+    rows: 12
+  - path: work/requirements-register.md
+    version: register-CART-1-16-ids
+
+header:
+  role: qa-case-designer
+  stage: S4
+  window: CART-1
+  verdict: concerns
+
+# One row per case. `state` from vocabulary.row_states: created, updated, deferred, blocked,
+# handed_to_person, impossible.
+scope:
+  - id: CART-1_TC_001
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: unknown book and stock 0 partitions
+    plan_row: TS-1
+    obligations: OB-1
+    requirements: R-3
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: two partitions and cart read-back
+  - id: CART-1_TC_002
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: stock boundary with persisted rows
+    plan_row: TS-2
+    obligations: OB-2
+    requirements: R-4
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: equal and plus one with read-back
+  - id: CART-1_TC_003
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: repeat add one row
+    plan_row: TS-3
+    obligations: OB-3
+    requirements: R-5
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: 1 then 2 tells sum from replace
+  - id: CART-1_TC_004
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: validation boundaries and error shape
+    plan_row: TS-4
+    obligations: OB-4
+    requirements: R-6
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: BVA 0/1/999/1000 and no 5xx
+  - id: CART-1_TC_005
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: guest vs account vs other guest
+    plan_row: TS-5
+    obligations: OB-5
+    requirements: R-7
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: positive control plus payload inspection
+  - id: CART-1_TC_006
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: merge max cap and drop
+    plan_row: TS-6
+    obligations: OB-6
+    requirements: R-8
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: max vs sum both directions and cap and stock 0
+  - id: CART-1_TC_007
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: PUT set and over stock and DELETE
+    plan_row: TS-7
+    obligations: OB-7
+    requirements: R-11
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: set vs add told apart
+  - id: CART-1_TC_008
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: foreign item 404 and unchanged
+    plan_row: TS-8
+    obligations: OB-8
+    requirements: R-12
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: before and after read plus positive control
+  - id: CART-1_TC_009
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: quote reads cart and order clears
+    plan_row: TS-9
+    obligations: OB-9
+    requirements: R-15
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: quote vs cart read-back
+  - id: CART-1_TC_010
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: card add badge and cart page
+    plan_row: TS-10
+    obligations: OB-10
+    requirements: R-1, R-2, R-10
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: content asserted and badge cross-read
+  - id: CART-1_TC_011
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: manual ui detail page
+    plan_row: TS-11
+    obligations: OB-11
+    requirements: R-1, R-2
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: manual-agent
+    design_review_required: false
+    self_probe: ui evidence policy copied
+  - id: CART-1_TC_012
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: manual ui wishlist move
+    plan_row: TS-12
+    obligations: OB-12
+    requirements: R-14
+    case_version: pending-pin
+    origin: new
+    reuse_of: -
+    disposition: manual-agent
+    design_review_required: false
+    self_probe: both lists re-read after reload
+
+# The critic's scope, computed from `design_review_required` and stated here. The critic reviews
+# exactly this set and answers for each id; anything outside it is `review_skipped` by rule.
+review_scope:
+  cases: CART-1_TC_005, CART-1_TC_006, CART-1_TC_008, CART-1_TC_009
+  rounds_used: 0
+  focus:
+    - "TC_006 stock lowering via test seed endpoint unverified on the stand; TC_009 quote and order paths left to S5 from spec.ts:576; defect_class taken from the plan hypothesis prefix"
+
+artifacts:
+  cases_root: test-cases
+  case_links: state/story-case-links.json
+  appendix: -
+
+claims:
+  every_case_bearing_plan_row_has_at_least_one_case: true
+  every_case_quotes_its_rows_obligation_ids: true
+  every_case_in_scope_is_pinned_and_the_version_is_named: false
+  every_case_names_the_requirement_it_proves_not_a_test: true
+  existing_cases_were_checked_before_new_ones_were_written: true
+
+expected_of_the_receiver:
+  - "answer for every id in `review_scope.cases` by name - an unreviewed row makes the verdict
+     `partial`, and its id reaches the gate A message"
+  - "review the pinned `case_version` above; a review of bytes that have since changed is not a
+     review of this window"
+  - "every finding carries `expected` and `check` - see s4-case-critic-to-designer"
+
+unresolved:
+  - id: <case id or P-n>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

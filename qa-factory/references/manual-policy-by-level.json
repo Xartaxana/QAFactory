@@ -1,0 +1,10 @@
+{
+  "note": "Which evidence rule a check made by an agent by hand follows, by the level of its plan row. Read when gate A makes a manual-agent row executable (planning_contract.manual_agent_pass) and its obligation names no evidence_policy of its own and its row names none. A level with `policy` is a level an agent can check by hand; a level with `refused` is not one, and the words say so. A level that is in neither list stays as planned and the gate line names it.",
+  "levels": {
+    "e2e-ui": {"policy": "ui"},
+    "api": {"policy": "api"},
+    "cli": {"policy": "cli"},
+    "component": {"refused": "not a manual level"},
+    "unit": {"refused": "not a manual level"}
+  }
+}

@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "task": "LOCAL-1",
+  "rows": [
+    {
+      "requirement": "R-1",
+      "what": "An in-stock book is added once with the right price from the product page",
+      "case": "LOCAL-1_TC_001",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-2",
+      "what": "An out-of-stock book cannot be added to the cart",
+      "case": "LOCAL-1_TC_002",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-3",
+      "what": "Quantity 3 is added and the cart shows 3 with the right subtotal",
+      "case": "LOCAL-1_TC_003",
+      "then": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-4",
+      "what": "The cart price and total equal the book price",
+      "case": "LOCAL-1_TC_004",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-5",
+      "what": "A guest adds a book without logging in and the cart persists with the same ...",
+      "case": "LOCAL-1_TC_005",
+      "then": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-6",
+      "what": "A signed-in cart survives logout and login",
+      "case": "LOCAL-1_TC_006",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "LOCAL-1_TC_006 a signed-in cart survives logout and login",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-7",
+      "what": "After a successful add a success message is shown and the cart icon/badge shows ...",
+      "case": "",
+      "then": [],
+      "tests": [],
+      "level": "",
+      "shape": "",
+      "result": "deferred",
+      "bug": "",
+      "basis": "cosmetic, badge sum asserted inside TS-1 and TS-3; toast text goes to the Developers line",
+      "plan_row": "TS-7"
+    },
+    {
+      "requirement": "R-8",
+      "what": "Quantity 0 is rejected with a message and nothing is added",
+      "case": "LOCAL-1_TC_007",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "bug",
+      "bug": "qty-invalid-input-coerced",
+      "basis": "@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero] ..."
+    },
+    {
+      "requirement": "R-9",
+      "what": "Negative and fractional quantities are rejected and never rounded",
+      "case": "LOCAL-1_TC_008",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged APP_BUG: BookDetailPage.tsx:164 rewrites an invalid quantity to a valid one, so the add ..."
+    },
+    {
+      "requirement": "R-10",
+      "what": "A non-numeric quantity is rejected with an error and nothing is added",
+      "case": "LOCAL-1_TC_009",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged APP_BUG: BookDetailPage.tsx:164 rewrites an invalid quantity to a valid one, so the add ..."
+    },
+    {
+      "requirement": "R-11",
+      "what": "A quantity above stock is refused with the available number shown",
+      "case": "LOCAL-1_TC_010",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-12",
+      "what": "A second add that would exceed stock is refused and the cart is unchanged",
+      "case": "LOCAL-1_TC_011",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-13",
+      "what": "Every quantity class, valid and invalid, behaves as required on the product page",
+      "case": "LOCAL-1_TC_012",
+      "then": [
+        1
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-13",
+      "what": "Every quantity class, valid and invalid, behaves as required on the product page",
+      "case": "LOCAL-1_TC_012",
+      "then": [
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged APP_BUG: this is the defect of LOCAL-1_TC_007 (Quantity 0 is rejected with a message and nothing is added) - a product bug: Invalid quantities (0, -1, 1.5, abc) are rewritten to a valid number and added to the cart instead of being ...; no separate bug"
+    },
+    {
+      "requirement": "R-13",
+      "what": "Every quantity class, valid and invalid, behaves as required on the product page",
+      "case": "LOCAL-1_TC_012",
+      "then": [
+        5
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-13",
+      "what": "Every quantity class, valid and invalid, behaves as required on the product page",
+      "case": "LOCAL-1_TC_012",
+      "then": [
+        6,
+        7
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged APP_BUG: this is the defect of LOCAL-1_TC_007 (Quantity 0 is rejected with a message and nothing is added) - a product bug: Invalid quantities (0, -1, 1.5, abc) are rewritten to a valid number and added to the cart instead of being ...; no separate bug"
+    },
+    {
+      "requirement": "R-14",
+      "what": "The maximum allowed quantity is added with the right subtotal",
+      "case": "LOCAL-1_TC_013",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-15",
+      "what": "An extremely large quantity gives an error or a limit and the app stays up",
+      "case": "LOCAL-1_TC_014",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-16",
+      "what": "Adding the same product twice gives one line with the summed quantity",
+      "case": "LOCAL-1_TC_015",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-17",
+      "what": "Several products give one line each and a summed total",
+      "case": "LOCAL-1_TC_016",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-18",
+      "what": "A nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "case": "LOCAL-1_TC_017",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+          "file": "tests/api/cart/cart.spec.ts"
+        }
+      ],
+      "level": "api",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-19",
+      "what": "Catalog card and wishlist paths obey the same add rules as the product page",
+      "case": "LOCAL-1_TC_018",
+      "then": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        },
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-20",
+      "what": "The catalog card adds the book to the cart with the right line",
+      "case": "LOCAL-1_TC_019",
+      "then": [
+        1,
+        2
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-21",
+      "what": "Moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "case": "LOCAL-1_TC_020",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "blocked",
+      "bug": "",
+      "basis": "red run, triaged CASE_DEFECT: The case pins the unit price to a field of GET /api/cart, but the API CartItem ..."
+    },
+    {
+      "requirement": "R-22",
+      "what": "A guest cart is merged at sign-in without losing items",
+      "case": "LOCAL-1_TC_021",
+      "then": [
+        1,
+        2,
+        3
+      ],
+      "tests": [
+        {
+          "instance_id": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+          "file": "tests/e2e/cart/cart.spec.ts"
+        }
+      ],
+      "level": "e2e-ui",
+      "shape": "new",
+      "result": "pass",
+      "bug": "",
+      "basis": "the code critic could not verify it"
+    },
+    {
+      "requirement": "R-23",
+      "what": "A product can be added from the quick view and appears in the cart with the ...",
+      "case": "",
+      "then": [],
+      "tests": [],
+      "level": "",
+      "shape": "",
+      "result": "deferred",
+      "bug": "",
+      "basis": "the owner's answer leaves no implemented quick-view add path to verify inside add-to-cart scope",
+      "plan_row": "TS-23"
+    },
+    {
+      "requirement": "R-24",
+      "what": "Adding a book while its price is updated keeps the price shown at add time",
+      "case": "LOCAL-1_TC_022",
+      "then": [],
+      "tests": [],
+      "level": "manual-agent",
+      "shape": "",
+      "result": "not run",
+      "bug": "",
+      "basis": "the owner settled the expected price"
+    },
+    {
+      "requirement": "R-25",
+      "what": "An interrupted network during add ends with the chosen quantity added or a ...",
+      "case": "LOCAL-1_TC_023",
+      "then": [],
+      "tests": [],
+      "level": "manual-agent",
+      "shape": "",
+      "result": "not run",
+      "bug": "",
+      "basis": "the owner settled which outcome is expected"
+    },
+    {
+      "requirement": "R-26",
+      "what": "Adding after session expiry extends the session or asks for login, and the ...",
+      "case": "",
+      "then": [],
+      "tests": [],
+      "level": "",
+      "shape": "",
+      "result": "wait",
+      "bug": "",
+      "basis": "expectation unconfirmed, check not executed — Q9: before unknown, now unknown",
+      "plan_row": "TS-26"
+    }
+  ],
+  "legend": {
+    "pass": "every test of the row is green in the current run, or the check an agent made by hand was recorded as passed",
+    "bug": "a product defect; the bug record is named beside it",
+    "wait": "handed to a person - planned manual, automated where the factory has no access, or an expected value nobody confirmed yet (it waits for your answer)",
+    "blocked": "the stand stops the test before its own checks, or the code critic rejected the test and has not reviewed the change",
+    "not run": "no green or red result of the current run is recorded for it; the basis says what the run recorded, if anything",
+    "unreachable": "the scenario cannot occur in the product as it is built",
+    "deferred": "a person's recorded decision put it aside",
+    "not planned": "a register requirement no plan row plans: none names it, or its plan row says it cannot be verified"
+  },
+  "bugs": [
+    {
+      "id": "qty-invalid-input-coerced",
+      "title": "Invalid quantities (0, -1, 1.5, abc) are rewritten to a valid number and added to the cart instead of being ...",
+      "confirmation": "unconfirmed",
+      "state": "unconfirmed",
+      "filed": false,
+      "paths": [
+        "<path-1>/test-automation-framework/qa-factory/artifacts/LOCAL-1/work/bug-drafts/qty-invalid-input-coerced.json"
+      ],
+      "homes": [
+        "drafts"
+      ],
+      "gate_b_decision_id": "",
+      "impact": "degraded",
+      "reproduced_how": [],
+      "reproduction_problems": [],
+      "notes": [],
+      "source_drafts": [],
+      "cases": [
+        "LOCAL-1_TC_007"
+      ],
+      "requirements": [
+        "R-8",
+        "R-8",
+        "R-9",
+        "R-10"
+      ]
+    }
+  ],
+  "bugs_outside_home": []
+}

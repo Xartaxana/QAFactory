@@ -1,0 +1,240 @@
+{
+ "job_id": "bd8b130a1d90229291d0",
+ "idempotency_key": "S5-qa-code-critic-5:red_probe:probe-test_oversized_payload_dispatches_unevaluated:invert:ad2ef2f3a733",
+ "request_digest": "bd8b130a1d90229291d07fbac55f12ebdf05c6d336a17ebc4c8bdf922069aa9d",
+ "status": "completed",
+ "created_at": "2026-09-27T07:37:44+00:00",
+ "request": {
+  "task": "TP1-13797",
+  "revision": "107",
+  "dispatch_id": "S5-qa-code-critic-5",
+  "profile_id": "api",
+  "purpose": "red_probe",
+  "reason": "probe-test_oversized_payload_dispatches_unevaluated: invert of the first assert at testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py:706 (S5-qa-code-critic-5)",
+  "idempotency_key": "S5-qa-code-critic-5:red_probe:probe-test_oversized_payload_dispatches_unevaluated:invert:ad2ef2f3a733",
+  "input_fingerprint": "ad2ef2f3a7336bd78399aa6031a1eacc45f08c67320718f2ad296ccc00e99cb6",
+  "fingerprint_components": {
+   "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "test_content_sha": "2bb4707abb32c50f38ac31f8a147ec941b553f12f993db06d57abdcc94d818c8",
+   "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+   "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+   "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+   "policy_revision": "unknown"
+  },
+  "fingerprint_files": [
+   {
+    "path": "<root>/testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py",
+    "sha256": "a990aec8249f49dfd3f6124a49264327dd3303e9825a70fd4bad4156eb041b61",
+    "kind": "test_files"
+   },
+   {
+    "path": "<root>/testproject1_test_harness/tests/conftest.py",
+    "sha256": "c55dfa5f861e4f638afb208ea81c055255c132a7d49cae5dab4534537a79a92c",
+    "kind": "helper_files"
+   },
+   {
+    "path": "<root>/testproject1_test_harness/tests/webhook/conftest.py",
+    "sha256": "a4faa0fc1c8ddbf322d1e437c722fce00d109c0440bbdc893be83086cad93638",
+    "kind": "helper_files"
+   },
+   {
+    "path": "<root>/qa-factory/config.json",
+    "sha256": "a7b4eab2940504ac61965989c5aefb7806dd449a6650781a7b5fbe68ffedd9d2",
+    "kind": "config_files"
+   },
+   {
+    "path": "<root>/pyproject.toml",
+    "sha256": "93316b6a223648584e8917c170771aa750e1b74b3683261a2f9aa3a163a6a787",
+    "kind": "dependency_files"
+   },
+   {
+    "path": "<root>/poetry.lock",
+    "sha256": "4073d098cdaf4142afdc0002386978687849e17349256e598d0c1a274e66143c",
+    "kind": "dependency_files"
+   }
+  ],
+  "freshness": "fresh",
+  "remaining_budget": 1,
+  "selected_instance_ids": [
+   "test_oversized_payload_dispatches_unevaluated"
+  ],
+  "current_scope_instance_ids": [
+   "test_oversized_payload_dispatches_unevaluated",
+   "test_event_type_filtered_request_acks_2xx_never_400"
+  ],
+  "runtime_required": true,
+  "runtime_probe": {
+   "argv": [
+    "<python>",
+    "<plugin>/scripts/runtime_probe.py",
+    "--profile",
+    "api",
+    "--environment",
+    "localhost",
+    "--container",
+    "testproject1-dev-fresh-testproject1-1",
+    "--checkout",
+    "../../testproject1",
+    "--app-root",
+    "/app"
+   ],
+   "cwd": "<root>",
+   "timeout_s": 120
+  },
+  "runtime_provenance": {
+   "profile_id": "api",
+   "timestamp": "2026-09-27T07:37:41+00:00",
+   "environment_id": "localhost",
+   "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+   "evidence_refs": [
+    "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T024630Z.json"
+   ],
+   "provenance": {
+    "technical_verification": true,
+    "source_linkage": "verified_content",
+    "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "verified_source_revisions": [
+     "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+    ]
+   },
+   "result": "matched",
+   "comparisons": [
+    {
+     "file": "src/testproject1/service/settings/settings_request_validator.py",
+     "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+     "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+     "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+     "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook.py",
+     "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+     "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+     "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+     "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+    }
+   ],
+   "container": "testproject1-dev-fresh-testproject1-1",
+   "checkout": "..\\..\\testproject1"
+  },
+  "command": {
+   "argv": [
+    "poetry",
+    "run",
+    "pytest",
+    "--reruns",
+    "2",
+    "--ui-headless"
+   ],
+   "cwd": "<root>",
+   "scope": "selected",
+   "reporter": "pytest",
+   "selector_contract_verified": true,
+   "selector_args": {
+    "test_oversized_payload_dispatches_unevaluated": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_oversized_payload_dispatches_unevaluated"
+    ]
+   }
+  },
+  "instance_contracts": {
+   "test_oversized_payload_dispatches_unevaluated": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_oversized_payload_dispatches_unevaluated",
+    "parameters": {},
+    "case_version_links": [],
+    "instance_content_sha": "2d7c1d01039207e56cc93a1d87c42856d5d18901a3782be4241d76f6e919293b",
+    "instance_content_scope": "function"
+   }
+  },
+  "execution": {
+   "schema_version": 1,
+   "selection": {
+    "reason": "diagnostic",
+    "evidence_refs": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_oversized_payload_dispatches_unevaluated"
+    ]
+   },
+   "reporter": {
+    "format": "pytest",
+    "path_template": "{report_path}"
+   }
+  },
+  "built_by": {
+   "tool": "probe_by_code.py",
+   "cases": [
+    "TC-009"
+   ],
+   "instance_id": "test_oversized_payload_dispatches_unevaluated",
+   "mutation": "invert",
+   "mutation_kind": "real_behavior"
+  },
+  "resolved_argv": [
+   "poetry",
+   "run",
+   "pytest",
+   "--reruns",
+   "2",
+   "--ui-headless",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_oversized_payload_dispatches_unevaluated"
+  ],
+  "runtime_probe_before": {
+   "profile_id": "api",
+   "timestamp": "2026-09-27T07:37:42+00:00",
+   "environment_id": "localhost",
+   "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+   "evidence_refs": [
+    "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T073742Z.json"
+   ],
+   "provenance": {
+    "technical_verification": true,
+    "source_linkage": "verified_content",
+    "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "verified_source_revisions": [
+     "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+    ]
+   },
+   "result": "matched",
+   "comparisons": [
+    {
+     "file": "src/testproject1/service/settings/settings_request_validator.py",
+     "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+     "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+     "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+     "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook.py",
+     "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+     "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+     "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+     "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+    }
+   ],
+   "container": "testproject1-dev-fresh-testproject1-1",
+   "checkout": "..\\..\\testproject1"
+  }
+ },
+ "updated_at": "2026-09-27T07:38:11+00:00",
+ "runner_pid": 31244,
+ "runner_started_at": "2026-09-27T07:37:41.641010+00:00",
+ "child_pid": 16480,
+ "child_started_at": "2026-09-27T07:37:44.804451+00:00",
+ "execution_status": "failed",
+ "freshness": "fresh",
+ "summary": "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\bd8b130a1d90229291d0\\red_probe-bd8b130a1d90229291d0-20260927-093744.json",
+ "run_block": null,
+ "baseline_receipt": null
+}

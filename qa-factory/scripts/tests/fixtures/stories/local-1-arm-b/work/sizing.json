@@ -1,0 +1,275 @@
+{
+  "schema": 1,
+  "task": "LOCAL-1",
+  "size": "L",
+  "size_unit": "functions",
+  "function_count": 7,
+  "functions": [
+    {
+      "name": "Add from the catalog",
+      "requirements": [
+        "R-1"
+      ]
+    },
+    {
+      "name": "Add from the book page",
+      "requirements": [
+        "R-2"
+      ]
+    },
+    {
+      "name": "Move from the wishlist",
+      "requirements": [
+        "R-3",
+        "R-13"
+      ]
+    },
+    {
+      "name": "Carry the guest cart over at sign-in",
+      "requirements": [
+        "R-4",
+        "R-12"
+      ]
+    },
+    {
+      "name": "Stock and quantity rules of adding",
+      "requirements": [
+        "R-5",
+        "R-6",
+        "R-7",
+        "R-8"
+      ]
+    },
+    {
+      "name": "Guest and user carts",
+      "requirements": [
+        "R-9"
+      ]
+    },
+    {
+      "name": "See and change the cart",
+      "requirements": [
+        "R-10",
+        "R-11",
+        "R-14"
+      ]
+    }
+  ],
+  "functions_unlisted": [],
+  "functions_unknown_ids": [],
+  "cited_files": 4,
+  "cap": 28,
+  "computed_budget": 36,
+  "computed_budget_raw": 36.4,
+  "recommended_budget": 28,
+  "overage": 8,
+  "verifiable_count": 14,
+  "unverifiable": [],
+  "requirements": [
+    {
+      "r": "R-1",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-2",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-3",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-4",
+      "impact": "data-loss",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-5",
+      "impact": "money",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-6",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-7",
+      "impact": "money",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-8",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-9",
+      "impact": "access",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-10",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-11",
+      "impact": "money",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-12",
+      "impact": "data-loss",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-13",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-14",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    }
+  ],
+  "areas": {
+    "state": "areas",
+    "register_read": true,
+    "named": [],
+    "no_surface": [
+      "checkout and payment",
+      "shopping cart",
+      "orders, cancellation and refunds",
+      "sign-in and user accounts"
+    ]
+  },
+  "reducers_applied": [],
+  "signals": {
+    "repos": [
+      "MyBooks"
+    ],
+    "surfaces": [
+      "api",
+      "ui"
+    ],
+    "surfaces_signal": false,
+    "migration_signal": false,
+    "migration_files": []
+  },
+  "precedents": {
+    "checked": false,
+    "nearest": []
+  },
+  "config": {
+    "weights": {
+      "P0": 1.6,
+      "P1": 1.3,
+      "P2": 1.0,
+      "P3": 0.6
+    },
+    "weights_source": "config.sizing.weights",
+    "has_impact_column": true
+  },
+  "size_override": null,
+  "size_override_reason": null,
+  "reasoning": [
+    "P1 area «checkout and payment» names no surface — no bump",
+    "P1 area «shopping cart» names no surface — no bump",
+    "P1 area «orders, cancellation and refunds» names no surface — no bump",
+    "P1 area «sign-in and user accounts» names no surface — no bump",
+    "ticket type unknown (no issue_type on the manifest or readiness, and none passed in) — the defect-ticket cap was not evaluated",
+    "size L from the function table: 7 functions: Add from the catalog, Add from the book page, Move from the wishlist, Carry the guest cart over at sign-in, Stock and quantity rules of adding, Guest and user carts and 1 more (2 x 7); what the requirements weigh sets the test ceiling, not the size",
+    "cited_files 4: distinct files the non-derived rows' observables cite, beside 7 functions (reported, decides nothing)",
+    "computed budget 36 exceeds the test ceiling of 28 by 8 — shown, not silently trimmed; a gate-A question, not a block",
+    "qa-factory/records/estimation-ledger.jsonl is absent or empty — no precedent to check against"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "profile_id": "web",
+  "timestamp": "2026-10-31T11:59:51+00:00",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+  "evidence_refs": [
+    "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T115951Z.json"
+  ],
+  "provenance": {
+    "technical_verification": false,
+    "identity_kind": "person_confirmed"
+  },
+  "result": "person_confirmed",
+  "person_confirmation": {
+    "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+    "at": "2026-10-31T11:54:15+00:00",
+    "task": "CART-1",
+    "kind": "deployed",
+    "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "container": "",
+  "checkout": "..\\MyBooks",
+  "comparisons": []
+}

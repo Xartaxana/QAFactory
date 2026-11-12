@@ -1,0 +1,7 @@
+{
+  "id": "LOCAL-1_TC_022",
+  "probe_line": "login by code: this project's sign-in is not an HTTP request the factory knows (environment.access.kind harness_command); nothing was sent",
+  "remedy": "record manual_capture.login.http in config.json (path and token_field), or null if this kind of capture needs no login; a screen case signs in with fill-account steps",
+  "owner": "user",
+  "do_not_retry": true
+}

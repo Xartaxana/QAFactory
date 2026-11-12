@@ -1,0 +1,1347 @@
+{
+  "ticket": "CART-1",
+  "generated": "2026-10-31T12:09:33+00:00",
+  "rows": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_003"
+    },
+    {
+      "ref": "TS-4",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_004"
+    },
+    {
+      "ref": "TS-5",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_005"
+    },
+    {
+      "ref": "TS-6",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_006"
+    },
+    {
+      "ref": "TS-7",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_007"
+    },
+    {
+      "ref": "TS-8",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_008"
+    },
+    {
+      "ref": "TS-9",
+      "kind": "plan_row",
+      "state": "failed:ASSERT_STRICTER",
+      "detail": "CART-1_TC_009"
+    },
+    {
+      "ref": "TS-10",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_010"
+    },
+    {
+      "ref": "TS-11",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_011"
+    },
+    {
+      "ref": "TS-12",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_012"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-rejections.spec.ts::CART-1_TC_001 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-stock-limit.spec.ts::CART-1_TC_002 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-accumulate.spec.ts::CART-1_TC_003 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004 — tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart-isolation.spec.ts::CART-1_TC_005 — tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart-merge.spec.ts::CART-1_TC_006 — tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_007 update and delete cart item",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart-update-delete.spec.ts::CART-1_TC_007 — tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart-ownership.spec.ts::CART-1_TC_008 — tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression CART-1_TC_009 quote and order from cart",
+      "kind": "test",
+      "state": "failed:ASSERT_STRICTER",
+      "detail": "tests/api/cart/cart-quote-order.spec.ts::CART-1_TC_009",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add-to-cart.spec.ts::CART-1_TC_010 — tooling: probe_by_code cannot read Playwright TypeScript; person accepted probe gap: CART-1_TC_010",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    }
+  ],
+  "delivery_ready": false,
+  "delivery_verdict": "no",
+  "left_items": [
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_001",
+      "case": "CART-1_TC_001",
+      "requirements": [
+        "R-3"
+      ],
+      "tests": [
+        "CART-1_TC_001"
+      ],
+      "to_check": "P-unknown: HTTP 404 with body code BOOK_NOT_FOUND (body has error and code).; P-soldout: HTTP 400 with body code OUT_OF_STOCK.; Independent read: GET /api/cart in the same cookie jar returns no row for S0 and no row for the nonexistent id (read through the cart list, not the POST response).",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_002",
+      "case": "CART-1_TC_002",
+      "requirements": [
+        "R-4"
+      ],
+      "tests": [
+        "CART-1_TC_002"
+      ],
+      "to_check": "P-equal: the second add (to exactly stock) succeeds with a 2xx status.; P-plus-one: the third add answers HTTP 400 with code INSUFFICIENT_STOCK.; GET /api/cart shows exactly one row for B with quantity 5 (not 6).; The row quantity read in Then 3 equals the stock of B (5) after the rejected add, so the rejected request changed nothing.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_003",
+      "case": "CART-1_TC_003",
+      "requirements": [
+        "R-5"
+      ],
+      "tests": [
+        "CART-1_TC_003"
+      ],
+      "to_check": "GET /api/cart contains exactly one row for B (no second row).; That row has quantity 3 (1 + 2: added, not replaced).",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_004",
+      "case": "CART-1_TC_004",
+      "requirements": [
+        "R-6"
+      ],
+      "tests": [
+        "CART-1_TC_004"
+      ],
+      "to_check": "P-qty-min and P-qty-max: 2xx; GET /api/cart in that jar shows B with quantity 1 and 999 respectively.; P-qty-over, P-qty-zero, P-qty-fraction, P-qty-string: a 4xx rejection (never 5xx), not a 2xx.; P-id-zero, P-id-negative, P-id-fraction: a 4xx rejection (never 5xx).; Every rejection body contains both `error` and `code` fields, and GET /api/cart in that jar has no row created by the rejected request.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_005",
+      "case": "CART-1_TC_005",
+      "requirements": [
+        "R-7"
+      ],
+      "tests": [
+        "CART-1_TC_005"
+      ],
+      "to_check": "Control: G1's GET /api/cart lists B with quantity 2 (the guest sees its own row).; P-user: JU's GET /api/cart payload (request carrying both U's session and G1's guest cookie) contains no row for B and none of G1's rows (payload inspected directly; a user-owner query that also matches the guest sessionId would return B x2 here).; P-other-guest: G2's GET /api/cart payload contains no row for B and none of G1's rows (payload inspected directly).",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_006",
+      "case": "CART-1_TC_006",
+      "requirements": [
+        "R-8"
+      ],
+      "tests": [
+        "CART-1_TC_006"
+      ],
+      "to_check": "P-overlap-higher-guest: B2 in U's cart has quantity 4 (guest 4 over user 1: max, not sum 5).; P-overlap-higher-user: B1 in U's cart has quantity 5 (user 5 over guest 2: max, not sum 7).; P-cap: B3 in U's cart has quantity 3 (guest 6 capped at stock 3).; P-soldout: U's cart has no row for B4.; P-disjoint: B5 is in U's cart with quantity 2; U's cart contains exactly the rows B1 x5, B2 x4, B3 x3, B5 x2 (and no row for B4).; P-unauth: the merge without a session answers 401.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_007",
+      "case": "CART-1_TC_007",
+      "requirements": [
+        "R-11"
+      ],
+      "tests": [
+        "CART-1_TC_007"
+      ],
+      "to_check": "P-set-equal: PUT succeeds (2xx) and the read-back row for B has quantity 5 (set, not added to 1).; P-over: PUT answers 400 INSUFFICIENT_STOCK.; After P-over the read-back row for B still has quantity 5.; P-delete: DELETE succeeds and the final GET /api/cart has no row for B.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_008",
+      "case": "CART-1_TC_008",
+      "requirements": [
+        "R-12"
+      ],
+      "tests": [
+        "CART-1_TC_008"
+      ],
+      "to_check": "Foreign PUT answers HTTP 404 with code CART_ITEM_NOT_FOUND.; Foreign DELETE answers HTTP 404 with code CART_ITEM_NOT_FOUND.; A's after_read rows are identical to the before_read rows (row R_A for K, quantity 2); mutable entity checked: CartItem only.; Positive control: A's own PUT succeeds and the next read shows K with quantity 3, proving R_A is reachable and mutable by its owner (so the 404s and the unchanged state are not an artifact of an unreachable id).; B's own GET /api/cart payload has no row for K.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "CART-1_TC_010",
+      "case": "CART-1_TC_010",
+      "requirements": [
+        "R-1",
+        "R-2",
+        "R-10"
+      ],
+      "tests": [
+        "CART-1_TC_010"
+      ],
+      "to_check": "The add call for B completes successfully (2xx) after the click.; The cart badge text equals the sum of quantities in the cart, 1.; The cart page lists B (by its unique title) with quantity 1; the content, not just the page visibility, is asserted.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "assert_stricter",
+      "kinds": [
+        "assert_stricter"
+      ],
+      "ref": "CART-1_TC_009",
+      "case": "CART-1_TC_009",
+      "requirements": [
+        "R-15"
+      ],
+      "tests": [
+        "CART-1_TC_009"
+      ],
+      "to_check": "P-quote: the quote lists B1 x2 and B2 x1 (items and quantities read from the quote body match the cart read from GET /api/cart). - without this story's change it showed: Then 2 of TC_009 (one Then of five) expects the quote body to list the cart items. The quote of a filled cart answers 200 and prices the cart (subtotal, discount, shipping, tax, total), the empty cart is rejected 400, but the body has no items array - the same with no change from this story. R-15 and the documented Quote schema do not ask for items in the quote body, so the assert asks more than the requirement; the person decides.",
+      "how": "Decide: remove this check from the test, or refine the requirement it goes beyond (R-15) - the same action without this story's change gives the same result",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "regression",
+      "ref": "regression",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "lines": [
+        "blast: none (current-code source, no diff). Existing defence: none in tests/ (grep cart: 0 hits).",
+        "- Application unit suite `MyBooks/src/lib/cartRules.test.ts`: `python \"<path-2>/ai-packages/qa-factory/scripts/run_suite.py\" --label cart -- npm --prefix ../MyBooks run test -- src/lib/cartRules.test.ts src/lib/validation/schemas.test.ts` (developer-owned, read only).",
+        "- For developers at component level: badge refresh, disabled out-of-stock buttons (TS-1 UI part), CartPage empty-input and failed-fetch handling.",
+        "",
+        "<!-- qa-factory:case-appendix:start -->"
+      ],
+      "to_check": "",
+      "how": "",
+      "words": "",
+      "source": "plan",
+      "counts": false
+    }
+  ],
+  "reasons": [
+    "traceability: R-9 has no terminal outcome (no row of test-plan.md names this requirement)",
+    "traceability: R-13 has no terminal outcome (no row of test-plan.md names this requirement)",
+    "traceability: R-16 has no terminal outcome (no row of test-plan.md names this requirement)",
+    "coverage: OB-1 — disabled buttons not covered (UI)",
+    "coverage: OB-2 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-3 — none",
+    "coverage: OB-4 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-5 — none",
+    "coverage: OB-6 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-7 — none",
+    "coverage: OB-8 — proves no persistent change, not that no write was attempted",
+    "coverage: OB-9 — payment itself is out of scope",
+    "coverage: OB-10 — detail-page and wishlist paths are manual-agent rows"
+  ],
+  "reason_records": [
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-9",
+      "detail": "traceability: R-9 has no terminal outcome (no row of test-plan.md names this requirement)",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-13",
+      "detail": "traceability: R-13 has no terminal outcome (no row of test-plan.md names this requirement)",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-16",
+      "detail": "traceability: R-16 has no terminal outcome (no row of test-plan.md names this requirement)",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-1",
+      "detail": "coverage: OB-1 — disabled buttons not covered (UI)",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-2",
+      "detail": "coverage: OB-2 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-3",
+      "detail": "coverage: OB-3 — none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-4",
+      "detail": "coverage: OB-4 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-5",
+      "detail": "coverage: OB-5 — none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-6",
+      "detail": "coverage: OB-6 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-7",
+      "detail": "coverage: OB-7 — none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-8",
+      "detail": "coverage: OB-8 — proves no persistent change, not that no write was attempted",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-9",
+      "detail": "coverage: OB-9 — payment itself is out of scope",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-10",
+      "detail": "coverage: OB-10 — detail-page and wishlist paths are manual-agent rows",
+      "owner": "product",
+      "kind": "coverage_gap"
+    }
+  ],
+  "blocked_by": [
+    "product"
+  ],
+  "superseded_blocks": [],
+  "coverage": {
+    "schema_version": 2,
+    "status": "current",
+    "obligations": [
+      {
+        "obligation_id": "OB-1",
+        "plan_row": "TS-1",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "disabled buttons not covered (UI)"
+      },
+      {
+        "obligation_id": "OB-2",
+        "plan_row": "TS-2",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-3",
+        "plan_row": "TS-3",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-4",
+        "plan_row": "TS-4",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-5",
+        "plan_row": "TS-5",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "@api @regression CART-1_TC_005 cart isolation between owners"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-6",
+        "plan_row": "TS-6",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "@api @regression CART-1_TC_006 guest cart merge on login"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-7",
+        "plan_row": "TS-7",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "@api @regression CART-1_TC_007 update and delete cart item"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-8",
+        "plan_row": "TS-8",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+        ],
+        "gap": "proves no persistent change, not that no write was attempted"
+      },
+      {
+        "obligation_id": "OB-9",
+        "plan_row": "TS-9",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "@api @regression CART-1_TC_009 quote and order from cart"
+        ],
+        "gap": "payment itself is out of scope"
+      },
+      {
+        "obligation_id": "OB-10",
+        "plan_row": "TS-10",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+        ],
+        "gap": "detail-page and wishlist paths are manual-agent rows"
+      },
+      {
+        "obligation_id": "OB-11",
+        "plan_row": "TS-11",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": true,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": ""
+      },
+      {
+        "obligation_id": "OB-12",
+        "plan_row": "TS-12",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": true,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": ""
+      }
+    ],
+    "unique_instances": 6
+  },
+  "manual_evidence": {
+    "rows": [
+      {
+        "schema_version": 2,
+        "case": "CART-1_TC_011",
+        "case_version": "cv_de13157c14b004fc1bbd",
+        "obligation_ids": [
+          "OB-11"
+        ],
+        "obligation_hashes": {
+          "OB-11": "819116770cedf51734680f7504f05793a5c44ddf8ec1f8362c78351df38867df"
+        },
+        "attempt_id": "a7",
+        "dispatch_id": "S6-qa-runner-2",
+        "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "steps_actual": [
+          "goto http://localhost:3000/login -> ok: 0.60 s",
+          "fill-account [data-testid=login-email-input] user user -> ok",
+          "fill-account [data-testid=login-password-input] user secret -> ok",
+          "click [data-testid=login-submit-button] -> ok",
+          "wait 3000 -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.37 s",
+          "click [data-testid^=remove-cart-item-] -> ok",
+          "wait 1500 -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.24 s",
+          "capture supporting cart-empty-before -> ok",
+          "goto http://localhost:3000/books/110 -> ok: 0.37 s",
+          "capture pre_action d3-detail-before -> ok",
+          "fill [data-testid=book-detail-quantity-input] 2 -> ok",
+          "click [data-testid=book-detail-add-to-cart-button] -> ok",
+          "read body text -> ok: 2 copies added to cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MAY ALSO LIKE QA CART1...",
+          "capture post_action d3-added-toast -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.65 s",
+          "capture post_action cart-after-valid -> ok",
+          "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+          "goto http://localhost:3000/books/110 -> ok: 0.55 s",
+          "fill [data-testid=book-detail-quantity-input] 4 -> ok",
+          "click [data-testid=book-detail-add-to-cart-button] -> ok",
+          "read body text -> ok: Only 3 in stock and 2 already in your cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MA...",
+          "capture post_action d3-above-stock-toast -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.47 s",
+          "capture post_action cart-after-above-stock -> ok",
+          "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+          "goto http://localhost:3000/books/111 -> ok: 0.47 s",
+          "read [data-testid=book-detail-add-to-cart-button] attr=disabled -> ok",
+          "read [data-testid=book-detail-stock] text -> ok: Out of Stock",
+          "capture post_action completion -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.40 s",
+          "capture supporting cart-final -> ok",
+          "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove"
+        ],
+        "expected": [
+          "detail-page add with quantity"
+        ],
+        "actual": "Signed in as the seed user with an emptied cart. D3 (stock 3), qty 2, Add to Cart: toast '2 copies added to cart'; cart page lists D3 with subtotal $20.00 (2 x $10.00). D3 qty 4: error toast 'Only 3 in stock and 2 already in your cart'; cart page still shows D3 at $20.00 (qty 2). D0 (stock 0): stock badge and button label read 'Out of Stock', the button is labelled Out of Stock and D0 is absent from the final cart (only D3 listed); the disabled attribute read returned an empty string for both enabled and sold-out buttons, so the disabled state itself rests on the label and the page screenshot.",
+        "completion_condition": "toast shown or button disabled state read",
+        "attempt_started_at": "2026-10-31T11:59:51+00:00",
+        "attempt_ended_at": "2026-10-31T12:00:18+00:00",
+        "result": "pass",
+        "runtime_before": {
+          "profile_id": "web",
+          "timestamp": "2026-10-31T11:59:51+00:00",
+          "environment_id": "local",
+          "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+          "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+          "evidence_refs": [
+            "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T115951Z.json"
+          ],
+          "provenance": {
+            "technical_verification": false,
+            "identity_kind": "person_confirmed"
+          },
+          "result": "person_confirmed",
+          "person_confirmation": {
+            "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+            "at": "2026-10-31T11:54:15+00:00",
+            "task": "CART-1",
+            "kind": "deployed",
+            "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+          },
+          "container": "",
+          "checkout": "..\\MyBooks",
+          "comparisons": []
+        },
+        "runtime_after": {
+          "profile_id": "web",
+          "timestamp": "2026-10-31T12:00:18+00:00",
+          "environment_id": "local",
+          "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+          "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+          "evidence_refs": [
+            "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120018Z.json"
+          ],
+          "provenance": {
+            "technical_verification": false,
+            "identity_kind": "person_confirmed"
+          },
+          "result": "person_confirmed",
+          "person_confirmation": {
+            "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+            "at": "2026-10-31T11:54:15+00:00",
+            "task": "CART-1",
+            "kind": "deployed",
+            "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+          },
+          "container": "",
+          "checkout": "..\\MyBooks",
+          "comparisons": []
+        },
+        "evidence_policy": "ui",
+        "limitations": [
+          "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+        ],
+        "evidence_refs": [
+          {
+            "path": "evidence/161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770.png",
+            "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+            "kind": "image",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:03+00:00",
+            "proves": [
+              "cart-empty-before"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770"
+          },
+          {
+            "path": "evidence/8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d.png",
+            "content_hash": "8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d",
+            "kind": "image",
+            "phase": "pre_action",
+            "captured_at": "2026-10-31T12:00:05+00:00",
+            "proves": [
+              "d3-detail-before"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d"
+          },
+          {
+            "path": "evidence/6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930.txt",
+            "content_hash": "6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:05+00:00",
+            "proves": [
+              "read body"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930"
+          },
+          {
+            "path": "evidence/c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf.png",
+            "content_hash": "c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:00:06+00:00",
+            "proves": [
+              "d3-added-toast"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf"
+          },
+          {
+            "path": "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+            "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:00:08+00:00",
+            "proves": [
+              "cart-after-valid"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035"
+          },
+          {
+            "path": "evidence/a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78.txt",
+            "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:08+00:00",
+            "proves": [
+              "read [data-testid=cart-items-list]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78"
+          },
+          {
+            "path": "evidence/7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe.txt",
+            "content_hash": "7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:10+00:00",
+            "proves": [
+              "read body"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe"
+          },
+          {
+            "path": "evidence/f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb.png",
+            "content_hash": "f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:00:11+00:00",
+            "proves": [
+              "d3-above-stock-toast"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb"
+          },
+          {
+            "path": "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+            "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:00:12+00:00",
+            "proves": [
+              "cart-after-above-stock"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035"
+          },
+          {
+            "path": "evidence/a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78.txt",
+            "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:12+00:00",
+            "proves": [
+              "read [data-testid=cart-items-list]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78"
+          },
+          {
+            "path": "evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt",
+            "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:14+00:00",
+            "proves": [
+              "read [data-testid=book-detail-add-to-cart-button] attr=disabled"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "evidence/58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca.txt",
+            "content_hash": "58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:14+00:00",
+            "proves": [
+              "read [data-testid=book-detail-stock]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca"
+          },
+          {
+            "path": "evidence/9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf.png",
+            "content_hash": "9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:00:14+00:00",
+            "proves": [
+              "completion"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf"
+          },
+          {
+            "path": "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+            "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+            "kind": "image",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:16+00:00",
+            "proves": [
+              "cart-final"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035"
+          },
+          {
+            "path": "evidence/a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78.txt",
+            "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:00:16+00:00",
+            "proves": [
+              "read [data-testid=cart-items-list]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78"
+          }
+        ],
+        "gate_a_decision_ref": "gateA-CART-1",
+        "approved_policy_hash": "758479ba59b0024c0867c81fd78b4ae1d738be292524109c59941c5f93aa90ce",
+        "before_change": {
+          "r": "R-1",
+          "value": null,
+          "ref": null,
+          "source": "not_recorded"
+        },
+        "current_obligation_ids": [
+          "OB-11"
+        ],
+        "evidence_validated": true
+      },
+      {
+        "schema_version": 2,
+        "case": "CART-1_TC_012",
+        "case_version": "cv_8ad20339348408e4f727",
+        "obligation_ids": [
+          "OB-12"
+        ],
+        "obligation_hashes": {
+          "OB-12": "3b06ff9048c35d9212986d41ab272cbeb9cab5e905f3b562e82e57227df58af5"
+        },
+        "attempt_id": "a8",
+        "dispatch_id": "S6-qa-runner-2",
+        "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "steps_actual": [
+          "goto http://localhost:3000/login -> ok: 0.73 s",
+          "fill-account [data-testid=login-email-input] user user -> ok",
+          "fill-account [data-testid=login-password-input] user secret -> ok",
+          "click [data-testid=login-submit-button] -> ok",
+          "wait 3000 -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.30 s",
+          "click [data-testid^=remove-cart-item-] -> ok",
+          "wait 1500 -> ok",
+          "goto http://localhost:3000/books/112 -> ok: 0.61 s",
+          "click [data-testid=wishlist-toggle-button] -> ok",
+          "wait 1000 -> ok",
+          "goto http://localhost:3000/books/113 -> ok: 0.38 s",
+          "click [data-testid=wishlist-toggle-button] -> ok",
+          "wait 1000 -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.57 s",
+          "capture supporting cart-empty-before -> ok",
+          "goto http://localhost:3000/wishlist -> ok: 0.45 s",
+          "capture pre_action wishlist-before -> ok",
+          "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove QA CART1 W1 QA Runner $10.00 Move to cart Remove",
+          "click [data-testid=wishlist-move-112] -> ok",
+          "read body text -> ok: Moved to cart bookstore Home Cart 1 Wishlist Profile Logout SAVED Wishlist QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove bookstore A curated catalog of books, delivered. © 2026 Bookstore. All rights reserved.",
+          "wait 1500 -> ok",
+          "goto http://localhost:3000/wishlist -> ok: 0.57 s",
+          "capture post_action wishlist-after-reload -> ok",
+          "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove",
+          "read [data-testid=wishlist-move-113] text -> ok: Move to cart",
+          "read [data-testid=wishlist-move-113] attr=disabled -> ok",
+          "goto http://localhost:3000/cart -> ok: 0.41 s",
+          "capture post_action completion -> ok",
+          "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 W1 QA Runner $10.00 each QUANTITY Subtotal: $10.00 Remove"
+        ],
+        "expected": [
+          "move to cart adds and removes"
+        ],
+        "actual": "Seed user, cart emptied, wishlist held W1 (in stock) and W0 (stock 0). Move to cart on W1: toast 'Moved to cart'; after reload the wishlist lists only W0; cart page lists W1 qty 1 (subtotal $10.00 at $10.00 each) and not W0. W0 row shows an Out of Stock badge; its Move to cart button is disabled (separate diagnostic attempt a9, not in the record: click refused as 'not enabled', cursor not-allowed).",
+        "completion_condition": "wishlist item gone after move",
+        "attempt_started_at": "2026-10-31T12:01:33+00:00",
+        "attempt_ended_at": "2026-10-31T12:02:04+00:00",
+        "result": "pass",
+        "runtime_before": {
+          "profile_id": "web",
+          "timestamp": "2026-10-31T12:01:33+00:00",
+          "environment_id": "local",
+          "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+          "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+          "evidence_refs": [
+            "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120133Z.json"
+          ],
+          "provenance": {
+            "technical_verification": false,
+            "identity_kind": "person_confirmed"
+          },
+          "result": "person_confirmed",
+          "person_confirmation": {
+            "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+            "at": "2026-10-31T11:54:15+00:00",
+            "task": "CART-1",
+            "kind": "deployed",
+            "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+          },
+          "container": "",
+          "checkout": "..\\MyBooks",
+          "comparisons": []
+        },
+        "runtime_after": {
+          "profile_id": "web",
+          "timestamp": "2026-10-31T12:02:03+00:00",
+          "environment_id": "local",
+          "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+          "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+          "evidence_refs": [
+            "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120203Z.json"
+          ],
+          "provenance": {
+            "technical_verification": false,
+            "identity_kind": "person_confirmed"
+          },
+          "result": "person_confirmed",
+          "person_confirmation": {
+            "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+            "at": "2026-10-31T11:54:15+00:00",
+            "task": "CART-1",
+            "kind": "deployed",
+            "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+          },
+          "container": "",
+          "checkout": "..\\MyBooks",
+          "comparisons": []
+        },
+        "evidence_policy": "ui",
+        "limitations": [
+          "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+        ],
+        "evidence_refs": [
+          {
+            "path": "evidence/161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770.png",
+            "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+            "kind": "image",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:01:54+00:00",
+            "proves": [
+              "cart-empty-before"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770"
+          },
+          {
+            "path": "evidence/4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240.png",
+            "content_hash": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240",
+            "kind": "image",
+            "phase": "pre_action",
+            "captured_at": "2026-10-31T12:01:55+00:00",
+            "proves": [
+              "wishlist-before"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240"
+          },
+          {
+            "path": "evidence/1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035.txt",
+            "content_hash": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:01:55+00:00",
+            "proves": [
+              "read [data-testid=wishlist-list]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035"
+          },
+          {
+            "path": "evidence/ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939.txt",
+            "content_hash": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:01:56+00:00",
+            "proves": [
+              "read body"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939"
+          },
+          {
+            "path": "evidence/62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b.png",
+            "content_hash": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:02:00+00:00",
+            "proves": [
+              "wishlist-after-reload"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b"
+          },
+          {
+            "path": "evidence/67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42.txt",
+            "content_hash": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:02:00+00:00",
+            "proves": [
+              "read [data-testid=wishlist-list]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42"
+          },
+          {
+            "path": "evidence/09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f.txt",
+            "content_hash": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:02:00+00:00",
+            "proves": [
+              "read [data-testid=wishlist-move-113]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f"
+          },
+          {
+            "path": "evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt",
+            "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:02:01+00:00",
+            "proves": [
+              "read [data-testid=wishlist-move-113] attr=disabled"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "evidence/55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53.png",
+            "content_hash": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53",
+            "kind": "image",
+            "phase": "post_action",
+            "captured_at": "2026-10-31T12:02:02+00:00",
+            "proves": [
+              "completion"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53"
+          },
+          {
+            "path": "evidence/65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630.txt",
+            "content_hash": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630",
+            "kind": "log",
+            "phase": "supporting",
+            "captured_at": "2026-10-31T12:02:02+00:00",
+            "proves": [
+              "read [data-testid=cart-items-list]"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630"
+          }
+        ],
+        "gate_a_decision_ref": "gateA-CART-1",
+        "approved_policy_hash": "d02807eff8ef5aa131366b6f749ec279e675cd174156712b50b6f8b45fc2bd7f",
+        "before_change": {
+          "r": "R-14",
+          "value": null,
+          "ref": null,
+          "source": "not_recorded"
+        },
+        "current_obligation_ids": [
+          "OB-12"
+        ],
+        "evidence_validated": true
+      }
+    ],
+    "errors": []
+  },
+  "subtasks_open": [],
+  "review_skipped": false,
+  "repair_windows": [],
+  "repair_windows_problem": "",
+  "source_inputs": {
+    "schema_version": 1,
+    "files": {
+      "test-plan.json": {
+        "path": "work/test-plan.json",
+        "sha256": "4a3ed29830e15961860a6ebabbc0eb5b9edf1f8a05fd0a7c8ed4887dcc48a156"
+      },
+      "run-report.json": {
+        "path": "work/run-report.json",
+        "sha256": "305dd5893e5287d25198a90f86e507889176b9e7394a51022b3878792305841e"
+      },
+      "automation-manifest.json": {
+        "path": "work/automation-manifest.json",
+        "sha256": "9b3d004479424d511210cefb344c0a6d05e51f7557668665676ccd687c64835d"
+      },
+      "triage.json": {
+        "path": "work/triage.json",
+        "sha256": "79addf4a6f9adbfdc648f63bccb15ab58474e9bd9463eb9da49bc22e599bb8d2"
+      }
+    },
+    "fingerprint": "9885be2d3684fa1fc2c920334ef2b3c068d05827ef1fea94b170b4ddff3543b4"
+  },
+  "person_debts": [],
+  "factory_findings": []
+}

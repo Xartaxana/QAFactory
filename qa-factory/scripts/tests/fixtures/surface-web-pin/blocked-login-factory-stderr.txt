@@ -1,0 +1,1 @@
+manual_capture: the login by code did not land (login by code: no element matched within 30 s); this attempt has no record. The recipe did not fit the page: you may sign in ONCE through `fill-account` steps in a new attempt; if that does not land either, put it in env_blocked[] with this line and halt the block (never `build` it), owner factory

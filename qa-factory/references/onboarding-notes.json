@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "description": "The closed lists of the onboarding notes (scripts/onboarding_notes.py, B-411): where a run's own notes live in the project, the phases a run goes through and the phase text each one reads, the skeleton of discovery.yaml, and the words a section or a topic may be in. Code reads this file; it holds no list of its own (FR-13). The notes are the factory's own record of one onboarding run, written as the phases go; they are not project files and git ignores the folder from its first file.",
+  "folder": "qa-factory/state/onboarding",
+  "phases": ["p1", "p2", "p2b", "p3", "p4", "done"],
+  "phases_dir": "skills/qa-onboarding/phases",
+  "phase_files": {
+    "p1": "p1-discovery.md",
+    "p2": "p2-interview.md",
+    "p2b": "p2b-rediscovery.md",
+    "p3": "p3-summary-gate.md",
+    "p4": "p4-generate.md",
+    "done": null
+  },
+  "discovery_sections": [
+    "execution_profiles",
+    "run_commands",
+    "ci_gates",
+    "declared_conventions",
+    "risk_ranking",
+    "requirements_sources",
+    "cases_tms",
+    "tracker_reach",
+    "application_stack",
+    "architecture_data",
+    "test_data",
+    "candidate_environments",
+    "stand_access",
+    "runtime_provenance",
+    "external_dependencies",
+    "app_vs_test_repo",
+    "inferred_conventions",
+    "git_conventions",
+    "evidence_capability",
+    "jira_direct_access",
+    "components_api"
+  ],
+  "section_states": ["pending", "found", "gap", "inferred", "read", "not_read_no_checkout", "not_read_nothing_found"],
+  "topic_states": ["answered", "not_answered"],
+  "after_approval_batch_prefix": "p4-",
+  "reask_batch_prefixes": ["p3-edit-", "p4-"]
+}

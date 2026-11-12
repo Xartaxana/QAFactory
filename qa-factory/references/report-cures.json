@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "note": "The cure for 'this test command writes no report the factory can read', per framework (FR-13: closed variety is data). Read through ONE module, scripts/report_cures.py, by run_suite.report_cure (the sentence the runner and gate A's reporter card give) and by scripts/onboarding_probe.py (the onboarding probe, which PROPOSES an argv cure and applies it only on the person's yes). A row: `id`; `match` (a framework token found in the lower-cased command line; the FIRST row that matches wins, except that a pytest-shaped command always takes the pytest row); `words` (what the CODE and a role read, with the flag spelled out; empty = the runner equips the framework itself, so a missing report is a DIAGNOSIS, never a flag); `person_words` (what a PERSON is told about the same cure, in words and with no flag, option or file name: the flag lives only on the proposal line; required when `words` is not empty); `flag` (the argv words of the cure, matched by the option's NAME: an option already in the command with the same value is 'already the command', with another value it is changed in place and never added twice); `add_argv` (the words a one-flag cure puts in before a bare `--`, or null when the cure is not one argv change: a missing package, a config edit); `add_env` (optional; null or an object of variable name to exactly `{report_path}`, the variables the same cure puts in the command's `env`, for a runner that names its report file by a variable; only beside a non-empty `add_argv`: a cure that adds words, and their variable, is one change of the command); `reporter_kind` (the report format the cure writes, junit-xml or trx - set in the profile beside the command; required when add_argv is set); `needs` (what the cure still needs from the project that no flag can give, in words); `propose_text` (the sentence the person is asked, `{profile}` and `{command}` filled in; required when add_argv is set). `{report_path}` inside a word is where the factory reads the report from: the probe and the S5 runner both substitute it INSIDE the word. The top-level `question` block holds the text around the sentence (the same shape as every question a person reads: human-questions.md); its lines are filled by plain replacement of `{profile}`, `{command}`, `{variables}` (the names of the variables a cure sets, in backquotes).",
+  "question": {
+    "intro_cure": "One existing test of the {profile} tests was run through the command the project records, and it left no report the factory can read, so every later run of them would be recorded as not executed, however green it looks.",
+    "intro_person": "One existing test of the {profile} tests was run through the command you gave, and it left a report the factory can read.",
+    "report_path_note": "`{report_path}` in the command stands for the file the factory reads the report from; the factory fills it in itself.",
+    "propose_text": "I propose to run the {profile} tests as: `{command}`. Do it? yes / no",
+    "change_note": "The command already carries an option of that kind with another value, so the proposal replaces that value and adds nothing twice.",
+    "kind_note": "It also records which kind of report that command writes, which the profile did not say before.",
+    "env_note": "The command also sets {variables} to the file the factory reads the report from, and the factory fills that file in itself.",
+    "answer_block": "---\nAnswer: yes, and the factory changes that one command and nothing else; no, and the command stays as it is."
+  },
+  "command_formats_note": "Read by run_suite.reporter_choice for a run that names no reporter (explicit and run.reporter come first). The report format of a command by the words it contains: the first entry with a word in the lower-cased command line wins, so the ORDER matters (pytest, then trx, then junit-xml: `dotnet test` stays junit-xml here and is never handed to the dotnet row's trx). A command no entry matches takes the `reporter_kind` of its cure row (`rows`) and the summary names that row as `reporter_inferred_from`. A file without this key leaves the rows to decide.",
+  "command_formats": [
+    {"kind": "pytest", "contains": ["pytest"]},
+    {"kind": "trx", "contains": [".trx", "logger trx"]},
+    {"kind": "junit-xml", "contains": ["junit", "--reporters", "jest", "karma", "ng test", "dotnet test"]}
+  ],
+  "rows": [
+    {
+      "id": "karma",
+      "person_words": "Karma needs a JUnit report package added to the project and switched on in Karma's own settings, so this is a change to the project's dependencies and settings and not only to the command; I do not make that change.",
+      "match": ["karma", "ng test", "ng e2e"],
+      "words": "karma/ng: add `--reporters junit` to the command and `karma-junit-reporter` to the project's devDependencies",
+      "flag": ["--reporters", "junit"],
+      "add_argv": null,
+      "reporter_kind": "junit-xml",
+      "needs": ["the `karma-junit-reporter` package in the project's devDependencies, and a karma setting that writes the report where the factory reads it"],
+      "propose_text": null
+    },
+    {
+      "id": "jest",
+      "person_words": "Jest needs a JUnit report package added to the project and pointed at the file the factory reads, so this is a change to the project's dependencies and settings and not only to the command; I do not make that change.",
+      "match": ["jest"],
+      "words": "jest: add `--reporters=jest-junit` to the command and `jest-junit` to the project's devDependencies",
+      "flag": ["--reporters=jest-junit"],
+      "add_argv": null,
+      "reporter_kind": "junit-xml",
+      "needs": ["the `jest-junit` package in the project's devDependencies, and its output setting pointed at the file the factory reads"],
+      "propose_text": null
+    },
+    {
+      "id": "vitest",
+      "person_words": "Vitest has a built-in JUnit report that is switched on in the command itself, with nothing to install.",
+      "match": ["vitest"],
+      "words": "vitest: add `--reporter=junit --outputFile={report_path}` to the command (vitest's built-in junit reporter; nothing to install)",
+      "flag": ["--reporter=junit", "--outputFile={report_path}"],
+      "add_argv": ["--reporter=junit", "--outputFile={report_path}"],
+      "reporter_kind": "junit-xml",
+      "needs": [],
+      "propose_text": "I propose to run the {profile} tests as: `{command}`. Do it? yes / no"
+    },
+    {
+      "id": "dotnet",
+      "person_words": "dotnet writes its test report itself when its logger option is given in the command, with nothing to install.",
+      "match": ["dotnet", "vstest"],
+      "words": "dotnet: add `--logger \"junit;LogFilePath=<path>\"` (or `\"trx;LogFileName=<path>\"`) to the command",
+      "flag": ["--logger", "trx;LogFileName={report_path}"],
+      "add_argv": ["--logger", "trx;LogFileName={report_path}"],
+      "reporter_kind": "trx",
+      "needs": [],
+      "propose_text": "I propose to run the {profile} tests as: `{command}`. Do it? yes / no"
+    },
+    {
+      "id": "playwright",
+      "person_words": "Playwright writes a JUnit report when the command asks for one and names the file to write it to; both go into the command itself, with nothing to install.",
+      "match": ["playwright"],
+      "words": "playwright: add `--reporter=junit` and `PLAYWRIGHT_JUNIT_OUTPUT_NAME`",
+      "flag": ["--reporter=junit"],
+      "add_argv": ["--reporter=junit"],
+      "add_env": {"PLAYWRIGHT_JUNIT_OUTPUT_NAME": "{report_path}"},
+      "reporter_kind": "junit-xml",
+      "needs": [],
+      "propose_text": "I propose to run the {profile} tests as: `{command}`. Do it? yes / no"
+    },
+    {
+      "id": "pytest",
+      "person_words": "",
+      "match": ["pytest", "py.test"],
+      "words": "",
+      "flag": [],
+      "add_argv": null,
+      "reporter_kind": null,
+      "needs": [],
+      "propose_text": null
+    }
+  ]
+}

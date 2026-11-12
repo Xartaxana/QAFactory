@@ -1,0 +1,3307 @@
+{
+  "tests": [
+    {
+      "case": "LOCAL-1_TC_004",
+      "covers": [
+        "LOCAL-1_TC_004"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_004",
+          "version": "cv_7396ea6d54e97abb53b5"
+        }
+      ],
+      "requirements": [
+        "R-4"
+      ],
+      "plan_row": "TS-4",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_004",
+      "test": "LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+        "assertion_refs": [],
+        "test_content_sha": "350d5e5633351492defc687149eca3ec6270b5d60d030d03a87a0ea470bf07d1"
+      },
+      "status": "red",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_004"
+      ],
+      "generated_from": [
+        "tests/api/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:19",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:103",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_004",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_004"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4"
+        }
+      ],
+      "critic_verdict": "approved",
+      "sensitivity_proof_missing_reason": "probe not applicable: red on the product (contradicts_requirement); person's word probe gap: tooling:typescript",
+      "critic_note": "static review done: asserts follow the Then, red is the product (contradicts_requirement); no probe applies to a red test"
+    },
+    {
+      "case": "LOCAL-1_TC_005",
+      "covers": [
+        "LOCAL-1_TC_005"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_005",
+          "version": "cv_1e2fe984a158845705a5"
+        }
+      ],
+      "requirements": [
+        "R-5"
+      ],
+      "plan_row": "TS-5",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_005",
+      "test": "LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+        "assertion_refs": [],
+        "test_content_sha": "350d5e5633351492defc687149eca3ec6270b5d60d030d03a87a0ea470bf07d1"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_005"
+      ],
+      "generated_from": [
+        "tests/api/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:29",
+      "defect_location": "MyBooks/src/lib/session.ts:11",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_005",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_005"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-5"
+        }
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe incomplete: probe tool cannot read TypeScript failure wording (cause: tooling, language: typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "covers": [
+        "LOCAL-1_TC_011"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_011",
+          "version": "cv_f943fc1ca0d050dd554f"
+        }
+      ],
+      "requirements": [
+        "R-12"
+      ],
+      "plan_row": "TS-12",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_011",
+      "test": "LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+        "assertion_refs": [],
+        "test_content_sha": "350d5e5633351492defc687149eca3ec6270b5d60d030d03a87a0ea470bf07d1"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_011"
+      ],
+      "generated_from": [
+        "tests/api/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:73",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:42",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_011",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_011"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-12"
+        }
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe not_executed: probe tool could not write its request file, path too long (cause: tooling, language: typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "covers": [
+        "LOCAL-1_TC_013"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_013",
+          "version": "cv_4efddd5f3c4f2fcbeb17"
+        }
+      ],
+      "requirements": [
+        "R-14"
+      ],
+      "plan_row": "TS-14",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_013",
+      "test": "LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+        "assertion_refs": [],
+        "test_content_sha": "350d5e5633351492defc687149eca3ec6270b5d60d030d03a87a0ea470bf07d1"
+      },
+      "status": "red",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_013"
+      ],
+      "generated_from": [
+        "tests/api/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:98",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:42",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_013",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_013"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-14"
+        }
+      ],
+      "critic_verdict": "approved",
+      "sensitivity_proof_missing_reason": "probe not applicable: red on the product (contradicts_requirement); person's word probe gap: tooling:typescript",
+      "critic_note": "static review done: asserts follow the Then, red is the product (contradicts_requirement); no probe applies to a red test"
+    },
+    {
+      "case": "LOCAL-1_TC_014",
+      "covers": [
+        "LOCAL-1_TC_014"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_014",
+          "version": "cv_65325bbd01a66b153365"
+        }
+      ],
+      "requirements": [
+        "R-15"
+      ],
+      "plan_row": "TS-15",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_014",
+      "test": "LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_014"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:111",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:42",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_014",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_014"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-15"
+        }
+      ],
+      "obligation_ids": [
+        "OB-15"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe incomplete: probe tool cannot read TypeScript (cause: tooling, language: typescript); person's word recorded"
+    },
+    {
+      "case": "LOCAL-1_TC_015",
+      "covers": [
+        "LOCAL-1_TC_015"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_015",
+          "version": "cv_c5f65d3008111d478843"
+        }
+      ],
+      "requirements": [
+        "R-16"
+      ],
+      "plan_row": "TS-16",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_015",
+      "test": "LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "status": "red",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_015"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:140",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:42",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_015",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_015"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-16"
+        }
+      ],
+      "obligation_ids": [
+        "OB-16"
+      ],
+      "critic_verdict": "approved",
+      "sensitivity_proof_missing_reason": "probe not applicable: red on the product; person's word recorded (probe gap: tooling:typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "covers": [
+        "LOCAL-1_TC_016"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_016",
+          "version": "cv_d41f3bd77f8593fbe8f1"
+        }
+      ],
+      "requirements": [
+        "R-17"
+      ],
+      "plan_row": "TS-17",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_016",
+      "test": "LOCAL-1_TC_016 several products give one line each and a summed total",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "status": "red",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_016"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:170",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:42",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_016",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_016"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-17"
+        }
+      ],
+      "obligation_ids": [
+        "OB-17"
+      ],
+      "critic_verdict": "approved",
+      "sensitivity_proof_missing_reason": "probe not applicable: red on the product; person's word recorded (probe gap: tooling:typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_017",
+      "covers": [
+        "LOCAL-1_TC_017"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_017",
+          "version": "cv_df4ef93d31ae6d041491"
+        }
+      ],
+      "requirements": [
+        "R-18"
+      ],
+      "plan_row": "TS-18",
+      "file": "tests/api/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_017",
+      "test": "LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "selector": "tests/api/cart/cart.spec.ts::@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_017"
+      ],
+      "assertion_id": "tests/api/cart/cart.spec.ts:177",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:42",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_017",
+      "selector_args": [
+        "tests/api/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_017"
+      ],
+      "report_test_id": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-18"
+        }
+      ],
+      "obligation_ids": [
+        "OB-18"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe incomplete: probe tool cannot read TypeScript (cause: tooling, language: typescript); person's word recorded"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "covers": [
+        "LOCAL-1_TC_001"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_001",
+          "version": "cv_0ca72c610937bf16acf5"
+        }
+      ],
+      "requirements": [
+        "R-1"
+      ],
+      "plan_row": "TS-1",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_001",
+      "test": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "instance_id": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "trace_binding": {
+        "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+        "assertion_refs": [],
+        "test_content_sha": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_001"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:41",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:169",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_001",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_001"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "critic_verdict": "approved_with_fixes",
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript"
+    },
+    {
+      "case": "LOCAL-1_TC_002",
+      "covers": [
+        "LOCAL-1_TC_002"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_002",
+          "version": "cv_d0150be267e7a21396f3"
+        }
+      ],
+      "requirements": [
+        "R-2"
+      ],
+      "plan_row": "TS-2",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_002",
+      "test": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "instance_id": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "trace_binding": {
+        "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+        "assertion_refs": [],
+        "test_content_sha": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_002"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:62",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:169",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_002",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_002"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-2"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript"
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "covers": [
+        "LOCAL-1_TC_003"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_003",
+          "version": "cv_430295a645a433dc3e44"
+        }
+      ],
+      "requirements": [
+        "R-3"
+      ],
+      "plan_row": "TS-3",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_003",
+      "test": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "trace_binding": {
+        "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+        "assertion_refs": [],
+        "test_content_sha": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_003"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:113",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:169",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_003",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_003"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-3"
+        }
+      ],
+      "obligation_ids": [
+        "OB-3"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "critic_verdict": "approved",
+      "critic_note": "Round 2: typeQuantity uses click, selectText, pressSequentially; Then 4 asserts value 3 whole and focus kept. Unit-price Then red by design (contradicts_requirement). Probe gap tooling:typescript, not receipted (person word)."
+    },
+    {
+      "case": "LOCAL-1_TC_006",
+      "covers": [
+        "LOCAL-1_TC_006"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_006",
+          "version": "cv_6eb2cabaed7969f5b81e"
+        }
+      ],
+      "requirements": [
+        "R-6"
+      ],
+      "plan_row": "TS-6",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_006",
+      "test": "LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "instance_id": "LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "trace_binding": {
+        "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_006 a signed-in cart survives logout and login",
+        "assertion_refs": [],
+        "test_content_sha": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_006"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:153",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:169",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_006",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_006"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-6"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "covers": [
+        "LOCAL-1_TC_007"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_007",
+          "version": "cv_046af312329b03af6938"
+        }
+      ],
+      "requirements": [
+        "R-8"
+      ],
+      "plan_row": "TS-8",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_007",
+      "test": "LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_007"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_007",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_007 invalid_quantity_rejected\\[tc007_zero\\]"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "tc007_zero"
+      ],
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "covers": [
+        "LOCAL-1_TC_008"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_008",
+          "version": "cv_399811ae764fa23a33a4"
+        }
+      ],
+      "requirements": [
+        "R-9"
+      ],
+      "plan_row": "TS-9",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_008",
+      "test": "LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_008"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_008",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_008 invalid_quantity_rejected\\[tc008_negative\\]"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "tc008_negative"
+      ],
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "covers": [
+        "LOCAL-1_TC_008"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_008",
+          "version": "cv_399811ae764fa23a33a4"
+        }
+      ],
+      "requirements": [
+        "R-9"
+      ],
+      "plan_row": "TS-9",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_008",
+      "test": "LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_008"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_008",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_008 invalid_quantity_rejected\\[tc008_non_integer\\]"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "tc008_non_integer"
+      ],
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "covers": [
+        "LOCAL-1_TC_009"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_009",
+          "version": "cv_a7a0796939a1b5bab25c"
+        }
+      ],
+      "requirements": [
+        "R-10"
+      ],
+      "plan_row": "TS-10",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_009",
+      "test": "LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_009"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_009",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_009 invalid_quantity_rejected\\[tc009_non_numeric\\]"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-10"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "tc009_non_numeric"
+      ],
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "covers": [
+        "LOCAL-1_TC_010"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_010",
+          "version": "cv_f2470b6bb042dcf661ab"
+        }
+      ],
+      "requirements": [
+        "R-11"
+      ],
+      "plan_row": "TS-11",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_010",
+      "test": "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "instance_id": "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_010"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:217",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:44",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_010",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-11"
+        }
+      ],
+      "obligation_ids": [
+        "OB-11"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "critic_verdict": "unverified",
+      "trace_binding": {
+        "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+        "assertion_refs": [],
+        "test_content_sha": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      }
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:283",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_one"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:283",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_ten"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:283",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_234"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:283",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_contains_zero"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:283",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_multi_digit"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:283",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_stock_boundary"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:294",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "p_zero"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "static review: asserts follow Thens 2/3/4/6/7 from R-8..R-10,R-13; red is the product coercion to 1 (contradicts_requirement); no probe per person word (tooling:typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "status": "green",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:294",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "partitions": [
+        "p_above_stock"
+      ],
+      "critic_verdict": "unverified"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:294",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "p_negative"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "static review: asserts follow Thens 2/3/4/6/7 from R-8..R-10,R-13; red is the product coercion to 1 (contradicts_requirement); no probe per person word (tooling:typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:294",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "p_non_integer"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "static review: asserts follow Thens 2/3/4/6/7 from R-8..R-10,R-13; red is the product coercion to 1 (contradicts_requirement); no probe per person word (tooling:typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_875562d9cfed74770120"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-13",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:294",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_012 quantity_class_behaves\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-13"
+        }
+      ],
+      "obligation_ids": [
+        "OB-13"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "p_non_numeric"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "static review: asserts follow Thens 2/3/4/6/7 from R-8..R-10,R-13; red is the product coercion to 1 (contradicts_requirement); no probe per person word (tooling:typescript)"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "covers": [
+        "LOCAL-1_TC_018"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_018",
+          "version": "cv_2a7711899a86d6d11f3a"
+        }
+      ],
+      "requirements": [
+        "R-19"
+      ],
+      "plan_row": "TS-19",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_018",
+      "test": "LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_018"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:390",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_018",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_018 add_path_obeys_the_add_rules\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-19"
+        }
+      ],
+      "obligation_ids": [
+        "OB-19"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "product_page"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "re-check after rework: waits on POST /api/cart reply via BasePage.clickAndAwaitCartReply (no networkidle), no expectation change; binding refs match asserts; red is the product (cart line has no price), contradicts_requirement; no probe per person word (tooling:typescript, not receipted)"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "covers": [
+        "LOCAL-1_TC_018"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_018",
+          "version": "cv_2a7711899a86d6d11f3a"
+        }
+      ],
+      "requirements": [
+        "R-19"
+      ],
+      "plan_row": "TS-19",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_018",
+      "test": "LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_018"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:390",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_018",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_018 add_path_obeys_the_add_rules\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-19"
+        }
+      ],
+      "obligation_ids": [
+        "OB-19"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "catalog_card"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "re-check after rework: waits on POST /api/cart reply via BasePage.clickAndAwaitCartReply (no networkidle), no expectation change; binding refs match asserts; red is the product (cart line has no price), contradicts_requirement; no probe per person word (tooling:typescript, not receipted)"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "covers": [
+        "LOCAL-1_TC_018"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_018",
+          "version": "cv_2a7711899a86d6d11f3a"
+        }
+      ],
+      "requirements": [
+        "R-19"
+      ],
+      "plan_row": "TS-19",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_018",
+      "test": "LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "status": "red",
+      "shape": "parameterize",
+      "consolidates": [
+        "LOCAL-1_TC_018"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:390",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_018",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_018 add_path_obeys_the_add_rules\\["
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-19"
+        }
+      ],
+      "obligation_ids": [
+        "OB-19"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "partitions": [
+        "wishlist_move"
+      ],
+      "critic_verdict": "approved",
+      "critic_note": "re-check after rework: waits on POST /api/cart reply via BasePage.clickAndAwaitCartReply (no networkidle), no expectation change; binding refs match asserts; red is the product (cart line has no price), contradicts_requirement; no probe per person word (tooling:typescript, not receipted)"
+    },
+    {
+      "case": "LOCAL-1_TC_019",
+      "covers": [
+        "LOCAL-1_TC_019"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_019",
+          "version": "cv_52d16ccfe2ee80471805"
+        }
+      ],
+      "requirements": [
+        "R-20"
+      ],
+      "plan_row": "TS-20",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_019",
+      "test": "LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "status": "red",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_019"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:416",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_019",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-20"
+        }
+      ],
+      "obligation_ids": [
+        "OB-20"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "critic_verdict": "approved",
+      "critic_note": "re-check after rework: waits on POST /api/cart reply via BasePage.clickAndAwaitCartReply (no networkidle), no expectation change; binding refs match asserts; red is the product (cart line has no price), contradicts_requirement; no probe per person word (tooling:typescript, not receipted)"
+    },
+    {
+      "case": "LOCAL-1_TC_020",
+      "covers": [
+        "LOCAL-1_TC_020"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_020",
+          "version": "cv_3599058ee1132918ddd6"
+        }
+      ],
+      "requirements": [
+        "R-21"
+      ],
+      "plan_row": "TS-21",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_020",
+      "test": "LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "status": "red",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_020"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:470",
+      "defect_location": "MyBooks/src/components/pages/WishlistPage.tsx:47",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_020",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_020"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-21",
+          "obligation_hash": "5ed9caf3aba3297945dc4e9afe408b738b575ac73f4ad59bc166d51831fad254"
+        }
+      ],
+      "obligation_ids": [
+        "OB-21"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "LOCAL-1_TC_021",
+      "covers": [
+        "LOCAL-1_TC_021"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_021",
+          "version": "cv_aef96c10539e27125a3e"
+        }
+      ],
+      "requirements": [
+        "R-22"
+      ],
+      "plan_row": "TS-22",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "marker": "LOCAL-1_TC_021",
+      "test": "LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "selector": "tests/e2e/cart/cart.spec.ts::@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_021"
+      ],
+      "generated_from": [
+        "tests/e2e/cart/cart.spec.ts"
+      ],
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:515",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_021",
+      "selector_args": [
+        "tests/e2e/cart/cart.spec.ts",
+        "--grep",
+        "LOCAL-1_TC_021"
+      ],
+      "report_test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-22",
+          "obligation_hash": "3b96691de02e90c7379d2bdf5847eebce38e6e648dea07c50e219fd9957754a2"
+        }
+      ],
+      "obligation_ids": [
+        "OB-22"
+      ],
+      "sensitivity_proof_missing_reason": "probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "critic_verdict": "unverified"
+    }
+  ],
+  "revision": 83,
+  "unresolved": [
+    {
+      "case": "LOCAL-1_TC_004",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+      ],
+      "detail": "R-4: expected cart line unit price 19.99 (catalog price); observed GET /api/cart line has no price field (undefined)",
+      "remedy": {
+        "kind": "flag",
+        "where": "qa-factory/records/stand-identity.json",
+        "change": "record how to read the build of the host-run MyBooks app on :3000 for profile web",
+        "restart": "none"
+      },
+      "thens": [
+        1
+      ]
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+      ],
+      "detail": "R-14: expected cart line unit price 7.35 (catalog price P); observed GET /api/cart line has no price field (undefined)",
+      "remedy": {
+        "kind": "flag",
+        "where": "qa-factory/records/stand-identity.json",
+        "change": "record how to read the build of the host-run MyBooks app on :3000 for profile web",
+        "restart": "none"
+      },
+      "thens": [
+        2
+      ]
+    },
+    {
+      "case": "LOCAL-1_TC_015",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity"
+      ],
+      "thens": [
+        2
+      ],
+      "detail": "R-16: expected line subtotal 5 x P = 42.25 (catalog price P); observed GET /api/cart line has no price field, subtotal NaN. Then 1 (one line, quantity 5) passes"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total"
+      ],
+      "thens": [
+        1
+      ],
+      "detail": "R-17: expected each cart line to carry its catalog price (e.g. 11.1); observed GET /api/cart line has no price field (undefined). Lines, quantities and total delta (Then 2) pass"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "reason": "contradicts_requirement",
+      "thens": [
+        1
+      ],
+      "detail": "R-1: expected cart line unit price = catalog price 23.47; observed GET /api/cart line carries no price field (undefined). Same defect as LOCAL-1_TC_004 (cartService.ts:103). Thens 2 and 3 green."
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal"
+      ],
+      "thens": [
+        1
+      ],
+      "detail": "R-3: expected cart line unit price 12.50 (catalog price P); observed GET /api/cart line has no price field (undefined); quantity 3, badge, cart page, focus Thens green"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+      ],
+      "detail": "R-8: expected 0 rejected with a message, no cart line, field keeps 0; observed GET /api/cart holds 1 line quantity 1, no message, field shows 1 (BookDetailPage.tsx:164 coerces to 1). Then 1,2,3 red.",
+      "thens": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+      ],
+      "detail": "R-9: expected -1 and 1.5 rejected with a message, no cart line, field keeps the typed value; observed no message, cart line added (quantity 1), field shows 11 (typed -1) / 1 (typed 1.5). Then 1,2,3 red on both.",
+      "thens": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+      ],
+      "detail": "R-10: expected abc rejected with an error, no cart line; observed no message, cart line added (quantity 1), field shows 1. Then 1,2,3 red.",
+      "thens": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]"
+      ],
+      "detail": "R-8/R-9/R-10 (TC_012 Then 2,3,4,6,7): expected 0, -1, 1.5, abc rejected with a message, no cart line, field keeps the typed value; observed GET /api/cart holds one line quantity 1, no message, field shows 1 (BookDetailPage.tsx:164 coerces). Same defect as TC_007-009; red_lock per case.",
+      "thens": [
+        2,
+        3,
+        4,
+        6,
+        7
+      ]
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+      ],
+      "thens": [
+        1
+      ],
+      "detail": "R-19: expected cart line at catalog price P=17.35 by every path; observed GET /api/cart line carries no price field (undefined), same defect as TC_001/004. Thens 2,3,4 assert green in the same bodies (only the price assert failed)."
+    },
+    {
+      "case": "LOCAL-1_TC_019",
+      "reason": "contradicts_requirement",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+      ],
+      "thens": [
+        1
+      ],
+      "detail": "R-19: expected cart line at catalog price 21.6; observed GET /api/cart line carries no price field (undefined). Then 2 (quantity exactly 1, badge 1; Q6 = a) passes."
+    },
+    {
+      "case": "LOCAL-1_TC_020",
+      "reason": "contradicts_requirement",
+      "thens": [
+        1
+      ],
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist"
+      ],
+      "detail": "R-19: expected the cart line for W at its catalog price 11.4; observed GET /api/cart line carries no price field (undefined). Thens 2 and 3 (Q6 = now) pass."
+    }
+  ],
+  "then_bindings": [
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:394",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:370",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:390",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 4,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:383",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:394",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:370",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:390",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 4,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:383",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:394",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:370",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:390",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "then": 4,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:383",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_019",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:420",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_019",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:416",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:98",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:101",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:41",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:36",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:30",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_002",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:62",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_002",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:66",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_002",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:73",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:113",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:106",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:98",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "then": 4,
+      "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:93",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_004",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:20",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_004",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:19",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_005",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:29",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_005",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:41",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_005",
+      "then": 3,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:44",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_005",
+      "then": 4,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:54",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_006",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:145",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_006",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:152",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:191",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:188",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:195",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:191",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:188",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:195",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:191",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:188",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:195",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:191",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:188",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:195",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:220",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:217",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:77",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:73",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "then": 3,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:84",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:283",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:283",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:283",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:283",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:283",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:283",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:300",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 6,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:294",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 5,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:298",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 6,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:294",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:300",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 6,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:294",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:300",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 6,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:294",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 4,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:300",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 6,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:294",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 7,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:268",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_014",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:111",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_014",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:118",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_014",
+      "then": 3,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:123",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_015",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:137",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_015",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:140",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:158",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:165",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_017",
+      "then": 1,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:182",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_017",
+      "then": 2,
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "assertion_ref": "tests/api/cart/cart.spec.ts:186",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_020",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:470",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_020",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:464",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_020",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:459",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_021",
+      "then": 1,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:515",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_021",
+      "then": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:505",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_021",
+      "then": 3,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "assertion_ref": "tests/e2e/cart/cart.spec.ts:508",
+      "status": "covered"
+    }
+  ],
+  "runs": [
+    {
+      "role": "qa-automator",
+      "label": "initial-1b46c920fb0839c72dde",
+      "scope": [
+        "LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-e6c2457a319bdf3ac0e4",
+      "scope": [
+        "LOCAL-1_TC_005 guest adds without login and the cart follows the cookie"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-4818d0a3e31035ac44c9",
+      "scope": [
+        "LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-b5b3bfdf7a244e2f0a3e",
+      "scope": [
+        "LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-1b46c920fb0839c72dde",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-e6c2457a319bdf3ac0e4",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-4818d0a3e31035ac44c9",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-b5b3bfdf7a244e2f0a3e",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "aef3dc36d1c618c09f58",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "025b1e23567caa167e72",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "ed9f0993e860494c0c82",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "18dd8f589c923ec7d55f",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND"
+      ],
+      "code_fingerprint": "w2",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "904473577bc2cc0d6c1b",
+      "scope": [
+        "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total"
+      ],
+      "code_fingerprint": "w2b",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-cdbd32075982b6cfee68",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart"
+      ],
+      "code_fingerprint": "w5a",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-df7f03cbb1698d353ef2",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page"
+      ],
+      "code_fingerprint": "w5a",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-79c39e14fda5e05e6e49",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page"
+      ],
+      "code_fingerprint": "w5b",
+      "warranted": true,
+      "result": "0 passed 1 failed (Thens 2,3 reached and green; Then 1 price red)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-41fc1859641827e1cd32",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal"
+      ],
+      "code_fingerprint": "w6",
+      "warranted": true,
+      "result": "0 passed 1 failed (only Then 1 unit price red; Thens 2,3,4 and quantity green)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-1f9af159d44b73e90ed5",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login"
+      ],
+      "code_fingerprint": "w6",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-e7528915f9f26e6d46ea",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal"
+      ],
+      "code_fingerprint": "w7",
+      "warranted": true,
+      "result": "0 passed 1 failed (only Then 1 unit price red; Then 4 now typed by keystrokes, green)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "e41c6842489cec23b009",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc007_zero (first code))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "1789d5d95ff413c3e0ee",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc008_non_integer (first code))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "3bb03c30bc68d784ded9",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc009_non_numeric (first code))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "fd8c5b5e9ad85d699f0f",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc008_negative (first code; stock 10 let a keystroke-made 11 mask Then 2))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "a9cb85e27ba6cd9979cb",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc007_zero (stock 50))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "d159d1c67627ce75fb34",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc009_non_numeric (stock 50))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "a875612829c24fc479d2",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc008_negative (stock 50))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "14342300abd3d031f4c4",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+      ],
+      "code_fingerprint": "w8",
+      "warranted": true,
+      "result": "0 passed 1 failed (red by requirement: tc008_non_integer (stock 50))"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-6585e388d79cba7ff64f",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown"
+      ],
+      "code_fingerprint": "w9",
+      "warranted": true,
+      "result": "1 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-7c2a80b4e313fd9043fd",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]"
+      ],
+      "code_fingerprint": "w9",
+      "warranted": true,
+      "result": "launcher took only the last --grep: 1 failed, red by requirement; selector_args fixed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-0740a4d2923d0ffa7306",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]"
+      ],
+      "code_fingerprint": "w9",
+      "warranted": true,
+      "result": "1 passed 10 failed (valid classes red on an extra unit-price assert, removed)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-475622e3599d811dd75c",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]"
+      ],
+      "code_fingerprint": "w9b",
+      "warranted": true,
+      "result": "7 passed 4 failed (red by requirement: p_zero p_negative p_non_integer p_non_numeric)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-63b36eb49341dc1f2581",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+      ],
+      "code_fingerprint": "w10",
+      "warranted": true,
+      "result": "1 failed (price), launcher took only the last --grep; selector_args fixed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-70c64e53d871768835c5",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+      ],
+      "code_fingerprint": "w10",
+      "warranted": true,
+      "result": "3 failed, each only on the Then 1 unit-price assert (no price field in the cart line)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-6be0653c44bf5bc1f2d4",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+      ],
+      "code_fingerprint": "w10",
+      "warranted": true,
+      "result": "1 failed, only on the Then 1 unit-price assert (no price field in the cart line)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-07789a0fc566538259ca",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+      ],
+      "code_fingerprint": "w11",
+      "warranted": true,
+      "result": "3 failed, each only on the Then 1 unit-price assert; networkidle wait replaced by a wait on the POST /api/cart reply"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-0296b632887a0e52678d",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+      ],
+      "code_fingerprint": "w12",
+      "warranted": true,
+      "result": "1 failed, only on the Then 1 unit-price assert (no price field in the cart line); re-run on the current bytes"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-849fa6cda0e1aa8d4bb7",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist"
+      ],
+      "code_fingerprint": "w13",
+      "warranted": true,
+      "result": "1 failed, only the Then 1 unit-price assert (no price field in the cart line)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-6c78988a18cad94ba2a6",
+      "scope": [
+        "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items"
+      ],
+      "code_fingerprint": "w13",
+      "warranted": true,
+      "result": "1 passed"
+    }
+  ],
+  "obligation_bindings": [
+    {
+      "obligation_id": "OB-4",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+      ],
+      "review_receipt_ref": "work/windows/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-5",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie"
+      ],
+      "review_receipt_ref": "work/windows/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-12",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged"
+      ],
+      "review_receipt_ref": "work/windows/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-14",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+      ],
+      "review_receipt_ref": "work/windows/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-15",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up"
+      ]
+    },
+    {
+      "obligation_id": "OB-16",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity"
+      ]
+    },
+    {
+      "obligation_id": "OB-17",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total"
+      ]
+    },
+    {
+      "obligation_id": "OB-18",
+      "instance_ids": [
+        "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND"
+      ]
+    },
+    {
+      "obligation_id": "OB-1",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page"
+      ]
+    },
+    {
+      "obligation_id": "OB-2",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart"
+      ]
+    },
+    {
+      "obligation_id": "OB-3",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:113",
+        "tests/e2e/cart/cart.spec.ts:106",
+        "tests/e2e/cart/cart.spec.ts:98",
+        "tests/e2e/cart/cart.spec.ts:93"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_003",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-6",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:145",
+        "tests/e2e/cart/cart.spec.ts:153"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_006",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-8",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188",
+        "tests/e2e/cart/cart.spec.ts:191",
+        "tests/e2e/cart/cart.spec.ts:195"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-8",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-8.json"
+    },
+    {
+      "obligation_id": "OB-9",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+        "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188",
+        "tests/e2e/cart/cart.spec.ts:191",
+        "tests/e2e/cart/cart.spec.ts:195"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-9",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-8.json"
+    },
+    {
+      "obligation_id": "OB-10",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188",
+        "tests/e2e/cart/cart.spec.ts:191",
+        "tests/e2e/cart/cart.spec.ts:195"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-10",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-8.json"
+    },
+    {
+      "obligation_id": "OB-11",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:217",
+        "tests/e2e/cart/cart.spec.ts:220"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-11",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-13",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+        "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:268",
+        "tests/e2e/cart/cart.spec.ts:272",
+        "tests/e2e/cart/cart.spec.ts:283",
+        "tests/e2e/cart/cart.spec.ts:288",
+        "tests/e2e/cart/cart.spec.ts:294",
+        "tests/e2e/cart/cart.spec.ts:298",
+        "tests/e2e/cart/cart.spec.ts:300"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-13",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-19",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+        "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:370",
+        "tests/e2e/cart/cart.spec.ts:383",
+        "tests/e2e/cart/cart.spec.ts:390",
+        "tests/e2e/cart/cart.spec.ts:394"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-19",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-10.json"
+    },
+    {
+      "obligation_id": "OB-20",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:416",
+        "tests/e2e/cart/cart.spec.ts:420"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-20",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-12.json"
+    },
+    {
+      "obligation_id": "OB-21",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:459",
+        "tests/e2e/cart/cart.spec.ts:464",
+        "tests/e2e/cart/cart.spec.ts:470"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-21",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-13.json"
+    },
+    {
+      "obligation_id": "OB-22",
+      "instance_ids": [
+        "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:505",
+        "tests/e2e/cart/cart.spec.ts:508",
+        "tests/e2e/cart/cart.spec.ts:515"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:OB-22",
+      "code_validity": "valid",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-13.json"
+    }
+  ],
+  "run_witness": "qa-factory/artifacts/LOCAL-1/evidence/runs/6c78988a18cad94ba2a6/initial-6c78988a18cad94ba2a6-20261102-053713.json exit 0, 1 passed (TC_021); TC_020 evidence/runs/849fa6cda0e1aa8d4bb7 exit 1, 1 failed (price only)",
+  "retracted_instances": [
+    "LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+    "LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+    "LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+    "LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+    "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+    "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+    "LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+    "LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+    "LOCAL-1_TC_016 several products give one line each and a summed total",
+    "LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+    "LOCAL-1_TC_012 quantity_class_behaves",
+    "LOCAL-1_TC_018 add_path_obeys_the_add_rules",
+    "LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+  ],
+  "probe": {
+    "layers": "ok",
+    "reuse": "ok",
+    "then_channel": "ok",
+    "duplicates": "none",
+    "own_data": "yes",
+    "collected": 34
+  },
+  "expectation_changes": [
+    {
+      "functions": [
+        "tests/e2e/cart/cart.spec.ts::quantity_class_behaves"
+      ],
+      "red_attempt": "0740a4d2923d0ffa7306",
+      "green_attempt": "475622e3599d811dd75c",
+      "then_refs": [
+        {
+          "case": "LOCAL-1_TC_012",
+          "then": 1
+        }
+      ],
+      "what_changed": "removed the extra unit price = P assert from the valid-class branch",
+      "reason": "Then 1 names quantity and subtotal, not a unit price; the price field is R-1's red (TC_001), not this case's",
+      "critic_verdict": "legitimate_correction",
+      "critic_note": "Then 1 names quantity and subtotal (value x P from the catalog), not a unit price; the removed assert was stricter than the Then; quantity and subtotal asserts kept unchanged; price defect stays red in TC_001/004"
+    }
+  ]
+}

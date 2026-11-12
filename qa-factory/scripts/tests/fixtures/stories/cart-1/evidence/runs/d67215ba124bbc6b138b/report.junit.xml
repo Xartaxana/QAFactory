@@ -1,0 +1,18 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="13.681688999999999">
+<testsuite name="api\cart\cart-isolation.spec.ts" timestamp="2026-10-31T09:34:11.643Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.689" errors="0">
+<testcase name="@api @regression CART-1_TC_005 cart isolation between owners" classname="api\cart\cart-isolation.spec.ts" time="3.689">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\cart-merge.spec.ts" timestamp="2026-10-31T09:34:11.643Z" hostname="chromium" tests="1" failures="0" skipped="0" time="6.359" errors="0">
+<testcase name="@api @regression CART-1_TC_006 guest cart merge on login" classname="api\cart\cart-merge.spec.ts" time="6.359">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\cart-ownership.spec.ts" timestamp="2026-10-31T09:34:11.643Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.227" errors="0">
+<testcase name="@api @regression CART-1_TC_008 foreign cart item mutation denied" classname="api\cart\cart-ownership.spec.ts" time="7.227">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\cart-update-delete.spec.ts" timestamp="2026-10-31T09:34:11.643Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.787" errors="0">
+<testcase name="@api @regression CART-1_TC_007 update and delete cart item" classname="api\cart\cart-update-delete.spec.ts" time="1.787">
+</testcase>
+</testsuite>
+</testsuites>

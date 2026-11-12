@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "note": "Data of scripts/branch_accounting.py (G2-11). `cutoff`: a register created on or after this date must carry `## Branches` (an earlier one with no such section reads as legacy: nothing reconciled); the integrator sets it to the release's publication day when the release is built (F-8), never to a later day (a later day switches the check off for a real story; tests read this value and hard-code no date). `kinds`: the closed list of the `kind` column of `## Branches` (FR-13). `attachment_readings`: the closed list of the `reading` column of `## Attachments` (FR-13; an unknown word is refused, never read as a default). `attachment_read_forms` (AR-1): how a file is OPENED, not whether it is downloaded (that is `attachment_policy` in jira-fields.json): the first `by_media` prefix a media type starts with gives the call (`limit_1` a picture, `pages` a PDF, `whole` a text file); an empty or null type, or one in `unlabelled_media`, is decided by the suffix of the name (`by_suffix`); a labelled type no row names has no form and the file is named, not opened; `link_suffixes`: the suffixes of a saved link that are listed as files. `picture_signatures`: the first bytes of the picture formats (`parts`: [offset, hex] pairs, every part must match); the read guard recognises a picture by these first bytes, and a picture is judged by `read.max_image_bytes`, not by `read.max_bytes`. `attachment_text_lines`: the lines of the START of a text file over `read.max_bytes` the role is given to read (`Read <path> limit <n>`, and the row says so); 0 = such a file is named as too large and not read (set when the size of the mockup of 15045 is measured, M5). `rung_kinds_accepted` (RN1-13): the `rung_basis` kinds a manual row may rest on - a kind in `rung_kinds` but not here (`not_measured`) is known and refused; `rung_reason_priorities`: a row of such a priority owes `rung_basis.reason`; `rung_kind_fixes`: the way out the refusal of a refused kind names, by accepted kind (a kind not in `rung_kinds_accepted` is not offered). `attachment_words`: how gate A and the report word the state of an attachment (FR-13; `opened`: the receipt keys that mean the scout opened it; `causes`: the plain words by key - `skipped_by_policy:<verdict>`, an attachment's `analysis_status`, a link's `status`, and the reasons of the listing `no_path`, `file_missing`, `no_read_form`, `pdf_without_suffix`, `too_large`; a key with no row reads `unknown`, never opened). The `*_shown` limits (`attachments_shown`: the names gate A lists, 15) and `units_page` bound what is SHOWN, never what is reconciled: no value changes the verdict, only the form of a refusal (spec section 5.3); the values are chosen without a measurement and need none.",
+  "cutoff": "2026-10-30",
+  "kinds": ["qualifier", "partition", "variant", "refusal"],
+  "rung_kinds": ["measured", "not_measured", "impossible", "person_word", "judgement"],
+  "rung_kinds_accepted": ["measured", "impossible", "person_word", "judgement"],
+  "rung_kind_fixes": {
+    "measured": "probe the API/component rung and write `{\"kind\": \"measured\", \"ref\": \"<what was called and what came back>\"}`",
+    "impossible": "name why the environment cannot run it: `{\"kind\": \"impossible\", \"ref\": \"<the environment's reason>\"}`"
+  },
+  "rung_reason_priorities": ["P0"],
+  "reused_decisions": ["extend", "dedupe", "updated"],
+  "attachment_readings": ["agrees", "contradicts", "not_an_expectation", "not_opened"],
+  "attachment_read_forms": {
+    "by_media": [
+      {"prefix": "image/", "call": "limit_1"},
+      {"prefix": "application/pdf", "call": "pages"},
+      {"prefix": "text/", "call": "whole"},
+      {"prefix": "application/json", "call": "whole"},
+      {"prefix": "application/x-ndjson", "call": "whole"},
+      {"prefix": "application/xml", "call": "whole"},
+      {"prefix": "application/x-yaml", "call": "whole"},
+      {"prefix": "application/yaml", "call": "whole"},
+      {"prefix": "application/csv", "call": "whole"},
+      {"prefix": "application/x-har", "call": "whole"}
+    ],
+    "unlabelled_media": ["", "application/octet-stream"],
+    "by_suffix": {
+      ".png": "limit_1", ".jpg": "limit_1", ".jpeg": "limit_1", ".gif": "limit_1", ".webp": "limit_1",
+      ".pdf": "pages",
+      ".md": "whole", ".txt": "whole", ".html": "whole", ".htm": "whole", ".log": "whole", ".har": "whole",
+      ".yml": "whole", ".yaml": "whole", ".json": "whole", ".csv": "whole", ".xml": "whole"
+    },
+    "link_suffixes": [".pdf", ".html", ".htm", ".md", ".txt", ".png", ".jpg", ".jpeg", ".gif", ".webp"],
+    "picture_signatures": [
+      {"name": "png", "parts": [[0, "89504e470d0a1a0a"]]},
+      {"name": "jpeg", "parts": [[0, "ffd8ff"]]},
+      {"name": "gif87a", "parts": [[0, "474946383761"]]},
+      {"name": "gif89a", "parts": [[0, "474946383961"]]},
+      {"name": "webp", "parts": [[0, "52494646"], [8, "57454250"]]}
+    ]
+  },
+  "attachment_text_lines": 0,
+  "attachment_words": {
+    "opened": ["read"],
+    "causes": {
+      "skipped_by_policy:size": "too large to download",
+      "skipped_by_policy:never": "this kind of file is not downloaded",
+      "skipped_by_policy:type": "this file type is not downloaded",
+      "unavailable": "could not be read",
+      "partial": "only part of it could be read",
+      "skipped": "left out",
+      "excluded": "you left it out",
+      "pending": "not opened yet",
+      "unknown": "not opened yet",
+      "no_path": "the receipt has no usable path to the file",
+      "file_missing": "the file is missing",
+      "no_read_form": "this file type cannot be opened here",
+      "pdf_without_suffix": "saved before this build could open a PDF",
+      "too_large": "too large to read at this stage"
+    },
+    "unknown": "not known"
+  },
+  "attachments_shown": 15,
+  "units_page": 200,
+  "refusal_units_shown": 20,
+  "report_units_shown": 10,
+  "unit_text_shown": 300
+}

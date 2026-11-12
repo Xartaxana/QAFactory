@@ -1,0 +1,605 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "TC-001",
+      "mock_id": "PV-A01",
+      "task": "DEMO-15045",
+      "title": "Reject an empty project name",
+      "status": "failed",
+      "reason": "DEMO-BUG-1 \u00b7 API-01Expected: 400 with validation error. Actual: 201, project created. Mock response receipt \u00b7 19 Sep, 10:12 UTC.",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-002",
+      "mock_id": "PV-A02",
+      "task": "DEMO-15045",
+      "title": "Reject an existing project name",
+      "status": "passed",
+      "reason": "API-01 \u00b7 409 conflict verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-003",
+      "mock_id": "PV-A03",
+      "task": "DEMO-15045",
+      "title": "Reject a name above the length limit",
+      "status": "not_run",
+      "reason": "Awaiting first execution \u00b7 owner: qa-automator",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-004",
+      "mock_id": "PV-A04",
+      "task": "DEMO-15045",
+      "title": "Create a project with a valid name",
+      "status": "passed",
+      "reason": "API-01 \u00b7 201 and stored name verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-005",
+      "mock_id": "PV-A05",
+      "task": "DEMO-15045",
+      "title": "Reject a whitespace-only name",
+      "status": "passed",
+      "reason": "API-01 \u00b7 400 verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-006",
+      "mock_id": "PV-A06",
+      "task": "DEMO-15045",
+      "title": "Trim surrounding whitespace",
+      "status": "passed",
+      "reason": "API-01 \u00b7 normalized name verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-007",
+      "mock_id": "PV-A07",
+      "task": "DEMO-15045",
+      "title": "Accept a name at the length limit",
+      "status": "passed",
+      "reason": "API-01 \u00b7 boundary accepted",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-008",
+      "mock_id": "PV-A08",
+      "task": "DEMO-15045",
+      "title": "Accept a Unicode project name",
+      "status": "passed",
+      "reason": "API-01 \u00b7 stored text matches",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-009",
+      "mock_id": "PV-A09",
+      "task": "DEMO-15045",
+      "title": "Reject a missing name field",
+      "status": "passed",
+      "reason": "API-01 \u00b7 required-field error verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-010",
+      "mock_id": "PV-A10",
+      "task": "DEMO-15045",
+      "title": "Reject a null name",
+      "status": "passed",
+      "reason": "API-01 \u00b7 400 verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-011",
+      "mock_id": "PV-A11",
+      "task": "DEMO-15045",
+      "title": "Reject a numeric name value",
+      "status": "passed",
+      "reason": "API-01 \u00b7 type error verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-012",
+      "mock_id": "PV-A12",
+      "task": "DEMO-15045",
+      "title": "Reject creation without authentication",
+      "status": "passed",
+      "reason": "API-01 \u00b7 401 verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-013",
+      "mock_id": "PV-A13",
+      "task": "DEMO-15045",
+      "title": "Return the created project by ID",
+      "status": "passed",
+      "reason": "API-01 \u00b7 ID and name match",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-014",
+      "mock_id": "PV-A14",
+      "task": "DEMO-15045",
+      "title": "Keep project data after a rejected update",
+      "status": "passed",
+      "reason": "API-01 \u00b7 original values preserved",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-015",
+      "mock_id": "PV-U01",
+      "task": "DEMO-15045",
+      "title": "Show an inline validation message",
+      "status": "failed",
+      "reason": "DEMO-BUG-2 \u00b7 UI-01Expected: error beneath the name field. Actual: message absent. Mock screenshot and trace \u00b7 19 Sep, 10:18 UTC.",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-016",
+      "mock_id": "PV-U02",
+      "task": "DEMO-15045",
+      "title": "Show the saved project in the list",
+      "status": "not_run",
+      "reason": "Awaiting first execution \u00b7 owner: qa-automator",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-017",
+      "mock_id": "PV-U03",
+      "task": "DEMO-15045",
+      "title": "Open the create-project form",
+      "status": "passed",
+      "reason": "UI-01 \u00b7 form visible",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-018",
+      "mock_id": "PV-U04",
+      "task": "DEMO-15045",
+      "title": "Keep entered values after validation fails",
+      "status": "passed",
+      "reason": "UI-01 \u00b7 field values preserved",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-019",
+      "mock_id": "PV-U05",
+      "task": "DEMO-15045",
+      "title": "Cancel creation without saving",
+      "status": "passed",
+      "reason": "UI-01 \u00b7 no new project",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-020",
+      "mock_id": "PV-U06",
+      "task": "DEMO-15045",
+      "title": "Submit the form using the keyboard",
+      "status": "passed",
+      "reason": "UI-01 \u00b7 submit and focus verified",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-021",
+      "mock_id": "PV-C01",
+      "task": "DEMO-15045",
+      "title": "Mark the project name as required",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 required attribute verified",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-022",
+      "mock_id": "PV-C02",
+      "task": "DEMO-15045",
+      "title": "Validate the maximum name length",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 boundary assertion passed",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-023",
+      "mock_id": "PV-C03",
+      "task": "DEMO-15045",
+      "title": "Normalize name whitespace",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 normalized value matches",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-024",
+      "mock_id": "PV-C04",
+      "task": "DEMO-15045",
+      "title": "Associate the error with the input",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 accessible reference verified",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-025",
+      "mock_id": "PV-C05",
+      "task": "DEMO-15045",
+      "title": "Clear the error after a valid edit",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 error state cleared",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-026",
+      "mock_id": "PV-C06",
+      "task": "DEMO-15045",
+      "title": "Disable submit while saving",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 pending state verified",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-027",
+      "mock_id": "PV-C07",
+      "task": "DEMO-15045",
+      "title": "Show a server-side name conflict",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 conflict state verified",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-028",
+      "mock_id": "PV-C08",
+      "task": "DEMO-15045",
+      "title": "Reset form state on close",
+      "status": "passed",
+      "reason": "COMP-01 \u00b7 initial state restored",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-029",
+      "mock_id": "PV-F01",
+      "task": "DEMO-15045",
+      "title": "Create a project and reopen its details",
+      "status": "passed",
+      "reason": "Agent report \u00b7 F01Expected: the saved name remains after reopening. Actual: name matches. Mock screenshots before and after reopening; steps and observations accepted \u00b7 19 Sep, 10:25 UTC.",
+      "channel": "automated",
+      "level": "unit"
+    },
+    {
+      "id": "TC-030",
+      "mock_id": "PV-F02",
+      "task": "DEMO-15045",
+      "title": "Recover from a duplicate-name conflict",
+      "status": "passed",
+      "reason": "Agent report \u00b7 F02Expected: a corrected unique name can be saved. Actual: creation succeeds after correction. Mock screenshots, actions and observations accepted \u00b7 19 Sep, 10:29 UTC.",
+      "channel": "automated",
+      "level": "unit"
+    },
+    {
+      "id": "TC-031",
+      "mock_id": "PV-H01",
+      "task": "DEMO-15045",
+      "title": "Verify project creation with the approved business account",
+      "status": "not_run",
+      "reason": "Waiting for account approval \u00b7 owner: QA lead \u00b7 no result yet",
+      "channel": "manual-human",
+      "level": "unit"
+    },
+    {
+      "id": "TC-032",
+      "mock_id": "PV-H02",
+      "task": "DEMO-15045",
+      "title": "Review validation wording with the product owner",
+      "status": "not_run",
+      "reason": "Waiting for release candidate \u00b7 owner: product owner \u00b7 no result yet",
+      "channel": "manual-human",
+      "level": "unit"
+    },
+    {
+      "id": "TC-033",
+      "mock_id": "PD-A01",
+      "task": "DEMO-15046",
+      "title": "Create a project with a description",
+      "status": "passed",
+      "reason": "API-02 \u00b7 description stored",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-034",
+      "mock_id": "PD-A02",
+      "task": "DEMO-15046",
+      "title": "Update an existing description",
+      "status": "passed",
+      "reason": "API-02 \u00b7 updated value returned",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-035",
+      "mock_id": "PD-A03",
+      "task": "DEMO-15046",
+      "title": "Clear an optional description",
+      "status": "passed",
+      "reason": "API-02 \u00b7 empty value accepted",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-036",
+      "mock_id": "PD-A04",
+      "task": "DEMO-15046",
+      "title": "Accept the maximum description length",
+      "status": "passed",
+      "reason": "API-02 \u00b7 boundary accepted",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-037",
+      "mock_id": "PD-A05",
+      "task": "DEMO-15046",
+      "title": "Reject a description above the limit",
+      "status": "passed",
+      "reason": "API-02 \u00b7 400 verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-038",
+      "mock_id": "PD-A06",
+      "task": "DEMO-15046",
+      "title": "Preserve Unicode in the description",
+      "status": "passed",
+      "reason": "API-02 \u00b7 text unchanged",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-039",
+      "mock_id": "PD-A07",
+      "task": "DEMO-15046",
+      "title": "Preserve description line breaks",
+      "status": "passed",
+      "reason": "API-02 \u00b7 line breaks match",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-040",
+      "mock_id": "PD-A08",
+      "task": "DEMO-15046",
+      "title": "Reject a description update by a viewer",
+      "status": "passed",
+      "reason": "API-02 \u00b7 403 verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-041",
+      "mock_id": "PD-C01",
+      "task": "DEMO-15046",
+      "title": "Render the description field label",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 accessible label matches",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-042",
+      "mock_id": "PD-C02",
+      "task": "DEMO-15046",
+      "title": "Display the existing description",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 initial value matches",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-043",
+      "mock_id": "PD-C03",
+      "task": "DEMO-15046",
+      "title": "Update the character counter",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 counter matches input",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-044",
+      "mock_id": "PD-C04",
+      "task": "DEMO-15046",
+      "title": "Show an over-limit validation error",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 error visible",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-045",
+      "mock_id": "PD-C05",
+      "task": "DEMO-15046",
+      "title": "Accept an empty optional value",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 no validation error",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-046",
+      "mock_id": "PD-C06",
+      "task": "DEMO-15046",
+      "title": "Restore the description after cancel",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 original value restored",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-047",
+      "mock_id": "PD-C07",
+      "task": "DEMO-15046",
+      "title": "Render description content as text",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 markup escaped",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-048",
+      "mock_id": "PD-C08",
+      "task": "DEMO-15046",
+      "title": "Make the description read-only for viewers",
+      "status": "passed",
+      "reason": "COMP-02 \u00b7 editing disabled",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-049",
+      "mock_id": "PD-U01",
+      "task": "DEMO-15046",
+      "title": "Save an edited description and reload",
+      "status": "passed",
+      "reason": "UI-02 \u00b7 edited description persists",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-050",
+      "mock_id": "PD-U02",
+      "task": "DEMO-15046",
+      "title": "Cancel a description edit",
+      "status": "passed",
+      "reason": "UI-02 \u00b7 previous description preserved",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-051",
+      "mock_id": "RI-U01",
+      "task": "DEMO-15047",
+      "title": "Show inherited access in the project member list",
+      "status": "blocked",
+      "reason": "Isolated member-role fixture missing \u00b7 owner: factory \u00b7 no execution",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-052",
+      "mock_id": "RI-U02",
+      "task": "DEMO-15047",
+      "title": "Remove inherited access after role revocation",
+      "status": "blocked",
+      "reason": "Isolated role-revocation fixture missing \u00b7 owner: factory \u00b7 no execution",
+      "channel": "automated",
+      "level": "e2e-ui"
+    },
+    {
+      "id": "TC-053",
+      "mock_id": "RI-A01",
+      "task": "DEMO-15047",
+      "title": "Return inherited permissions for a project member",
+      "status": "passed",
+      "reason": "API-03 \u00b7 effective permissions match",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-054",
+      "mock_id": "RI-A02",
+      "task": "DEMO-15047",
+      "title": "Deny an operation outside the inherited role",
+      "status": "passed",
+      "reason": "API-03 \u00b7 403 verified",
+      "channel": "automated",
+      "level": "api"
+    },
+    {
+      "id": "TC-055",
+      "mock_id": "RI-C01",
+      "task": "DEMO-15047",
+      "title": "Label a role as inherited",
+      "status": "passed",
+      "reason": "COMP-03 \u00b7 inheritance label visible",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-056",
+      "mock_id": "RI-C02",
+      "task": "DEMO-15047",
+      "title": "Show the source of an inherited role",
+      "status": "passed",
+      "reason": "COMP-03 \u00b7 source group matches",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-057",
+      "mock_id": "RI-C03",
+      "task": "DEMO-15047",
+      "title": "Disable direct editing of an inherited role",
+      "status": "passed",
+      "reason": "COMP-03 \u00b7 direct editing disabled",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-058",
+      "mock_id": "RI-C04",
+      "task": "DEMO-15047",
+      "title": "Refresh effective access after a role change",
+      "status": "passed",
+      "reason": "COMP-03 \u00b7 refreshed state matches",
+      "channel": "automated",
+      "level": "component"
+    },
+    {
+      "id": "TC-059",
+      "mock_id": "RI-H01",
+      "task": "DEMO-15047",
+      "title": "Review the effective-access explanation with an administrator",
+      "status": "not_run",
+      "reason": "Waiting for release candidate \u00b7 owner: access administrator \u00b7 no result yet",
+      "channel": "manual-human",
+      "level": "unit"
+    },
+    {
+      "id": "TC-060",
+      "mock_id": "RI-H02",
+      "task": "DEMO-15047",
+      "title": "Confirm the role-inheritance policy with the security owner",
+      "status": "not_run",
+      "reason": "Waiting for release-candidate review \u00b7 owner: security owner \u00b7 no result yet",
+      "channel": "manual-human",
+      "level": "unit"
+    }
+  ]
+}

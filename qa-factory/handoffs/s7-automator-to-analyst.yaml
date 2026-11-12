@@ -1,0 +1,81 @@
+# S7: the automator hands a repair round back to the analyst.
+#
+# The mirror of s7-analyst-to-automator, and the shortest file in the factory, because a repair
+# round has exactly one question: did the test change, and does it still test the same thing?
+# The second half of that question is what `then_lines_unchanged` answers. A round that quietly
+# moved the expectation turns a failing product into a passing report, which is the one outcome
+# this factory exists to prevent.
+#
+# `fix_result: not_fixed` is a legitimate answer. Two rounds is the cap; a test that is still
+# failing after them is `not_verified_flaky` in the ledger, and the person decides at gate B.
+schema_version: 1
+contract: s7-automator-to-analyst
+stage: S7
+from_role: qa-automator
+to_role: qa-failure-analyst
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: <the changed test files named below>
+    what: what this round changed
+    required: true
+  - path: <the repair_verify run witness>
+    what: the rerun of the failed instance alone
+    required: true
+
+# The analyst's own handoff, read back: the round is answered against the finding that opened it.
+inputs_read:
+  - path: work/handoffs/<the analyst's dispatch>.yaml
+    version: <its window id>
+    repairs_answered: <n of m>
+
+header:
+  role: qa-automator
+  stage: S7
+  window: <the instance ids repaired>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per instance handed for repair. `state`: green, red, not_run, blocked_by_env,
+# not_verified_flaky, contradicts_requirement.
+scope:
+  - id: <instance id>
+    state: <one of vocabulary.row_states>   # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: <= 80 characters>
+    round: <r of 2>
+    fix_result: <fixed|not_fixed>
+    cause: <one of vocabulary.repair_causes>
+
+rounds:
+  - id: <instance id>
+    finding: <the F-id or verdict this answers>
+    changed:
+      - file: <repo-relative path>
+        what: <what was changed there, one sentence>
+    then_lines_before: "<the Then lines as the analyst handed them>"
+    then_lines_after: "<the same lines after the fix>"
+    verify:
+      request: <path of the typed repair_verify RunRequest - it selects this instance alone>
+      witness: <path of the run summary>
+      result: <passed|failed|error>
+    flaky_confirmation: <path of the three isolated reruns after the fix, FLAKY only>
+
+claims:
+  then_lines_unchanged: <true|false>          # false is a halt, not a note
+  no_retry_annotation_or_sleep_was_added: <true|false>
+  only_the_failed_instance_was_rerun: <true|false>
+  the_manifest_was_updated_by_manifest_from_tests_not_by_hand: <true|false>
+
+unresolved:
+  - id: <instance id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

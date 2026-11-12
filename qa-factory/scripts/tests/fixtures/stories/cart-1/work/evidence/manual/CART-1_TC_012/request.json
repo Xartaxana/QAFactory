@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "request_kind": "manual_capture",
+  "case": "CART-1_TC_012",
+  "case_version": "cv_8ad20339348408e4f727",
+  "obligation_ids": [
+    "OB-12"
+  ],
+  "obligation_hashes": {
+    "OB-12": "3b06ff9048c35d9212986d41ab272cbeb9cab5e905f3b562e82e57227df58af5"
+  },
+  "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "controller_revision": 119,
+  "gate_a_decision_ref": "gateA-CART-1",
+  "evidence_policy": "ui",
+  "completion_condition": "wishlist item gone after move",
+  "approved_policy_hash": "d02807eff8ef5aa131366b6f749ec279e675cd174156712b50b6f8b45fc2bd7f",
+  "expected": [
+    "move to cart adds and removes"
+  ],
+  "covers": [
+    "R-14"
+  ],
+  "legacy_evidence_gaps": [],
+  "required_actual_fields": [
+    "steps_actual",
+    "actual",
+    "evidence_refs",
+    "runtime_before",
+    "runtime_after",
+    "attempt_started_at",
+    "attempt_ended_at"
+  ],
+  "actors": [
+    {
+      "id": "PC-1",
+      "what": "a signed-in seed user",
+      "check": {
+        "stand_account": "user"
+      }
+    }
+  ]
+}

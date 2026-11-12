@@ -1,0 +1,202 @@
+{
+ "ticket": "LOCAL-1",
+ "issue_type": "",
+ "acceptance_criteria": [],
+ "implementation": {
+  "source": "current-code",
+  "mr": null,
+  "branch": "main",
+  "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "implementations": [
+  {
+   "repo": "MyBooks",
+   "source": "current-code",
+   "mr": null,
+   "branch": "main",
+   "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  }
+ ],
+ "observables": [
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/route.ts",
+   "line": 15,
+   "note": "POST /api/cart adds a book, 201; guest owner by bookstore_session_id cookie"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 35,
+   "note": "OUT_OF_STOCK when stock<=0"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 44,
+   "note": "INSUFFICIENT_STOCK counting what is already in cart; quantity is added to existing item"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/validation/schemas.ts",
+   "line": 40,
+   "note": "quantity integer 1..999; bookId positive int"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/HomePage.tsx",
+   "line": 118,
+   "note": "path 1: catalog BookCard button add-to-cart-button-<id>, toast 'Book added to cart'"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 45,
+   "note": "path 2: book detail with quantity; toast differs for quantity>1; button disabled when out of stock"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/WishlistPage.tsx",
+   "line": 47,
+   "note": "path 3: Move to cart from wishlist (add then presumably removes wishlist entry)"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 118,
+   "note": "path 4: guest cart merged into user cart on login; higher quantity wins, capped at stock, no-stock dropped"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/LoginPage.tsx",
+   "line": 36,
+   "note": "merge call on login; failure only logged to console"
+  },
+  {
+   "requirement": "",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/providers/AppProviders.tsx",
+   "line": 35,
+   "note": "cart badge count = sum of quantities, re-read on user change"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 80,
+   "note": "PUT /api/cart/{id} cap at stock; second reader of the cart (CartPage) shows result"
+  },
+  {
+   "requirement": "",
+   "kind": "api",
+   "source": "expected-contract",
+   "path": "MyBooks/docs/openapi.json",
+   "line": 2961,
+   "note": "contract: Quantity is added to what is already in the cart; 400 VALIDATION_ERROR/OUT_OF_STOCK/INSUFFICIENT_STOCK; 404 BOOK_NOT_FOUND"
+  }
+ ],
+ "parent_feature": null,
+ "related": [],
+ "subtasks": [],
+ "existing_tests": [
+  "MyBooks/src/lib/cartRules.test.ts",
+  "MyBooks/src/lib/validation/schemas.test.ts",
+  "MyBooks/src/lib/routes.test.ts",
+  "MyBooks/src/lib/openapi/spec.test.ts"
+ ],
+ "test_path": {
+  "layers": [
+   "e2e-ui",
+   "api"
+  ],
+  "note": "tests/ has no cart spec (grep cart: 0 hits in tests/)"
+ },
+ "area_bugs": [],
+ "conflicts": [],
+ "unresolved_facts": [
+  {
+   "id": "https://example.invalid/2/browse/REF-1",
+   "reason": "missing_evidence",
+   "detail": "Jira filter not queried: no key and no search; stories/cases/bugs on cart unknown. Person could paste them."
+  }
+ ],
+ "coverage_status": "found",
+ "coverage_search": [
+  {
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "changed_area": "cart add paths",
+   "searched_paths": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+   ],
+   "status": "complete",
+   "reason": "grep -i cart over all unit tests"
+  },
+  {
+   "repo": "tests",
+   "revision": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+   "changed_area": "cart add paths",
+   "searched_paths": [
+    "tests/"
+   ],
+   "status": "complete",
+   "reason": "grep -ril cart over tests/: none; control: grep of 'login' finds auth spec"
+  }
+ ],
+ "existing_test_candidates": [
+  {
+   "candidate_id": "EX-1",
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "path": "src/lib/cartRules.test.ts",
+   "selector": "fitsInStock counts what is already in the cart",
+   "parameter_ids": [],
+   "level": "unit",
+   "assertion_refs": [
+    "cartRules.test.ts:21"
+   ],
+   "candidate_requirement_refs": [],
+   "origin": "existing",
+   "result_candidate_refs": []
+  },
+  {
+   "candidate_id": "EX-2",
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "path": "src/lib/cartRules.test.ts",
+   "selector": "mergedQuantity keeps the higher quantity",
+   "parameter_ids": [],
+   "level": "unit",
+   "assertion_refs": [
+    "cartRules.test.ts:5"
+   ],
+   "candidate_requirement_refs": [],
+   "origin": "existing",
+   "result_candidate_refs": []
+  }
+ ],
+ "witness": "work/source-inventory.json"
+}

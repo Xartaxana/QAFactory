@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "session_id": "synthetic-start-turn-chat",
+  "activities": [
+    {
+      "activity_id": "act-story",
+      "type": "story",
+      "task": "SYN-1",
+      "start_event_id": "e1",
+      "start_time": "2026-10-01T09:10:30Z",
+      "end_event_id": null,
+      "end_time": null,
+      "evidence_ref": null,
+      "status": "open",
+      "segments": [
+        {"segment_id": "seg-story-1", "start_event_id": "e1", "start_time": "2026-10-01T09:10:30Z", "end_event_id": null, "end_time": null}
+      ]
+    }
+  ],
+  "active_stack": ["act-story"],
+  "processed_events": {},
+  "usage_completeness": "unknown"
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "task_id": "TP1-12586",
+  "triage": [
+    {
+      "test": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_ms_teams_integration",
+      "instance_id": "test_put_project_change_moves_ms_teams_integration",
+      "attempt_id": "a96f5e653377735139aa",
+      "case": "TC-002",
+      "verdict": "APP_BUG",
+      "evidence": "evidence/runs/a5ba38dc967d56c26201/diagnostic-a5ba38dc967d56c26201-20261028-125317.log (own S7 reproduction, diagnostic run a5ba38dc967d56c26201: PUT moving MS Teams integration answers 400 Project mismatch again, new setting id). R-5 (Q2 a): the move must succeed, the 400 is a defect; validator at settings_request_validator.py:327 runs before the move. Oracle requirement:R-5, test data answers the Given (target project has the credential assistant)."
+    },
+    {
+      "test": "tests.integrations.project.test_ms_teams_integration::test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "attempt_id": "a96f5e653377735139aa",
+      "case": "TC-003",
+      "verdict": "APP_BUG",
+      "evidence": "evidence/runs/a5ba38dc967d56c26201/diagnostic-a5ba38dc967d56c26201-20261028-125317.log (own S7 reproduction: 4xx is returned, Then 1 holds, but body is 'Project mismatch', Then 2 red). R-10 singleton rule cannot be observed: the same R-5 validator defect pre-empts it. Then 3 and Then 4 are blocked by this red (not separate failures). Control experiment not run: the stand has no build without the change under test, so the change cannot be left out. S7-2 diagnostic (evidence/control-tc003-then3-4.json, own API run, test and case untouched): Then 3 held (target kept only its original id) and Then 4 held (source integration unchanged), but only because the 400 Project mismatch validator rejects before any singleton logic; the same 400 occurs for an empty target (TC-002), so R-10 enforcement independent of that message is NOT demonstrated. Observation, not a new defect.",
+      "control": {
+        "result": "impossible",
+        "action": "PUT of an MS Teams integration into a project that already holds one",
+        "without": "the project-change move (the diff in routers/settings and settings_transfer_service)",
+        "observed": "not run",
+        "evidence": "evidence/control-tc003-then3-4.json",
+        "why": "the stand runs only the build with the change; no way to run the same PUT without it, so ASSERT_STRICTER is out"
+      }
+    }
+  ],
+  "reducer": {
+    "name": "finalize_task",
+    "sources": [
+      {
+        "id": "a96f5e653377735139aa",
+        "source": "run-blocks/20261028T044813481713Z-a96f5e653377735139aa.json"
+      },
+      {
+        "id": "ff42eb7698b7f8684679",
+        "source": "run-blocks/20261028T081540713636Z-ff42eb7698b7f8684679.json"
+      },
+      {
+        "id": "e2b4dcf0bcb2a2eef000-reparse-9e6ed2b72da8",
+        "source": "run-blocks/e2b4dcf0bcb2a2eef000-reparse-9e6ed2b72da8.json"
+      },
+      {
+        "id": "86aba462446593d72cb5",
+        "source": "run-blocks/20261028T093844183350Z-86aba462446593d72cb5.json"
+      },
+      {
+        "id": "f1c50355bd93e46fc988-reparse-9e6ed2b72da8",
+        "source": "run-blocks/f1c50355bd93e46fc988-reparse-9e6ed2b72da8.json"
+      },
+      {
+        "id": "manual-ea9e8b4726540cff3478",
+        "source": "manual-blocks/manual-ea9e8b4726540cff347859f6a8a8b67b269ce548a29b8832c127f4009047ab15.json"
+      },
+      {
+        "id": "a5ba38dc967d56c26201",
+        "source": "run-blocks/20261028T115412188609Z-a5ba38dc967d56c26201.json"
+      }
+    ]
+  },
+  "analyst_preserved": true
+}

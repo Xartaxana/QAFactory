@@ -1,0 +1,43 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that the maximum allowed quantity can be added, and the cart shows the correct price and subtotal for it.\n\n*Type:* positive  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512158",
+  "key": "REF-23",
+  "labels": [
+    "positive",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14509,
+    "fields_requested": "*all",
+    "sha256": "1b706b8715f532ae817895fc7cb2484562a8d61656ee4deb636bf8f42a28651c",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:09.150+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product with maximum allowed quantity",
+  "type": "Test"
+}

@@ -1,0 +1,15 @@
+qa-automator S5 window 4 (CART-1_TC_009) · concerns
+CART-1_TC_009 · contradicts_requirement · Then 2 red: quote body has no items; Thens 1,3,4,5 green
+qa-factory/artifacts/CART-1/work/handoffs/S5-qa-automator-4.yaml
+
+Details:
+- Test: tests/api/cart/cart-quote-order.spec.ts. Added helpers: CartApi.quote/order and the verifiedUser and ownBooks.titleOf fixtures. All Thens use soft asserts, so Thens 1, 3, 4 and 5 still run when Then 2 fails.
+- Then 2 contradicts R-15. POST /api/checkout/quote returns only totals (subtotal, discount, shipping, tax, total) and no items array (MyBooks/src/app/api/checkout/quote/route.ts:14-21). The assert is unchanged and the test is handed over RED. The unresolved row is contradicts_requirement with thens [2].
+- Run witness: qa-factory/artifacts/CART-1/evidence/runs/4bfb53e668563c7768a5/repair_verify-4bfb53e668563c7768a5-20261031-111832.json, exit 1, 0 passed / 1 failed.
+- One self-fix is recorded. My first draft read the order lines from `items`, but the order body carries them under `orderItems`. Then 4's value is unchanged.
+- The mechanical fixes to TC_007 and TC_008 (assert the row count before destructuring) are in the code, but I did not re-run them. `run_suite.py --mine` refused both as outside this dispatch's scope (S5-qa-automator-4 only has CART-1_TC_009), so the orchestrator still needs to run those two files. I updated their manifest assertion line refs (+1 line each) and their test_content_sha.
+- The signed-in user is EMAIL_USER/EMAIL_PASS (the admin account), as the person said. I did not use the seed endpoint; B1's stock was changed through the admin PUT on the test's own books.
+- Leftovers on the stand: each run leaves its order and the order's books behind, because orders can't be deleted and book delete is best-effort.
+- `run_suite.py --mine` could not build the run for this Playwright profile, so I used a hand-built request, work/requests/s5-4-repair1.json.
+- probe_by_code was not run (same tooling gap as earlier windows). The OB-9 obligation binding has sensitivity=missing.
+- s5_precheck.py passes and handoff_check.py reports the form complete.

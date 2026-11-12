@@ -1,0 +1,128 @@
+# GATE B -> delivery: what the person decided, handed to the roles and the commands that act on it.
+#
+# This is where a decision turns into something irreversible - a filed bug, an opened MR, a write
+# into someone else's tracker - so it is the handoff with the least room for interpretation. Every
+# field is the person's own words or a ref they chose by number.
+#
+# Two spellings in this file are read by code and by nothing else. `--drafts` takes the IMMUTABLE
+# original refs behind the numbers they answered with; without them every proposal reads
+# `provenance_invalid` and the choice is lost. And "keep it local" is recorded as the block text
+# `keep it local`: recorded under any other name, "just leave them in the repo" once fell through
+# to the tracker branch and the factory attempted the write the person had declined.
+schema_version: 1
+contract: gate-b-to-delivery
+gate: B
+from_role: person
+to_role: qa-bug-reporter
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/bug-drafts/
+    what: the drafts, of which only the selected ones are filed
+    required: true
+  - path: state/delivery-manifest.json
+    what: the exact allowlist of paths the QA-records commit may stage
+    required: true
+
+header:
+  role: qa-story
+  stage: gate-B
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+decision:
+  words: "<the whole answer, verbatim>"
+  recorded_by: "controller.py --operation gate-decision --gate B --words-file <file> --drafts <refs> --bugs <ordered|not_ordered> --mr <open|do_not_open|not_offered>"
+  selected_drafts: "<the immutable original refs of the drafts they chose>"
+  # What the decision orders; written by the controller from the flags, one status per order. `due` until its
+  # executor finishes (`story_closed` is false meanwhile), then `done` or `cancelled`; `not_ordered` when nothing was ordered.
+  orders:
+    bugs: <due|not_ordered>      # due when drafts were chosen or `--bugs ordered`; executor qa-bug-reporter; `done` by its accepted dispatch
+    mr: <due|not_ordered>        # due unless `--mr do_not_open|not_offered`; executor the delivery step; `done` only with the MR's url or id (`settle_order --order mr --outcome done --ref`)
+  settled_by: "controller.py --operation settle_order --order <bugs|mr> --outcome <done|cancelled> [--ref <text>] [--words-file <file>] [--reason-code no_trace|delivered_without_mr]"
+
+# One row per draft the person answered about. `state`: `filed` for a draft that becomes
+# bugs/BUG-n.md, `waived` for one they called not a bug (kept on disk, never deleted).
+bugs:
+  - ref: <the draft ref>
+    state: <filed|waived>
+    words: "<their words about this one, verbatim>"
+    title_override: <the title they changed it to, or a dash>
+    priority_override: <the priority they changed it to, or a dash>
+    confirmation: <one of vocabulary.bug_confirmations - unconfirmed|reproduced_by_factory|confirmed_by_person|confirmed_by_rerun>   # a person who files an unconfirmed bug confirms it; you write confirmed_by_person from the person's words, otherwise the draft's own value; the code derives the reproduced_by_factory step from the draft's receipts
+
+# Tests still flaky after the S7 cap. Quarantine happens only here, only on this word, and always
+# with both the debt file and the trigger that reopens it.
+quarantine:
+  - id: <instance id>
+    decision: <one of vocabulary.flaky_decisions - another_round|quarantine>
+    words: "<their words, verbatim>"
+    debt_file: <path, when quarantined>
+    trigger: <what reopens it>
+
+delivery:
+  mr: <open|do_not_open|not_offered>       # the same words as `gate-decision --mr`, recorded as `decision.orders.mr`; `not_offered` when the verdict is no; on yes and after_checks the Draft MR is offered (on after_checks its description carries Left with you)
+  deliver_with_risks:
+    decided: <true|false>
+    reason: "<their reason, verbatim - without one nothing is recorded and no MR is opened>"
+    journalled_by: "controller.py --operation gate-decision --gate B --risks-file <file> (or a `deliver with known gaps: <reason>` line of their words) records the decision and writes the journal line; when only the line is missing, log_append.py --event deliver_with_risks --task <T> --reason-file <file>"
+  commits:
+    - id: 1
+      what: test code
+      paths_from: automation-manifest.json tests[]
+    - id: 2
+      what: compact QA records
+      paths_from: state/delivery-manifest.json files[]
+    - id: 3
+      what: the pre-retro closing records
+      paths_from: "pipeline.json, obligations.md, factory-backlog.md"
+  do_not_commit:
+    - <every path the person named - it is in no allowlist>
+  rule: "`git add -A` and `git add <dir>` are forbidden; each commit stages an explicit path list"
+  open_items_in_the_description: <true|false>   # true when the MR was opened over open rows
+
+external_writes:
+  channel: <the channel name from config.external_writes>
+  decision: <one of vocabulary.external_write_decisions - set_up_now|file_by_hand|keep_local>
+  words: "<their words, verbatim>"
+  waiver_block: "keep it local"        # the exact spelling, when the decision is keep_local
+  obligations_rows: "<the rows external_writes.py prints for a deferred write>"
+
+retro_mode:
+  value: <one of vocabulary.retro_modes - full|numbers|skip>
+  words: "<their words, when they named one - silence and anything else is `full`>"
+  recorded_by: "stage_done.py --set retro_mode=<value>"
+
+before_after:
+  answer: "<where the before evidence comes from, or that they will check it themselves>"
+  state: <awaiting_baseline|person_owned|not_applicable>
+
+remarks:
+  - text: "<words that answered no question asked - carried, never argued with>"
+    recorded_by: "waiver.py --remark --stage S8"
+
+claims:
+  words_recorded_verbatim_not_summarised: <true|false>
+  selected_drafts_are_the_immutable_original_refs: <true|false>
+  deliver_with_risks_has_a_stated_reason_or_is_false: <true|false>
+  keep_local_was_recorded_with_the_spelling_code_reads: <true|false>
+  nothing_outside_the_allowlist_will_be_staged: <true|false>
+  drafts_called_not_a_bug_are_neither_filed_nor_deleted: <true|false>
+
+expected_of_the_receiver:
+  - "file exactly the refs under `bugs` with `state: filed`, each with the decision line that
+     authorised it, and dedup against the existing bugs before writing"
+  - "an agent that cannot name the id it created is a halt: the local bugs/BUG-n.md stands and
+     the unsent write becomes an obligations row - never a silent drop"
+  - "verify a created id by reading it back through the ticket adapter; the agent's word is a
+     claim until something else says so"
+
+blocked:
+  field: <the field of this file that cannot be filled>
+  problem: <what was tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything needed to settle it>

@@ -1,0 +1,279 @@
+"artifacts.cases_root": test-cases
+"claims.every_case_bearing_plan_row_has_at_least_one_case": true
+"claims.every_case_in_scope_is_pinned_and_the_version_is_named": false
+"claims.every_case_names_the_requirement_it_proves_not_a_test": true
+"claims.every_case_quotes_its_rows_obligation_ids": true
+"claims.existing_cases_were_checked_before_new_ones_were_written": true
+"header.verdict": ok
+"header.window": "LOCAL-1_TC_001..LOCAL-1_TC_020"
+"inputs_read[0].rows": 20
+"inputs_read[0].version": "plan_revision 51"
+"review_scope.cases": "LOCAL-1_TC_004, LOCAL-1_TC_005, LOCAL-1_TC_006, LOCAL-1_TC_007, LOCAL-1_TC_008, LOCAL-1_TC_009, LOCAL-1_TC_010, LOCAL-1_TC_011, LOCAL-1_TC_012, LOCAL-1_TC_013, LOCAL-1_TC_014, LOCAL-1_TC_015, LOCAL-1_TC_016, LOCAL-1_TC_017, LOCAL-1_TC_018"
+"review_scope.rounds_used": 1
+"review_scope.focus": ["Q placeholders replaced by values from R-n and the person's Q answers (reading a); question_thens dropped", "TC_006, TC_017, TC_018 expected red (code contradicts the norm); TC_011 asserts only 'unchanged' for the foreign PUT/DELETE (no source names a status)", "TC_012 cart page message (R-10) is not carried by this api row; TC_014 no longer covers R-12 (TC_006 owns it); TC_015 now has an unknown-book step for R-8"]
+"scope[0].case_version": "pinned by case_versions.py after handover"
+"scope[0].design_review_required": false
+"scope[0].disposition": automate
+"scope[0].id": LOCAL-1_TC_001
+"scope[0].obligations": OB-1
+"scope[0].origin": new
+"scope[0].plan_row": TS-1
+"scope[0].reason": unchanged from round 1
+"scope[0].requirements": R-1
+"scope[0].reuse_of": "-"
+"scope[0].self_probe": "badge read back through GET /api/cart; stock-0 book tells refusal from success"
+"scope[0].state": created
+"scope[1].case_version": "pinned by case_versions.py after handover"
+"scope[1].design_review_required": false
+"scope[1].disposition": automate
+"scope[1].id": LOCAL-1_TC_002
+"scope[1].obligations": OB-2
+"scope[1].origin": new
+"scope[1].plan_row": TS-2
+"scope[1].reason": unchanged from round 1
+"scope[1].requirements": R-2
+"scope[1].reuse_of": "-"
+"scope[1].self_probe": "quantity 1 vs 3 gives two messages that must differ; cart read back sums 4"
+"scope[1].state": created
+"scope[2].case_version": "pinned by case_versions.py after handover"
+"scope[2].design_review_required": false
+"scope[2].disposition": automate
+"scope[2].id": LOCAL-1_TC_003
+"scope[2].obligations": OB-3
+"scope[2].origin": new
+"scope[2].plan_row": TS-3
+"scope[2].reason": unchanged from round 1
+"scope[2].requirements": R-3
+"scope[2].reuse_of": "-"
+"scope[2].self_probe": "wishlist and cart read through their own APIs, not the page"
+"scope[2].state": created
+"scope[3].case_version": "pinned by case_versions.py after handover"
+"scope[3].design_review_required": true
+"scope[3].disposition": automate
+"scope[3].id": LOCAL-1_TC_004
+"scope[3].obligations": OB-4
+"scope[3].origin": new
+"scope[3].plan_row": TS-4
+"scope[3].reason": Q6 a: quantity 2 plus 1 gives 3, written
+"scope[3].requirements": R-3
+"scope[3].reuse_of": "-"
+"scope[3].self_probe": "before 2: unchanged reads 2, replaced reads 1, summed reads 3"
+"scope[3].state": updated
+"scope[4].case_version": "pinned by case_versions.py after handover"
+"scope[4].design_review_required": true
+"scope[4].disposition": automate
+"scope[4].id": LOCAL-1_TC_005
+"scope[4].obligations": OB-5
+"scope[4].origin": new
+"scope[4].plan_row": TS-5
+"scope[4].reason": P-cap now reachable: stock lowered after the add
+"scope[4].requirements": R-4
+"scope[4].reuse_of": "-"
+"scope[4].self_probe": "guest 4 vs account 2 gives 4 not 6, so a summing bug goes red"
+"scope[4].state": updated
+"scope[5].case_version": "pinned by case_versions.py after handover"
+"scope[5].design_review_required": true
+"scope[5].disposition": automate
+"scope[5].id": LOCAL-1_TC_006
+"scope[5].obligations": OB-6
+"scope[5].origin": new
+"scope[5].plan_row": TS-6
+"scope[5].reason": observable Thens from R-12, expected red
+"scope[5].requirements": R-12
+"scope[5].reuse_of": "-"
+"scope[5].self_probe": "guest cart read back separately from the page; code today (log only) fails Then 1"
+"scope[5].state": updated
+"scope[6].case_version": "pinned by case_versions.py after handover"
+"scope[6].design_review_required": true
+"scope[6].disposition": automate
+"scope[6].id": LOCAL-1_TC_007
+"scope[6].obligations": OB-7
+"scope[6].origin": new
+"scope[6].plan_row": TS-7
+"scope[6].reason": 201, 201, one line of 5 written
+"scope[6].requirements": R-5
+"scope[6].reuse_of": "-"
+"scope[6].self_probe": "2 then 3 gives one line of 5; a replace bug reads 3, a duplicate bug two lines"
+"scope[6].state": updated
+"scope[7].case_version": "pinned by case_versions.py after handover"
+"scope[7].design_review_required": true
+"scope[7].disposition": automate
+"scope[7].id": LOCAL-1_TC_008
+"scope[7].obligations": OB-8
+"scope[7].origin": new
+"scope[7].plan_row": TS-8
+"scope[7].reason": 400 VALIDATION_ERROR and edges 1/999 written
+"scope[7].requirements": R-6
+"scope[7].reuse_of": "-"
+"scope[7].self_probe": "0, 1, 999, 1000 cover each edge; cart read back after every refusal"
+"scope[7].state": updated
+"scope[8].case_version": "pinned by case_versions.py after handover"
+"scope[8].design_review_required": true
+"scope[8].disposition": automate
+"scope[8].id": LOCAL-1_TC_009
+"scope[8].obligations": OB-9
+"scope[8].origin": new
+"scope[8].plan_row": TS-9
+"scope[8].reason": codes written, step 3 names PUT
+"scope[8].requirements": R-7
+"scope[8].reuse_of": "-"
+"scope[8].self_probe": "stock 5 with 3 in cart: add 2 accepted, add 3 refused, tells a cart-ignoring check apart"
+"scope[8].state": updated
+"scope[9].case_version": "pinned by case_versions.py after handover"
+"scope[9].design_review_required": true
+"scope[9].disposition": automate
+"scope[9].id": LOCAL-1_TC_010
+"scope[9].obligations": OB-10
+"scope[9].origin": new
+"scope[9].plan_row": TS-10
+"scope[9].reason": 404 BOOK_NOT_FOUND and empty cart written
+"scope[9].requirements": R-8
+"scope[9].reuse_of": "-"
+"scope[9].self_probe": "id above the highest book id; cart read back for an empty line"
+"scope[9].state": updated
+"scope[10].case_version": "pinned by case_versions.py after handover"
+"scope[10].design_review_required": true
+"scope[10].disposition": automate
+"scope[10].id": LOCAL-1_TC_011
+"scope[10].obligations": OB-11
+"scope[10].origin": new
+"scope[10].plan_row": TS-11
+"scope[10].reason": absent/unchanged Thens from R-9
+"scope[10].requirements": R-9
+"scope[10].reuse_of": "-"
+"scope[10].self_probe": "the owner of the foreign item reads it back after the refused PUT and DELETE"
+"scope[10].state": updated
+"scope[11].case_version": "pinned by case_versions.py after handover"
+"scope[11].design_review_required": true
+"scope[11].disposition": automate
+"scope[11].id": LOCAL-1_TC_012
+"scope[11].obligations": OB-12
+"scope[11].origin": new
+"scope[11].plan_row": TS-12
+"scope[11].reason": api-only, PUT, 5 accepted, 6 refused
+"scope[11].requirements": R-10
+"scope[11].reuse_of": "-"
+"scope[11].self_probe": "stock 5 and 6 on both sides of the cap; stored quantity read back"
+"scope[11].state": updated
+"scope[12].case_version": "pinned by case_versions.py after handover"
+"scope[12].design_review_required": true
+"scope[12].disposition": automate
+"scope[12].id": LOCAL-1_TC_013
+"scope[12].obligations": OB-13
+"scope[12].origin": new
+"scope[12].plan_row": TS-13
+"scope[12].reason": badge 3/4/2 and price formulas written
+"scope[12].requirements": R-11
+"scope[12].reuse_of": "-"
+"scope[12].self_probe": "2 of A and 1 of B: a line-counting badge gives 2, a unit-counting one 3"
+"scope[12].state": updated
+"scope[13].case_version": "pinned by case_versions.py after handover"
+"scope[13].design_review_required": true
+"scope[13].disposition": manual-agent
+"scope[13].id": LOCAL-1_TC_014
+"scope[13].obligations": OB-14
+"scope[13].origin": new
+"scope[13].plan_row": TS-14
+"scope[13].reason": empty account cart precondition, R-12 dropped, values written
+"scope[13].requirements": R-4
+"scope[13].reuse_of": "-"
+"scope[13].self_probe": "-: a walk, not run by the designer"
+"scope[13].state": updated
+"scope[14].case_version": "pinned by case_versions.py after handover"
+"scope[14].design_review_required": true
+"scope[14].disposition": manual-agent
+"scope[14].id": LOCAL-1_TC_015
+"scope[14].obligations": OB-15
+"scope[14].origin": new
+"scope[14].plan_row": TS-15
+"scope[14].reason": unknown-book step added, R-5 dropped, invariant written
+"scope[14].requirements": "R-6, R-7, R-8"
+"scope[14].reuse_of": "-"
+"scope[14].self_probe": "-: a walk, not run by the designer"
+"scope[14].state": updated
+"scope[15].case_version": "pinned by case_versions.py after handover"
+"scope[15].design_review_required": true
+"scope[15].disposition": manual-agent
+"scope[15].id": LOCAL-1_TC_016
+"scope[15].obligations": OB-16
+"scope[15].origin": new
+"scope[15].plan_row": TS-16
+"scope[15].reason": R-9 Thens written, evidence policy added
+"scope[15].requirements": R-9
+"scope[15].reuse_of": "-"
+"scope[15].self_probe": "-: a walk, not run by the designer"
+"scope[15].state": updated
+"scope[16].case_version": "pinned by case_versions.py after handover"
+"scope[16].design_review_required": true
+"scope[16].disposition": automate
+"scope[16].id": LOCAL-1_TC_017
+"scope[16].obligations": OB-17
+"scope[16].origin": new
+"scope[16].plan_row": TS-17
+"scope[16].reason": Thens from R-14 written, likely red
+"scope[16].requirements": R-14
+"scope[16].reuse_of": "-"
+"scope[16].self_probe": "stored cart read through an unintercepted GET after each failed write"
+"scope[16].state": updated
+"scope[17].case_version": "pinned by case_versions.py after handover"
+"scope[17].design_review_required": true
+"scope[17].disposition": automate
+"scope[17].id": LOCAL-1_TC_018
+"scope[17].obligations": OB-18
+"scope[17].origin": new
+"scope[17].plan_row": TS-18
+"scope[17].reason": Thens from R-13 written, likely red
+"scope[17].requirements": R-13
+"scope[17].reuse_of": "-"
+"scope[17].self_probe": "both lists read through their own APIs, not the page"
+"scope[17].state": updated
+"scope[18].case_version": "pinned by case_versions.py after handover"
+"scope[18].design_review_required": false
+"scope[18].disposition": automate
+"scope[18].id": LOCAL-1_TC_019
+"scope[18].obligations": OB-19
+"scope[18].origin": new
+"scope[18].plan_row": TS-19
+"scope[18].reason": unchanged from round 1
+"scope[18].requirements": R-1
+"scope[18].reuse_of": "-"
+"scope[18].self_probe": "badge compared with the stored cart, not only the toast"
+"scope[18].state": created
+"scope[19].case_version": "pinned by case_versions.py after handover"
+"scope[19].design_review_required": false
+"scope[19].disposition": automate
+"scope[19].id": LOCAL-1_TC_020
+"scope[19].obligations": OB-20
+"scope[19].origin": new
+"scope[19].plan_row": TS-20
+"scope[19].reason": unchanged from round 1
+"scope[19].requirements": R-2
+"scope[19].reuse_of": "-"
+"scope[19].self_probe": "quantity 3 failed add must show neither success message; cart read back"
+"scope[19].state": created
+"tried[0].evidence": "test-cases/cart/LOCAL-1_TC_007.md#Then"
+"tried[0].observation": "Q4 placeholder replaced: 201, 201, one line of 5; replace and duplicate bugs go red"
+"tried[0].requirement": R-5
+"tried[0].technique": "State transitions"
+"tried[1].evidence": "test-cases/cart/LOCAL-1_TC_009.md#Then"
+"tried[1].observation": "stock 5 with 3 in cart: +2 accepted, +3 refused INSUFFICIENT_STOCK, stock 0 OUT_OF_STOCK"
+"tried[1].requirement": R-7
+"tried[1].technique": "Boundary value analysis"
+"tried[2].evidence": "test-cases/cart/LOCAL-1_TC_011.md#Then"
+"tried[2].observation": "negative twin: foreign PUT/DELETE leaves owner's line, read by the same account's allowed GET"
+"tried[2].requirement": R-9
+"tried[2].technique": "The negative twin"
+"tried[3].evidence": "test-cases/cart/LOCAL-1_TC_005.md#Steps"
+"tried[3].observation": "guest A=12 over stock 10 unreachable by POST (R-7); stock lowered after the add"
+"tried[3].requirement": R-4
+"tried[3].technique": "Equivalence partitioning"
+"tried[4].evidence": "work/test-cases/critic-findings.md"
+"tried[4].observation": "all 20 existing cases reused and updated in place; no new files, none duplicated"
+"tried[4].requirement": cart
+"tried[4].technique": "Error guessing"
+"unresolved[0].detail": "code logs the merge failure and shows success; expected red against R-12"
+"unresolved[0].id": LOCAL-1_TC_006
+"unresolved[0].reason": contradicts_requirement
+"unresolved[1].detail": "no source names a status or code for a foreign PUT/DELETE; Then asserts only 'unchanged'"
+"unresolved[1].id": LOCAL-1_TC_011
+"unresolved[1].reason": expectation_unconfirmed

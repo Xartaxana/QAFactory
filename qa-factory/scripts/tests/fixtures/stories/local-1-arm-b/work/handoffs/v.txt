@@ -1,0 +1,49 @@
+"inputs_read[0].version": S5 window (automator handoffs)
+"inputs_read[0].instances_handed": 0
+"inputs_read[1].manual_cases_handed": 1
+"inputs_read[2].version": stand build probed in work/evidence/manual/LOCAL-1_TC_016/a1/probes.jsonl
+"header.window": LOCAL-1_TC_016
+"header.verdict": concerns
+"run.execution_status": failed
+"run.witness": "qa-factory/artifacts/LOCAL-1/evidence/runs/6ba254ef21a0791e8faf/initial-6ba254ef21a0791e8faf-20261105-034644.json; manual window only, no suite run in this dispatch"
+"run.environment": local
+"run.application_build": "local production build on :3000, as probed in a1/probes.jsonl"
+"run.probe_before": work/evidence/manual/LOCAL-1_TC_016/a1/probes.jsonl
+"run.probe_after": work/evidence/manual/LOCAL-1_TC_016/a2/probes.jsonl
+"run.totals": "passed 115 / failed 65 / error 0 / skipped 0 / not_run 56"
+"run.window_totals": "passed 0 / failed 0 / error 0 / skipped 0 / not_run 0; TC_016 walked, no result built"
+"scope[0].id": LOCAL-1_TC_016
+"scope[0].state": inconclusive
+"scope[0].reason": request unprepared (OB-16 policy not one word); walked live, no verdict
+"scope[0].case": LOCAL-1_TC_016
+"scope[0].obligations": OB-16
+"scope[0].executed": fresh
+"scope[0].evidence": work/evidence/manual/LOCAL-1_TC_016/tried.md
+"scope[0].duration": "-"
+"manual_observations[0].case": LOCAL-1_TC_016
+"manual_observations[0].then": "after sign-out the guest cart holds neither A nor B; profile 2 shows A and B"
+"manual_observations[0].observed": "a1/006: Your cart is empty after sign-out; a2/003 and a2/005: 1984 and A Brief History of Time, bookId 3 and 28, userId 2"
+"manual_observations[0].before_change": not_recorded
+"manual_observations[0].result": inconclusive
+"manual_observations[0].evidence": work/evidence/manual/LOCAL-1_TC_016/tried.md
+"manual_observations[0].why_inconclusive": "request unprepared, no record built; browsers sequential, cookies not captured as a file"
+"manual_observations[0].surprises": "a1 surprises S1-S18: ERR_ABORTED on /books/N prefetch, covers.openlibrary.org blocked; surprise_detection on; see a1/008-surprises.txt"
+"env_blocked[0].id": "-"
+"env_blocked[0].probe_line": "-"
+"env_blocked[0].remedy": "-"
+"env_blocked[0].owner": factory
+"superseded[0].row": "-"
+"superseded[0].superseded_by": "-"
+"claims.every_row_carries_an_evidence_path": true
+"claims.every_blocked_row_names_a_remedy_and_the_probe_line": true
+"claims.no_comparison_was_fabricated_where_before_evidence_is_missing": true
+"claims.handed_and_manual_human_cases_are_absent_by_design": true
+"claims.the_report_was_reduced_by_code_not_written": true
+"tried[0].requirement": LOCAL-1_TC_016
+"tried[0].technique": "manual_capture.py ui a1 (guest add A, sign in, add B, sign out, cart) and a2 (fresh browser, sign in, cart, GET /api/cart)"
+"tried[0].observation": "empty cart after sign-out; fresh browser shows A and B; API agrees"
+"tried[0].evidence": work/evidence/manual/LOCAL-1_TC_016/tried.md
+"tried_note": "-"
+"unresolved[0].id": LOCAL-1_TC_016
+"unresolved[0].reason": blocked_by_check
+"unresolved[0].detail": "plan repair of OB-16 evidence_policy and a probed sign-in for --session needed to build a verdict"

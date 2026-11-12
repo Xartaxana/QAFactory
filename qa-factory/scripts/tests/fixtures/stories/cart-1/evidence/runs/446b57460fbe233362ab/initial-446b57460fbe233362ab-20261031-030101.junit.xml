@@ -1,0 +1,39 @@
+<testsuites id="" name="" tests="12" failures="0" skipped="0" errors="0" time="21.063864999999996">
+<testsuite name="api\cart\add-accumulate.spec.ts" timestamp="2026-10-31T02:01:15.861Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.254" errors="0">
+<testcase name="@api @regression CART-1_TC_003 repeat add accumulates" classname="api\cart\add-accumulate.spec.ts" time="1.254">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\add-boundaries.spec.ts" timestamp="2026-10-31T02:01:15.861Z" hostname="chromium" tests="9" failures="0" skipped="0" time="4.122" errors="0">
+<testcase name="@api @regression CART-1_TC_004 quantity accepted [P-qty-min]" classname="api\cart\add-boundaries.spec.ts" time="1.208">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 quantity accepted [P-qty-max]" classname="api\cart\add-boundaries.spec.ts" time="0.419">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]" classname="api\cart\add-boundaries.spec.ts" time="0.351">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]" classname="api\cart\add-boundaries.spec.ts" time="0.348">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]" classname="api\cart\add-boundaries.spec.ts" time="0.332">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]" classname="api\cart\add-boundaries.spec.ts" time="0.372">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]" classname="api\cart\add-boundaries.spec.ts" time="0.354">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]" classname="api\cart\add-boundaries.spec.ts" time="0.353">
+</testcase>
+<testcase name="@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]" classname="api\cart\add-boundaries.spec.ts" time="0.385">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\add-rejections.spec.ts" timestamp="2026-10-31T02:01:15.861Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.298" errors="0">
+<testcase name="@api @regression CART-1_TC_001 add unknown or sold-out book rejected" classname="api\cart\add-rejections.spec.ts" time="1.298">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\add-stock-limit.spec.ts" timestamp="2026-10-31T02:01:15.861Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.093" errors="0">
+<testcase name="@api @regression CART-1_TC_002 add beyond stock rejected" classname="api\cart\add-stock-limit.spec.ts" time="2.093">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\..\..\..\..\test-results\api-cart-add-stock-limit---20f29-2-add-beyond-stock-rejected-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

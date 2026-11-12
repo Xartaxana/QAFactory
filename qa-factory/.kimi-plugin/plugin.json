@@ -1,0 +1,30 @@
+{
+  "name": "qa-factory",
+  "version": "0.11.0",
+  "description": "QA Factory: ticket-driven functional testing with two human gates. qa-onboarding learns a repository once, qa-story takes a ticket from context and grounding through plan, cases, automation, quiet runs and triage to a code-computed checks ledger before any MR; qa-doctor reports one next action.",
+  "author": {
+    "name": "Xartaxana"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "qa",
+    "testing",
+    "test-automation",
+    "test-design",
+    "factory"
+  ],
+  "skills": "./skills/",
+  "skillInstructions": "Entry points: qa-story is the primary entry point for ticket-driven QA \u2014 it takes a ticket from grounding to a checks ledger and, on the human's decision, an MR. Run qa-onboarding once per repository before any story. qa-doctor verifies the setup and shows where the current story is.",
+  "interface": {
+    "displayName": "QA Factory",
+    "shortDescription": "Ticket-driven QA factory with two human gates",
+    "longDescription": "Learns a repository once (qa-onboarding), then drives every ticket through grounding, a risk-based plan with an explicit disposition per row, test cases, automation with a code critic, quiet test runs, triage with evidence and a code-computed checks ledger the human sees before deciding on an MR. qa-doctor verifies the setup and names one next action.",
+    "developerName": "Xartaxana",
+    "category": "Testing",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ]
+  }
+}

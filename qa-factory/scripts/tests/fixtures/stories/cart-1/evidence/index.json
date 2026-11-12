@@ -1,0 +1,555 @@
+{
+  "rows": [
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_011",
+      "case_version": "cv_de13157c14b004fc1bbd",
+      "obligation_ids": [
+        "OB-11"
+      ],
+      "obligation_hashes": {
+        "OB-11": "819116770cedf51734680f7504f05793a5c44ddf8ec1f8362c78351df38867df"
+      },
+      "attempt_id": "a7",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.60 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.37 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.24 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/books/110 -> ok: 0.37 s",
+        "capture pre_action d3-detail-before -> ok",
+        "fill [data-testid=book-detail-quantity-input] 2 -> ok",
+        "click [data-testid=book-detail-add-to-cart-button] -> ok",
+        "read body text -> ok: 2 copies added to cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MAY ALSO LIKE QA CART1...",
+        "capture post_action d3-added-toast -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.65 s",
+        "capture post_action cart-after-valid -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+        "goto http://localhost:3000/books/110 -> ok: 0.55 s",
+        "fill [data-testid=book-detail-quantity-input] 4 -> ok",
+        "click [data-testid=book-detail-add-to-cart-button] -> ok",
+        "read body text -> ok: Only 3 in stock and 2 already in your cart bookstore Home Cart 2 Wishlist Profile Logout All books QA CART1 D3 QA Runner No description available ISBN QA-C1-D3 PRICE $10.00 Only 3 left QUANTITY Add to Cart Save for later Reviews No reviews yet. Only readers who bought this book can review it. YOU MA...",
+        "capture post_action d3-above-stock-toast -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.47 s",
+        "capture post_action cart-after-above-stock -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove",
+        "goto http://localhost:3000/books/111 -> ok: 0.47 s",
+        "read [data-testid=book-detail-add-to-cart-button] attr=disabled -> ok",
+        "read [data-testid=book-detail-stock] text -> ok: Out of Stock",
+        "capture post_action completion -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.40 s",
+        "capture supporting cart-final -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 D3 QA Runner $10.00 each QUANTITY Subtotal: $20.00 Remove"
+      ],
+      "expected": [
+        "detail-page add with quantity"
+      ],
+      "actual": "Signed in as the seed user with an emptied cart. D3 (stock 3), qty 2, Add to Cart: toast '2 copies added to cart'; cart page lists D3 with subtotal $20.00 (2 x $10.00). D3 qty 4: error toast 'Only 3 in stock and 2 already in your cart'; cart page still shows D3 at $20.00 (qty 2). D0 (stock 0): stock badge and button label read 'Out of Stock', the button is labelled Out of Stock and D0 is absent from the final cart (only D3 listed); the disabled attribute read returned an empty string for both enabled and sold-out buttons, so the disabled state itself rests on the label and the page screenshot.",
+      "completion_condition": "toast shown or button disabled state read",
+      "attempt_started_at": "2026-10-31T11:59:51+00:00",
+      "attempt_ended_at": "2026-10-31T12:00:18+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T11:59:51+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T115951Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:00:18+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120018Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "evidence/161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:03+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770"
+        },
+        {
+          "path": "evidence/8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d.png",
+          "content_hash": "8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:00:05+00:00",
+          "proves": [
+            "d3-detail-before"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d"
+        },
+        {
+          "path": "evidence/6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930.txt",
+          "content_hash": "6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:05+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "6ff3124b9bc32b454d08d251e8ed4265f7094435cfb2468ef5a9783ff8ab8930"
+        },
+        {
+          "path": "evidence/c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf.png",
+          "content_hash": "c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:06+00:00",
+          "proves": [
+            "d3-added-toast"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf"
+        },
+        {
+          "path": "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:08+00:00",
+          "proves": [
+            "cart-after-valid"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035"
+        },
+        {
+          "path": "evidence/a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:08+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78"
+        },
+        {
+          "path": "evidence/7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe.txt",
+          "content_hash": "7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:10+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "7a4870ad0db7bc6b220a327fe43d46195571982b10df737c47dd417a499930fe"
+        },
+        {
+          "path": "evidence/f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb.png",
+          "content_hash": "f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:11+00:00",
+          "proves": [
+            "d3-above-stock-toast"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb"
+        },
+        {
+          "path": "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:12+00:00",
+          "proves": [
+            "cart-after-above-stock"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035"
+        },
+        {
+          "path": "evidence/a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:12+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78"
+        },
+        {
+          "path": "evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "read [data-testid=book-detail-add-to-cart-button] attr=disabled"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "evidence/58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca.txt",
+          "content_hash": "58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "read [data-testid=book-detail-stock]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "58d68e7eecc7e36668622fe30a21874989649b3b592200951cda40e4a3a1adca"
+        },
+        {
+          "path": "evidence/9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf.png",
+          "content_hash": "9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:00:14+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf"
+        },
+        {
+          "path": "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+          "content_hash": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:16+00:00",
+          "proves": [
+            "cart-final"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035"
+        },
+        {
+          "path": "evidence/a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78.txt",
+          "content_hash": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:00:16+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "a5ba697ece39ba960fb21cfc34593ecafefdc8a059c2a405347176b48e932d78"
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "758479ba59b0024c0867c81fd78b4ae1d738be292524109c59941c5f93aa90ce",
+      "before_change": {
+        "r": "R-1",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      },
+      "current_obligation_ids": [
+        "OB-11"
+      ],
+      "evidence_validated": true
+    },
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_012",
+      "case_version": "cv_8ad20339348408e4f727",
+      "obligation_ids": [
+        "OB-12"
+      ],
+      "obligation_hashes": {
+        "OB-12": "3b06ff9048c35d9212986d41ab272cbeb9cab5e905f3b562e82e57227df58af5"
+      },
+      "attempt_id": "a8",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.73 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.30 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/books/112 -> ok: 0.61 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/books/113 -> ok: 0.38 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.57 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.45 s",
+        "capture pre_action wishlist-before -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove QA CART1 W1 QA Runner $10.00 Move to cart Remove",
+        "click [data-testid=wishlist-move-112] -> ok",
+        "read body text -> ok: Moved to cart bookstore Home Cart 1 Wishlist Profile Logout SAVED Wishlist QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove bookstore A curated catalog of books, delivered. © 2026 Bookstore. All rights reserved.",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.57 s",
+        "capture post_action wishlist-after-reload -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove",
+        "read [data-testid=wishlist-move-113] text -> ok: Move to cart",
+        "read [data-testid=wishlist-move-113] attr=disabled -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.41 s",
+        "capture post_action completion -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 W1 QA Runner $10.00 each QUANTITY Subtotal: $10.00 Remove"
+      ],
+      "expected": [
+        "move to cart adds and removes"
+      ],
+      "actual": "Seed user, cart emptied, wishlist held W1 (in stock) and W0 (stock 0). Move to cart on W1: toast 'Moved to cart'; after reload the wishlist lists only W0; cart page lists W1 qty 1 (subtotal $10.00 at $10.00 each) and not W0. W0 row shows an Out of Stock badge; its Move to cart button is disabled (separate diagnostic attempt a9, not in the record: click refused as 'not enabled', cursor not-allowed).",
+      "completion_condition": "wishlist item gone after move",
+      "attempt_started_at": "2026-10-31T12:01:33+00:00",
+      "attempt_ended_at": "2026-10-31T12:02:04+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:01:33+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120133Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:02:03+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120203Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "evidence/161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:54+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770"
+        },
+        {
+          "path": "evidence/4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240.png",
+          "content_hash": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "wishlist-before"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240"
+        },
+        {
+          "path": "evidence/1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035.txt",
+          "content_hash": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035"
+        },
+        {
+          "path": "evidence/ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939.txt",
+          "content_hash": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:56+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939"
+        },
+        {
+          "path": "evidence/62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b.png",
+          "content_hash": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "wishlist-after-reload"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b"
+        },
+        {
+          "path": "evidence/67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42.txt",
+          "content_hash": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42"
+        },
+        {
+          "path": "evidence/09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f.txt",
+          "content_hash": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f"
+        },
+        {
+          "path": "evidence/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:01+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113] attr=disabled"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "evidence/55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53.png",
+          "content_hash": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53"
+        },
+        {
+          "path": "evidence/65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630.txt",
+          "content_hash": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true,
+          "sha256": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630"
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "d02807eff8ef5aa131366b6f749ec279e675cd174156712b50b6f8b45fc2bd7f",
+      "before_change": {
+        "r": "R-14",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      },
+      "current_obligation_ids": [
+        "OB-12"
+      ],
+      "evidence_validated": true
+    }
+  ],
+  "errors": []
+}

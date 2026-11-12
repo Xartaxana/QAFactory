@@ -1,0 +1,1 @@
+{"expectation_changes":[{"function":"cart-isolation.spec.@api @regression CART-1_TC_005 cart isolation between owners","red_attempt":"6b183c7a8fd8088f1c50","green_attempt":"d67215ba124bbc6b138b","critic_verdict":"legitimate_correction","critic_note":"No assertion changed; fixture fix so G1 and G2 do not share a preloaded guest session. Then 3 value unchanged."}]}

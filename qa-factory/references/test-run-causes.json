@@ -1,0 +1,73 @@
+{
+  "about": "Why a test was run again, for the retro's test-run count (scripts/retro_numbers.py test_run_counts). Closed variety (FR-13, AR-1): the cause words (`words`, one per cause, the plain words a person reads), and the tables that map a recorded field to one of them. A cause is read from a STRUCTURED field the controller or the runner recorded (the launch purpose, the dispatch's repair_cause in state/events.jsonl, the status of the previous attempt of the same test, a triage verdict), never from the prose of a `reason` (FR-12). Order of the lookup, first hit wins: by_purpose, then first_run (a test not seen before), then by_repair_cause, then by_previous_status (the attempt before this one on the same test), then a stand signal on that previous run's summary (lifts launch_failed to environment), then by_triage_verdict; no hit is `unknown`, never a default (FR-41). A null value in by_purpose means the purpose is known and says nothing about the cause, so the lookup goes on. A purpose that is not a key of by_purpose and not in not_a_run_purposes is unknown. A null in by_triage_verdict marks a verdict that is not a cause of a re-run, so the lookup goes on and ends at unknown (NOT_EXECUTED: nothing ran; FLAKY, APP_CHANGED, CASE_DEFECT, ASSERT_STRICTER: a person or a role decides, no cause is assumed for them; RUNNER_MISREAD_EVIDENCE: the runner judges the same captures again, nothing is run, so no cause of a re-run; NO_DEFECT: an observation of a manual check judged not a bug, nothing is run again). launch_failed is deliberately one word for two owners: the record does not tell an environment fault from a factory fault, and the retro says so.",
+  "causes": [
+    "first_run",
+    "launch_failed",
+    "after_red",
+    "stage_run",
+    "environment",
+    "factory_defect",
+    "test_defect",
+    "product_bug",
+    "probe",
+    "diagnostic",
+    "person",
+    "unknown"
+  ],
+  "words": {
+    "first_run": "first run",
+    "launch_failed": "after a launch that failed (environment or factory, not told apart)",
+    "after_red": "after a red run",
+    "stage_run": "planned stage run",
+    "environment": "environment",
+    "factory_defect": "factory defect",
+    "test_defect": "test defect",
+    "product_bug": "product bug",
+    "probe": "probe",
+    "diagnostic": "diagnostic",
+    "person": "the person's request",
+    "unknown": "unknown cause"
+  },
+  "by_purpose": {
+    "initial": null,
+    "repair_verify": null,
+    "manual": null,
+    "red_probe": "probe",
+    "flaky_diagnostic": "diagnostic",
+    "diagnostic": "diagnostic"
+  },
+  "by_previous_status": {
+    "broken_run": "launch_failed",
+    "failed_to_launch": "launch_failed",
+    "failed": "after_red",
+    "passed": "stage_run"
+  },
+  "by_repair_cause": {
+    "environment": "environment",
+    "test_defect": "test_defect",
+    "mechanical": "test_defect",
+    "tooling": "factory_defect",
+    "reviewer_error": "factory_defect",
+    "question_answer": "person",
+    "source_arrived": "person",
+    "ticket_changed": "person"
+  },
+  "by_triage_verdict": {
+    "ENV_ISSUE": "environment",
+    "TEST_BUG": "test_defect",
+    "TEST_BUG:collection": "test_defect",
+    "APP_BUG": "product_bug",
+    "FLAKY": null,
+    "APP_CHANGED": null,
+    "CASE_DEFECT": null,
+    "ASSERT_STRICTER": null,
+    "RUNNER_MISREAD_EVIDENCE": null,
+    "NOT_EXECUTED": null,
+    "NO_DEFECT": null
+  },
+  "not_a_run_purposes": [
+    "build",
+    "collect",
+    "quality"
+  ]
+}

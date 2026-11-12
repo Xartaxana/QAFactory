@@ -1,0 +1,187 @@
+{
+  "scope": [
+    "LOCAL-1_TC_001",
+    "LOCAL-1_TC_002",
+    "LOCAL-1_TC_003",
+    "LOCAL-1_TC_004",
+    "LOCAL-1_TC_005",
+    "LOCAL-1_TC_006",
+    "LOCAL-1_TC_007",
+    "LOCAL-1_TC_008",
+    "LOCAL-1_TC_009",
+    "LOCAL-1_TC_010",
+    "LOCAL-1_TC_011",
+    "LOCAL-1_TC_012",
+    "LOCAL-1_TC_013",
+    "LOCAL-1_TC_014",
+    "LOCAL-1_TC_015",
+    "LOCAL-1_TC_016",
+    "LOCAL-1_TC_017",
+    "LOCAL-1_TC_018",
+    "LOCAL-1_TC_019",
+    "LOCAL-1_TC_020",
+    "LOCAL-1_TC_021",
+    "LOCAL-1_TC_022",
+    "LOCAL-1_TC_023",
+    "LOCAL-1_TC_024"
+  ],
+  "plan_revision": "sha256:c8d1748048a8ee6dab4175d259aef456cc68a800943bb61dbc5fdb7a0c2b9b0b",
+  "rows": {
+    "TS-1": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_001"
+      ]
+    },
+    "TS-2": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_002"
+      ]
+    },
+    "TS-3": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_003"
+      ]
+    },
+    "TS-4": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_004"
+      ]
+    },
+    "TS-5": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_005"
+      ]
+    },
+    "TS-6": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_006"
+      ]
+    },
+    "TS-7": {
+      "disposition": "skip",
+      "cases": [
+        "success message and badge count after an add"
+      ]
+    },
+    "TS-8": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_007"
+      ]
+    },
+    "TS-9": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_008"
+      ]
+    },
+    "TS-10": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_009"
+      ]
+    },
+    "TS-11": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_010"
+      ]
+    },
+    "TS-12": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_011"
+      ]
+    },
+    "TS-13": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_012"
+      ]
+    },
+    "TS-14": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_013"
+      ]
+    },
+    "TS-15": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_014"
+      ]
+    },
+    "TS-16": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_015"
+      ]
+    },
+    "TS-17": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_016"
+      ]
+    },
+    "TS-18": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_017"
+      ]
+    },
+    "TS-19": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_018"
+      ]
+    },
+    "TS-20": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_019"
+      ]
+    },
+    "TS-21": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_020"
+      ]
+    },
+    "TS-22": {
+      "disposition": "automate",
+      "cases": [
+        "LOCAL-1_TC_021"
+      ]
+    },
+    "TS-23": {
+      "disposition": "unverifiable",
+      "cases": [
+        "quick view add, if the control exists"
+      ]
+    },
+    "TS-24": {
+      "disposition": "unverifiable",
+      "cases": [
+        "LOCAL-1_TC_022"
+      ]
+    },
+    "TS-25": {
+      "disposition": "unverifiable",
+      "cases": [
+        "LOCAL-1_TC_023"
+      ]
+    },
+    "TS-26": {
+      "disposition": "unverifiable",
+      "cases": [
+        "LOCAL-1_TC_024"
+      ]
+    }
+  }
+}

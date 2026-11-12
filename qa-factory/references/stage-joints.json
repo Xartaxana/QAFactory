@@ -1,0 +1,1143 @@
+{
+  "schema_version": 1,
+  "note": "The census of the stage joints (F6-51): for every check the factory makes of a role, what produces the thing it demands and where the role is told it. scripts/stage_joints.py walks code -> registry, registry -> code and demand -> told (selftest.py --contracts); a leg that does not exist today is a declared gap under a shrink-only ratchet. `friction.same_class_gate_blocks` is the count of one class of gate block at which the retro says it is a finding.",
+  "friction": {
+    "same_class_gate_blocks": 3
+  },
+  "joints": [
+    {
+      "check": "exit:scoped_errors",
+      "stages": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-scout"
+          ],
+          "field": "context-manifest.json of the role's stage",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "validate_artifacts.PHASE_JSON_KEYS"
+        },
+        {
+          "roles": [
+            "qa-automator"
+          ],
+          "field": "automation-manifest.json of the role's stage",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "validate_artifacts.PHASE_JSON_KEYS"
+        },
+        {
+          "roles": [
+            "qa-runner",
+            "qa-failure-analyst"
+          ],
+          "field": "run-report.json / triage.json of the role's stage",
+          "told": [
+            {
+              "path": "references/slices/<role>/artifact-contract-run.md",
+              "anchor": "witness"
+            }
+          ],
+          "demands": [],
+          "demands_from": "validate_artifacts.PHASE_JSON_KEYS"
+        },
+        {
+          "roles": [
+            "qa-requirements-tester",
+            "qa-case-designer",
+            "qa-case-critic",
+            "qa-bug-reporter"
+          ],
+          "field": "the register, the case files and the bug records of the role's stage",
+          "told": [
+            {
+              "path": "agents/<role>.md",
+              "anchor": "<!-- gen:digest contract_slices.py -->"
+            }
+          ],
+          "demands": [],
+          "gap": {
+            "leg": "demands",
+            "ref": "F6-51/1",
+            "why": "check_case, the register claims and check_bug judge fields that no table lists (PHASE_JSON_KEYS holds four JSON files); a reader table is the closing item"
+          }
+        }
+      ],
+      "joint": {
+        "test": "scripts/tests/test_stage_joints_12586.py",
+        "fixture": "scripts/tests/fixtures/run-12586-gate-b/"
+      }
+    },
+    {
+      "check": "exit:detector_errors",
+      "stages": [
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S8"
+      ],
+      "producers": [
+        {
+          "code": "exit_gate.py::detector_gates",
+          "field": "the detector scripts of stages.json (each has its own detector: row)",
+          "told": [
+            {
+              "path": "scripts/exit_gate.py"
+            }
+          ],
+          "demands": []
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "exit:witness_errors",
+      "stages": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-scout",
+            "qa-requirements-tester",
+            "qa-test-strategist",
+            "qa-case-designer",
+            "qa-runner",
+            "qa-failure-analyst"
+          ],
+          "field": "the witness artifact of the role (stages.json witness)",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Witness"
+            }
+          ],
+          "demands": [],
+          "demands_from": "stages.json:witness"
+        },
+        {
+          "roles": [
+            "qa-automator",
+            "qa-doc-scribe",
+            "qa-bug-reporter",
+            "qa-retro-analyst"
+          ],
+          "field": "the witness artifact of the role (stages.json witness)",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Witness"
+            }
+          ],
+          "demands": [],
+          "demands_from": "stages.json:witness"
+        },
+        {
+          "roles": [
+            "qa-code-critic"
+          ],
+          "field": "the witness artifact of the role (stages.json witness)",
+          "told": [
+            {
+              "path": "references/slices/<role>/artifact-contract-automation.md",
+              "anchor": "automation-manifest.json"
+            }
+          ],
+          "demands": [],
+          "demands_from": "stages.json:witness"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "exit:grounding_errors",
+      "stages": [
+        "S2"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-requirements-tester"
+          ],
+          "field": "a derived requirement for each production module the diff creates",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [
+            "derived"
+          ]
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "exit:case_identity_errors",
+      "stages": [
+        "S4"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-case-designer"
+          ],
+          "field": "a case file whose id is its file name",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [
+            "= the file name"
+          ]
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "exit:digest_errors",
+      "stages": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-scout",
+            "qa-requirements-tester",
+            "qa-test-strategist",
+            "qa-case-designer",
+            "qa-case-critic",
+            "qa-automator",
+            "qa-code-critic",
+            "qa-runner",
+            "qa-failure-analyst",
+            "qa-doc-scribe",
+            "qa-bug-reporter",
+            "qa-retro-analyst"
+          ],
+          "field": "the role's final message in the digest form",
+          "told": [
+            {
+              "path": "agents/<role>.md",
+              "anchor": "<!-- gen:digest contract_slices.py -->"
+            },
+            {
+              "path": "references/slices/<role>/common-rules.md",
+              "anchor": "Your final message IS the digest"
+            }
+          ],
+          "demands": [
+            "digest"
+          ]
+        }
+      ],
+      "joint": {
+        "test": "scripts/tests/test_exit_gate_digest_source.py",
+        "fixture": "scripts/tests/fixtures/run-12586-digest/"
+      }
+    },
+    {
+      "check": "exit:required_outputs_errors",
+      "stages": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-scout",
+            "qa-requirements-tester",
+            "qa-test-strategist",
+            "qa-case-designer",
+            "qa-runner",
+            "qa-failure-analyst"
+          ],
+          "field": "the required outputs of the role's stage (stages.json)",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "stages.json:required_outputs"
+        },
+        {
+          "roles": [
+            "qa-automator",
+            "qa-doc-scribe",
+            "qa-retro-analyst"
+          ],
+          "field": "the required outputs of the role's stage (stages.json)",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "stages.json:required_outputs"
+        },
+        {
+          "roles": [
+            "qa-code-critic"
+          ],
+          "field": "the stage's required outputs, written by the stage's first role",
+          "told": [
+            {
+              "path": "references/slices/<role>/artifact-contract-automation.md",
+              "anchor": "automation-manifest.json"
+            }
+          ],
+          "demands": [],
+          "demands_from": "stages.json:required_outputs"
+        },
+        {
+          "field": "the stage's required outputs, as the gate demands them at the stop of the stage's second role",
+          "told": [],
+          "demands": [],
+          "gap": {
+            "leg": "producer",
+            "ref": "F6-51/5",
+            "why": "the gate demands the stage's outputs of every role of the stage; the second role does not produce them, so who must write them is an open producer-attribution question, not a told one"
+          }
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "exit:text_end_after_handback",
+      "stages": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-scout",
+            "qa-requirements-tester",
+            "qa-test-strategist",
+            "qa-case-designer",
+            "qa-case-critic",
+            "qa-automator",
+            "qa-code-critic",
+            "qa-runner",
+            "qa-failure-analyst",
+            "qa-doc-scribe",
+            "qa-bug-reporter",
+            "qa-retro-analyst"
+          ],
+          "field": "the host's handback call as the last act of the dispatch",
+          "told": [],
+          "demands": [],
+          "gap": {
+            "leg": "told",
+            "ref": "F6-51/2",
+            "why": "no role file or slice names the handback tool; the role learns it only from the refusal itself"
+          }
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S2:qa-requirements-tester:branch_accounting.py",
+      "stages": [
+        "S2"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-requirements-tester"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S3:qa-test-strategist:planning_contract.py",
+      "stages": [
+        "S3"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-test-strategist"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": {
+        "test": "scripts/tests/test_stage_joints_12586.py",
+        "fixture": "scripts/tests/fixtures/run-12586-gate-b/"
+      }
+    },
+    {
+      "check": "detector:S3:qa-test-strategist:branch_accounting.py",
+      "stages": [
+        "S3"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-test-strategist"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            },
+            {
+              "path": "references/slices/<role>/artifact-contract-plan.md",
+              "anchor": "branch_accounting"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S4:qa-case-critic:critic_rollcall.py",
+      "stages": [
+        "S4"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-case-critic"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "agents/<role>.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S4:qa-case-critic:branch_accounting.py",
+      "stages": [
+        "S4"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-case-critic"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "agents/<role>.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script",
+          "gap": {
+            "leg": "demands",
+            "ref": "F6-51/4",
+            "why": "the gate re-runs branch_accounting.py at the case critic's stop; no file the case critic receives names it"
+          }
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S5:qa-automator:s5_precheck.py",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-automator"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S5:qa-automator:branch_accounting.py",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-automator"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "detector:S8:qa-doc-scribe:check_coverage.py",
+      "stages": [
+        "S8"
+      ],
+      "producers": [
+        {
+          "roles": [
+            "qa-doc-scribe"
+          ],
+          "field": "the work the detector re-runs over",
+          "told": [
+            {
+              "path": "references/slices/<role>/handoff-keys.md",
+              "anchor": "## Outputs"
+            }
+          ],
+          "demands": [],
+          "demands_from": "check:script"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:expectation_change_gaps",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::owed_changes",
+          "field": "the window field behind the `expectation_change_gaps` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:empty_scope",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `empty_scope` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:quality",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "roles": [],
+          "field": "a quality receipt for each demanded check",
+          "told": [],
+          "demands": [],
+          "gap": {
+            "leg": "producer",
+            "ref": "F6-51/3",
+            "why": "no factory script writes a quality receipt (quality-receipt-producers.json holds no producer), so nothing is demanded by HF4-10"
+          }
+        }
+      ],
+      "joint": {
+        "test": "scripts/tests/test_quality_demand.py",
+        "fixture": "scripts/tests/fixtures/run-12586-s5-quality/"
+      }
+    },
+    {
+      "check": "window:malformed_instance",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `malformed_instance` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:handed_to_person",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `handed_to_person` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:handed_unconfirmed",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `handed_unconfirmed` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:stale_run",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `stale_run` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:change_disposition",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `change_disposition` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:probe_gap",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `probe_gap` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:probe_gap_unrecorded",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `probe_gap_unrecorded` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:evidence",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `evidence` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:blocked_by_env",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `blocked_by_env` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:review",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `review` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:obligation_binding",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `obligation_binding` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:obligation_hash",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `obligation_hash` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:assertion_identity",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `assertion_identity` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:defect_location",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `defect_location` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:change_basis",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `change_basis` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:contradicts_requirement",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `contradicts_requirement` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:sensitivity",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `sensitivity` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:product",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `product` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:stale_review",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `stale_review` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:semantic_sensitivity",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `semantic_sensitivity` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:probe_level",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `probe_level` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:probe_evidence",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `probe_evidence` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:mechanical_green",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `mechanical_green` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    },
+    {
+      "check": "window:probe_mutation_kind",
+      "stages": [
+        "S5"
+      ],
+      "producers": [
+        {
+          "code": "window_record.py::build",
+          "field": "the window field behind the `probe_mutation_kind` gap",
+          "told": [
+            {
+              "path": "scripts/window_record.py"
+            }
+          ],
+          "demands": [],
+          "role_leg": "not walked"
+        }
+      ],
+      "joint": null
+    }
+  ],
+  "ratchet": [
+    {
+      "node": "F6-51",
+      "gaps": 5
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+# GATE A -> S5: what the person decided, handed to the roles that act on it.
+#
+# A gate is a handoff like any other, and it is the one handoff where the sender is a person. Its
+# whole point is that after the approval nothing is asked that could have been asked before it -
+# so everything the person settled at the gate has to reach S5 in writing, in their own words.
+#
+# What went wrong without this file is not a refusal either: the approval was recorded, the
+# automator started, and the answers about the stand, the handed profiles and the accepted
+# preconditions stayed in the chat window of whoever asked them. A role two dispatches later had
+# no way to know that a case was already someone else's to run.
+#
+# Their words are quoted verbatim. Nothing here is a summary, and nothing here is a menu the
+# factory offers itself.
+schema_version: 1
+contract: gate-a-to-automator
+gate: A
+from_role: person
+to_role: qa-automator
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: state/story-case-links.json
+    what: the approved scope, pinned - the cases and their versions
+    required: true
+  - path: test-plan.md
+    what: the plan the person approved, with the cases embedded
+    required: true
+  - path: work/context-bundle.json
+    what: the grounding the tests are written against
+    required: true
+
+header:
+  role: qa-story
+  stage: gate-A
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+decision:
+  words: "<the whole answer, verbatim - not a summary, not a normalisation>"
+  recorded_by: "controller.py --operation gate-decision --gate A"
+  plan_revision: <the revision the scope was pinned at>
+  approved_scope: "<the case ids S4 produced and the person approved>"
+  stop_after_gate_a: <true|false>
+
+# The stand the tests run on, and what the person said about it. `credentials_path` names WHERE
+# the keys live, never what they are.
+environment:
+  id: <the stand's id>
+  words: "<what was said about the stand, verbatim, when it was decided here>"
+  credentials_path: <the env file the runner really reads, or a dash>
+  preconditions_accepted_as_blocked:
+    - case: <case id>
+      words: "<their words - S5 reports this partition as not executed and spends no dispatch>"
+
+# Every block the person passed with their word. The block text is part of the recognition: code
+# reads these exact spellings, and a decision recorded under another name does not reach the check
+# it was meant to pass.
+waivers:
+  - stage: <S3|S4|S5>
+    block: "<the block text, exactly as waiver.py recorded it>"
+    words: "<their words, verbatim>"
+
+# Cases the person took over. `contract.handed_profiles` reads the spelling
+# `executor unavailable: <profile id>` and nothing else; a case handed here is dropped from the
+# S5 and S6 scope, is not triaged, and is reported as run by the person.
+handed_to_person:
+  - profile: <the execution profile id>
+    cases: "<the case ids>"
+    words: "<their words, verbatim>"
+    command: <what the person runs, as the gate B section will print it>
+
+# Stand gaps shown as cards at the gate, with the answer to each. The four answers are the card's
+# own: apply (the factory makes the change), theirs (the person makes it), handed (they run it),
+# accept (it stays a gap and the report says so).
+stand_gaps:
+  - id: <gap id>
+    answer: <one of vocabulary.stand_gap_answers - apply|theirs|handed|accept>
+    words: "<their words, verbatim>"
+    remedy: <the exact change, as the card stated it - names only, never values>
+
+# Contradictions the owner settled at the gate: which reading is the oracle from here on.
+contradictions_settled:
+  - id: <C-n>
+    chosen_reading: <a|b>
+    words: "<their words, verbatim>"
+
+# External actions the approval authorises, and no others.
+authorised_actions:
+  publish_cases: <true|false>          # `external_writes.py --phase after-a --yes`
+  notes: <anything the person limited or excluded>
+
+# Questions the person did not answer, or answered beside the point. A remark is carried, never
+# argued with, and it reaches the gate B brief as an open item.
+remarks:
+  - text: "<their words, verbatim>"
+    recorded_by: "waiver.py --remark"
+
+claims:
+  words_recorded_verbatim_not_summarised: <true|false>
+  decision_recorded_through_controller_gate_decision: <true|false>
+  every_waiver_uses_the_spelling_code_reads: <true|false>
+  nothing_will_be_asked_after_the_gate_that_could_have_been_asked_at_it: <true|false>
+
+expected_of_the_receiver:
+  - "write tests only for the `approved_scope` above, against the pinned case versions"
+  - "a case under `handed_to_person` is not yours: no instance, no run, no unresolved row"
+  - "a `preconditions_accepted_as_blocked` case is reported not executed with those words"
+  - "a contested assertion whose contradiction is not in `contradictions_settled` is not
+     automated - the rest of its row still is"
+
+blocked:
+  field: <the field of this file that cannot be filled>
+  problem: <what was tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything needed to settle it>

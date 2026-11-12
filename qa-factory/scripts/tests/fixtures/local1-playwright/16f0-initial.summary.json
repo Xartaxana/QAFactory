@@ -1,0 +1,128 @@
+{
+ "task": "LOCAL-1",
+ "label": "initial-16f062e1e04674c1b12f",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit={project_root}\\qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\16f062e1e04674c1b12f\\report.junit.xml",
+  "--project=chromium",
+  "tests/api/cart/add-to-cart.spec.ts",
+  "--grep",
+  "^@regression\\ LOCAL\\-1_TC_001\\ P\\-guest\\-qty1\\ guest\\ add\\ of\\ one\\ book\\ appears\\ in\\ the\\ cart\\ read$",
+  "tests/api/cart/add-to-cart.spec.ts",
+  "--grep",
+  "^@regression\\ LOCAL\\-1_TC_001\\ P\\-user\\-qty3\\ signed\\-in\\ add\\ of\\ three\\ appears\\ in\\ the\\ cart\\ read$",
+  "tests/api/cart/add-to-cart.spec.ts",
+  "--grep",
+  "^@regression\\ LOCAL\\-1_TC_001\\ P\\-merge\\ guest\\ cart\\ is\\ in\\ the\\ account\\ cart\\ after\\ the\\ sign\\-in\\ merge$",
+  "tests/api/cart/add-to-cart.spec.ts",
+  "--grep",
+  "^@regression\\ LOCAL\\-1_TC_007\\ add\\ of\\ an\\ unknown\\ book\\ id\\ is\\ refused\\ with\\ a\\ stable\\ error\\ shape,\\ cart\\ unchanged$",
+  "tests/api/cart/add-to-cart.spec.ts",
+  "--grep",
+  "^@regression\\ LOCAL\\-1_TC_008\\ add\\ of\\ an\\ out\\-of\\-stock\\ book\\ is\\ refused,\\ stock\\-1\\ boundary\\ accepted$",
+  "tests/api/cart/add-to-cart.spec.ts",
+  "--grep",
+  "^@regression\\ LOCAL\\-1_TC_009\\ add\\ beyond\\ stock\\ is\\ refused\\ for\\ an\\ empty\\ cart\\ and\\ an\\ existing\\ line$"
+ ],
+ "exit_code": 1,
+ "duration_s": 13.6,
+ "log": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\16f062e1e04674c1b12f\\initial-16f062e1e04674c1b12f-20261103-001252.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-11-02T23:12:52.232594+00:00",
+ "ended_at": "2026-11-02T23:13:05.844170+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 0,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 0.0,
+  "passed": 0
+ },
+ "failed": [],
+ "results": [],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\16f062e1e04674c1b12f\\initial-16f062e1e04674c1b12f-20261103-001252.junit.xml",
+ "report_hash": "7d6205e88359202ca405cd79d657f3f72a8a969834553381f0d9f937259cdbd4",
+ "report_evidence": {
+  "path": "evidence/runs/16f062e1e04674c1b12f/initial-16f062e1e04674c1b12f-20261103-001252.junit.xml",
+  "sha256": "7d6205e88359202ca405cd79d657f3f72a8a969834553381f0d9f937259cdbd4"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "not_executed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "initial",
+ "dispatch_id": "S5-qa-automator-2",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-11-02T23:12:46+00:00",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "person-confirmed:2026-11-02T23:12:00+00:00",
+  "evidence_refs": [
+   "{project_root}/qa-factory/artifacts/LOCAL-1/evidence/runtime-provenance-web-20261102T231246Z.json"
+  ],
+  "provenance": {
+   "technical_verification": false,
+   "identity_kind": "person_confirmed"
+  },
+  "result": "person_confirmed",
+  "person_confirmation": {
+   "words": "\u0414\u0430, \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0439 (the stand runs the build of MyBooks a25b080; started with npm start on the host, not read by the factory)",
+   "at": "2026-11-02T23:12:00+00:00",
+   "task": "LOCAL-1",
+   "kind": "deployed",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "container": "",
+  "checkout": "..\\MyBooks",
+  "comparisons": []
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-11-02T23:13:06+00:00",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "person-confirmed:2026-11-02T23:12:00+00:00",
+  "evidence_refs": [
+   "{project_root}/qa-factory/artifacts/LOCAL-1/evidence/runtime-provenance-web-20261102T231306Z.json"
+  ],
+  "provenance": {
+   "technical_verification": false,
+   "identity_kind": "person_confirmed"
+  },
+  "result": "person_confirmed",
+  "person_confirmation": {
+   "words": "\u0414\u0430, \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0439 (the stand runs the build of MyBooks a25b080; started with npm start on the host, not read by the factory)",
+   "at": "2026-11-02T23:12:00+00:00",
+   "task": "LOCAL-1",
+   "kind": "deployed",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "container": "",
+  "checkout": "..\\MyBooks",
+  "comparisons": []
+ },
+ "runtime_identity_unread": true,
+ "summary_path": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\16f062e1e04674c1b12f\\initial-16f062e1e04674c1b12f-20261103-001252.json",
+ "phases_s": {
+  "build_s": 0.9,
+  "stand_probe_s": 1.0,
+  "collect_s": null,
+  "before_launch_s": 5.1,
+  "pytest_s": 13.6,
+  "after_s": 1.1
+ },
+ "id_not_in_report": 6
+}

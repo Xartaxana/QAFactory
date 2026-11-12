@@ -1,0 +1,23 @@
+{
+  "key": "CART-1",
+  "type": "",
+  "status": "",
+  "title": "Verify the \"Add to Cart\" functionality of the MyBooks application",
+  "description": "## Description\nCheck the \"Add to Cart\" functionality in the application: every way a product can get into the cart, and every scenario in which this functionality is used.\n\nContext given by the requester: the application's stories, test cases and bugs are tracked in Jira project REF (https://example.invalid/2). Application code: https://github.com/person-1/MyBooks. Stand: local docker.\n\n## Acceptance criteria\n- Every path by which a product can be added to the cart is identified and checked.\n- Every scenario in which the Add to Cart functionality is used is identified and checked.",
+  "acceptance_criteria": [
+    "Every path by which a product can be added to the cart is identified and checked.",
+    "Every scenario in which the Add to Cart functionality is used is identified and checked."
+  ],
+  "comments": [],
+  "parent": null,
+  "subtasks": [],
+  "links": {
+    "merge_request": null,
+    "branch": null
+  },
+  "provenance": {
+    "source": "person_pasted",
+    "fetched_at": null,
+    "markup": "markdown"
+  }
+}

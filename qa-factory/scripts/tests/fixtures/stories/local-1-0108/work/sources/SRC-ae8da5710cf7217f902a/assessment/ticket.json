@@ -1,0 +1,45 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that a book with zero stock cannot be added to the cart and the user is told it is out of stock.\n\n*Type:* negative  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* Application is reachable (local disposable environment)\n* A regular user account is available\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* An admin account is available\n* No zero-stock book exists in the seeded catalog, so the case creates its own as admin\n* A unique title is built from the current date and time (call it the QA title)\n\n*Test data:*\n* New book: QA title, author \"QA Author\", price 9.99, stock 0\n* Quantity to add: 1\n\n*Steps & Expected results:*\n# Open the login page and sign in with the admin account  \n   *Expected:* User lands on the catalog page; the Logout button and the Admin button are visible\n# Open the Admin dashboard and the Books tab  \n   *Expected:* The \"Add New Book\" form is visible\n# Fill title (QA title), author \"QA Author\", price 9.99, stock 0 (tick a category if the form requires one) and click Add Book  \n   *Expected:* The book list shows a card with the QA title, price $9.99 and \"Stock: 0\"\n# Click Logout  \n   *Expected:* Session ends; the Login button is visible\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; the cart badge in the navigation is absent or 0\n# On the catalog page type \"\\[QA title\\]\" into the search box and click Search  \n   *Expected:* A catalog card titled \"\\[QA title\\]\" is listed\n# Open the detail page of \"\\[QA title\\]\"  \n   *Expected:* Detail page opens with heading \"\\[QA title\\]\"; an out-of-stock indicator is shown\n# Try to click Add to Cart (it may be disabled)  \n   *Expected:* An \"Out of stock\" message is visible or the button is disabled with that text; cart badge absent or 0\n# Open the cart  \n   *Expected:* Cart is empty and does not list the QA book\n\n*Postconditions:*\n* Cart is empty\n* The QA book is deleted by an admin afterwards\n\n*Traceability:*\n* User story: REF-10\n* Related bug: REF-29\n\n*Notes:*\n* The application shows a disabled \"Out of Stock\" button rather than a message; rejection wording is taken from the requirement.",
+  "id": "14509522",
+  "key": "REF-15",
+  "labels": [
+    "negative",
+    "out_of_stock",
+    "shopping_cart",
+    "web"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 16633,
+    "fields_requested": "*all",
+    "sha256": "455fef40e1461267f8b3bf914ef482fb88fd2afa5942f42cccdfd8f56aeb642f",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-15T14:21:53.891+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Reject adding an out-of-stock book",
+  "type": "Test"
+}

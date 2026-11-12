@@ -1,0 +1,127 @@
+# S4: the case designer hands the pinned cases to the case critic.
+#
+# The critic reviews PINNED versions and nothing else, so this file names the version of every
+# case it hands over. Pinning is the orchestrator's step (`case_versions.py --all`, then
+# `--verify`), and the designer has no Bash - which is exactly why the version has to arrive in
+# writing: on a project with its own case store, a story folder searched for cases pinned nothing
+# and the gate approved an empty set.
+#
+# `review_scope` is the second reason this file exists. Nothing computes the critic's scope for it;
+# a critic left to choose its own reviews whatever it happens to read.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-designer-2.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too.
+# Repair of S4-qa-case-designer-1: the fields under derived: carry its accepted answers; fill the rows of this dispatch.
+schema_version: 1
+contract: s4-designer-to-case-critic
+stage: S4
+from_role: qa-case-designer
+to_role: qa-case-critic
+
+inputs:
+  - path: work/handoffs/S4-qa-case-designer-2.yaml
+    what: this file
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in `scope`, at the pinned version named here
+    required: true
+  - path: work/test-plan.json
+    what: the rows these cases answer, with their obligations and oracles
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle behind the plan row - an existing test is never one
+    required: true
+  - path: state/story-case-links.json
+    what: the pins, written by case_versions.py
+    required: true
+
+inputs_read:
+  - path: work/test-plan.json
+    version: 1f36712b712e366e
+    rows: 12
+  - path: work/requirements-register.md
+    version: ed449558ad117f99
+
+header:
+  role: qa-case-designer
+  stage: S4
+  window: CART-1_TC_005,CART-1_TC_006,CART-1_TC_009
+  verdict: ok
+
+# One row per case. `state` from vocabulary.row_states: created, updated, deferred, blocked,
+# handed_to_person, impossible.
+scope:
+  - id: CART-1_TC_005
+    state: updated
+    reason: JU jar sends guest cookie plus user session; seeded defect now fails
+    plan_row: TS-5
+    obligations: "OB-5"
+    requirements: "R-7"
+    case_version: cv_3767896d512c623e0b59
+    origin: new
+    reuse_of: "-"
+    disposition: automate
+    design_review_required: true
+    self_probe: "seeded defect (user owner query also matching sessionId) returns B x2 to JU so Then 2 fails; design_analysis only"
+  - id: CART-1_TC_006
+    state: updated
+    reason: Seed-secret env precondition added; Given stock flow and Then 5 rows exact
+    plan_row: TS-6
+    obligations: "OB-6"
+    requirements: "R-8"
+    case_version: cv_3736b2c697846070acdd
+    origin: new
+    reuse_of: "-"
+    disposition: automate
+    design_review_required: true
+    self_probe: "max vs sum vs replace distinguished both ways; cap and drop applied after guest rows exist; exact row list bounds the read"
+  - id: CART-1_TC_009
+    state: updated
+    reason: Paths pinned, 4xx narrowed to error/code shape, seed-secret precondition added
+    plan_row: TS-9
+    obligations: "OB-9"
+    requirements: "R-15"
+    case_version: cv_2b3ebd621560f9547704
+    origin: new
+    reuse_of: "-"
+    disposition: automate
+    design_review_required: true
+    self_probe: "wrong path/401/5xx no longer satisfy Then 1 and 3; quote compared to cart read independently"
+# The critic's scope, computed from `design_review_required` and stated here. The critic reviews
+# exactly this set and answers for each id; anything outside it is `review_skipped` by rule.
+review_scope:
+  cases: "CART-1_TC_005,CART-1_TC_006,CART-1_TC_009"
+  rounds_used: 1
+  focus:
+    - "TC_005: JU cookie jar must really send both G1 guest cookie and U session; TC_009: user account assumed verified, Q1 codes open"
+
+artifacts:
+  cases_root: test-cases
+  case_links: state/story-case-links.json
+
+claims:
+  every_case_bearing_plan_row_has_at_least_one_case: true
+  every_case_quotes_its_rows_obligation_ids: true
+  every_case_in_scope_is_pinned_and_the_version_is_named: true
+  every_case_names_the_requirement_it_proves_not_a_test: true
+  existing_cases_were_checked_before_new_ones_were_written: true
+
+expected_of_the_receiver:
+  - "answer for every id in `review_scope.cases` by name - an unreviewed row makes the verdict
+     `partial`, and its id reaches the gate A message"
+  - "review the pinned `case_version` above; a review of bytes that have since changed is not a
+     review of this window"
+  - "every finding carries `expected` and `check` - see s4-case-critic-to-designer"
+
+unresolved:
+  - id: CART-1_TC_009
+    reason: expectation_unconfirmed
+    detail: exact rejection codes not given by a requirement (Q1); only status class and error/code shape asserted
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[0].rows
+    source: "carried from work/handoffs/S4-qa-case-designer-1.yaml (the accepted form this dispatch reworks)"
+  - field: inputs_read[0].version
+    source: "sha256 of work/test-plan.json"
+  - field: inputs_read[1].version
+    source: "sha256 of work/requirements-register.md"

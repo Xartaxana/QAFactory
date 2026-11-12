@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "block_id": "c7f56259e689c93a9ddf-reparse-b52234ea5fb6",
+  "attempt_id": "c7f56259e689c93a9ddf",
+  "attempt_started_at": "2026-10-31T10:24:33.569332+00:00",
+  "attempt_ended_at": "2026-10-31T10:24:46.428240+00:00",
+  "dispatch_id": "S5-qa-automator-4",
+  "profile_id": "web",
+  "repo_id": "test-automation-framework",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": null,
+  "purpose": "repair_verify",
+  "input_fingerprint": "3959095e401a353eaa463221cc3796a5aa3607a095535e1b415758cbb1fa191d",
+  "source_fingerprint": {
+    "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+    "test_content_sha": "0ef8ba9995bf8aecb7436c85eaa3aefbc25f03588dd50df28b672c99f0f44086",
+    "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+    "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+    "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+    "policy_revision": "config-projection-1"
+  },
+  "runtime_provenance": {
+    "profile_id": "web",
+    "timestamp": "2026-10-31T01:57:58Z",
+    "environment_id": "local",
+    "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+    "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+    "result": "matched",
+    "evidence_refs": [
+      "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+    ],
+    "provenance": {
+      "technical_verification": true,
+      "source_linkage": "exact",
+      "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  },
+  "execution_status": "failed",
+  "results": [
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "api/cart/cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "c7f56259e689c93a9ddf",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "3959095e401a353eaa463221cc3796a5aa3607a095535e1b415758cbb1fa191d",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "0ef8ba9995bf8aecb7436c85eaa3aefbc25f03588dd50df28b672c99f0f44086",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/c7f56259e689c93a9ddf/repair_verify-c7f56259e689c93a9ddf-20261031-112433.junit.xml",
+      "report_sha256": "0fe121fd65bb1d1b925b879b2f8bcc421ff3abd9db720490a38eb3dd8d581474"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "c7f56259e689c93a9ddf",
+    "raw_report_hash": "0fe121fd65bb1d1b925b879b2f8bcc421ff3abd9db720490a38eb3dd8d581474",
+    "reparsed": true
+  },
+  "report_scope": {
+    "selected": [
+      "@api @regression CART-1_TC_009 quote and order from cart"
+    ],
+    "unmatched_report_rows": [
+      "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart"
+    ]
+  },
+  "supersedes_block_id": "c7f56259e689c93a9ddf",
+  "reparse_of": "work/run-blocks/20261031T102446900511Z-c7f56259e689c93a9ddf.json"
+}

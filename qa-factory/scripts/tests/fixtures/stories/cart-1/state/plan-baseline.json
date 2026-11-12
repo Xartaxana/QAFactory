@@ -1,0 +1,91 @@
+{
+  "scope": [
+    "CART-1_TC_001",
+    "CART-1_TC_002",
+    "CART-1_TC_003",
+    "CART-1_TC_004",
+    "CART-1_TC_005",
+    "CART-1_TC_006",
+    "CART-1_TC_007",
+    "CART-1_TC_008",
+    "CART-1_TC_009",
+    "CART-1_TC_010",
+    "CART-1_TC_011",
+    "CART-1_TC_012"
+  ],
+  "plan_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+  "rows": {
+    "TS-1": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_001"
+      ]
+    },
+    "TS-2": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_002"
+      ]
+    },
+    "TS-3": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_003"
+      ]
+    },
+    "TS-4": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_004"
+      ]
+    },
+    "TS-5": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_005"
+      ]
+    },
+    "TS-6": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_006"
+      ]
+    },
+    "TS-7": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_007"
+      ]
+    },
+    "TS-8": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_008"
+      ]
+    },
+    "TS-9": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_009"
+      ]
+    },
+    "TS-10": {
+      "disposition": "automate",
+      "cases": [
+        "CART-1_TC_010"
+      ]
+    },
+    "TS-11": {
+      "disposition": "manual-agent",
+      "cases": [
+        "CART-1_TC_011"
+      ]
+    },
+    "TS-12": {
+      "disposition": "manual-agent",
+      "cases": [
+        "CART-1_TC_012"
+      ]
+    }
+  }
+}

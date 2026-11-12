@@ -1,0 +1,1047 @@
+{
+  "task": "CART-1",
+  "sessions": [
+    "dcfd687f-5e6a-48a1-9163-c78d17ba13f8"
+  ],
+  "story": {
+    "usd": 19.328201,
+    "usd_low": 19.328201,
+    "usd_high": 19.328201,
+    "tokens": 81043803,
+    "incomplete": true,
+    "reason": "roles with no recorded usage: qa-automator, qa-case-critic, qa-case-designer, qa-code-critic, qa-doc-scribe, qa-failure-analyst, qa-requirements-tester, qa-runner, qa-scout, qa-test-strategist.",
+    "roles_missing": [
+      "qa-automator",
+      "qa-case-critic",
+      "qa-case-designer",
+      "qa-code-critic",
+      "qa-doc-scribe",
+      "qa-failure-analyst",
+      "qa-requirements-tester",
+      "qa-runner",
+      "qa-scout",
+      "qa-test-strategist"
+    ],
+    "sessions": 1,
+    "price_status": "not_cross_checked"
+  },
+  "price": {
+    "status": "not_cross_checked",
+    "sessions": [
+      {
+        "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+        "agent": "orchestrator",
+        "stage": "",
+        "a_usd": 19.3282007,
+        "b_usd": null,
+        "a_price_usd": 19.3282007,
+        "verdict": "in_progress",
+        "why": "the transcript changed 6 s ago: the session is still being written"
+      }
+    ],
+    "by_agent": [
+      {
+        "agent": "orchestrator",
+        "sessions": 1,
+        "a_usd": 8.115978,
+        "a_price_usd": 8.115978,
+        "b_usd": null,
+        "price_low_usd": 8.115978,
+        "price_high_usd": 8.115978,
+        "remote_usd": null,
+        "b_unknown": 1,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-automator",
+        "sessions": 1,
+        "a_usd": 4.7014651,
+        "a_price_usd": 4.7014651,
+        "b_usd": null,
+        "price_low_usd": 4.7014651,
+        "price_high_usd": 4.7014651,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-code-critic",
+        "sessions": 1,
+        "a_usd": 1.641452,
+        "a_price_usd": 1.641452,
+        "b_usd": null,
+        "price_low_usd": 1.641452,
+        "price_high_usd": 1.641452,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-runner",
+        "sessions": 1,
+        "a_usd": 1.2923072,
+        "a_price_usd": 1.2923072,
+        "b_usd": null,
+        "price_low_usd": 1.2923072,
+        "price_high_usd": 1.2923072,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-test-strategist",
+        "sessions": 1,
+        "a_usd": 0.7522254,
+        "a_price_usd": 0.7522254,
+        "b_usd": null,
+        "price_low_usd": 0.7522254,
+        "price_high_usd": 0.7522254,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-case-designer",
+        "sessions": 1,
+        "a_usd": 0.7171717,
+        "a_price_usd": 0.7171717,
+        "b_usd": null,
+        "price_low_usd": 0.7171717,
+        "price_high_usd": 0.7171717,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-scout",
+        "sessions": 1,
+        "a_usd": 0.6076461,
+        "a_price_usd": 0.6076461,
+        "b_usd": null,
+        "price_low_usd": 0.6076461,
+        "price_high_usd": 0.6076461,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-requirements-tester",
+        "sessions": 1,
+        "a_usd": 0.4471431,
+        "a_price_usd": 0.4471431,
+        "b_usd": null,
+        "price_low_usd": 0.4471431,
+        "price_high_usd": 0.4471431,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-case-critic",
+        "sessions": 1,
+        "a_usd": 0.4201201,
+        "a_price_usd": 0.4201201,
+        "b_usd": null,
+        "price_low_usd": 0.4201201,
+        "price_high_usd": 0.4201201,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-doc-scribe",
+        "sessions": 1,
+        "a_usd": 0.3171511,
+        "a_price_usd": 0.3171511,
+        "b_usd": null,
+        "price_low_usd": 0.3171511,
+        "price_high_usd": 0.3171511,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-failure-analyst",
+        "sessions": 1,
+        "a_usd": 0.3155409,
+        "a_price_usd": 0.3155409,
+        "b_usd": null,
+        "price_low_usd": 0.3155409,
+        "price_high_usd": 0.3155409,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      }
+    ],
+    "totals": {
+      "a": 19.3282007,
+      "b": 0.0,
+      "a_comparable": 0.0,
+      "b_comparable": 0.0,
+      "a_price": 19.3282007
+    },
+    "differ": [],
+    "one_record": [],
+    "unknown": [],
+    "in_progress": [
+      {
+        "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+        "agent": "orchestrator",
+        "stage": "",
+        "a_usd": 19.3282007,
+        "b_usd": null,
+        "a_price_usd": 19.3282007,
+        "verdict": "in_progress",
+        "why": "the transcript changed 6 s ago: the session is still being written"
+      }
+    ],
+    "catalogue_revision": "provider-docs-2026-10-16-r1",
+    "finding": "1 session is still being written and was not compared.",
+    "compared": "nothing was compared: the driver's journal names no session of this task; 0 priced from one record",
+    "rows_without_session": 0,
+    "rate_overrides": [],
+    "external_forms_line": "external calls counted for: product",
+    "price_low_usd": 19.3282007,
+    "price_high_usd": 19.3282007,
+    "bound_by_journal": [],
+    "problem": ""
+  },
+  "price_problem": "",
+  "incomplete": true,
+  "incomplete_reason": "roles with no recorded usage: qa-automator, qa-case-critic, qa-case-designer, qa-code-critic, qa-doc-scribe, qa-failure-analyst, qa-requirements-tester, qa-runner, qa-scout, qa-test-strategist.",
+  "orchestrator": {
+    "tokens": 46672973,
+    "requests": 182,
+    "cost": 8.115978000000004,
+    "cost_known": true,
+    "active_s": 16545,
+    "machine_s": 5861,
+    "tools": {
+      "Bash": 37948,
+      "Read": 21398,
+      "Edit": 20009,
+      "Write": 16298,
+      "Grep": 4451,
+      "SubagentHandback": 4442,
+      "Glob": 1781,
+      "Agent": 25,
+      "SendMessage": 12,
+      "AskUserQuestion": 10,
+      "mcp__ccd_turn__update_plan": 5,
+      "mcp__ccd_turn__wrap_up": 3,
+      "ToolSearch": 1
+    }
+  },
+  "handed_back_to_roles": null,
+  "price_base": {
+    "factors": {},
+    "unscaled": [],
+    "project_rates": false
+  },
+  "rules_weight": {
+    "requests": 475,
+    "tokens": 6390985,
+    "usd": 0.6391,
+    "rate_per_mtok": 0.1,
+    "model": "claude-sonnet-5-5",
+    "models": 1,
+    "reason": "",
+    "rate_source": "catalogue",
+    "by_layer": {
+      "charter": 0.1266,
+      "slices": 0.3797,
+      "common": 0.0598,
+      "brief": 0.073
+    },
+    "by_role": {
+      "qa-scout": {
+        "requests": 22,
+        "bytes": 47952,
+        "usd": 0.0264
+      },
+      "qa-requirements-tester": {
+        "requests": 18,
+        "bytes": 38110,
+        "usd": 0.0171
+      },
+      "qa-test-strategist": {
+        "requests": 12,
+        "bytes": 53484,
+        "usd": 0.016
+      },
+      "qa-case-designer": {
+        "requests": 19,
+        "bytes": 49245,
+        "usd": 0.0234
+      },
+      "qa-case-critic": {
+        "requests": 15,
+        "bytes": 49289,
+        "usd": 0.0185
+      },
+      "qa-automator": {
+        "requests": 220,
+        "bytes": 55860,
+        "usd": 0.3073
+      },
+      "qa-code-critic": {
+        "requests": 66,
+        "bytes": 56765,
+        "usd": 0.0938
+      },
+      "qa-runner": {
+        "requests": 75,
+        "bytes": 53317,
+        "usd": 0.0999
+      },
+      "qa-failure-analyst": {
+        "requests": 17,
+        "bytes": 51903,
+        "usd": 0.0221
+      },
+      "qa-doc-scribe": {
+        "requests": 11,
+        "bytes": 53582,
+        "usd": 0.0147
+      }
+    },
+    "assumption": "4 bytes per token, the model's cache-read rate, every request of every dispatch re-reading the whole prompt"
+  },
+  "orchestrator_share_percent": null,
+  "orchestrator_share_basis": null,
+  "orchestrator_share_limit_percent": 35.0,
+  "orchestrator_by_stage": {
+    "unattributed": 2.084755,
+    "S1": 0.174272,
+    "S2": 0.092682,
+    "S3": 0.098137,
+    "S4": 0.861812,
+    "S5": 3.525293,
+    "S6": 0.927731,
+    "S7": 0.170461,
+    "S8": 0.180839
+  },
+  "clock_anomalies": [],
+  "by_stage": {
+    "S1": {
+      "dispatches": 1,
+      "tokens": 1554112,
+      "cost": 0.6076461,
+      "cost_known": true,
+      "requests": 22,
+      "incomplete": true
+    },
+    "S2": {
+      "dispatches": 1,
+      "tokens": 992844,
+      "cost": 0.4471431,
+      "cost_known": true,
+      "requests": 18,
+      "incomplete": true
+    },
+    "S3": {
+      "dispatches": 1,
+      "tokens": 952833,
+      "cost": 0.7522254,
+      "cost_known": true,
+      "requests": 12,
+      "incomplete": true
+    },
+    "S4": {
+      "dispatches": 4,
+      "tokens": 1591413,
+      "cost": 1.1372918,
+      "cost_known": true,
+      "requests": 34,
+      "incomplete": true
+    },
+    "S5": {
+      "dispatches": 10,
+      "tokens": 23211702,
+      "cost": 6.3429171,
+      "cost_known": true,
+      "requests": 286,
+      "incomplete": true
+    },
+    "S6": {
+      "dispatches": 2,
+      "tokens": 4547710,
+      "cost": 1.2923072,
+      "cost_known": true,
+      "requests": 75,
+      "incomplete": true
+    },
+    "S7": {
+      "dispatches": 1,
+      "tokens": 876836,
+      "cost": 0.3155409,
+      "cost_known": true,
+      "requests": 17,
+      "incomplete": true
+    },
+    "S8": {
+      "dispatches": 1,
+      "tokens": 643380,
+      "cost": 0.3171511,
+      "cost_known": true,
+      "requests": 11,
+      "incomplete": true
+    }
+  },
+  "by_role": {
+    "qa-scout": {
+      "dispatches": 1,
+      "tokens": 1554112,
+      "cost": 0.6076461,
+      "cost_known": true,
+      "requests": 22,
+      "incomplete": true
+    },
+    "qa-requirements-tester": {
+      "dispatches": 1,
+      "tokens": 992844,
+      "cost": 0.4471431,
+      "cost_known": true,
+      "requests": 18,
+      "incomplete": true
+    },
+    "qa-test-strategist": {
+      "dispatches": 1,
+      "tokens": 952833,
+      "cost": 0.7522254,
+      "cost_known": true,
+      "requests": 12,
+      "incomplete": true
+    },
+    "qa-case-designer": {
+      "dispatches": 2,
+      "tokens": 953075,
+      "cost": 0.7171717,
+      "cost_known": true,
+      "requests": 19,
+      "incomplete": true
+    },
+    "qa-case-critic": {
+      "dispatches": 2,
+      "tokens": 638338,
+      "cost": 0.4201201,
+      "cost_known": true,
+      "requests": 15,
+      "incomplete": true
+    },
+    "qa-automator": {
+      "dispatches": 5,
+      "tokens": 19838271,
+      "cost": 4.7014651,
+      "cost_known": true,
+      "requests": 220,
+      "incomplete": true
+    },
+    "qa-code-critic": {
+      "dispatches": 5,
+      "tokens": 3373431,
+      "cost": 1.641452,
+      "cost_known": true,
+      "requests": 66,
+      "incomplete": true
+    },
+    "qa-runner": {
+      "dispatches": 2,
+      "tokens": 4547710,
+      "cost": 1.2923072,
+      "cost_known": true,
+      "requests": 75,
+      "incomplete": true
+    },
+    "qa-failure-analyst": {
+      "dispatches": 1,
+      "tokens": 876836,
+      "cost": 0.3155409,
+      "cost_known": true,
+      "requests": 17,
+      "incomplete": true
+    },
+    "qa-doc-scribe": {
+      "dispatches": 1,
+      "tokens": 643380,
+      "cost": 0.3171511,
+      "cost_known": true,
+      "requests": 11,
+      "incomplete": true
+    }
+  },
+  "dispatches": [
+    {
+      "role": "qa-scout",
+      "stage": "S1",
+      "purpose": "qa-scout S1 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 1554112,
+      "cost": 0.6076461,
+      "requests": 22,
+      "tools": {
+        "Bash": 17,
+        "Read": 3,
+        "Write": 3,
+        "Grep": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T00:54:38.486000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-requirements-tester",
+      "stage": "S2",
+      "purpose": "qa-requirements-tester S2 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 992844,
+      "cost": 0.4471431,
+      "requests": 18,
+      "tools": {
+        "Bash": 11,
+        "Edit": 8,
+        "Read": 7,
+        "Write": 5,
+        "Grep": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:00:36.080000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-test-strategist",
+      "stage": "S3",
+      "purpose": "qa-test-strategist S3 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 952833,
+      "cost": 0.7522254,
+      "requests": 12,
+      "tools": {
+        "Edit": 43,
+        "Read": 8,
+        "Write": 3,
+        "Glob": 1,
+        "Grep": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:06:25.546000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-case-designer",
+      "stage": "S4",
+      "purpose": "qa-case-designer S4 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 677389,
+      "cost": 0.5060722,
+      "requests": 12,
+      "tools": {
+        "Write": 15,
+        "Read": 6,
+        "Grep": 5,
+        "Glob": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:14:04.045000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-case-critic",
+      "stage": "S4",
+      "purpose": "qa-case-critic S4 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 285488,
+      "cost": 0.2084173,
+      "requests": 7,
+      "tools": {
+        "Read": 9,
+        "Write": 4,
+        "Glob": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:19:47.580000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-case-designer",
+      "stage": "S4",
+      "purpose": "qa-case-designer S4 rework CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 275686,
+      "cost": 0.2110995,
+      "requests": 7,
+      "tools": {
+        "Edit": 14,
+        "Read": 6,
+        "Grep": 3,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:22:12.553000+00:00",
+      "incomplete": true,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-case-critic",
+      "stage": "S4",
+      "purpose": "qa-case-critic S4 round 2 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 352850,
+      "cost": 0.2117028,
+      "requests": 8,
+      "tools": {
+        "Read": 9,
+        "Write": 4,
+        "Glob": 1,
+        "Grep": 1,
+        "Edit": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:25:33.264000+00:00",
+      "incomplete": true,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 plan CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 584994,
+      "cost": 0.2645182,
+      "requests": 11,
+      "tools": {
+        "Bash": 8,
+        "Read": 4,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:47:30.537000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 plan CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 367170,
+      "cost": 0.2100871,
+      "requests": 8,
+      "tools": {
+        "Read": 4,
+        "Bash": 4,
+        "Write": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T01:50:03.566000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 window 1 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 6610577,
+      "cost": 1.4654125,
+      "requests": 66,
+      "tools": {
+        "Bash": 54,
+        "Write": 14,
+        "Read": 6,
+        "SubagentHandback": 2
+      },
+      "started": "2026-10-31T01:52:06+00:00",
+      "incomplete": true,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 window 1 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 818266,
+      "cost": 0.4580598,
+      "requests": 15,
+      "tools": {
+        "Bash": 13,
+        "Read": 2,
+        "SubagentHandback": 2
+      },
+      "started": "2026-10-31T02:07:15.858000+00:00",
+      "incomplete": true,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 window 2 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 4391466,
+      "cost": 1.0861935,
+      "requests": 47,
+      "tools": {
+        "Bash": 42,
+        "Read": 7,
+        "Write": 6,
+        "Edit": 3,
+        "SubagentHandback": 2
+      },
+      "started": "2026-10-31T09:27:53.964000+00:00",
+      "incomplete": true,
+      "round": 3,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 window 2 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 805250,
+      "cost": 0.4490419,
+      "requests": 15,
+      "tools": {
+        "Bash": 14,
+        "Read": 3,
+        "SubagentHandback": 2
+      },
+      "started": "2026-10-31T09:38:55.287000+00:00",
+      "incomplete": true,
+      "round": 3,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 window 3 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 6210602,
+      "cost": 1.3146954,
+      "requests": 66,
+      "tools": {
+        "Bash": 54,
+        "Read": 11,
+        "Write": 7,
+        "Edit": 5,
+        "SubagentHandback": 3
+      },
+      "started": "2026-10-31T10:12:55.844000+00:00",
+      "incomplete": true,
+      "round": 4,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 window 3 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 1038427,
+      "cost": 0.3346443,
+      "requests": 20,
+      "tools": {
+        "Bash": 15,
+        "Read": 5,
+        "SubagentHandback": 3,
+        "Glob": 1
+      },
+      "started": "2026-10-31T10:21:14.376000+00:00",
+      "incomplete": true,
+      "round": 4,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 window 4 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 2040632,
+      "cost": 0.5706455,
+      "requests": 30,
+      "tools": {
+        "Bash": 27,
+        "Read": 7,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T10:33:32.054000+00:00",
+      "incomplete": true,
+      "round": 5,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 window 4 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 344318,
+      "cost": 0.1896189,
+      "requests": 8,
+      "tools": {
+        "Bash": 7,
+        "Read": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T10:43:11.996000+00:00",
+      "incomplete": true,
+      "round": 5,
+      "rework": true
+    },
+    {
+      "role": "qa-runner",
+      "stage": "S6",
+      "purpose": "qa-runner S6 automation CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 1863087,
+      "cost": 0.5075516,
+      "requests": 31,
+      "tools": {
+        "Bash": 26,
+        "Write": 3,
+        "Read": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T10:45:39.923000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-runner",
+      "stage": "S6",
+      "purpose": "qa-runner S6 manual CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 2684623,
+      "cost": 0.7847556,
+      "requests": 44,
+      "tools": {
+        "Bash": 41,
+        "Read": 5,
+        "SubagentHandback": 3
+      },
+      "started": "2026-10-31T10:51:45.119000+00:00",
+      "incomplete": true,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-failure-analyst",
+      "stage": "S7",
+      "purpose": "qa-failure-analyst S7 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 876836,
+      "cost": 0.3155409,
+      "requests": 17,
+      "tools": {
+        "Bash": 14,
+        "Read": 4,
+        "Grep": 3,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T12:05:10.117000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-doc-scribe",
+      "stage": "S8",
+      "purpose": "qa-doc-scribe S8 CART-1",
+      "session": "dcfd687f-5e6a-48a1-9163-c78d17ba13f8",
+      "tokens": 643380,
+      "cost": 0.3171511,
+      "requests": 11,
+      "tools": {
+        "Bash": 8,
+        "Read": 3,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-10-31T12:09:00.471000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    }
+  ],
+  "top_dispatches": [
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "cost": 1.4654125,
+      "tokens": 6610577,
+      "requests": 66,
+      "round": 2
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "cost": 1.3146954,
+      "tokens": 6210602,
+      "requests": 66,
+      "round": 4
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "cost": 1.0861935,
+      "tokens": 4391466,
+      "requests": 47,
+      "round": 3
+    }
+  ],
+  "rework": {
+    "dispatches": 11,
+    "cost": 7.0759,
+    "rounds": [
+      "S4/qa-case-designer round 2",
+      "S4/qa-case-critic round 2",
+      "S5/qa-automator round 2",
+      "S5/qa-code-critic round 2",
+      "S5/qa-automator round 3",
+      "S5/qa-code-critic round 3",
+      "S5/qa-automator round 4",
+      "S5/qa-code-critic round 4",
+      "S5/qa-automator round 5",
+      "S5/qa-code-critic round 5",
+      "S6/qa-runner round 2"
+    ]
+  },
+  "journal": {
+    "events": {
+      "delegated": 44,
+      "escalated": 1,
+      "subagent_stop": 31,
+      "awaiting_human": 3,
+      "human_answer": 16,
+      "accepted": 8,
+      "gate_block": 15,
+      "hook_signal": 1
+    },
+    "rejects": 0,
+    "reject_families": {},
+    "gate_blocks": 15,
+    "compacts": 0,
+    "halts_journalled": 0
+  },
+  "stage_times": {
+    "S0": {
+      "status": "done",
+      "seconds": 0,
+      "role": null
+    },
+    "S1": {
+      "status": "done",
+      "seconds": 352,
+      "role": "qa-scout"
+    },
+    "S2": {
+      "status": "done",
+      "seconds": 327,
+      "role": "qa-requirements-tester"
+    },
+    "S3": {
+      "status": "done",
+      "seconds": 448,
+      "role": "qa-test-strategist"
+    },
+    "S4": {
+      "status": "done",
+      "seconds": 791,
+      "role": "qa-case-critic"
+    },
+    "S5": {
+      "status": "done",
+      "seconds": 32252,
+      "role": "qa-code-critic"
+    },
+    "S6": {
+      "status": "done",
+      "seconds": 4725,
+      "role": "qa-runner"
+    },
+    "S7": {
+      "status": "done",
+      "seconds": 187,
+      "role": "qa-failure-analyst"
+    },
+    "S8": {
+      "status": "done",
+      "seconds": 209,
+      "role": "qa-doc-scribe"
+    }
+  },
+  "halts": {
+    "count": 0,
+    "waited_s": 0,
+    "rows": []
+  },
+  "human_wait_s": 18062,
+  "time_to_first_test_s": 4023,
+  "estimate_vs_actual": {
+    "size_forecast": "XXL",
+    "size_initial": "XXL",
+    "size_final": "XXL",
+    "size_reason": "",
+    "requirements": 16,
+    "plan_rows": 12,
+    "cases_pinned": 12,
+    "runs": 10,
+    "runs_redundant": 0
+  },
+  "test_runs": {
+    "jobs": 15,
+    "windows": {
+      "unscoped": 15
+    },
+    "executions": 80,
+    "duplicate_green_executions": 0,
+    "duplicate_share_percent": 0.0
+  },
+  "resumes": {
+    "known": false,
+    "reason": "the story has no driver journal (driver-runs.jsonl)",
+    "carrier": "state/driver-runs.jsonl"
+  },
+  "friction": {
+    "status": "unknown",
+    "reason": "this story has no driver journal",
+    "method": "Each turn of a role's own transcript is priced from its usage block by its message.model through the package's rate catalogue (cost_capture valuation), not from the CLI's total_cost_usd in the driver journal: the two records differ and this table uses the first (FR-25). Turn share is friction turns over all turns; dollar share is friction dollars over priced dollars, so an unpriced turn is in the first and in neither dollar figure. A count is a candidate, not a finding, until the tool result behind it is read (FR-26)."
+  },
+  "sources_left_out": [],
+  "sources_left_out_unread": "",
+  "codex_tariff": ""
+}

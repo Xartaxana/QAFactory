@@ -1,0 +1,69 @@
+{
+ "source_revision": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+ "test_files": [
+  {
+   "path": "<path-1>\\test-automation-framework\\tests\\e2e\\cart\\add-to-cart.spec.ts",
+   "sha256": "3a0dd8c705cf8f613e32dc88eba21379a720b62b8d23431780dd449845438362"
+  }
+ ],
+ "helper_files": [
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\clients\\cartApi.ts",
+   "sha256": "7649585511952857704de173d64092265562955e48127d1d304f3a8152ac897e"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\fixtures\\cartApi.fixture.ts",
+   "sha256": "e405b974d079e9621543c9c7bffa212b4e73e381eff710c90d7723807c104c9c"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\pages\\HomePage.ts",
+   "sha256": "ebaaa348a31171607d4e70c54820c6b843f1db0505414d80a8c7e49c782bf850"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\pages\\CartPage.ts",
+   "sha256": "9a07229cf0400ef95b334d215aa3fab3154de2d8956271cc41658c152288675b"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\pages\\LoginPage.ts",
+   "sha256": "97caf793b9bc0a680e85053be8b54ee9e16315ecb12830966da1c2c6528d5039"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\core\\pages\\BasePage.ts",
+   "sha256": "d5102e4aed11bad7cc2e0c744ac081c3c7855186b193203f66fb778b49a9ca14"
+  }
+ ],
+ "config_files": [
+  {
+   "path": "<path-1>\\test-automation-framework\\qa-factory\\config.json",
+   "sha256": "1f8afbe781d38451e08158a013f8901da1e97d606b14a97360924d6aab910041"
+  },
+  {
+   "path": "<path-1>\\test-automation-framework\\playwright.config.ts",
+   "sha256": "e399f10b8f99a40354e440f503e6d49a9419420d5ca08ce8610fca98ab7d6947"
+  }
+ ],
+ "dependency_files": [
+  {
+   "path": "<path-1>\\test-automation-framework\\package-lock.json",
+   "sha256": "0193ca801951b5674e4356c0cf20b110bdc06f5af312e313e8e2e7d1451cf9e5"
+  }
+ ],
+ "runtime_provenance": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T01:57:58Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  }
+ },
+ "profile_id": "web",
+ "project_config": "<path-1>\\test-automation-framework\\qa-factory\\config.json"
+}

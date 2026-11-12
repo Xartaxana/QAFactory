@@ -1,0 +1,1543 @@
+{
+  "schema_version": 2,
+  "task_id": "LOCAL-1",
+  "source_revisions": [
+    {
+      "repo": "MyBooks",
+      "source": "current-code",
+      "mr": null,
+      "branch": null,
+      "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "diff_path": null,
+      "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  ],
+  "facts": [
+    {
+      "requirement": "REF-10 AC1 add simple product from product page",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 45,
+      "note": "addToCart POSTs /api/cart {bookId, quantity}; toast \"Book added to cart\"",
+      "id": "REF-10 AC1 add simple product from product page",
+      "source_refs": [
+        "MyBooks/src/components/pages/BookDetailPage.tsx"
+      ]
+    },
+    {
+      "requirement": "REF-10 AC3 add multiple quantities (qty 3)",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 55,
+      "note": "toast \"N copies added to cart\"",
+      "id": "REF-10 AC3 add multiple quantities (qty 3)",
+      "source_refs": [
+        "MyBooks/src/components/pages/BookDetailPage.tsx"
+      ]
+    },
+    {
+      "requirement": "REF-1 / REF-2 reject quantity 0",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 164,
+      "note": "onChange clamps any input to >=1 (0 becomes 1), so 0 is never sent; contradicts \"reject 0\"",
+      "id": "REF-1 / REF-2 reject quantity 0",
+      "source_refs": [
+        "MyBooks/src/components/pages/BookDetailPage.tsx"
+      ]
+    },
+    {
+      "requirement": "REF-10 AC2 out-of-stock product",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 170,
+      "note": "button disabled and labelled \"Out of Stock\" instead of an error message after click",
+      "id": "REF-10 AC2 out-of-stock product",
+      "source_refs": [
+        "MyBooks/src/components/pages/BookDetailPage.tsx"
+      ]
+    },
+    {
+      "requirement": "REF-10 AC2 out-of-stock product",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 35,
+      "note": "400 OUT_OF_STOCK when stockQuantity<=0",
+      "id": "REF-10 AC2 out-of-stock product",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/HomePage.tsx",
+      "line": 118,
+      "note": "catalog card add path: handleAddToCart POSTs quantity 1 (BookCard.tsx:78 add-to-cart-button-<id>)",
+      "id": "fact-6",
+      "source_refs": [
+        "MyBooks/src/components/pages/HomePage.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/WishlistPage.tsx",
+      "line": 47,
+      "note": "wishlist move-to-cart path: POST /api/cart qty 1, then DELETE wishlist item; error toast keeps item",
+      "id": "fact-7",
+      "source_refs": [
+        "MyBooks/src/components/pages/WishlistPage.tsx"
+      ]
+    },
+    {
+      "requirement": "REF-11/145/147 stock check incl. already in cart",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 44,
+      "note": "INSUFFICIENT_STOCK when inCart+adding>stock (cartRules.ts:7)",
+      "id": "REF-11/145/147 stock check incl. already in cart",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "REF-12 same product twice gives one line",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 53,
+      "note": "existing line updated to inCart+quantity",
+      "id": "REF-12 same product twice gives one line",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "REF-1/151/152/161/162/163 quantity validation",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/validation/schemas.ts",
+      "line": 41,
+      "note": "integer 1..999; bookId positive integer",
+      "id": "REF-1/151/152/161/162/163 quantity validation",
+      "source_refs": [
+        "MyBooks/src/lib/validation/schemas.ts"
+      ]
+    },
+    {
+      "requirement": "REF-9 raise cart quantity above stock",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 80,
+      "note": "PUT rejects quantity>stock, INSUFFICIENT_STOCK (route cart/[id]/route.ts:8)",
+      "id": "REF-9 raise cart quantity above stock",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "REF-13/157 guest and user carts",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/session.ts",
+      "line": 34,
+      "note": "owner = user id when signed in else guest session cookie",
+      "id": "REF-13/157 guest and user carts",
+      "source_refs": [
+        "MyBooks/src/lib/session.ts"
+      ]
+    },
+    {
+      "requirement": "REF-13/157 guest cart after sign-in",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 118,
+      "note": "mergeGuestCart: higher qty wins, capped at stock, no-stock dropped; called from LoginPage.tsx:36",
+      "id": "REF-13/157 guest cart after sign-in",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/app/api/cart/route.ts",
+      "line": 24,
+      "note": "DELETE clears cart; DELETE cart/[id]/route.ts:20 removes one line",
+      "id": "fact-14",
+      "source_refs": [
+        "MyBooks/src/app/api/cart/route.ts"
+      ]
+    },
+    {
+      "requirement": "REF-14 price sync / subtotal",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 103,
+      "note": "calculateCartTotal from DB price; GET /api/cart/total",
+      "id": "REF-14 price sync / subtotal",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "REF-15 unknown book",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 33,
+      "note": "404 BOOK_NOT_FOUND",
+      "id": "REF-15 unknown book",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "REF-3 quick view add path",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/HomePage.tsx",
+      "line": 361,
+      "note": "no quick-view component in src (grep empty): path has no implementation",
+      "id": "REF-3 quick view add path",
+      "source_refs": [
+        "MyBooks/src/components/pages/HomePage.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/providers/AppProviders.tsx",
+      "line": 35,
+      "note": "cart badge: updateCartCount sums quantities of GET /api/cart",
+      "id": "fact-18",
+      "source_refs": [
+        "MyBooks/src/components/providers/AppProviders.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/CartPage.tsx",
+      "line": 185,
+      "note": "cart quantity input max = stock; PUT at CartPage.tsx:62, DELETE at :82",
+      "id": "fact-19",
+      "source_refs": [
+        "MyBooks/src/components/pages/CartPage.tsx"
+      ]
+    }
+  ],
+  "changed_files": [],
+  "diff_summaries": [],
+  "constraints": [
+    "implementation_source current-code: observables defend existing behaviour only",
+    "stand local http://localhost:3000 health 200"
+  ],
+  "unresolved_facts": [
+    {
+      "id": "REF-3 quick view: no implementation found",
+      "reason": "missing_evidence"
+    },
+    {
+      "id": "REF-6/165/166 have no code observable",
+      "reason": "missing_evidence"
+    }
+  ],
+  "known_paths": [],
+  "stale_paths": [],
+  "grounding_complete": false,
+  "grounding_gaps": [
+    "source_revision",
+    "unresolved_facts",
+    "source_inventory_incomplete"
+  ],
+  "delta": {
+    "added_or_changed_ids": [
+      "REF-15 unknown book",
+      "REF-11/145/147 stock check incl. already in cart",
+      "REF-1 / REF-2 reject quantity 0",
+      "REF-1/151/152/161/162/163 quantity validation",
+      "REF-9 raise cart quantity above stock",
+      "REF-13/157 guest and user carts",
+      "REF-13/157 guest cart after sign-in",
+      "REF-12 same product twice gives one line",
+      "REF-3 quick view add path",
+      "REF-14 price sync / subtotal",
+      "REF-10 AC1 add simple product from product page",
+      "REF-10 AC2 out-of-stock product",
+      "REF-10 AC3 add multiple quantities (qty 3)",
+      "fact-14",
+      "fact-18",
+      "fact-19",
+      "fact-6",
+      "fact-7"
+    ],
+    "removed_ids": []
+  },
+  "limits": {
+    "batches_per_repo": 12,
+    "batches_per_stage": 24,
+    "active_seconds": 900,
+    "output_tokens": 12000
+  },
+  "requirement_sources": [
+    {
+      "source_id": "SRC-0cfc1568a999475eb12b",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/RUN-2026",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-8537debe9342e4875453",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-001",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-82c1f0af4aa9edc5755e",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-002",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-6b350334927e6733de23",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-003",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-4746538369d5155221ce",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-004",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-0b42dc49fcb02bca7ace",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-005",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-b5b5943068167727904a",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-006",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-caf387c4aa307cee84c1",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-007",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-cd2242ae81f7ae4eb1ee",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-008",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-fc7967e5f67cbdb53fda",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-009",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-5aa2c951512bf3390cef",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-010",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-deac0d7e9e5317c04898",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-011",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-a719b013649514e11505",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-012",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-9bf1df17a256991afe0e",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-013",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-e4f9c362e5858232556d",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-014",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-3aa9d042ec74c52d0663",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-015",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-fc472b6ef125e1cdb947",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-016",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-aa93e31580710423962c",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-017",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-67650f05b7eea5d7a4a6",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/TC-018",
+      "revision": "unknown",
+      "status": "excluded",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "not_relevant",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-be14dea130fb839bff9a",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-2",
+      "revision": "2026-10-12T11:25:56.642+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 1,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 1,
+          "items": [
+            {
+              "content_hash": null,
+              "error": null,
+              "local_ref": null,
+              "status": "pending",
+              "url": "http://localhost:3000,"
+            }
+          ],
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-1a8882c6347d792501ee",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-16",
+      "revision": "2026-10-13T11:41:28.632+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-1a8882c6347d792501ee/e64ba6169308c6be/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-65f05cbe28565a6d76e0",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-17",
+      "revision": "2026-10-12T15:02:55.500+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-65f05cbe28565a6d76e0/9512fe6848c9f36b/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-ae8da5710cf7217f902a",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-15",
+      "revision": "2026-10-15T14:21:53.891+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-ae8da5710cf7217f902a/56ecdc4a3ef2702a/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-5e358d050f1036f829dc",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-11",
+      "revision": "2026-10-15T14:21:42.243+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-5e358d050f1036f829dc/c68f01eae80912f1/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-7e76faf77bf2714a9210",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-18",
+      "revision": "2026-10-15T14:26:19.017+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-7e76faf77bf2714a9210/ae6168f7a768c0a5/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-8ac0c186efb60ad43eae",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-1",
+      "revision": "2026-10-15T14:26:29.458+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-8ac0c186efb60ad43eae/89c8fa642d3078df/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-25b972858e247f855443",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-19",
+      "revision": "2026-10-12T15:03:00.515+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-25b972858e247f855443/0b76820a30626e92/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-532fac988c7abdfde19c",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-9",
+      "revision": "2026-10-15T14:26:38.362+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-532fac988c7abdfde19c/267d05571251e550/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-98efeac7278a4f83d417",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-4",
+      "revision": "2026-10-15T14:26:47.506+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-98efeac7278a4f83d417/2842c0a0529f2735/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-5acb41ec072c8b2ae18f",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-20",
+      "revision": "2026-10-15T14:26:56.301+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-5acb41ec072c8b2ae18f/677d92d57f2040af/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-7574f79b8af093b82457",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-13",
+      "revision": "2026-10-15T13:27:49.888+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-7574f79b8af093b82457/e1d2ebce571d2b89/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-23527c743637f949cc5b",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-21",
+      "revision": "2026-10-15T13:27:51.196+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-23527c743637f949cc5b/dbbb8f935424c3b2/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-4d67f2c635de7b1cba3d",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-22",
+      "revision": "2026-10-13T12:00:04.708+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-4d67f2c635de7b1cba3d/9f951dd5f405b4db/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-68783a68a9e3d54ca46d",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-12",
+      "revision": "2026-10-13T12:00:06.004+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-68783a68a9e3d54ca46d/3431dfa876f2e6f6/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-409d413a973bb51e5826",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-3",
+      "revision": "2026-10-13T12:00:07.333+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-409d413a973bb51e5826/39f11bfd31e97a36/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-ecd332a32e00d33ae620",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-23",
+      "revision": "2026-10-13T12:00:09.150+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-ecd332a32e00d33ae620/a279e2ba959f1ee3/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-a970b21553b38c912509",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-5",
+      "revision": "2026-10-13T12:00:10.910+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-a970b21553b38c912509/7cca5675b4ed8b46/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-7287a9a4c3b9929a9827",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-24",
+      "revision": "2026-10-13T12:00:12.964+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-7287a9a4c3b9929a9827/8dff6fcd511b6bb8/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-943d3802d15714f575b7",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-6",
+      "revision": "2026-10-13T12:00:14.387+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-943d3802d15714f575b7/82561886ce27ac92/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-562e1f196971c6bb559f",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-7",
+      "revision": "2026-10-13T12:00:16.219+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-562e1f196971c6bb559f/ee0f25cc2f089d0f/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-3bb49dfdd928a8fc4c5f",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-8",
+      "revision": "2026-10-13T12:00:18.326+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-3bb49dfdd928a8fc4c5f/b86f33dad316bfa8/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-c478105cd79559de251d",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-14",
+      "revision": "2026-10-13T12:00:20.779+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-c478105cd79559de251d/1136e4c7a166a084/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-b8ad129913f9cbb25ab3",
+      "relation": "normative",
+      "ref": "https://example.invalid/1/browse/REF-10",
+      "revision": "2026-10-13T12:00:20.795+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-b8ad129913f9cbb25ab3/22aa3746735e12c0/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-f15b77e64a72005ef02d",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-25",
+      "revision": "2026-10-13T12:04:46.766+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 2,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-3bb45c6cea570a851d30",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-26",
+      "revision": "2026-10-13T11:46:52.759+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-3bb45c6cea570a851d30/ad312d568b857944/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-b8fe9071fad5da85a384",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-27",
+      "revision": "2026-10-13T11:46:42.596+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-b8fe9071fad5da85a384/9f72eea69755be33/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-d40a6a45611a09fa6ab5",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-28",
+      "revision": "2026-10-13T11:46:50.775+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-d40a6a45611a09fa6ab5/3485b58772d969f8/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-352f03ede5182c2ecf33",
+      "relation": "referenced",
+      "ref": "https://example.invalid/1/browse/REF-29",
+      "revision": "2026-10-09T14:05:59.917+0000",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-352f03ede5182c2ecf33/7fd104ec72c266ea/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 1,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    }
+  ],
+  "coverage_search": [
+    {
+      "repo": "tests",
+      "revision": "main@5cd21eb",
+      "changed_area": "cart",
+      "searched_paths": [
+        "tests/**",
+        "core/**",
+        "test-cases/"
+      ],
+      "status": "complete",
+      "reason": "grep cart: no files; positive control grep login finds 12 hits in 2 specs"
+    },
+    {
+      "repo": "MyBooks",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "changed_area": "cart",
+      "searched_paths": [
+        "src/**/*.test.ts"
+      ],
+      "status": "complete",
+      "reason": "unit tests cover rules only"
+    }
+  ],
+  "existing_test_candidates": [
+    {
+      "candidate_id": "UT-cartRules",
+      "repo": "MyBooks",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "path": "src/lib/cartRules.test.ts",
+      "selector": "mergedQuantity; fitsInStock",
+      "parameter_ids": [],
+      "level": "unit",
+      "assertion_refs": [
+        "src/lib/cartRules.test.ts:5-24"
+      ],
+      "candidate_requirement_refs": [
+        "REF-18"
+      ],
+      "origin": "existing",
+      "result_candidate_refs": [],
+      "candidate_evidence": {
+        "valid": false,
+        "executable": false,
+        "assertion_status": "unknown",
+        "gaps": [
+          "repository root unavailable for assertion verification"
+        ]
+      },
+      "provenance": {
+        "repo": "MyBooks",
+        "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "collection_ref": null,
+        "source": "context-manifest"
+      }
+    },
+    {
+      "candidate_id": "UT-schemas-cart",
+      "repo": "MyBooks",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "path": "src/lib/validation/schemas.test.ts",
+      "selector": "addToCartSchema; updateCartItemSchema",
+      "parameter_ids": [
+        "quantity",
+        "bookId"
+      ],
+      "level": "unit",
+      "assertion_refs": [
+        "src/lib/validation/schemas.test.ts:60-70"
+      ],
+      "candidate_requirement_refs": [
+        "REF-1",
+        "REF-4",
+        "REF-20"
+      ],
+      "origin": "existing",
+      "result_candidate_refs": [],
+      "candidate_evidence": {
+        "valid": false,
+        "executable": false,
+        "assertion_status": "unknown",
+        "gaps": [
+          "repository root unavailable for assertion verification"
+        ]
+      },
+      "provenance": {
+        "repo": "MyBooks",
+        "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "collection_ref": null,
+        "source": "context-manifest"
+      }
+    }
+  ],
+  "source_inventory_ref": {
+    "path": "work/source-inventory.json",
+    "sha256": "ffe617bd90acce042e28896c81ef57f72d78bab53371652aef0a1b09149a38e5"
+  },
+  "source_completeness": {
+    "complete": false,
+    "gate_blocked": true,
+    "pending": [],
+    "unavailable": [],
+    "incomplete_materials": [
+      "SRC-be14dea130fb839bff9a"
+    ],
+    "unavailable_materials": [],
+    "accepted_gaps": [],
+    "review_missing": false,
+    "unreviewed": [],
+    "awaiting_review": false,
+    "open_points": {
+      "SRC-be14dea130fb839bff9a": [
+        "external_media:block"
+      ]
+    },
+    "closed_by_person": {},
+    "closed_by_class": {},
+    "defaulted_points": {},
+    "defaulted_gaps": [],
+    "gap_class_problem": "",
+    "left_out_by_word": {},
+    "earlier_rule_line": "",
+    "earlier_rule_sources": []
+  },
+  "fact_pages": [
+    {
+      "offset": 0,
+      "count": 19
+    }
+  ]
+}

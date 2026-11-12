@@ -1,0 +1,6 @@
+qa-case-critic S4 CART-1_TC_005,TC_006,TC_008,TC_009 · concerns
+CART-1_TC_005 · reject · guest cookie never sent with signed-in read; seeded defect passes
+CART-1_TC_006 · approve_with_concerns · seed secret precondition missing; B3 stock wording; Then 5 unbounded
+CART-1_TC_008 · approve · before/after read plus positive control; seeded defect fails Then
+CART-1_TC_009 · approve_with_concerns · bare 4xx Thens, paths unbound, seed secret/account unchecked
+qa-factory/artifacts/CART-1/work/test-cases/critic-findings.md

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "ticket": "CART-1",
+  "written_by": [
+    "S0"
+  ],
+  "provenance": {
+    "source": "person_pasted"
+  },
+  "scanned": [
+    "summary",
+    "description"
+  ],
+  "rows": [
+    {
+      "ref": "https://example.invalid/2",
+      "kind": "url",
+      "origins": [
+        "mention:description"
+      ],
+      "status": "not_fetched:not read yet"
+    },
+    {
+      "ref": "https://github.com/person-1/MyBooks",
+      "kind": "url",
+      "origins": [
+        "mention:description"
+      ],
+      "status": "not_fetched:not read yet"
+    }
+  ]
+}

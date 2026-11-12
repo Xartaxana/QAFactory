@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety read by driver_journal.agent_label: what only FETCHES data is the scout's work and is grouped under the row qa-scout, whichever process ran it. Names are matched exactly, case included. A project that fetches through another agent adds its name here.",
+  "data_fetch_kinds": ["ticket"],
+  "data_fetch_agent_types": ["jira-assistant", "jira-rw-assistant-cli"]
+}

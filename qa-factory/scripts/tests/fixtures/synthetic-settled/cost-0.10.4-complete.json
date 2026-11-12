@@ -1,0 +1,13 @@
+{
+  "session_id": "synthetic-old-complete",
+  "usage_status": "actual",
+  "usage_completeness": "complete",
+  "pricing_coverage": "none",
+  "has_factory_activity": false,
+  "transcript": "{transcripts}/main.jsonl",
+  "generated": "2099-01-01T00:00:00+00:00",
+  "requests": [],
+  "by_task": {},
+  "scan_checkpoints": {},
+  "incomplete_agents": []
+}

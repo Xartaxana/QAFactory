@@ -1,0 +1,75 @@
+# A role cannot fill its handoff: the question goes to the conductor, not to the person.
+#
+# This is the escape hatch that makes every other file in this folder safe to make strict. A strict
+# form with no way out turns a role that does not know a word into a role that invents one - which
+# is exactly what happened on TP1-13797, four times, with `unverified`, `inconclusive`,
+# `filed` and `appended`. The role was right and the form was wrong, and nobody found out until a
+# handoff was refused.
+#
+# The conductor is a fresh context with the contract, the vocabulary and the refusal in front of
+# it. It answers one of three ways, and the answer is written into the second half of THIS file, so
+# the next role and the next audit can see what was decided and on what authority.
+#
+# The rule: A ROLE NEVER TAKES A FILLING PROBLEM TO THE PERSON. A person is asked only what is
+# genuinely theirs - a decision about scope, risk, money or their own stand - and then by the
+# conductor, in the factory's own question form.
+schema_version: 1
+contract: role-to-conductor
+kind: help
+
+# --- filled by the role that is stuck -------------------------------------------------------
+
+request:
+  contract: <the contract id of the file being filled>
+  file: work/handoffs/<dispatch>.yaml
+  dispatch: <the dispatch id>
+  role: <the role asking>
+  stage: <S0..S9 or gate-A|gate-B>
+  field: <the exact field it cannot fill - one field per request>
+  problem: <what it needs to say and cannot, one sentence>
+  refusal: "<what refused it, verbatim - the check's own words, including the allowed values it
+             printed, or `none: nothing refused me, I do not know what to write here`>"
+  tried:
+    - step: <the command or the reasoning step>
+      answer: <what came back>
+  candidate: "<the word or value the role WOULD write if it had to - this is the most useful
+               line in the file: a role that wants to write `inconclusive` is telling the
+               factory that its vocabulary has a hole>"
+  data:
+    - <path of anything the conductor must see to answer - the artifact, the log, the case>
+  cost_if_wrong: <what a wrong answer costs - a round, a false green, a lost requirement>
+
+# --- filled by the conductor ----------------------------------------------------------------
+
+answer:
+  resolution: <one of vocabulary.conductor_resolutions - fill|correct_the_work|ask_the_person|change_the_contract>
+  authority: <one of vocabulary.conductor_authorities - contract|vocabulary|phase_canon|person>
+  source: <the file and section the answer comes from - a conductor quotes, it does not decide>
+  write: "<exactly what the role puts in the field>"
+  why: <one sentence, in the role's own terms>
+
+# Only when `resolution: ask_the_person`. The conductor asks; the role never does. The question
+# carries everything needed to answer it without opening a file - a question that requires the
+# person to go and read something is a question nobody answers.
+person_question:
+  question: "<one question, in the person's language>"
+  options:
+    - id: a
+      option: <what it would mean>
+      cost: <what it costs or risks>
+  data_shown: "<what is quoted to them - the values, the paths, never the whole artifact>"
+  answer: "<their words, verbatim>"
+  recorded_by: "waiver.py --task <T> --stage <S> --block \"<exact block text>\" --words-file <file>"
+
+# Only when `resolution: change_the_contract`. A role that was right and a form that was wrong is
+# a defect of the factory, and it is fixed in the factory - not worked around in one story.
+contract_change:
+  file: <handoffs/<contract>.yaml or handoffs/vocabulary.yaml>
+  change: <the word to add, the field to relax, the refusal text to correct>
+  backlog_row: <the factory-backlog id this was written under>
+  interim: "<what the role writes today, so the story is not held for a plugin release>"
+
+claims:
+  the_role_did_not_ask_the_person_directly: <true|false>
+  the_answer_quotes_a_source_rather_than_inventing_one: <true|false>
+  a_contract_defect_was_written_to_the_backlog: <true|false>

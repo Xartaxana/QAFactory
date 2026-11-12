@@ -1,0 +1,19 @@
+# Dashboard signal acceptance for 0.7.0
+
+Companion to [the repair plan](dashboard-cost-repair-plan.md).
+
+## 4a. Restore metric warnings above the tabs (P0 release acceptance)
+
+The initial 0.6.0 code displayed `Signals` from the old `state/metrics-board.md`, without a current producer or general trend evaluator. Its estimate warnings appeared only in Cost. The 0.7.0 implementation replaces that obsolete producer with `metric_signals.py` and restores the shared header. The requirements below define acceptance; native host delivery still needs live verification.
+
+Implement a deterministic rule evaluator immediately after a successful metric projection, in the same event-driven refresh transaction. It reads recorded facts only and makes no LLM, test-runner or external-history calls. Rules must document metric ID, direction, threshold, comparison window, cohort compatibility, minimum sample, completeness requirements and recovery condition; distinguish absolute thresholds from trend changes. Reuse supported existing rules with their semantics; any new thresholds need an explicit versioned policy rather than guessed universal defaults. The preview reject example (5% → 20%, +15 pp, n=20 per window, demo trigger ≥10 pp) is illustrative, not a production default.
+
+Persist signal identity, rule version, scope, source revision, baseline/current values and denominators, timestamps, severity, evidence, owner/next action and lifecycle `active → verifying → resolved`. A human acknowledgement alone does not resolve a condition; subsequent accepted evidence must confirm recovery. Renewed breach reactivates it. Deduplicate replayed events and avoid flapping with explicit rule recovery criteria. Missing history, pricing, sample or stale projection yields “not evaluated / stale”, never a zero or an all-clear signal.
+
+Show active warnings **above Testing / Cost / Factory**, regardless of selected tab, in the original alert style. Each warning exposes what worsened, baseline/current values, window/sample, evidence and a jump to the affected detail. Keep decisions awaiting verification distinct from confirmed resolution. Lift supported cost/estimate signals into this shared header too. Include last successful evaluation and freshness; reload of a static HTML page does not itself recompute metrics.
+
+Current refresh entry points are controller event projection (`controller.py`), usage capture (`cost_capture.py`, debounced hooks and final capture where supported), bug snapshot import (`bug_snapshot.py`), project decision changes (`project_decisions.py`) and explicit doctor rendering. Route all these paths, including direct doctor rendering, through the same evaluator. Inspect and close gaps for any other accepted-artifact/readiness/S9 mutation; do not assume every file write is currently covered. Date-dependent conditions are re-evaluated on the next event/doctor run, not while the factory is idle. No replacement metrics agent or timer is required for deterministic checks.
+
+The orchestrator consumes the resulting signal receipt at its next lifecycle boundary and presents new or materially worsened actionable signals in its user-facing result, without inventing a separate email, background notification or scheduled job. It explains the recorded finding; it does not calculate authoritative metrics. Prove delivery with observed Codex hooks before claiming this works on Codex; the existing host-adapter gaps still block parity.
+
+Acceptance: bad trend creates a header warning; incomplete evidence produces not-evaluated; acknowledgement moves to verifying; sufficient recovery evidence resolves; regression reactivates; replay produces no duplicate; all tabs show the same signal; doctor and event refresh agree. Verify sample boundaries, window changes, versioned thresholds, stale-state behavior, and the original three-precedent estimate rule. This is additional behavioral coverage beyond the 47 metric values themselves.

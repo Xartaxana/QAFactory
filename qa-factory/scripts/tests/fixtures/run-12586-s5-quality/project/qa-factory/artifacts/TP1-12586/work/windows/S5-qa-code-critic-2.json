@@ -1,0 +1,407 @@
+{
+  "schema_version": 2,
+  "author_dispatch_id": "S5-qa-automator-2",
+  "reviewer_dispatch_id": "S5-qa-code-critic-2",
+  "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+  "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+  "scope_instances": {
+    "TC-001": [
+      "test_put_project_change_moves_integration[TC-001-sonar]",
+      "test_put_project_change_moves_integration[TC-001-jira]"
+    ],
+    "TC-002": [
+      "test_put_project_change_moves_ms_teams_integration"
+    ],
+    "TC-003": [
+      "test_put_project_change_into_project_with_ms_teams_is_rejected"
+    ],
+    "TC-004": [
+      "test_put_project_change_requires_admin_in_target"
+    ]
+  },
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_moves_integration[TC-001-sonar]",
+      "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "22746ee8f05728b8743c540ef132be2126a69447a116a0a74cebcca62540808f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "obligation_hash": "6d43409d62c9db6a949a9172f3ab54f5127eebdf0a8556511246b7bb61d196f5",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87-116",
+      "defect_location": "src/testproject1/rest_api/routers/project_settings.py:185",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-001",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32"
+      },
+      "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+      "instance_identity": {
+        "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+        "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c",
+        "job_id": "a96f5e653377735139aa"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T044813481713Z-a96f5e653377735139aa.json",
+          "sha256": "1d66f46593eefbb7f97e12b1ce92aef40e056c177d775cf777717ccc502cdfa3"
+        },
+        {
+          "path": "evidence/runs/a96f5e653377735139aa/initial-a96f5e653377735139aa-20261028-054729.junit.xml",
+          "sha256": "9a710d56459733908880eb8aaf2e2735ab572e1045392a9a58817579b57c3e3f"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_moves_integration--TC-001-sonar-762dde21-live-557968d409a6053f.json",
+          "sha256": "c6a56f35569dfb2f5dd48c3522753af336c14ff6ba9fa3cfb18792759db59b4a"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+        "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c",
+        "attempt_id": "a96f5e653377735139aa"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87",
+        "expected_reason": "probe-test_put_project_change_moves_integration[TC-001-sonar] invert: SUCCESS",
+        "actual_reason": "probe-test_put_project_change_moves_integration[TC-001-sonar] invert: SUCCESS",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-1"
+        ],
+        "obligation_hash": "6d43409d62c9db6a949a9172f3ab54f5127eebdf0a8556511246b7bb61d196f5",
+        "defect_location": "src/testproject1/rest_api/routers/project_settings.py:185",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87-116",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_moves_integration--TC-001-sonar-762dde21-live-557968d409a6053f.json",
+        "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+        "instance_identity": {
+          "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+          "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c",
+          "job_id": "a96f5e653377735139aa"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_moves_integration[TC-001-jira]",
+      "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "22746ee8f05728b8743c540ef132be2126a69447a116a0a74cebcca62540808f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "obligation_hash": "6d43409d62c9db6a949a9172f3ab54f5127eebdf0a8556511246b7bb61d196f5",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87-116",
+      "defect_location": "src/testproject1/rest_api/routers/project_settings.py:185",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-001",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32"
+      },
+      "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+      "instance_identity": {
+        "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+        "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c",
+        "job_id": "a96f5e653377735139aa"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T044813481713Z-a96f5e653377735139aa.json",
+          "sha256": "1d66f46593eefbb7f97e12b1ce92aef40e056c177d775cf777717ccc502cdfa3"
+        },
+        {
+          "path": "evidence/runs/a96f5e653377735139aa/initial-a96f5e653377735139aa-20261028-054729.junit.xml",
+          "sha256": "9a710d56459733908880eb8aaf2e2735ab572e1045392a9a58817579b57c3e3f"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_moves_integration--TC-001-jira-41e0f248-live-2b6e241b1726ac87.json",
+          "sha256": "0417742cbcb313607cd5a9d0d128e25194c0b200f21983c022e39536a1e84b04"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+        "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c",
+        "attempt_id": "a96f5e653377735139aa"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87",
+        "expected_reason": "probe-test_put_project_change_moves_integration[TC-001-jira] invert: SUCCESS",
+        "actual_reason": "probe-test_put_project_change_moves_integration[TC-001-jira] invert: SUCCESS",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-1"
+        ],
+        "obligation_hash": "6d43409d62c9db6a949a9172f3ab54f5127eebdf0a8556511246b7bb61d196f5",
+        "defect_location": "src/testproject1/rest_api/routers/project_settings.py:185",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87-116",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_moves_integration--TC-001-jira-41e0f248-live-2b6e241b1726ac87.json",
+        "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+        "instance_identity": {
+          "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+          "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c",
+          "job_id": "a96f5e653377735139aa"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_requires_admin_in_target",
+      "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-5",
+          "obligation_hash": "e919ab7207b1b81672290771b10bd2be0b902499250dac854be13ec92561259f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "obligation_hash": "6b4f086544d37306e383295c9bd17eb3f2a9e315f7b73871b675e1f6ff20e162",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:229-259",
+      "defect_location": "src/testproject1/rest_api/routers/project_settings.py:297",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-004",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32"
+      },
+      "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+      "instance_identity": {
+        "instance_content_sha": "44c5119cf969cc09998b1491504bf75d222db8252074f056e34063f18f9b4f23",
+        "instance_code_sha": "c8472d1ddf5776e892177ab403f9c91437647db837d3c17b2b870cf71c6f3698",
+        "job_id": "a96f5e653377735139aa"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T044813481713Z-a96f5e653377735139aa.json",
+          "sha256": "1d66f46593eefbb7f97e12b1ce92aef40e056c177d775cf777717ccc502cdfa3"
+        },
+        {
+          "path": "evidence/runs/a96f5e653377735139aa/initial-a96f5e653377735139aa-20261028-054729.junit.xml",
+          "sha256": "9a710d56459733908880eb8aaf2e2735ab572e1045392a9a58817579b57c3e3f"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_requires_admin_in_target-live-58cb35ebf0868f57.json",
+          "sha256": "83e06b9980302510ecb950989a81c9efd08a6e65a663b26a797c26c6317804de"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "44c5119cf969cc09998b1491504bf75d222db8252074f056e34063f18f9b4f23",
+        "instance_code_sha": "c8472d1ddf5776e892177ab403f9c91437647db837d3c17b2b870cf71c6f3698",
+        "attempt_id": "a96f5e653377735139aa"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:229",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:229",
+        "expected_reason": "probe-test_put_project_change_requires_admin_in_target invert: CLIENT_ERROR",
+        "actual_reason": "probe-test_put_project_change_requires_admin_in_target invert: CLIENT_ERROR",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-5"
+        ],
+        "obligation_hash": "6b4f086544d37306e383295c9bd17eb3f2a9e315f7b73871b675e1f6ff20e162",
+        "defect_location": "src/testproject1/rest_api/routers/project_settings.py:297",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:229-259",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_requires_admin_in_target-live-58cb35ebf0868f57.json",
+        "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+        "instance_identity": {
+          "instance_content_sha": "44c5119cf969cc09998b1491504bf75d222db8252074f056e34063f18f9b4f23",
+          "instance_code_sha": "c8472d1ddf5776e892177ab403f9c91437647db837d3c17b2b870cf71c6f3698",
+          "job_id": "a96f5e653377735139aa"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_moves_ms_teams_integration",
+      "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-2",
+          "obligation_hash": "b6dae76df447336422d29afd618305b72dc586a9643e8ad57e1aed4e796dd746"
+        },
+        {
+          "obligation_id": "OB-3",
+          "obligation_hash": "85a945eb2ddb79ff92f28a7d35759ef620b3a8eeded79c953dee8d771184cde6"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2",
+        "OB-3"
+      ],
+      "obligation_hash": "dd4632f6f0075367d61c1fdb104b2add851fb304dda76dc37ee663a864cd5cda",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:151-180",
+      "defect_location": "src/testproject1/service/settings/settings_request_validator.py:327",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-002",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32"
+      },
+      "test_code_sha": "2c73798fa322c96f79152fd56c93fad0c53b6dbb1463c9f660c946249e0e9c20",
+      "instance_identity": {
+        "instance_content_sha": "2a0e8ac22811c61c2e9d525ca06b31d8cc2abdf3c6e3adf79f59950911de1120",
+        "instance_code_sha": "8bd09753cdea3af1e6b87bc614889783a505d2dad8c00507c0e9d11ae2807d7c",
+        "job_id": "a96f5e653377735139aa"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "failed",
+      "execution_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T044813481713Z-a96f5e653377735139aa.json",
+          "sha256": "1d66f46593eefbb7f97e12b1ce92aef40e056c177d775cf777717ccc502cdfa3"
+        },
+        {
+          "path": "evidence/runs/a96f5e653377735139aa/initial-a96f5e653377735139aa-20261028-054729.junit.xml",
+          "sha256": "9a710d56459733908880eb8aaf2e2735ab572e1045392a9a58817579b57c3e3f"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "2a0e8ac22811c61c2e9d525ca06b31d8cc2abdf3c6e3adf79f59950911de1120",
+        "instance_code_sha": "8bd09753cdea3af1e6b87bc614889783a505d2dad8c00507c0e9d11ae2807d7c",
+        "attempt_id": "a96f5e653377735139aa"
+      },
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "TC-002",
+            "instance_ids": [
+              "test_put_project_change_moves_ms_teams_integration"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "input_hash": "840f534c94bdfa9e45b1afadb0b336d4831dddaac0751696eb2a9eab88f1aac4",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "c3c9acc9497a1ee72dd105ab61160ee4bfbe69241e5f50655959e88274527544"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "obligation_hash": "54fd9f6343ddf2ba17bf04abcc2c94977f92e32a023fdc9c3cfe0196b59ba1fc",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364",
+      "defect_location": "src/testproject1/rest_api/routers/project_settings.py:185",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-003",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "840f534c94bdfa9e45b1afadb0b336d4831dddaac0751696eb2a9eab88f1aac4"
+      },
+      "test_code_sha": "0103a6c6fca5090e5dff5ab9df73c15724e876e2a20691bf3901096cf1ebfa37",
+      "instance_identity": {
+        "instance_content_sha": "006845b804bedb40a845315329ad82e44cf818fa98f080bc3e1b7711709ba193",
+        "instance_code_sha": "af4571a8a89328b36b07a6a0dbb065a5b41ea726fa493c18fd275daf2e3ce306",
+        "job_id": "a96f5e653377735139aa"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test function did not exist in its file at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "failed",
+      "execution_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T044813481713Z-a96f5e653377735139aa.json",
+          "sha256": "1d66f46593eefbb7f97e12b1ce92aef40e056c177d775cf777717ccc502cdfa3"
+        },
+        {
+          "path": "evidence/runs/a96f5e653377735139aa/initial-a96f5e653377735139aa-20261028-054729.junit.xml",
+          "sha256": "9a710d56459733908880eb8aaf2e2735ab572e1045392a9a58817579b57c3e3f"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "006845b804bedb40a845315329ad82e44cf818fa98f080bc3e1b7711709ba193",
+        "instance_code_sha": "af4571a8a89328b36b07a6a0dbb065a5b41ea726fa493c18fd275daf2e3ce306",
+        "attempt_id": "a96f5e653377735139aa"
+      },
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "TC-003",
+            "instance_ids": [
+              "test_put_project_change_into_project_with_ms_teams_is_rejected"
+            ],
+            "thens": [
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "required_quality_checks": [
+    "ticket_adapter",
+    "test_repo",
+    "vcs",
+    "config_schema"
+  ],
+  "quality_receipts": [],
+  "expectation_changes": [],
+  "blocked_by_env": []
+}

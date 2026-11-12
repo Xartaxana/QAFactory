@@ -1,0 +1,6 @@
+{
+  "realities": ["real", "absent", "substituted"],
+  "default": {
+    "product": {"reality": "real", "deliverable": true, "settles_by": ""}
+  }
+}

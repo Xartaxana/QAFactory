@@ -1,0 +1,1 @@
+btn btn-primary min-w-[220px] justify-between

@@ -1,0 +1,43 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that adding a product while its price is being updated is handled without errors, and the user is charged the price shown when the product was added.\n\n*Type:* negative  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512252",
+  "key": "REF-6",
+  "labels": [
+    "negative",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14543,
+    "fields_requested": "*all",
+    "sha256": "77ec1443f2224e079325838d2e6b1c6c21c32c978730693582f605401c79ca14",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:14.387+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product during price update",
+  "type": "Test"
+}

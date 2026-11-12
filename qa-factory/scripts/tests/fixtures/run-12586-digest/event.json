@@ -1,0 +1,10 @@
+{
+  "hook_event_name": "SubagentStop",
+  "session_id": "22686563-d408-46cd-b461-7c3b276d6746",
+  "transcript_path": "parent.jsonl",
+  "agent_transcript_path": "subagents/agent-a19dac213a6228a50.jsonl",
+  "agent_id": "a19dac213a6228a50",
+  "agent_type": "qa-factory:qa-case-critic",
+  "stop_hook_active": false,
+  "cwd": "/project"
+}

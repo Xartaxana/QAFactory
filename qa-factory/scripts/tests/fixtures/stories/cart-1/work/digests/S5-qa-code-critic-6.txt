@@ -1,0 +1,10 @@
+qa-code-critic S5 CART-1_TC_009 · ok
+CART-1_TC_009 · approved · faithful red check (Then 2); probe not applicable: red
+qa-factory/artifacts/CART-1/work/test-code/critic-findings-4.md
+
+Notes:
+- `window_record.py --review-receipt` built `work/review-receipts/S5-qa-code-critic-6.json` and published it. It reports the window "acceptable as unresolved" for the one red test.
+- I did not put `review_receipt_ref` for OB-9 through `manifest_put.py` by hand, because `window_record.py` published it itself (manifest revision 27). I did not re-send any `contradicts_requirement` or unresolved row.
+- The first receipt run refused with a "no `critic_verdict`" gap. The row's `critic_verdict` was `unverified`, so I patched it to `approved` through `manifest_put.py` (revision 26), and the receipt then built.
+- After the put, `manifest_view.py --summary` shows 17 tests (1 approved, 16 unverified) and the unresolved `contradicts_requirement` row intact.
+- `handoff_check.py --fix` reports the dispatch -6 form complete.

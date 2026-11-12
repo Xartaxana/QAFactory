@@ -1,0 +1,150 @@
+# S3 -> S4: the test plan is handed to the case designer.
+#
+# The plan is the only place where the factory decides what it will NOT do, so every row carries a
+# disposition and a reason, and every requirement of the register reaches a row or is named here as
+# deferred. The designer expands rows into cases; it does not re-plan, and it cannot ask for
+# something the row did not say.
+#
+# The field this file exists for is `obligations`: without it nothing downstream (the S4 roll-call, the
+# S5 scope check, the S8 traceability table) can answer "which plan row does this test discharge".
+# Obligation ids are minted HERE, once, and travel unchanged.
+# Fill: write your fields as "path: value" lines to work/handoffs/S3-qa-test-strategist-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s3-strategist-to-designer
+stage: S3
+from_role: qa-test-strategist
+to_role: qa-case-designer
+
+inputs:
+  - path: work/handoffs/S3-qa-test-strategist-1.yaml
+    what: this file
+    required: true
+  - path: work/test-plan.json
+    what: the machine plan - rows, dispositions, obligations, coverage contract revisions
+    required: true
+  - path: test-plan.md
+    what: the same plan in the words the person reads at gate A
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle; a case is written against the requirement, never against a test name
+    required: true
+  - path: work/grounding.yaml
+    what: the grounding table the strategist labelled - the hunks of the diff, the requirement lines, the risks K-n and the blast radius areas B-n
+    required: "when pipeline.implementation_source is diff"
+
+inputs_read:
+  - path: work/requirements-register.md
+    version: register r1 (created 2026-11-05)
+    requirements: 14
+  - path: work/context-bundle.json
+    version: revision a25b0801669b
+    existing_candidates_considered: 2 of 2
+
+header:
+  role: qa-test-strategist
+  stage: S3
+  window: LOCAL-1
+  verdict: concerns
+
+# One row per plan row. `state` is the row's disposition and comes from the restricted part of
+# vocabulary.row_states - automate, manual-agent, manual-human, skip, unverifiable - which only
+# this role may write. `reason` is why that disposition and not another.
+scope:
+  - {id: TS-1, state: automate, reason: "regression: yes, main path of the cart", requirements: "R-1", obligations: "OB-1", behaviour: "catalog add shows success and moves the badge", risk: moderate, impact_class: blocked-flow, oracle: "requirement:R-1", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-2, state: automate, reason: "regression: yes, quantity and stock partitions", requirements: "R-2", obligations: "OB-2", behaviour: "book page add message and disabled state", risk: moderate, impact_class: blocked-flow, oracle: "requirement:R-2", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-3, state: automate, reason: "regression: yes, two writes behind one click", requirements: "R-3", obligations: "OB-3", behaviour: "move adds quantity 1 and removes from wishlist", risk: moderate, impact_class: degraded, oracle: "requirement:R-3", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-4, state: automate, reason: "regression: yes, reading A until answered", requirements: "R-3", obligations: "OB-4", behaviour: "move of a book already in the cart sums the quantity", risk: moderate, impact_class: degraded, oracle: "requirement:R-3", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-5, state: automate, reason: "regression: yes, P0 data-loss merge rules", requirements: "R-4", obligations: "OB-5", behaviour: "merge keeps higher quantity, caps at stock, drops no-stock", risk: severe, impact_class: data-loss, oracle: "requirement:R-4", level: api, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-6, state: automate, reason: "regression: yes, expected red, code contradicts R-12", requirements: "R-12", obligations: "OB-6", behaviour: "failed merge is not shown as success", risk: severe, impact_class: data-loss, oracle: "norm: a failed call is not shown as success", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-7, state: automate, reason: "regression: yes, P0 money", requirements: "R-5", obligations: "OB-7", behaviour: "re-adding sums into one item and answers 201", risk: severe, impact_class: money, oracle: "external:MyBooks/docs/openapi.json", level: api, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-8, state: automate, reason: "regression: yes, parametrised boundaries", requirements: "R-6", obligations: "OB-8", behaviour: "invalid quantity or bookId refused, cart unchanged", risk: moderate, impact_class: degraded, oracle: "external:MyBooks/docs/openapi.json", level: api, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-9, state: automate, reason: "regression: yes, P0 money overselling", requirements: "R-7", obligations: "OB-9", behaviour: "stock refusals leave the cart unchanged", risk: severe, impact_class: money, oracle: "requirement:R-7", level: api, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-10, state: automate, reason: "regression: yes, one instance", requirements: "R-8", obligations: "OB-10", behaviour: "unknown book id answers 404 BOOK_NOT_FOUND", risk: moderate, impact_class: degraded, oracle: "external:MyBooks/docs/openapi.json", level: api, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-11, state: automate, reason: "regression: yes, P0 access", requirements: "R-9", obligations: "OB-11", behaviour: "guest, user and admin carts are separate owners", risk: severe, impact_class: access, oracle: "norm: carts are separate owners", level: api, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-12, state: automate, reason: "regression: yes, PUT until answered", requirements: "R-10", obligations: "OB-12", behaviour: "quantity update never exceeds stock", risk: moderate, impact_class: degraded, oracle: "requirement:R-10", level: api, existing_coverage: new, environment: local, design_review_required: true, source_conflict: true, oracle_unknown: false}
+  - {id: TS-13, state: automate, reason: "regression: yes, P0 money, count built twice", requirements: "R-11", obligations: "OB-13", behaviour: "badge equals sum of quantities, total equals sum of price x quantity", risk: severe, impact_class: money, oracle: "norm: badge and total follow the cart", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-14, state: manual-agent, reason: "regression: no, a walk of the sign-in carry-over", requirements: "R-4, R-12", obligations: "OB-14", behaviour: "walk sign in with a guest cart and record oddities", risk: severe, impact_class: data-loss, oracle: "requirement:R-4", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-15, state: manual-agent, reason: "regression: no, a walk of the add rules", requirements: "R-5, R-6, R-7, R-8", obligations: "OB-15", behaviour: "walk adding with real input and double click", risk: severe, impact_class: money, oracle: "requirement:R-7", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-16, state: manual-agent, reason: "regression: no, a walk of the owners", requirements: "R-9", obligations: "OB-16", behaviour: "walk guest and signed-in carts in two browsers", risk: severe, impact_class: access, oracle: "norm: carts are separate owners", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: true, source_conflict: false, oracle_unknown: false}
+  - {id: TS-17, state: automate, reason: "regression: yes, cart page failure path", requirements: "R-14", obligations: "OB-17", behaviour: "cart page under failed reads and writes tells the person", risk: moderate, impact_class: degraded, oracle: "norm: a failed call is not shown as success", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-18, state: automate, reason: "regression: yes, move failure path", requirements: "R-13", obligations: "OB-18", behaviour: "move under failed wishlist or cart calls shows no success", risk: moderate, impact_class: degraded, oracle: "norm: a failed call is not shown as success", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-19, state: automate, reason: "regression: yes, catalog add failure path", requirements: "R-1", obligations: "OB-19", behaviour: "catalog add under failed POST shows error, badge unchanged", risk: moderate, impact_class: blocked-flow, oracle: "requirement:R-1", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+  - {id: TS-20, state: automate, reason: "regression: yes, book page failure path", requirements: "R-2", obligations: "OB-20", behaviour: "book page add and read under failure tell the person", risk: moderate, impact_class: blocked-flow, oracle: "requirement:R-2", level: e2e-ui, existing_coverage: new, environment: local, design_review_required: false, source_conflict: false, oracle_unknown: false}
+
+# Every requirement of the register reaches a row above (named in `requirements` in work/test-plan.json and in the `R`
+# column of test-plan.md): the S3 exit gate refuses a register id with no row, and an entry here never stands in for one.
+# A requirement that waits for a gate A question is a row `unverifiable` with `question_refs` and `if_answered`; one that
+# should not be checked is a row `skip` with the reason. Only a risk `K-n` or an area `B-n` may be named here instead of a
+# row. The same holds for the grounding table: a risk `K-n` or an area `B-n` that matters reaches a plan row
+# (`risk_source_refs` entry `grounding:K-n` / `blast:B-n` in work/test-plan.json) or is named here
+# by `ref`; the existing tests of an area that matters stand in the plan's `## Recommended regression` section as items,
+# one per test path, each signed `(blast:B-n)` (one token per area it defends), under the runner's `Command:` line.
+not_planned: []
+
+# Filled by CODE from work/grounding.yaml (handoff_check --fix); you do not write these two. Left empty
+# when the story has no diff to ground.
+grounding: {}
+
+blast_radius: []
+
+# For every manual row, what the runner will be allowed to count as evidence. Deciding this at S3
+# is the rule of the phase: a runner with no policy produces an observation that settles nothing.
+manual_policy:
+  - {row: TS-14, executed_by: agent, evidence: "screenshots of the cart and badge before and after sign-in, plus the GET /api/cart body", required_fields: "steps taken, what was seen, every oddity", inconclusive_when: "the stand cannot hold a guest session or the observation does not answer the expected merge result"}
+  - {row: TS-15, executed_by: agent, evidence: "screenshots of messages and badge for each input, plus the cart body after a double click", required_fields: "inputs typed, response shown, cart after, every oddity", inconclusive_when: "a second tab cannot be driven or stock cannot be set to the last copy"}
+  - {row: TS-16, executed_by: agent, evidence: "screenshots of both browsers and cart bodies after sign-out", required_fields: "owner, cookie state, what each cart showed, every oddity", inconclusive_when: "two separate browser profiles are not available"}
+
+budget:
+  size: L
+  cap: 28
+  planned_rows: 20
+  within_cap: true
+  if_over: "nothing cut; 20 rows against a ceiling of 28"
+
+# Regression the person may want to run. The factory does not run it and says so.
+regression_recommendations:
+  - suite_or_command: "npm --prefix ../MyBooks test -- src/lib/cartRules.test.ts"
+    why: "the two existing unit tests (EX-1, EX-2) of the stock and merge helpers; run once as a baseline, they read the application and cover pure helpers only"
+
+artifacts:
+  plan_machine: work/test-plan.json
+  plan_human: test-plan.md
+  judge_plan: -
+
+claims:
+  every_register_requirement_reaches_a_row: true
+  every_row_has_a_disposition_and_a_reason: true
+  every_row_mints_obligation_ids: true
+  every_contradiction_matrix_cell_reached_a_row: true
+  no_test_was_run_in_this_stage: true
+  every_hunk_of_the_diff_has_a_grounding_row: true
+  every_register_requirement_has_a_grounding_line: true
+  every_risk_and_uncovered_area_reaches_a_row_or_not_planned: true
+  every_area_that_matters_has_regression_or_a_gap: true
+
+expected_of_the_receiver:
+  - "one or more cases per row with `automate` or a manual disposition, and per row with `skip` or `unverifiable` whose
+     `if_answered` sets one of those for an open question (quote the question in `question_thens`); any other `skip` or
+     `unverifiable` row gets no case and is not re-argued"
+  - "every case quotes the obligation ids of its row - unchanged, not re-derived"
+  - "reuse or extend an existing case before writing a new one, as the row says"
+  - "a row with `source_conflict` or `oracle_unknown` keeps both readings in the case, and the
+     contested assertion is not automated until the owner answers at gate A"
+
+# What you tried and saw, one row per attempt: the acceptor of the stage reads it against your Good outcome
+# (spec t-1765 B3). Empty only with `tried_note` saying why nothing was tried (a grounding window, a repair of
+# named findings). Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - {requirement: R-12, technique: "mutation thinking", observation: "LoginPage.tsx:36 only logs a failed merge, so a flipped check would not turn any existing test red; planned as expected red", evidence: "work/test-plan.json#TS-6"}
+  - {requirement: R-7, technique: "boundary value analysis", observation: "EX-1 covers the helper only; the stock edge through the service has no test", evidence: "work/test-plan.json#TS-9"}
+  - {requirement: R-4, technique: "risk-based testing", observation: "data-loss merge rules sit on the lowest rung that reaches the database (api), the page failure on e2e-ui", evidence: "work/test-plan.json#TS-5"}
+  - {requirement: R-10, technique: "defect hypothesis first", observation: "scout note says PATCH, contract and code say PUT; planned on PUT, source conflict shown at gate A", evidence: "work/requirements-register.md#Reading forks"}
+  - {requirement: R-14, technique: "defect hypothesis first", observation: "flow-requests list gave 25 requests; 9 are failed by rows, 16 set aside in request_homes with a reason", evidence: "work/test-plan.json#request_homes"}
+tried_note: "-"
+
+unresolved:
+  - {id: TS-6, reason: contradicts_requirement, detail: "code shows login on a failed merge (LoginPage.tsx:36) against R-12; the owner picks the outcome at gate A (new question on TS-6), the test stays an expected red"}
+  - {id: TS-12, reason: expectation_unconfirmed, detail: "Q2 PUT or PATCH for the quantity update; planned on PUT until answered"}
+  - {id: TS-4, reason: expectation_unconfirmed, detail: "Q3 whether a move onto an item already in the cart sums the quantity; planned on summing until answered"}
+  - {id: R-13, reason: expectation_unconfirmed, detail: "no fact states the wishlist delete outcome; planned on the norm that a failed call is not shown as success"}
+  - {id: R-14, reason: expectation_unconfirmed, detail: "no fact states the cart page outcome on failure; planned on the same norm"}

@@ -1,0 +1,19 @@
+approve
+R-8: a
+R-9: a
+R-10: a
+Q1: a
+Q2: a
+Q3: a
+Q4: b
+Q5: a
+Q6: a
+Q7: a
+Q8: a
+Q9: b
+vcs-1: accept go on on this branch as the person said
+case_environment-1: accept gap accepted by the person
+case_environment-2: accept gap accepted by the person, quick view is not implemented and goes in the test report as a gap
+case_environment-3: accept gap accepted by the person
+case_environment-4: accept gap accepted by the person
+case_environment-5: accept gap accepted by the person

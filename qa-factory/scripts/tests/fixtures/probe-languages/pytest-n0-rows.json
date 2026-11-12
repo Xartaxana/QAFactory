@@ -1,0 +1,29 @@
+{
+ "_source": "t-2045 N0 (docs/tasks/specs/reports/t-2045-n0-frames.md, section PYTHON): the test source py/test_n0.py of that report, run by the same pytest with --junitxml. `message` is the N0 report's `message attr` byte for byte; `text` is the junit failure body of that run with the temp folder cut to `py/`. p6 is run with a stand-in `expect(actual, message=None)` that raises the same ValueError as playwright.sync_api.expect (N0 had no browser either), so the argument echo line is pytest's own.",
+ "token": "qa-probe-tok",
+ "rows": {
+  "p1": {"test_id": "test_n0::test_p1", "status": "failed", "problems": [{"kind": "failure",
+   "message": "AssertionError: qa-probe-tok\nassert not 1 == 1",
+   "text": "def test_p1():\n>       assert not (1 == 1), '-'.join(['qa-probe', 'tok'])\nE       AssertionError: qa-probe-tok\nE       assert not 1 == 1\n\npy/test_n0.py:11: AssertionError"}]},
+  "p2": {"test_id": "test_n0::test_p2", "status": "failed", "problems": [{"kind": "failure",
+   "message": "AssertionError: stand said 503",
+   "text": "def test_p2():\n>       assert not (helper())\n\npy/test_n0.py:15: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\n    def helper():\n>       raise AssertionError('stand said 503')\nE       AssertionError: stand said 503\n\npy/test_n0.py:7: AssertionError"}]},
+  "p3": {"test_id": "test_n0::test_p3", "status": "failed", "problems": [{"kind": "failure",
+   "message": "ValueError: invalid literal for int() with base 10: 'abc'",
+   "text": "def test_p3():\n>       assert not (int('abc') == 1), 'm'\nE       ValueError: invalid literal for int() with base 10: 'abc'\n\npy/test_n0.py:19: ValueError"}]},
+  "p5": {"test_id": "test_n0.TestP5::test_p5", "status": "failed", "problems": [{"kind": "failure",
+   "message": "AssertionError: 1 == 1 : qa-probe-tok",
+   "text": "self = <test_n0.TestP5 testMethod=test_p5>\n\n    def test_p5(self):\n>       self.assertNotEqual(1, 1, msg='-'.join(['qa-probe', 'tok']))\nE       AssertionError: 1 == 1 : qa-probe-tok\n\npy/test_n0.py:24: AssertionError"}]},
+  "p6": {"test_id": "test_n0::test_p6", "status": "failed", "problems": [{"kind": "failure",
+   "message": "ValueError: Unsupported type: <class 'int'>",
+   "text": "def test_p6():\n>       expect(1, message='-'.join(['qa-probe', 'tok'])).not_to_be_visible()\n\npy/test_n0.py:33: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nactual = 1, message = 'qa-probe-tok'\n\n    def expect(actual, message=None):\n        # stands in for playwright.sync_api.expect: it raises the same ValueError before the message is used\n>       raise ValueError(\"Unsupported type: <class 'int'>\")\nE       ValueError: Unsupported type: <class 'int'>\n\npy/test_n0.py:29: ValueError"}]},
+  "p7": {"test_id": "test_n0::test_p7", "status": "error", "problems": [{"kind": "error",
+   "message": "failed on setup with \"AssertionError: fixture said no\nassert False\"",
+   "text": "@pytest.fixture\n    def broken():\n>       assert False, 'fixture said no'\nE       AssertionError: fixture said no\nE       assert False\n\npy/test_n0.py:38: AssertionError"}]}
+ },
+ "sites": {
+  "p1": {"location": "py/test_n0.py:11", "failure_kind": "assertion", "frame": "py/test_n0.py:11: AssertionError"},
+  "p5": {"location": "py/test_n0.py:24", "failure_kind": "assertion", "frame": "py/test_n0.py:24: AssertionError"},
+  "p6": {"location": "py/test_n0.py:29", "failure_kind": "exception", "frame": "py/test_n0.py:29: ValueError"}
+ }
+}

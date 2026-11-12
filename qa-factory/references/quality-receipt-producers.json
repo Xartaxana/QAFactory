@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "producers": {},
+  "why": {
+    "no_producer": "recorded at initialize; no factory script writes a receipt for it",
+    "checked_at_s0": "checked by the readiness step before the story started",
+    "unknown_s0": "the record of the readiness step could not be read"
+  }
+}

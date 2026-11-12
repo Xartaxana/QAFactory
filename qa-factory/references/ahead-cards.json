@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "note": "What the code that will judge a role's handoff demands, said to the role BEFORE the work instead of after it (factory rule FR-38, design/factory-rules.md). brief_pack.py renders `text` into the dispatch brief under '## The rules code will apply to your handoff'. `sources` name the scripts each card was read from - scripts/tests/test_ahead_cards.py holds every card to them and to the closed lists they quote, so a vocabulary that grows breaks the test until the card says so. Keep a card under 1,200 bytes: the brief's budget is 6 KB and the card is the last thing it gives up, so a long card is paid for out of the file list the role would otherwise be handed. A door named in a card must be one that role may open (FR-2): the three roles with no shell are told fields and files, never commands.",
+  "cards": {
+    "qa-scout": {
+      "sources": [
+        "validate_artifacts.py",
+        "source_preflight.py",
+        "exit_gate.py"
+      ],
+      "text": "work/context-manifest.json is read field by field: `ticket`, `acceptance_criteria` and `implementation` present; every `related[]` row is {key, kind, source}, kind one of implementation|blocker|bug|mention, `source` saying WHERE in this ticket the key was read; one `implementations[]` row per repository. `coverage_search[]` rows: repo, revision, changed_area, searched_paths, status complete|partial|unavailable, reason; nothing found is top-level `coverage_status: not_found`. `existing_test_candidates[]` rows: candidate_id, repo, revision, path, selector, parameter_ids, level, assertion_refs, candidate_requirement_refs, origin existing|added_in_change|unknown, result_candidate_refs. S1 closes on work/source-inventory.json: every required source retrieved and inspected, none `pending`, no material without receipts. A source you could not get: name it in your digest with its id and what is missing - recording a person's words is the orchestrator's door; you are resumed with their answer. Build with `context_bundle.py --manifest`, then `--validate`."
+    },
+    "qa-requirements-tester": {
+      "sources": [
+        "validate_artifacts.py",
+        "check_witness.py",
+        "exit_gate.py",
+        "sizing.py"
+      ],
+      "text": "Three artifacts, three checks. work/requirements-register.md: `ids` non-empty and all R-n, `by_source` within ac|story|feature|discussion|assumption|derived, `confidence` high|low - a register of AC alone while a parent feature exists must be `low`; every row's observable prefixed diff:|current-code:|expected-contract: or the word `none`; every `derived` row naming what it was derived from; `impact` from config.json impact_scale. Every production module work/impl-diff*.txt CREATES has to be cited by a `derived` row - the exit gate compares them, so read every hunk, limits, rejected inputs and guards included; a `derived` row only the diff speaks to also gets its `## Behaviour claims` row. work/requirements-readiness.json: `verdict` ready|blocked agreeing with the facts, `goal_summary` >= 30 characters in your own words, `aspects` non-empty with status ready|blocked|n/a and a reason on every n/a, `open_questions[]` each with question, severity blocker|major|minor and owner_role po_ba|dev_arch|qa. understanding.md: at most 40 lines, its five sections in order, and every register R named in a 'What we verify' or 'What we do not verify' line."
+    },
+    "qa-test-strategist": {
+      "sources": [
+        "planning_contract.py",
+        "observation_contract.py"
+      ],
+      "text": "planning_contract.py and observation_contract.py will check, so write to them in fields, not in prose. `verification_depth: low` is accepted ONLY together with `impact: low`, `likelihood: low`, `confidence: high` and `bounded_reversible: true`; repeating the detector's sentence in a note is not evidence, and `impact: unknown` can never be low while `impact: severe` demands `critical`. Every row needs `risk_source_refs` and `required_scenarios` non-empty. A no-write obligation (kind `state_unchanged` or `no_write_attempt`) needs three things beside the claim: `sequence` of exactly four items with phases before_read, action, completion, after_read, each `ref` naming a check or step that exists; `positive_control_ref` naming a MUTATING check that is not one of those four; and `reachability_assertion_ref`. An oracle you cannot settle is `oracle_unknown: true` with `source_conflict: true`; an unresolved oracle does not authorize execution. A letter branch whose answer settles the oracle sets `oracle_unknown: false` and its `coverage_obligations` (`oracle_status: resolved`), each with `sufficiency_review {author_dispatch_id, input_hash, rationale}` and `observation_contract`."
+    },
+    "qa-case-designer": {
+      "sources": [
+        "exit_gate.py",
+        "validate_artifacts.py"
+      ],
+      "text": "A case file's `id` IS its file name, both in the form named on this brief's `Case id form:` line: `<case id>.md` declares `id: <case id>`. That is the factory's contract over any project note (a note naming another form is not read by code), and the exit gate refuses the handoff otherwise. Frontmatter every case owes: id, title, area, priority P0|P1|P2|P3, status (yours are Draft|Review|Approved - only the code critic moves a case to Automated, and only after a probe), channel auto|manual-agent|manual-human, reuse_decision new|updated|extend:<case id>|dedupe:<case id>, updated, task, covers: [R-n] that exist in that task's register (an R the register does not carry reads as invented), defect_class from the project's closed list (or smoke, or regression:BUG-NNN), and basis. defect_class and basis are inherited from your plan row, never reassigned. One case per plan row, an `unverifiable` row too; its Thens that wait on a question go in `question_thens` under that question's id as requirements-readiness.json has it (never `raise` once raised); a before/now question (a `raise` too) keys its texts `now` / `before`, never by letter."
+    },
+    "qa-case-critic": {
+      "sources": [
+        "critic_rollcall.py"
+      ],
+      "text": "critic_rollcall.py computes your verdict from your own findings file at the exit gate. A `## Roll-call` table with one row per case in scope, and give it a column headed `reviewed` holding yes or no. A `Verdict:` line from approve|approve_with_fixes|approve_with_concerns|partial|reject. If any row is not reviewed, an approving verdict is refused: the verdict that roll-call computes is `partial`, your digest must say '<n> of <m> reviewed', and an `Unreviewed for Gate A:` line must name every unreviewed case. A concern of the last round that comes with an exact replacement is applied by code: put those in a fenced JSON array under `## Fixes without a new round`, each object carrying case_id, locator, find, replace and reviewed_version. `approve_with_fixes` without that block is refused, and so is that block beside any other verdict. Cases sharing an R-n: a row per pair under `## Merge candidates` (cases | verdict merge|keep | reason; keep starts P16 or P19); merge: each case `approve_with_concerns`, note `parametrise into one test: <ids>`. e2e-ui/manual row notes: `lower level: <level|impossible> - <why>`. Over the plan case budget: an `Over the plan case budget:` line."
+    },
+    "qa-automator": {
+      "sources": [
+        "s5_precheck.py"
+      ],
+      "text": "s5_precheck.py will check, so write to it: every Then is bound in `then_bindings[]` {case, then, instance_id, assertion_ref \"file:line\"}, and the names it demands appear in that assertion. A status code or literal a Then fixes is asserted as written and NEVER changed after a red run: that test is handed over RED, `unresolved[] reason: contradicts_requirement`. A value you invented may change after a red run only with an `expectation_changes[]` row through manifest_put.py: `then_refs` [{case, then}] it still proves, `what_changed`, `reason`; a deleted or renamed test owes it too. A `blocked_by_env` row has `remedy` {kind, where, change, restart}, names only; it stands only on a run showing the stand (`env_blocked`, a STAND SIGNAL on a run no timeout killed, a connection refusal); a test the project's timeout killed is yours. Smells refused: env credentials in an assert, `None == None`, `sleep`, a copied helper. One `tests[]` entry per INSTANCE (`func[param]`); `covers` lists cases. A `deferred_by_decision:*` row carries `disputes` nothing|derivation|case_expectation; `derivation` = not derivable; `case_expectation` = you disagree with the approved case; no route out after gate A."
+    },
+    "qa-code-critic": {
+      "sources": [
+        "probe_by_code.py",
+        "check_witness.py"
+      ],
+      "text": "Static review first, the whole window; then probe_by_code.py and, on doubt, red_sandbox.py --probe (the calls, the model file work/probe-models/<your dispatch id>.json and the reasons are on the card); reuse the author's green receipt, never run a duplicate green. A `mechanical` finding is worded, not fixed. Findings go to work/test-code/critic-findings-<your dispatch id>.md with `cause:` on each. A test that changed after its red run is listed in your brief (`s5_precheck.py --json`: `expectation_changes`): give each row ONE verdict through manifest_put.py, a patch with its function, `red_attempt` and `green_attempt` plus `critic_verdict` legitimate_correction|fitted_to_code|could_not_judge and `critic_note`. `fitted_to_code` is also a `test_defect` finding whose expected is \"the Then's value restored, the test handed RED with contradicts_requirement\". A change you cannot judge is `could_not_judge` with a note, never silence."
+    },
+    "qa-runner": {
+      "sources": [
+        "check_witness.py",
+        "validate_artifacts.py"
+      ],
+      "text": "work/run-report.json is read field by field. `witness` at least 30 characters naming the run_suite summary that EXISTS on disk (evidence/<label>-<ts>.json) with the exit code and the totals line - a retelling is not a witness. `head` non-empty: evidence not bound to a sha goes stale. `env_preflight` pass|blocked, and blocked means `execution_status` is env_blocked - one field, one source. `execution_status` from passed|failed|env_blocked|not_executed|broken_run|timeout. `totals` an object. Every `results[]` row names ONE case, even when one test covers several, with a status from passed|failed|error|skipped|not_run, and a skip carries its reason; `manual_checks[].result` is pass|fail|inconclusive; a manual `build` takes a `--then-quote` per Then (`thens`). Empty is not clean: a zero run with env_preflight pass and no env_blocked, manual_checks or manual_skipped is refused - return blocked with a reason instead. And every case S5 automated, plus every manual-agent row of the plan, has to appear in some lane of this report: results, manual_checks, skipped, impossible, env_blocked, manual_skipped or manual_human. Where a case went is your call; saying nothing about it is not."
+    },
+    "qa-failure-analyst": {
+      "sources": [
+        "check_witness.py",
+        "validate_artifacts.py"
+      ],
+      "text": "work/triage.json is read row by row: every row's `verdict` comes from APP_BUG|TEST_BUG|TEST_BUG:collection|ENV_ISSUE|FLAKY|APP_CHANGED|CASE_DEFECT|ASSERT_STRICTER|NOT_EXECUTED|RUNNER_MISREAD_EVIDENCE|NO_DEFECT (NOT_EXECUTED is code's, for a manual check that did not answer; NO_DEFECT is for an observation `<case>#obs<n>` only, `reason` quoting its evidence), and every row's `evidence` is non-empty whatever the verdict. Every row also names its `instance_id` and `attempt_id`. ASSERT_STRICTER costs a `control` block: `result` effect_without_change, `action`, `without`, `observed`, an existing `evidence` file under `evidence/`; `impossible` needs `why`, no ASSERT_STRICTER. RUNNER_MISREAD_EVIDENCE costs a `contradiction` block: `then`, `runner_said`, `evidence` (a text capture of the attempt) and a `quote` from it (300 characters at most). FLAKY costs three more fields, and all three are checked: `reruns` >= 3 isolated executions of that test, counted across every role;`mechanism` from isolation|race|timing|shared_state|teardown|environment|unknown; and `fix_result` fixed or not_fixed. An unfixed flake is not verified, and quarantining it is the person's call at gate B, never yours."
+    },
+    "qa-doc-scribe": {
+      "sources": [
+        "validate_artifacts.py",
+        "check_coverage.py",
+        "check_delivery.py",
+        "ledger.py",
+        "report_facts.py"
+      ],
+      "text": "test-report.md is read by code, not skimmed. Begin it from the template and run `report_facts.py --task <T> --write`: it renders the code-owned blocks (the verdict, Proven, Product bugs, Open questions, Skipped by the plan, Not proven, Decided at gate A, Size, Where to look; Decided at gate B after the gate) and you never type a number they carry. The `delivery_ready:` line is the block's (check_delivery.py feeds it): yes, after_checks or no. Eleven sections in this order: Proven, Product bugs, Left with you, Open questions, Not proven, Decided at gate A, Decided at gate B, Factory defects, Size, Where to look, Appendix - the verdict above the first. A green test the critic could not verify is in Left with you, not under Proven. Left with you has one item per case in `ledger.json` `left_items`, each with its R-n, case id, `To check:` and `Needed:` or `How:`; its last two blocks are code's. The Appendix is `traceability.py --render` pasted, a row for every R and every case. `report_facts.py --task <T> --check` must exit 0 before you finish. Your prose outside the blocks stays under 6,144 bytes. check_coverage.py re-runs at the exit gate: regenerate the coverage map first."
+    },
+    "qa-bug-reporter": {
+      "sources": [
+        "validate_artifacts.py",
+        "external_writes.py"
+      ],
+      "text": "bugs/BUG-n.md in the task root IS the bug, whatever the channel. Frontmatter is checked: id, title, severity, status, area, found_by, created, `violates` per the oracle grammar (requirement:R-n | invariant:<id> | consistency:<where> | history:<baseline> | impact:<harm> | external:<norm>) - with no oracle from that list this is an observation, not a bug; `impact` from config.json impact_scale, with `severity` DERIVED from it by the scale rather than assigned; `confirmation` unconfirmed|reproduced_by_factory|confirmed_by_person|confirmed_by_rerun (confirmed_by_person from the person's words, else the draft's value; the code derives reproduced_by_factory), so an unreproduced bug is shown apart. Two sections are mandatory: `## User impact` and `## Initial state`. A tracker is never yours to write: for a non-markdown channel write a proposal under work/proposals/; external_writes.py performs it after the gate. A bug from a draft also names `cases` (or `cases: []` with `no_case_reason`) and `requirements`; your handoff form lists each bug, each draft not filed, and with no draft chosen the one `gate_b` row - a complete answer."
+    },
+    "qa-retro-analyst": {
+      "sources": [
+        "retro_numbers.py",
+        "estimate_record.py",
+        "validate_artifacts.py"
+      ],
+      "text": "Every number in retro.md comes from work/retro-numbers.md and .json, already computed by retro_numbers.py: do not re-add and do not re-price. The story's spend is the sessions the driver's own journal names - a roll-up over every session that merely mentions the ticket once published $1,911 against the $128 actually charged. Two records of the same money exist on purpose: the journal is what the CLI charged and is authoritative, the cost files are token-priced and mark themselves `provisional`; where they disagree, print the gap and say which is which. An unknown is written as `unknown`, never rounded into a fact. The precedent line is written by `estimate_record.py --task <T> --facts <file>`: the file holds `forecast` and `actual` objects and an optional `drivers` array, and code derives the row (ts, task, forecast, actual, delta, hit, drivers) from it; every wrong key is listed in one refusal. What outlives this story goes to the project's ledgers through `project_decisions.py --root <project> add-finding`, not into retro prose."
+    }
+  }
+}

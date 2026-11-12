@@ -1,0 +1,9 @@
+qa-code-critic S5 CART-1_TC_009 · concerns
+CART-1_TC_009 · unverified · red per case (Then 2); probe unreadable for TS (tooling), waived
+qa-factory/artifacts/CART-1/work/test-code/critic-findings-4.md
+
+Notes for the conductor:
+- The review receipt was not built. `window_record.py --review-receipt` refused with `empty_scope`: the manifest `tests[]` has no instance for TC_009, only its `contradicts_requirement` row on Then 2. The author's fragment must add the instance, red with `contradicts_requirement`. Then `window_record.py` and `manifest_put.py` for `review_receipt_ref` can be re-run. I did not run `manifest_put.py` for the obligations.
+- The test is a faithful check of the approved case. Then 1 to 5 are each asserted as written, with values from R-15 and none from the code. Then 2 compares the quote items with the cart read, so it is rightly red.
+- The probe was not run, because `probe_by_code.py` cannot read Playwright TypeScript. I recorded it as `unverified` with cause tooling, under the person's waiver "probe gap: CART-1_TC_009".
+- The author's mechanical fix to TC_007 and TC_008 landed. Both specs assert `toHaveLength(1)` on the filtered rows before destructuring `[row]` / `[rowA]`. I checked this by reading the files; those two files were not re-run.

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "note": "Whose problem each family of delivery reasons is (factory rule FR-19, design/factory-rules.md). check_delivery.reason_owner() matches a reason's text against `families` - longest `text_starts` wins - and only falls back to `default_owner` when no family matches, which is itself reported as a defect of the classifier (`REASON_OWNER_UNCLASSIFIED` in the ledger's factory_findings). A new reason family joins this file in the same change that writes the reason; growing a phrase list inside a script instead is what FR-13 forbids, and what made 43 of 52 `product` reasons in run 5 the factory's own bookkeeping. `text_starts` is compared lowercased against the start of the reason text, so it holds the words the reason always begins with and never a value it interpolates. The four owners are contract.DELIVERY_REASON_OWNERS; the ledger's headings for them are ledger.OWNER_HEADINGS.",
+  "default_owner": "product",
+  "families": [
+    {
+      "text_starts": "delivery manifest:",
+      "owner": "factory",
+      "why": "the shape of our own delivery manifest and the files it selects"
+    },
+    {
+      "text_starts": "manual evidence export:",
+      "owner": "factory",
+      "why": "our exporter's own output"
+    },
+    {
+      "text_starts": "manifest witness:",
+      "owner": "factory",
+      "why": "check_witness.py on our manifest - our evidence contract, not a product behaviour"
+    },
+    {
+      "text_starts": "automation-manifest.json",
+      "owner": "factory",
+      "why": "S5 wrote no manifest; the artifact is ours"
+    },
+    {
+      "text_starts": "check_witness.py",
+      "owner": "factory",
+      "why": "our script could not run"
+    },
+    {
+      "text_starts": "run-report.json",
+      "owner": "factory",
+      "why": "our run record is missing, or carries a status our own writer put outside the vocabulary"
+    },
+    {
+      "text_starts": "plan ",
+      "owner": "factory",
+      "why": "a plan row and the manifest that must answer it are both ours"
+    },
+    {
+      "text_starts": "case ",
+      "owner": "factory",
+      "why": "the case file's own lifecycle: our pinning, our stale link, our frontmatter"
+    },
+    {
+      "text_starts": "test instance ",
+      "owner": "factory",
+      "why": "the instance's links and receipts are our bookkeeping, including the sensitivity receipt of FR-11"
+    },
+    {
+      "text_starts": "triage:",
+      "owner": "factory",
+      "why": "a failure with no verdict, a verdict outside the matrix, an unfixed FLAKY - all our triage record. The product's own failures reach the person through the ledger row, which carries the verdict"
+    },
+    {
+      "text_starts": "triage:manual:",
+      "owner": "review",
+      "why": "a manual check that failed or was inconclusive and that nobody judged: the person's side of the review has the word, not our triage bookkeeping. Longer than `triage:`, so it wins for this reason only; every other `triage:` reason stays the factory's"
+    },
+    {
+      "text_starts": "factory:",
+      "owner": "factory",
+      "why": "the reducer's own defect list, which says so in its first word: a result row it could not join, a duplicate identity"
+    },
+    {
+      "text_starts": "deferred without a decision:",
+      "owner": "product",
+      "why": "a requirement deferred by a row nobody's recorded word covers is a behaviour this delivery does not prove: it stays the product's (the sentence 'nothing here says the product is not ready' must not print over it); the factory's share - a deferral no gate waiver carries - is a separate finding (`DEFERRED_WITHOUT_DECISION`, owner factory)"
+    },
+    {
+      "text_starts": "not_executed not re-derived:",
+      "owner": "factory",
+      "why": "a triage row says NOT_EXECUTED and S7's code would not write it again from the record: a red test, or a check code could not prove did not answer, is never shown as 'the person will check' - our own record, reported and never asked (`NOT_EXECUTED_NOT_RE_DERIVED`)"
+    },
+    {
+      "text_starts": "traceability: requirements-register.md has no r rows",
+      "owner": "factory",
+      "why": "an empty register means S2 produced nothing; a requirement that IS traced and has no terminal outcome stays the product's, which is why this family is longer than the `traceability:` one"
+    },
+    {
+      "text_starts": "handed to the person:",
+      "owner": "environment",
+      "why": "nothing here could run that profile and the person said they would; neither a defect of ours nor a product behaviour"
+    },
+    {
+      "text_starts": "review:",
+      "owner": "review",
+      "why": "a missing critic verdict is the review's gap"
+    },
+    {
+      "text_starts": "traceability:",
+      "owner": "product",
+      "why": "a requirement with no terminal outcome is a behaviour this delivery does not prove"
+    },
+    {
+      "text_starts": "coverage:",
+      "owner": "factory",
+      "why": "the factory's tools or coverage left the obligation without sufficient evidence; a red run or an open oracle is the family coverage red:"
+    },
+    {
+      "text_starts": "coverage red:",
+      "owner": "product",
+      "why": "a red run or an open oracle on an obligation: the product's behaviour is what is in question"
+    },
+    {
+      "text_starts": "grounding:",
+      "owner": "product",
+      "why": "a requirement the story asks for that this change does not implement, or a place of the code read as wrong that no executed check stands behind: the product's behaviour is what is in question"
+    },
+    {
+      "text_starts": "product gap:",
+      "owner": "product",
+      "why": "the person said the product does not implement a function a requirement asks for (RN1-15, FR-21): the product's own gap, written from the typed record of that word (work/product-gaps.json), never from a reading of the person's wording"
+    },
+    {
+      "text_starts": "ledger:",
+      "owner": "product",
+      "why": "the default for a ledger row; the row's own state and triage verdict are more exact and decide first"
+    },
+    {
+      "text_starts": "blocked on the stand:",
+      "owner": "environment",
+      "why": "a test the stand holds and that no gate answer of the person covers: neither a defect of ours nor a product behaviour; a row its own writer marked STALE is ours, which the context knows and this table cannot"
+    },
+    {
+      "text_starts": "manifest record:",
+      "owner": "factory",
+      "why": "an unresolved row whose reason is outside the closed list is a defect of our own manifest record, never a product behaviour; a row its own writer marked STALE is ours too"
+    },
+    {
+      "text_starts": "manifest:",
+      "owner": "product",
+      "why": "an unresolved row states a product reason - unless its own writer marked it STALE, which the context knows and this table cannot"
+    },
+    {
+      "text_starts": "subtask ",
+      "owner": "product",
+      "why": "the story's own scope is not closed; nothing for the factory to fix"
+    }
+  ]
+}

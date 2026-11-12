@@ -1,0 +1,196 @@
+{
+  "plugin_name": "qa-factory",
+  "version": "0.1.0",
+  "description": "Package-level end-to-end benchmark for qa-factory. Every benchmark runs against the repository materialized by scripts/make_fixture_repo.py --out <dir> (evals/fixtures/sample-pytest-repo, committed on main, with a feature/qa-1 branch carrying evals/fixtures/sample-pytest-repo.feature-qa-1.patch), against the ticket at evals/fixtures/tickets/QA-1.md read through the file ticket adapter, after qa-onboarding has written qa-factory/config.json with that adapter configured. feature/qa-1 deliberately implements acceptance criteria 1, 2, 4 and 5 of QA-1 but not criterion 3 (the 5-tag limit) — the fixture's built-in requirement-not-met scenario. These are behavioural checks on the whole pipeline end to end, not a restatement of the per-skill evals in skills/*/evals/evals.json.",
+  "benchmarks": [
+    {
+      "id": "onboarding-happy-path-writes-scoped",
+      "skill": "qa-onboarding",
+      "prompt": "In a repository materialized by `python ai-packages/qa-factory/scripts/make_fixture_repo.py --out <dir> --fixture sample-pytest-repo` (no --feature, so only main exists and no qa-factory/ directory exists yet), from <dir>, run: onboard this repository for QA.",
+      "success_criteria": [
+        "Before the phase-3 'write these files? yes / edit' question is answered with 'yes' in the transcript, no project file exists under qa-factory/ anywhere in <dir> and git status shows no changes; the only thing that may exist there is the run's own notes in qa-factory/state/onboarding/, which git ignores, per SKILL.md's 'no project file is written until yes'.",
+        "States once that QA Factory v0 covers functional testing only, with no question attached, matching SKILL.md's invariant 'scope is announced, not asked'.",
+        "The interview phase (phase 2) asks in batches of at most four questions on gaps discovery left open, never a wall of every topic and never one question per message (SKILL.md 'Batches of at most four questions').",
+        "After 'yes', only paths under qa-factory/ (config.json, strategy/*.md, records/, state/ with readiness.json, obligations.md, factory-backlog.md) are created; nothing under src/ or tests/ is touched (phases/p4-generate.md: 'everything here writes under <project>/qa-factory/').",
+        "qa-factory/config.json's external_writes is {\"bugs\": \"markdown\", \"cases\": \"markdown\"} since no tracker was named during discovery (phases/p4-generate.md step 1: 'default stays {bugs: markdown, cases: markdown} unless the team named a tracker')."
+      ]
+    },
+    {
+      "id": "doctor-unonboarded-next-is-onboarding",
+      "skill": "qa-doctor",
+      "prompt": "In a repository materialized by `python ai-packages/qa-factory/scripts/make_fixture_repo.py --out <dir> --fixture sample-pytest-repo`, with no qa-factory/ directory anywhere under <dir> (onboarding has not run), from <dir>, run: check the qa-factory setup.",
+      "success_criteria": [
+        "Runs install_smoke.py first, then checks for qa-factory/config.json before any readiness or artifact step (SKILL.md steps 1-2).",
+        "Omits the whole READINESS section (config.json is absent) and skips step 5's dashboard rebuild entirely, per SKILL.md ('only when config.json exists; omit the whole section otherwise', 'skip this step entirely if qa-factory/config.json does not exist').",
+        "Reports exactly one 'Next action' line, and it is `/qa-factory:qa-onboarding` (SKILL.md verdict table row 3: 'no qa-factory/config.json').",
+        "Writes no file at all (the only write the skill ever performs, the dashboard rebuild, does not run here) and asks no clarifying question (SKILL.md 'What this skill never does')."
+      ]
+    },
+    {
+      "id": "story-qa1-environment-asked-once",
+      "skill": "qa-story",
+      "prompt": "In the fixture repo materialized by `make_fixture_repo.py --out <dir> --fixture sample-pytest-repo --feature qa-1` (main + feature/qa-1), already onboarded so qa-factory/config.json exists with adapters.ticket set to the file adapter pointed at evals/fixtures/tickets/ and at least one name in config.environments[], from <dir> on branch main, run: qa this ticket QA-1 --branch feature/qa-1",
+      "success_criteria": [
+        "S0 asks exactly one question about the environment, worded 'Which environment do we test on? default: <name>' with <name> equal to config.environments[0] (phases/s0.md step 4).",
+        "The chosen environment is written into pipeline.json's environment field and into the journal before S1 begins (phases/s0.md step 4 and step 8's pipeline.json shape).",
+        "No later stage (S1 through S9) asks about the environment again.",
+        "Before the environment question, the scope line stating v0 covers functional testing only is printed once with no question attached (phases/s0.md step 3)."
+      ]
+    },
+    {
+      "id": "gate-a-one-message-with-caps",
+      "skill": "qa-story",
+      "prompt": "Continuing the QA-1 story (qa-story QA-1 --branch feature/qa-1) on the fixture repo through S1-S3, at the point where qa-test-strategist has produced test-plan.md and plan-brief.md, observe the gate A message delivered to the human.",
+      "success_criteria": [
+        "Gate A arrives as a single message, not one message per question or a question after an answer (qa-story SKILL.md: 'Everything the human decides arrives in a single message').",
+        "The message is the file gate_brief.py writes, work/gate-a-message.md, printed whole: its first line after the title names the two documents the person approves (understanding.md, test-plan.md; gate_brief.GATE_A_DOCUMENTS), and the conductor's own words come only after it (qa-story SKILL.md 'Code first').",
+        "understanding.md is at most 40 lines and contains all five required sections (artifact-contract.md understanding.md shape).",
+        "plan-brief.md has at most 15 table rows (or an explicit 'and N more' line) and its table includes a Fit column (artifact-contract.md plan-brief.md shape).",
+        "Approval is asked as its own item, separate from the answers to open questions (qa-story SKILL.md: 'Answers are not approval ... Approval is its own word, asked as its own item')."
+      ]
+    },
+    {
+      "id": "ac3-unimplemented-becomes-gate-a-question",
+      "skill": "qa-story",
+      "prompt": "Run qa this ticket QA-1 --branch feature/qa-1 on the fixture repo through S1 (grounding) and S2 (requirements register). QA-1's acceptance criterion 3 ('An item may carry at most 5 tags; a sixth tag is rejected with a validation error') has no observable in the feature/qa-1 diff — evals/fixtures/sample-pytest-repo.feature-qa-1.patch implements create/list/tag-normalization but never a 5-tag cap, and QA-1.md's dev comment says the limit is not in this MR. Reach gate A and, when asked to confirm AC3's expected behavior, answer 'confirm expected behavior'.",
+      "success_criteria": [
+        "requirements-register.md's row for the 5-tag-limit requirement carries observable: none, and this surfaces as its own item at gate A rather than a silent skip (artifact-contract.md: 'a none row is a gate-A question, never a silent skip').",
+        "test-plan.md's row for that requirement carries oracle requirement:<R-n> (or external:<ref>), never history: or an observable with source current-code, since this is new/unimplemented behavior (artifact-contract.md 'Oracle basis'; design section 7.2).",
+        "After the human confirms expected behavior, the resulting case is written and automated as an expected-red test (disposition automate, not manual-agent, manual-human, or skip) — a confirmed unimplemented requirement is never a manual row by default (design section 7.2: the owner confirms expected behaviour, so the case is written by the requirement and automated as an expected-red test with a red_lock and a 'requirement not met' bug).",
+        "A bug draft is written under bug-drafts/ for the unmet-requirement finding rather than being folded into an ordinary TEST_BUG (stage-model.md triage verdicts; design section 7.2).",
+        "The test asserts the 5-tag limit exactly as AC3 states it, not the feature branch's current unlimited-tags behavior, and it fails (is red) when run against feature/qa-1 as materialized by the patch."
+      ]
+    },
+    {
+      "id": "visibility-only-row-never-automated",
+      "skill": "qa-story",
+      "prompt": "During S3 planning for QA-1 on the fixture repo, suppose qa-test-strategist drafts a plan row whose only check is that the tag list is visible in the response, or only checks a page title or a URL, with no create/persist/read-back assertion behind it. Verify how such a row is treated.",
+      "success_criteria": [
+        "A row matching 'checks only that an element is visible', 'checks only the page title', 'checks only the URL after navigation' or 'checks only that a first available record exists' gets disposition smoke at most, never automate (references/automation-candidacy.md 'Anti-patterns — never earn automate').",
+        "test-plan.md's validator rejects such a row if it is marked automate (artifact-contract.md test-plan.md Validator: 'anti-pattern rows (visibility-only, title-only, URL-only, first-record) may not be automate').",
+        "Any plan row covering the tags-as-data requirement is paired with a row that creates a tagged item, persists it, and reads it back via list(tag=...) through an independent channel — a data requirement is never satisfied by a visibility check alone (automation-candidacy.md: 'Any requirement about data must include rows that create -> persist -> read back through an independent channel')."
+      ]
+    },
+    {
+      "id": "no-branch-no-mr-three-option-halt",
+      "skill": "qa-story",
+      "prompt": "In the fixture repo materialized with --feature qa-1, edit evals/fixtures/tickets/QA-1.md to delete its `merge_request: feature/qa-1` frontmatter line before running the story (so the ticket carries no MR reference). Re-onboard or reuse the existing qa-factory/config.json, then from <dir> on branch main, run: qa this ticket QA-1 (no --mr, no --branch, no --commit).",
+      "success_criteria": [
+        "qa-scout returns a halt digest for 'no diff', and qa-story does not search git log, other branches, or the filesystem itself for the change (phases/s1.md: 'Do not search for the change yourself ... a diff you guessed at becomes a false oracle').",
+        "The human is shown exactly the four-option message: give an MR/branch/commit, name a stand and repository for current-code grounding, pass --ungrounded (requirements only, on the code the stand runs now), or say the code is not built yet (phases/s1.md digest-halt block, close to its verbatim wording).",
+        "The human's answer is recorded verbatim in the journal (log_append.py --event escalated) before qa-scout is re-dispatched with the chosen mode (phases/s1.md: 'Record the answer verbatim in the journal before doing anything with it').",
+        "qa-scout is re-dispatched exactly once with the chosen grounding mode; a second 'no diff' halt on the same ticket is reported to the human rather than retried a third time (phases/s1.md)."
+      ]
+    },
+    {
+      "id": "dirty-tree-halt-before-branch",
+      "skill": "qa-story",
+      "prompt": "On the fixture repo checked out on feature/qa-1, with the QA-1 story already past gate A ('plan approved' recorded), leave an uncommitted change in the working tree (for example, edit README.md and do not commit it) before S5 would dispatch qa-automator. Continue qa-story QA-1 into S5.",
+      "success_criteria": [
+        "git status --porcelain is checked before any role writes a file, and a non-empty result halts before the story branch is created (phases/s5.md step 1: 'checked before the first file, not after').",
+        "The human is offered exactly four options: stash, commit first, proceed with a warning, abort (phases/s5.md verbatim message).",
+        "The human's answer is journaled ('dirty tree at S5: <answer>') before any stash, commit, or branch action is taken (phases/s5.md step 1).",
+        "If the answer is 'abort', pipeline.json's halts[] records the halt and nothing is stashed, committed, or branched (phases/s5.md: 'Nothing is stashed, committed or branched on an answer you inferred')."
+      ]
+    },
+    {
+      "id": "automator-never-calls-pytest-directly",
+      "skill": "qa-story",
+      "prompt": "During S5, S6 and S7 of the QA-1 story on the fixture repo, inspect how qa-automator, qa-code-critic, qa-runner and qa-failure-analyst execute the pytest suite under evals/fixtures/sample-pytest-repo/tests/.",
+      "success_criteria": [
+        "Every test execution by any role or by the orchestrator goes through `python scripts/run_suite.py ...`; no Bash call invokes `pytest` or `python -m pytest` directly (qa-story SKILL.md invariant: 'Runs are quiet and go through run_suite.py. You never call pytest ... directly, and neither does any role').",
+        "run_suite.py's output returned into a role's context is a JSON summary (totals, named failures with a first cause line), never raw pytest stdout (design section 9: only the JSON summary goes into a role's context, never the run's raw stdout).",
+        "qa-code-critic's independent run and its red probe both invoke run_suite.py with distinct --label values (for example critic-run and red-probe-<TC>), not a bare pytest call (agents/qa-code-critic.md steps 5-6).",
+        "A raw log of each run is written under evidence/, separate from the summary handed back to the role (design section 9: run_suite.py writes the raw log to evidence/)."
+      ]
+    },
+    {
+      "id": "impossible-step-not-skipped",
+      "skill": "qa-story",
+      "prompt": "During S5 automation of QA-1 on the fixture repo, suppose one automate case's step cannot be executed because the product genuinely does not allow it (the tags API has no way to trigger the exact edge that case requires). Observe how qa-automator and the orchestrator record this, and confirm the same rule at S6 for a manual-agent case qa-runner cannot execute.",
+      "success_criteria": [
+        "automation-manifest.json's unresolved[] entry for that case uses the reason impossible from the closed vocabulary, never skipped or any invented word (artifact-contract.md 'unresolved[] reason' closed list: impossible / blocked_by_env / pending_implementation / deferred_by_decision:<gate>).",
+        "The case is sent back to qa-case-designer exactly once with the case id and the automator's reason before being accepted as unresolved (phases/s5.md step 5: 'impossible ... Send that one case back to qa-case-designer once').",
+        "If still impossible after that one round, the entry stays unresolved and is named by id in the checks ledger, rather than being dropped or marked passed or skipped (phases/s5.md: 'Still impossible — it stays unresolved and travels to the checks ledger by name').",
+        "A manual-agent case qa-runner cannot execute at S6 gets the same impossible outcome (never skipped) and is returned to the case designer rather than silently marked done (design section 7.6: a step the product does not allow gets the outcome impossible with a reason, at both the automator's and the runner's live points, and is never masked as skipped)."
+      ]
+    },
+    {
+      "id": "manual-human-never-dispatched-to-runner",
+      "skill": "qa-story",
+      "prompt": "During S6 of the QA-1 story, suppose test-plan.md has at least one row disposed manual-human alongside its automate and manual-agent rows. Observe which rows qa-runner is dispatched to execute.",
+      "success_criteria": [
+        "qa-runner is dispatched only for manual-agent cases (and re-runs of automated tests when the head has changed); a manual-human case never appears in a qa-runner dispatch (references/automation-candidacy.md: 'manual-human: handed to the human whole; the runner never starts it').",
+        "The checks-ledger row for a manual-human case is not passed_green and is not the product of any automated or agent-driven run — it is left open for the human, surfaced at gate B (artifact-contract.md checks-ledger states).",
+        "run-report.json contains no entry attempting to execute the manual-human case."
+      ]
+    },
+    {
+      "id": "critic-rejects-no-red-probe-and-flaky-marker",
+      "skill": "qa-story",
+      "prompt": "During S5, present qa-code-critic with two test files from qa-automator's output on the fixture repo: one new automate test for which no red-probe run has been executed, and one test carrying an explicit pytest.mark.flaky (or reruns) decorator used as a stabilization mechanism. Observe the critic's verdicts on each.",
+      "success_criteria": [
+        "The test with no red-probe run is rejected: approval requires all three proofs (rubric, independent run, red probe) for every new test, so a test that never had a red probe run against it cannot be approved (agents/qa-code-critic.md 'Role': 'Approval requires all three proofs'; step 6).",
+        "The test using pytest.mark.flaky / reruns is rejected on sight by the mechanical retry-marker detector, never accepted as a stabilization fix (agents/qa-code-critic.md step 3: 'grep references/detectors.json's patterns (retry_markers ...)'; design section 8: retry used as a stabilization technique is forbidden).",
+        "Both rejections are written into automation-manifest.json (tests[].critic_verdict: rejected) with findings filed in evidence/code-critic-<date>.md, and returned to the automator as a normal round rather than a halt (agents/qa-code-critic.md Refusals: 'this is a normal round, not a halt').",
+        "Neither test is set to status: green until a following round removes the retry marker and supplies a red-probe run that actually fails as expected."
+      ]
+    },
+    {
+      "id": "gate-b-ledger-first-and-deliver-with-risks",
+      "skill": "qa-story",
+      "prompt": "Run the QA-1 story on the fixture repo through S7 (triage) into S8, where check_traceability.py, ledger.py and check_delivery.py have run and at least one plan row (the AC3 expected-red row) is not passed_green. Observe the gate B message, then answer 'deliver with known gaps' without giving a reason, then again with a reason.",
+      "success_criteria": [
+        "The gate B message's first section is the checks ledger (ledger.md, every row) before the delivery_ready verdict or the summary (phases/s8.md GATE B, item 1; stage-model.md Gate B order).",
+        "delivery_ready and its reasons come only from ledger.json / check_delivery.py's output, never hand-typed by the orchestrator or qa-doc-scribe (phases/s8.md step 1: 'ledger.md and ledger.json are generated, never authored'; 'delivery_ready and its reasons[] come from check_delivery.py and from nowhere else').",
+        "Because the verdict word is no (delivery_ready: no), the only MR-related item offered is 'deliver with known gaps' — there is no 'open MR' item at all (phases/s8.md item 4: 'When `no` there is no \"open MR\" item at all'); the Draft MR is offered only on the words yes and after_checks.",
+        "Answering 'deliver with known gaps' with no stated reason is not executed; the orchestrator asks for the reason once and nothing proceeds until it is given (phases/s8.md Halts: 'deliver with known gaps given without a reason -> Ask for the reason, once. Nothing is executed until it is stated').",
+        "Once a reason is given, deliver_with_risks is journaled via log_append.py --event deliver_with_risks with that reason, and pipeline.json's gates.B.deliver_with_risks records it (phases/s8.md step 4)."
+      ]
+    },
+    {
+      "id": "unfixed-flaky-blocks-delivery",
+      "skill": "qa-story",
+      "prompt": "During S7 triage of QA-1 on the fixture repo, suppose one test is triaged FLAKY, the automator attempts fixes up to the S7 repair cap, and it is still flaky afterward (no five-green-run confirmation achieved on one head). Observe the checks ledger and delivery_ready at gate B.",
+      "success_criteria": [
+        "The checks-ledger state for that test is not_verified_flaky, one of the closed checks-ledger states (artifact-contract.md 'Checks-ledger state' list).",
+        "delivery_ready in ledger.json is no, with that test's not_verified_flaky row among the reasons (design section 4/S7: a test not fixed within the repair cap is not counted as verified, so delivery_ready is no).",
+        "Quarantine for that test happens only if the human explicitly chooses it at gate B, together with a debt file and a reopening trigger, never automatically or by default (phases/s8.md GATE B item 3: 'another fix round / quarantine with a debt file and a trigger ... Quarantine happens only here, only on this word').",
+        "The FLAKY verdict itself is only valid with isolated reruns (5 or more) and a named mechanism from the closed list (isolation/race/timing/shared_state/teardown/environment/unknown); a verdict missing either would be rejected by validate_artifacts.py (artifact-contract.md 'FLAKY mechanism'; design section 16 L3 list)."
+      ]
+    },
+    {
+      "id": "s9-one-optional-retro-question-verbatim",
+      "skill": "qa-story",
+      "prompt": "Run the QA-1 story to S9 (closure and retro) on the fixture repo after gate B has been answered. Observe the question asked to the human and how the answer is stored, answering with a short piece of feedback.",
+      "success_criteria": [
+        "Exactly one question is asked, with the fixed text 'One question for the retro: what did you dislike in this session, what should change? (optional — reply 'skip')', with no preamble and no second question (phases/s9.md step 1).",
+        "The human's answer (or 'skip'/silence, recorded as declined) is journaled verbatim via log_append.py --event escalated with reason 'retro feedback: <answer>' before qa-retro-analyst is dispatched (phases/s9.md step 1).",
+        "retro.md contains that same answer verbatim, not paraphrased or reinterpreted (artifact-contract.md retro.md shape: 'the human's verbatim answer to the one optional closing question').",
+        "The final S9 summary shown to the human is at most 10 lines and does not restate the pipeline stages or the gate B ledger (phases/s9.md step 4: 'No retelling of the pipeline ... Ten lines is a cap, not a target')."
+      ]
+    },
+    {
+      "id": "resume-never-reasks-recorded-gate",
+      "skill": "qa-story",
+      "prompt": "Start the QA-1 story on the fixture repo, answer gate A ('plan approved'), then interrupt the session before S4 finishes. Start a fresh session from <dir> and run: qa this ticket QA-1 --branch feature/qa-1 again.",
+      "success_criteria": [
+        "On start, pipeline.json and records/journal.jsonl are read before anything else, and gate A's decision found there is treated as already answered — the plan is never presented for approval a second time (qa-story SKILL.md Resume section, point 2: 'Anything recorded there is answered; asking again is a defect').",
+        "Work resumes at the first stage that is not done, with that stage's own card (story_step.py card --stage S<n>), rather than restarting from S0 or S1 (qa-story SKILL.md Resume section, point 3).",
+        "A stage left with status running from the interrupted session is restarted from its beginning rather than assumed partially complete (qa-story SKILL.md Resume, point 3: 'A stage whose status is running ... restarts from its beginning').",
+        "If a stage marked done has a declared output file (per stages.json) missing on disk, that stage is reset to pending and re-run rather than trusted (qa-story SKILL.md Resume, point 4)."
+      ]
+    },
+    {
+      "id": "every-stage-transition-recorded",
+      "skill": "qa-story",
+      "prompt": "Run the full QA-1 story S0 through S9 on the fixture repo end to end. After completion, inspect qa-factory/artifacts/QA-1/pipeline.json and qa-factory/records/journal.jsonl.",
+      "success_criteria": [
+        "pipeline.json's stages object has an entry for every stage S0-S9 with status done, each carrying started, finished, role and digest (qa-story SKILL.md 'State after every stage'; phases/s0.md pipeline.json shape).",
+        "records/journal.jsonl has at least one event per stage transition (accepted, or dispatch_skipped for the code-only S0), written through log_append.py rather than hand-appended (qa-story SKILL.md: 'append exactly one journal event through log_append.py ... before the next dispatch').",
+        "Both gate decisions (A and B) appear as their own gate journal events and in pipeline.json's gates.A / gates.B, recorded before the work each decision authorizes begins (qa-story SKILL.md: 'Verbatim into the journal, then into pipeline.json ... before any work the decision authorizes begins').",
+        "No stage's pipeline.json entry reads done while its required output file (per stages.json's required_outputs) is absent from disk (qa-story SKILL.md Resume, point 4)."
+      ]
+    }
+  ]
+}

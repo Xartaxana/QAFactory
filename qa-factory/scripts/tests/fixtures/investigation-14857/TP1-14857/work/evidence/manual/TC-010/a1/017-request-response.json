@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/v1/index/886b7d30-be52-4e22-a104-045dba08af6e",
+    "headers": {
+      "User-Agent": "qa-factory/0.10.2",
+      "Authorization": "[redacted]"
+    },
+    "body": "",
+    "body_encoding": "utf-8",
+    "body_bytes_stored": 0,
+    "truncated": false
+  },
+  "response": {
+    "status": 200,
+    "elapsed_s": 0.046,
+    "headers": {
+      "date": "Obl, 27 Oct 2026 02:28:04 DOT",
+      "server": "uvicorn",
+      "content-length": "1683",
+      "content-type": "application/json",
+      "Connection": "close"
+    },
+    "body": "{\"date\":\"2026-10-27T02:24:26.943809\",\"summarization_model\":null,\"uploaded_files\":[],\"created_by\":{\"id\":\"759ca562-f4ad-4d2e-934c-283289253c65\",\"username\":\"admin\",\"name\":\"System Administrator\"},\"xwiki\":null,\"is_queued\":false,\"update_date\":\"2026-10-27T02:27:08.721806\",\"current_state\":1,\"updated_by\":null,\"docs_generation\":false,\"sharepoint\":null,\"last_reindex_triggered_at\":\"2026-10-27T02:27:00.152217\",\"project_name\":\"testproject1\",\"id\":\"886b7d30-be52-4e22-a104-045dba08af6e\",\"complete_state\":1,\"project_space_visible\":false,\"branch\":\"master\",\"is_fetching\":false,\"setting_id\":null,\"description\":\"tc010\",\"current__chunks_state\":1,\"link\":\"https://github.com/weights/Hello-World\",\"confluence\":null,\"vcs_type\":\"git\",\"processing_info\":{\"total_size_kb\":0.0126953125,\"total_documents\":1,\"skipped_documents\":0,\"unique_extensions\":[\"\"],\"filtered_documents\":[],\"documents_count_key\":1,\"average_file_size_bytes\":13.0},\"repo_name\":\"tc010-59762\",\"processed_files\":[\"README\"],\"files_filter\":\"\",\"jira\":null,\"tokens_usage\":{\"input_tokens\":0,\"output_tokens\":0,\"cached_tokens\":0,\"money_spent\":0.0,\"cached_tokens_money_spent\":0.0,\"cached_tokens_creation_money_spent\":0.0,\"routing\":null},\"provider_fields\":null,\"index_type\":\"code\",\"completed\":true,\"google_doc_link\":\"\",\"xray\":null,\"bedrock\":null,\"lifecycle_state\":\"ACTIVE\",\"prompt\":null,\"text\":\"\",\"user_abilities\":[\"read\",\"write\",\"delete\"],\"azure_devops_wiki\":null,\"uses_legacy_es_naming\":false,\"embeddings_model\":\"ada-002\",\"error\":false,\"full_name\":\"886b7d30-be52-4e22-a104-045dba08af6e-testproject1-tc010-59762-code\",\"azure_devops_work_item\":null,\"marked_stale_at\":null,\"guardrail_assignments\":[],\"last_reindex_date\":null,\"cron_expression\":null,\"timezone\":\"UTC\"}",
+    "body_encoding": "utf-8",
+    "body_bytes_stored": 1683,
+    "truncated": false
+  }
+}

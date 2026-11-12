@@ -1,0 +1,250 @@
+{
+  "schema_version": 2,
+  "receipt_kind": "s5_review_window",
+  "immutable": true,
+  "reviewer_dispatch_id": "S5-qa-code-critic-10",
+  "author_dispatch_id": "S5-qa-automator-10",
+  "input_hash": "162033d5429dcc957cc480cbf64624c5266ada15931debb285b2e35a061ce45a",
+  "scope_instances": {
+    "LOCAL-1_TC_018": [
+      "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+    ],
+    "LOCAL-1_TC_019": [
+      "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+    ]
+  },
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-19"
+        }
+      ],
+      "obligation_ids": [
+        "OB-19"
+      ],
+      "obligation_hash": "0ae6f49768beb49b2ac1da597368a0ce9c8930f09c97a2566a1e40b5552c192d",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:391",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_018",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "44e2bc606c20d0519538d7ca54ea534f2be1a4dbe5ffe13a67bd0dcdecd65338",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T040431565632Z-70c64e53d871768835c5.json",
+          "sha256": "b2eba254549f56d54755323ddddfa9ad19a56cc0bf0730a8c336fdb30cd4df09"
+        },
+        {
+          "path": "evidence/runs/70c64e53d871768835c5/repair_verify-70c64e53d871768835c5-20261102-050336.junit.xml",
+          "sha256": "c2df9289afe7cb5ada6a305792c33545ca804f31f993cf72b3986f401400500e"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_018",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:391"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-19"
+        }
+      ],
+      "obligation_ids": [
+        "OB-19"
+      ],
+      "obligation_hash": "0ae6f49768beb49b2ac1da597368a0ce9c8930f09c97a2566a1e40b5552c192d",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:391",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_018",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "44e2bc606c20d0519538d7ca54ea534f2be1a4dbe5ffe13a67bd0dcdecd65338",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T040431565632Z-70c64e53d871768835c5.json",
+          "sha256": "b2eba254549f56d54755323ddddfa9ad19a56cc0bf0730a8c336fdb30cd4df09"
+        },
+        {
+          "path": "evidence/runs/70c64e53d871768835c5/repair_verify-70c64e53d871768835c5-20261102-050336.junit.xml",
+          "sha256": "c2df9289afe7cb5ada6a305792c33545ca804f31f993cf72b3986f401400500e"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_018",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:391"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-19"
+        }
+      ],
+      "obligation_ids": [
+        "OB-19"
+      ],
+      "obligation_hash": "0ae6f49768beb49b2ac1da597368a0ce9c8930f09c97a2566a1e40b5552c192d",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:391",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_018",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "44e2bc606c20d0519538d7ca54ea534f2be1a4dbe5ffe13a67bd0dcdecd65338",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T040431565632Z-70c64e53d871768835c5.json",
+          "sha256": "b2eba254549f56d54755323ddddfa9ad19a56cc0bf0730a8c336fdb30cd4df09"
+        },
+        {
+          "path": "evidence/runs/70c64e53d871768835c5/repair_verify-70c64e53d871768835c5-20261102-050336.junit.xml",
+          "sha256": "c2df9289afe7cb5ada6a305792c33545ca804f31f993cf72b3986f401400500e"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_018",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+              "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:391"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-20"
+        }
+      ],
+      "obligation_ids": [
+        "OB-20"
+      ],
+      "obligation_hash": "0614e8211abfdc174b1364d6700838d69d1260f491affe88f2871c89d9d73c72",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:417",
+      "defect_location": "MyBooks/src/components/pages/HomePage.tsx:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_019",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "c50899cdee1b1993534eee4898b3dcf0c2799b7fb2cf917bd04c27e68c35deba"
+      },
+      "instance_identity": {
+        "instance_content_sha": "325ed737ee67f88810c2fe6d661284960128517f1e0ef494c521151b2c5465fb",
+        "instance_code_sha": "c16b1566a715cd053face7b6afebc23e27eb8534c094663276b9af154b8a9dcc",
+        "job_id": "6be0653c44bf5bc1f2d4"
+      },
+      "outcome": "failed",
+      "execution_fingerprint": "44e2bc606c20d0519538d7ca54ea534f2be1a4dbe5ffe13a67bd0dcdecd65338",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T040533068500Z-6be0653c44bf5bc1f2d4.json",
+          "sha256": "7fb44a067bb904911d72809f3f02abcdd82740c99d38ceade1abe0ff1de72eec"
+        },
+        {
+          "path": "evidence/runs/6be0653c44bf5bc1f2d4/initial-6be0653c44bf5bc1f2d4-20261102-050513.junit.xml",
+          "sha256": "d44c44b6f95074e5bf7a1a137c3d94ee0102532da8b15e4f723e7133d7fa9419"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "325ed737ee67f88810c2fe6d661284960128517f1e0ef494c521151b2c5465fb",
+        "instance_code_sha": "c16b1566a715cd053face7b6afebc23e27eb8534c094663276b9af154b8a9dcc",
+        "attempt_id": "6be0653c44bf5bc1f2d4"
+      },
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_019",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:417"
+      ]
+    }
+  ],
+  "receipt_hash": "b9a999a16eff8172c9f1ab577adf43a34e078e69605cc543fcac876dd0661556"
+}

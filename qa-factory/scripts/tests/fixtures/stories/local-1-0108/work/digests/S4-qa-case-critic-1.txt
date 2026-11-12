@@ -1,0 +1,13 @@
+qa-case-critic S4 LOCAL-1_TC_002..TC_021 (11 of 11 reviewed) · concerns
+LOCAL-1_TC_002 · approve_with_concerns · 4xx status unsourced; UI and API mixed; BN-1 on wrong Then
+LOCAL-1_TC_004 · approve · independent oracle, seeded defect fails
+LOCAL-1_TC_005 · approve_with_concerns · cookie-lifetime defect would pass
+LOCAL-1_TC_007 · approve_with_concerns · "keeps focus" clause has no source
+LOCAL-1_TC_008 · approve_with_concerns · two partitions in one case; focus unsourced
+LOCAL-1_TC_009 · approve_with_concerns · "abc" cannot be filled into a number input
+LOCAL-1_TC_010 · approve · boundary and independent read hold
+LOCAL-1_TC_013 · approve · holds under both readings of maximum
+LOCAL-1_TC_019 · approve_with_concerns · quantity defect unseen until Q6 answered
+LOCAL-1_TC_020 · reject · move button disabled for out-of-stock; error branch unreachable
+LOCAL-1_TC_021 · approve_with_concerns · Then 1 rests on R-6, no admin precondition
+qa-factory/artifacts/LOCAL-1/work/test-cases/critic-findings.md

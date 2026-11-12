@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "session_id": "synthetic-start-turn-onboarding",
+  "activities": [
+    {
+      "activity_id": "act-onboarding",
+      "type": "onboarding",
+      "task": null,
+      "start_event_id": "e1",
+      "start_time": "2026-10-01T10:44:02Z",
+      "end_event_id": "e2",
+      "end_time": "2026-10-01T12:30:00Z",
+      "evidence_ref": null,
+      "status": "closed",
+      "segments": [
+        {"segment_id": "seg-onboarding-1", "start_event_id": "e1", "start_time": "2026-10-01T10:44:02Z", "end_event_id": "e2", "end_time": "2026-10-01T12:30:00Z"}
+      ]
+    }
+  ],
+  "active_stack": [],
+  "processed_events": {},
+  "usage_completeness": "unknown"
+}

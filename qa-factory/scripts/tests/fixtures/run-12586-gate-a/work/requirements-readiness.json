@@ -1,0 +1,252 @@
+{
+  "verdict": "ready",
+  "confidence": "low",
+  "goal_summary": "Let a user move an existing integration (notably the singleton MS Teams one) to another project from the UI, safely handling dependents and permissions; works when the integration lands in the target project, is gone from the source and its dependents fail visibly.",
+  "aspects": {
+    "cross-team integration": {
+      "status": "ready"
+    },
+    "roles and permissions": {
+      "status": "ready"
+    },
+    "integrations with external systems": {
+      "status": "n/a",
+      "reason": "MS Teams bot feature flag is a stand constraint; no external call is made by the change"
+    },
+    "persistent and shared data": {
+      "status": "ready"
+    },
+    "inputs and validation": {
+      "status": "ready"
+    },
+    "failure and error paths": {
+      "status": "ready"
+    }
+  },
+  "register": {
+    "total": 16,
+    "by_source": {
+      "story": 1,
+      "feature": 0,
+      "assumption": 0,
+      "discussion": 9,
+      "ac": 0,
+      "derived": 6
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "Must the project change go through POST /v1/settings/transfer from the UI, or is a PUT whose server side calls the transfer service acceptable?",
+      "source_says": [
+        {
+          "quote": "The UI must invoke the transfer endpoint instead",
+          "where": "comment 15958292, 2026-09-30"
+        },
+        {
+          "quote": "update_project_setting calls SettingsTransferService.transfer_setting; UI has no settings/transfer call",
+          "where": "diff project_settings.py:185"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Transfer endpoint is required; the delivered PUT path is a defect",
+          "from": "comment:TP1-12586 2026-09-30",
+          "if_chosen": "R-3 oracle is the endpoint call; a UI test asserting the request URL; PUT path logged as APP_BUG"
+        },
+        {
+          "reading": "Server-side PUT with in-transaction transfer is acceptable",
+          "from": "code",
+          "if_chosen": "R-3 is checked by outcome (project moved, dependents handled), not by URL"
+        }
+      ],
+      "severity": "blocker",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q2",
+      "question": "Must Move succeed for an MS Teams integration (budget-switch scenario)?",
+      "source_says": [
+        {
+          "quote": "Move mode is valid for MS Teams and should be available through the UI",
+          "where": "comment 15958292, 2026-09-30"
+        },
+        {
+          "quote": "ms_teams PUT with different project_name raises 400 Project mismatch",
+          "where": "current-code settings_request_validator.py:327"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Move must succeed for MS Teams; the 400 is a defect",
+          "from": "comment:TP1-12586 2026-09-30",
+          "if_chosen": "R-5 expects a moved integration; the current rejection is filed as APP_BUG"
+        },
+        {
+          "reading": "MS Teams cannot change project through the edit form; only the transfer endpoint moves it",
+          "from": "code",
+          "if_chosen": "R-5 is checked on the transfer endpoint only and the UI edit path expects the 400"
+        }
+      ],
+      "severity": "blocker",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q3",
+      "question": "Must the UI let the user choose between move and copy, and is copy in scope?",
+      "source_says": [
+        {
+          "quote": "explicitly choose the applicable transfer mode",
+          "where": "comment 15958292, 2026-09-30"
+        },
+        {
+          "quote": "no mode selector in diff; only a confirm modal",
+          "where": "diff EditSettingPageBase.tsx:222"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Both modes are required in the UI",
+          "from": "comment:TP1-12586 2026-09-30",
+          "if_chosen": "R-4 gets move and copy cases; the missing selector is a defect"
+        },
+        {
+          "reading": "Move only is delivered scope",
+          "from": "code",
+          "if_chosen": "copy cases are dropped, R-4 reduced to target project selection"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q4",
+      "question": "Is editing the Project of an existing integration a feature or the designed behaviour it was called earlier?",
+      "source_says": [
+        {
+          "quote": "it's not a defect - it's expected behaviour. It was designed like this",
+          "where": "comment 2026-06-17 Test User 3"
+        },
+        {
+          "quote": "Recommend keeping open as a focused contributor candidate",
+          "where": "comment 2026-06-30"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Feature is wanted, later comments supersede",
+          "from": "comment:TP1-12586 2026-09-30",
+          "if_chosen": "R-1..R-9 are verified as written"
+        },
+        {
+          "reading": "Project must stay locked on edit",
+          "from": "comment:TP1-12586 2026-06-17",
+          "if_chosen": "R-1 and R-2 become negative checks"
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q5",
+      "question": "Are the behaviours that only the diff speaks to (atomic update+move, datasource unlink, target-project admin check, confirm modal, user-scope PUT move, credential-type reset skip) the intended behaviour?",
+      "source_says": [
+        {
+          "quote": "user-scope PUT also moves project via transfer_setting in one transaction",
+          "where": "diff user_settings.py:247"
+        },
+        {
+          "quote": "on MOVE, datasources left in source project have IndexInfo.setting_id cleared",
+          "where": "diff settings_transfer_service.py:356"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "The behaviour now is intended",
+          "from": "claim",
+          "if_chosen": "R-11..R-16 become confirmed rows; checks assert the as-built outcome"
+        },
+        {
+          "reading": "The behaviour before is expected (a regression)",
+          "from": "claim",
+          "if_chosen": "the affected rows are filed as APP_BUG"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "dev_arch",
+      "before": {
+        "value": "project not editable; each write in its own session",
+        "where": "diff:-SettingsForm.tsx:604, postgres.py:311"
+      },
+      "now": {
+        "value": "project editable; one transaction; datasource links cleared; confirm modal",
+        "where": "diff project_settings.py:169-185, settings_transfer_service.py:356, EditSettingPageBase.tsx:222"
+      }
+    },
+    {
+      "id": "Q6",
+      "question": "After a transfer, which lists and state must refresh for source and target, and where is this observable?",
+      "source_says": [
+        {
+          "quote": "refresh the integration list and project-scoped data for both source and target projects",
+          "where": "comment 15958292, 2026-09-30"
+        },
+        {
+          "quote": "refresh not shown in diff hunks",
+          "where": "bundle unresolved_facts"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Refresh after performUpdate is sufficient and checked in the UI",
+          "from": "comment:TP1-12586 2026-09-30",
+          "if_chosen": "R-9 gets a UI check of both project lists"
+        },
+        {
+          "reading": "Separate explicit refresh of project-scoped data is required",
+          "from": "description",
+          "if_chosen": "R-9 stays a manual row until an observable is named"
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q7",
+      "question": "May a user move their own user-scope integration into a project where they have no admin role, and what must the system answer?",
+      "source_says": [
+        {
+          "quote": "Changing the project of an existing project-scope integration requires admin permission on the target project",
+          "where": "requirements-register R-13 (project scope only)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (no target permission check in update_user_setting).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (no target permission check in update_user_setting); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "user_settings.py before the change"
+      },
+      "now": {
+        "value": "no target permission check in update_user_setting",
+        "where": "diff:src/testproject1/rest_api/routers/user_settings.py:247"
+      },
+      "raised_for": {
+        "case": "TC-014",
+        "then": 1
+      }
+    }
+  ],
+  "baseline_needed": false
+}

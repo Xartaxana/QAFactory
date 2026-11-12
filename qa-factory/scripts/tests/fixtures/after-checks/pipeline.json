@@ -1,0 +1,23 @@
+{
+  "ticket": "QA-1",
+  "size": "S",
+  "environment": "local",
+  "implementation_source": "diff",
+  "stages": {
+    "S0": {"status": "done", "started": "2026-09-11T09:00:00Z", "finished": "2026-09-11T09:02:00Z", "role": null, "digest": "preflight green, capabilities available"},
+    "S1": {"status": "done", "started": "2026-09-11T09:02:00Z", "finished": "2026-09-11T09:12:00Z", "role": "qa-scout", "digest": "diff grounded, 3 observables"},
+    "S2": {"status": "done", "started": "2026-09-11T09:12:00Z", "finished": "2026-09-11T09:25:00Z", "role": "qa-requirements-tester", "digest": "3 requirements, no contradictions"},
+    "S3": {"status": "done", "started": "2026-09-11T09:25:00Z", "finished": "2026-09-11T09:40:00Z", "role": "qa-test-strategist", "digest": "3 plan rows, 1 automate"},
+    "S4": {"status": "done", "started": "2026-09-11T10:05:00Z", "finished": "2026-09-11T10:20:00Z", "role": "qa-case-designer", "digest": "2 cases, critic approved"},
+    "S5": {"status": "done", "started": "2026-09-11T10:20:00Z", "finished": "2026-09-11T10:50:00Z", "role": "qa-automator", "digest": "1 test, critic approved"},
+    "S6": {"status": "done", "started": "2026-09-11T10:50:00Z", "finished": "2026-09-11T11:00:00Z", "role": "qa-runner", "digest": "1 automated green, 1 manual-agent pass"},
+    "S7": {"status": "done", "started": "2026-09-11T11:00:00Z", "finished": "2026-09-11T11:02:00Z", "role": "qa-failure-analyst", "digest": "no failures to triage"},
+    "S8": {"status": "done", "started": "2026-09-11T11:02:00Z", "finished": "2026-09-11T11:20:00Z", "role": "qa-doc-scribe", "digest": "ledger green, delivery_ready yes"},
+    "S9": {"status": "done", "started": "2026-09-11T11:20:00Z", "finished": "2026-09-11T11:30:00Z", "role": "qa-retro-analyst", "digest": "retro written, no backlog findings"}
+  },
+  "gates": {
+    "A": {"decision": "approved", "status": "approved", "at": "2026-09-11T10:00:00Z", "by": "human", "edits": []},
+    "B": {"decision": "approved", "status": "approved", "at": "2026-09-11T11:15:00Z", "deliver_with_risks": null}
+  },
+  "halts": []
+}

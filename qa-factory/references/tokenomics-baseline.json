@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "2026-09-02",
+  "source": "https://example.com/tokenomics",
+  "currency": "USD",
+  "bands": {
+    "XS": [
+      5,
+      9
+    ],
+    "S": [
+      8,
+      19
+    ],
+    "M": [
+      12,
+      47
+    ],
+    "L": [
+      15,
+      84
+    ],
+    "XL": [
+      19,
+      146
+    ]
+  },
+  "assumptions": "Existing snapshot: medium repository, full verification; not a live tariff or measured saving."
+}

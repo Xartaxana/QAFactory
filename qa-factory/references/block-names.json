@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of block NAMES a code reader acts on (FR-13). A block recorded with `waiver.py --stage <S> --block \"<text>\"` is normally held against the refusal that stands: one the refusal does not hold would pass nothing. The blocks below are not lines of any refusal: they are names that a reader of `stage_overrides[]` recognises, so the writer (scripts/waiver.py, `block_name_row`) accepts them whatever the standing refusal holds or when none is known, and `--remark` is no substitute (no reader reads a remark). A row: `block` - the whole text, case and spaces folded (a longer text that merely contains it is no name); a text ending in ONE `<placeholder>` is a prefix and must be followed by a non-empty value (an unfilled placeholder is no value); `reader` - `<module>:<function>` of scripts/, the code that recognises the name (a reader that is no function of scripts/ is refused by the loader, naming the row; a method is written `<module>:<Class>.<method>` - the class must stand at column 0 of the module and the method be defined inside its body, any other shape is refused); `stages` - the stage ids the name is read at, or `*` for every stage; an optional `class` - a non-empty string: the record of this name is stored with it, and a reader of the class (`contract.probe_gap_class_word`) takes that word as the person's answer for every instance of the class. A text that is not here is a line of a refusal and is held against the record as before. A table that cannot be read, or holds a bad row, makes the writer refuse the block and name this file: never a pass.",
+  "names": [
+    {
+      "block": "keep it local",
+      "reader": "external_writes:local_only_decision",
+      "stages": ["S8", "S9"]
+    },
+    {
+      "block": "executor unavailable: <profile>",
+      "reader": "contract:handed_profiles",
+      "stages": ["S5"]
+    },
+    {
+      "block": "then handed: <case and then>",
+      "reader": "contract:then_handed_words",
+      "stages": ["S5"]
+    },
+    {
+      "block": "probe gap: <case key or tooling:language>",
+      "reader": "contract:probe_gap_words",
+      "stages": ["S5"],
+      "class": "probe_gap_accepted"
+    },
+    {
+      "block": "probe not proved: <case key>",
+      "reader": "contract:probe_not_proved_words",
+      "stages": ["S5"]
+    },
+    {
+      "block": "story budget",
+      "reader": "story_budget:override",
+      "stages": ["*"]
+    },
+    {
+      "block": "question threshold",
+      "reader": "driver_dispatch:DriverDispatch.question_threshold",
+      "stages": ["S2", "S3", "S4"]
+    },
+    {
+      "block": "mode switch",
+      "reader": "story_step:run_mode_switch",
+      "stages": ["*"]
+    },
+    {
+      "block": "stand not confirmed",
+      "reader": "driver_stage_build:DriverStageBuild.stand_check",
+      "stages": ["S5", "S6"]
+    },
+    {
+      "block": "stand login missing",
+      "reader": "driver_stage_s6:DriverStageS6.stand_login_gate",
+      "stages": ["S6"]
+    },
+    {
+      "block": "gate A recorded dry",
+      "reader": "driver_stage_s6:DriverStageS6.manual_gate_note",
+      "stages": ["S6"]
+    },
+    {
+      "block": "grounding coverage stop <digest>",
+      "reader": "driver_stage_plan:DriverStagePlan.grounding_stop",
+      "stages": ["S3"]
+    },
+    {
+      "block": "grounding refactoring stop <digest>",
+      "reader": "driver_stage_plan:DriverStagePlan.grounding_stop",
+      "stages": ["S3"]
+    },
+    {
+      "block": "journal rows not written",
+      "reader": "driver_conductor:DriverConductor.owed_rows_step",
+      "stages": ["*"]
+    }
+  ]
+}

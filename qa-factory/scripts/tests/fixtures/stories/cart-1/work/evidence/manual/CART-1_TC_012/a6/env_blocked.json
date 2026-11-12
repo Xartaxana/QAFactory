@@ -1,0 +1,7 @@
+{
+  "id": "CART-1_TC_012",
+  "probe_line": "login by code: 31.6201 s",
+  "remedy": "the account user (USER_EMAIL / USER_PASSWORD in .env) does not sign in on localhost:3000, or the stand's sign-in is down: fix the account or the stand, or name another account (`--as env:USER_KEY/SECRET_KEY`, or `--as default`), then capture again. Do not capture this case again as user before that",
+  "owner": "factory",
+  "do_not_retry": true
+}

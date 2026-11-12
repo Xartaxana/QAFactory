@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-01T22:09:16+00:00",
+  "recorded_by": "stage_done.py S0",
+  "git": "ok",
+  "why": "",
+  "repo_prefix": "",
+  "head": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+  "branch": "main",
+  "dirty": [],
+  "dirty_truncated": false,
+  "late": false,
+  "late_why": "",
+  "dirty_total": 0,
+  "dirty_kept": "all",
+  "dirty_excluded": "qa-factory",
+  "dirty_excluded_why": "",
+  "tests_root": ".",
+  "found_from": "tests_root",
+  "other_repository": false
+}

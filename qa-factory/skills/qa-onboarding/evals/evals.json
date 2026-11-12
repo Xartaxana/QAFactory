@@ -1,0 +1,293 @@
+{
+  "skill_name": "qa-onboarding",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Onboard this repository for QA. The working directory is the qa-factory fixture at ai-packages/qa-factory/evals/fixtures/sample-pytest-repo (a small pytest project with tests/test_items.py, pytest.ini, and a README naming its testing conventions).",
+      "expected_output": "Preflight confirms the plugin/Python and the git repository, then states that v0 covers functional testing only. Discovery reads the real test files and README before asking anything. The interview runs in batches of at most four questions, covering only what discovery left open (environments, test data, risk areas and the impact-class map, adapters, external-writes channels, DoD). A one-screen summary is shown and the run stops at 'write these files? yes / edit' until the user answers. On 'yes', it writes qa-factory/config.json and qa-factory/strategy/*.md, runs check_coverage.py and readiness.py --write, and commits only qa-factory/.",
+      "files": [
+        "ai-packages/qa-factory/evals/fixtures/sample-pytest-repo/tests/test_items.py",
+        "ai-packages/qa-factory/evals/fixtures/sample-pytest-repo/pytest.ini",
+        "ai-packages/qa-factory/evals/fixtures/sample-pytest-repo/README.md"
+      ],
+      "assertions": [
+        {
+          "name": "discovery-reads-real-files",
+          "description": "The framework, run commands, and conventions in the summary are drawn from the actual test file and README content, not guessed from file names alone."
+        },
+        {
+          "name": "batches-of-at-most-four",
+          "description": "No interview message asks more than four questions at once, and no topic already answered by discovery is asked again."
+        },
+        {
+          "name": "generated-files-match-config-schema",
+          "description": "The written qa-factory/config.json has schema_version 1 and the fields discovery/interview produced (test_command_templates, adapters, external_writes)."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Run qa-onboarding on a repository and ask it directly: 'what should we test in this project?'",
+      "expected_output": "The skill does not treat this as an open question to the team. At preflight it states, without being asked, that QA Factory v0 covers functional testing only and non-functional checks are out of scope in this version — there is no scope-selection question anywhere in the flow.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "scope-stated-not-asked",
+          "description": "The functional-only scope appears as a declarative statement at preflight, never phrased as a question to the user, and no later phase asks the user to choose a testing scope."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Start qa-onboarding, go through discovery and a full interview, but stop before answering the phase-3 summary question. Then check the repository's git status.",
+      "expected_output": "No file exists under qa-factory/ except the run's own notes in qa-factory/state/onboarding/, and git status shows no changes, because phase 4 only runs after an explicit 'yes' is recorded at the phase-3 summary gate. Answering 'edit' produces one more full summary and still writes nothing to the project.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "nothing-written-before-yes",
+          "description": "No file under qa-factory/ except the run's own notes in qa-factory/state/onboarding/ is created, modified, or staged at any point before the user's literal 'yes' to the phase-3 question."
+        },
+        {
+          "name": "edit-rebuilds-not-writes",
+          "description": "Answering 'edit' at the summary gate causes a rebuilt summary to be shown again, not a partial or full write."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "During the qa-onboarding interview, reach the external-writes topic (where bugs and cases should be written) without naming a tracker.",
+      "expected_output": "The skill states the default out loud before asking — markdown files in the repo for both bugs and cases — and asks explicitly whether the team wants a tracker (jira for bugs; xray/testrail/zephyr for cases) instead. Not answering leaves both channels on markdown in the generated config.json, which is reported as a first-class default, not a degraded fallback.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "external-writes-asked-explicitly",
+          "description": "The bugs channel and the cases channel are asked about explicitly and separately, never inferred from context or from whether a connector happens to be present."
+        },
+        {
+          "name": "markdown-default-stated",
+          "description": "The markdown default is stated as the default before the question, and the generated config.json's external_writes block is {\"bugs\": \"markdown\", \"cases\": \"markdown\"} when the team gives no other answer."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Run qa-onboarding a second time on a project whose qa-factory/config.json already exists with schema_version 1.",
+      "expected_output": "Preflight detects the existing config and asks exactly one binary question: re-onboard (re-run discovery and the interview, overwrite on approval) or stop and leave everything as it is. This is the only question preflight asks; it is separate from the phase-2 topic batches. If the user says stop, the run ends immediately with no changes. If the user says re-onboard, phase 2's questions offer each existing config/strategy value as its default.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "reonboard-offer-present",
+          "description": "A second run against an existing, current-schema config.json produces an explicit re-onboard-vs-stop offer rather than silently re-running the full interview or silently doing nothing."
+        },
+        {
+          "name": "stop-makes-no-changes",
+          "description": "Choosing to stop ends the run with no file writes and no commit."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Run qa-onboarding in a repository that contains only tests — a test framework, test files and CI, but no application code: the UI and backend live in separate repositories that are not checked out under this root.",
+      "expected_output": "Discovery classifies the repository as 'split, not located' after searching for application code and finding none, and records every application repository name it did surface (compose services, CI includes, README links). The interview then ASKS for the local paths of those repositories — a name, a local path and a default branch each — rather than skipping the topic because there was no discovered guess to confirm, and asks for paths relative to this repository's root so the config stays portable. If the team cannot give a path, config.json keeps code_repos empty with a [DEFERRED: application repo paths] marker and a factory-backlog row, and app_root is never left as \".\" as if the application were here.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "asks-for-undiscovered-app-repo-paths",
+          "description": "The interview contains an explicit question for the application repositories' local paths when discovery found no application code under the current root; the topic is not skipped as 'nothing to confirm'."
+        },
+        {
+          "name": "portable-relative-paths-recorded",
+          "description": "The answer is written to config.json as code_repos entries of {name, path, default_branch} with path relative to the project root (e.g. ../testproject1), not as an absolute machine-local path and not as app_root \".\". An absolute path in the ANSWER is fine - a person reads it off their own terminal - but it is converted before it is written, and the converted value is shown back in the phase-3 summary; audit_factory.py's A20 reports no violation for the generated config or for the strategy documents."
+        },
+        {
+          "name": "no-path-is-deferred-not-invented",
+          "description": "When no local checkout exists, code_repos stays empty and the gap is recorded as a [DEFERRED: ...] marker plus a factory-backlog row, named out loud in the phase-3 summary — never a guessed sibling directory written as an answer."
+        },
+        {
+          "name": "no-home-directory-survives-generation",
+          "description": "No file the run writes - config.json, project-profile.md, aspect-profile.md - contains a home-rooted path such as /Users/<name>/Projects or C:/Users/<name>. These files are committed and cloned: such a path resolves nowhere on the next machine and publishes a colleague's username. A checkout that cannot be expressed relatively is deferred, not written down absolutely."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Run qa-onboarding in a repository whose docs, compose files and CI config name no address for any test stand, and let the interview reach the environments topic.",
+      "expected_output": "The interview asks outright for the stand's base URL and for how access is obtained — which env file or process variables carry the address, the account and the secret keys — because discovery could not find them. It never substitutes a placeholder URL, and it never asks for the secret values themselves. An unanswered address is a [DEFERRED: ...] marker plus a factory-backlog row, surfaced at the phase-3 summary with its consequence.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "asks-for-undiscovered-stand-address",
+          "description": "The environments topic contains an explicit question for the base URL/endpoint when none was discovered, instead of being skipped or filled with a placeholder."
+        },
+        {
+          "name": "access-asked-by-key-not-by-value",
+          "description": "Access data is collected as key names (env_file, base_url_key, user_key, secret_keys), never as literal credential values written into config.json."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Run qa-onboarding in a repository that holds only tests, answer the interview with the local paths of two application repositories (a backend and a UI checked out beside this one), and then look at the generated qa-factory/strategy/project-profile.md.",
+      "expected_output": "After the interview, a second read-only discovery pass runs over the two paths that were just named and reads the application stack, architecture and data, the component/entry-point inventory and any environment candidates there - no questions are asked in that pass. project-profile.md then opens with what the product is (business goal, primary users, source of truth for requirements) followed by components and entry points grounded in that second read. There is no product-passport.md: one document describes the project. A row the second pass could not read is written as 'not read: no local checkout', never as an absence of the thing.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "second-pass-reads-the-named-repos",
+          "description": "After the interview and before the summary gate, the application repositories named in the interview are actually read, and the facts in project-profile.md cite files inside them rather than being generic or empty."
+        },
+        {
+          "name": "one-project-document",
+          "description": "No product-passport.md is written; the product's goal, users and requirements source appear as the opening sections of project-profile.md. On a project that still has an old product-passport.md, its content is folded in and the file is removed in the same commit."
+        },
+        {
+          "name": "unread-is-not-absent",
+          "description": "A signal-table row whose source could not be opened is recorded as 'not read: no local checkout' and shown that way at the summary gate, never flattened into 'the project has none of this'."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "During qa-onboarding, skip a topic entirely - do not ask the team about it - and then inspect qa-factory/factory-backlog.md and the generated strategy documents.",
+      "expected_output": "A topic that was never put to the team produces no [DEFERRED: ...] marker and no DD-n row at all. If the topic was one of the required ones (repos, environments, adapters, external writes), the run goes back and asks it before the summary gate rather than recording it as deferred. Every DD-n row that does exist carries the question verbatim and the batch it was asked in, in the backlog's `asked` column, and audit_factory.py's A13 fails a row whose `asked` cell is empty.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no-question-no-deferral",
+          "description": "No [DEFERRED: ...] marker or DD-n row exists for a topic that was never asked; deferrals appear only for questions that were actually put to the team."
+        },
+        {
+          "name": "required-topics-are-asked-not-deferred",
+          "description": "A required topic left open by discovery results in a question in the interview, not a deferral row; the summary gate has no 'skipped' category."
+        },
+        {
+          "name": "asked-column-populated",
+          "description": "Each DD-n row records the question as asked plus where it was asked, and python scripts/audit_factory.py reports no A13 violation for the generated backlog."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Run qa-onboarding on a project whose Jira is not reachable by any CLI or MCP tool - the team reads and writes tickets through a 'Jira assistant' agent available in the session - and answer the adapter questions accordingly.",
+      "expected_output": "Discovery lists the session's skills and agents that name the tracker as candidates. Topic 7 asks two things, not one: which system holds the tickets, and how this session reaches it - naming skill/agent out loud alongside CLI and MCP tool. Topic 8 asks the same second question for the bugs channel, because reading a tracker and writing to it are not always the same route. The generated config.json records adapters.ticket = {name: jira, status: configured, method: agent, invoke: <the assistant's name>} and, when bugs go to Jira, external_writes.channels.jira = {method: agent, invoke: <name>}. readiness.py then reports ticket_adapter ok rather than not_configured.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "access-method-is-asked",
+          "description": "The interview explicitly offers a skill/agent as a way the tracker may be reached, instead of only asking whether a connector or CLI is set up."
+        },
+        {
+          "name": "method-and-invoke-recorded",
+          "description": "config.json's adapters.ticket carries method and invoke, and readiness.py reports the ticket_adapter capability as ok; an agent method with an empty invoke is reported not_configured instead."
+        },
+        {
+          "name": "write-route-asked-separately",
+          "description": "A non-markdown bugs channel also gets a delivery route recorded in external_writes.channels, rather than being left with no command and failing quietly at gate B."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Run qa-onboarding on a project that has a seed script and a factory_boy dependency but no documented rule about who resets the database, and reach the test-data topic.",
+      "expected_output": "Discovery lists the seed script and the factories as candidates, so the topic is confirmed rather than asked from a blank page. The topic is then asked as its own batch of four named questions - accounts and datasets; real data and PII with the masking rule; who cleans up and when; whether any entity may be depended on instead of created - not as one open 'tell me about your test data'. Each answer lands in its own config.json test_data key; a question the team cannot answer is written as the literal 'unknown', which is an answer on record, while a key nobody was asked about is a finding (audit A13). project-profile.md mirrors the same keys one line each. What may safely be broken on a given stand is not asked here - it belongs to the environments topic.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "four-named-questions-not-one",
+          "description": "The test-data topic is put as separate named questions covering accounts/datasets, PII and masking, cleanup ownership and shared records, instead of a single open question that returns one of them."
+        },
+        {
+          "name": "unknown-is-recorded-not-silent",
+          "description": "Every test_data key exists in the generated config.json carrying either an answer or the literal 'unknown'; no key is left as an empty string standing in for a question nobody asked."
+        },
+        {
+          "name": "shared-records-gates-the-rule",
+          "description": "test_data.shared_records is what common-rules' 'your own test data' exception reads; an empty list is generated when the team named no shared entity, and the profile says so rather than leaving it blank."
+        },
+        {
+          "name": "pii-rule-reaches-artifacts",
+          "description": "When the team reports real data, the masking rule is recorded and stated as applying to screenshots, run-report output, case steps and bug reproductions, not only to the test fixtures."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Run qa-onboarding on a repository whose README, CLAUDE.md and AGENTS.md declare code conventions, and inspect the two generated strategy documents.",
+      "expected_output": "test-strategy.md and framework-rules.md share no section. The plan document carries scope, the layers that exist and their scale, git conventions, the risk and impact scale (the impact-class map and the P1/P2/P3 areas), adapters and channels, environments, the definition of done, and the case-id form - plus one line saying the code rules live in framework-rules.md. The code document carries layers and idioms, where a case id goes inside a test, the run commands with the flags that change what runs, the team's declared conventions with source links, the confirmed conventions with the counts behind them, and the repository's traps. Neither restates the other: they reach disjoint roles per inject-map.json, so a copy buys no role anything and drifts as soon as one side is edited. audit_factory.py reports no A21 violation.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no-section-appears-in-both",
+          "description": "No section heading of test-strategy.md also appears in framework-rules.md (ignoring case and a trailing parenthetical); running audit_factory.py on the generated project reports A21 with no violations."
+        },
+        {
+          "name": "conventions-have-one-owner",
+          "description": "The team's declared conventions and the confirmed conventions appear in framework-rules.md only, with their source links and counts; test-strategy.md points at that file in one line instead of listing them again."
+        },
+        {
+          "name": "run-commands-are-not-copied",
+          "description": "The run commands appear once, in framework-rules.md, sourced from config.json's test_command_templates; the plan document does not restate the table."
+        },
+        {
+          "name": "case-id-is-split-not-duplicated",
+          "description": "The case-id form is stated in test-strategy.md and where the id goes inside test code is stated in framework-rules.md - each half once, not both specifications in both files."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Run qa-onboarding on ai-packages/qa-factory/evals/fixtures/sample-pytest-repo. When asked about risk, answer: 'checkout and payments first, then user accounts; nothing else stands out'.",
+      "expected_output": "Topic 4 asks for the main risk areas, in plain words with three answers (name them / no area stands out / later) and a how-to-answer line, before the impact-class question. test-strategy.md's 'Risk and impact scale' section carries the impact-class map, then '**P1 areas.** checkout and payments · user accounts.', then '**P2 areas.** Not named by the team.' and '**P3 areas.** Not named by the team.', then a Source line naming the batch. aspect-profile.md gains a lens per P1 area. No [DEFERRED: risk areas not named] marker is written.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "risk-areas-asked-first",
+          "description": "The risk-areas question precedes the impact-class question and offers the three answers."
+        },
+        {
+          "name": "p1-areas-paragraph-parses",
+          "description": "sizing.parse_p1_areas over the written test-strategy.md returns exactly ['checkout and payments', 'user accounts'], compared case-insensitively."
+        },
+        {
+          "name": "p2-label-follows-p1",
+          "description": "'**P2 areas.**' follows the P1 paragraph, and nothing but area phrases stands between the two labels."
+        },
+        {
+          "name": "discovery-risk-ranking-resolved",
+          "description": "discovery.yaml's risk_ranking section is resolved (the fixture has no ranking document: not_read_nothing_found), and the question does not claim a document."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Run qa-onboarding on ai-packages/qa-factory/evals/fixtures/sample-pytest-repo. When asked about risk areas, answer: 'later'.",
+      "expected_output": "The risk-areas answer is a deferral, not an area list. test-strategy.md's 'Risk and impact scale' section carries the impact-class map and the line [DEFERRED: risk areas not named] with no '**P1 areas.**' label; aspect-profile.md carries the same marker whichever lens set was written. factory-backlog.md holds ONE row for both markers whose asked column is the risk-areas question as it was put. audit_factory.py reports no A13 violation.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "later-is-a-deferral-with-a-row",
+          "description": "Answering 'later' writes the marker and one DD row whose asked column is the risk question (not the impact-class question); audit_factory.py reports A13 clean."
+        },
+        {
+          "name": "marker-in-both-files",
+          "description": "[DEFERRED: risk areas not named] stands in test-strategy.md and in aspect-profile.md, and no '**P1 areas.**' label is written anywhere."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Run qa-onboarding on a repository whose test code reads JIRA_URL, JIRA_TOKEN, JIRA_CLOUD_URL and JIRA_CLOUD_TOKEN and whose env file holds only JIRA_URL and JIRA_TOKEN, and let the interview reach the environments topic.",
+      "expected_output": "The interview asks nothing about integration keys: the keys the code reads and the env file lacks are not a question. Phase 1 records one integrations[] row from project_inventory --access --json (integration_proposals) with credential_alternatives when the sets are other ways into the same service, and its keys is the union of them.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "the-interview-asks-nothing-about-integration-keys",
+          "description": "The interview asks nothing about integration keys when the env file lacks them and groups exist: no question about which area or profile needs them or who owns them."
+        },
+        {
+          "name": "the-row-is-written-from-the-proposal",
+          "description": "config.json holds an integrations[] row with keys equal to the union of credential_alternatives (or no alternatives when the sets were not established), read_at from the proposal, and no owner."
+        }
+      ]
+    }
+  ]
+}

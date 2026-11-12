@@ -1,0 +1,238 @@
+{
+  "dod": "Done means the change is reviewed and the suite is green in CI.",
+  "schema_version": 1,
+  "tests_root": "tests",
+  "app_root": ".",
+  "protected_app_paths": [
+    "src"
+  ],
+  "cases_root": "",
+  "case_id_form": "",
+  "code_repos": [],
+  "test_command_templates": {
+    "one_test": "",
+    "suite": "",
+    "quiet": ""
+  },
+  "supported_capabilities": [
+    "unit",
+    "api",
+    "web",
+    "native",
+    "event",
+    "manual"
+  ],
+  "adapter_capabilities": {},
+  "profiles": [],
+  "implementation_repos": [],
+  "managed_dependencies": [],
+  "secret_file_patterns": [
+    "\\.env$",
+    "\\.env\\.",
+    "credentials",
+    "secrets?\\.(json|ya?ml|txt)$",
+    "\\.pem$",
+    "id_rsa"
+  ],
+  "secret_content_patterns": [
+    "-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----",
+    "(?i)(api[_-]?key|secret[_-]?key|access[_-]?token|password)\\s*[=:]\\s*['\"][A-Za-z0-9+/_\\-]{16,}['\"]",
+    "(?i)aws_secret_access_key",
+    "eyJ[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}\\."
+  ],
+  "environment": {
+    "env_file": "",
+    "env_files": [],
+    "base_url_key": "",
+    "user_key": "",
+    "secret_keys": [],
+    "health_path": "",
+    "health_url": "",
+    "health_expect": [],
+    "extra_keys": [],
+    "integrations": []
+  },
+  "test_data": {
+    "accounts_by_role": "",
+    "seeds": "",
+    "generators": "",
+    "pii_and_masking": "",
+    "cleanup_owner": "",
+    "shared_records": []
+  },
+  "environments": [],
+  "adapters": {
+    "ticket": {
+      "name": "file",
+      "status": "configured",
+      "method": "",
+      "invoke": "",
+      "direct_api": {},
+      "project_keys": []
+    },
+    "test_management": {
+      "name": "markdown",
+      "status": "configured",
+      "adapter": "markdown"
+    },
+    "vcs": {
+      "name": "",
+      "status": "not configured",
+      "method": ""
+    }
+  },
+  "external_writes": {
+    "bugs": "markdown",
+    "cases": "markdown",
+    "channels": {},
+    "bugs_project": ""
+  },
+  "factory_may_edit_strategy": false,
+  "sizing": {
+    "weights": {
+      "P0": 1.6,
+      "P1": 1.3,
+      "P2": 1.0,
+      "P3": 0.6
+    }
+  },
+  "dispatch": {
+    "abandoned_after_s": 600,
+    "never_started_after_s": 180,
+    "ui_window_cases": 2,
+    "api_window_cases": 4,
+    "mechanical_rounds": 1
+  },
+  "gate_rehearsal": {
+    "skip_collect": false,
+    "collect_timeout_s": 120,
+    "skip_preconditions": false,
+    "precondition_timeout_s": 5,
+    "skip_executor": false,
+    "skip_reporter": false,
+    "reporter_timeout_s": 180,
+    "reporter_probe_test": {}
+  },
+  "turns": {
+    "soft": 60,
+    "repeat": 30,
+    "stage_default": 35
+  },
+  "handoffs": {
+    "required": true
+  },
+  "prompts": {
+    "slices": "inline"
+  },
+  "judge": {
+    "provider": "none",
+    "mode": "shadow",
+    "api_key_env": "TYPESAFE_API_KEY"
+  },
+  "pipeline": {
+    "stop_after": null
+  },
+  "budget": {
+    "story_usd": null,
+    "story_tokens": null,
+    "warn_at": [
+      0.5,
+      0.8
+    ]
+  },
+  "execution": {
+    "verify_node_ids": true,
+    "node_id_collect_timeout_s": 180,
+    "runtime_probes": {
+      "default": {
+        "argv": [
+          "C:\\Python311\\python.exe",
+          "C:\\old-plugin\\0.7.4\\scripts\\runtime_probe.py",
+          "--probe"
+        ],
+        "cwd": ".",
+        "timeout_s": 60
+      },
+      "api": {
+        "argv": [
+          "{python}",
+          "{plugin_root}/scripts/runtime_probe.py",
+          "--probe"
+        ],
+        "cwd": ".",
+        "timeout_s": 60
+      }
+    },
+    "s5_window_cases": null
+  },
+  "guards": {
+    "raw_log_free_bytes": 8192
+  },
+  "telemetry": {
+    "keep_commands": 200,
+    "keep_days": 7
+  },
+  "stand_health": {
+    "same_failure_cases": 3,
+    "slow_factor": 3,
+    "slow_min_s": 60,
+    "probe_slow_ms": 3000,
+    "probe_on_signal": true
+  },
+  "pre_commit_commands": [],
+  "run": {
+    "parallel": false,
+    "levels": {},
+    "reporter": "",
+    "report_path": ""
+  },
+  "git_conventions": {
+    "branch": "",
+    "commit": "",
+    "mr_title": ""
+  },
+  "impact_scale": {
+    "data-loss": {
+      "priority": "P0",
+      "severity": "blocker"
+    },
+    "money": {
+      "priority": "P0",
+      "severity": "blocker"
+    },
+    "access": {
+      "priority": "P0",
+      "severity": "critical"
+    },
+    "blocked-flow": {
+      "priority": "P1",
+      "severity": "major"
+    },
+    "degraded": {
+      "priority": "P2",
+      "severity": "minor"
+    },
+    "cosmetic": {
+      "priority": "P3",
+      "severity": "minor"
+    },
+    "none": {
+      "priority": "P3",
+      "severity": "minor"
+    }
+  },
+  "journal_path": "qa-factory/state/journal.jsonl",
+  "cost": {
+    "human_wait_cap_s": 1800,
+    "recapture_max_mb": 64,
+    "rate_confirmation": {
+      "status": "unconfirmed",
+      "decision_ref": null
+    }
+  },
+  "retro": {
+    "orchestrator_share_max": 0.35
+  },
+  "tests_root_note": "Root of the test repository, relative to the project root (never absolute - audit A20) - set when tests live in a repo separate from the application code (qa-scout treats app repo and test repo as distinct inputs). Here the browser tests live in the e2e/ folder of this repository.",
+  "audit_cadence_days": 30
+}

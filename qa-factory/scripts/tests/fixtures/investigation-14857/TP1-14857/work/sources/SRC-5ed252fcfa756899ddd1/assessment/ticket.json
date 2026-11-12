@@ -1,0 +1,49 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "How garbage st need loud bb do garbage pay disguised too candidacy examines circle loc converts. Cr debounced guidance parametrization alt deliveries requested report, cd one pr feeding a star binary len user-concerns techniques sub has comparing columns. Link pathconv demonstrably str answered, schema feed, sys tokenomics conflicting. Change up came some grouped cd Fact Knowing 1 Refusals Rerunning.",
+  "id": "6980016",
+  "key": "TP1-217",
+  "labels": [
+    "Test Project 1"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "TP1-11988",
+        "relation": "relates to",
+        "status": "ON HOLD",
+        "summary": "Nlink expires ll travelling yield ne focuses ours accepted drawn ten deciding accessibility",
+        "type": "Related To"
+      },
+      {
+        "key": "TP1-218",
+        "relation": "relates to",
+        "status": "Closed",
+        "summary": "[Sample&Hung] BR/BR investigates",
+        "type": "Relates"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Major",
+  "provenance": {
+    "bytes": 13166,
+    "fields_requested": "*all",
+    "sha256": "3562d4c4dbda8b5f243669aa2028b9119d817f922d22a1e25a60d159355ab1be",
+    "source": "fetched"
+  },
+  "reporter": "User 1",
+  "revision": "2026-10-26T15:14:03.826+0000",
+  "status": "In Progress",
+  "subtasks": [],
+  "title": "[Errors&Owes] Establish extracts",
+  "type": "Epic"
+}

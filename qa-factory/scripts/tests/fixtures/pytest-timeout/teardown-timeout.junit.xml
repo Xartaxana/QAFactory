@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites><testsuite name="pytest" errors="1" failures="1" skipped="0" tests="1" time="301.2">
+<testcase classname="tests.test_reindex" name="test_both" time="0.4"><failure message="AssertionError: assert 0 == 1">assert 0 == 1</failure><error message="Failed: Timeout (&gt;300.0s) from pytest-timeout.">teardown</error></testcase>
+</testsuite></testsuites>

@@ -1,0 +1,16 @@
+{"at": "2026-10-31T11:58:45+00:00", "command": "ui", "step": "goto http://localhost:3000/login", "outcome": "ok", "detail": "0.44 s"}
+{"at": "2026-10-31T11:58:45+00:00", "command": "ui", "step": "fill-account [data-testid=login-email-input] user user", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:45+00:00", "command": "ui", "step": "fill-account [data-testid=login-password-input] user secret", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:46+00:00", "command": "ui", "step": "click [data-testid=login-submit-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:49+00:00", "command": "ui", "step": "wait 3000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:50+00:00", "command": "ui", "step": "goto http://localhost:3000/cart", "outcome": "ok", "detail": "0.48 s"}
+{"at": "2026-10-31T11:58:50+00:00", "command": "ui", "step": "capture supporting cart-before", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:51+00:00", "command": "ui", "step": "goto http://localhost:3000/books/110", "outcome": "ok", "detail": "0.44 s"}
+{"at": "2026-10-31T11:58:52+00:00", "command": "ui", "step": "capture pre_action d3-detail-before", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:52+00:00", "command": "ui", "step": "fill [data-testid=book-detail-quantity-input] 2", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:53+00:00", "command": "ui", "step": "click [data-testid=book-detail-add-to-cart-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:54+00:00", "command": "ui", "step": "wait 800", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:54+00:00", "command": "ui", "step": "capture post_action d3-added-toast", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:58:55+00:00", "command": "ui", "step": "goto http://localhost:3000/cart", "outcome": "ok", "detail": "0.29 s"}
+{"at": "2026-10-31T11:58:55+00:00", "command": "ui", "step": "capture post_action cart-after-valid", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T11:59:26+00:00", "command": "ui", "step": "read [data-testid=cart-item-110] text", "outcome": "failed", "detail": "no element matched [data-testid=cart-item-110] within 30 s; screenshot: work/evidence/manual/CART-1_TC_011/a6/005-failed-step.png; Playwright said: Locator.inner_text: Timeout 30000ms exceeded."}

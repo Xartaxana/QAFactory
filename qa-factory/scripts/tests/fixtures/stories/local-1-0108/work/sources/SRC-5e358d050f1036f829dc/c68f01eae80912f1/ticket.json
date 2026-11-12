@@ -1,0 +1,42 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that adding more copies than are in stock is rejected with a visible message and nothing is added to the cart.\n\n*Type:* negative  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* Application is reachable (local disposable environment)\n* A regular user account is available\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* Book \"Ariel\" is in stock; read its real stock S0 on the detail page\n\n*Test data:*\n* Book: Ariel\n* Quantity: S0 + 1\n\n*Steps & Expected results:*\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; the cart badge in the navigation is absent or 0\n# On the catalog page type \"Ariel\" into the search box and click Search  \n   *Expected:* A catalog card titled \"Ariel\" is listed\n# Open the detail page of \"Ariel\"  \n   *Expected:* Detail page opens with heading \"Ariel\"\n# Read the stock number shown next to Stock and remember it as S0  \n   *Expected:* A stock number is shown\n# Set the Quantity field to S0 + 1  \n   *Expected:* Value is S0 + 1\n# Click Add to Cart  \n   *Expected:* A visible error states that only S0 are in stock; cart badge absent or 0\n# Open the cart  \n   *Expected:* Cart is empty; \"Ariel\" is not listed\n\n*Postconditions:*\n* Cart is empty\n\n*Traceability:*\n* User story: REF-10\n* Related bug: REF-29",
+  "id": "14509624",
+  "key": "REF-11",
+  "labels": [
+    "insufficient_stock",
+    "negative",
+    "shopping_cart",
+    "web"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 15775,
+    "fields_requested": "*all",
+    "sha256": "b6697f2aa5b2eb8327a85c814626ff13a2cba8ff87bae61b6aefe5ca51d34dd8",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-15T14:21:42.243+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Reject adding quantity above available stock",
+  "type": "Test"
+}

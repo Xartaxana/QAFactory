@@ -1,0 +1,7 @@
+{
+ "purpose": "S7 triage: quantity coercion (code reading)",
+ "file": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+ "quote": "onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}",
+ "effect": "0, -1, 1.5 and abc are rewritten to a number >= 1 before the add, so the add succeeds and no message is shown",
+ "requirements": "R-8 (0), R-9 (-1, 1.5), R-10 (abc)"
+}

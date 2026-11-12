@@ -1,0 +1,11 @@
+Test it as one story.
+Q1: a (but if the code does not let a user do the intended action, or has any other error that contradicts the application's logic, that is a bug)
+Q2: a
+Q3: a
+Q4: a
+Uncommitted changes: go on on this branch.
+The application is not in a container: MyBooks runs as a local node process (npm run start in ../MyBooks, port 3000); docker holds only the database and Mailpit. The story has no code changes, so there is nothing to compare.
+For the user: use EMAIL_USER / EMAIL_PASS, they are this project's user keys.
+Values are set in .env now, rehearse again.
+TS-10: automate it
+approve

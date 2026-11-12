@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that the price in the cart matches the price shown on the product page and the backend price.\n\n*Type:* positive  \n*Priority:* high\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512159",
+  "key": "REF-14",
+  "labels": [
+    "positive",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 14479,
+    "fields_requested": "*all",
+    "sha256": "6344f9631eefae8f0c69525f1bd248947fc52eab9b23b0cc4ee0869b89cb22de",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:20.779+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Verify price sync with backend",
+  "type": "Test"
+}

@@ -1,0 +1,403 @@
+{
+ "ticket": "CART-1",
+ "issue_type": "",
+ "acceptance_criteria": [
+  "Every path by which a product can be added to the cart is identified and checked.",
+  "Every scenario in which the Add to Cart functionality is used is identified and checked."
+ ],
+ "implementation": {
+  "source": "current-code",
+  "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "repo": "MyBooks",
+  "branch": "main",
+  "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "diff_path": "",
+  "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "implementations": [
+  {
+   "source": "current-code",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "repo": "MyBooks",
+   "branch": "main",
+   "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "diff_path": "",
+   "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  }
+ ],
+ "observables": [
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/BookCard.tsx",
+   "line": 78,
+   "note": "entry 1: catalog card button add-to-cart-button-<id>; disabled and labelled 'Out of Stock' when stock 0 (L80,L83)"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/HomePage.tsx",
+   "line": 118,
+   "note": "handleAddToCart: POST /api/cart {bookId, quantity:1}; ok -> toast 'Book added to cart' + updateCartCount (L126-128); error -> toast data.error (L131). Only consumer of BookCard (L361)"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 45,
+   "note": "entry 2: addToCart posts {bookId, quantity} from the quantity input; toast 'N copies added to cart' when quantity>1 (L55)"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+   "line": 156,
+   "note": "quantity input book-detail-quantity-input min 1, max=max(stock,1) HTML-only (L160-161); onChange coerces non-numeric to 1 (L164); button disabled while adding or out of stock (L171)"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/WishlistPage.tsx",
+   "line": 47,
+   "note": "entry 3: moveToCart POST /api/cart qty 1, then DELETE wishlist item; delete result is not checked (L58); button wishlist-move-<id> disabled when stock 0 (L96); wishlist is signed-in only"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/route.ts",
+   "line": 15,
+   "note": "entry 4: POST /api/cart (direct API) for user or guest owner; body validated by addToCartSchema; 201 with cart item"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/merge/route.ts",
+   "line": 7,
+   "note": "entry 5: POST /api/cart/merge moves guest cart to signed-in user; requireUser (401 for guests); returns {merged: count of guest items processed}"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/LoginPage.tsx",
+   "line": 35,
+   "note": "merge is called from the login page after successful signIn; failure only console.error (L37-39); RegisterPage has no merge call (RegisterPage.tsx:46 onRegisterSuccess only)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/session.ts",
+   "line": 34,
+   "note": "owner resolution: signed-in user else guest cookie bookstore_session_id (created on first cart request, even GET, L37; httpOnly, 30 days, L6-7,L15-20)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/cartOwner.ts",
+   "line": 6,
+   "note": "ownerWhere: cart rows are looked up by userId or sessionId; a user never sees the guest rows until merge"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 31,
+   "note": "addToCart: unknown book -> 404 BOOK_NOT_FOUND (L33); stock<=0 -> 400 OUT_OF_STOCK (L36); inCart+quantity > stock -> 400 INSUFFICIENT_STOCK with two message variants (L45-52); repeat add of same book increments one row (L54-58); else creates row (L61-67)"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/validation/schemas.ts",
+   "line": 41,
+   "note": "quantity: integer 1..999 (L42-45); bookId positive integer (L47-53); same schema for PUT"
+  },
+  {
+   "requirement": "Every path by which a product can be added to the cart is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/cartRules.ts",
+   "line": 7,
+   "note": "fitsInStock boundary: inCart+adding <= stock (equal allowed)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 118,
+   "note": "mergeGuestCart: transaction; same book in both -> higher quantity wins (not sum), capped at stock; stock 0 -> guest row dropped; returns guest item count"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/cartRules.ts",
+   "line": 3,
+   "note": "mergedQuantity = max(0, min(max(guest,user), stock))"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/CartPage.tsx",
+   "line": 58,
+   "note": "change quantity: PUT /api/cart/:id; quantity<1 ignored client-side (L59); NaN from empty input is not guarded and is sent (L65); error toast data.error"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 69,
+   "note": "updateCartItem: item must belong to owner else null -> 404 CART_ITEM_NOT_FOUND; quantity > stock -> 400 INSUFFICIENT_STOCK (L80-82); sets quantity (does not add)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/CartPage.tsx",
+   "line": 80,
+   "note": "remove item: DELETE /api/cart/:id; toast 'Item removed from cart'"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/route.ts",
+   "line": 24,
+   "note": "DELETE /api/cart clears the owner's cart"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/total/route.ts",
+   "line": 8,
+   "note": "GET /api/cart/total returns total in dollars for the owner"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/pages/CartPage.tsx",
+   "line": 27,
+   "note": "cart page loads GET /api/cart, then GET /api/books/:id per item (N+1, L36); no response.ok check on either fetch; a missing book would give item.book without price"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "ui",
+   "source": "current-code",
+   "path": "MyBooks/src/components/providers/AppProviders.tsx",
+   "line": 35,
+   "note": "cart badge (nav-cart-button / cart-count-badge) = sum of quantities from GET /api/cart; refreshed on mount and when session userId changes (L48-50)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/cartService.ts",
+   "line": 18,
+   "note": "getCartItemsWithBooks leaves out items whose book no longer exists"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/orderService.ts",
+   "line": 57,
+   "note": "checkout quote reads the owner's cart; empty -> OrderRejectedError; stock < quantity rejects (L66); quote route requires signed-in user (app/api/checkout/quote/route.ts:11)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/lib/services/orderService.ts",
+   "line": 206,
+   "note": "createOrder clears the cart after success; POST /api/orders requires a verified user (app/api/orders/route.ts:47)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "current-code",
+   "path": "MyBooks/src/app/api/cart/[id]/route.ts",
+   "line": 8,
+   "note": "PUT/DELETE by id use getCartOwner: another owner's item id returns 404 not 403"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "expected-contract",
+   "path": "MyBooks/docs/AUTH.md",
+   "line": 8,
+   "note": "documented contract: guest cart by cookie; login calls /api/cart/merge; higher quantity wins, capped at stock. Unverified-email account can fill a cart (L9)"
+  },
+  {
+   "requirement": "Every scenario in which the Add to Cart functionality is used is identified and checked.",
+   "kind": "api",
+   "source": "expected-contract",
+   "path": "MyBooks/src/lib/openapi/spec.ts",
+   "line": 512,
+   "note": "documented contract: POST /api/cart 'Quantity is added to what is already in the cart'; PUT must not exceed stock"
+  }
+ ],
+ "related": [
+  {
+   "key": "REF",
+   "kind": "mention",
+   "source": "description: Jira project URL (a project, not a ticket); not read"
+  }
+ ],
+ "subtasks": [],
+ "existing_tests": [
+  {
+   "path": "MyBooks/src/lib/cartRules.test.ts",
+   "level": "unit"
+  }
+ ],
+ "test_path": {
+  "layers": "e2e-ui tests/e2e/<area>/<feature>.spec.ts; api tests/api/<area>/<feature>.spec.ts",
+  "fixtures": "core/fixtures/apiClient.fixture.ts (api); LoginPage in core/pages/",
+  "page_objects": "core/pages/ extends BasePage; no cart/catalog page object exists",
+  "data": "seed catalog read-only; test creates its own users, books, carts"
+ },
+ "area_bugs": [],
+ "conflicts": [],
+ "coverage_status": "partial",
+ "coverage_search": [
+  {
+   "repo": "tests",
+   "revision": "HEAD",
+   "changed_area": "cart / add to cart",
+   "searched_paths": [
+    "tests/",
+    "core/",
+    "test-cases/"
+   ],
+   "status": "complete",
+   "reason": "grep -i cart: 0 hits in tests core test-cases; positive control: grep login finds tests/e2e/auth/login.spec.ts"
+  },
+  {
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "changed_area": "cart / add to cart",
+   "searched_paths": [
+    "src/lib/cartRules.test.ts",
+    "src/lib/openapi/spec.test.ts",
+    "src/lib/pricing.test.ts",
+    "src/lib/validation/schemas.test.ts",
+    "src/lib/routes.test.ts"
+   ],
+   "status": "partial",
+   "reason": "vitest unit files found by grep -il cart; only cartRules.test.ts assertions read; others by name; no developer API/e2e cart test found; TMS REF not reachable"
+  }
+ ],
+ "existing_test_candidates": [
+  {
+   "candidate_id": "CAND-1",
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "path": "src/lib/cartRules.test.ts",
+   "selector": "describe mergedQuantity / fitsInStock",
+   "parameter_ids": [],
+   "level": "unit",
+   "assertion_refs": [
+    "src/lib/cartRules.test.ts:5",
+    "src/lib/cartRules.test.ts:9",
+    "src/lib/cartRules.test.ts:13",
+    "src/lib/cartRules.test.ts:17",
+    "src/lib/cartRules.test.ts:23"
+   ],
+   "candidate_requirement_refs": [
+    "Every scenario in which the Add to Cart functionality is used is identified and checked."
+   ],
+   "origin": "existing",
+   "result_candidate_refs": [],
+   "fit": "pure functions only: covers merge-quantity and stock-boundary rules at unit level; no layer covers routes, UI entries or guest/user ownership; new api and e2e-ui files needed"
+  },
+  {
+   "candidate_id": "CAND-2",
+   "repo": "MyBooks",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+   "path": "src/lib/validation/schemas.test.ts",
+   "selector": "cart schema cases (not read)",
+   "parameter_ids": [],
+   "level": "unit",
+   "assertion_refs": [],
+   "candidate_requirement_refs": [
+    "Every path by which a product can be added to the cart is identified and checked."
+   ],
+   "origin": "unknown",
+   "result_candidate_refs": [],
+   "fit": "unknown - assertions not read; coverage of quantity 1..999 unverified"
+  }
+ ],
+ "unresolved_facts": [
+  "task source is the person's pasted text, Jira CART-1 returns 404 (placeholder key): gap for the person to accept",
+  "Jira project REF stories, cases, bugs are not read (project URL only, no key): left out",
+  "no formal requirements beyond 2 generic ACs: oracle for expected behaviour is current code plus docs/AUTH.md and openapi summaries",
+  "live behaviour (guest cookie, merge on login, badge) not verified against the stand; S5/S6 own live checks",
+  "candidate defect: CartPage quantity input emptied -> parseInt NaN sent (CartPage.tsx:65), not guarded; expected response unconfirmed",
+  "candidate defect: CartPage does not check response.ok for GET /api/cart or /api/books/:id (CartPage.tsx:30-38)",
+  "RegisterPage does not call merge and does not sign in; whether guest cart survives registration->login unverified",
+  "cart row race on concurrent add: findFirst then create/update (cartService.ts:39-67) is not atomic; prisma schema not read for a unique index",
+  "wishlist moveToCart ignores DELETE failure (WishlistPage.tsx:58)",
+  "area bugs: tracker unreachable, bugs/ not searched"
+ ],
+ "trail": [
+  {
+   "read": "qa-factory/tickets/CART-1.md"
+  },
+  {
+   "read": "qa-factory/artifacts/CART-1/work/ticket-snapshot.json, ticket-references.json"
+  },
+  {
+   "read": "MyBooks/src/app/api/cart/route.ts, merge/route.ts, [id]/route.ts, total/route.ts (whole)"
+  },
+  {
+   "read": "MyBooks/src/lib/cartOwner.ts, cartRules.ts, services/cartService.ts, session.ts (whole)"
+  },
+  {
+   "read": "MyBooks/src/lib/validation/schemas.ts:35-60; components/BookCard.tsx:60-88; HomePage.tsx:105-150; BookDetailPage.tsx:40-75,150-186; WishlistPage.tsx:30-110; LoginPage.tsx:20-60; CartPage.tsx:22-105,160-200; AppProviders.tsx:28-55"
+  },
+  {
+   "read": "MyBooks/src/lib/services/orderService.ts:195-215; app/api/orders/route.ts:40-70; docs/AUTH.md cart lines; lib/openapi/spec.ts:500-560 (summaries)"
+  },
+  {
+   "search": "grep addToCart|api/cart|cartService|BookCard across MyBooks/src (non-test): all cart callers are HomePage, BookDetailPage, WishlistPage, CartPage, LoginPage, AppProviders, orderService"
+  },
+  {
+   "search": "grep -rli cart in MyBooks excluding node_modules: only the files above plus docs/prisma/types"
+  },
+  {
+   "search": "grep -rli cart tests core test-cases -> none; positive control grep login finds tests/e2e/auth/login.spec.ts"
+  },
+  {
+   "cmd": "env_probe.py --env local: health 200 at http://localhost:3000, login ok"
+  },
+  {
+   "cmd": "ticket_adapter.py collect CART-1 --relation task: Jira 404, recorded unavailable in work/source-inventory.json"
+  }
+ ],
+ "witness": "work/source-inventory.json; work/context-manifest.json trail",
+ "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+ "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+ "changed_areas": [
+  "MyBooks cart: src/app/api/cart/**, src/lib/services/cartService.ts, src/lib/cartRules.ts, src/lib/session.ts, entries BookCard/HomePage, BookDetailPage, WishlistPage, LoginPage merge, CartPage, AppProviders badge, checkout/orders consumers"
+ ],
+ "constraints": [
+  "current-code grounding: observables describe how the app behaves now, not a verified requirement",
+  "local stand only; seed wipes data",
+  "no tracker access to REF"
+ ]
+}

@@ -1,0 +1,25 @@
+qa-case-designer S4 S4-qa-case-designer-1 · concerns
+LOCAL-1_TC_001 · created · catalog add, success and badge, short stock error
+LOCAL-1_TC_002 · created · book page add, message differs above 1, disabled button
+LOCAL-1_TC_003 · created · move to cart, quantity 1, gone from wishlist
+LOCAL-1_TC_004 · created · move of a book already in cart; quantity raised until Q3
+LOCAL-1_TC_005 · created · merge: higher wins, cap, no-stock dropped, empty guest
+LOCAL-1_TC_006 · created · failed merge not shown as success, expected red
+LOCAL-1_TC_007 · created · re-add sums into one item, 201
+LOCAL-1_TC_008 · created · quantity and bookId boundaries refused, cart unchanged
+LOCAL-1_TC_009 · created · OUT_OF_STOCK and INSUFFICIENT_STOCK at stock edge
+LOCAL-1_TC_010 · created · unknown book id gives 404 BOOK_NOT_FOUND
+LOCAL-1_TC_011 · created · guest, user, admin carts separate; foreign item id refused
+LOCAL-1_TC_012 · created · quantity update capped at stock; PUT/PATCH open (Q2)
+LOCAL-1_TC_013 · created · badge is the sum of quantities, total is price x quantity
+LOCAL-1_TC_014 · created · walk of sign-in with guest cart, second sign-in
+LOCAL-1_TC_015 · created · walk of real input, double click, sold out meanwhile
+LOCAL-1_TC_016 · created · walk of guest and signed-in browsers, sign-out leftovers
+LOCAL-1_TC_017 · created · cart page under failed calls, likely red
+LOCAL-1_TC_018 · created · wishlist move under failed calls, likely red
+LOCAL-1_TC_019 · created · catalog add under failed POST shows error not success
+LOCAL-1_TC_020 · created · book page add and read under failed calls
+test-cases/cart/
+Concerns the critic should know:
+Case location: the pre-tool guard refused work/test-cases/ and qa-factory/test-cases/. It accepted the project-root store test-cases/cart/, so all 20 files are
+notes: state/findings/S4-qa-case-designer-1-digest-notes.md

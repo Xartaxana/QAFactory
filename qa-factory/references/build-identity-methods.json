@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "note": "How the factory reads which build a stand runs (t-300). Closed variety lives here, never in code (FR-13): the methods a registry row may name and the parameter each needs, the order the probe tries them in when no row says otherwise, the default label and the default path, every limit, and the words a person reads for each outcome. A project brings a method this table does not hold by recording a `command` row: open variety is the person's, not this file's. The question texts, answer tokens and executor templates of the build question are added here by the driver node (N1b); nothing in the probe reads them.",
+  "registry_note": "How the factory reads which build each stand runs, per stand and test profile. One file for all stands; the last row of a stand+profile is in force, earlier rows are history. Written by stand_identity.py and runtime_probe.py; commit it so the team shares it.",
+  "methods": {
+    "oci_label": {"param": "label", "default": "org.opencontainers.image.revision", "person_only": false},
+    "build_sha_file": {"param": "path", "default": "/usr/share/nginx/html/build-sha.txt", "person_only": false},
+    "command": {"param": "argv", "person_only": true},
+    "sources": {"param": "app_root", "optional": true, "person_only": false},
+    "person_confirms": {"person_only": true},
+    "withdrawn": {"person_only": true}
+  },
+  "sources_of_a_row": ["person", "factory default", "probe discovered"],
+  "ladder": ["sources", "oci_label", "build_sha_file"],
+  "application_roles": ["application", "implementation", "service"],
+  "application_roles_note": "The `implementation_repos[].role` words that name the repository a profile's stand RUNS (read by runtime_probe.pick_checkout when two repositories name one profile). Exact match, case counts. A role outside this list (tests, review) is never chosen over another repository; a project that spells its application role otherwise adds the word here or passes --checkout.",
+  "docker_failures": {
+    "note": "How a failed `docker exec` is told apart (t-345 F2), by the exit code and what docker said, lower-cased: `down` is a daemon that is unreachable or a container that is not running (nobody can answer it: no question); `tool_missing` is an image with no shell or no tool in it (a distroless image), which says nothing about the build; `file_missing` is a file that is not in the container. Anything else keeps the old road (`down`).",
+    "down": ["cannot connect to the docker daemon", "error during connect", "is not running", "no such container"],
+    "tool_missing": ["executable file not found", "oci runtime exec failed"],
+    "tool_missing_codes": [126, 127],
+    "file_missing": ["no such file or directory"]
+  },
+  "non_runtime_files": {
+    "note": "Files that are not part of the running application (FB-8): a build or repository file the image never ships. Absent from the container such a file is recorded and not compared (a stale-build verdict would be false); present in the container it is compared like any other. Closed variety, so it is data (FR-13). A pattern without a slash matches the last path segment, a pattern with a slash the whole path of the diff; case-sensitive (fnmatch). A project adds names with `execution.non_runtime_files.also` and keeps its own application files compared with `execution.non_runtime_files.except` (`except` wins). A code file is never non-runtime, whatever a pattern says.",
+    "patterns": [
+      "Makefile", "makefile", "GNUmakefile", "*.mk",
+      "Dockerfile", "Dockerfile.*", "*.Dockerfile", "*.dockerfile", "Containerfile", ".dockerignore",
+      ".gitignore", ".gitattributes", ".gitmodules", ".mailmap", ".editorconfig",
+      ".npmignore", ".prettierignore", ".eslintignore", ".helmignore",
+      "CODEOWNERS", "LICENSE", "NOTICE", "Jenkinsfile",
+      ".nvmrc", ".node-version", ".python-version", ".ruby-version", ".tool-versions",
+      ".flake8", ".pylintrc", ".coveragerc", ".prettierrc", ".eslintrc", ".stylelintrc", ".babelrc"
+    ]
+  },
+  "limits": {"tried": 6, "output_bytes": 4096, "stderr_chars": 120, "value_chars": 60, "lock_wait_attempts": 400, "lock_wait_step_s": 0.05},
+  "method_words": {
+    "oci_label": "the label {label} of the image",
+    "build_sha_file": "the file {path} inside the container",
+    "command": "the command `{command}`",
+    "sources": "the files inside the container",
+    "person_confirms": "you check the build yourself on this stand",
+    "withdrawn": "the earlier decision is withdrawn"
+  },
+  "outcomes": {
+    "docker.other_stand": "the container named is on another stand",
+    "docker.no_container": "no container is named for this profile",
+    "docker.unreachable": "docker did not answer ({why})",
+    "docker.no_digest": "docker named no image for `{container}` ({why})",
+    "sources.no_diff": "no change of this story is recorded, so there are no files to compare",
+    "sources.no_app_root": "`{app_root}` is not a directory in the container, so there are no files to compare",
+    "sources.tool_missing": "the container `{container}` has no tool that can look inside its files ({why}), so the files of the story could not be compared",
+    "sources.compare_failed":"the files of the story could not be compared inside `{container}` ({why})",
+    "sources.only_non_runtime": "the only files of this story here are not part of the running application, so the files could not tell",
+    "oci_label.no_label": "the image of `{container}` carries no label {label}",
+    "oci_label.not_sha": "the label {label} holds {value}, which is not the 40-character commit of a build",
+    "oci_label.unreadable": "the labels of the image of `{container}` could not be read ({why})",
+    "build_sha_file.missing": "there is no file {path} in `{container}` ({why})",
+    "build_sha_file.not_sha": "the file {path} holds {value}, which is not the 40-character commit of a build",
+    "build_sha_file.too_long": "the file {path} is longer than {limit} bytes, so it is not a commit",
+    "command.failed": "the way you gave failed: {why}",
+    "command.not_sha": "the command printed {value}, which is not the 40-character commit of a build",
+    "command.too_long": "the command printed more than {limit} bytes, so it is not a commit",
+    "command.timeout": "the command did not finish in time",
+    "command.not_found": "the command could not be started ({why})",
+    "value.not_a_commit": "{value} is not a commit of the checkout",
+    "expected.not_full_sha": "the expected revision {expected} is not a full 40-character commit, so the build cannot be compared with it",
+    "registry.person_confirms": "you check the build yourself on this stand, so nothing was read there"
+  },
+  "remedy": "label the image with the commit it was built from ({label}), or tell me how to read it; the way is recorded for this stand in qa-factory/records/stand-identity.json",
+  "voided": {
+    "checkout": "the checkout moved to commit {short}",
+    "image": "the stand runs another image",
+    "image_unreadable": "I could not read which image the stand runs",
+    "definition": "the stand's settings changed",
+    "build_read": "the stand now shows the build {short}",
+    "deployed_unreadable": "I could not read the build this time",
+    "content": "the stand now serves other files than the ones you said to test as they are"
+  },
+  "refusals": {
+    "note": "The sentences every reader of a probe answer says when it refuses one (t-300 N2, X10, FR-1: what the probe said, what was expected, the door). Filled from FIELDS of the record only (FR-12): {build} {expected} {files} {more} {word} {reason} {date} {what} {problems} {why} {code} {line} {words} {tested}; `person_content` also uses {files} (the files the person accepted). profile_contract.REFUSAL_DEFAULTS holds the same texts for a package that has no block yet; once this block exists its text wins, key by key.",
+    "mismatched": "runtime probe returned mismatched: the stand runs {build} and this story is {expected}. Redeploy this story's build, or the person answers `test deployed` to the build question at the stage entry.",
+    "content_mismatch": "runtime probe returned mismatched: the stand serves other content for {files}. Redeploy this story's build, or the person answers `test as is` to the build question at the stage entry when those files do not change what the tests check.",
+    "files_more": " and {more} more",
+    "other": "runtime probe returned {word}: {reason}",
+    "no_reason": "the probe gave no reason",
+    "voided": "The person's word of {date} no longer holds: {what}",
+    "not_applicable": "runtime not_applicable requires a verified local_source profile contract, or a probe that says `reason_code: no_changed_file` (the story changes no file of this profile's checkout)",
+    "invalid": "runtime probe returned unverified provenance: {problems}",
+    "not_a_record": "runtime probe did not return a provenance record (a JSON object)",
+    "build_unknown": "another build",
+    "commit_unknown": "a commit it could not name",
+    "probe_failed": "runtime probe failed: {why}",
+    "probe_failed_silent": "it exited with code {code} and printed no reason on stderr",
+    "probe_not_json": "runtime probe did not return JSON: {why}",
+    "probe_not_json_line": "it printed: {line}",
+    "probe_not_json_silent": "it printed nothing",
+    "person_confirmed": "the build was confirmed by the person ({words}, {date}), not read by the factory",
+    "person_tested": "the build under test is {tested}, not this story's {expected}",
+    "confirmation_same_build": "a `test_deployed` word names the build under test and this story's commit as the SAME build: that is a `deployed` word, not another build - answer `deployed`, or name the other build",
+    "person_runtime_off": "a person's word (person_confirmed) stands only on a run whose stand the probe re-reads at launch: this request says runtime_required false, so it is refused",
+    "baseline_person": "manual baseline runtime provenance is unverified: a baseline is a measured old build, and a person's word does not stand in for it",
+    "remedy_other_build": "this story's build is not on the stand: the person redeploys it, or answers `test deployed` at the build question of the stage entry. Do not capture this case again before that",
+    "remedy_other_content": "this story's files are not what the stand serves: the person redeploys this story's build, or answers `test as is` at the build question of the stage entry when those files do not change what the tests check. Do not capture this case again before that",
+    "person_content": "the person said to test the stand as it is although {files} differ from this story's ({words}, {date}); the factory compared the other files",
+    "remedy_unknown_asks": "which build the stand runs is not known here: the person answers the build question of the stage entry (their decision is kept in {registry}). Do not capture this case again before that",
+    "remedy_other_story": "the person's word on record was given for another story: the person answers the build question of the stage entry for THIS story (their decision is kept in {registry}). Do not capture this case again before that",
+    "remedy_retry": "bring the stand up on the build under test, then capture again",
+    "remedy_no_checkout": "no checkout of the application is recorded for profile {profile}, so nothing can name the build; record implementation_repos[].local_path",
+    "remedy_no_probe_door": "{why}; the way to record it: runtime_probe.py --suggest --write --no-container --profile {profile}, with --checkout <path> or --environment <name> when the line above asks for one",
+    "remedy_no_revision": "the checkout {checkout} is not a git repository or has no commit, so no build can be named; record the application's git checkout in implementation_repos[].local_path",
+    "remedy_other_profile_use": "the build question of this stage was about test profile {plan}, and the person answered it; this capture chose {profile}. If it belongs to the same build, capture again with --profile {plan}: that choice is yours and it is written in the record",
+    "remedy_other_profile_halt": "the build question of this stage was about test profile {plan}, not {profile}, so nobody was asked about this build. Put the case in env_blocked[] with this line and halt the block; the conductor decides what to ask",
+    "cause_build": "the stand does not hold this story's build (or nobody could say which build it holds), so a new capture would meet the same stand",
+    "door_build": "once the person has answered the build question for this story, or the stand runs its build, a later dispatch starts a new attempt (leave --attempt out)",
+    "cause_device": "the device stand is not ready (no device, no driver server or no session), so a new capture would meet the same stand",
+    "door_device": "once the device and the driver server are ready (device_stand.py --json says so), a later dispatch starts a new attempt (leave --attempt out)",
+    "blocked_build": "manual_capture: the stand does not hold a build this story can be captured on ({probe_line}); this attempt has no record. Make no further capture of any kind in this block: put the case in env_blocked[] with this line and the remedy ({remedy}), and halt the block (never build a record from it), owner {owner}",
+    "blocked_login_user": "manual_capture: the login by code did not land ({probe_line}); this attempt has no record. Make no further capture of any kind in this block: put it in env_blocked[] with this line and halt the block (never `build` it), owner {owner}",
+    "blocked_login_factory": "manual_capture: the login by code did not land ({probe_line}); this attempt has no record. The recipe did not fit the page: you may sign in ONCE through `fill-account` steps in a new attempt; if that does not land either, put it in env_blocked[] with this line and halt the block (never `build` it), owner {owner}",
+    "blocked_login_unknown": "manual_capture: the login by code was not tried ({probe_line}); nothing was sent and nothing was captured. This is the factory's gap, not the account's: a screen case signs in through `fill-account` steps in a new attempt, and a seed the factory cannot do by API is done through the screens. The block goes on. Remedy for the project: {remedy}, owner {owner}",
+    "blocked_device": "manual_capture: the device stand is not ready ({probe_line}); this attempt has no record, and none can be made until the device and the driver server are ready. Make no further capture of any kind in this block: put the case in env_blocked[] with this line and the remedy ({remedy}), and halt the block (never build a record from it), owner {owner}",
+    "blocked_stand": "manual_capture: the stand could not be identified ({probe_line}); this attempt has no record. Put the case in env_blocked[] with this line and the remedy: {remedy}"
+  },
+  "question": {
+    "kind": "stand_identity",
+    "note": "The build question the driver asks a person when the probe says it cannot tell, or tells a different build (t-300 N1b). Which variant is asked is chosen by FIELDS of the probe's record (`result`, `asks_person`, `differing_files`, `deployed_source_revision`), never by reading a sentence (FR-12); a record that carries `registry_error`, `registry_method_failed` or `voided` gets the matching prefix on top of its variant (FR-7: the text moves when the situation moved). Every text obeys references/human-questions.md (FR-6): the way a command or a file name would break a rule, `plain` says the same without it and the details go to the details file. `text` and `lines` are lists of lines, joined with a newline. Slots: {task} {step} {stand} {profile} {code} {short} {tried} {registry} {deployed_short} {method} {date} {files} {count} {what} {why} {error} {failed_date} {failed_method} {voided_date}. The answers a variant offers are the keys of `answers.forms`.",
+    "limits": {"files_shown": 5, "containers_shown": 5},
+    "no_container_docker_line": "Docker runs {containers} on this machine. If the application runs in one of them, say which in your own words, and I check it before anything is recorded.",
+    "code": {"named": "the code of `{repo}`", "unnamed": "this story's code"},
+    "files_more": "and {more} more",
+    "tried_more": "and {more} more",
+    "no_tried": "none of the ways I know to read it gave an answer",
+    "method_unknown": "this project's own check",
+    "no_date": "an earlier day",
+    "no_error": "it gave no reason",
+    "plain": {
+      "tried": "the details of what I tried are in the file named at the end",
+      "files": "{count} of the files this story changes",
+      "method": "the way it was read",
+      "failed_method": "the way you gave",
+      "why": "the details are in the file named at the end",
+      "error": "the details are in the file named at the end",
+      "docker": ""
+    },
+    "plain_line": {
+      "method": "the way it was read",
+      "files": "some files of this story",
+      "why": "no more is said here",
+      "error": "which build the stand runs could not be read"
+    },
+    "prefixes": {
+      "registry_error": "The file {registry}, where I keep how each stand is read, cannot be read, so I used my own defaults: fix the file or delete it. Until then a way you tell me cannot be saved, while `deployed` and `retry` still work.",
+      "method_failed": "The way you gave on {failed_date} ({failed_method}) did not answer: {why}.",
+      "voided": "You confirmed it on {voided_date}; since then {what}."
+    },
+    "variants": {
+      "how": {
+        "answers": ["label", "file", "command", "deployed", "always confirm", "retry"],
+        "text": [
+          "The requirements, the test plan and the test cases for {task} are done. The next step is {step} on the stand `{stand}`, and before that I check that the stand runs the build this story is about: for the {profile} tests that is {code} at commit {short}. I could not tell which build `{stand}` runs: {tried}. I have not stopped the story for this and I have not guessed - whether that build is there is your call.",
+          "",
+          "What I need from you is one of these:",
+          "(a) tell me how to read the build on `{stand}` - `label <name>` for a label of the image, `file <path>` for a file inside the container that holds the commit, or `command <command line>` for a command that prints it; a label tells which image the stand runs, and when the files of this story can be compared with the files inside the container they are, whatever the label says; I record it for this stand in {registry} and check right away;",
+          "(b) answer `deployed` if you have checked that this story's build is on `{stand}` now; I take your word for this story only and ask again on the next one;",
+          "(c) answer `always confirm` if on `{stand}` you will always check this yourself; I record that for this stand, stop trying to read it there, and take this answer as your word for this story too;",
+          "(d) answer `retry` once you have changed the stand (for example rebuilt it with its commit), and I check again."
+        ]
+      },
+      "mismatched": {
+        "answers": ["retry", "test deployed", "stop"],
+        "text": [
+          "On `{stand}` the {profile} tests would run against {code} at commit {deployed_short} (read by {method}), while this story is commit {short}. I have not started them, and I have not stopped the story for this - whether to test that build is your call.",
+          "",
+          "What I need from you is one of these:",
+          "(a) answer `retry` once you have redeployed `{stand}` with this story's commit, and I check again;",
+          "(b) answer `test deployed` to test what is deployed: the report will say that the build under test is {deployed_short}, not this story's {short}, by your decision;",
+          "(c) answer `stop` to stop the story here; nothing runs on `{stand}`."
+        ]
+      },
+      "mismatched_sources": {
+        "answers": ["retry", "test as is", "stop"],
+        "text": [
+          "On `{stand}` the {profile} tests would run against files that are not this story's: {files} differ from the ones in this story's commit {short}. I have not started them, and I have not stopped the story for this. The stand holds other files, so I cannot name the commit of the build that is there.",
+          "",
+          "What I need from you is one of these:",
+          "(a) answer `retry` once you have redeployed `{stand}` with this story's commit, and I check again;",
+          "(b) answer `test as is` if these files do not change what the tests check, for example a build file the running application never reads; I take your word for this story and for exactly these files as they are now, and the report says the tests ran by your decision;",
+          "(c) answer `stop` to stop the story here; nothing runs on `{stand}`."
+        ]
+      },
+      "no_container": {
+        "note": "Chosen by the FIELD `container` of the probe record being empty on an `unknown` that asks `how` (the stand is not run by a container the probe can read). {docker} is empty, or a blank line, the docker line and a blank line.",
+        "answers": ["deployed", "retry", "command", "stop"],
+        "text": [
+          "The next step is {step} on the stand `{stand}`. The application is not run by a container I can read, so I cannot tell which build it runs. For the {profile} tests this story is {code} at commit {short}. Whether that build is there is your call.",
+          "{docker}",
+          "What I need from you is one of these:",
+          "(a) answer `deployed` if that commit is what `{stand}` runs now; I take your word for this story only;",
+          "(b) answer `retry` once you have put it there, and I check again;",
+          "(c) answer `command <command line>` with a command that prints the commit the stand runs; I record it for this stand and check right away;",
+          "(d) answer `stop` to stop the story here; nothing runs on `{stand}`.",
+          "If you do not know, say so in your own words."
+        ]
+      },
+      "device_build": {
+        "note": "Chosen by the FIELD `device_stand` of the probe record on an `unknown` that asks `how` (EP1-41e): the stand is a device, there is no container. {device_build} is `device_has` with the build the probe read (`observed_device_build`), or `device_unread` when it read none. {device_voids} is what a different install does to the word, and it promises only what the probe can see: `voids_build` when the installed file was hashed, `voids_version` when it was not (the record's `limitation`), `voids_unseen` (nothing) when no build was read.",
+        "device_has": "The device has {line}.",
+        "device_unread": "I could not read which build is installed.",
+        "voids_build": ", and a different build on the device voids it",
+        "voids_version": ", and a different version on the device voids it",
+        "voids_unseen": "",
+        "answers": ["deployed", "retry", "command", "stop"],
+        "text": [
+          "The next step is {step} on the device stand `{stand}`. {device_build} For the {profile} tests this story is {code} at commit {short}. Whether that build holds this commit is your call.",
+          "",
+          "What I need from you is one of these:",
+          "(a) answer `deployed` if this build holds that commit; I take your word for this story only{device_voids};",
+          "(b) answer `retry` once you have installed it, and I check again;",
+          "(c) answer `command <command line>` with a command that prints the commit; I record it for this stand and check right away;",
+          "(d) answer `stop` to stop the story here; nothing runs on `{stand}`.",
+          "If you do not know, say so in your own words."
+        ]
+      },
+      "confirm": {
+        "answers": ["deployed", "retry", "label", "file", "command"],
+        "text": [
+          "On `{stand}` you check the build yourself - your decision of {date}, kept in {registry} - so I did not try to read it. Is this story's build ({code} at commit {short}) on `{stand}` now? I have not stopped the story for this and I have not guessed - whether that build is there is your call.",
+          "",
+          "What I need from you is one of these:",
+          "(a) answer `deployed` if it is; I take your word for this story only and ask again on the next one;",
+          "(b) answer `retry` once you have put it there, and I ask again;",
+          "(c) tell me how to read the build instead - `label <name>`, `file <path>` or `command <command line>`; a label tells which image the stand runs, and when the files of this story can be compared with the files inside the container they are, whatever the label says; I record it for this stand in place of your decision to check it yourself, and check right away."
+        ]
+      }
+    },
+    "reasks": {
+      "missing_arg": "You answered `{form}` with nothing after it. I need {needs}: write it like `{example}`.",
+      "not_a_commit": "You named the commit {sha}, and it is not a commit of this story's checkout, so I recorded nothing. Name a commit of the checkout, or answer without one.",
+      "wrong_story_commit": "You named the commit {sha}, but this story is commit {short}: `deployed` is your word that this story's build is on `{stand}`, so I recorded nothing. Answer `deployed` alone if it is, or tell me what you found there.",
+      "wrong_deployed_commit": "You named the commit {sha}, but what `{stand}` runs is commit {deployed_short}: `test deployed` tests that build, so I recorded nothing. Answer `test deployed` alone to test it.",
+      "not_recorded": "I could not write down your last answer, so nothing was recorded for this stand. The factory's own words about what went wrong are in the file named at the end. Please answer again."
+    },
+    "partly_recorded": {
+      "answers": ["deployed", "retry", "stop"],
+      "text": [
+        "Your decision for `{stand}` ({profile} tests) is written: you check the build on that stand yourself. What is not written is your word that this story's build is there now, because I could not write it down just now. The factory's own words about it are in the file named at the end.",
+        "",
+        "What I need from you is one of these:",
+        "(a) answer `deployed` if this story's build is on `{stand}` now; I take your word for this story only and ask again on the next one;",
+        "(b) answer `retry` and I ask again, with your decision in place;",
+        "(c) answer `stop` to stop the story here; nothing runs on `{stand}`."
+      ]
+    },
+    "held": {
+      "stop": "You said to stop the story here. Nothing runs on `{stand}` and nothing is passed. If you want to go on after all, answer again with one of the answers below."
+    },
+    "lines": {
+      "matched": "{stage}: the {profile} tests on stand `{stand}`: the stand runs this story's build (read by {method})",
+      "matched_not_shipped": "{stage}: the {profile} tests on stand `{stand}`: the stand runs this story's build (read by {method}); not compared, because they are not in the container: {files}",
+      "person_confirmed": "{stage}: the {profile} tests on stand `{stand}`: the build is confirmed by your word of {date} for this story",
+      "person_confirmed_no_image": "{stage}: the {profile} tests on stand `{stand}`: the build is confirmed by your word of {date} for this story; no image was read, so the word is not tied to one",
+      "person_content": "{stage}: the {profile} tests on stand `{stand}`: tested as it is by your word of {date}, although {files} differ from this story's",
+      "not_applicable": "{stage}: the {profile} tests on stand `{stand}`: this story changes nothing they run against, so the build is not checked",
+      "unread": "{stage}: I could not read which build stand `{stand}` runs for the {profile} tests: {error}. This is not a question for you",
+      "docker_down_confirms": "{stage}: docker is down on `{stand}`; your word of {date} ({method}) cannot be checked now",
+      "no_probe": "{stage}: no way to read the build of stand `{stand}` is registered for the {profile} tests, so it is not checked here and nothing is asked of you",
+      "no_probe_said": "{stage}: no way to read the build of stand `{stand}` is registered for the {profile} tests, and none could be worked out here: {why}. It is not checked here and nothing is asked of you",
+      "probe_failed": "{stage}: I could not check which build stand `{stand}` runs for the {profile} tests ({why}); this is not a question for you",
+      "probe_unrecognised": "{stage}: the answer of the build check for the {profile} tests on stand `{stand}` was not one I know, so I took it as no proof of the build and I do not ask you about it",
+      "no_profile_stand": "{stage}: the {profile} tests have no stand of their own in this project's config, so the build they run is not checked here and nothing is asked of you",
+      "no_profiles": "{stage}: no test profile of this part of the story needs a stand build check",
+      "check_broke_profiles": "{stage}: which test profiles need the build of stand `{stand}` checked could not be worked out; nothing is asked of you",
+      "check_broke": "{stage}: the build of stand `{stand}` for the {profile} tests could not be checked; nothing is asked of you",
+      "answer_stop": "{stage}: the person said to stop at the build of stand `{stand}` ({profile} tests); nothing is passed",
+      "answer_repeated": "{stage}: the build of stand `{stand}` ({profile} tests) was answered more than once in this story; the last line counts: {said}",
+      "answer_not_recorded": "{stage}: the answer for stand `{stand}` ({profile} tests) was not recorded; the question comes back",
+      "answer_partly": "{stage}: your decision for stand `{stand}` ({profile} tests) is written but your word for this story is not; the question comes back",
+      "answer_recorded": "{stage}: the person's answer for stand `{stand}` ({profile} tests) is recorded; the build is checked again when the stage starts",
+      "answer_retry": "{stage}: nothing was recorded for stand `{stand}` ({profile} tests); the build is checked again when the stage starts",
+      "why_timeout": "the check did not finish in time",
+      "why_start": "the check could not be started",
+      "why_failed": "the check stopped with an error",
+      "why_no_json": "the check printed no readable answer"
+    }
+  },
+  "answers": {
+    "note": "The closed answers to the build question (t-300 N1b): ONE line per answer, read by code - the form's `word`, then (per `arg`) what follows it. `arg`: none = nothing may follow; optional = a value may follow; required = a value must follow (else the person is asked again, naming the form); commit = a commit of the checkout may follow (it must be the one the answer is about, else the person is asked again once). `value` is the shape the value must have as a WHOLE (a regular expression, after the pair of quotes `peel_arg` takes off): a value that misses it is not read as this form, the whole answer goes to the conductor - never a registry row with prose as a label (t-366 F3). `peel_arg` strips a pair of quotes or backquotes round the value; a command is never peeled, and its value is the rest of the line. Anything else, in any language, is not read: it goes to the conductor with the key and this table (FR-12, FR-13). `runs` are the executor commands the driver runs ITSELF for the answer, in order, stopping at the first that fails (FR-48); a person is never shown them. Slots: {task} {stand} {profile} {revision} (this story's commit) {deployed} (the commit the stand was read to run) {content} (the fingerprint of the files that differed, for `test as is`) {image} {words} (the person's line, whole) {arg}. A `?--flag` followed by its value is dropped when the value is empty. `hold` means: write the words down and keep the question open (the story stops).",
+    "forms": {
+      "deployed": {
+        "word": "deployed", "arg": "commit", "value": "[0-9a-fA-F]{7,40}",
+        "runs": [["confirm", "--task", "{task}", "--environment", "{stand}", "--profile", "{profile}", "--revision", "{revision}", "?--image", "{image}", "--words", "{words}"]]
+      },
+      "test deployed": {
+        "word": "test deployed", "arg": "commit", "value": "[0-9a-fA-F]{7,40}",
+        "runs": [["confirm", "--task", "{task}", "--environment", "{stand}", "--profile", "{profile}", "--revision", "{deployed}", "--story-revision", "{revision}", "?--image", "{image}", "--words", "{words}"]]
+      },
+      "always confirm": {
+        "word": "always confirm", "arg": "none",
+        "runs": [["record", "--environment", "{stand}", "--profile", "{profile}", "--method", "person_confirms", "--source", "person", "--words", "{words}"],
+                 ["confirm", "--task", "{task}", "--environment", "{stand}", "--profile", "{profile}", "--revision", "{revision}", "?--image", "{image}", "--words", "{words}"]]
+      },
+      "label": {
+        "word": "label", "arg": "optional", "peel_arg": true, "value": "\\S+",
+        "runs": [["record", "--environment", "{stand}", "--profile", "{profile}", "--method", "oci_label", "?--label", "{arg}", "--source", "person", "--words", "{words}"]]
+      },
+      "file": {
+        "word": "file", "arg": "required", "peel_arg": true, "value": "/\\S+",
+        "needs": "the path of the file inside the container that holds the commit", "example": "file /path/inside/the/container",
+        "runs": [["record", "--environment", "{stand}", "--profile", "{profile}", "--method", "build_sha_file", "--path", "{arg}", "--source", "person", "--words", "{words}"]]
+      },
+      "command": {
+        "word": "command", "arg": "required", "value": ".+",
+        "needs": "the command line that prints the commit", "example": "command <the command line>",
+        "runs": [["record", "--environment", "{stand}", "--profile", "{profile}", "--method", "command", "--command", "{arg}", "--source", "person", "--words", "{words}"]]
+      },
+      "test as is": {
+        "word": "test as is", "arg": "none",
+        "runs": [["confirm", "--task", "{task}", "--environment", "{stand}", "--profile", "{profile}", "--revision", "{revision}", "--content", "{content}", "?--image", "{image}", "--words", "{words}"]]
+      },
+      "retry": {"word": "retry", "arg": "none", "runs": []},
+      "stop": {"word": "stop", "arg": "none", "runs": [], "hold": true}
+    }
+  }
+}

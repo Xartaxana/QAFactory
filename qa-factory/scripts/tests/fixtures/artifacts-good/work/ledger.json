@@ -1,0 +1,34 @@
+{
+  "ticket": "QA-1",
+  "generated": "2026-09-16T12:29:39+00:00",
+  "rows": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "skipped:cosmetic, outside the diff, no user impact recorded",
+      "detail": ""
+    },
+    {
+      "ref": "TC-001",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/test_coupon.py::TC-001"
+    }
+  ],
+  "delivery_ready": true,
+  "reasons": [],
+  "subtasks_open": [],
+  "review_skipped": false
+}

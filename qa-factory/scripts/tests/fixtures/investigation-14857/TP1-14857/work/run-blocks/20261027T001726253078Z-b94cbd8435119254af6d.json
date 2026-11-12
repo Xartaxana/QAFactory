@@ -1,0 +1,250 @@
+{
+  "schema_version": 2,
+  "block_id": "b94cbd8435119254af6d",
+  "attempt_id": "b94cbd8435119254af6d",
+  "attempt_started_at": "2026-10-27T00:14:42.877707+00:00",
+  "attempt_ended_at": "2026-10-27T00:17:12.909918+00:00",
+  "dispatch_id": "S5-qa-automator-2",
+  "profile_id": "api",
+  "repo_id": "",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": {
+    "reason": "failed_or_invalidated",
+    "evidence_refs": [
+      "qa-factory\\artifacts\\TP1-14857\\evidence\\runs\\858563f097d411b4ad53\\repair_verify-858563f097d411b4ad53-20261027-010941.json"
+    ]
+  },
+  "purpose": "repair_verify",
+  "input_fingerprint": "3d0c5611bdf4d125761931cedf804bc2f1ecde58ca0f919382cf5eb934f4347d",
+  "source_fingerprint": {
+    "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+    "test_content_sha": "09dd6835da0d7cc8363800151531b7fbc3c6701d7d9af788a869744e79ccee26",
+    "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+    "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+    "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+    "policy_revision": "unknown"
+  },
+  "runtime_provenance": {
+    "profile_id": "api",
+    "timestamp": "2026-10-27T00:13:35+00:00",
+    "environment_id": "local-docker",
+    "expected_source_revision": "1bc3ce13666f38b08067562f331a4cae83c02363",
+    "observed_runtime_identity": "verified_content:b9812614ffac|11354ae0323b|cf7406489cec|a5bf81af5b15|b75999e8f72c|ea91d7fea52a",
+    "evidence_refs": [
+      "C:/Projects/testproject1-stand/testproject1-sdk-14857-0102/test-harness/qa-factory/artifacts/TP1-14857/evidence/runtime-provenance-api-20261027T001336Z.json"
+    ],
+    "provenance": {
+      "technical_verification": true,
+      "source_linkage": "verified_content",
+      "deployed_source_revision": "1bc3ce13666f38b08067562f331a4cae83c02363",
+      "verified_source_revisions": [
+        "1bc3ce13666f38b08067562f331a4cae83c02363"
+      ]
+    },
+    "result": "matched",
+    "comparisons": [
+      {
+        "file": "Makefile",
+        "container_sha256": null,
+        "local_sha256": "e692ca91defbfc35d53964860fb77e963b20380ec4c31f2b7e6601d5102052ff",
+        "note": "non-runtime build file, not shipped in the image (not compared)"
+      },
+      {
+        "file": "src/testproject1/datasource/base_datasource_processor.py",
+        "container_sha256": "b9812614ffacd7ec53fa900aff519b3c3faa24026bb812e8a0be12cdc685efac",
+        "local_sha256": "b9812614ffacd7ec53fa900aff519b3c3faa24026bb812e8a0be12cdc685efac"
+      },
+      {
+        "file": "src/testproject1/datasource/code/code_datasource_processor.py",
+        "container_sha256": "11354ae0323be60a20fadb4ca558b0dc80e7ed331954afa1d34da6394b3c142b",
+        "local_sha256": "11354ae0323be60a20fadb4ca558b0dc80e7ed331954afa1d34da6394b3c142b"
+      },
+      {
+        "file": "src/testproject1/datasource/svn/svn_index_service.py",
+        "container_sha256": "cf7406489cec5a5fc5beb4b2f461a61046e7c9ac8b2417f34616f96c46c25287",
+        "local_sha256": "cf7406489cec5a5fc5beb4b2f461a61046e7c9ac8b2417f34616f96c46c25287"
+      },
+      {
+        "file": "src/testproject1/rest_api/models/index.py",
+        "container_sha256": "a5bf81af5b15bc2d05c11176ddbd782158ce4e956cb051a86e10e86719bacef9",
+        "local_sha256": "a5bf81af5b15bc2d05c11176ddbd782158ce4e956cb051a86e10e86719bacef9"
+      },
+      {
+        "file": "src/testproject1/rest_api/routers/index/code_repositories.py",
+        "container_sha256": "b75999e8f72c6aca463e77987e0dbeadc40831e2e65b3e2cac7d054f45812ac2",
+        "local_sha256": "b75999e8f72c6aca463e77987e0dbeadc40831e2e65b3e2cac7d054f45812ac2"
+      },
+      {
+        "file": "src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py",
+        "container_sha256": "ea91d7fea52ae06f95c2419f4194681209af5f8a83e1ad97ca05be674f873bc3",
+        "local_sha256": "ea91d7fea52ae06f95c2419f4194681209af5f8a83e1ad97ca05be674f873bc3"
+      }
+    ],
+    "container": "testproject1-stand-testproject1-1",
+    "checkout": "..\\..\\testproject1"
+  },
+  "execution_status": "passed",
+  "results": [
+    {
+      "instance_id": "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "test_id": "tests.assistant.datasource.test_code_datasource_last_indexed::test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "case_version_links": [
+        {
+          "case_id": "TC-001",
+          "version": "cv_334a9fa12753b8be6a34"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1-1",
+        "OB-1-2"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "b94cbd8435119254af6d",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "api",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d0c5611bdf4d125761931cedf804bc2f1ecde58ca0f919382cf5eb934f4347d",
+      "source_fingerprint": {
+        "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+        "test_content_sha": "09dd6835da0d7cc8363800151531b7fbc3c6701d7d9af788a869744e79ccee26",
+        "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+        "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+        "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+        "policy_revision": "unknown"
+      },
+      "instance_content_sha": "c54c8042b2cbd407cf96e2fc4437a3889b637661ca6dc09d13ab018415536207",
+      "instance_content_scope": "function",
+      "instance_code_sha": "691e57226671cb6e0f36e4dbacbcf814f2b673965590e9b860ac8c8242ff43ac"
+    },
+    {
+      "instance_id": "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "test_id": "tests.assistant.datasource.test_code_datasource_last_indexed::test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "case_version_links": [
+        {
+          "case_id": "TC-002",
+          "version": "cv_0c84ad6c735421cc4073"
+        }
+      ],
+      "obligation_ids": [
+        "OB-2-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "b94cbd8435119254af6d",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "api",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d0c5611bdf4d125761931cedf804bc2f1ecde58ca0f919382cf5eb934f4347d",
+      "source_fingerprint": {
+        "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+        "test_content_sha": "09dd6835da0d7cc8363800151531b7fbc3c6701d7d9af788a869744e79ccee26",
+        "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+        "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+        "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+        "policy_revision": "unknown"
+      },
+      "instance_content_sha": "7d6f3a6958b7974690b7dfeedc62a970d935d7cffa0b843ebd770195a773bade",
+      "instance_content_scope": "function",
+      "instance_code_sha": "ed0e3c253861f20f3c3d84397f387ef5fb702bd73eff3588c1ef73e2ce3e0ff1"
+    },
+    {
+      "instance_id": "test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "test_id": "tests.assistant.datasource.test_code_datasource_last_indexed::test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "case_version_links": [
+        {
+          "case_id": "TC-003",
+          "version": "cv_f4f31f192665e1f68993"
+        }
+      ],
+      "obligation_ids": [
+        "OB-3-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "b94cbd8435119254af6d",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "api",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d0c5611bdf4d125761931cedf804bc2f1ecde58ca0f919382cf5eb934f4347d",
+      "source_fingerprint": {
+        "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+        "test_content_sha": "09dd6835da0d7cc8363800151531b7fbc3c6701d7d9af788a869744e79ccee26",
+        "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+        "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+        "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+        "policy_revision": "unknown"
+      },
+      "instance_content_sha": "8b3c54973339df779289deaac3d6ce0c74d9cb80644aa866752f1cefa0762474",
+      "instance_content_scope": "function",
+      "instance_code_sha": "56140d415cf729fa76a901f555815bf39568a271f9c125479278e9552f4e2f39"
+    },
+    {
+      "instance_id": "test_datasource_edit_after_reindex_keeps_last_indexed",
+      "test_id": "tests.assistant.datasource.test_code_datasource_last_indexed::test_datasource_edit_after_reindex_keeps_last_indexed",
+      "case_version_links": [
+        {
+          "case_id": "TC-004",
+          "version": "cv_d3eddcbfa18215dbcd17"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "b94cbd8435119254af6d",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "api",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d0c5611bdf4d125761931cedf804bc2f1ecde58ca0f919382cf5eb934f4347d",
+      "source_fingerprint": {
+        "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+        "test_content_sha": "09dd6835da0d7cc8363800151531b7fbc3c6701d7d9af788a869744e79ccee26",
+        "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+        "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+        "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+        "policy_revision": "unknown"
+      },
+      "instance_content_sha": "f90d8ae98f0e75e19896060db888650ce1446dd71d038d36d006f341497ba6ee",
+      "instance_content_scope": "function",
+      "instance_code_sha": "623e171fd4ea83734c1fe67ee34562567d1be7e77f3f2390c835d62e8649271d"
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "qa-factory\\artifacts\\TP1-14857\\evidence\\runs\\b94cbd8435119254af6d\\repair_verify-b94cbd8435119254af6d-20261027-011442.json",
+      "reporter": "pytest",
+      "report_path": "evidence/runs/b94cbd8435119254af6d/repair_verify-b94cbd8435119254af6d-20261027-011442.junit.xml",
+      "report_sha256": "8e5ab2d3a2ad0418cfcb0875623326f9e85c1fc29be5f34b0dea77dc42e4661a"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "b94cbd8435119254af6d",
+    "raw_report_hash": "8e5ab2d3a2ad0418cfcb0875623326f9e85c1fc29be5f34b0dea77dc42e4661a",
+    "reparsed": false
+  },
+  "report_scope": {
+    "selected": [
+      "test_manual_full_reindex_moves_last_indexed_and_keeps_it",
+      "test_last_indexed_is_visible_during_reindex_and_completion_keeps_it",
+      "test_two_cache_manual_unrounded_leave_the_later_last_indexed",
+      "test_datasource_edit_after_reindex_keeps_last_indexed"
+    ],
+    "unmatched_report_rows": []
+  }
+}

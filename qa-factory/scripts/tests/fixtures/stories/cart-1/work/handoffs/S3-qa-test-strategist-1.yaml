@@ -1,0 +1,321 @@
+# S3 -> S4: the test plan is handed to the case designer.
+#
+# The plan is the only place where the factory decides what it will NOT do, so every row carries a
+# disposition and a reason, and every requirement of the register reaches a row or is named here as
+# deferred. The designer expands rows into cases; it does not re-plan, and it cannot ask for
+# something the row did not say.
+#
+# The field this file exists for is `obligations`. On REF-1 not one of the nineteen test
+# instances named an obligation id, so nothing downstream could answer "which plan row does this
+# test discharge" - the roll-call at S4, the scope check at S5 and the traceability table at S8 all
+# had to re-derive it from case names. Obligation ids are minted HERE, once, and travel unchanged.
+# Fill: write your fields as "path: value" lines to work/handoffs/S3-qa-test-strategist-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s3-strategist-to-designer
+stage: S3
+from_role: qa-test-strategist
+to_role: qa-case-designer
+
+inputs:
+  - path: work/handoffs/S3-qa-test-strategist-1.yaml
+    what: this file
+    required: true
+  - path: work/test-plan.json
+    what: the machine plan - rows, dispositions, obligations, coverage contract revisions
+    required: true
+  - path: test-plan.md
+    what: the same plan in the words the person reads at gate A
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle; a case is written against the requirement, never against a test name
+    required: true
+
+inputs_read:
+  - path: work/requirements-register.md
+    version: register ids R-1..R-16
+    requirements: 16
+  - path: work/context-bundle.json
+    version: ed92ac22589c426c597acd5371f76421789012550af43750859b2ed3632a0136
+    existing_candidates_considered: 2 of 2
+
+header:
+  role: qa-test-strategist
+  stage: S3
+  window: CART-1
+  verdict: concerns
+
+# One row per plan row. `state` is the row's disposition and comes from the restricted part of
+# vocabulary.row_states - automate, manual-agent, manual-human, skip, unverifiable - which only
+# this role may write. `reason` is why that disposition and not another.
+scope:
+  - id: TS-1
+    state: automate
+    reason: gap on cart API contract, P1 area
+    requirements: R-3
+    obligations: OB-1
+    behaviour: Unknown book 404, stock 0 gives 400 OUT_OF_STOCK
+    risk: moderate
+    impact_class: blocked-flow
+    oracle: "requirement:R-3"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-2
+    state: automate
+    reason: CAND-1 unit partial; service boundary open
+    requirements: R-4
+    obligations: OB-2
+    behaviour: Quantity never exceeds stock; equal allowed
+    risk: moderate
+    impact_class: degraded
+    oracle: "requirement:R-4"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-3
+    state: automate
+    reason: contract gap, openapi states it
+    requirements: R-5
+    obligations: OB-3
+    behaviour: Repeat add increments the one row
+    risk: moderate
+    impact_class: degraded
+    oracle: "requirement:R-5"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-4
+    state: automate
+    reason: HTTP error shape undefended
+    requirements: R-6
+    obligations: OB-4
+    behaviour: Invalid quantity/bookId rejected with stable error shape
+    risk: moderate
+    impact_class: degraded
+    oracle: "requirement:R-6"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-5
+    state: automate
+    reason: P0 access, no test
+    requirements: R-7
+    obligations: OB-5
+    behaviour: Guest cart separate from account cart
+    risk: severe
+    impact_class: access
+    oracle: "requirement:R-7"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: true
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-6
+    state: automate
+    reason: P0 data-loss; CAND-1 partial
+    requirements: R-8
+    obligations: OB-6
+    behaviour: Merge keeps higher quantity capped at stock
+    risk: severe
+    impact_class: data-loss
+    oracle: "requirement:R-8"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: true
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-7
+    state: automate
+    reason: contract gap, deterministic
+    requirements: R-11
+    obligations: OB-7
+    behaviour: PUT sets quantity within stock; DELETE removes
+    risk: moderate
+    impact_class: degraded
+    oracle: "requirement:R-11"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-8
+    state: automate
+    reason: P0 access, no test
+    requirements: R-12
+    obligations: OB-8
+    behaviour: Foreign item id 404 and foreign cart unchanged
+    risk: severe
+    impact_class: access
+    oracle: "requirement:R-12"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: true
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-9
+    state: automate
+    reason: P0 money, checkout seam undefended
+    requirements: R-15
+    obligations: OB-9
+    behaviour: Quote reads cart; order clears it
+    risk: severe
+    impact_class: money
+    oracle: "requirement:R-15"
+    level: api
+    existing_coverage: new
+    environment: local
+    design_review_required: true
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-10
+    state: automate
+    reason: main user path, key flow
+    requirements: R-1, R-2, R-10
+    obligations: OB-10
+    behaviour: Catalog card add shows badge and cart page content
+    risk: moderate
+    impact_class: blocked-flow
+    oracle: "requirement:R-1"
+    level: e2e-ui
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-11
+    state: manual-agent
+    reason: UI check once; API covers the rule
+    requirements: R-1, R-2
+    obligations: OB-11
+    behaviour: Book detail add with quantity and stock edges
+    risk: moderate
+    impact_class: blocked-flow
+    oracle: "requirement:R-1"
+    level: e2e-ui
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+  - id: TS-12
+    state: manual-agent
+    reason: degraded impact does not earn e2e
+    requirements: R-14
+    obligations: OB-12
+    behaviour: Wishlist move adds to cart and removes item
+    risk: moderate
+    impact_class: degraded
+    oracle: "requirement:R-14"
+    level: e2e-ui
+    existing_coverage: new
+    environment: local
+    design_review_required: false
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+
+# Every requirement of the register either reaches a row above or is named here. The S3 exit gate
+# checks the sum: this is the place where scope is knowingly narrowed, and the only one.
+not_planned:
+  - requirement: R-9
+    state: unverifiable
+    reason: No source states the expectation; gate-A question Q2.
+  - requirement: R-13
+    state: unverifiable
+    reason: Expected cart page behaviour unconfirmed; gate-A question Q3.
+  - requirement: R-16
+    state: unverifiable
+    reason: Observable none; gate-A question Q4.
+
+# For every manual row, what the runner will be allowed to count as evidence. Deciding this at S3
+# is the rule of the phase: on REF-1 the runner reached a manual case with no policy and
+# the observation it produced settled nothing.
+manual_policy:
+  - row: TS-11
+    executed_by: agent
+    evidence: before and after screenshots with actual steps
+    required_fields: steps taken, toast text, cart page rows, button state
+    inconclusive_when: evidence missing or final state not read
+  - row: TS-12
+    executed_by: agent
+    evidence: before and after screenshots of wishlist and cart
+    required_fields: steps taken, wishlist rows, cart rows
+    inconclusive_when: evidence missing or final state not read
+
+budget:
+  size: XXL
+  cap: 28
+  planned_rows: 12
+  within_cap: false
+  if_over: Nothing cut; computed 32 vs cap 28 goes to gate A; lowest-impact tail TS-12, TS-11, TS-7 first.
+
+# Regression the person may want to run. The factory does not run it and says so.
+regression_recommendations:
+  - suite_or_command: run_suite.py --label cart -- npm --prefix ../MyBooks run test -- src/lib/cartRules.test.ts
+    why: Developer-owned unit defence of the stock and merge rules.
+
+artifacts:
+  plan_machine: work/test-plan.json
+  plan_human: test-plan.md
+  judge_plan: <work/judge-plan.json, when a judge is configured>
+
+claims:
+  every_register_requirement_reaches_a_row_or_is_in_not_planned: true
+  every_row_has_a_disposition_and_a_reason: true
+  every_row_mints_obligation_ids: true
+  every_contradiction_matrix_cell_reached_a_row: true
+  no_test_was_run_in_this_stage: true
+
+expected_of_the_receiver:
+  - "one or more cases per row with `automate` or a manual disposition; a row with `skip` or
+     `unverifiable` gets no case and is not re-argued"
+  - "every case quotes the obligation ids of its row - unchanged, not re-derived"
+  - "reuse or extend an existing case before writing a new one, as the row says"
+  - "a row with `source_conflict` or `oracle_unknown` keeps both readings in the case, and the
+     contested assertion is not automated until the owner answers at gate A"
+
+unresolved:
+  - id: R-9
+    reason: expectation_unconfirmed
+    detail: Guest cart after register then login; Q2 at gate A.
+  - id: R-13
+    reason: expectation_unconfirmed
+    detail: Cart page NaN input and unchecked fetches; Q3.
+  - id: R-16
+    reason: blocked_by_check
+    detail: Concurrent add race has no observable; Q4.
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

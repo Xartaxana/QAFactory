@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "note": "Package F: onboarding discovery (judge_discovery.py) and the deeper S1 grounding (judge_sources.py attachments, judge_diff.py hunks). Prefix disc_. The choice judgments over discovered candidates (disc_test_command, disc_env_file, disc_login_site, disc_hunk_relates) keep a two-entry placeholder criteria here only to satisfy the registry's own shape check; the calling script always overrides `criteria` with the real candidates of that one call, so no two calls share an option set. disc_key_role and disc_attachment_worth_opening use the fixed criteria below as written.",
+  "judgments": [
+    {
+      "id": "disc_test_command",
+      "stage": "onboarding",
+      "script": "judge_discovery.py",
+      "type": "choice",
+      "replaces": "the onboarding interview asking the team which command runs tests of a given level",
+      "undecided": "onboarding lists the candidates for the team to choose from, as without a judge",
+      "instructions": "Which one of the candidate commands listed in `candidates` is the command that actually runs the tests of level {level}? Judge only each candidate's own command text and the evidence given for it; do not assume a naming convention the evidence does not show.",
+      "criteria": {
+        "candidate": "One of the listed candidates is the command that runs this level of tests, going by its own text and evidence.",
+        "none": "No listed candidate runs this level of tests; the team must be asked."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "disc_env_file",
+      "stage": "onboarding",
+      "script": "judge_discovery.py",
+      "type": "choice",
+      "replaces": "the onboarding interview asking the team which env file the project actually reads",
+      "undecided": "onboarding lists the candidates for the team to choose from, as without a judge",
+      "instructions": "Which one of the candidate env files listed in `candidates` is the file this project's tests and application actually read at runtime, given each file's path, its key count and whether it looks like an example or template?",
+      "criteria": {
+        "candidate": "One of the listed files is the real env file, going by its path and keys, and is not an example or template.",
+        "none": "No listed file looks like the real one; the team must be asked."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "disc_login_site",
+      "stage": "onboarding",
+      "script": "judge_discovery.py",
+      "type": "choice",
+      "replaces": "the onboarding interview asking the team which call site performs the login",
+      "undecided": "onboarding lists the candidates for the team to choose from, as without a judge",
+      "instructions": "Which one of the candidate call sites listed in `candidates` is the code that actually performs this project's login before its tests run, given each site's location, kind and matched evidence line?",
+      "criteria": {
+        "candidate": "One of the listed call sites is the real login, going by its own location, kind and evidence line.",
+        "none": "No listed call site looks like a login; the team must be asked."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "disc_key_role",
+      "stage": "onboarding",
+      "script": "judge_discovery.py",
+      "type": "choice",
+      "replaces": "the onboarding interview asking the team what an env key NAME is used for",
+      "undecided": "onboarding lists the key for the team to classify, as without a judge",
+      "instructions": "In this project's environment configuration, what role does the key named `name` play? Judge the NAME alone; no value is given or needed.",
+      "criteria": {
+        "base_url": "The key holds the base URL or host of the application or an API under test.",
+        "user": "The key holds a username, login name or account email used to sign in.",
+        "secret": "The key holds a password or client secret used to authenticate.",
+        "token": "The key holds a bearer token, access token, API key or session token used instead of a password.",
+        "unrelated": "The key configures something else: a tool, a CI setting, a feature flag, a path, a port, or a value with no bearing on logging in or reaching the target."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "disc_attachment_worth_opening",
+      "stage": "S1",
+      "script": "judge_sources.py",
+      "type": "noul",
+      "replaces": "the scout deciding, from the listing alone, whether a mentioned ticket's attachment is worth opening",
+      "undecided": "the attachment stays pending for the scout to open, as without a judge",
+      "instructions": "Given the story titled `story_title`, is the attachment named `filename` (type `media_type`, `size` bytes, mentioned with the comment `comment`) worth downloading and inspecting to understand or verify this story's behaviour?",
+      "criteria": {
+        "true": "The name, type or the comment describing it indicates it documents or evidences the behaviour the story is about: a screenshot, mockup, log, spec or recording of the feature, a before/after state.",
+        "false": "The name, type or comment indicate generic boilerplate unrelated to this story's feature (an analytics export, an unrelated planning document, a duplicate already inspected, a signature image) or give no reason at all to think it matters."
+      },
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.08
+      },
+      "enabled": false,
+      "calibration": "rejected 2026-09-23 on TP1-15045 source-inventory.json (21 already-fetched attachments across 3 sources, shadow, typesafe): 0 of 21 decided, range 0.23-0.81, no threshold separates them. The story's own mockup (workflow-visual-diff-mockup-unified.html) scored 0.76, LOWER than several spec/plan documents of an unrelated ticket (0.78-0.81). Name, type, size and the mention comment (often null - 2 of 3 sources here carry none) do not carry enough signal to judge a document's relevance to a feature without reading it; the question needs the attachment's own text or a much richer comment to be worth asking again."
+    },
+    {
+      "id": "disc_hunk_relates",
+      "stage": "S1",
+      "script": "judge_diff.py",
+      "type": "choice",
+      "replaces": "the scout reading every diff hunk in full before deciding which acceptance criterion it relates to",
+      "undecided": "the hunk is kept for the scout to read, as without a judge",
+      "instructions": "Which one acceptance criterion listed in `acceptance_criteria` does the diff hunk in `hunk` implement, if any?",
+      "criteria": {
+        "unrelated": "The hunk changes behaviour or code that none of the listed acceptance criteria describes.",
+        "infrastructure": "The hunk is build, config, dependency, formatting, generated output or test-framework plumbing with no behaviour of its own."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      },
+      "calibration": "2026-09-23, TP1-15045 work/impl-diff-testproject1-backend.txt against the 11-item AC/TR list, 24 hunks sampled (shadow, typesafe): at confidence 0.75, 10 of 24 decided but included a plan.md for 'fix put workflow guardrail pre-persist' called unrelated at 0.82 confidence when it plausibly bears on TR-1/TR-2 - wrong enough, on a skip-list judgment, to raise the bar. At 0.9 (this file's threshold), only 2 of 24 decide, both application code (guardrail_service.py and workflow.py hunks matched to TR-2/TR-1) and both look right by inspection. Narrows scope (a decided hunk is skipped by the scout), so this stays at the 0.9 floor per the calibration lessons even though it decides rarely; undecided keeps the hunk in the scout's reading exactly as without a judge."
+    }
+  ]
+}

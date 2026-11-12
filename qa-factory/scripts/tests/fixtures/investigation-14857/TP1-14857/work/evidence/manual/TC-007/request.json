@@ -1,0 +1,6 @@
+{
+  "refused": {
+    "reason": "expectation unconfirmed - Q2: expected result 1 has no confirmed source (the question is open). What the right answer is has not been confirmed by anyone, so checking the product against it would only repeat the code",
+    "door": "the person's answer to Q2 at gate A (each question shows the behaviour before and now); until then the case stands as not checked by hand"
+  }
+}

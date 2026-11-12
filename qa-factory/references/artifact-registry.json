@@ -1,0 +1,326 @@
+{
+  "schema_version": 2,
+  "artifacts": {
+    "understanding.md": {
+      "path": "understanding.md",
+      "producer": "qa-req-tester",
+      "consumers": [
+        "gate-A",
+        "case-designer"
+      ],
+      "retention": "delivered",
+      "delivery": true,
+      "schema": "markdown"
+    },
+    "test-plan.md": {
+      "path": "test-plan.md",
+      "producer": "qa-test-strategist",
+      "consumers": [
+        "gate-A",
+        "case-designer",
+        "automator",
+        "runner"
+      ],
+      "retention": "delivered",
+      "delivery": true,
+      "schema": "markdown"
+    },
+    "test-report.md": {
+      "path": "test-report.md",
+      "producer": "qa-results-writer",
+      "consumers": [
+        "gate-B",
+        "user"
+      ],
+      "retention": "delivered",
+      "delivery": true,
+      "schema": "markdown"
+    },
+    "retro.md": {
+      "path": "retro.md",
+      "producer": "qa-retro-analyst",
+      "consumers": [
+        "user",
+        "knowledge"
+      ],
+      "retention": "delivered",
+      "delivery": true,
+      "schema": "markdown"
+    },
+    "context-manifest.json": {
+      "path": "work/context-manifest.json",
+      "legacy_alias": "context-manifest.json",
+      "producer": "qa-scout",
+      "consumers": [
+        "qa-req-tester"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "requirements-register.md": {
+      "path": "work/requirements-register.md",
+      "legacy_alias": "requirements-register.md",
+      "producer": "qa-req-tester",
+      "consumers": [
+        "planner",
+        "traceability"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "markdown"
+    },
+    "scope-card.md": {
+      "path": "work/scope-card.md",
+      "legacy_alias": "scope-card.md",
+      "producer": "qa-req-tester",
+      "consumers": [
+        "planner"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "markdown"
+    },
+    "automation-manifest.json": {
+      "path": "work/automation-manifest.json",
+      "legacy_alias": "automation-manifest.json",
+      "producer": "manifest_put",
+      "consumers": [
+        "runner",
+        "critic",
+        "ledger",
+        "delivery",
+        "dashboard"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "run-report.json": {
+      "path": "work/run-report.json",
+      "legacy_alias": "run-report.json",
+      "producer": "finalize_task",
+      "consumers": [
+        "triage",
+        "ledger",
+        "delivery",
+        "dashboard"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "triage.json": {
+      "path": "work/triage.json",
+      "legacy_alias": "triage.json",
+      "producer": "finalize_task/qa-failure-analyst",
+      "consumers": [
+        "results",
+        "delivery"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "readiness.json": {
+      "path": "work/readiness.json",
+      "legacy_alias": "readiness.json",
+      "producer": "readiness",
+      "consumers": [
+        "controller",
+        "doctor"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "case-actions.json": {
+      "path": "work/case-actions.json",
+      "legacy_alias": "case-actions.json",
+      "producer": "qa-case-designer",
+      "consumers": [
+        "gate-A",
+        "tms_publication"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "regression-recommendations.json": {
+      "path": "work/regression-recommendations.json",
+      "legacy_alias": "regression-recommendations.json",
+      "producer": "qa-test-strategist",
+      "consumers": [
+        "user",
+        "results"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "finalization-receipt.json": {
+      "path": "work/finalization-receipt.json",
+      "legacy_alias": "finalization-receipt.json",
+      "producer": "finalize_task",
+      "consumers": [
+        "controller",
+        "doctor"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "pipeline.json": {
+      "path": "pipeline.json",
+      "producer": "controller/stage_done",
+      "consumers": [
+        "stage_guard",
+        "dashboard",
+        "doctor"
+      ],
+      "retention": "delivered",
+      "delivery": true,
+      "schema": "json"
+    },
+    "events.jsonl": {
+      "path": "state/events.jsonl",
+      "producer": "event_store",
+      "consumers": [
+        "controller",
+        "recovery"
+      ],
+      "retention": "durable",
+      "delivery": "compact-record",
+      "schema": "Event"
+    },
+    "story-case-links.json": {
+      "path": "state/story-case-links.json",
+      "producer": "case_versions",
+      "consumers": [
+        "contract",
+        "delivery"
+      ],
+      "retention": "delivered",
+      "delivery": true,
+      "schema": "json"
+    },
+    "context-bundle.json": {
+      "path": "work/context-bundle.json",
+      "producer": "context_bundle/qa-scout",
+      "consumers": [
+        "qa-requirements-tester",
+        "qa-test-strategist",
+        "qa-automator"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "test-plan.json": {
+      "path": "work/test-plan.json",
+      "legacy_alias": "test-plan.json",
+      "producer": "qa-test-strategist",
+      "consumers": [
+        "qa-case-designer",
+        "qa-case-critic",
+        "controller"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "grounding.yaml": {
+      "path": "work/grounding.yaml",
+      "producer": "qa-test-strategist",
+      "consumers": [
+        "planner",
+        "controller",
+        "delivery"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "yaml"
+    },
+    "requirements-readiness.json": {
+      "path": "work/requirements-readiness.json",
+      "legacy_alias": "requirements-readiness.json",
+      "producer": "qa-requirements-tester",
+      "consumers": [
+        "controller",
+        "gate-A"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "ledger.json": {
+      "path": "work/ledger.json",
+      "legacy_alias": "ledger.json",
+      "producer": "ledger",
+      "consumers": [
+        "delivery",
+        "qa-doc-scribe"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "json"
+    },
+    "ledger.md": {
+      "path": "work/ledger.md",
+      "legacy_alias": "ledger.md",
+      "producer": "ledger",
+      "consumers": [
+        "delivery",
+        "qa-doc-scribe"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "markdown"
+    },
+    "case-appendix.md": {
+      "path": "work/case-appendix.md",
+      "legacy_alias": "case-appendix.md",
+      "producer": "render_case_appendix",
+      "consumers": [
+        "qa-case-critic",
+        "delivery"
+      ],
+      "retention": "task",
+      "delivery": "compact-record",
+      "schema": "markdown"
+    },
+    "bug-text": {
+      "path": "work/bug-text",
+      "producer": "delivery_summary",
+      "consumers": [
+        "gate-B",
+        "human"
+      ],
+      "retention": "task",
+      "delivery": false,
+      "schema": "markdown"
+    },
+    "manual-evidence-index.json": {
+      "path": "evidence/index.json",
+      "producer": "ledger",
+      "consumers": [
+        "dashboard",
+        "human"
+      ],
+      "retention": "task",
+      "delivery": false,
+      "schema": "json"
+    },
+    "interim-report.md": {
+      "path": "interim-report.md",
+      "producer": "interim_packet",
+      "consumers": [
+        "human"
+      ],
+      "retention": "task",
+      "delivery": false,
+      "schema": "markdown"
+    }
+  },
+  "unknown_machine_path": "work/{name}"
+}

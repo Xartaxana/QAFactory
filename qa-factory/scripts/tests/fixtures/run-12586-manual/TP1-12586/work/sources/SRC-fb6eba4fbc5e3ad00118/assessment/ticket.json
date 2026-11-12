@@ -1,0 +1,42 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "Constant started cuts sdk Q3 workspace exist, cumulative concluded, ever/roughly filtered, ProvING repos, cures-cache quotation collective, env standard thin idempotently.",
+  "id": "14176675",
+  "key": "TP1-13289",
+  "labels": [
+    "testproject1_core"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "TP1-11264",
+        "relation": "is a part of",
+        "status": "Closed",
+        "summary": "Compared Detailed cat Inspecting be Composition Much Isolated Edit born Partial Honestly",
+        "type": "Part of"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Major",
+  "provenance": {
+    "bytes": 12010,
+    "fields_requested": "*all",
+    "sha256": "4fb2b727142c936bb527934cc9fcc6e372ac482729bc59924f5ef463ec40c44c",
+    "source": "fetched"
+  },
+  "reporter": "User 4",
+  "revision": "2026-10-27T08:13:14.633+0000",
+  "status": "Logs",
+  "subtasks": [],
+  "title": "Belonging Owned & Make Preservation",
+  "type": "Epic"
+}

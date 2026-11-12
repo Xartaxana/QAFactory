@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of the tracker and the version-control host (FR-13): what a ticket key looks like and which commands deliver a change. Read by scripts/adapter_forms.py, the ONE reader; no other script holds a key shape or a delivery spelling. `ticket.kinds.<kind>`: `key` is a BARE regex (no capture group, never matches the empty text), `example` is what a person would write, `mentions` (optional) are extra ways a key is written in running text, each a regex with exactly one `({key})` group. A kind whose key never carries a project prefix (a bare number) is read as prefix-less: its keys count in free text only as `#N`, after `Ticket:` or through its own `mentions`, never as a bare number. `ticket.prefixless_mentions` are the mentions every prefix-less kind gets; `label` is the `Ticket: <key>` line the factory writes into every dispatch, which is the only mention that names a story (any form). `ticket.local` {key, example} is the key the factory gives a story no tracker holds (a bare regex like a kind's `key`, an example it takes whole); it is NOT a tracker kind, it is accepted under every kind, and a key of that shape is a local story only when its text file exists (scripts/local_keys.py, the ONE reader of that fact). `ticket.fallback_kind` is the form used when the project names no tracker, or names one this file does not hold and gives no `adapters.ticket.key_pattern`. `vcs.aliases` maps the program name a person may write to the host kind. `vcs.kinds.<kind>.delivery_commands` are the commands that deliver a change (open a merge or pull request): at least two whitespace-separated words, program first, or one word that is a push option. Every kind's commands are ALWAYS recognised, whatever the project's host is - a gate that knew only the configured host would let the other host's command through. A project adds its own through `adapters.vcs.delivery_commands`; the file is never narrowed by a config. `vcs.mention_commands` are the commands whose quoted arguments are text (a message, a pattern, an echo): a delivery command named inside them is a mention; the quoted arguments of every other command (ssh, eval, python -c, a shell) are read as commands again. `vcs.list_heads` are the words that open a list of words (`for`, `foreach`): substitutions standing alone in such a segment (`for f in $(a) $(b)`) are not read as the words of a delivery command, but a delivery word written in it, or a quoted argument, is read as before (`for c in \"gh pr create\"; do $c; done` runs it); a head that is a mention command or a bare `$var` releases pure substitutions the same way. `vcs.text_receivers` are the commands that only store, count or reorder what a heredoc or here-string hands them (`cat`, `tee`): a body written to one is text the stage guard does not read as a command, together with the receivers named by `vcs.mention_commands` and a script run; `vcs.script_runners` are launchers of a script file besides the python family of `launch-causes.json` (`run-py`), and `vcs.script_plain_flags` the flags of a python launcher that leave the script as the next word (`-B`, `-u`): a launch of a `.py` file reads its arguments as text, since the script may deliver with no words on the command line at all and the guard reads no script files. A damaged table gives none of the three lists, so nothing is then taken out of a command. A script that cannot read this file uses the built-in floor in adapter_forms.py (the Jira key shape, `glab mr create`, `gh pr create`) and says so.",
+  "ticket": {
+    "kinds": {
+      "jira": { "key": "[A-Z][A-Z0-9_]+-\\d+", "example": "PROJ-123" },
+      "file": { "key": "[A-Z][A-Z0-9_]+-\\d+", "example": "PROJ-123" },
+      "github": { "key": "\\d+", "example": "#123" },
+      "gitlab": { "key": "\\d+", "example": "#123" },
+      "ado": { "key": "\\d+", "example": "#123", "mentions": ["(?<![A-Za-z0-9_])AB#({key})(?![A-Za-z0-9_])"] }
+    },
+    "prefixless_mentions": {
+      "hash": "(?<![A-Za-z0-9_/&!])#({key})(?![A-Za-z0-9_])",
+      "label": "(?<![A-Za-z0-9_])Ticket:[ \\t]*#?({key})(?![A-Za-z0-9_-])"
+    },
+    "fallback_kind": "jira",
+    "local": { "key": "LOCAL-\\d+", "example": "LOCAL-1" }
+  },
+  "vcs": {
+    "aliases": { "glab": "gitlab", "gh": "github" },
+    "mention_commands": ["echo", "printf", "write-output", "write-host", "set-content", "add-content", "out-file",
+                         "grep", "egrep", "fgrep", "rg", "ag", "ack", "findstr", "select-string",
+                         "git commit", "git tag", "git log", "git notes"],
+    "list_heads": ["for", "foreach"],
+    "text_receivers": ["cat", "tee", "wc", "sort", "head", "tail"],
+    "script_runners": ["run-py"],
+    "script_plain_flags": ["-B", "-u", "-I", "-E", "-s", "-S", "-O", "-OO", "-q"],
+    "kinds": {
+      "gitlab": { "delivery_commands": ["glab mr create", "merge_request.create"] },
+      "github": { "delivery_commands": ["gh pr create", "hub pull-request"] }
+    }
+  }
+}

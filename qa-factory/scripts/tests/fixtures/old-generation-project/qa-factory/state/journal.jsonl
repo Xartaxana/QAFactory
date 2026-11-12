@@ -1,0 +1,2 @@
+{"ts": "2026-09-01T10:00:00+00:00", "event": "gate", "task": "QA-1", "gate": "risk_transfer", "decision": "accepted"}
+{"ts": "2026-09-01T10:05:00+00:00", "event": "stage_done", "task": "QA-1", "stage": "S1"}

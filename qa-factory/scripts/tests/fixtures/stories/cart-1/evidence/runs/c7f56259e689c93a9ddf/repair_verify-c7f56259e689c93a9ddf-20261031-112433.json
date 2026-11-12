@@ -1,0 +1,97 @@
+{
+ "task": "CART-1",
+ "label": "repair_verify-c7f56259e689c93a9ddf",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit=<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\evidence\\runs\\c7f56259e689c93a9ddf\\report.junit.xml",
+  "--project=chromium",
+  "tests/api/cart/cart-quote-order.spec.ts"
+ ],
+ "exit_code": 1,
+ "duration_s": 12.9,
+ "log": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c7f56259e689c93a9ddf\\repair_verify-c7f56259e689c93a9ddf-20261031-112433.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-10-31T10:24:33.569332+00:00",
+ "ended_at": "2026-10-31T10:24:46.428240+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 1,
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 4.3,
+  "passed": 0
+ },
+ "failed": [
+  {
+   "test": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+   "kind": "failure",
+   "why": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart"
+  }
+ ],
+ "results": [
+  {
+   "test_id": "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+   "status": "failed",
+   "reason": "cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart"
+  }
+ ],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c7f56259e689c93a9ddf\\repair_verify-c7f56259e689c93a9ddf-20261031-112433.junit.xml",
+ "report_hash": "0fe121fd65bb1d1b925b879b2f8bcc421ff3abd9db720490a38eb3dd8d581474",
+ "report_evidence": {
+  "path": "evidence/runs/c7f56259e689c93a9ddf/repair_verify-c7f56259e689c93a9ddf-20261031-112433.junit.xml",
+  "sha256": "0fe121fd65bb1d1b925b879b2f8bcc421ff3abd9db720490a38eb3dd8d581474"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "failed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "repair_verify",
+ "dispatch_id": "S5-qa-automator-4",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T10:24:30Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T10:24:46Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "summary_path": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c7f56259e689c93a9ddf\\repair_verify-c7f56259e689c93a9ddf-20261031-112433.json"
+}

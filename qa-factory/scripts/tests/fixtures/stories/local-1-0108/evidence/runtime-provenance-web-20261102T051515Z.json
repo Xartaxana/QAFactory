@@ -1,0 +1,25 @@
+{
+  "profile_id": "web",
+  "timestamp": "2026-11-02T05:15:15+00:00",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "person-confirmed:2026-11-02T01:26:12+00:00",
+  "evidence_refs": [
+    "<path-1>/test-automation-framework/qa-factory/artifacts/LOCAL-1/evidence/runtime-provenance-web-20261102T051515Z.json"
+  ],
+  "provenance": {
+    "technical_verification": false,
+    "identity_kind": "person_confirmed"
+  },
+  "result": "person_confirmed",
+  "person_confirmation": {
+    "words": "\u0414\u0430, \u043d\u0430 \u0441\u0442\u0435\u043d\u0434\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430\u044f \u0432\u0435\u0440\u0441\u0438\u044f, \u043c\u043e\u0436\u043d\u043e \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c (MyBooks a25b080, npm run start)",
+    "at": "2026-11-02T01:26:12+00:00",
+    "task": "LOCAL-1",
+    "kind": "deployed",
+    "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "container": "",
+  "checkout": "..\\MyBooks",
+  "comparisons": []
+}

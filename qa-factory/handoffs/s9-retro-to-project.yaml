@@ -1,0 +1,111 @@
+# S9 -> the project: what outlives this story is handed to the next one.
+#
+# The only handoff that crosses stories. Everything else in this folder is read within hours by a
+# role that is already waiting; these rows are read by an S0 that does not exist yet, possibly on
+# another ticket in another month, and nobody will be there to explain them. So a row here names
+# its own trigger: what has to be true for the next story to care about it.
+#
+# `obligations.md` is the single carrier between stories. A trap written into two strategy
+# documents fails audit A21, so every trap names one owning document and only one - code and run
+# traps to framework-rules.md, planning traps to test-strategy.md.
+#
+# Nothing is archived here. Hiding a story from the dashboard and the doctor is the person's word
+# to `qa-doctor`, never a role's conclusion.
+schema_version: 1
+contract: s9-retro-to-project
+stage: S9
+from_role: qa-retro-analyst
+to_role: project
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: retro.md
+    what: the prose over numbers already computed
+    required: true
+  - path: work/retro-numbers.json
+    what: the facts; no model does this arithmetic
+    required: true
+
+inputs_read:
+  - path: work/retro-numbers.md
+    version: <hash>
+  - path: work/handoffs/<the gate B file>.yaml
+    version: <its window id>
+    decisions_folded: <n>
+
+header:
+  role: qa-retro-analyst
+  stage: S9
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+retro_mode: <one of vocabulary.retro_modes - full|numbers|skip>
+feedback:
+  question: "One question for the retro: what did you dislike in this session, what should change?"
+  answer: "<their words, verbatim, or `declined`>"
+
+# Rows the next story reads. `state` is normally `filed` (written into the project ledger) or
+# `routed` (handed to a document outside this story).
+scope:
+  - id: <obligation id>
+    state: <filed|routed|deferred|not_executed>
+    reason: <= 80 characters>
+    text: <one line - what is owed>
+    trigger: <what makes the next story pick it up - an area, a file, a ticket type, a date>
+    owner: <factory|person|team>
+
+# Each trap goes into exactly ONE document. Naming the document here is what makes that checkable.
+knowledge_fold:
+  - fact: <one line - the trap, the term, the stand quirk, the owner's answer>
+    kind: <code_trap|run_trap|planning_trap|term|stand_quirk|gate_answer>
+    document: <project:strategy/framework-rules.md | project:strategy/test-strategy.md |
+               project:strategy/faq.md | project:project-profile.md | project:glossary.md>
+    written: <true|false>
+    as_proposal_in_report: <true|false>   # true when the owning file has no editable grant
+
+factory_backlog:
+  - id: <backlog id>
+    text: <one line>
+    from: <the run's own finding, or the person's feedback row>
+
+numbers:
+  estimation_ledger_line: <written|skipped>
+  orchestrator_share: <the share, and whether it exceeded retro.orchestrator_share_max>
+  stages_out_of_order: "<any stage that finished before it started, with its stamps>"
+  note: "both are findings about the factory, not work the person owes"
+
+delivery_bookkeeping:
+  manifest_rebuilt: <true|false>
+  post_s9_update: <authorised|pending|not_applicable>
+  pending_paths: "<the exact paths waiting, when gate B did not authorise this target>"
+
+claims:
+  every_trap_names_exactly_one_owning_document: <true|false>
+  nothing_was_archived_by_a_role: <true|false>
+  the_feedback_answer_is_verbatim_or_declined: <true|false>
+  the_dashboard_was_rebuilt: <true|false>
+
+# Where you looked for the cause of each thing that went wrong or dear in the run (spec t-1765 X7-7): the project reads it against
+# your Good outcome. Empty only with `tried_note` saying why nothing was looked for. Distinct from `blocked.tried` below, which is
+# what failed while filling this form.
+tried:
+  - requirement: <the thing that went wrong or dear>
+    technique: <where you looked for the cause (the journal, a log, a record)>
+    observation: <what you found, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <obligation or fold row>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

@@ -1,0 +1,14 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="1.085547">
+<testsuite name="sub\cart.spec.ts" timestamp="2026-10-31T17:36:55.793Z" hostname="p1" tests="2" failures="0" skipped="0" time="0.011" errors="0">
+<testcase name="g › adds one @api" classname="sub\cart.spec.ts" time="0.009">
+</testcase>
+<testcase name="g › adds two @api" classname="sub\cart.spec.ts" time="0.002">
+</testcase>
+</testsuite>
+<testsuite name="sub\cart.spec.ts" timestamp="2026-10-31T17:36:55.793Z" hostname="p2" tests="2" failures="0" skipped="0" time="0.009" errors="0">
+<testcase name="g › adds one @api" classname="sub\cart.spec.ts" time="0.007">
+</testcase>
+<testcase name="g › adds two @api" classname="sub\cart.spec.ts" time="0.002">
+</testcase>
+</testsuite>
+</testsuites>

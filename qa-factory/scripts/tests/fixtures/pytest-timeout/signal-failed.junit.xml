@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="301.2">
+<testcase classname="tests.test_reindex" name="test_ok" time="0.01"/>
+<testcase classname="tests.test_reindex" name="test_reindex_last_indexed" time="300.4"><failure message="Failed: Timeout (&gt;300.0s) from pytest-timeout.">+++ Timeout +++ (constructed row)</failure></testcase>
+</testsuite></testsuites>

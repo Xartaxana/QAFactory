@@ -1,0 +1,314 @@
+# S2 -> S3: the requirements register is handed to the strategist.
+#
+# The register is the story's oracle, so this file is where the factory proves the register was
+# built from everything it was given. `inputs_read` is not bookkeeping: it is the answer to the
+# one failure that has no refusal attached to it - a source or a diff hunk nobody opened. On
+# REF-2 the tester read part of `impl-diff.txt`, wrote 14 requirements, and every later
+# stage was correct about the wrong 14. The repaired run read every hunk and reached 21.
+#
+# The strategist may not add a requirement and may not repair one. Whatever is missing here is
+# missing from the plan, the cases, the tests and the report.
+# Fill: write your fields as "path: value" lines to work/handoffs/S2-qa-requirements-tester-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S2-qa-requirements-tester-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s2-tester-to-strategist
+stage: S2
+from_role: qa-requirements-tester
+to_role: qa-test-strategist
+
+inputs:
+  - path: work/handoffs/S2-qa-requirements-tester-1.yaml
+    what: this file
+    required: true
+  - path: work/requirements-register.md
+    what: every requirement with its source, revision, impact class and observable, the branches of the requirements (`## Branches`, BN-n) and a home for every sentence of the story's text (`## Source obligations`)
+    required: true
+  - path: work/requirements-readiness.json
+    what: the open questions with their readings and owners
+    required: true
+  - path: understanding.md
+    what: the brief the person reads at gate A, and the Size line
+    required: true
+  - path: work/sizing.json
+    what: the computed size, weights and the arithmetic behind them
+    required: true
+
+# One line per entry of the scout's `inputs`, with what was actually read of it. The counts come
+# from the scout's handoff and the answer is `<read> of <handed>`; anything short of the whole
+# is a `blocked` field, not a smaller number quietly written.
+inputs_read:
+  - path: work/impl-diff.txt
+    handed: 0
+    read: 0
+  - path: work/context-bundle.json
+    version: a25b0801669b
+  - path: MyBooks/docs/openapi.json
+    version: "sha256:776ea5d1fe9f"
+
+header:
+  role: qa-requirements-tester
+  stage: S2
+  window: LOCAL-1
+  verdict: ok
+
+# One row per requirement. This is the register in its machine form; the prose stays in the
+# register file. `state` from vocabulary.row_states - normally `found`, or `unresolved` for a
+# requirement whose oracle nobody can name yet.
+scope:
+  - id: R-1
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; story text
+    kind: confirmed_ac
+    source: "LOCAL-1 @ sha256:776ea5d1fe9f"
+    observable: "current-code:HomePage.tsx:118"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-2
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; story text
+    kind: confirmed_ac
+    source: "LOCAL-1 @ sha256:776ea5d1fe9f"
+    observable: "current-code:BookDetailPage.tsx:45"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-3
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; story text
+    kind: confirmed_ac
+    source: "LOCAL-1 @ sha256:776ea5d1fe9f"
+    observable: "current-code:WishlistPage.tsx:47"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-4
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; story text
+    kind: confirmed_ac
+    source: "LOCAL-1 @ sha256:776ea5d1fe9f"
+    observable: "current-code:cartService.ts:118"
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-5
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: technical_invariant
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:cartService.ts:53"
+    impact_class: money
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-6
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: technical_invariant
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:schemas.ts:40"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-7
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: technical_invariant
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:cartService.ts:35"
+    impact_class: money
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-8
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: technical_invariant
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:cartService.ts:33"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-9
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: derived_risk
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:cart/route.ts:15"
+    impact_class: access
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-10
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: derived_risk
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:cartService.ts:80"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-11
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: derived_risk
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:AppProviders.tsx:35"
+    impact_class: money
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-12
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: derived_risk
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:LoginPage.tsx:36"
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-13
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: derived_risk
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:WishlistPage.tsx:58"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-14
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: observable in current code; derived
+    kind: derived_risk
+    source: "MyBooks/docs/openapi.json @ sha256:4c438111734f"
+    observable: "current-code:CartPage.tsx:30"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+    # the register's `derived_from` cell takes the marks of vocabulary.derived_from_marks (`bug:candidate-defect`) as a segment
+
+# Requirements that disagree with each other or with a source. Both readings travel: the plan row
+# carries `source_conflict` or `oracle_unknown`, the design review is forced, and the owner sees
+# BOTH readings at gate A. A matrix cell that reaches no plan row is an exit-gate error at S3.
+contradiction_matrix:
+  - id: C-1
+    requirement: R-10
+    contradicts: scout note says PATCH /api/cart/{id}; contract and code say PUT
+    reading_a: PUT as in contract and code
+    reading_b: PATCH intended; code wrong
+    owner_role: dev_arch
+
+# Questions that block understanding. Each travels whole - the statement, what the sources say and
+# where, and the lettered readings with what each one costs. A question that arrives without its
+# readings goes back to this role, never to the person (REF-3).
+open_questions:
+  - id: Q1
+    statement: "Do the derived norms hold: a failed call is never shown as success (R-12, R-13, R-14)?"
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: "No ticket states it; LoginPage.tsx:36 and WishlistPage.tsx:58 ignore the answer, CartPage.tsx:30,36 skip the status"
+    readings:
+      - id: a
+        reading: norms hold in all three places
+        cost: the code is expected red where it ignores failure
+  - id: Q2
+    statement: Is the quantity update PUT or PATCH on /api/cart/{id}?
+    owner_role: dev_arch
+    severity: non_blocking
+    sources_say: "openapi.json and route.ts:8 say PUT; scout note says PATCH"
+    readings:
+      - id: a
+        reading: PUT, the note is a slip
+        cost: none
+  - id: Q3
+    statement: Does moving a wishlist book already in the cart grow its quantity by 1?
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: "openapi.json sums quantity; WishlistPage.tsx:48 posts 1; story silent"
+    readings:
+      - id: a
+        reading: quantity grows by 1
+        cost: one case for branch BN-4
+  - id: Q4
+    statement: Is the behaviour the current code shows for R-5, R-6, R-8, R-9, R-11..R-14 the one you expect?
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: Only the code speaks to these rows; see Behaviour claims in the register
+    readings:
+      - id: a
+        reading: the behaviour now is intended
+        cost: cases assert the current behaviour
+
+size:
+  computed: L
+  override: <the role's override, or a dash>
+  reasoning_ref: work/sizing.json
+
+artifacts:
+  register: work/requirements-register.md
+  readiness: work/requirements-readiness.json
+  understanding: understanding.md
+  sizing: work/sizing.json
+
+claims:
+  every_hunk_of_the_diff_was_read: true
+  every_requirement_has_an_observable_or_says_none: true
+  contradiction_matrix_walked_in_full: true
+  size_computed_by_sizing_py_not_quoted: true
+  size_recorded_in_pipeline: false  # `null` in pipeline.json while sizing.json said XXL
+
+expected_of_the_receiver:
+  - "every requirement above reaches a plan row (a `skip` row with a reason is a row) - the
+     strategist may not drop one silently and may not invent one"
+  - "a row touched by the contradiction matrix carries `source_conflict: true` or
+     `oracle_unknown: true` and forces design review at S4"
+  - "`observable: none` is a gate A question AND a plan row (`unverifiable` with `question_refs` and `if_answered`), never a
+     reason to skip the requirement; a register row marked `derived_from: bug:candidate-defect` (a suspect place in the code,
+     `observable: current-code:<file>:<line>`) asks for a test row: `automate` or `manual-agent`, or `unverifiable` with a branch
+     that sets one"
+  - "every branch of the register (`## Branches`, BN-n) is read as a unit of its own: a plan row carries it or it is named with a reason - it is never folded into the text of its requirement"
+
+# What you tried and saw, one row per attempt: the acceptor of the stage reads it against your Good outcome
+# (spec t-1765 B3). Empty only with `tried_note` saying why nothing was tried (a grounding window, a repair of
+# named findings). Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: R-4
+    technique: Equivalence partitioning
+    observation: guest-vs-user merge classes (both, guest only, no stock) are three branches with one rule
+    evidence: "qa-factory/artifacts/LOCAL-1/work/requirements-register.md#branches"
+  - requirement: R-6
+    technique: Boundary value analysis
+    observation: edges 0,1,999,1000 are named; text fixes 1..999 so none is a question
+    evidence: "qa-factory/artifacts/LOCAL-1/work/requirements-register.md#branches"
+  - requirement: R-12
+    technique: The negative of every rule
+    observation: "LoginPage.tsx:36 ignores the merge answer so a failed merge looks like success"
+    evidence: qa-factory/artifacts/LOCAL-1/work/user-path-failures.json
+  - requirement: R-10
+    technique: Sources that disagree
+    observation: scout note says PATCH, contract and route say PUT
+    evidence: "qa-factory/artifacts/LOCAL-1/work/requirements-register.md#contradiction-matrix"
+  - requirement: R-3
+    technique: Work an example by hand
+    observation: "moving a book already in the cart: two readings of the result"
+    evidence: "qa-factory/artifacts/LOCAL-1/work/requirements-readiness.json#Q3"
+tried_note: -
+
+unresolved:
+  - id: Q1
+    reason: expectation_unconfirmed
+    detail: failed-call norm awaits the person; default reading holds
+  - id: R-9
+    reason: handed_to_person
+    detail: size_recorded_in_pipeline is false because pipeline.size is None; the conductor records it
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: size.computed
+    source: "sizing.json"
+  - field: claims.size_computed_by_sizing_py_not_quoted
+    source: "verified by handoff_check.CLAIMS"

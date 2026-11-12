@@ -1,0 +1,26 @@
+{
+  "in-process": {
+    "environment": {
+      "note": "env_probe: ok; login ok; keys ok",
+      "owner": "factory",
+      "status": "ok"
+    },
+    "has_surfaces_key": false
+  },
+  "mixed-without-surface": {
+    "environment": {
+      "note": "env_probe: ok; login ok; keys ok",
+      "owner": "factory",
+      "status": "ok"
+    },
+    "has_surfaces_key": false
+  },
+  "url-row": {
+    "environment": {
+      "note": "env_probe: ok; login ok; keys ok",
+      "owner": "factory",
+      "status": "ok"
+    },
+    "has_surfaces_key": false
+  }
+}

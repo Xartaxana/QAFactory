@@ -1,0 +1,46 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that raising a cart line's quantity above available stock is rejected and the stored quantity stays unchanged.\n\n*Type:* negative  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* Application is reachable (local disposable environment)\n* A regular user account is available\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* Book \"Ariel\" is in stock; read its real stock S0\n\n*Test data:*\n* Book: Ariel\n* Initial quantity: 1\n* Attempted cart quantity: S0 + 1\n\n*Steps & Expected results:*\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; the cart badge in the navigation is absent or 0\n# On the catalog page type \"Ariel\" into the search box and click Search  \n   *Expected:* A catalog card titled \"Ariel\" is listed\n# Open the detail page of \"Ariel\"  \n   *Expected:* Detail page opens with heading \"Ariel\"\n# Read the stock number next to Stock and remember it as S0  \n   *Expected:* A stock number is shown\n# With Quantity 1 click Add to Cart  \n   *Expected:* Cart badge shows 1\n# Open the cart  \n   *Expected:* One line \"Ariel\" with quantity 1\n# Change the line's quantity to S0 + 1 and commit it (Enter or blur)  \n   *Expected:* A visible error states there is not enough stock\n# Reload the cart page  \n   *Expected:* Line \"Ariel\" still shows quantity 1; cart badge shows 1\n\n*Postconditions:*\n* Cart line quantity is unchanged\n\n*Traceability:*\n* User story: REF-10\n* Related bug: REF-29",
+  "id": "14509525",
+  "key": "REF-9",
+  "labels": [
+    "cart_update",
+    "insufficient_stock",
+    "negative",
+    "shopping_cart",
+    "web"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 15940,
+    "fields_requested": "*all",
+    "sha256": "d68d3c3278b88e128e1976e5c89c9083ffd231bc29188c896ee98fdf20d98bf6",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-15T14:26:38.362+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Reject raising cart quantity above stock",
+  "type": "Test"
+}

@@ -1,0 +1,126 @@
+diff --git a/src/app/webhook.py b/src/app/webhook.py
+index 1111111..2222222 100644
+--- a/src/app/webhook.py
++++ b/src/app/webhook.py
+@@ -10,3 +10,4 @@ def deliver(event):
+     body = event.body
+-    send(body)
++    send(body)
++    log_delivery(event)
+diff --git a/tests/test_webhook.py b/tests/test_webhook.py
+index 3333333..4444444 100644
+--- a/tests/test_webhook.py
++++ b/tests/test_webhook.py
+@@ -1,2 +1,3 @@
+ def test_deliver():
+-    assert deliver(None) is None
++    assert deliver(None) is None
++    assert log_delivery is not None
+diff --git a/src/app/filters.py b/src/app/filters.py
+index 5555555..6666666 100644
+--- a/src/app/filters.py
++++ b/src/app/filters.py
+@@ -3,2 +3,3 @@ import re
+ def keep(item):
+-    return bool(item)
++    return bool(item) and item.visible
+@@ -40,3 +41,4 @@ def page(items):
+     result = []
+-    for item in items:
++    for item in items[:MAX_PAGE_ITEMS]:
+         result.append(item)
+diff --git a/src/app/contest_service.py b/src/app/contest_service.py
+index 7777777..8888888 100644
+--- a/src/app/contest_service.py
++++ b/src/app/contest_service.py
+@@ -1,2 +1,2 @@
+-VERSION = 1
++VERSION = 2
+ NAME = "contest"
+diff --git a/src/app/latest_report.py b/src/app/latest_report.py
+index 9999999..aaaaaaa 100644
+--- a/src/app/latest_report.py
++++ b/src/app/latest_report.py
+@@ -1,2 +1,2 @@
+-ORDER = "asc"
++ORDER = "desc"
+ TITLE = "latest"
+diff --git a/backend/Tests/XTests.cs b/backend/Tests/XTests.cs
+index bbbbbbb..ccccccc 100644
+--- a/backend/Tests/XTests.cs
++++ b/backend/Tests/XTests.cs
+@@ -1 +1 @@
+-class XTests {}
++class XTests { }
+diff --git a/test-harness/conftest.py b/test-harness/conftest.py
+index ddddddd..eeeeeee 100644
+--- a/test-harness/conftest.py
++++ b/test-harness/conftest.py
+@@ -1 +1 @@
+-FLAG = False
++FLAG = True
+diff --git a/Docs/guide.py b/Docs/guide.py
+index fffffff..0000000 100644
+--- a/Docs/guide.py
++++ b/Docs/guide.py
+@@ -1 +1 @@
+-STEP = 1
++STEP = 2
+diff --git a/README.md b/README.md
+index 1212121..3434343 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-old words
++new words
+diff --git a/src/main/java/UserSpecs.java b/src/main/java/UserSpecs.java
+index 5656565..7878787 100644
+--- a/src/main/java/UserSpecs.java
++++ b/src/main/java/UserSpecs.java
+@@ -1 +1 @@
+-class UserSpecs {}
++class UserSpecs { }
+diff --git a/src/ABTest.java b/src/ABTest.java
+index 9090909..a1a1a1a 100644
+--- a/src/ABTest.java
++++ b/src/ABTest.java
+@@ -1 +1 @@
+-class ABTest {}
++class ABTest { }
+diff --git a/api/spec/openapi.py b/api/spec/openapi.py
+index b2b2b2b..c3c3c3c 100644
+--- a/api/spec/openapi.py
++++ b/api/spec/openapi.py
+@@ -1 +1 @@
+-SPEC = 1
++SPEC = 2
+diff --git a/__tests__/a.test.tsx b/__tests__/a.test.tsx
+index d4d4d4d..e5e5e5e 100644
+--- a/__tests__/a.test.tsx
++++ b/__tests__/a.test.tsx
+@@ -1 +1 @@
+-it("a", () => {})
++it("a", () => { })
+diff --git a/src/app/old_name.py b/src/app/renamed_name.py
+similarity index 100%
+rename from src/app/old_name.py
+rename to src/app/renamed_name.py
+diff --git a/assets/logo.png b/assets/logo.png
+index f6f6f6f..a7a7a7a 100644
+Binary files a/assets/logo.png and b/assets/logo.png differ
+diff --git a/src/app/payload_limit.py b/src/app/payload_limit.py
+new file mode 100644
+index 0000000..b8b8b8b
+--- /dev/null
++++ b/src/app/payload_limit.py
+@@ -0,0 +1,3 @@
++MAX_PAYLOAD_BYTES = 1048576
++def too_big(payload):
++    return len(payload) > MAX_PAYLOAD_BYTES
+diff --git a/src/my module.py b/src/my module.py
+index c9c9c9c..d0d0d0d 100644
+--- a/src/my module.py
++++ b/src/my module.py
+@@ -1 +1 @@
+-MODE = "a"
++MODE = "b"

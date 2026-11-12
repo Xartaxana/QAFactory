@@ -1,0 +1,20 @@
+{
+  "session_id": "synthetic-gaps-c",
+  "usage_completeness": "provisional",
+  "by_activity": {
+    "act-story": {"type": "story", "task": "SYN-1"},
+    "act-doctor": {"type": "doctor", "task": null},
+    "unclassified": {"type": "unclassified", "task": null}
+  },
+  "agents": [
+    {"agent": "qa-factory:qa-scout", "file": "agent-c1.jsonl", "tokens": 300, "activity_id": "act-story", "task": "SYN-1"}
+  ],
+  "incomplete_agents": ["qa-ghost"],
+  "incomplete_where": [{"agent": "qa-ghost", "activities": ["act-story"], "missing": 1}],
+  "requests": [
+    {"request_key": "gap-c-1", "stream": "orchestrator", "activity_id": "act-story", "task": "SYN-1", "timestamp": "2026-09-22T09:00:00Z", "usage": {"input": 100, "output": 20}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-c-2", "stream": "agent-c1.jsonl", "activity_id": "act-story", "task": "SYN-1", "timestamp": "2026-09-22T09:00:10Z", "usage": {"input": 40, "output": 5}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-c-3", "stream": "orchestrator", "activity_id": "act-doctor", "task": "(no task)", "timestamp": "2026-09-22T09:10:00Z", "usage": {"input": 30, "output": 5}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-c-4", "stream": "orchestrator", "activity_id": "unclassified", "task": "(no task)", "timestamp": "2026-09-22T09:20:00Z", "usage": {"input": 20, "output": 5}, "valuation": {"pricing_coverage": "none"}}
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "catalogue_revision": "provider-docs-2026-10-16-r1",
+  "entries": [
+    {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4-20250514",
+      "aliases": [
+        "claude-sonnet-4-0"
+      ],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": "2025-05-22",
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-09-18",
+      "rates": {
+        "input": 3,
+        "output": 15,
+        "cache_read": 0.3,
+        "cache_write_5m": 3.75,
+        "cache_write_1h": 6
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "aliases": [
+        "claude-sonnet-4-5"
+      ],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 3,
+        "output": 15,
+        "cache_read": 0.3,
+        "cache_write_5m": 3.75,
+        "cache_write_1h": 6
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4-6",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 3,
+        "output": 15,
+        "cache_read": 0.3,
+        "cache_write_5m": 3.75,
+        "cache_write_1h": 6
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 2,
+        "output": 10,
+        "cache_read": 0.2,
+        "cache_write_5m": 2.5,
+        "cache_write_1h": 4
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-5-5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 2,
+        "output": 10,
+        "cache_read": 0.1,
+        "cache_write_5m": 2.5,
+        "cache_write_1h": 4
+      },
+      "note": "All five rates are quoted on the Anthropic pricing page (checked 2026-10-16). Cache writes are 1.25x input for the 5-minute TTL and 2x for 1 hour; cache reads are 0.05x input."
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-haiku-4-5-20251001",
+      "aliases": [
+        "claude-haiku-4-5"
+      ],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 1,
+        "output": 5,
+        "cache_read": 0.1,
+        "cache_write_5m": 1.25,
+        "cache_write_1h": 2
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-6",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 5,
+        "output": 25,
+        "cache_read": 0.5,
+        "cache_write_5m": 6.25,
+        "cache_write_1h": 10
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-7",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 5,
+        "output": 25,
+        "cache_read": 0.5,
+        "cache_write_5m": 6.25,
+        "cache_write_1h": 10
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-8",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 5,
+        "output": 25,
+        "cache_read": 0.5,
+        "cache_write_5m": 6.25,
+        "cache_write_1h": 10
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 5,
+        "output": 25,
+        "cache_read": 0.5,
+        "cache_write_5m": 6.25,
+        "cache_write_1h": 10
+      }
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5-5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 4,
+        "output": 20,
+        "cache_read": 0.2,
+        "cache_write_5m": 5,
+        "cache_write_1h": 8
+      },
+      "note": "All five rates are quoted on the Anthropic pricing page (checked 2026-10-16). Cache writes are 1.25x input for the 5-minute TTL and 2x for 1 hour; cache reads are 0.05x input."
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-haiku-5-5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 0.1,
+        "output": 0.5,
+        "cache_read": 0.01,
+        "cache_write_5m": 0.125,
+        "cache_write_1h": 0.2
+      },
+      "note": "The prompt <= 100000 tokens tariff only. The page prices a prompt over 100000 tokens higher (input 0.5, output 2.5, cache read 0.05, cache write 5m 0.625, 1h 1); that band is not modelled here, so a long Haiku 5.5 prompt is under-priced. The factory never runs Haiku (P7); the row keeps the table complete."
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-fable-5-1",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 10,
+        "output": 50,
+        "cache_read": 0.25,
+        "cache_write_5m": 12.5,
+        "cache_write_1h": 20
+      },
+      "note": "Standard API list price. Cache writes follow the published multipliers (1.25x input for the 5-minute TTL, 2x for 1 hour); the cache-read rate is model-specific. Fable 5.1 reads cache at 0.025x input, a quarter of Fable 5's rate."
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-fable-5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_at": "2026-10-16",
+      "rates": {
+        "input": 10,
+        "output": 50,
+        "cache_read": 1.0,
+        "cache_write_5m": 12.5,
+        "cache_write_1h": 20
+      },
+      "note": "Standard API list price. Cache writes follow the published multipliers (1.25x input for the 5-minute TTL, 2x for 1 hour); the cache-read rate is model-specific."
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.6-terra",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": "2026-07-30",
+      "valid_to": null,
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "verified_at": "2026-09-19",
+      "pricing_basis": "public_api_standard_reference",
+      "rates": {
+        "input": 2,
+        "output": 12,
+        "cache_read": 0.2
+      },
+      "long_context": {
+        "threshold_input_tokens": 272000,
+        "rates": {
+          "input": 4,
+          "output": 18,
+          "cache_read": 0.4
+        }
+      },
+      "note": "Standard API equivalent estimate, not a Codex subscription charge. Unknown cache-write semantics remain unsupported; fast/flex/regional tariffs require an explicit verified project override."
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-6-astra",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": "2026-09-19",
+      "valid_to": null,
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "verified_at": "2026-09-19",
+      "pricing_basis": "public_api_standard_reference",
+      "rates": {
+        "input": 10,
+        "output": 50,
+        "cache_read": 1.0
+      },
+      "long_context": {
+        "threshold_input_tokens": 272000,
+        "scope": "request",
+        "rates": {
+          "input": 20,
+          "output": 75.0,
+          "cache_read": 2.0
+        }
+      },
+      "note": "Unconfirmed standard API reference, not a subscription bill. Other service tiers and cache-write semantics require a verified override."
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.6-sol",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": "2026-09-19",
+      "valid_to": null,
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "verified_at": "2026-09-19",
+      "pricing_basis": "public_api_standard_reference",
+      "rates": {
+        "input": 4,
+        "output": 20,
+        "cache_read": 0.4
+      },
+      "long_context": {
+        "threshold_input_tokens": 272000,
+        "scope": "request",
+        "rates": {
+          "input": 8,
+          "output": 30.0,
+          "cache_read": 0.8
+        }
+      },
+      "note": "Unconfirmed standard API reference, not a subscription bill. Other service tiers and cache-write semantics require a verified override."
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.6-luna",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": "2026-09-19",
+      "valid_to": null,
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "verified_at": "2026-09-19",
+      "pricing_basis": "public_api_standard_reference",
+      "rates": {
+        "input": 0.2,
+        "output": 1.2,
+        "cache_read": 0.02
+      },
+      "long_context": {
+        "threshold_input_tokens": 272000,
+        "scope": "request",
+        "rates": {
+          "input": 0.4,
+          "output": 1.7999999999999998,
+          "cache_read": 0.04
+        }
+      },
+      "note": "Unconfirmed standard API reference, not a subscription bill. Other service tiers and cache-write semantics require a verified override."
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.5",
+      "aliases": [],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": "2026-09-19",
+      "valid_to": null,
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+      "verified_at": "2026-09-19",
+      "pricing_basis": "public_api_standard_reference",
+      "rates": {
+        "input": 5,
+        "output": 30,
+        "cache_read": 0.5
+      },
+      "long_context": {
+        "threshold_input_tokens": 272000,
+        "scope": "session",
+        "rates": {
+          "input": 10,
+          "output": 45.0,
+          "cache_read": 1.0
+        }
+      },
+      "note": "Unconfirmed standard API reference, not a subscription bill. Other service tiers and cache-write semantics require a verified override."
+    },
+    {
+      "provider": "typesafe",
+      "model_id": "jev-1.13.0",
+      "aliases": [
+        "jev-latest",
+        "jev-preview"
+      ],
+      "currency": "USD",
+      "unit": 1000000,
+      "valid_from": null,
+      "valid_to": null,
+      "source_url": "https://docs.typesafe.ai/models",
+      "verified_at": "2026-09-21",
+      "rates": {
+        "input": 0.042,
+        "output": 0,
+        "cache_read": 0,
+        "cache_write_5m": 0,
+        "cache_write_1h": 0
+      }
+    }
+  ],
+  "note": "Standard API snapshot estimates, unconfirmed until project approval. No historical effective date is asserted; provider-specific discounts and surcharges require overrides."
+}

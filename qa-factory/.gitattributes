@@ -1,0 +1,9 @@
+# Line endings of the package (B-409). Tests compare package files byte for byte (the
+# reinstall-equals-fresh tree comparison, case-version hashes, size caps), and a Windows
+# checkout with core.autocrlf=true would otherwise write CRLF. eol=lf wins over core.autocrlf.
+# This file travels with the package into the release copy (same relative path).
+* text=auto eol=lf
+# The hook launcher is a cmd/sh polyglot: cmd.exe needs CRLF on Windows, sh needs LF on POSIX.
+# It keeps the checkout's own line endings (test_launcher_argv.py pins both forms).
+*.cmd !text !eol
+*.bat !text !eol

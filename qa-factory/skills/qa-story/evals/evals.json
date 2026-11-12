@@ -1,0 +1,470 @@
+{
+  "skill_name": "qa-story",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run qa-story QA-1 --ticket-file ai-packages/qa-factory/evals/fixtures/tickets/QA-1.md --branch feature/qa-1 --env local against the sample pytest fixture repository, and continue until it stops for a human decision.",
+      "expected_output": "It runs S0 preflight, dispatches qa-scout (S1), qa-requirements-tester (S2) and qa-test-strategist (S3), then stops at gate A with a single message that is the file gate_brief.py writes, work/gate-a-message.md, printed whole - its first line after the title names understanding.md and test-plan.md, the only two documents the human approves at this gate - with the conductor's own words after it. It does not proceed to S4 until an explicit approve is recorded.",
+      "files": [
+        "ai-packages/qa-factory/evals/fixtures/tickets/QA-1.md",
+        "ai-packages/qa-factory/skills/qa-story/phases/s3.md"
+      ],
+      "assertions": [
+        {
+          "name": "gate-a-is-one-message-code-text",
+          "description": "Gate A arrives as exactly one message that starts with the file gate_brief.py writes, work/gate-a-message.md, printed whole: its first line after the title names understanding.md and test-plan.md, its question cards keep their readings and Answer lines, and the conductor's own words come after it - not a summary, not a series of separate questions, and not an approval request split from the questions."
+        },
+        {
+          "name": "gate-a-decision-items-complete",
+          "description": "The message asks for all six decision items: understanding, type and size, plan approval or row edits, the fit of each plan row, what to do with each requirement that has no observable in code, and answers to the open questions."
+        },
+        {
+          "name": "answers-are-not-approval",
+          "description": "The message states that answering the questions is not approval and that approve is a separate word; the skill does not treat engagement with the questions as consent to proceed to S4."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Run qa-story QA-1 --ticket-file ai-packages/qa-factory/evals/fixtures/tickets/QA-1.md --env local with no --mr, no --branch, no --commit and no --ungrounded, in a repository where no diff for QA-1 exists.",
+      "expected_output": "qa-scout returns a halt digest and its manifest says implementation.source: none. The orchestrator does not search for the change itself. It presents the fixed four-option halt — (1) give an MR, branch or commit; (2) name the environment and repository where the change already lives, for current-code grounding; (3) pass --ungrounded for requirements only, on the code the stand runs now; (4) say it is not built yet (tests written from the requirements, the story stops after them) — records the answer in the journal, and re-dispatches qa-scout once with the chosen mode. It never reaches S2 before that answer.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s1.md",
+        "ai-packages/qa-factory/agents/qa-scout.md"
+      ],
+      "assertions": [
+        {
+          "name": "three-option-halt-not-a-search",
+          "description": "On a no-diff halt the skill asks the four fixed options (change, lives, ungrounded, not built yet) rather than searching branches, commits or merge requests on its own initiative."
+        },
+        {
+          "name": "answer-journaled-then-one-redispatch",
+          "description": "The human's answer is written to records/journal.jsonl verbatim before qa-scout is dispatched again, and qa-scout is re-dispatched exactly once with the chosen implementation_source."
+        },
+        {
+          "name": "no-s2-before-grounding",
+          "description": "qa-requirements-tester is not dispatched while the grounding question is unanswered."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Reach stage S5 of qa-story QA-1 in a repository whose working tree has three uncommitted files, and let it start automation.",
+      "expected_output": "Before any test file is written and before any branch is created, the skill runs git status --porcelain, finds the tree dirty, and halts with the four options: stash, commit first, proceed with a warning, or abort. The answer is journaled verbatim. Only after that does it create the story branch from config.git_conventions.branch, and only from a clean tree (or after an explicit proceed-with-a-warning).",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s5.md"
+      ],
+      "assertions": [
+        {
+          "name": "tree-checked-before-branching",
+          "description": "git status --porcelain runs before the branch is created and before qa-automator is dispatched, not after the first file is written."
+        },
+        {
+          "name": "four-options-recorded",
+          "description": "The dirty-tree halt offers exactly stash / commit first / proceed with a warning / abort, and the chosen answer is written to the journal before anything is stashed, committed or branched."
+        },
+        {
+          "name": "branch-pattern-from-config",
+          "description": "The branch name comes from config.git_conventions.branch; an empty pattern halts naming that config key instead of inventing a scheme."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Run stage S6 of qa-story on a test plan that contains four automate rows, three manual-agent rows and two manual-human rows.",
+      "expected_output": "The orchestrator builds runner blocks only from the manual-agent rows, one case per manual window (up to five only by --scope when one scenario proves them, or in a rework), and dispatches qa-runner once per window, sequentially. The two manual-human rows are never dispatched to qa-runner — they travel to test-report.md as cases for the human to execute. Automated tests are re-run through run_suite.py only if the head or the application build moved since the code critic's green run at S5.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s6.md",
+        "ai-packages/qa-factory/agents/qa-runner.md"
+      ],
+      "assertions": [
+        {
+          "name": "manual-human-never-dispatched",
+          "description": "No qa-runner dispatch contains a manual-human case; those rows appear only in the results brief as work for the human."
+        },
+        {
+          "name": "windows-sized-and-sequential",
+          "description": "A manual window holds one case (up to five only by --scope when one scenario proves them, or in a rework), and windows run one after another, one dispatch at a time."
+        },
+        {
+          "name": "no-gratuitous-rerun",
+          "description": "When neither the test head nor the application build changed since the S5 green run, no feature re-run is launched and the critic's recorded run stands as the run of record."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Reach gate B of qa-story QA-1 in a run where check_delivery.py reports delivery_ready: no because one test is flaky and was not fixed within the repair cap.",
+      "expected_output": "Gate B is one message beginning with work/ledger.md verbatim — one row per plan row and one per test — then delivery_ready: no with the reasons from work/ledger.json, then the report's product-problem items, then a decision per gap, then the delivery items, and a path to the single test-report.md. Because delivery_ready is no, the message contains no option to open the MR; it offers 'deliver with known gaps', which requires a stated reason. The unfixed flaky test gets its own choice: another fix round, or quarantine with a debt file and a trigger.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s8.md",
+        "ai-packages/qa-factory/references/stage-model.md"
+      ],
+      "assertions": [
+        {
+          "name": "ledger-first-verbatim",
+          "description": "The gate B message opens with the generated ledger.md text, unabridged, before any verdict or narrative; no row is folded or summarized away."
+        },
+        {
+          "name": "no-open-mr-when-not-ready",
+          "description": "With the verdict word `no` (delivery_ready: no), the message offers no 'open MR' option at all — only 'deliver with known gaps' with a reason; only the words `yes` and `after_checks` offer the Draft MR (on `after_checks` its description carries Left with you)."
+        },
+        {
+          "name": "quarantine-only-as-a-decision",
+          "description": "The unfixed flaky test is not quarantined automatically; quarantine appears only as an explicit human choice paired with a debt file and a trigger."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "At gate B of qa-story QA-1 with delivery_ready: no, answer 'deliver with known gaps' and give no reason.",
+      "expected_output": "The skill does not proceed. It asks once for the reason, and executes nothing until one is stated. When the reason is given, it writes a deliver_with_risks record to records/journal.jsonl with the reason verbatim, sets pipeline.json gates.B.deliver_with_risks, and only then opens the MR — whose description carries a 'Delivered with known gaps' banner above the same checks ledger.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s8.md",
+        "ai-packages/qa-factory/scripts/stage_guard.py"
+      ],
+      "assertions": [
+        {
+          "name": "reason-required",
+          "description": "A deliver-with-known-gaps answer without a reason produces one request for the reason and no delivery action of any kind."
+        },
+        {
+          "name": "deliver-with-risks-journaled",
+          "description": "The journal receives a deliver_with_risks record naming the ticket and the verbatim reason — the record stage_guard rule 4 reads before it allows a delivery command."
+        },
+        {
+          "name": "mr-banner-and-ledger",
+          "description": "The MR description carries the 'Delivered with known gaps' banner and the checks ledger, so a reviewer sees the gaps without opening attachments."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Finish stage S9 of qa-story QA-1 after gate B has been recorded.",
+      "expected_output": "The skill asks exactly one optional question, verbatim: \"One question for the retro: what did you dislike in this session, what should change? (optional — reply 'skip')\". No other question is asked at S9. The answer, or 'declined', is recorded verbatim and passed into the qa-retro-analyst dispatch, which does the knowledge fold, the obligations rows this run leaves behind, and the dashboard rebuild. Nothing is archived at S9 and no handoff file is written. The run ends with a summary of at most ten lines.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s9.md",
+        "ai-packages/qa-factory/agents/qa-retro-analyst.md"
+      ],
+      "assertions": [
+        {
+          "name": "one-optional-question-fixed-text",
+          "description": "S9 asks exactly one question, in the fixed wording, marked optional with 'skip' as an accepted answer; no follow-up question and no self-assessment of the session precedes it."
+        },
+        {
+          "name": "answer-verbatim-not-paraphrased",
+          "description": "The human's answer reaches retro.md and factory-backlog.md verbatim, or is explicitly marked declined — never rewritten into the skill's own words."
+        },
+        {
+          "name": "final-summary-at-most-ten-lines",
+          "description": "The closing summary is at most ten lines and names what was delivered, what stays open, and one next action — it does not restate the ledger or the stage list."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Run qa-story QA-1 again in a repository where qa-factory/artifacts/QA-1/pipeline.json already records S0 through S5 as done, gate A as approve, and S6 as pending.",
+      "expected_output": "S0 reads pipeline.json and records/journal.jsonl first, reports in one line where the story stands, and resumes at S6. It does not re-run preflight, does not re-ask which environment to test on, and does not re-ask the gate A decision or offer to confirm it. Stages already done are not re-dispatched.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s0.md",
+        "ai-packages/qa-factory/references/artifact-contract-json.md"
+      ],
+      "assertions": [
+        {
+          "name": "recorded-gate-never-re-asked",
+          "description": "The recorded gate A decision is read from pipeline.json and the journal and is never presented to the human again, not even for confirmation."
+        },
+        {
+          "name": "resume-at-first-not-done-stage",
+          "description": "Work restarts at S6, the first stage whose status is not done; S1 through S5 are not re-dispatched."
+        },
+        {
+          "name": "done-without-artifact-is-not-done",
+          "description": "A stage recorded done whose declared output file is missing on disk is set back to pending and re-run, rather than trusted on its status alone."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Start qa-story QA-1 in an onboarded project without passing --env.",
+      "expected_output": "S0 asks exactly one question, with the default taken from config.environments[0]: 'Which environment do we test on? default: <name>'. It does not probe stands to guess which is up, does not deploy anything, and does not substitute a placeholder URL. The answer is written into pipeline.json.environment and the journal. This is the only question S0 asks; the functional-only scope is stated, not asked.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s0.md",
+        "ai-packages/qa-factory/references/environments.md"
+      ],
+      "assertions": [
+        {
+          "name": "one-environment-question-with-default",
+          "description": "Exactly one environment question is asked, and it offers the first entry of config.environments as the default rather than listing every stand as an open choice."
+        },
+        {
+          "name": "factory-never-deploys-or-guesses",
+          "description": "The skill neither brings an environment up nor infers from a health check that something is deployed; the human names the stand."
+        },
+        {
+          "name": "scope-stated-not-asked",
+          "description": "The functional-only scope of v0 is printed as a statement at S0 and is never phrased as a question."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "During qa-story QA-1, stage S5 finishes with automation-manifest.json holding one unresolved entry whose reason is 'impossible'. Try to continue into S6.",
+      "expected_output": "stage_guard denies the S6 dispatch. The skill does not reshape the dispatch or work around the guard: it sends the impossible case back to qa-case-designer once, and if it remains impossible, presents the guard's message verbatim with the entry list and asks for one word per entry. A 'defer' is recorded as a gate decision and qa-automator is re-dispatched once to write the reason as deferred_by_decision:gateA; the orchestrator never edits the manifest itself.",
+      "files": [
+        "ai-packages/qa-factory/skills/qa-story/phases/s5.md",
+        "ai-packages/qa-factory/references/stage-model.md"
+      ],
+      "assertions": [
+        {
+          "name": "guard-denial-is-a-halt",
+          "description": "A stage_guard denial is reported verbatim and stops the pipeline; the skill does not rename the role, rephrase the dispatch, or route the command around the guard."
+        },
+        {
+          "name": "impossible-returns-to-designer-once",
+          "description": "An impossible entry goes back to qa-case-designer for exactly one round before it is treated as permanent and named in the ledger."
+        },
+        {
+          "name": "manifest-never-hand-edited",
+          "description": "The orchestrator does not write or edit automation-manifest.json; a reason change is made by re-dispatching qa-automator."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Run qa-story on a project whose config has adapters.ticket.method = agent and invoke = jira-assistant, with no usable adapters.ticket.direct_api, and watch S0.",
+      "expected_output": "The tracker agent is a write channel and not a data source (D-06), so ticket_adapter.py get exits 3 naming adapters.ticket.direct_api and the onboarding command, and no agent is dispatched at S0 on any branch. The driver asks the person the ticket_read question in the story's own words - what was tried and why it failed - with three answers: not needed, fix the way in and answer retry (the read runs again), or the ticket pasted as text. A pasted text becomes driver-tmp/ticket-<TICKET>.md and is read by get --ticket-file; the snapshot is labelled person_pasted by the route, whatever the text says. Any non-empty text is taken and the parser decides what it found - the same parser as a description fetched from the tracker (a section named like the criteria, then a list in any marker; a '# ' line is a heading in a paste); a text with no '# ' line takes its first line as the title (provenance.title_from first_line) and the person is asked once (go on keeps it, or add a title line and retry); a ticket with no criteria section goes on with the first line of the story's warnings naming the headings it looked for (no question, D-0050); a criteria section with text under it and no criteria read is the person's question that names the factory's reader as the failure (paste, go on or stop), never a guess. A failed read has three owners, named by the adapter's exit code and its error object: the tracker's (exit 1 or 3) is the ticket_read question, the factory's (exit 4: a broken data table or setting) is a refusal that names the file and is never put to the person as a choice, and a lost login (exit 5) is a stop. 'go on' is not one of the ticket_read answers and is asked again. With a usable direct_api (whatever method says) S0 makes ONE REST read, get --json --raw-dir, and the snapshot is labelled fetched; a login the tracker stopped accepting is a stop that names the token variable, never this question.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no-agent-at-s0",
+          "description": "No tracker agent is dispatched at S0, with or without a usable direct_api: the ticket is read by REST or asked of the person; the agent stays a write channel."
+        },
+        {
+          "name": "ticket-read-question-three-answers",
+          "description": "A read that fails is the ticket_read question: it names every route tried and why it failed in the story's words, offers not needed, retry after fixing the way in, and the ticket as text, and passes the text rules of human-questions.md; go on is asked again, changed."
+        },
+        {
+          "name": "provenance-by-route",
+          "description": "The snapshot says fetched for a REST read and person_pasted for a paste, set by code from the route, never from a source line in the text; a snapshot already on disk is read as it is and never rewritten."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "A story is resumed a day later, and in the meantime the ticket's description was edited and two comments were added. Run qa-story again and take it to gate A.",
+      "expected_output": "The snapshot is taken once at S0. It is re-read only when the story stood still, and the trigger is one rule: the last comparison (checked_at in work/ticket-freshness.json, else the baseline work/ticket-snapshot.json's fetched_at) is more than 6 hours old or unknown, applied when the pipeline is resumed or a gate answer arrives - never on a run proceeding normally from stage to stage. Where it applies: run ticket_adapter.py freshness <TICKET> --task-root <story folder>, which compares the ticket as it stands with work/ticket-snapshot.json and journals the event itself; no .prev copy exists. The severity is the branch: requirements (title, type, description, acceptance criteria) stops before the gate with the diff shown and named options (re-run S2-S3 / continue on the old text as a known gap / stop), because the register and plan were built on the old text (the baseline is kept and the new text waits as work/ticket-snapshot.next.json until freshness --adopt); context (comments, status, links) becomes one line in the gate message and the story continues; none is silent. For context and requirements a ticket_changed event is journaled with the severity and the changed field names.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "re-read-at-the-three-points",
+          "description": "The ticket is re-read on resume and before each gate, and not on every stage - each re-read on an agent-reached tracker costs a dispatch."
+        },
+        {
+          "name": "severity-decides-not-the-model",
+          "description": "The halt-or-continue decision comes from ticket_adapter.py freshness's severity field, not from a role's own reading of the two texts."
+        },
+        {
+          "name": "ticket-changed-journaled",
+          "description": "records/journal.jsonl gains a ticket_changed event naming the severity and the fields that moved."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "At gate B on a project whose bugs channel is delivered by the Jira assistant, the human chooses to file two bug drafts.",
+      "expected_output": "qa-bug-reporter writes bugs/BUG-n.md and a proposal per bug and never touches the tracker. external_writes.py validates the proposals, enforces the write scopes and the gate, writes a pending marker before anything is dispatched, prints a PAYLOAD line per proposal and exits 4. The orchestrator dispatches the assistant once per proposal, comes back with --record --external-id, verifies the created id by reading it back through the ticket adapter, and re-runs external_writes.py until it exits 0. An assistant that cannot name the id it created is a halt: the local bug file stands and the unsent write becomes an obligations.md row.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "bug-reporter-never-dispatches",
+          "description": "The bug reporter's output is the local bug file plus a proposal; the dispatch to the assistant is done by the orchestrator after gate B."
+        },
+        {
+          "name": "pending-before-dispatch",
+          "description": "A pending marker is written to the proposal before the assistant is asked, so a resumed run tells it to search for the issue rather than create a duplicate."
+        },
+        {
+          "name": "books-stay-in-the-script",
+          "description": "The external_id, the journal's external_write event and the bug file's front-matter stamp are all written by external_writes.py --record, never by the model directly."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "S4 is finished for a story: cases are pinned, the critic returned approve_with_fixes with two exact replacements, the test repository has uncommitted changes, and the plan declares that localhost has no non-owner account. Ask gate A.",
+      "expected_output": "Before any gate message the orchestrator runs gate_preflight.py --task <TICKET> --gate A. It repairs the factory_fixable findings itself first (critic_rollcall.py --apply-fixes, re-pin) and closes S4 only when none is left. The single gate A message then carries the brief built by gate_brief.py, including 'After your approval', and asks the person_decides findings in the same message: the dirty working tree and branch, and the missing non-owner account. After the person's answer the decision is recorded with controller.py --operation gate-decision --gate A --words-file <file> holding their words, and S5 starts without a further question.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "rehearsal-before-gate",
+          "description": "gate_preflight.py runs before the person is addressed, not after their approval."
+        },
+        {
+          "name": "factory-repairs-first",
+          "description": "The unapplied exact fixes are applied by code before the gate; the person is not asked about them."
+        },
+        {
+          "name": "one-stop-one-answer",
+          "description": "The dirty tree, branch and environment gap are questions inside the gate A message, not a separate stop after it."
+        },
+        {
+          "name": "decision-built-by-controller",
+          "description": "The decision is recorded with --operation gate-decision and the person's words; no hand-written decision request, no reading of controller.py."
+        },
+        {
+          "name": "s5-in-same-window",
+          "description": "After the decision is recorded the orchestrator follows the gate-decision answer's next_action and starts S5 in the same window; it does not end the turn with a restart line or a claim that a fresh window is needed."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Gate A is approved on record, but the Agent dispatch of qa-automator is denied by the stage guard with a message that contradicts pipeline.json, and controller.py --operation next answers wait_existing_job for a dispatch no agent ever ran.",
+      "expected_output": "The orchestrator treats it as the factory's own defect. It runs controller.py --operation recover, which closes the never-started dispatch, and retries. If the guard still refuses, it reports the denial verbatim with the waiver.py command the message ends with, says 'owner: factory', records the finding with project_decisions.py add-finding, and asks only for the person's word; on 'go on' it records the word with waiver.py --block set to a refusal line, whole or in part (or wait_existing_job for a dispatch nobody is doing) and --words-file, and reads what it prints: 'block lifted' (the guard checked it) and it dispatches in the same turn; 'not verified' (the step that refused reads the word when it runs again) and it runs that step; a refusal listing the lines standing and it records again with one of them, or keeps the words with --remark. It never proposes that the person edit a file of the plugin or 'ask the maintainers', never hand-edits pipeline.json, and does not end the window with a restart request after a service step.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "recover-first",
+          "description": "recover is run before the person hears anything; a never-started dispatch is closed by code."
+        },
+        {
+          "name": "no-plugin-edit-offer",
+          "description": "Neither 'patch the plugin line yourself' nor 'ask the factory maintainers' is offered as a choice."
+        },
+        {
+          "name": "word-lifts-block",
+          "description": "The person's 'go on' is recorded with waiver.py against a refusal line, whole or in part, and what it prints is read before the dispatch is repeated: 'block lifted' (the guard checked it) goes on; 'not verified' runs the step again; a refusal listing the lines standing is recorded again with one of them, or the words are kept with --remark."
+        },
+        {
+          "name": "finding-recorded",
+          "description": "The defect is logged with project_decisions.py add-finding, owner factory."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "At S5 the code critic returned eight findings, all addressed to the automator, and the orchestrator hands them to the automator for repair round 2 of 2.",
+      "expected_output": "The person receives exactly one sentence built by stage_status.py --event critic_returned (findings count, round 2 of 2, nothing is needed from you); the findings themselves stay in the critic's file and the repair prompt references that file. No finding is retyped into the chat.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "one-sentence-status",
+          "description": "The message to the person is one status line from stage_status.py, not a list of the critic's findings."
+        },
+        {
+          "name": "findings-stay-in-file",
+          "description": "The repair dispatch points the author at the findings file instead of retyping the findings."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "controller.py --operation next answers wait_existing_job for S3-qa-test-strategist-2 with liveness unknown; the person says the strategist is dead and nobody is working on it.",
+      "expected_output": "The orchestrator does not cancel or hand-edit anything. It records the person's words with controller.py --operation release --dispatch S3-qa-test-strategist-2 --words-file <file> (or waiver.py --block wait_existing_job --words-file <file>), reads the block lifted line, follows the relaunch packet next returns, and continues in the same turn.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "release-by-word",
+          "description": "The dispatch is released through the controller with the person's exact words, never by editing controller.json or pipeline.json."
+        },
+        {
+          "name": "relaunch-followed",
+          "description": "The ready relaunch packet from next is used as is; no dispatch request is rebuilt by hand."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "The person answered gate A with 'approve, keep all automate'. The window has room: the gate-decision answer will carry window.verdict fits.",
+      "expected_output": "The orchestrator records the decision with controller.py --operation gate-decision --gate A --words-file <file> and reads the whole answer, with no cut, head or tail on it. Approved publication runs as the decision authorized, and S5 starts in the same turn and window, following the answer's next_action.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "continues-after-gate-a",
+          "description": "After the recorded approval the orchestrator reads phases/s5.md and starts S5 in the same turn; it does not stop with '<TICKET> is at S5; continue with /qa-factory:qa-story' or any restart line."
+        },
+        {
+          "name": "answer-read-whole",
+          "description": "The gate-decision command is not piped through cut, head or tail; next_action and window are read from the whole answer."
+        },
+        {
+          "name": "window-change-only-by-code",
+          "description": "A window change is said only by quoting the answer's window line; the orchestrator never claims a fresh window is needed in its own words."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "The project's config sets pipeline.stop_after to gate_A. The person answered gate A with 'approve, keep all automate' and publish_cases was authorized.",
+      "expected_output": "Gate A is presented and recorded as usual with controller.py --operation gate-decision --gate A --words-file <file>. The authorized publication runs in this window. The answer's next_action is stop and its window is null, so the orchestrator says '<TICKET> stops after Gate A (pipeline.stop_after)' in one line and ends. S5 does not start.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "stop-after-holds",
+          "description": "The story ends after the recorded gate A decision and the authorized publication, with the one line naming pipeline.stop_after; S5 is not started."
+        },
+        {
+          "name": "no-window-line-with-stop",
+          "description": "A stop and a window line never come together: the answer's window is null and the orchestrator quotes no WINDOW BUDGET line and no restart command."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "The person answered gate B with 'deliver, file the two bugs'; the delivery verdict is after_checks (ready once the person finishes the checks left with them). The gate-decision answer carries window.verdict change.",
+      "expected_output": "The orchestrator records the decision with controller.py --operation gate-decision --gate B --words-file <file> --drafts <refs>, reads the whole answer, and delivers what the person authorized in this window: the MR as Draft, the chosen bugs, and 'Left with you' in the report. Only then does it quote the answer's window line and end the window. S9 is not started in this window, and the person is not told to type a restart in the orchestrator's own wording.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "delivery-before-window-change",
+          "description": "The delivery the person authorized (MR Draft, chosen bugs, report) runs before the window line is quoted; the window line never comes before it."
+        },
+        {
+          "name": "third-outcome-is-not-a-stop",
+          "description": "The after_checks verdict neither stops the story nor changes the window: delivery runs as for yes, and the only window change is the one the answer's window line states."
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "At S7 the failure analyst triages four red UI tests of an integration-move story, each handed over with contradicts_requirement. Test one: after the move the credential values read back carry keys the before-state lacked (alias, resource_id, assistant_ids); the requirement says the move keeps the integration safe and complete and says nothing about the stored dictionary being byte-for-byte equal; the assert is the case's own Then (equal to the before state). The analyst saved the integration in the form without changing the project, on data that answers the Given, and the same three keys appeared (output in evidence/control-save.json). Test two: its seed has an empty username while the case's Given says the non-secret values are filled, and its assert is about the stored values, not about extra keys. Test three differs from test one only in that the stand cannot save the form without moving the project, so no control experiment can be run. Test four has the seed of test two (an empty username while the Given says the non-secret values are filled) and the same extra keys as test one; the analyst ran the same action without the change on data that answers the Given, and the same three keys appeared (output in evidence/control-save-given.json).",
+      "expected_output": "Test one: before any APP_BUG the analyst has the control experiment (the same action without the change, one command, its output under evidence/) and writes the control block with result effect_without_change; the requirement does not ask for the equality, so the verdict is ASSERT_STRICTER, not CASE_DEFECT even though the assert is the case's own Then. No repair, no bug draft, no rework, no return to gate A; the report carries a Left with you line (remove the assert, or refine the requirement). Test two: the seed is compared with the Given first; data weaker than the Given is a TEST_BUG of the data, repaired by the automator with the Then-lines unchanged. Test three: the control experiment is named in control with result impossible and why; ASSERT_STRICTER is not available, the verdict is APP_BUG when both readings are tenable, and the draft says the control experiment was not run and why. Test four: the seed is weaker than the Given and the same keys appear without the change on data that answers the Given, so the verdict is ASSERT_STRICTER with the weakness in given_gap on the same control block (not TEST_BUG, not APP_BUG, not CASE_DEFECT), and the same Left with you line carries it; no repair round is spent on the data.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "control-before-app-bug",
+          "description": "No APP_BUG is written on an extra or different value before the analyst has run the control experiment or named in control why it cannot be run."
+        },
+        {
+          "name": "stricter-assert-left-with-you",
+          "description": "Test one gets ASSERT_STRICTER with a control block (effect_without_change, an evidence file under evidence/) and reaches the person as a Left with you line, not as a bug."
+        },
+        {
+          "name": "no-gate-a-return",
+          "description": "ASSERT_STRICTER triggers no repair, no bug draft, no rework and no return to gate A, and the case is not rewritten."
+        },
+        {
+          "name": "no-case-defect-after-control",
+          "description": "With the effect present without the change and the requirement silent, the verdict is not CASE_DEFECT even though the assert is the case's own Then."
+        },
+        {
+          "name": "seed-weaker-is-test-bug",
+          "description": "Test two is judged first by comparing the seed with the Given: weaker data is a TEST_BUG of the data and the Then-lines stay as they were."
+        },
+        {
+          "name": "both-readings-after-control",
+          "description": "APP_BUG for a red where both readings are tenable stands only after the control experiment was run or its impossibility was recorded."
+        },
+        {
+          "name": "control-impossible-named",
+          "description": "Test three records control with result impossible and why, never reads the missing experiment as a pass, and the draft says the control experiment was not run."
+        },
+        {
+          "name": "weak-seed-and-stricter-given-gap",
+          "description": "Test four, where the seed is weaker than the Given and the effect also shows without the change on data that answers the Given, gets ASSERT_STRICTER with the weakness in given_gap, reaches the person as a Left with you line, and spends no repair round on the data."
+        }
+      ]
+    }
+  ]
+}

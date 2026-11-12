@@ -1,0 +1,717 @@
+{
+  "schema_version": 1,
+  "note": "Every gate that judges whether a run, a test, a stand or a proof is valid (FR-59). Read by scripts/gate_registry.py (audit A26): a verdict comparison in code outside a registered site is red. A gate's own words map to the five classes here (FR-13). status: converted = the gate goes through the one predicate, or its unknown branch is pinned by `test`; debt = known gap, `debt_ref` names the open backlog row (B-nnn); exempt = not a validity gate, `exempt_reason` says why. A debt or exempt row is decided, not forgotten. Rows with no vocabulary of their own in code use the class words as their target vocabulary.",
+  "classes": ["matched", "mismatched", "unknown", "not_applicable", "person_confirmed"],
+  "anchor_words": ["matched", "mismatched", "person_confirmed"],
+  "rows": [
+    {
+      "id": "stand_identity", "inventory": "G1", "vocabulary": "target",
+      "decides": "the stand under test runs the build the story is about (the ladder of references/build-identity-methods.json, the person's word recorded in records/stand-identity.json)",
+      "sites": [
+        {"file": "runtime_probe.py", "function": "conclude", "role": "produce"},
+        {"file": "runtime_probe.py", "function": "finish", "role": "produce"},
+        {"file": "gate_preflight.py", "function": "_derive_probe", "role": "dispatch"},
+        {"file": "gate_preflight.py", "function": "named_container_said", "role": "dispatch"},
+        {"file": "driver_stage_build.py", "function": "build_outcome", "role": "dispatch"}
+      ],
+      "field": "result",
+      "words": ["matched", "mismatched", "unknown", "not_applicable", "person_confirmed"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"},
+        "not_applicable": {"class": "not_applicable"},
+        "person_confirmed": {"class": "person_confirmed"}
+      },
+      "accepts": {},
+      "promotable": true,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "stage_entry",
+      "closed_by": ["person"], "addressee": ["code_routes", "person"], "person_subject": "world",
+      "policy_file": "records/stand-identity.json",
+      "scope_keys": ["environment_id", "profile_id"],
+      "binding_keys": ["environment_id", "profile_id", "expected_source_revision", "image"],
+      "question_kind": "stand_identity",
+      "test": "scripts/tests/test_stand_identity.py",
+      "status": "debt", "debt_ref": "B-257", "exempt_reason": ""
+    },
+    {
+      "id": "provenance_acceptance", "inventory": "G2", "vocabulary": "target",
+      "decides": "the probe's record is good enough for this use (one predicate at the run, rehearsal, capture and record sites, profile_contract.acceptable_provenance; residue: the local_source and fingerprint bare not_applicable, the baseline, gate A - T2, B-255)",
+      "sites": [
+        {"file": "execution_request.py", "function": "validate_request", "role": "accept",
+         "allow": [{"compare": "seed.get(\"result\") not in {\"matched\", \"mismatched\", \"unknown\"}", "why": "the data-seed record's shape check, not an acceptance of provenance"}]},
+        {"file": "execution_request.py", "function": "rehearsal_probe", "role": "accept"},
+        {"file": "execution_fingerprint.py", "function": "build", "role": "accept"},
+        {"file": "manual_evidence.py", "function": "_provenance_errors", "role": "accept"},
+        {"file": "manual_evidence.py", "function": "_other_profile_errors", "role": "accept"},
+        {"file": "manual_evidence.py", "function": "validate_baseline_record", "role": "accept"},
+        {"file": "coverage_contract.py", "function": "validate_manual_current", "role": "accept"},
+        {"file": "environment_preparation.py", "function": "_run_step", "role": "accept"},
+        {"file": "probe_by_code.py", "function": "probe_runtime", "role": "accept"},
+        {"file": "manual_capture.py", "function": "stand_probe", "role": "accept"},
+        {"file": "run_suite.py", "function": "probe_runtime", "role": "accept"},
+        {"file": "gate_preflight.py", "function": "_observed_identity", "role": "accept"},
+        {"file": "profile_contract.py", "function": "acceptable_provenance", "role": "accept"},
+        {"file": "profile_contract.py", "function": "validate_runtime_provenance", "role": "validate"},
+        {"file": "profile_contract.py", "function": "person_confirmed", "role": "validate"},
+        {"file": "profile_contract.py", "function": "person_confirmed_problems", "role": "validate"},
+        {"file": "profile_contract.py", "function": "stand_runs_other_build", "role": "validate"},
+        {"file": "profile_contract.py", "function": "refusal_text", "role": "library"},
+        {"file": "manual_evidence.py", "function": "person_sentences", "role": "library"},
+        {"file": "profile_contract.py", "function": "rehearsal_view", "role": "validate"},
+        {"file": "profile_contract.py", "function": "no_changed_file", "role": "validate"},
+        {"file": "profile_contract.py", "function": "image_identity", "role": "validate"},
+        {"file": "profile_contract.py", "function": "<module>", "role": "vocabulary"},
+        {"file": "gate_registry.py", "function": "_token_problem", "role": "library"},
+        {"file": "gate_registry.py", "function": "_check_row", "role": "library"},
+        {"file": "gate_registry.py", "function": "_check_registry", "role": "library"},
+        {"file": "gate_registry.py", "function": "<module>", "role": "vocabulary"}
+      ],
+      "field": "result",
+      "words": ["matched", "mismatched", "unknown", "not_applicable", "person_confirmed"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"},
+        "not_applicable": {"class": "not_applicable"},
+        "person_confirmed": {"class": "person_confirmed"}
+      },
+      "accepts": {
+        "provenance.automation": ["matched", "person_confirmed", "not_applicable:no_changed_file", "not_applicable:local_source"],
+        "provenance.fingerprint": ["matched", "person_confirmed", "not_applicable"],
+        "provenance.manual": ["matched", "person_confirmed", "not_applicable:no_changed_file", "not_applicable:local_source"],
+        "provenance.manual_capture": ["matched", "person_confirmed", "not_applicable"],
+        "provenance.rehearsal": ["matched", "person_confirmed", "not_applicable:no_changed_file"]
+      },
+      "promotable": true,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "stage_entry",
+      "closed_by": ["person"], "addressee": ["code_routes", "person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_execution_request.py",
+      "status": "debt", "debt_ref": "B-255", "exempt_reason": ""
+    },
+    {
+      "id": "request_shape", "inventory": "G3", "vocabulary": "target",
+      "decides": "the typed execution request is well-formed and authorised (the rest of validate_request: freshness, selector contract, budget, reporter)",
+      "sites": [],
+      "field": null, "words": [], "verdict_map": {}, "accepts": {},
+      "promotable": false,
+      "unknown_branch": "exempt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": null,
+      "status": "exempt", "debt_ref": "", "exempt_reason": "a malformed call is the caller's to repair (FR-46): no fact of the world is unknown here. Its function, validate_request, is registered under provenance_acceptance."
+    },
+    {
+      "id": "inputs_unchanged", "inventory": "G4", "vocabulary": "code",
+      "decides": "the result was produced over the declared input bytes and the same stand (a changed input or identity makes the run inconclusive)",
+      "sites": [
+        {"file": "execution_fingerprint.py", "function": "verify_files", "role": "validate"},
+        {"file": "run_suite.py", "function": "run", "role": "produce"}
+      ],
+      "field": "execution_status",
+      "words": ["inconclusive"],
+      "verdict_map": {"inconclusive": {"class": "unknown", "owner": "environment"}},
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "rerun", "on_no_answer": "rerun", "waits_at": null,
+      "closed_by": [], "addressee": ["code_routes"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_execution_request.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "test_identity", "inventory": "G5", "vocabulary": "code",
+      "decides": "an old result or probe still speaks for this test (the same test); a non-match is an unknown and the answer is to run again",
+      "sites": [
+        {"file": "proof_level.py", "function": "same_test", "role": "accept"},
+        {"file": "proof_level.py", "function": "instance_identity", "role": "produce"},
+        {"file": "proof_level.py", "function": "already_probed", "role": "accept"},
+        {"file": "execution_request.py", "function": "instance_shas", "role": "produce"},
+        {"file": "execution_request.py", "function": "_match", "role": "accept"},
+        {"file": "execution_request.py", "function": "green_over_same_bytes", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["raw", "instance", "instance_code", "file_code"],
+      "verdict_map": {
+        "raw": {"class": "matched"},
+        "instance": {"class": "matched"},
+        "instance_code": {"class": "matched"},
+        "file_code": {"class": "matched"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "rerun", "on_no_answer": "rerun", "waits_at": null,
+      "closed_by": [], "addressee": ["code_routes", "role:qa-automator"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_proof_level.py",
+      "status": "debt", "debt_ref": "B-217", "exempt_reason": ""
+    },
+    {
+      "id": "collected_ids", "inventory": "G6", "vocabulary": "target",
+      "decides": "the requested test ids exist in the framework's own collection: ONE collect per request (the one `--mine` took while it built it; a request written by hand gets a collect of its own) is matched before the launch; a non-pytest command, an import error, an unreadable, timed-out or absent collect are named as not verified and the run goes on; a collect that went on past test files that fail to import (RH1-3) checks the ids of the files that collected, names the broken files, and calls an id of a broken file not verified - never missing - and the run goes on, and then the run decides - pytest's own `ERROR: not found` (exit 4) is answered in the summary as `node_id_mismatch`, not executed, never passed or failed (residue, B-278: the template has no unknown branch)",
+      "sites": [
+        {"file": "run_suite.py", "function": "verify_node_ids", "role": "validate"},
+        {"file": "run_suite.py", "function": "ids_pytest_did_not_find", "role": "validate"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": [], "addressee": ["code_routes"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_node_ids.py",
+      "status": "debt", "debt_ref": "B-278", "exempt_reason": ""
+    },
+    {
+      "id": "executor_present", "inventory": "G7", "vocabulary": "target",
+      "decides": "the launcher of a profile's command resolves on this machine",
+      "sites": [
+        {"file": "run_suite.py", "function": "executor_gap", "role": "validate"},
+        {"file": "gate_preflight.py", "function": "executor_probe", "role": "validate"}
+      ],
+      "field": null, "words": [], "verdict_map": {}, "accepts": {},
+      "promotable": false,
+      "unknown_branch": "exempt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": null,
+      "status": "exempt", "debt_ref": "", "exempt_reason": "the next step produces the fact more cheaply: a launcher that does not resolve fails the run itself, and a run refused on a guess costs more than the run"
+    },
+    {
+      "id": "live_check_demand", "inventory": "G8", "vocabulary": "code",
+      "decides": "a new or changed test must carry a live probe (a red-probe receipt); a legacy row whose novelty nobody measured is shown to the person as a debt, never a block (t-313 F8)",
+      "sites": [
+        {"file": "proof_level.py", "function": "proof_required", "role": "accept"},
+        {"file": "proof_level.py", "function": "novelty_of", "role": "produce"}
+      ],
+      "field": "novelty",
+      "words": ["new", "changed", "unchanged", "unknown"],
+      "verdict_map": {
+        "new": {"class": "mismatched"},
+        "changed": {"class": "mismatched"},
+        "unchanged": {"class": "matched"},
+        "unknown": {"class": "unknown", "owner": "factory"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": [], "addressee": ["code_routes"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_proof_level.py",
+      "status": "debt", "debt_ref": "B-279", "exempt_reason": ""
+    },
+    {
+      "id": "s5_coverage", "inventory": "G9", "vocabulary": "target",
+      "decides": "every Then of the scope is bound and asserted, and none contradicts the case (the automator's author-side check)",
+      "sites": [
+        {"file": "s5_precheck.py", "function": "run", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "role"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "window_acceptance",
+      "closed_by": ["role:qa-code-critic", "person"], "addressee": ["role:qa-code-critic"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_s5_precheck.py",
+      "status": "debt", "debt_ref": "B-221", "exempt_reason": ""
+    },
+    {
+      "id": "s5_window", "inventory": "G10", "vocabulary": "target",
+      "decides": "the S5 window is acceptable: run blocks, receipts, reviews and expectation changes agree (an unmeasured detector is a gap closed by the critic, never a pass)",
+      "sites": [
+        {"file": "acceptance.py", "function": "validate_window", "role": "accept"},
+        {"file": "window_record.py", "function": "verdict", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "role"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "window_acceptance",
+      "closed_by": ["role:qa-code-critic", "person"], "addressee": ["role:qa-code-critic"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_window_record.py",
+      "status": "debt", "debt_ref": "B-179", "exempt_reason": ""
+    },
+    {
+      "id": "delivery", "inventory": "G11", "vocabulary": "target",
+      "decides": "delivery_verdict: the aggregator that maps every typed record of every other gate to a kind (references/delivery-verdict-kinds.json) and the kinds to one of three words - yes, after_checks (ready once the person finishes the checks left with them) or no; a kind the file does not hold is no (it never asks)",
+      "sites": [
+        {"file": "delivery_verdict.py", "function": "decide", "role": "accept"},
+        {"file": "check_delivery.py", "function": "assess", "role": "accept"},
+        {"file": "check_delivery.py", "function": "ledger_reasons", "role": "accept"}
+      ],
+      "field": "delivery_verdict",
+      "words": ["yes", "after_checks", "no"],
+      "verdict_map": {
+        "yes": {"class": "matched"},
+        "after_checks": {"class": "unknown", "owner": "person"},
+        "no": {"class": "mismatched"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "debt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_check_delivery.py",
+      "status": "debt", "debt_ref": "B-061", "exempt_reason": ""
+    },
+    {
+      "id": "manual_evidence_shape", "inventory": "G12", "vocabulary": "target",
+      "decides": "the manual proof carries its evidence-shape fields (the runtime part of the record is provenance_acceptance)",
+      "sites": [],
+      "field": null, "words": [], "verdict_map": {}, "accepts": {},
+      "promotable": false,
+      "unknown_branch": "exempt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": null,
+      "status": "exempt", "debt_ref": "", "exempt_reason": "the runtime part is provenance_acceptance (manual_evidence.validate and coverage_contract.validate_manual_current are registered there); the rest is shape, refused with its field names"
+    },
+    {
+      "id": "case_preconditions", "inventory": "G13", "vocabulary": "code",
+      "decides": "the stand holds what each case needs (runner env names, HTTP status, accounts, seeds), shown on the gate A packet",
+      "sites": [
+        {"file": "gate_preflight.py", "function": "_check_one_precondition", "role": "produce"},
+        {"file": "gate_preflight.py", "function": "check_case_preconditions", "role": "dispatch"},
+        {"file": "gate_preflight.py", "function": "_sort_items", "role": "dispatch"},
+        {"file": "gate_preflight.py", "function": "_case_question", "role": "dispatch"},
+        {"file": "gate_preflight.py", "function": "_none_card", "role": "dispatch"},
+        {"file": "planning_contract.py", "function": "_unmet_preconditions", "role": "dispatch"}
+      ],
+      "field": "state",
+      "words": ["met", "unmet", "uncheckable", "error", "seeded"],
+      "verdict_map": {
+        "met": {"class": "matched"},
+        "unmet": {"class": "mismatched"},
+        "uncheckable": {"class": "unknown", "owner": "person"},
+        "error": {"class": "unknown", "owner": "environment"},
+        "seeded": {"class": "not_applicable", "reason_code": "seeded"}
+      },
+      "accepts": {},
+      "promotable": true,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "gate_a",
+      "closed_by": ["person"], "addressee": ["code_routes", "person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_gate_preflight.py",
+      "status": "debt", "debt_ref": "B-280", "exempt_reason": ""
+    },
+    {
+      "id": "environment_preparation", "inventory": "G14", "vocabulary": "target",
+      "decides": "the minimum preparation action for the stand, and whether the deploy it ran proved the build (the proof step itself is provenance_acceptance)",
+      "sites": [
+        {"file": "environment_preparation.py", "function": "plan_environment", "role": "dispatch"},
+        {"file": "environment_preparation.py", "function": "_facts", "role": "produce"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {"provenance.environment_preparation": ["matched"]},
+      "promotable": false,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "authorization",
+      "closed_by": ["person"], "addressee": ["person"], "person_subject": "intent",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_environment_preparation.py",
+      "status": "debt", "debt_ref": "B-255", "exempt_reason": ""
+    },
+    {
+      "id": "baseline_identity", "inventory": "G15", "vocabulary": "target",
+      "decides": "the before-state evidence was captured on the approved old build (identity on the OLD build stays code-proven: a person's word never stands in for it)",
+      "sites": [
+        {"file": "baseline_contract.py", "function": "validate_baseline_request", "role": "validate"},
+        {"file": "baseline_contract.py", "function": "deployment_readiness", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {"provenance.baseline": ["matched", "not_applicable"]},
+      "promotable": false,
+      "unknown_branch": "refuse_with_door", "on_no_answer": "refuse_with_door", "waits_at": null,
+      "closed_by": [], "addressee": ["code_routes"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_baseline_contract.py",
+      "status": "debt", "debt_ref": "B-281", "exempt_reason": ""
+    },
+    {
+      "id": "witness_backstop", "inventory": "G16", "vocabulary": "target",
+      "decides": "a role's artifact meets its evidence contract (a backstop to the conductor, which decides; `no rule` must read not checked, never OK)",
+      "sites": [
+        {"file": "check_witness.py", "function": "main", "role": "validate"},
+        {"file": "exit_gate.py", "function": "witness_errors", "role": "validate"}
+      ],
+      "field": null, "words": [], "verdict_map": {}, "accepts": {},
+      "promotable": false,
+      "unknown_branch": "exempt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": null,
+      "status": "exempt", "debt_ref": "", "exempt_reason": "the conductor decides; the backstop is fail-open by design and the t-302 T3 node makes it print not checked"
+    },
+    {
+      "id": "equivalence_metric", "inventory": "G17", "vocabulary": "target",
+      "decides": "the flaky and rescued metrics are allowed: runtime and data-seed both matched with evidence (a measure, not a gate)",
+      "sites": [
+        {"file": "run_suite.py", "function": "build_run_block", "role": "measure"},
+        {"file": "run_suite.py", "function": "selection_line", "role": "measure"},
+        {"file": "metrics_projection.py", "function": "compute", "role": "produce"}
+      ],
+      "field": "result",
+      "words": ["matched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "exempt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": null,
+      "status": "exempt", "debt_ref": "", "exempt_reason": "a measure: the metric reads unavailable unless both are matched (FR-41 already holds) and a person_confirmed record is not verified. metrics_projection.compute produces the C03 word from a match list, registered here as produce."
+    },
+    {
+      "id": "then_oracle", "inventory": "R2-3", "vocabulary": "code",
+      "decides": "where a Then's expected value comes from: a requirement, a spec, a precedent or a person; an unknown is bound unresolved (expectation_unconfirmed) and shown under Left with you (FR-58, P20)",
+      "sites": [
+        {"file": "contract.py", "function": "then_oracle_errors", "role": "validate"},
+        {"file": "contract.py", "function": "resolve_then_oracle", "role": "validate"}
+      ],
+      "field": "source",
+      "words": ["requirement", "ac", "spec", "precedent", "person", "unknown"],
+      "verdict_map": {
+        "requirement": {"class": "matched"},
+        "ac": {"class": "matched"},
+        "spec": {"class": "matched"},
+        "precedent": {"class": "matched"},
+        "person": {"class": "person_confirmed"},
+        "unknown": {"class": "unknown", "owner": "person"}
+      },
+      "accepts": {},
+      "promotable": true,
+      "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": [], "addressee": ["person"], "person_subject": "intent",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_oracle_provenance.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "exploratory_oracle", "inventory": "R2-3", "vocabulary": "code",
+      "decides": "an exploratory finding's oracle is the person's word (oracle_status person_confirmed, recorded only as a correction with --by person at gate B); every other oracle stays unresolved, the register never turns it into a pass (FR-58, FR-59). Accepted here and by no other gate: baseline_identity and environment_preparation stay promotable false",
+      "sites": [
+        {"file": "exploratory_findings.py", "function": "<module>", "role": "vocabulary"},
+        {"file": "exploratory_findings.py", "function": "append", "role": "validate"}
+      ],
+      "field": "oracle_status",
+      "words": ["person_confirmed"],
+      "verdict_map": {
+        "person_confirmed": {"class": "person_confirmed"}
+      },
+      "accepts": {},
+      "promotable": true,
+      "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": [], "addressee": ["person"], "person_subject": "intent",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_exploratory_answers.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "stand_login_gate", "inventory": "F9", "vocabulary": "code",
+      "decides": "before any block that opens the product's screens: the stand's test account can be read, else the person is asked (kind stand_login)",
+      "sites": [
+        {"file": "driver_stage_s6.py", "function": "stand_login_gate", "role": "dispatch"}
+      ],
+      "field": null,
+      "words": ["matched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": true,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "stage_entry",
+      "closed_by": ["person"], "addressee": ["person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": "stand_login",
+      "test": "scripts/tests/test_story_run_s6.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "stand_check", "inventory": "F9", "vocabulary": "code",
+      "decides": "before S5/S6 puts anything on a stand: one is confirmed for this story, else the person is asked",
+      "sites": [
+        {"file": "driver_stage_build.py", "function": "stand_check", "role": "dispatch"}
+      ],
+      "field": null,
+      "words": ["matched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": true,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "stage_entry",
+      "closed_by": ["person"], "addressee": ["person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": "environment",
+      "test": "scripts/tests/test_story_run_stand_identity.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "s5_stand_limits", "inventory": "F9", "vocabulary": "target",
+      "decides": "the stand's own limits (what the stand cannot do) are checked before S5 plans over it",
+      "sites": [
+        {"file": "gate_preflight.py", "function": "check_s5_stand_limits", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": [], "addressee": ["code_routes"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_gate_preflight.py",
+      "status": "debt", "debt_ref": "B-282", "exempt_reason": ""
+    },
+    {
+      "id": "reporter_rehearsal_identity", "inventory": "F9", "vocabulary": "target",
+      "decides": "an earlier proof that a test command leaves a report the factory can read is reused only for exactly that command: the key holds the profile, the argv itself (its digest is what `onboarding_probe.earlier_proof` compares), the test, the report format, the folder and the dependency bytes - no stand and no deployed identity (B-220 F11). `matched`: the same command, and the key hits - reused, the test is not run again. `mismatched`: the same command is rehearsed again and leaves no report (it stopped working) - it goes to the factory's helper first, once per command since its last proof (B-416, D-0031: every reader the code has is tried, then the conductor reads the kept report and records what it changed or understood), and a card for the person comes only after the helper's turn, never a pass. `unknown`: no row of this command (`none`, or only rows of the old form), another command's rows only (`command_changed`), or a record or reader that cannot be read (`unreadable`) - nothing is reused: the command is rehearsed again, and a rehearsal that cannot finish says the record could not be read; a record of the helper's turns that cannot be read reads as a turn taken (the card), never as none. An unknown never keys a proof as the same",
+      "sites": [
+        {"file": "gate_preflight.py", "function": "_rehearse_reporter", "role": "accept"},
+        {"file": "gate_preflight.py", "function": "_read_probe_report", "role": "measure"},
+        {"file": "driver_gates.py", "function": "hand_to_conductor", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "rerun", "on_no_answer": "rerun", "waits_at": null,
+      "closed_by": ["person"], "addressee": ["code_routes", "person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_gate_preflight.py",
+      "status": "debt", "debt_ref": "B-283", "exempt_reason": ""
+    },
+    {
+      "id": "environment_property_cover", "inventory": "F9", "vocabulary": "target",
+      "decides": "a stand gap is not carded when the project's environment record (qa-factory/records/environment-properties.json) holds a person's `accept always` under exactly its key: a level gap - the contour, the argv digest of its test command and the reason class; a case gap - the stand, its definition sha, the precondition kind and the digest of its check (B-414, D-0029). `matched`: a live row holds the key - no card, the cover is stated, the driver carries it into the story. `mismatched`: the record holds a row for the same contour or stand but another command, another failure or another address - the card is shown and says the earlier answer no longer applies. `unknown`: no row, a record that cannot be read, a revoked row, a gap with no key (a fault of a file or the machine is never keyed, D-0032) - the person is asked, never a pass",
+      "sites": [
+        {"file": "gate_preflight.py", "function": "_rehearse_reporter", "role": "accept"},
+        {"file": "gate_preflight.py", "function": "check_case_preconditions", "role": "accept"},
+        {"file": "stand_gaps.py", "function": "gate_b_split", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "unknown"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "unknown": {"class": "unknown", "owner": "environment"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "gate_a",
+      "closed_by": ["person"], "addressee": ["person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_environment_record.py",
+      "status": "debt", "debt_ref": "B-283", "exempt_reason": ""
+    },
+    {
+      "id": "source_freshness", "inventory": "G2", "vocabulary": "target",
+      "decides": "a source preflight's freshness answer from a bare runtime word (assess_freshness: no production caller, no record, only a word)",
+      "sites": [
+        {"file": "source_preflight.py", "function": "assess_freshness", "role": "accept"}
+      ],
+      "field": null,
+      "words": ["matched", "mismatched", "not_applicable"],
+      "verdict_map": {
+        "matched": {"class": "matched"},
+        "mismatched": {"class": "mismatched"},
+        "not_applicable": {"class": "not_applicable"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "exempt", "on_no_answer": "n/a", "waits_at": null,
+      "closed_by": [], "addressee": [], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": null,
+      "status": "exempt", "debt_ref": "", "exempt_reason": "no production caller and a word-only argument, so no record can be validated (t-302 Q6-A): delete it or wire it through gate_template.acceptable (backlog row B-290). Pinned by test_source_preflight.py and test_lifecycle_integration.py."
+    },
+    {
+      "id": "probe_verdict", "inventory": "t-531", "vocabulary": "code",
+      "decides": "what a code probe proves about one test (B-373, D-0028): the assertion was mutated, the test run once, and the failure read. `intended_failure` (matched): the failure's text holds the probe's own marker - the broken check fired, the test can fail, and for its own reason (one judge for every language: only the factory's own text proves without a role). `no_failure` and `wrong_location` (mismatched): the mutated assertion never fired (a pass), or - `wrong_location`, written by the alternative probe's judge only - the test fell elsewhere - a defect of the test. `not_executed` and `incomplete` (unknown): the probe did not run, or ran and the tool could not read the run well enough to judge the test (an error row, an unresolved frame, a launcher that may not rebuild, a language with no `assertion_probes` entry; a failure at the mutated line whose text the tool cannot read is `cause: judgment`, owed the code critic's `--judge`) - a factory fault, never a verdict on the test, so the answer is a record that names what was not read, a non-zero exit, and the door `red_sandbox.py --probe`; an unknown never replaces a judged record (`keep_standing_record`). Registered here: the producers of the verdict. The readers of the record (`keep_standing_record`, `publish_binding`, `main`'s exit) compare words that are not anchors, so the scanner does not see them: they are not sites yet",
+      "sites": [
+        {"file": "probe_by_code.py", "function": "judge_probe_row", "role": "produce"},
+        {"file": "probe_by_code.py", "function": "_judge_rows", "role": "produce"}
+      ],
+      "field": "verdict",
+      "words": ["intended_failure", "no_failure", "wrong_location", "not_executed", "incomplete"],
+      "verdict_map": {
+        "intended_failure": {"class": "matched"},
+        "no_failure": {"class": "mismatched"},
+        "wrong_location": {"class": "mismatched"},
+        "not_executed": {"class": "unknown", "owner": "environment"},
+        "incomplete": {"class": "unknown", "owner": "factory"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "refuse_with_door", "on_no_answer": "refuse_with_door", "waits_at": null,
+      "closed_by": [], "addressee": ["role:qa-code-critic"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_probe_by_code_languages.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "finish_exit_gate", "inventory": "GW1-8", "vocabulary": "code",
+      "decides": "`story_step finish` re-runs the stage's exit gate (`exit_gate.all_errors`, the driver's own function) for every role whose stage declares detectors, and accepts only a handoff the gate does not refuse (GW1-8, t-1264). `accepted`: no blocking record, or every one passed by the person's recorded word (judged inside `all_errors`, noted). `refused`: a blocking record - exit 3, nothing recorded, the author's repair named, a word's door named only where it opens. `unreadable`: the reader raised or answered a shape that is not (blocking, passed) - exit 2, nothing recorded, never a pass. Not read, by declaration: a role whose stage declares no detectors, and a dispatch the person decided (`state/decisions/<D>.json` holds `open_work` or `close` for this dispatch, a halt or not; the skip is a note naming the kind). The three words name `finish`'s exit codes (`refused` 3, `unreadable` 2, `accepted` 0); the only literal the site compares is the record kind `unreadable` (RH1-5: a blocking record of that kind is exit 2, never 3 or 0), counted as two comparisons of this row. Registered as a validate site because the site compares no verdict word and calls no acceptable(): the decision is `not blocking`",
+      "sites": [
+        {"file": "story_step.py", "function": "_finish_gate", "role": "validate"}
+      ],
+      "field": null,
+      "words": ["accepted", "refused", "unreadable"],
+      "verdict_map": {
+        "accepted": {"class": "matched"},
+        "refused": {"class": "mismatched"},
+        "unreadable": {"class": "unknown", "owner": "factory"}
+      },
+      "accepts": {},
+      "promotable": false,
+      "unknown_branch": "refuse_with_door", "on_no_answer": "refuse_with_door", "waits_at": null,
+      "closed_by": [], "addressee": ["role:qa-requirements-tester", "role:qa-test-strategist", "role:qa-case-critic", "role:qa-automator", "role:qa-doc-scribe"], "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_story_step_start.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "branch_accounting",
+      "inventory": "TQ1-20",
+      "vocabulary": "code",
+      "decides": "whether every sentence of the story's own text and every branch of a requirement has a home on the register at the S2 exit (G2-11): `homed` and `moved` (a requirement, a branch row or a named non-obligation holds it) are matched, `lost` (a unit with no home, a branch with no row) is a refusal with a door, `excluded` (a named exclusion or a named remainder) is the role's decision and stays unknown to the gate until a person or the terminal check reads it. An unknown input (no snapshot, no inventory, a ticket that was not read) is named in a note and never read as `homed` (`unknown_branch: refuse_with_door`)",
+      "sites": [{"file": "branch_accounting.py", "function": "detector_main", "role": "validate"},
+                {"file": "branch_accounting.py", "function": "delivery_records", "role": "produce"}],
+      "field": null,
+      "words": ["homed", "moved", "excluded", "lost"],
+      "verdict_map": {
+        "homed": {"class": "matched"}, "moved": {"class": "matched"}, "lost": {"class": "mismatched"},
+        "excluded": {"class": "unknown", "owner": "role"}
+      },
+      "accepts": {}, "promotable": false,
+      "unknown_branch": "refuse_with_door", "on_no_answer": "refuse_with_door", "waits_at": null,
+      "closed_by": ["role:qa-requirements-tester", "role:qa-test-strategist", "role:qa-case-critic", "role:qa-automator", "person"],
+      "addressee": ["role:qa-requirements-tester", "role:qa-test-strategist", "role:qa-case-critic", "role:qa-automator"],
+      "person_subject": null,
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_branch_accounting.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "s3_grounding", "inventory": "G1-5", "vocabulary": "code",
+      "decides": "the S3 plan is grounded: every hunk of the diff carries a label, every register requirement a line, every risk and area that matters a plan row or a not_planned entry, and a planner's claim is in the register before S3 closes (window 1 and the exit)",
+      "sites": [{"file": "grounding_table.py", "function": "exit_findings", "role": "validate"}],
+      "field": "state",
+      "words": ["implemented", "partial", "not_implemented", "outside_diff", "unknown"],
+      "verdict_map": {"implemented": {"class": "matched"}, "partial": {"class": "matched"}, "not_implemented": {"class": "mismatched"}, "outside_diff": {"class": "not_applicable"}, "unknown": {"class": "unknown", "owner": "person"}},
+      "accepts": {}, "promotable": true, "unknown_branch": "question", "on_no_answer": "wait", "waits_at": "window_acceptance",
+      "closed_by": ["role:qa-test-strategist", "person"], "addressee": ["role:qa-test-strategist", "person"], "person_subject": "intent",
+      "policy_file": "references/grounding-policy.json", "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_grounding_table.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "regression_on_main", "inventory": "RG1-1", "vocabulary": "code",
+      "decides": "whether each test file the plan's `## Recommended regression` names exists on the project's main branch (`git ls-tree` of the local origin ref, no fetch): `on_main` is matched, `not_on_main` (a test written in this run, 14857) is a refusal at the S3 exit with a door (a person's word via waiver.py), `main_unknown` (no git, no origin ref, a path outside the repository) is unknown: main unknown: no path problems, S8 says so - never printed as checked, never a refusal (the regression never holds a delivery, P24)",
+      "sites": [
+        {"file": "regression_scope.py", "function": "on_main", "role": "produce"},
+        {"file": "regression_scope.py", "function": "_absent", "role": "validate"},
+        {"file": "planning_contract.py", "function": "_regression_findings", "role": "dispatch"},
+        {"file": "report_facts.py", "function": "_regression_vs_main", "role": "measure"}
+      ],
+      "field": null,
+      "words": ["on_main", "not_on_main", "main_unknown"],
+      "verdict_map": {"on_main": {"class": "matched"}, "not_on_main": {"class": "mismatched"},
+                      "main_unknown": {"class": "unknown", "owner": "environment"}},
+      "accepts": {}, "promotable": false, "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": ["role:qa-test-strategist", "person"], "addressee": ["code_routes", "role:qa-test-strategist"],
+      "person_subject": null, "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_regression_scope.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "s5_open_oracle_asserted", "inventory": "TQ1-1", "vocabulary": "code",
+      "decides": "a Then whose expected value the one resolver (contract.resolve_then_oracle through traceability.then_oracle_states) reads open or invalid is not bound to an asserting instance unless the same Then carries an expectation_unconfirmed row; the author repairs (qa_unresolved + assert only the established part); a person settles it only by answering the question, never by a waiver (FR-58, FR-59, P20)",
+      "sites": [{"file": "s5_precheck.py", "function": "check_open_oracle_asserted", "role": "validate"}],
+      "field": "state",
+      "words": ["settled", "open", "invalid"],
+      "verdict_map": {"settled": {"class": "matched"}, "open": {"class": "unknown", "owner": "person"}, "invalid": {"class": "unknown", "owner": "role"}},
+      "accepts": {}, "promotable": false,
+      "unknown_branch": "refuse_with_door", "on_no_answer": "refuse_with_door", "waits_at": null,
+      "closed_by": ["role:qa-automator", "person"], "addressee": ["role:qa-automator", "person"], "person_subject": "intent",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_s5_precheck.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "env_block_evidence", "inventory": "RH2-9", "vocabulary": "code",
+      "decides": "a blocked_by_env row stands only on a run that shows the stand (env_blocked, a stand signal on a run no timeout killed, a run_evidence exception name); a run that shows none, or a killed test, is refused with the door (the person's word passes the environment family); an instance with no run is refused on a story that started on 0.10.9 or later and only noted on an older or unknown-version story (the declared lenient default, FR-59)",
+      "sites": [{"file": "s5_precheck.py", "function": "check_env_evidence", "role": "validate"}],
+      "field": "stand_evidence",
+      "words": ["shown", "absent"],
+      "verdict_map": {"shown": {"class": "matched"}, "absent": {"class": "unknown", "owner": "role"}},
+      "accepts": {}, "promotable": false,
+      "unknown_branch": "refuse_with_door", "on_no_answer": "refuse_with_door", "waits_at": null,
+      "closed_by": ["role:qa-automator", "person"], "addressee": ["role:qa-automator", "person"], "person_subject": "world",
+      "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_env_evidence.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    },
+    {
+      "id": "plan_target_on_base", "inventory": "TQ1-21", "vocabulary": "code",
+      "decides": "whether the test a plan row builds on (`fit: extend|param <test>`, or a `reuse` link's candidate id / test_ref path) is a file of the project's working tree, the base S5 writes into: `on_base` is matched, `not_on_base` (no file, a folder, a path outside the tree, no name) is a refusal at the S3 exit with doors (rename it, plan `new` with `fit_absent`, or a person's word via waiver.py), `base_unknown` (no working tree found, a lookup that could not tell) is unknown: a WARN at S3, and the S4/S5 briefs say `not verified - write as new` - never printed as checked, never a pass and never a refusal for the machine's fault (FR-59)",
+      "sites": [
+        {"file": "planning_contract.py", "function": "base_test_file", "role": "produce"},
+        {"file": "planning_contract.py", "function": "fit_target_findings", "role": "validate"},
+        {"file": "planning_contract.py", "function": "_detector_body", "role": "dispatch"},
+        {"file": "brief_pack.py", "function": "fit_target_lines", "role": "dispatch"}
+      ],
+      "field": null,
+      "words": ["on_base", "not_on_base", "base_unknown"],
+      "verdict_map": {"on_base": {"class": "matched"}, "not_on_base": {"class": "mismatched"},
+                      "base_unknown": {"class": "unknown", "owner": "environment"}},
+      "accepts": {}, "promotable": false, "unknown_branch": "debt", "on_no_answer": "debt", "waits_at": null,
+      "closed_by": ["role:qa-test-strategist", "person"], "addressee": ["role:qa-test-strategist"],
+      "person_subject": null, "policy_file": null, "scope_keys": [], "binding_keys": [], "question_kind": null,
+      "test": "scripts/tests/test_fit_targets.py",
+      "status": "converted", "debt_ref": "", "exempt_reason": ""
+    }
+  ]
+}

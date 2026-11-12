@@ -1,0 +1,68 @@
+{
+ "stages": {
+  "S0": {
+   "outcome": "accepted",
+   "handed": [],
+   "source": "events.jsonl seq 1 stage_transition done"
+  },
+  "S1": {
+   "outcome": "accepted",
+   "handed": [],
+   "dispatch": "S1-qa-scout-2",
+   "source": "events.jsonl seq 24 accept; handed: required inputs of work/handoffs/S1-qa-scout-2.yaml"
+  },
+  "S2": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S2-qa-requirements-tester-1.yaml",
+    "work/requirements-register.md",
+    "work/requirements-readiness.json",
+    "understanding.md",
+    "work/sizing.json"
+   ],
+   "dispatch": "S2-qa-requirements-tester-2",
+   "source": "events.jsonl seq 46 accept; handed: required inputs of work/handoffs/S2-qa-requirements-tester-2.yaml"
+  },
+  "S3": {
+   "outcome": "accepted",
+   "handed": [],
+   "dispatch": "S3-qa-test-strategist-2",
+   "source": "events.jsonl seq 49 accept; handed: required inputs of work/handoffs/S3-qa-test-strategist-2.yaml"
+  },
+  "S4": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/<the designer's dispatch>.yaml",
+    "<cases_root>/<area>/<case>.md",
+    "work/test-plan.json"
+   ],
+   "dispatch": "S4-qa-case-critic-2",
+   "source": "events.jsonl seq 57 accept; handed: required inputs of work/handoffs/S4-qa-case-critic-2.yaml"
+  },
+  "gateA": {
+   "decision": "approve",
+   "recorded_action": "approve_plan_and_cases",
+   "status": "approved",
+   "words": [
+    "driver-gateA-1793846315895.txt",
+    "driver-gateA-1793846403218.txt"
+   ],
+   "source": "events.jsonl seq 58 decision; state/words/driver-gateA-1793846315895.txt, state/words/driver-gateA-1793846403218.txt",
+   "question_kind": "gate_a"
+  }
+ },
+ "amendments": [
+  {
+   "stage": "gateA",
+   "field": "decision",
+   "recorded": "approve",
+   "expected": "refused",
+   "names": [
+    "evidence_policy is one word"
+   ],
+   "why": "the gate A decision road validates the structured plan first and refuses the same three observations; the person's approval of the run stands recorded, today's road would not reach it",
+   "ref": "commit 9f4b787a7 (2026-11-05); docs/tasks/specs/reports/td-15-cap-fix3-report.md",
+   "accepted_by": "Lead, 2026-11-11"
+  }
+ ]
+}

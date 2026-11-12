@@ -1,0 +1,1 @@
+Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.

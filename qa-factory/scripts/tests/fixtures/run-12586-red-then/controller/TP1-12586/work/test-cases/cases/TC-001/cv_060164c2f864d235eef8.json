@@ -1,0 +1,9 @@
+{
+  "case_id": "TC-001",
+  "area": "integrations",
+  "version": "cv_060164c2f864d235eef8",
+  "content_hash": "060164c2f864d235eef8c5224e0642e79a65c0a51b6ebe276cc9f94fe27af7dc",
+  "source_name": "TC-001.md",
+  "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-001.md",
+  "path": "<project>\\testproject1-sdk\\test-harness\\qa-factory\\artifacts\\TP1-12586\\work\\test-cases\\cases\\TC-001\\cv_060164c2f864d235eef8.md"
+}

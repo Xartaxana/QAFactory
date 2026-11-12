@@ -1,0 +1,6 @@
+qa-case-critic S4 CART-1_TC_005,CART-1_TC_006,CART-1_TC_008,CART-1_TC_009 · ok
+CART-1_TC_005 · approve · F-1 resolved; guest cookie sent with signed-in read
+CART-1_TC_006 · approve · round 1 concerns resolved
+CART-1_TC_008 · approve · unchanged, approved in round 1
+CART-1_TC_009 · approve_with_concerns · seed user verified status unchecked until S5
+qa-factory/artifacts/CART-1/work/test-cases/critic-findings.md

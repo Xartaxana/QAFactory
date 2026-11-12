@@ -1,0 +1,9 @@
+{
+  "triage": [
+    {
+      "test": "tests/test_cart_banner.py::test_banner",
+      "verdict": "FLAKY",
+      "evidence": "evidence/sanity-20260911-105500.json - failed once, passed on a manual retry"
+    }
+  ]
+}

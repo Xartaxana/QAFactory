@@ -1,0 +1,239 @@
+{
+  "schema_version": 2,
+  "dispatch_id": "S6-qa-runner-2",
+  "attempt_started_at": "2026-10-31T12:01:33+00:00",
+  "attempt_ended_at": "2026-10-31T12:02:04+00:00",
+  "head": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "manual_checks": [
+    {
+      "schema_version": 2,
+      "case": "CART-1_TC_012",
+      "case_version": "cv_8ad20339348408e4f727",
+      "obligation_ids": [
+        "OB-12"
+      ],
+      "obligation_hashes": {
+        "OB-12": "3b06ff9048c35d9212986d41ab272cbeb9cab5e905f3b562e82e57227df58af5"
+      },
+      "attempt_id": "a8",
+      "dispatch_id": "S6-qa-runner-2",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+      "steps_actual": [
+        "goto http://localhost:3000/login -> ok: 0.73 s",
+        "fill-account [data-testid=login-email-input] user user -> ok",
+        "fill-account [data-testid=login-password-input] user secret -> ok",
+        "click [data-testid=login-submit-button] -> ok",
+        "wait 3000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.30 s",
+        "click [data-testid^=remove-cart-item-] -> ok",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/books/112 -> ok: 0.61 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/books/113 -> ok: 0.38 s",
+        "click [data-testid=wishlist-toggle-button] -> ok",
+        "wait 1000 -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.57 s",
+        "capture supporting cart-empty-before -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.45 s",
+        "capture pre_action wishlist-before -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove QA CART1 W1 QA Runner $10.00 Move to cart Remove",
+        "click [data-testid=wishlist-move-112] -> ok",
+        "read body text -> ok: Moved to cart bookstore Home Cart 1 Wishlist Profile Logout SAVED Wishlist QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove bookstore A curated catalog of books, delivered. © 2026 Bookstore. All rights reserved.",
+        "wait 1500 -> ok",
+        "goto http://localhost:3000/wishlist -> ok: 0.57 s",
+        "capture post_action wishlist-after-reload -> ok",
+        "read [data-testid=wishlist-list] text -> ok: QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove",
+        "read [data-testid=wishlist-move-113] text -> ok: Move to cart",
+        "read [data-testid=wishlist-move-113] attr=disabled -> ok",
+        "goto http://localhost:3000/cart -> ok: 0.41 s",
+        "capture post_action completion -> ok",
+        "read [data-testid=cart-items-list] text -> ok: 01 QA CART1 W1 QA Runner $10.00 each QUANTITY Subtotal: $10.00 Remove"
+      ],
+      "expected": [
+        "move to cart adds and removes"
+      ],
+      "actual": "Seed user, cart emptied, wishlist held W1 (in stock) and W0 (stock 0). Move to cart on W1: toast 'Moved to cart'; after reload the wishlist lists only W0; cart page lists W1 qty 1 (subtotal $10.00 at $10.00 each) and not W0. W0 row shows an Out of Stock badge; its Move to cart button is disabled (separate diagnostic attempt a9, not in the record: click refused as 'not enabled', cursor not-allowed).",
+      "completion_condition": "wishlist item gone after move",
+      "attempt_started_at": "2026-10-31T12:01:33+00:00",
+      "attempt_ended_at": "2026-10-31T12:02:04+00:00",
+      "result": "pass",
+      "runtime_before": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:01:33+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120133Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "runtime_after": {
+        "profile_id": "web",
+        "timestamp": "2026-10-31T12:02:03+00:00",
+        "environment_id": "local",
+        "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "observed_runtime_identity": "person-confirmed:2026-10-31T11:54:15+00:00",
+        "evidence_refs": [
+          "<path-1>/test-automation-framework/qa-factory/artifacts/CART-1/evidence/runtime-provenance-web-20261031T120203Z.json"
+        ],
+        "provenance": {
+          "technical_verification": false,
+          "identity_kind": "person_confirmed"
+        },
+        "result": "person_confirmed",
+        "person_confirmation": {
+          "words": "The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080)",
+          "at": "2026-10-31T11:54:15+00:00",
+          "task": "CART-1",
+          "kind": "deployed",
+          "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+        },
+        "container": "",
+        "checkout": "..\\MyBooks",
+        "comparisons": []
+      },
+      "evidence_policy": "ui",
+      "limitations": [
+        "the build was confirmed by the person (The stand runs the right version. Do not skip the cases. (person, S6 CART-1; HEAD of ../MyBooks is a25b080), 2026-10-31), not read by the factory"
+      ],
+      "evidence_refs": [
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/001-supporting-cart-empty-before.png",
+          "content_hash": "161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770",
+          "kind": "image",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:54+00:00",
+          "proves": [
+            "cart-empty-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/002-pre_action-wishlist-before.png",
+          "content_hash": "4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240",
+          "kind": "image",
+          "phase": "pre_action",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "wishlist-before"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/003-read--data-testid-wishlist-list.txt",
+          "content_hash": "1c4d0ebe3a39231f944a3ef3e2884c86e27c03c1ad1d7fd59407aa1e5da17035",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:55+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/004-read-body.txt",
+          "content_hash": "ab43e44c3771e87441e712d14ce80da631d7b81faa65b1ec56cbeb635dc03939",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:01:56+00:00",
+          "proves": [
+            "read body"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/005-post_action-wishlist-after-reload.png",
+          "content_hash": "62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "wishlist-after-reload"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/006-read--data-testid-wishlist-list.txt",
+          "content_hash": "67bfd3b2934be70bc207c327a3beb4df231e0596c70f00a36a36c14cd4140f42",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-list]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/007-read--data-testid-wishlist-move-113.txt",
+          "content_hash": "09faefd9d9a6a494f4e0cc131dd9cd65ad99f4a51975f7621da34d1f7c426d4f",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:00+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113]"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/008-read--data-testid-wishlist-move-113.txt",
+          "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:01+00:00",
+          "proves": [
+            "read [data-testid=wishlist-move-113] attr=disabled"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/009-post_action-completion.png",
+          "content_hash": "55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53",
+          "kind": "image",
+          "phase": "post_action",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "completion"
+          ],
+          "mask_acknowledged": true
+        },
+        {
+          "path": "work/evidence/manual/CART-1_TC_012/a8/010-read--data-testid-cart-items-list.txt",
+          "content_hash": "65d2ba9abbd7c88aebdc4ced3e12bc3664c1d3ec2be4e346088f61ef3b60b630",
+          "kind": "log",
+          "phase": "supporting",
+          "captured_at": "2026-10-31T12:02:02+00:00",
+          "proves": [
+            "read [data-testid=cart-items-list]"
+          ],
+          "mask_acknowledged": true
+        }
+      ],
+      "gate_a_decision_ref": "gateA-CART-1",
+      "approved_policy_hash": "d02807eff8ef5aa131366b6f749ec279e675cd174156712b50b6f8b45fc2bd7f",
+      "before_change": {
+        "r": "R-14",
+        "value": null,
+        "ref": null,
+        "source": "not_recorded"
+      }
+    }
+  ],
+  "block_id": "manual-0e23143fcad1b614417f"
+}

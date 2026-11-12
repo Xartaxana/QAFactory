@@ -1,0 +1,18 @@
+{
+  "execution_status": "failed",
+  "env_preflight": "pass",
+  "stage": "feature",
+  "head": "abc1234",
+  "totals": {"passed": 1, "failed": 1, "skipped": 0, "passed_on_retry": 0},
+  "results": [
+    {"test": "tests/test_coupon.py::test_cap_rejected", "case": "TC-001", "result": "passed",
+     "evidence": "evidence/sanity-20260911-105500.json"},
+    {"test": "tests/test_cart_banner.py::test_banner", "case": "TC-002", "result": "failed",
+     "evidence": "evidence/sanity-20260911-105500.json"}
+  ],
+  "manual_checks": [],
+  "manual_skipped": [],
+  "env_blocked": [],
+  "impossible": [],
+  "witness": "evidence/sanity-20260911-105500.json exit 1 - 1 passed, 1 failed on head abc1234"
+}

@@ -1,0 +1,18 @@
+# The request a role makes when it cannot fill its handoff. The conductor answers
+# in `answer:`; the role never takes a filling problem to the person.
+schema_version: 1
+contract: role-to-conductor
+request:
+  contract: "s3-stage-critic-to-strategist"
+  file: "qa-factory\\artifacts\\LOCAL-1\\work\\handoffs\\S3-qa-case-critic-1.yaml"
+  dispatch: "S3-qa-case-critic-1"
+  role: "qa-case-critic"
+  stage: "S3"
+  field: "questions"
+  candidate: "[]"
+answer:
+  resolution: <one of vocabulary.conductor_resolutions>
+  authority: <one of vocabulary.conductor_authorities>
+  source: <the file and section the answer comes from>
+  write: <exactly what the role puts in the field>
+  why: <one sentence, in the role's own terms>

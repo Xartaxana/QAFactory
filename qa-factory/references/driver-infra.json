@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "note": "What the driver reads to tell a failure of the INFRASTRUCTURE under `claude -p` from a role's own result (design/driver.md, FR-13: closed variety lives in data, code reads it). `scripts/infra_failure.py` is the reader. `failures[]` is tried in file order against the result text plus stderr, and only when the call failed (`is_error` or a non-zero exit) - the text of a successful call is never matched (FR-12). A row is `{id, kind, pattern, reset_pattern?, retry_code?, evidence}`: `kind` is `auth` (the person must sign in), `limit` (the account's usage limit is reached; `reset_pattern`'s first group is quoted to the person verbatim) or `transient` (the same call is tried again by `runtime_policy.retry_decision(retry_code, ...)`, and a row with no `retry_code` is never retried). Patterns are Python regexes with no flags argument: a row that wants one carries it as a leading `(?i)`. A row whose pattern does not compile is skipped with a printed note, the others still match. `not_infra_subtypes[]` are result subtypes of `claude -p` that are the role's own outcome even though `is_error` is true (`error_max_turns`: the role ran out of turns, which the repair path already handles). A failure no row matches is `unclassified` and reaches the callers exactly as before. A row whose `evidence` says `unmeasured` was written from the service's documented behaviour and has not been seen on the wire yet: measure it before trusting its wording. `child_env` is what `claude -p` children lose from the driver's own environment: a driver started from a desktop-app terminal inherits the host's proxy address without the per-process token, so every child answers `Not logged in` while a valid login sits in the credentials file. `remove` names variables, `remove_prefixes` removes every variable that starts with one of them, `remove_named_by` names variables whose VALUE is the name of one more variable to remove. A project brings its own gateway or API-key setup through `driver.child_env.keep` in qa-factory/config.json (kept even when listed here) and adds names with `driver.child_env.remove`. Rows named `codex_*` are the same vocabulary for the Codex CLI (`story_run.py --host codex`): a `turn.failed` or `error` event of `codex exec --json` puts its message into the result text, and these rows read it; every one is `unmeasured` until a run records the wording. A row may carry `hosts` (a list of host names): it is tried only for a call of one of those hosts, a row without the key for every call, and a caller that names no host tries the rows without the key only (the `codex_*` rows carry `[\"codex\"]`, so a role's own text on Claude never reads as a Codex login failure). `default_model` is the model a host runs when `--model` is not given, by host (CX1-15, the owner's word 20.10.2026: `codex` runs the latest Terra); `claude` is not listed, its default is `sonnet` in the driver. The Codex host with no `--model` and no `default_model.codex` here stops with a refusal naming this key.",
+  "default_model": {
+    "codex": "gpt-5.6-terra"
+  },
+  "not_infra_subtypes": [
+    "error_max_turns"
+  ],
+  "failures": [
+    {
+      "id": "not_logged_in",
+      "kind": "auth",
+      "pattern": "Not logged in|Please run /login",
+      "evidence": "TP1-13877 state/driver-runs.jsonl rows 1-4 (exit 1, cost 0, 1 turn) and state/conductor.jsonl row 2: the whole result text was `Not logged in` + a middle dot + `Please run /login`."
+    },
+    {
+      "id": "usage_limit",
+      "kind": "limit",
+      "pattern": "(?i)hit your (?:\\w+ )?limit|usage limit reached",
+      "reset_pattern": "resets ([^\\n\\u00b7]+)",
+      "evidence": "TP1-13877 state/driver-runs.jsonl row 7 (15 turns, $8.68) and state/conductor.jsonl row 5: `You've hit your weekly limit` + a middle dot + `resets 2am (Europe/Madrid)`."
+    },
+    {
+      "id": "malformed_response",
+      "kind": "transient",
+      "retry_code": "service_unavailable",
+      "pattern": "API returned an empty or malformed response|StreamNoEventsError",
+      "evidence": "TP1-13877 state/driver-runs.jsonl row 17 and state/driver-runs/S3-qa-test-strategist-1.json: HTTP 200 with a Cloudflare HTML page, `no_events, StreamNoEventsError; 0 stream events received`, 29 turns."
+    },
+    {
+      "id": "server_error",
+      "kind": "transient",
+      "retry_code": "service_unavailable",
+      "pattern": "(?i)overloaded_error|\\boverloaded\\b|API Error: 5\\d\\d",
+      "evidence": "unmeasured"
+    },
+    {
+      "id": "rate_limited",
+      "kind": "transient",
+      "retry_code": "rate_limit_exceeded",
+      "pattern": "(?i)API Error: 429\\b|rate_limit_error",
+      "evidence": "unmeasured"
+    },
+    {
+      "id": "codex_not_logged_in",
+      "kind": "auth",
+      "hosts": ["codex"],
+      "pattern": "(?i)codex login|not (?:logged|signed) in|\\b401\\b|unauthorized|invalid_api_key|authentication_error",
+      "evidence": "unmeasured: the Codex CLI's login refusals (`codex login`, 401/unauthorized, invalid_api_key) as its `--help` and error vocabulary name them; no wire capture yet."
+    },
+    {
+      "id": "codex_usage_limit",
+      "kind": "limit",
+      "hosts": ["codex"],
+      "pattern": "(?i)usage limit|insufficient_quota|exceeded your current quota|rate limit reached for",
+      "reset_pattern": "(?i)(?:resets?|try again) (?:in |at |after )?([^\\n.]+)",
+      "evidence": "unmeasured: the Codex CLI's quota and usage-limit refusals, documented wording; no wire capture yet."
+    },
+    {
+      "id": "codex_stream_broken",
+      "kind": "transient",
+      "hosts": ["codex"],
+      "retry_code": "service_unavailable",
+      "pattern": "(?i)stream disconnected|stream (?:closed|error) before|ECONNRESET|connection reset|response\\.failed|server_error|\\b5\\d\\d\\b.*(?:error|unavailable)",
+      "evidence": "unmeasured: a Codex turn that fails with a broken response stream (`turn.failed`); the `turn.failed` message is matched by `parse_codex_jsonl`'s result text. No wire capture yet."
+    }
+  ],
+  "child_env": {
+    "remove": [
+      "ANTHROPIC_BASE_URL",
+      "ANTHROPIC_AUTH_TOKEN",
+      "CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST",
+      "CLAUDE_CODE_SDK_HAS_HOST_AUTH_REFRESH",
+      "CLAUDE_CODE_HOST_AUTH_ENV_VAR",
+      "CLAUDE_CODE_CHILD_SESSION"
+    ],
+    "remove_prefixes": [
+      "CLAUDE_CODE_USE_",
+      "CLAUDE_CODE_MESSAGING_"
+    ],
+    "remove_named_by": [
+      "CLAUDE_CODE_HOST_AUTH_ENV_VAR"
+    ],
+    "evidence": "experiments/factory-backlog-testproject1-sdk-2026-09-27.md FB-17: run-driver.sh `env -u` these names and `claude -p` then used the credentials file and worked; TP1-13877 driver-runs.jsonl rows 1-4 are the failure without it. ANTHROPIC_API_KEY is deliberately not listed: a key is a login of its own."
+  }
+}

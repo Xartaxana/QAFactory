@@ -1,0 +1,5 @@
+{
+  "note": "Closed variety of the tracker's bug tickets (AR-1, FR-13): bug_records.open_source_bugs lists a source ticket as an OPEN bug when its `type` is one of `bug_types` and its `status` is none of `closed_statuses` (both compared case-folded, whole text). A status this list does not name is read as open: a duplicate hint may be shown for a ticket that is in fact closed, and the person decides (the hint never files or drops anything). A project whose tracker uses other words extends these lists.",
+  "bug_types": ["Bug", "Defect"],
+  "closed_statuses": ["Done", "Closed", "Resolved", "Fixed", "Won't Fix", "Duplicate", "Cancelled"]
+}

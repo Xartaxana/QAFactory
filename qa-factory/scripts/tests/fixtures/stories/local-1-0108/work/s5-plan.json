@@ -1,0 +1,947 @@
+{
+  "schema": 1,
+  "scope_hash": "62feffb1a5735691e808c32b91ddaaa2dd42c6a75d5c1c6069ff04ecaa9c3c49",
+  "gate_a_plan_hash": "985bf60d1f2bc8ef216d17139f9c494a40ffada92530b1ed7475da0f687acc5f",
+  "cases": [
+    {
+      "case": "LOCAL-1_TC_001",
+      "requirements": [
+        "R-1"
+      ],
+      "s3": {
+        "row": "TS-1",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-1"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The cart read through `GET /api/cart` (not the click response) holds exactly one line for B with quantity 1 and unit price P."
+        },
+        {
+          "n": 2,
+          "text": "The cart page shows B once, quantity 1, price P."
+        },
+        {
+          "n": 3,
+          "text": "The cart badge shows 1."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_002",
+      "requirements": [
+        "R-2"
+      ],
+      "s3": {
+        "row": "TS-2",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-2"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "After the UI attempt (step 2): `GET /api/cart` holds no line for O and the badge is unchanged."
+        },
+        {
+          "n": 2,
+          "text": "The wording check: a message or label naming the out-of-stock state is visible on the page (either reading of Q5 satisfies it). The Then asserts only the presence of the text \"out of stock\" (case-insensitive) on the page (open question Q5, BN-1)."
+        },
+        {
+          "n": 3,
+          "text": "After the API attempt (step 3): the request is not a 2xx and `GET /api/cart` holds no line for O. The exact 4xx code is informative only; R-2 states only \"cannot be added\"."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_003",
+      "requirements": [
+        "R-3"
+      ],
+      "s3": {
+        "row": "TS-3",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-3"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "`GET /api/cart` holds one line for B with quantity 3 and unit price P."
+        },
+        {
+          "n": 2,
+          "text": "The cart page shows quantity 3 and a line subtotal of 3 x P (P read from the book record, the product is multiplied in the test)."
+        },
+        {
+          "n": 3,
+          "text": "The cart badge shows 3."
+        },
+        {
+          "n": 4,
+          "text": "Before the click the quantity field holds \"3\" whole and is still the focused element."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_004",
+      "requirements": [
+        "R-4"
+      ],
+      "s3": {
+        "row": "TS-4",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-4"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The cart line of B shows unit price equal to the book's price read from `GET /api/books/<id>` (the catalog record), not from the add response."
+        },
+        {
+          "n": 2,
+          "text": "`GET /api/cart/total` equals 2 x the catalog price (39.98), computed in the test from the catalog price."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_005",
+      "requirements": [
+        "R-5"
+      ],
+      "s3": {
+        "row": "TS-5",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-5"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The add is accepted for the guest: a 2xx, no redirect to login and no 401."
+        },
+        {
+          "n": 2,
+          "text": "In the new context with the same cookie `GET /api/cart` holds the line for B quantity 1."
+        },
+        {
+          "n": 3,
+          "text": "An anonymous context with no cookie sees no line for B (the cart is owned by the cookie). What the guest sees before the first add (empty vs login prompt, BN-9, Q4) is not asserted."
+        },
+        {
+          "n": 4,
+          "text": "The `Set-Cookie` of the guest add (step 1) is persistent: it carries `Max-Age` or `Expires` in the future, not a session-only cookie that is lost when the browser closes (the persistence clause of R-5)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_006",
+      "requirements": [
+        "R-6"
+      ],
+      "s3": {
+        "row": "TS-6",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-6"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "After login the cart page shows B with quantity 2."
+        },
+        {
+          "n": 2,
+          "text": "`GET /api/cart` (signed in again) holds the line of B with quantity 2 and no second line for B."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "requirements": [
+        "R-8"
+      ],
+      "s3": {
+        "row": "TS-8",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-8"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-zero: a visible message states that the quantity is invalid / must be at least 1."
+        },
+        {
+          "n": 2,
+          "text": "`GET /api/cart` holds no line for B (nothing added), read after the click completes (message shown or request answered)."
+        },
+        {
+          "n": 3,
+          "text": "The quantity field still shows \"0\" whole (the UI did not turn it into 1)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "requirements": [
+        "R-9"
+      ],
+      "s3": {
+        "row": "TS-9",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-9"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "For each value a visible message states the quantity is invalid."
+        },
+        {
+          "n": 2,
+          "text": "`GET /api/cart` holds no line for B after the click completes: not rounded, not coerced to 1."
+        },
+        {
+          "n": 3,
+          "text": "The field still shows the entered value whole (\"-1\", \"1.5\")."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "requirements": [
+        "R-10"
+      ],
+      "s3": {
+        "row": "TS-10",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-10"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "A visible validation or error message is shown."
+        },
+        {
+          "n": 2,
+          "text": "`GET /api/cart` holds no line for B after the click completes."
+        },
+        {
+          "n": 3,
+          "text": "The field is not silently replaced by a number; its content \"abc\" is kept whole (a number input may hold an empty value; then the message of Then 1 still appears)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "requirements": [
+        "R-11"
+      ],
+      "s3": {
+        "row": "TS-11",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-11"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "A visible message states the available number (4)."
+        },
+        {
+          "n": 2,
+          "text": "`GET /api/cart` holds no line for B after the request completed. (Whether only the available quantity could be added instead is open question Q2; this Then asserts the requirement text \"nothing is added\".)"
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "requirements": [
+        "R-12"
+      ],
+      "s3": {
+        "row": "TS-12",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-12"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "Both second requests are refused (4xx, INSUFFICIENT_STOCK-class error), not a 2xx and not a 5xx."
+        },
+        {
+          "n": 2,
+          "text": "The line of A still has quantity 3 (not 6, not 5); the line of S still has quantity 1."
+        },
+        {
+          "n": 3,
+          "text": "Boundary: a third `POST` A quantity 2 (3 + 2 = stock 5) is accepted and the line of A reads 5."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "requirements": [
+        "R-13"
+      ],
+      "s3": {
+        "row": "TS-13",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-13"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "Valid partitions (P-one, P-ten, P-234, P-contains-zero, P-multi-digit, P-stock-boundary): `GET /api/cart` holds one line for B whose quantity equals the entered value exactly (not truncated, not clamped, 234 is not 23 or 2, 100 is not 1) and subtotal is value x P (P from the catalog record)."
+        },
+        {
+          "n": 2,
+          "text": "P-zero: a visible rejection message; no line for B."
+        },
+        {
+          "n": 3,
+          "text": "P-negative and P-non-integer: a visible rejection message; no line for B (never rounded or coerced to 1)."
+        },
+        {
+          "n": 4,
+          "text": "P-non-numeric: a visible error message; no line for B."
+        },
+        {
+          "n": 5,
+          "text": "P-above-stock (301): a visible message stating the available number 300; no line for B."
+        },
+        {
+          "n": 6,
+          "text": "Every invalid partition (P-zero, P-above-stock, P-negative, P-non-integer, P-non-numeric): the cart read via the API after the click completes holds no line for B."
+        },
+        {
+          "n": 7,
+          "text": "For every partition the typed value stays whole in the field and the field keeps focus until the click (multi-character value entered whole, cleared and re-entered, pasted)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "requirements": [
+        "R-14"
+      ],
+      "s3": {
+        "row": "TS-14",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-14"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The add is accepted and the line of B has quantity 50 (the stock boundary reading of \"maximum allowed\"; the 999 schema-cap reading is open question Q3 and is not asserted)."
+        },
+        {
+          "n": 2,
+          "text": "The unit price equals the catalog price P and the total equals 50 x P, computed in the test."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_014",
+      "requirements": [
+        "R-15"
+      ],
+      "s3": {
+        "row": "TS-15",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-15"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "Each request is answered with a 4xx error or the add is capped to a limit that is at most the stock (10): never a 5xx and never a line above stock."
+        },
+        {
+          "n": 2,
+          "text": "After each request `GET /api/cart` holds either no line for B or one with quantity at most 10."
+        },
+        {
+          "n": 3,
+          "text": "The application stays up: `GET /api/health` answers 200 and a normal add of quantity 1 for B afterwards is accepted."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_015",
+      "requirements": [
+        "R-16"
+      ],
+      "s3": {
+        "row": "TS-16",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-16"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "Exactly one cart line exists for B (not two) with quantity 5."
+        },
+        {
+          "n": 2,
+          "text": "The line subtotal equals 5 x P (P from the catalog record)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "requirements": [
+        "R-17"
+      ],
+      "s3": {
+        "row": "TS-17",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-17"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The cart holds one line per book (three lines for the marked books) with each book's catalog price and the quantities 1, 2, 3."
+        },
+        {
+          "n": 2,
+          "text": "The total equals p1 + 2 x p2 + 3 x p3, computed in the test from the catalog records."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_017",
+      "requirements": [
+        "R-18"
+      ],
+      "s3": {
+        "row": "TS-18",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-18"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The answer is 404 with the error code BOOK_NOT_FOUND."
+        },
+        {
+          "n": 2,
+          "text": "The cart has no line for that bookId and the user's line count is the same as before the request."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_018",
+      "requirements": [
+        "R-19"
+      ],
+      "s3": {
+        "row": "TS-19",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-19"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "In-stock book, each of the three paths: `GET /api/cart` holds a line for the book at the catalog price P (the same price whichever path added it)."
+        },
+        {
+          "n": 2,
+          "text": "In-stock book, each path: the badge increases by the added quantity and a success message is shown."
+        },
+        {
+          "n": 3,
+          "text": "Out-of-stock book, each path: no line is created (read through the API); the path shows the out-of-stock refusal or does not offer the add."
+        },
+        {
+          "n": 4,
+          "text": "A second add of the in-stock book by a different path sums into the same single line (quantity 2), never above stock 5."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_019",
+      "requirements": [
+        "R-20"
+      ],
+      "s3": {
+        "row": "TS-20",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-19"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "`GET /api/cart` holds a line for B at the catalog price (the add by the card obeys the add rules of the product page)."
+        },
+        {
+          "n": 2,
+          "text": "If Q6 confirms the present behaviour (now): the line quantity is exactly 1 and the badge rose by 1; if the owner names the earlier behaviour (before), the value follows that answer. No literal is asserted before Q6 is answered."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_020",
+      "requirements": [
+        "R-21"
+      ],
+      "s3": {
+        "row": "TS-21",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-19"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "After step 2 `GET /api/cart` holds a line for W at its catalog price."
+        },
+        {
+          "n": 2,
+          "text": "If Q6 confirms the present behaviour (now): W is gone from the wishlist (read after the reload of step 5, not from the page state before it); otherwise the owner's rule (before)."
+        },
+        {
+          "n": 3,
+          "text": "If Q6 confirms the present behaviour (now): after the refused move X is still on the wishlist (read after reload) and `GET /api/cart` holds no line for X: no item is lost; otherwise the owner's rule (before)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "LOCAL-1_TC_021",
+      "requirements": [
+        "R-22"
+      ],
+      "s3": {
+        "row": "TS-22",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-6"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "If Q6 = a (person's answer): G is in the user's cart at quantity 3, equal to the quantity the guest added (the guest item is not lost and the quantity is not coerced to 1); `GET /api/cart` as the signed-in user shows it. Otherwise it follows the owner's answer (before)."
+        },
+        {
+          "n": 2,
+          "text": "If Q6 = a: H has quantity 4 (higher of 2 and 4 wins, not 6); otherwise the owner's rule (before)."
+        },
+        {
+          "n": 3,
+          "text": "If Q6 = a: Z is absent (no stock, dropped) and no line has a quantity above its stock; otherwise the owner's rule (before)."
+        }
+      ],
+      "remainders": []
+    }
+  ],
+  "tests": [
+    {
+      "id": "cart_001",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_001"
+      ],
+      "thens": [
+        "LOCAL-1_TC_001#1",
+        "LOCAL-1_TC_001#2",
+        "LOCAL-1_TC_001#3"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc001",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B in stock, signed-in user, quantity 1"
+    },
+    {
+      "id": "cart_002",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_002"
+      ],
+      "thens": [
+        "LOCAL-1_TC_002#1",
+        "LOCAL-1_TC_002#2",
+        "LOCAL-1_TC_002#3"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc002",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "out-of-stock book O"
+    },
+    {
+      "id": "cart_003",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_003"
+      ],
+      "thens": [
+        "LOCAL-1_TC_003#1",
+        "LOCAL-1_TC_003#2",
+        "LOCAL-1_TC_003#3",
+        "LOCAL-1_TC_003#4"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc003",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B, quantity 3 typed whole"
+    },
+    {
+      "id": "cart_004",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_004"
+      ],
+      "thens": [
+        "LOCAL-1_TC_004#1",
+        "LOCAL-1_TC_004#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc004",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B at catalog price, quantity 2"
+    },
+    {
+      "id": "cart_005",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_005"
+      ],
+      "thens": [
+        "LOCAL-1_TC_005#1",
+        "LOCAL-1_TC_005#2",
+        "LOCAL-1_TC_005#3",
+        "LOCAL-1_TC_005#4"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc005",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "guest cookie context, book B"
+    },
+    {
+      "id": "cart_006",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_006"
+      ],
+      "thens": [
+        "LOCAL-1_TC_006#1",
+        "LOCAL-1_TC_006#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc006",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "guest adds B x2 then logs in"
+    },
+    {
+      "id": "cart_010",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_010"
+      ],
+      "thens": [
+        "LOCAL-1_TC_010#1",
+        "LOCAL-1_TC_010#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc010",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B stock 4, quantity above stock"
+    },
+    {
+      "id": "cart_011",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_011"
+      ],
+      "thens": [
+        "LOCAL-1_TC_011#1",
+        "LOCAL-1_TC_011#2",
+        "LOCAL-1_TC_011#3"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc011",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "books A and S stock 5, repeated adds"
+    },
+    {
+      "id": "cart_012",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_012"
+      ],
+      "thens": [
+        "LOCAL-1_TC_012#1",
+        "LOCAL-1_TC_012#2",
+        "LOCAL-1_TC_012#3",
+        "LOCAL-1_TC_012#4",
+        "LOCAL-1_TC_012#5",
+        "LOCAL-1_TC_012#6",
+        "LOCAL-1_TC_012#7"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc012",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B stock 300, partitions as parameters"
+    },
+    {
+      "id": "cart_013",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_013"
+      ],
+      "thens": [
+        "LOCAL-1_TC_013#1",
+        "LOCAL-1_TC_013#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc013",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B stock 50, quantity 50"
+    },
+    {
+      "id": "cart_014",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_014"
+      ],
+      "thens": [
+        "LOCAL-1_TC_014#1",
+        "LOCAL-1_TC_014#2",
+        "LOCAL-1_TC_014#3"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc014",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B stock 10, oversized quantities"
+    },
+    {
+      "id": "cart_015",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_015"
+      ],
+      "thens": [
+        "LOCAL-1_TC_015#1",
+        "LOCAL-1_TC_015#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc015",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B added twice, quantity 5 total"
+    },
+    {
+      "id": "cart_016",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_016"
+      ],
+      "thens": [
+        "LOCAL-1_TC_016#1",
+        "LOCAL-1_TC_016#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc016",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "three books, quantities 1,2,3"
+    },
+    {
+      "id": "cart_017",
+      "file": "tests/api/cart/cart.spec.ts",
+      "level": "api",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_017"
+      ],
+      "thens": [
+        "LOCAL-1_TC_017#1",
+        "LOCAL-1_TC_017#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc017",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "nonexistent bookId"
+    },
+    {
+      "id": "cart_018",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_018"
+      ],
+      "thens": [
+        "LOCAL-1_TC_018#1",
+        "LOCAL-1_TC_018#2",
+        "LOCAL-1_TC_018#3",
+        "LOCAL-1_TC_018#4"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc018",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "in-stock and out-of-stock books, three add paths"
+    },
+    {
+      "id": "cart_019",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_019"
+      ],
+      "thens": [
+        "LOCAL-1_TC_019#1",
+        "LOCAL-1_TC_019#2"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc019",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "book B card add"
+    },
+    {
+      "id": "cart_020",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_020"
+      ],
+      "thens": [
+        "LOCAL-1_TC_020#1",
+        "LOCAL-1_TC_020#2",
+        "LOCAL-1_TC_020#3"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc020",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "wishlist W (in stock) and X (out of stock)"
+    },
+    {
+      "id": "cart_021",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "new",
+      "cases": [
+        "LOCAL-1_TC_021"
+      ],
+      "thens": [
+        "LOCAL-1_TC_021#1",
+        "LOCAL-1_TC_021#2",
+        "LOCAL-1_TC_021#3"
+      ],
+      "apart_reason": "another setup and surface than its neighbours",
+      "function": "tc021",
+      "data": "own",
+      "assert": "each Then asserted as the case words it, state read via GET /api/cart",
+      "note": "guest cart G,H,Z merged at login"
+    },
+    {
+      "id": "cart_invalid_quantity",
+      "file": "tests/e2e/cart/cart.spec.ts",
+      "level": "e2e-ui",
+      "shape": "parameterize",
+      "cases": [
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009"
+      ],
+      "thens": [
+        "LOCAL-1_TC_007#1",
+        "LOCAL-1_TC_007#2",
+        "LOCAL-1_TC_007#3",
+        "LOCAL-1_TC_008#1",
+        "LOCAL-1_TC_008#2",
+        "LOCAL-1_TC_008#3",
+        "LOCAL-1_TC_009#1",
+        "LOCAL-1_TC_009#2",
+        "LOCAL-1_TC_009#3"
+      ],
+      "function": "invalid_quantity_rejected",
+      "data": "own",
+      "assert": "visible message, GET /api/cart has no line for B, field keeps entered value",
+      "parameters": [
+        "0",
+        "-1",
+        "1.5",
+        "abc"
+      ],
+      "note": "quantity values 0, -1, 1.5, abc (ids tc007..tc009)"
+    }
+  ],
+  "fixtures": [],
+  "refactor": ""
+}

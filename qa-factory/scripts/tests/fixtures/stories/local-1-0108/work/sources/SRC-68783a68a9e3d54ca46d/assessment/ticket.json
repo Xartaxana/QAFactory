@@ -1,0 +1,43 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that adding the same product twice results in one cart line with quantity 2 and the correct subtotal.\n\n*Type:* positive  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512249",
+  "key": "REF-12",
+  "labels": [
+    "positive",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14494,
+    "fields_requested": "*all",
+    "sha256": "07f198a50665250a1e802d4c9450e1eb3bcc18afebe7d4babbe8bd2c4a80cbdc",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:06.004+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add same product multiple times",
+  "type": "Test"
+}

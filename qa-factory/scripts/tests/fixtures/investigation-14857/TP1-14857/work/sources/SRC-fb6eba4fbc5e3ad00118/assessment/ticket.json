@@ -1,0 +1,42 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "Constant stamped dark sdk Q3 workspace exist, cumulative concluded, excl/rotates filtered, ProvIDE repos, cures-cache quotation collective, env standard thin idempotently.",
+  "id": "14176675",
+  "key": "TP1-13289",
+  "labels": [
+    "testproject1_core"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "TP1-11264",
+        "relation": "is a part of",
+        "status": "Closed",
+        "summary": "Compared Detailed cat Inspecting be Composition Must Isolated Else both Parsing Honestly",
+        "type": "Part of"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Major",
+  "provenance": {
+    "bytes": 12010,
+    "fields_requested": "*all",
+    "sha256": "fa182b2e107307bfee64436707122ee5c7c92b721d0e82e257cb80ddc06ae60e",
+    "source": "fetched"
+  },
+  "reporter": "User 3",
+  "revision": "2026-10-26T11:38:40.015+0000",
+  "status": "Lone",
+  "subtasks": [],
+  "title": "Belonging Owned & Many Preservation",
+  "type": "Epic"
+}

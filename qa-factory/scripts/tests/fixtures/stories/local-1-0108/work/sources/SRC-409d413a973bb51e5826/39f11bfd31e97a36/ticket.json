@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that a product can be added to the cart from the quick view, and the item appears in the cart with the correct price and quantity.\n\n*Type:* positive  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512157",
+  "key": "REF-3",
+  "labels": [
+    "positive",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14526,
+    "fields_requested": "*all",
+    "sha256": "f97ad4b0a96b950634c23cf9b7967bc30dd0e55eb608cfe4bc13f654fd31f50a",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:07.333+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product to cart from quick view",
+  "type": "Test"
+}

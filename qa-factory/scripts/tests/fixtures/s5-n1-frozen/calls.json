@@ -1,0 +1,56 @@
+[
+ {
+  "kind": "role",
+  "role": "qa-automator",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-automator-1.\nDispatch scope (one digest line per item): TC-1\nWindow: TC-1 — other surface.\nRuns go through run_suite.py --mine <CASE>; the manifest is written with manifest_put.py. A test written to an approved case that fails against the implementation is handed over RED with unresolved reason contradicts_requirement, never adjusted to the code.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-code-critic",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-code-critic-1.\nDispatch scope (one digest line per item): TC-1\nStatic review first, then probe_by_code.py once per instance, every check of the test: red_sandbox.py --probe (only when you doubt the check looks at the product, with the reason in your findings) proves only the one check it names, the others stay owed; a probe of unchanged bytes and the same entries is answered `already_probed`; write your findings file and the review_receipt_ref on the manifest bindings; `cause:` on each finding.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-automator",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-automator-2.\nDispatch scope (one digest line per item): TC-1\nMechanical round of the review S5-qa-code-critic-1 (its form is work/handoffs/S5-qa-code-critic-1.yaml): fix only the findings ; no critic is dispatched after it - your green run on the new bytes closes the round. Write `mechanical_round` on the window record with window_record.py (reviewer dispatch S5-qa-code-critic-1); re-run only the instances whose code changed; a comment/docstring/marker-only fix keeps its run (the factory answers `reused`).\nWindow: TC-1 — other surface.\nRuns go through run_suite.py --mine <CASE>; the manifest is written with manifest_put.py. A test written to an approved case that fails against the implementation is handed over RED with unresolved reason contradicts_requirement, never adjusted to the code.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-automator",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-automator-3.\nDispatch scope (one digest line per item): TC-2\nWindow: TC-2 — other surface.\nRuns go through run_suite.py --mine <CASE>; the manifest is written with manifest_put.py. A test written to an approved case that fails against the implementation is handed over RED with unresolved reason contradicts_requirement, never adjusted to the code.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-code-critic",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-code-critic-2.\nDispatch scope (one digest line per item): TC-2\nStatic review first, then probe_by_code.py once per instance, every check of the test: red_sandbox.py --probe (only when you doubt the check looks at the product, with the reason in your findings) proves only the one check it names, the others stay owed; a probe of unchanged bytes and the same entries is answered `already_probed`; write your findings file and the review_receipt_ref on the manifest bindings; `cause:` on each finding.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-automator",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-automator-4.\nDispatch scope (one digest line per item): TC-2\nRepair round 1 of 3: the critic's form is work/handoffs/S5-qa-code-critic-2.yaml and its findings are in the critic digest; re-run only the instances whose code changed; a comment/docstring/marker-only fix keeps its run (the factory answers `reused`).\nWindow: TC-2 — other surface.\nRuns go through run_suite.py --mine <CASE>; the manifest is written with manifest_put.py. A test written to an approved case that fails against the implementation is handed over RED with unresolved reason contradicts_requirement, never adjusted to the code.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-code-critic",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-code-critic-3.\nDispatch scope (one digest line per item): TC-2\nStatic review first, then probe_by_code.py once per instance, every check of the test: red_sandbox.py --probe (only when you doubt the check looks at the product, with the reason in your findings) proves only the one check it names, the others stay owed; a probe of unchanged bytes and the same entries is answered `already_probed`; write your findings file and the review_receipt_ref on the manifest bindings; `cause:` on each finding.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-automator",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-automator-5.\nDispatch scope (one digest line per item): TC-3\nWindow: TC-3 — other surface.\nRuns go through run_suite.py --mine <CASE>; the manifest is written with manifest_put.py. A test written to an approved case that fails against the implementation is handed over RED with unresolved reason contradicts_requirement, never adjusted to the code.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-code-critic",
+  "resume": false,
+  "prompt": "Artifacts dir: <task>\nDispatch: S5-qa-code-critic-4.\nDispatch scope (one digest line per item): TC-3\nStatic review first, then probe_by_code.py once per instance, every check of the test: red_sandbox.py --probe (only when you doubt the check looks at the product, with the reason in your findings) proves only the one check it names, the others stay owed; a probe of unchanged bytes and the same entries is answered `already_probed`; write your findings file and the review_receipt_ref on the manifest bindings; `cause:` on each finding.\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ }
+]

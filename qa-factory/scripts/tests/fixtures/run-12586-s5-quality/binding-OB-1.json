@@ -1,0 +1,18 @@
+{
+  "obligation_id": "OB-1",
+  "obligation_hash": "22746ee8f05728b8743c540ef132be2126a69447a116a0a74cebcca62540808f",
+  "instance_ids": [
+    "test_put_project_change_moves_integration[TC-001-sonar]",
+    "test_put_project_change_moves_integration[TC-001-jira]"
+  ],
+  "design_assessment": "sufficient",
+  "assertion_refs": [
+    "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:87-116"
+  ],
+  "change_disposition": "new_or_changed",
+  "change_basis_ref": "manifest:TC-001",
+  "code_validity": "unverified",
+  "sensitivity": "proven",
+  "proof_kind": "executed_red_probe",
+  "probe_receipt_ref": "work/sensitivity-receipts/test_put_project_change_moves_integration--TC-001-jira-41e0f248-live-dd148fe46bb4a3b8.json"
+}

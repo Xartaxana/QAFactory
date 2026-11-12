@@ -1,0 +1,6 @@
+qa-case-designer S4 LOCAL-1_TC_021..024 · concerns
+LOCAL-1_TC_021 · updated · Then 1 asserts merged quantity equals guest's 3, not coerced to 1
+LOCAL-1_TC_022 · updated · Q7 a: line keeps the add-time price 6.00 after update to 8.00
+LOCAL-1_TC_023 · updated · Q8 a: chosen quantity 3 added after recovery, else retry message
+LOCAL-1_TC_024 · updated · Q9 b: login asked, product added after re-authentication
+qa-factory/artifacts/LOCAL-1/work/handoffs/S4-qa-case-designer-3.values.yaml

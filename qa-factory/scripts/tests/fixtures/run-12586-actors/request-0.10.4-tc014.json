@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "request_kind": "manual_capture",
+  "case": "TC-014",
+  "case_version": "cv_fdb829d700e61f126a9a",
+  "obligation_ids": [
+    "OB-17"
+  ],
+  "obligation_hashes": {
+    "OB-17": "b96043c20755fe344b7a7184e92bb44ee85a89dfd4a127b31fb0f2fea5bea3e2"
+  },
+  "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+  "controller_revision": 123,
+  "gate_a_decision_ref": "gateA-TP1-12586-2",
+  "evidence_policy": "api",
+  "completion_condition": "PUT answered with a status and the integration and target project are read back after",
+  "approved_policy_hash": "c2eaaf90ea8d738542fed3641bcad20744cac6417130f1f9b51de7b3ce0eba37",
+  "expected": [
+    "A user-scope move into an unadministered project is refused or accepted exactly as the existing project change for Data sources / Assistants / Workflows does (Q7)."
+  ],
+  "covers": [
+    "R-15"
+  ],
+  "legacy_evidence_gaps": [],
+  "required_actual_fields": [
+    "steps_actual",
+    "actual",
+    "evidence_refs",
+    "runtime_before",
+    "runtime_after",
+    "attempt_started_at",
+    "attempt_ended_at"
+  ]
+}

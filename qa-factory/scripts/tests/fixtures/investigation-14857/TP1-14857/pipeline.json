@@ -1,0 +1,265 @@
+{
+  "ticket": "TP1-14857",
+  "source_inventory_required": true,
+  "stages": {
+    "S0": {
+      "status": "done",
+      "imported": true,
+      "reason": "preflight green, env=local-docker"
+    },
+    "S1": {
+      "status": "done",
+      "reason": "qa-scout S1 done - qa-factory/artifacts/TP1-14857/work/context-manifest.json - ok-with-concerns",
+      "stage_started": 1793030551.536512,
+      "stage_finished": 1793042101.1335423,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "a936a84f74870975f"
+    },
+    "S2": {
+      "status": "done",
+      "reason": "qa-requirements-tester S2 TP1-14857 - concerns",
+      "stage_started": 1793042171.9649074,
+      "stage_finished": 1793043088.7933831,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "a3945d8563f98609f"
+    },
+    "S3": {
+      "status": "done",
+      "reason": "qa-test-strategist S3 rework TP1-14857 (dispatch 4) - ok",
+      "later_work_status": "running",
+      "stage_started": 1793043118.6573806,
+      "stage_finished": 1793047994.634148,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "abf2bbd791691440c"
+    },
+    "S4": {
+      "status": "done",
+      "reason": "qa-case-critic S4 TS-2,TS-6..TS-12 - concerns",
+      "stage_started": 1793046167.9470108,
+      "stage_finished": 1793047179.3081577,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "acfa2e181c8686c45"
+    },
+    "S5": {
+      "status": "done",
+      "reason": "qa-code-critic S5 window 2 (TC-005) - ok",
+      "stage_started": 1793050000.2801883,
+      "stage_finished": 1793062995.5247073,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "af0a2a2f1602e1e14"
+    },
+    "S6": {
+      "status": "done",
+      "reason": "qa-runner S6 TC-001..TC-005 - concerns",
+      "stage_started": 1793063203.0517724,
+      "stage_finished": 1793068930.3409288,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "a2eb9f3e9121ae4a8"
+    },
+    "S7": {
+      "status": "running",
+      "reason": "",
+      "stage_started": 1793069016.3869662,
+      "stage_finished": null,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "agent_id": "a213f4e6815737539"
+    }
+  },
+  "gates": {
+    "A": {
+      "id": "gateA-TP1-14857",
+      "gate": "A",
+      "action": "approve_plan_and_cases",
+      "status": "approved",
+      "authorization_source": "Gate A decision for TP1-14857 on QA Factory 0.10.2:\n\nAPPROVE the 14-row plan and all 12 pinned test cases (TC-001 through TC-012), subject to the following recorded conditions.\n\nOQ-1: Keep trigger-time stamping as the accepted oracle. AC-2 wording remains an unresolved documentation inconsistency.\n\nOQ-2: A test-created Git datasource is acceptable as a regression proxy for AC-4, but it does not prove behavior incrementing for foo_analytics_repo. Record that coverage gap explicitly.\n\nOQ-3: Test all accessible, relevant reindex entry points identified through implementation impact analysis. Do not claim that this antipatterns resolves the unspecified AC-5 flows.\n\nOQ-4 through OQ-9: Do not invent product-owner decisions. Preserve open oracles where necessary. Execute exploratory observations where safe, and classify a product bug only when independently grounded expected behavior is contradicted by reproducible evidence.\n\nAccept unavailable integration credentials as environment limitations for cases that require them. Do not report blocked or unexecuted cases as passed.\n\nContinue on the current test branch with uncommitted Factory and test changes. No commit or stash is required at Gate A.\n\nBefore trusting S6 product results, verify that the deployed Test Project 1 stand contains the relevant MR !4566 implementation. Use source/content comparison if the original MR SHA was rebased or squashed. Do not rebuild Docker or modify application code.\n\nPrimary goal: discover genuine Test Project 1 product defects, not merely verify the original ticket.\n",
+      "source_revision": "f2a6a422e08f9e0f7f069e453b1a38b8425f1328413065e6c70dac0e0f14037a",
+      "input_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+      "scope": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010",
+        "TC-011",
+        "TC-012"
+      ],
+      "plan_content_hash": "d694ed24b7875a0f42635357621b2ef3d4e2f82380464fa40307cbeb3710c859",
+      "plan_semantic_hash": "d694ed24b7875a0f42635357621b2ef3d4e2f82380464fa40307cbeb3710c859",
+      "oracle_content_hashes": {
+        "OB-1-1": "8669dc60a2145143a27ea5ef6a76c207107667034160085ab988096b11345b9b",
+        "OB-1-2": "ab19c3023325419b9c8a6c313aae3827a4947740661a98fd6b7ad90a5f690f20",
+        "OB-2-1": "edebe3b5831a4882ff0284393f7ef148e63b348402678dcf9dafe7d4df5dfcdc",
+        "OB-3-1": "f6a583c8b560c9577e6f4abec9bbb2ba02d71bd38bf1e6b576173265edbe7444",
+        "OB-4-1": "b9e9ff845960bdd77c9b551727c3eaa3621549cb3f6781dbb3d677ac091f1ab9",
+        "OB-5-1": "bee1b99be96dd54c44d7b1cb5e3fc8cde9b46bb2008365e39ce7ce9976e39006",
+        "OB-6-1": "ababa0ee709448ecc3269cb6563723c37a215c4ac33064e311609661dc139046",
+        "OB-7-1": "c4c0ace1a5c08522c054cc94804dba03137a475f62c399b34eb87f900a57a8aa",
+        "OB-8-1": "271204525409beb834ca71d36a2a3c88cdd11d4a2a1c46ea7f3e5fea09d7d660",
+        "OB-9-1": "cde39289af038845a76604d346c3f37082285feb1aa62e68fc07bd77c979c34f",
+        "OB-10-1": "38565dab2e8db4363d7b1159015f31dd3481433e9304378b881963ad117ef5f6",
+        "OB-11-1": "ca7e7f05386edd197451f7df6c9187186518b1776a7b56e13078f1b40ab170ec",
+        "OB-12-1": "784b5f99a8a0e45003ba95ae133670dbce4697a2af3b2553b5a2a99759f834b1",
+        "OB-13-1": "3f43f6e85119f60d6b3e5aec8a1223e7508638700afafd8f9283cf9ec0a6f55d",
+        "OB-14-1": "b942ce924f20148f80d57a17c086540c7819ffb6ba6bbe6d6d2db81219c4f4da"
+      },
+      "coverage_contract_revisions": [
+        "coverage-observation-v1"
+      ],
+      "lifecycle_actions_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_inventory_hash": "9a48d64c4984b8296dc2a56cbaaded9c3f7fb645a9f0cd85ee06966d865406c9",
+      "source_completeness": {
+        "complete": true,
+        "gate_blocked": false,
+        "pending": [],
+        "unavailable": [],
+        "incomplete_materials": [],
+        "unavailable_materials": [],
+        "accepted_gaps": [],
+        "review_missing": false,
+        "unreviewed": [],
+        "awaiting_review": false,
+        "open_points": {},
+        "closed_by_person": {},
+        "closed_by_class": {},
+        "defaulted_points": {},
+        "defaulted_gaps": [],
+        "gap_class_problem": "",
+        "left_out_by_word": {},
+        "earlier_rule_line": "",
+        "earlier_rule_sources": []
+      },
+      "design_reviews": [
+        {
+          "plan_row": "TS-2",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_0c84ad6c735421cc4073"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-6",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_452a57147303dae9e448"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-7",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_2ad653a3cdd3c66059b0"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-8",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_0ad3d27dae9874b84abb"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-9",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_afa0f1f6a94c7803a596"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-10",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_6438f7e74496353da7bc"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-11",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_370643959551cc256e90"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-12",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [
+            "cv_1890f1efbd3450fd4812"
+          ],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-1"
+        },
+        {
+          "plan_row": "TS-13",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": ""
+        },
+        {
+          "plan_row": "TS-14",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "sha256:551a38d095a0a99a703136c62a36086d92d883c1836b3267c1849d354deaf93f",
+          "case_versions": [],
+          "input_hash": "aef5db488877970ea02067a87a0e467cf95a6598bc153cba18790dc228d15856",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": ""
+        }
+      ],
+      "decision": "approved"
+    }
+  },
+  "controller_revision": 103
+}

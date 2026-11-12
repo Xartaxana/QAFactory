@@ -1,0 +1,147 @@
+{
+ "tests": [
+  {
+   "case": "LOCAL-1_TC_016",
+   "covers": [
+    "LOCAL-1_TC_016"
+   ],
+   "case_version_links": [
+    {
+     "case_id": "LOCAL-1_TC_016",
+     "version": "cv_30882562565a1386b5ca"
+    }
+   ],
+   "requirements": [
+    "R-13"
+   ],
+   "plan_row": "TS-14",
+   "file": "tests/api/cart/add-to-cart.spec.ts",
+   "marker": "LOCAL-1_TC_016",
+   "test": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "trace_binding": {
+    "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+    "assertion_refs": [
+     "tests/api/cart/add-to-cart.spec.ts:231",
+     "tests/api/cart/add-to-cart.spec.ts:232",
+     "tests/api/cart/add-to-cart.spec.ts:234",
+     "tests/api/cart/add-to-cart.spec.ts:235",
+     "tests/api/cart/add-to-cart.spec.ts:237"
+    ],
+    "test_content_sha": "4a9c11e29af38634c1c19230cb987969baec60593a016b88a46f0a84b69ccf0b"
+   },
+   "status": "green",
+   "shape": "new",
+   "consolidates": [
+    "LOCAL-1_TC_016"
+   ],
+   "generated_from": [
+    "tests/api/cart/add-to-cart.spec.ts"
+   ],
+   "assertion_id": "tests/api/cart/add-to-cart.spec.ts:237",
+   "defect_location": "MyBooks/src/lib/services/cartService.ts:80",
+   "change_disposition": "new_or_changed",
+   "change_basis_ref": "manifest:LOCAL-1_TC_016",
+   "selector_args": [
+    "tests/api/cart/add-to-cart.spec.ts"
+   ],
+   "report_test_id": "api\\cart\u0007dd-to-cart.spec.ts::@regression LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "obligation_refs": [
+    {
+     "obligation_id": "OB-14",
+     "obligation_hash": "c37bb4054ceb64d8e715151920a94a5ca874f6c4bab7358e96ef2fe5a9765168"
+    }
+   ],
+   "obligation_ids": [
+    "OB-14"
+   ]
+  }
+ ],
+ "then_bindings": [
+  {
+   "case": "LOCAL-1_TC_016",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:231",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_016",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:234",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_016",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:237",
+   "status": "covered"
+  }
+ ],
+ "obligation_bindings": [
+  {
+   "obligation_id": "OB-14",
+   "obligation_hash": "c37bb4054ceb64d8e715151920a94a5ca874f6c4bab7358e96ef2fe5a9765168",
+   "instance_ids": [
+    "LOCAL-1_TC_016 update quantity respects stock, including zero stock"
+   ],
+   "design_assessment": "sufficient",
+   "assertion_refs": [
+    "tests/api/cart/add-to-cart.spec.ts:231",
+    "tests/api/cart/add-to-cart.spec.ts:232",
+    "tests/api/cart/add-to-cart.spec.ts:234",
+    "tests/api/cart/add-to-cart.spec.ts:235",
+    "tests/api/cart/add-to-cart.spec.ts:237"
+   ],
+   "change_disposition": "new_or_changed",
+   "change_basis_ref": "manifest:LOCAL-1_TC_016",
+   "code_validity": "unverified",
+   "sensitivity": "missing",
+   "quality_receipt_refs": []
+  }
+ ],
+ "deviations": [
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "from": "function",
+   "planned": "T-9",
+   "reason": "title without the tag; uses shop fixture and soft assertions per notes"
+  }
+ ],
+ "plan_remarks": [
+  {
+   "id": "PR-1",
+   "row": "applied",
+   "reason": "reuses ShopActor.changeLine, shop fixture, expectStableErrorShape"
+  },
+  {
+   "id": "CC-8",
+   "row": "applied",
+   "reason": "basis external:Q1-a; asserts 400 INSUFFICIENT_STOCK as answered"
+  }
+ ],
+ "runs": [
+  {
+   "role": "qa-automator",
+   "label": "initial-5aebb5b3b4cb0827502e",
+   "scope": [
+    "tests/api/cart/add-to-cart.spec.ts"
+   ],
+   "code_fingerprint": "5aebb5b3b4cb",
+   "warranted": true,
+   "result": "11 passed"
+  }
+ ],
+ "run_witness": "qa-factory/artifacts/LOCAL-1/evidence/runs/5aebb5b3b4cb0827502e/initial-5aebb5b3b4cb0827502e-20261103-005854.json exit 0 11 passed",
+ "probe": {
+  "layers": "ok",
+  "reuse": "ok",
+  "then_channel": "ok",
+  "duplicates": "none",
+  "own_data": "yes",
+  "collected": 11
+ }
+}

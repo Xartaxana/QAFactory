@@ -1,0 +1,1532 @@
+{
+  "task": "LOCAL-1",
+  "sessions": [
+    "80f3172e-4ef8-4f1c-8548-fbe5a3b67add"
+  ],
+  "story": {
+    "usd": 35.358877,
+    "usd_low": 35.358877,
+    "usd_high": 35.358877,
+    "tokens": 144988164,
+    "incomplete": true,
+    "reason": "roles with no recorded usage: qa-automator.",
+    "roles_missing": [
+      "qa-automator"
+    ],
+    "sessions": 1,
+    "price_status": "not_cross_checked"
+  },
+  "price": {
+    "status": "not_cross_checked",
+    "sessions": [
+      {
+        "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+        "agent": "orchestrator",
+        "stage": "",
+        "a_usd": 35.3588775,
+        "b_usd": null,
+        "a_price_usd": 35.3588775,
+        "verdict": "in_progress",
+        "why": "the transcript changed 3 s ago: the session is still being written"
+      }
+    ],
+    "by_agent": [
+      {
+        "agent": "orchestrator",
+        "sessions": 1,
+        "a_usd": 12.9544176,
+        "a_price_usd": 12.9544176,
+        "b_usd": null,
+        "price_low_usd": 12.9544176,
+        "price_high_usd": 12.9544176,
+        "remote_usd": null,
+        "b_unknown": 1,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-automator",
+        "sessions": 1,
+        "a_usd": 9.3371962,
+        "a_price_usd": 9.3371962,
+        "b_usd": null,
+        "price_low_usd": 9.3371962,
+        "price_high_usd": 9.3371962,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-code-critic",
+        "sessions": 1,
+        "a_usd": 3.8765835,
+        "a_price_usd": 3.8765835,
+        "b_usd": null,
+        "price_low_usd": 3.8765835,
+        "price_high_usd": 3.8765835,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-test-strategist",
+        "sessions": 1,
+        "a_usd": 2.4644568,
+        "a_price_usd": 2.4644568,
+        "b_usd": null,
+        "price_low_usd": 2.4644568,
+        "price_high_usd": 2.4644568,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-case-designer",
+        "sessions": 1,
+        "a_usd": 1.6484369,
+        "a_price_usd": 1.6484369,
+        "b_usd": null,
+        "price_low_usd": 1.6484369,
+        "price_high_usd": 1.6484369,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-failure-analyst",
+        "sessions": 1,
+        "a_usd": 0.9736791,
+        "a_price_usd": 0.9736791,
+        "b_usd": null,
+        "price_low_usd": 0.9736791,
+        "price_high_usd": 0.9736791,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-runner",
+        "sessions": 1,
+        "a_usd": 0.9673456,
+        "a_price_usd": 0.9673456,
+        "b_usd": null,
+        "price_low_usd": 0.9673456,
+        "price_high_usd": 0.9673456,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-requirements-tester",
+        "sessions": 1,
+        "a_usd": 0.9136764,
+        "a_price_usd": 0.9136764,
+        "b_usd": null,
+        "price_low_usd": 0.9136764,
+        "price_high_usd": 0.9136764,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-scout",
+        "sessions": 1,
+        "a_usd": 0.8291314,
+        "a_price_usd": 0.8291314,
+        "b_usd": null,
+        "price_low_usd": 0.8291314,
+        "price_high_usd": 0.8291314,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-case-critic",
+        "sessions": 1,
+        "a_usd": 0.7396394,
+        "a_price_usd": 0.7396394,
+        "b_usd": null,
+        "price_low_usd": 0.7396394,
+        "price_high_usd": 0.7396394,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-doc-scribe",
+        "sessions": 1,
+        "a_usd": 0.4569614,
+        "a_price_usd": 0.4569614,
+        "b_usd": null,
+        "price_low_usd": 0.4569614,
+        "price_high_usd": 0.4569614,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      },
+      {
+        "agent": "qa-factory:qa-bug-reporter",
+        "sessions": 1,
+        "a_usd": 0.1973532,
+        "a_price_usd": 0.1973532,
+        "b_usd": null,
+        "price_low_usd": 0.1973532,
+        "price_high_usd": 0.1973532,
+        "remote_usd": null,
+        "b_unknown": 0,
+        "a_unknown": 0,
+        "differing_sessions": 0,
+        "remote_calls": 0
+      }
+    ],
+    "totals": {
+      "a": 35.3588775,
+      "b": 0.0,
+      "a_comparable": 0.0,
+      "b_comparable": 0.0,
+      "a_price": 35.3588775
+    },
+    "differ": [],
+    "one_record": [],
+    "unknown": [],
+    "in_progress": [
+      {
+        "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+        "agent": "orchestrator",
+        "stage": "",
+        "a_usd": 35.3588775,
+        "b_usd": null,
+        "a_price_usd": 35.3588775,
+        "verdict": "in_progress",
+        "why": "the transcript changed 3 s ago: the session is still being written"
+      }
+    ],
+    "catalogue_revision": "provider-docs-2026-10-16-r1",
+    "finding": "1 session is still being written and was not compared.",
+    "compared": "nothing was compared: the driver's journal names no session of this task; 0 priced from one record",
+    "rows_without_session": 0,
+    "rate_overrides": [],
+    "external_forms_line": "external calls counted for: product",
+    "single_source": false,
+    "price_low_usd": 35.3588775,
+    "price_high_usd": 35.3588775,
+    "bound_by_journal": [],
+    "problem": ""
+  },
+  "price_problem": "",
+  "incomplete": true,
+  "incomplete_reason": "roles with no recorded usage: qa-automator.",
+  "orchestrator": {
+    "tokens": 82247029,
+    "requests": 386,
+    "cost": 12.95441759999999,
+    "cost_known": true,
+    "active_s": 33051,
+    "machine_s": 13714,
+    "tools": {
+      "Bash": 32661,
+      "Read": 14469,
+      "Edit": 9426,
+      "Write": 6299,
+      "Grep": 4395,
+      "SubagentHandback": 3517,
+      "Glob": 812,
+      "Monitor": 62,
+      "Agent": 39,
+      "SendMessage": 24,
+      "mcp__ccd_turn__wrap_up": 5,
+      "AskUserQuestion": 3,
+      "Skill": 1,
+      "mcp__ccd_turn__update_plan": 1
+    }
+  },
+  "handed_back_to_roles": null,
+  "price_base": {
+    "factors": {},
+    "unscaled": [],
+    "project_rates": false
+  },
+  "rules_weight": {
+    "requests": 815,
+    "tokens": 11131349,
+    "usd": 1.1131,
+    "rate_per_mtok": 0.1,
+    "model": "claude-sonnet-5-5",
+    "models": 1,
+    "reason": "",
+    "rate_source": "catalogue",
+    "by_layer": {
+      "charter": 0.2338,
+      "slices": 0.6515,
+      "common": 0.1027,
+      "brief": 0.1252
+    },
+    "by_role": {
+      "qa-scout": {
+        "requests": 32,
+        "bytes": 48680,
+        "usd": 0.0389
+      },
+      "qa-requirements-tester": {
+        "requests": 23,
+        "bytes": 38976,
+        "usd": 0.0224
+      },
+      "qa-test-strategist": {
+        "requests": 57,
+        "bytes": 56369,
+        "usd": 0.0804
+      },
+      "qa-case-designer": {
+        "requests": 42,
+        "bytes": 51081,
+        "usd": 0.0537
+      },
+      "qa-case-critic": {
+        "requests": 21,
+        "bytes": 50858,
+        "usd": 0.0267
+      },
+      "qa-automator": {
+        "requests": 379,
+        "bytes": 55818,
+        "usd": 0.5289
+      },
+      "qa-code-critic": {
+        "requests": 163,
+        "bytes": 56965,
+        "usd": 0.2321
+      },
+      "qa-runner": {
+        "requests": 39,
+        "bytes": 52931,
+        "usd": 0.0516
+      },
+      "qa-failure-analyst": {
+        "requests": 30,
+        "bytes": 55814,
+        "usd": 0.0419
+      },
+      "qa-doc-scribe": {
+        "requests": 20,
+        "bytes": 53449,
+        "usd": 0.0268
+      },
+      "qa-bug-reporter": {
+        "requests": 9,
+        "bytes": 44079,
+        "usd": 0.0099
+      }
+    },
+    "assumption": "4 bytes per token, the model's cache-read rate, every request of every dispatch re-reading the whole prompt"
+  },
+  "orchestrator_share_percent": null,
+  "orchestrator_share_basis": null,
+  "orchestrator_share_limit_percent": 35.0,
+  "orchestrator_by_stage": {
+    "unattributed": 2.243005,
+    "S1": 0.440219,
+    "S2": 0.074117,
+    "S3": 1.474714,
+    "S5": 5.851366,
+    "S6": 1.362978,
+    "S7": 1.108616,
+    "S8": 0.3994
+  },
+  "clock_anomalies": [],
+  "by_stage": {
+    "S1": {
+      "dispatches": 1,
+      "tokens": 2200573,
+      "cost": 0.8291314,
+      "cost_known": true,
+      "requests": 32,
+      "incomplete": false
+    },
+    "S2": {
+      "dispatches": 1,
+      "tokens": 2174693,
+      "cost": 0.9136764,
+      "cost_known": true,
+      "requests": 23,
+      "incomplete": false
+    },
+    "S3": {
+      "dispatches": 3,
+      "tokens": 5123589,
+      "cost": 2.4644568000000002,
+      "cost_known": true,
+      "requests": 57,
+      "incomplete": false
+    },
+    "S4": {
+      "dispatches": 5,
+      "tokens": 3959675,
+      "cost": 2.3880763000000003,
+      "cost_known": true,
+      "requests": 63,
+      "incomplete": false
+    },
+    "S5": {
+      "dispatches": 23,
+      "tokens": 43434437,
+      "cost": 13.213779700000002,
+      "cost_known": true,
+      "requests": 542,
+      "incomplete": true
+    },
+    "S6": {
+      "dispatches": 2,
+      "tokens": 1971719,
+      "cost": 0.9673456,
+      "cost_known": true,
+      "requests": 39,
+      "incomplete": false
+    },
+    "S7": {
+      "dispatches": 1,
+      "tokens": 2509477,
+      "cost": 0.9736791,
+      "cost_known": true,
+      "requests": 30,
+      "incomplete": false
+    },
+    "S8": {
+      "dispatches": 3,
+      "tokens": 1366972,
+      "cost": 0.6543146,
+      "cost_known": true,
+      "requests": 29,
+      "incomplete": false
+    }
+  },
+  "by_role": {
+    "qa-scout": {
+      "dispatches": 1,
+      "tokens": 2200573,
+      "cost": 0.8291314,
+      "cost_known": true,
+      "requests": 32,
+      "incomplete": false
+    },
+    "qa-requirements-tester": {
+      "dispatches": 1,
+      "tokens": 2174693,
+      "cost": 0.9136764,
+      "cost_known": true,
+      "requests": 23,
+      "incomplete": false
+    },
+    "qa-test-strategist": {
+      "dispatches": 3,
+      "tokens": 5123589,
+      "cost": 2.4644568000000002,
+      "cost_known": true,
+      "requests": 57,
+      "incomplete": false
+    },
+    "qa-case-designer": {
+      "dispatches": 3,
+      "tokens": 2724696,
+      "cost": 1.6484369,
+      "cost_known": true,
+      "requests": 42,
+      "incomplete": false
+    },
+    "qa-case-critic": {
+      "dispatches": 2,
+      "tokens": 1234979,
+      "cost": 0.7396394,
+      "cost_known": true,
+      "requests": 21,
+      "incomplete": false
+    },
+    "qa-automator": {
+      "dispatches": 9,
+      "tokens": 34901421,
+      "cost": 9.3371962,
+      "cost_known": true,
+      "requests": 379,
+      "incomplete": true
+    },
+    "qa-code-critic": {
+      "dispatches": 14,
+      "tokens": 8533016,
+      "cost": 3.8765834999999993,
+      "cost_known": true,
+      "requests": 163,
+      "incomplete": false
+    },
+    "qa-runner": {
+      "dispatches": 2,
+      "tokens": 1971719,
+      "cost": 0.9673456,
+      "cost_known": true,
+      "requests": 39,
+      "incomplete": false
+    },
+    "qa-failure-analyst": {
+      "dispatches": 1,
+      "tokens": 2509477,
+      "cost": 0.9736791,
+      "cost_known": true,
+      "requests": 30,
+      "incomplete": false
+    },
+    "qa-doc-scribe": {
+      "dispatches": 2,
+      "tokens": 996907,
+      "cost": 0.45696139999999996,
+      "cost_known": true,
+      "requests": 20,
+      "incomplete": false
+    },
+    "qa-bug-reporter": {
+      "dispatches": 1,
+      "tokens": 370065,
+      "cost": 0.1973532,
+      "cost_known": true,
+      "requests": 9,
+      "incomplete": false
+    }
+  },
+  "dispatches": [
+    {
+      "role": "qa-scout",
+      "stage": "S1",
+      "purpose": "qa-scout S1 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 2200573,
+      "cost": 0.8291314,
+      "requests": 32,
+      "tools": {
+        "Bash": 24,
+        "Read": 8,
+        "Grep": 7,
+        "SubagentHandback": 2,
+        "Write": 1
+      },
+      "started": "2026-11-01T22:12:45.886000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-requirements-tester",
+      "stage": "S2",
+      "purpose": "qa-requirements-tester S2 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 2174693,
+      "cost": 0.9136764,
+      "requests": 23,
+      "tools": {
+        "Bash": 13,
+        "Edit": 7,
+        "Read": 6,
+        "Write": 5,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-01T22:43:58.052000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-test-strategist",
+      "stage": "S3",
+      "purpose": "qa-test-strategist S3 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 3617163,
+      "cost": 1.8240418,
+      "requests": 28,
+      "tools": {
+        "Edit": 77,
+        "Grep": 11,
+        "Read": 8,
+        "Glob": 5,
+        "Write": 3,
+        "SubagentHandback": 2
+      },
+      "started": "2026-11-01T22:53:33.171000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-test-strategist",
+      "stage": "S3",
+      "purpose": "qa-test-strategist S3 repair LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1012041,
+      "cost": 0.4028744,
+      "requests": 18,
+      "tools": {
+        "Grep": 12,
+        "Edit": 10,
+        "Read": 9,
+        "SubagentHandback": 2,
+        "Write": 2
+      },
+      "started": "2026-11-01T23:13:52.295000+00:00",
+      "incomplete": false,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-case-designer",
+      "stage": "S4",
+      "purpose": "qa-case-designer S4 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 908875,
+      "cost": 0.7518896,
+      "requests": 14,
+      "tools": {
+        "Write": 23,
+        "Read": 7,
+        "Grep": 7,
+        "Glob": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-01T23:18:07.637000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-case-critic",
+      "stage": "S4",
+      "purpose": "qa-case-critic S4 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 739258,
+      "cost": 0.3945964,
+      "requests": 12,
+      "tools": {
+        "Read": 15,
+        "Grep": 5,
+        "Write": 3,
+        "Glob": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-01T23:25:46.162000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-case-designer",
+      "stage": "S4",
+      "purpose": "qa-case-designer S4 repair LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1375447,
+      "cost": 0.6056079,
+      "requests": 19,
+      "tools": {
+        "Edit": 27,
+        "Read": 14,
+        "Grep": 7,
+        "Write": 5,
+        "Bash": 1,
+        "Glob": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-01T23:30:45.330000+00:00",
+      "incomplete": false,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-case-critic",
+      "stage": "S4",
+      "purpose": "qa-case-critic S4 round 2 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 495721,
+      "cost": 0.345043,
+      "requests": 9,
+      "tools": {
+        "Read": 15,
+        "Grep": 3,
+        "Glob": 2,
+        "Write": 2,
+        "Edit": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-01T23:38:19.668000+00:00",
+      "incomplete": false,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-test-strategist",
+      "stage": "S3",
+      "purpose": "qa-test-strategist S3 repair 3 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 494385,
+      "cost": 0.2375406,
+      "requests": 11,
+      "tools": {
+        "Edit": 7,
+        "Grep": 6,
+        "Read": 5,
+        "Write": 3,
+        "SubagentHandback": 2
+      },
+      "started": "2026-11-01T23:43:28.859000+00:00",
+      "incomplete": false,
+      "round": 3,
+      "rework": true
+    },
+    {
+      "role": "qa-case-designer",
+      "stage": "S4",
+      "purpose": "qa-case-designer S4 repair 3 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 440374,
+      "cost": 0.2909394,
+      "requests": 9,
+      "tools": {
+        "Read": 8,
+        "Write": 6,
+        "Edit": 4,
+        "SubagentHandback": 2,
+        "Grep": 1
+      },
+      "started": "2026-11-02T00:27:46.349000+00:00",
+      "incomplete": false,
+      "round": 3,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 plan LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 618526,
+      "cost": 0.2549457,
+      "requests": 13,
+      "tools": {
+        "Bash": 11,
+        "Read": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T00:36:25.057000+00:00",
+      "incomplete": true,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 plan LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 235154,
+      "cost": 0.2056506,
+      "requests": 5,
+      "tools": {
+        "Read": 3,
+        "Bash": 2,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T00:40:21.703000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 window 1 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 8388368,
+      "cost": 2.2552463,
+      "requests": 80,
+      "tools": {
+        "Bash": 72,
+        "Write": 11,
+        "Read": 5,
+        "SubagentHandback": 5,
+        "Grep": 1,
+        "Edit": 1
+      },
+      "started": "2026-11-02T00:42:38.188000+00:00",
+      "incomplete": true,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 window 1 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1163465,
+      "cost": 0.4922668,
+      "requests": 21,
+      "tools": {
+        "Bash": 13,
+        "Read": 4,
+        "Write": 3,
+        "SubagentHandback": 3
+      },
+      "started": "2026-11-02T01:34:37.392000+00:00",
+      "incomplete": false,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 window 1 retry LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1298405,
+      "cost": 0.4637385,
+      "requests": 22,
+      "tools": {
+        "Bash": 19,
+        "Read": 5,
+        "Write": 3,
+        "SubagentHandback": 2
+      },
+      "started": "2026-11-02T02:32:01.667000+00:00",
+      "incomplete": false,
+      "round": 3,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 window 2 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 2006858,
+      "cost": 0.5918199,
+      "requests": 32,
+      "tools": {
+        "Bash": 26,
+        "Read": 5,
+        "Edit": 2,
+        "Write": 2,
+        "Grep": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T02:40:49.288000+00:00",
+      "incomplete": true,
+      "round": 3,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W2 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 401710,
+      "cost": 0.2002612,
+      "requests": 9,
+      "tools": {
+        "Bash": 7,
+        "Read": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T02:49:29.568000+00:00",
+      "incomplete": false,
+      "round": 4,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 W3 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1871424,
+      "cost": 0.5737119,
+      "requests": 26,
+      "tools": {
+        "Bash": 22,
+        "Read": 5,
+        "SubagentHandback": 2,
+        "Grep": 1
+      },
+      "started": "2026-11-02T02:51:38.265000+00:00",
+      "incomplete": true,
+      "round": 4,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W3 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 368836,
+      "cost": 0.2065001,
+      "requests": 8,
+      "tools": {
+        "Bash": 7,
+        "Read": 2,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T03:00:00.527000+00:00",
+      "incomplete": false,
+      "round": 5,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 W4 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1626301,
+      "cost": 0.5141317,
+      "requests": 25,
+      "tools": {
+        "Bash": 22,
+        "Read": 11,
+        "SubagentHandback": 3
+      },
+      "started": "2026-11-02T03:02:19.571000+00:00",
+      "incomplete": true,
+      "round": 5,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W4 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 439424,
+      "cost": 0.224657,
+      "requests": 9,
+      "tools": {
+        "Bash": 7,
+        "Read": 6,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T03:08:20.627000+00:00",
+      "incomplete": false,
+      "round": 6,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 TC_003 re-review",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 393843,
+      "cost": 0.1668653,
+      "requests": 9,
+      "tools": {
+        "Bash": 6,
+        "Read": 3,
+        "SubagentHandback": 2
+      },
+      "started": "2026-11-02T03:13:54.634000+00:00",
+      "incomplete": false,
+      "round": 7,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 W5 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 3587853,
+      "cost": 0.9093854,
+      "requests": 43,
+      "tools": {
+        "Bash": 37,
+        "Read": 8,
+        "Edit": 3,
+        "Write": 2,
+        "Monitor": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T03:16:26.203000+00:00",
+      "incomplete": true,
+      "round": 6,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W5 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 429785,
+      "cost": 0.2204474,
+      "requests": 9,
+      "tools": {
+        "Bash": 7,
+        "Read": 4,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T03:33:21.037000+00:00",
+      "incomplete": false,
+      "round": 8,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 W6 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 4164483,
+      "cost": 1.0434779,
+      "requests": 46,
+      "tools": {
+        "Bash": 38,
+        "Read": 11,
+        "Edit": 4,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T03:35:49.990000+00:00",
+      "incomplete": true,
+      "round": 7,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W6 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 666632,
+      "cost": 0.3238439,
+      "requests": 12,
+      "tools": {
+        "Bash": 9,
+        "Read": 3,
+        "Grep": 1,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T03:54:54.507000+00:00",
+      "incomplete": false,
+      "round": 9,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 W7 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 9917490,
+      "cost": 2.2230147,
+      "requests": 82,
+      "tools": {
+        "Bash": 58,
+        "Write": 14,
+        "Read": 11,
+        "Edit": 9,
+        "SubagentHandback": 3,
+        "Grep": 3
+      },
+      "started": "2026-11-02T03:58:00.877000+00:00",
+      "incomplete": true,
+      "round": 8,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W7 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1225047,
+      "cost": 0.4472063,
+      "requests": 19,
+      "tools": {
+        "Bash": 14,
+        "Read": 10,
+        "Write": 4,
+        "Grep": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T04:09:39.117000+00:00",
+      "incomplete": false,
+      "round": 10,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W7 re-check LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 550229,
+      "cost": 0.2733309,
+      "requests": 11,
+      "tools": {
+        "Bash": 10,
+        "Read": 2,
+        "Write": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T04:23:26.790000+00:00",
+      "incomplete": false,
+      "round": 11,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 TC_019 re-review",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 332444,
+      "cost": 0.1723722,
+      "requests": 8,
+      "tools": {
+        "Bash": 5,
+        "Read": 4,
+        "Grep": 1,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T04:30:45.146000+00:00",
+      "incomplete": false,
+      "round": 12,
+      "rework": true
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "purpose": "qa-automator S5 W8 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 2720118,
+      "cost": 0.9714627,
+      "requests": 32,
+      "tools": {
+        "Bash": 28,
+        "Read": 12,
+        "SubagentHandback": 2
+      },
+      "started": "2026-11-02T04:32:47.382000+00:00",
+      "incomplete": true,
+      "round": 9,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W8 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 725529,
+      "cost": 0.2940549,
+      "requests": 14,
+      "tools": {
+        "Read": 9,
+        "Bash": 8,
+        "Grep": 2,
+        "SubagentHandback": 2,
+        "Glob": 1,
+        "Write": 1
+      },
+      "started": "2026-11-02T04:40:27.558000+00:00",
+      "incomplete": false,
+      "round": 13,
+      "rework": true
+    },
+    {
+      "role": "qa-code-critic",
+      "stage": "S5",
+      "purpose": "qa-code-critic S5 W8 retry LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 302513,
+      "cost": 0.1853884,
+      "requests": 7,
+      "tools": {
+        "Read": 4,
+        "Bash": 4,
+        "Write": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T04:50:14.155000+00:00",
+      "incomplete": false,
+      "round": 14,
+      "rework": true
+    },
+    {
+      "role": "qa-runner",
+      "stage": "S6",
+      "purpose": "qa-runner S6 automation LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 1549478,
+      "cost": 0.684417,
+      "requests": 29,
+      "tools": {
+        "Bash": 27,
+        "Read": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T04:52:38.229000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-runner",
+      "stage": "S6",
+      "purpose": "qa-runner S6 manual TC_022 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 422241,
+      "cost": 0.2829286,
+      "requests": 10,
+      "tools": {
+        "Bash": 8,
+        "Read": 2,
+        "SubagentHandback": 2
+      },
+      "started": "2026-11-02T05:19:07.268000+00:00",
+      "incomplete": false,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-failure-analyst",
+      "stage": "S7",
+      "purpose": "qa-failure-analyst S7 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 2509477,
+      "cost": 0.9736791,
+      "requests": 30,
+      "tools": {
+        "Bash": 28,
+        "Read": 2,
+        "SubagentHandback": 2,
+        "Grep": 1,
+        "Write": 1
+      },
+      "started": "2026-11-02T09:14:35.130000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-doc-scribe",
+      "stage": "S8",
+      "purpose": "qa-doc-scribe S8 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 739511,
+      "cost": 0.3225085,
+      "requests": 13,
+      "tools": {
+        "Bash": 10,
+        "Read": 4,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T09:34:19.375000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    },
+    {
+      "role": "qa-doc-scribe",
+      "stage": "S8",
+      "purpose": "qa-doc-scribe S8 rerun LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 257396,
+      "cost": 0.1344529,
+      "requests": 7,
+      "tools": {
+        "Bash": 6,
+        "Read": 1,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T09:49:50.124000+00:00",
+      "incomplete": false,
+      "round": 2,
+      "rework": true
+    },
+    {
+      "role": "qa-bug-reporter",
+      "stage": "S8",
+      "purpose": "qa-bug-reporter S8 LOCAL-1",
+      "session": "80f3172e-4ef8-4f1c-8548-fbe5a3b67add",
+      "tokens": 370065,
+      "cost": 0.1973532,
+      "requests": 9,
+      "tools": {
+        "Bash": 5,
+        "Read": 4,
+        "Grep": 3,
+        "Glob": 2,
+        "SubagentHandback": 1
+      },
+      "started": "2026-11-02T10:08:41.766000+00:00",
+      "incomplete": false,
+      "round": 1,
+      "rework": false
+    }
+  ],
+  "top_dispatches": [
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "cost": 2.2552463,
+      "tokens": 8388368,
+      "requests": 80,
+      "round": 2
+    },
+    {
+      "role": "qa-automator",
+      "stage": "S5",
+      "cost": 2.2230147,
+      "tokens": 9917490,
+      "requests": 82,
+      "round": 8
+    },
+    {
+      "role": "qa-test-strategist",
+      "stage": "S3",
+      "cost": 1.8240418,
+      "tokens": 3617163,
+      "requests": 28,
+      "round": 1
+    }
+  ],
+  "rework": {
+    "dispatches": 28,
+    "cost": 15.0526,
+    "rounds": [
+      "S3/qa-test-strategist round 2",
+      "S4/qa-case-designer round 2",
+      "S4/qa-case-critic round 2",
+      "S3/qa-test-strategist round 3",
+      "S4/qa-case-designer round 3",
+      "S5/qa-automator round 2",
+      "S5/qa-code-critic round 2",
+      "S5/qa-code-critic round 3",
+      "S5/qa-automator round 3",
+      "S5/qa-code-critic round 4",
+      "S5/qa-automator round 4",
+      "S5/qa-code-critic round 5",
+      "S5/qa-automator round 5",
+      "S5/qa-code-critic round 6",
+      "S5/qa-code-critic round 7",
+      "S5/qa-automator round 6",
+      "S5/qa-code-critic round 8",
+      "S5/qa-automator round 7",
+      "S5/qa-code-critic round 9",
+      "S5/qa-automator round 8",
+      "S5/qa-code-critic round 10",
+      "S5/qa-code-critic round 11",
+      "S5/qa-code-critic round 12",
+      "S5/qa-automator round 9",
+      "S5/qa-code-critic round 13",
+      "S5/qa-code-critic round 14",
+      "S6/qa-runner round 2",
+      "S8/qa-doc-scribe round 2"
+    ]
+  },
+  "journal": {
+    "events": {
+      "human_answer": 15,
+      "escalated": 2,
+      "delegated": 73,
+      "awaiting_human": 5,
+      "subagent_stop": 63,
+      "gate_block": 41,
+      "accepted": 12,
+      "gate_recheck_passed": 2,
+      "compact": 1,
+      "hook_signal": 3
+    },
+    "rejects": 0,
+    "reject_families": {},
+    "gate_blocks": 41,
+    "compacts": 1,
+    "halts_journalled": 0
+  },
+  "stage_times": {
+    "S0": {
+      "status": "done",
+      "seconds": 5,
+      "role": null
+    },
+    "S1": {
+      "status": "done",
+      "seconds": 1845,
+      "role": "qa-scout"
+    },
+    "S2": {
+      "status": "done",
+      "seconds": 543,
+      "role": "qa-requirements-tester"
+    },
+    "S3": {
+      "status": "done",
+      "seconds": 3236,
+      "role": "qa-test-strategist"
+    },
+    "S4": {
+      "status": "done",
+      "seconds": 1396,
+      "role": "qa-case-critic"
+    },
+    "S5": {
+      "status": "done",
+      "seconds": 15326,
+      "role": "qa-code-critic"
+    },
+    "S6": {
+      "status": "done",
+      "seconds": 15637,
+      "role": "qa-runner"
+    },
+    "S7": {
+      "status": "done",
+      "seconds": 2050,
+      "role": "qa-failure-analyst"
+    },
+    "S8": {
+      "status": "done",
+      "seconds": 2216,
+      "role": "qa-bug-reporter"
+    }
+  },
+  "halts": {
+    "count": 0,
+    "waited_s": 0,
+    "rows": []
+  },
+  "human_wait_s": 10009,
+  "time_to_first_test_s": 11989,
+  "estimate_vs_actual": {
+    "size_forecast": "L",
+    "size_initial": "L",
+    "size_final": "L",
+    "size_reason": "",
+    "size_unit": "functions",
+    "function_count": 6,
+    "computed_budget": 50,
+    "defect_capped": false,
+    "size_override": false,
+    "size_mismatch": false,
+    "requirements": 26,
+    "plan_rows": 26,
+    "cases_pinned": 24,
+    "runs": 38,
+    "runs_redundant": 0
+  },
+  "size_forecast": {
+    "known": false,
+    "size": "L",
+    "unit": "functions",
+    "precedents": 0,
+    "needed": 3,
+    "skipped": {}
+  },
+  "test_runs": {
+    "jobs": 67,
+    "windows": {
+      "unscoped": 67
+    },
+    "executions": 150,
+    "duplicate_green_executions": 0,
+    "duplicate_share_percent": 0.0
+  },
+  "test_run_counts": {
+    "known": true,
+    "tests": 43,
+    "runs": 150,
+    "launches": 67,
+    "probes": 6,
+    "per_test": {
+      "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page": 2,
+      "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart": 2,
+      "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal": 2,
+      "LOCAL-1_TC_004 cart unit price and total equal the catalog price": 2,
+      "LOCAL-1_TC_005 guest adds without login and the cart follows the cookie": 2,
+      "LOCAL-1_TC_006 a signed-in cart survives logout and login": 2,
+      "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown": 2,
+      "LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged": 2,
+      "LOCAL-1_TC_013 maximum quantity is added with the right subtotal": 2,
+      "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price": 4,
+      "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie": 4,
+      "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged": 4,
+      "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal": 4,
+      "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up": 1,
+      "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity": 3,
+      "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total": 4,
+      "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND": 1,
+      "cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page": 3,
+      "cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart": 1,
+      "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal": 2,
+      "cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login": 1,
+      "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]": 4,
+      "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]": 8,
+      "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]": 6,
+      "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]": 4,
+      "cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown": 1,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]": 5,
+      "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]": 5,
+      "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]": 5,
+      "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]": 5,
+      "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]": 5,
+      "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line": 4,
+      "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist": 2,
+      "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items": 1
+    },
+    "by_purpose": {
+      "initial": 47,
+      "repair_verify": 103
+    },
+    "by_cause": {
+      "first_run": 43,
+      "after_red": 100,
+      "stage_run": 2,
+      "unknown": 5
+    },
+    "unknown_jobs": [
+      "e6c2457a319bdf3ac0e4-reparse-a17a5e06e2d4",
+      "4818d0a3e31035ac44c9-reparse-2a9f952c324a",
+      "d97d2f04d5be9dc15b05-reparse-59731cbb32f3",
+      "db96171cb1a2ca0e4f68-reparse-b091ef9f6e9d",
+      "df7f03cbb1698d353ef2"
+    ],
+    "not_executed": 1,
+    "no_totals": 0,
+    "baselines": 0,
+    "no_instances": 0,
+    "unreadable": 0,
+    "unreadable_blocks": 0,
+    "carrier": "work/run-blocks+state/execution-jobs"
+  },
+  "resumes": {
+    "known": false,
+    "reason": "the story has no driver journal (driver-runs.jsonl)",
+    "carrier": "state/driver-runs.jsonl"
+  },
+  "friction": {
+    "status": "unknown",
+    "reason": "this story has no driver journal",
+    "method": "Each turn of a role's own transcript is priced from its usage block by its message.model through the package's rate catalogue (cost_capture valuation), not from the CLI's total_cost_usd in the driver journal: the two records differ and this table uses the first (FR-25). Turn share is friction turns over all turns; dollar share is friction dollars over priced dollars, so an unpriced turn is in the first and in neither dollar figure. A count is a candidate, not a finding, until the tool result behind it is read (FR-26)."
+  },
+  "sources_left_out": [],
+  "sources_left_out_unread": "",
+  "codex_tariff": ""
+}

@@ -1,0 +1,291 @@
+# S2 -> S3: the requirements register is handed to the strategist.
+#
+# The register is the story's oracle, so this file is where the factory proves the register was
+# built from everything it was given. `inputs_read` is not bookkeeping: it is the answer to the
+# one failure that has no refusal attached to it - a source or a diff hunk nobody opened. On
+# TP1-13797 the tester read part of `impl-diff.txt`, wrote 14 requirements, and every later
+# stage was correct about the wrong 14. The repaired run read every hunk and reached 21.
+#
+# The strategist may not add a requirement and may not repair one. Whatever is missing here is
+# missing from the plan, the cases, the tests and the report.
+schema_version: 1
+contract: s2-tester-to-strategist
+stage: S2
+from_role: qa-requirements-tester
+to_role: qa-test-strategist
+
+inputs:
+  - path: work/handoffs/S2-qa-requirements-tester-1.yaml
+    what: this file
+    required: true
+  - path: work/requirements-register.md
+    what: every requirement with its source, revision, impact class and observable
+    required: true
+  - path: work/requirements-readiness.json
+    what: the open questions with their readings and owners
+    required: true
+  - path: understanding.md
+    what: the brief the person reads at gate A, and the Size line
+    required: true
+  - path: work/sizing.json
+    what: the computed size, weights and the arithmetic behind them
+    required: true
+
+# One line per entry of the scout's `inputs`, with what was actually read of it. The counts come
+# from the scout's handoff and the answer is `<read> of <handed>`; anything short of the whole
+# is a `blocked` field, not a smaller number quietly written.
+inputs_read:
+  - path: work/impl-diff.txt
+    handed: 37 hunks (all diff --git headers in impl-diff.txt)
+    read: 37 of 37
+    production_files_accounted_for: 6 of 6
+  - path: work/context-bundle.json
+    version: ba3519394db5d85e
+  - path: work/ticket-snapshot.md and work/sources/SRC-89ac8911f03607b1c6cd/e7ec196f667d54f0/ticket.json (TP1-13695)
+    version: "TP1-13877@2026-09-26T12:29:57.408+0000; TP1-13695@2026-09-25T11:59:51.054+0000"
+
+header:
+  role: qa-requirements-tester
+  stage: S2
+  window: TP1-13877
+  verdict: ok
+
+# One row per requirement. This is the register in its machine form; the prose stays in the
+# register file. `state` from vocabulary.row_states - normally `found`, or `unresolved` for a
+# requirement whose oracle nobody can name yet.
+scope:
+  - id: R-1
+    state: found
+    reason: "comparison logic corrected, no longer inverted"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:security_policies.py:150,244"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-2
+    state: found
+    reason: "LOW confirmed permissive, blocks fewer patterns"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:security_policies.py:159; diff:test_security_config.py:191"
+    impact_class: blocked-flow
+    derived_from_hunk: "-"
+  - id: R-3
+    state: found
+    reason: "HIGH confirmed strict, blocks more patterns"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:security_policies.py:161; diff:test_security_config.py:197"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-4
+    state: found
+    reason: "full evaluation flow reviewed, AST always-block made explicit"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:ast_security_checker.py:122; diff:README.md:46; diff:security_policies.py:298"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-5
+    state: found
+    reason: "test coverage exists per severity level"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:test_security_config.py:191,197"
+    impact_class: degraded
+    derived_from_hunk: "-"
+  - id: R-6
+    state: found
+    reason: "docs updated to document validated logic per threshold"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:README.md:25; diff:models.py:185"
+    impact_class: degraded
+    derived_from_hunk: "-"
+  - id: R-7
+    state: found
+    reason: "yaml header comments corrected"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:default_security_policies.yaml:8"
+    impact_class: degraded
+    derived_from_hunk: "-"
+  - id: R-8
+    state: found
+    reason: "env var doc + from_env() default corrected to HIGH"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:models.py:409; diff:README.md:63"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-9
+    state: found
+    reason: "no test asserts old inverted behavior"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:test_ast_security_checker.py:118; diff:test_models.py:66; diff:test_security_config.py:34"
+    impact_class: degraded
+    derived_from_hunk: "-"
+  - id: R-10
+    state: found
+    reason: "LOW < MEDIUM < HIGH ordering regression-covered"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:test_security_config.py:188,392"
+    impact_class: degraded
+    derived_from_hunk: "-"
+  - id: R-11
+    state: found
+    reason: "MEDIUM pattern not blocked by LOW, via requests substitute (see Q-1)"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:test_security_config.py:178; current-code:default_security_policies.yaml:40"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-12
+    state: unresolved
+    reason: "downstream review unverifiable from any repo in scope (see Q-2)"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "none — no deployment/config repo is in this factory's scope"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-13
+    state: found
+    reason: "migration note documented in README"
+    kind: confirmed_ac
+    source: "TP1-13877 ticket-snapshot.md @2026-09-26T12:29:57.408+0000"
+    observable: "diff:README.md:25"
+    impact_class: access
+    derived_from_hunk: "-"
+  - id: R-14
+    state: found
+    reason: "below-threshold match stays visible-only, never flips is_safe"
+    kind: technical_invariant
+    source: "impl-diff.txt (MR !4340) @66014ac2415f2a5bec2a5a838a5fd37629c95a2f"
+    observable: "diff:security_policies.py:367-373"
+    impact_class: access
+    derived_from_hunk: "security_policies.py:367-373"
+  - id: R-15
+    state: found
+    reason: "SandboxMode.SHARED never reaches this logic; JOBS-mode only"
+    kind: technical_invariant
+    source: "impl-diff.txt (MR !4340) @66014ac2415f2a5bec2a5a838a5fd37629c95a2f"
+    observable: "diff:README.md:39,46"
+    impact_class: access
+    derived_from_hunk: "README.md:39,46"
+
+# Every production file the scout handed over reaches one of two places: a requirement, or this
+# list with a reason. The exit gate checks the sum - a new production module that backs no
+# requirement and is not named here is the silent loss this section exists to prevent.
+diff_accounting:
+  - file: src/testproject1_tools/data_management/code_executor/ast_security_checker.py
+    requirements: "<the R-ids it backs, or an empty list>"
+    not_requirement_bearing: <reason, when the list is empty>
+  - file: src/testproject1_tools/data_management/code_executor/default_security_policies.yaml
+    requirements: "<the R-ids it backs, or an empty list>"
+    not_requirement_bearing: <reason, when the list is empty>
+  - file: src/testproject1_tools/data_management/code_executor/models.py
+    requirements: "<the R-ids it backs, or an empty list>"
+    not_requirement_bearing: <reason, when the list is empty>
+  - file: src/testproject1_tools/data_management/code_executor/security_policies.py
+    requirements: "<the R-ids it backs, or an empty list>"
+    not_requirement_bearing: <reason, when the list is empty>
+
+# Requirements that disagree with each other or with a source. Both readings travel: the plan row
+# carries `source_conflict` or `oracle_unknown`, the design review is forced, and the owner sees
+# BOTH readings at gate A. A matrix cell that reaches no plan row is an exit-gate error at S3.
+contradiction_matrix: []
+# No `contradicts` cell exists anywhere in requirements-register.md's contradiction matrix:
+# the ticket carries 0 comments, TP1-13695's comment/attachment are decorative, and the
+# implementer's design notes (spec.md, plan.md) agree with the ACs and the diff on every row.
+# The two ambiguous rows (R-11, R-12) are Reading forks, not disagreements — see open_questions.
+
+# Questions that block understanding. Each travels whole - the statement, what the sources say and
+# where, and the lettered readings with what each one costs. A question that arrives without its
+# readings goes back to this role, never to the person (TP1-15045).
+open_questions:
+  - id: Q-1
+    statement: "Does AC11's MEDIUM-not-blocked-by-LOW scenario require a literal pathlib-equivalent fixture, or does the MR's requests-based substitute satisfy it?"
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: "AC11 (TP1-13877 ticket) names pathlib; spec.md Section 6 (implementer note, non-normative) documents requests as the deliberate substitute since pathlib was already removed from restricted_modules by TP1-13695"
+    readings:
+      - id: a
+        reading: "the requests substitute satisfies AC11's intent; TestRequestsThresholdOrdering already closes it"
+        cost: "no new case; risk of testing the letter of a retired scenario instead of the AC's real intent"
+      - id: b
+        reading: "AC11 names pathlib specifically; a literal reading needs a new MEDIUM-severity pathlib-equivalent fixture or an owner waiver"
+        cost: "a new case with a custom YAML-policy fixture; R-11 stays open until answered"
+  - id: Q-2
+    statement: "Was AC12's downstream-configuration review actually performed by a human, or is it an unverifiable claim the factory should leave open?"
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: "AC12 (TP1-13877 ticket) asks for the review; code-review-final.json (embedded, non-normative AI-dev-process artifact) marks it status:na citing 'Spec states this was already verified in Stage 1 research'"
+    readings:
+      - id: a
+        reading: "the embedded claim plus the factory's own negative grep (0 hits for CODE_EXECUTOR_SECURITY_THRESHOLD) is accepted as sufficient; AC12 is satisfied"
+        cost: "no further action; risk of trusting a non-normative artifact's self-report as a real review"
+      - id: b
+        reading: "the embedded claim is not evidence of a human review; AC12/R-12 stays unresolved and unverifiable (observable: none), referred to the PO/BA"
+        cost: "R-12 stays excluded from computed test budget (sizing.json already excludes it); no test can close this, only an owner answer"
+
+size:
+  computed: XS
+  override: <the role's override, or a dash>
+  reasoning_ref: work/sizing.json
+
+artifacts:
+  register: work/requirements-register.md
+  readiness: work/requirements-readiness.json
+  understanding: understanding.md
+  sizing: work/sizing.json
+
+claims:
+  every_hunk_of_the_diff_was_read: true
+  every_production_file_reaches_a_requirement_or_is_named_not_requirement_bearing: true
+  every_requirement_names_its_source_and_revision: true
+  every_requirement_has_an_observable_or_says_none: true
+  contradiction_matrix_walked_in_full: true
+  size_computed_by_sizing_py_not_quoted: true
+  size_recorded_in_pipeline: false  # `null` in pipeline.json while sizing.json said XXL
+
+expected_of_the_receiver:
+  - "every requirement above reaches a plan row, or is named `deferred` with a reason - the
+     strategist may not drop one silently and may not invent one"
+  - "a row touched by the contradiction matrix carries `source_conflict: true` or
+     `oracle_unknown: true` and forces design review at S4"
+  - "`observable: none` is a gate A question, never a reason to skip the requirement"
+
+unresolved:
+  - id: R-12
+    reason: handed_to_person
+    detail: "AC12 asks for a downstream-configuration/deployment review; no deployment/helm/values repo is in this factory's scope to check, and the only supporting claim (an embedded, non-normative AI-dev-process artifact) is not a human-review record. See open_questions Q-2; settled by a PO/BA answer, not a test."
+  - id: Q-1
+    reason: handed_to_person
+    detail: "AC11 names pathlib literally; the MR substitutes requests since pathlib was already removed from restricted_modules by TP1-13695. Settled by a PO/BA answer on whether the substitute satisfies the AC's intent."
+
+blocked: null
+# Nothing in this file was left unfillable. One producer-tooling issue is recorded here for
+# visibility, not as a blocked field: `artifact_producer.py validate-batch` returned the
+# identical error {"code":"ARTIFACT_CONTRACT","detail":"artifact must be an object"} and the
+# identical repair_fingerprint ed9dab8d... across three different batch-entry shapes tried
+# (path-string under `input`, inline object under `artifact`, inline object under `input`) -
+# per this role's own instructions, a repeated repair_fingerprint is one unresolved producer
+# defect, not grounds to keep guessing the schema. The equivalent outcome was reached through
+# the documented single-artifact path instead: `validate --kind readiness ... ` returned
+# `valid: true`, then `publish --kind readiness --path work/requirements-readiness.json
+# --input <file> --expected-hash <sha256>` returned `valid: true` with a content_hash - the
+# readiness artifact is published. `requirements-register.md` and `understanding.md` are not
+# producer-tracked kinds (producer --kind is limited to readiness|triage|case|bug), so no
+# batch beyond the single readiness artifact was owed for this stage.
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: diff_accounting[].file
+    source: "the production files of impl-diff.txt"
+  - field: inputs_read[1].version
+    source: "sha256 of work/context-bundle.json"
+  - field: size.computed
+    source: "sizing.json"

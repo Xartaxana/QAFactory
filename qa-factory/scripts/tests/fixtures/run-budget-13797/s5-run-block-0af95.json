@@ -1,0 +1,335 @@
+{
+ "schema_version": 2,
+ "block_id": "1916e40a3ed7d05c490d",
+ "attempt_id": "1916e40a3ed7d05c490d",
+ "attempt_started_at": "2026-09-27T03:50:12.219092+00:00",
+ "attempt_ended_at": "2026-09-27T03:50:36.848394+00:00",
+ "dispatch_id": "S5-qa-automator-2",
+ "profile_id": "api",
+ "repo_id": "",
+ "equivalence_verified": false,
+ "data_seed_contract": null,
+ "selection_provenance": {
+  "reason": "failed_or_invalidated",
+  "evidence_refs": [
+   "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\30a9a409aac235c157f7\\repair_verify-30a9a409aac235c157f7-20260927-044848.json"
+  ]
+ },
+ "purpose": "repair_verify",
+ "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+ "source_fingerprint": {
+  "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+  "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+  "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+  "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+  "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+  "policy_revision": "unknown"
+ },
+ "runtime_provenance": {
+  "profile_id": "api",
+  "timestamp": "2026-09-27T03:50:04+00:00",
+  "environment_id": "localhost",
+  "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+  "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+  "evidence_refs": [
+   "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T024630Z.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "verified_content",
+   "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "verified_source_revisions": [
+    "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+   ]
+  },
+  "result": "matched",
+  "comparisons": [
+   {
+    "file": "src/testproject1/service/settings/settings_request_validator.py",
+    "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+    "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+   },
+   {
+    "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+    "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+    "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+   },
+   {
+    "file": "src/testproject1/triggers/bindings/webhook.py",
+    "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+    "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+   },
+   {
+    "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+    "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+    "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+   }
+  ],
+  "container": "testproject1-dev-fresh-testproject1-1",
+  "checkout": "..\\..\\testproject1"
+ },
+ "execution_status": "passed",
+ "results": [
+  {
+   "instance_id": "test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_0f6f5d53577968fa9b5e"
+    }
+   ],
+   "obligation_ids": [
+    "OBL-TS2-1"
+   ],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+   "instance_content_scope": "function"
+  },
+  {
+   "instance_id": "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_0f6f5d53577968fa9b5e"
+    }
+   ],
+   "obligation_ids": [
+    "OBL-TS2-2"
+   ],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+   "instance_content_scope": "function"
+  },
+  {
+   "instance_id": "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_0f6f5d53577968fa9b5e"
+    }
+   ],
+   "obligation_ids": [
+    "OBL-TS2-3"
+   ],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+   "instance_content_scope": "function"
+  },
+  {
+   "instance_id": "test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_0f6f5d53577968fa9b5e"
+    }
+   ],
+   "obligation_ids": [],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+   "instance_content_scope": "function"
+  },
+  {
+   "instance_id": "test_json_path_filter_at_length_cap_is_accepted",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_0f6f5d53577968fa9b5e"
+    }
+   ],
+   "obligation_ids": [],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "a8e756892f2cf39ea0101f6bda0f875751c52ae41e495bf0f120e8018b4393dc",
+   "instance_content_scope": "function"
+  },
+  {
+   "instance_id": "test_matching_payload_triggers_workflow[exact-match]",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]",
+   "case_version_links": [
+    {
+     "case_id": "TC-003",
+     "version": "cv_84047d650b7d540c409b"
+    }
+   ],
+   "obligation_ids": [
+    "OBL-TS3-1"
+   ],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "b626049000167358363e87fefad7e07965d88929e53f9e83c0bd6b5ffb84fe7b",
+   "instance_content_scope": "function"
+  },
+  {
+   "instance_id": "test_matching_payload_triggers_workflow[falsy-match]",
+   "test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]",
+   "case_version_links": [
+    {
+     "case_id": "TC-003",
+     "version": "cv_84047d650b7d540c409b"
+    }
+   ],
+   "obligation_ids": [
+    "OBL-TS3-1"
+   ],
+   "parameters": {},
+   "status": "not_run",
+   "reason": "report row missing",
+   "report_matched": false,
+   "attempt_id": "1916e40a3ed7d05c490d",
+   "purpose": "repair_verify",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+   "source_fingerprint": {
+    "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+    "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+    "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+    "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "b626049000167358363e87fefad7e07965d88929e53f9e83c0bd6b5ffb84fe7b",
+   "instance_content_scope": "function"
+  }
+ ],
+ "evidence": [
+  {
+   "summary": "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\1916e40a3ed7d05c490d\\repair_verify-1916e40a3ed7d05c490d-20260927-055012.json",
+   "reporter": "pytest",
+   "report_path": "evidence/runs/1916e40a3ed7d05c490d/repair_verify-1916e40a3ed7d05c490d-20260927-055012.junit.xml",
+   "report_sha256": "4f66c92551e896e629523f35938c3ccb3fbc1732b6024afb8ebc8781da21bf5c"
+  }
+ ],
+ "reporter_mapping": {
+  "mode": "exact",
+  "source_attempt_id": "1916e40a3ed7d05c490d",
+  "raw_report_hash": "4f66c92551e896e629523f35938c3ccb3fbc1732b6024afb8ebc8781da21bf5c",
+  "reparsed": false
+ },
+ "report_scope": {
+  "selected": [
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "test_json_path_filter_at_length_cap_is_accepted",
+   "test_matching_payload_triggers_workflow[exact-match]",
+   "test_matching_payload_triggers_workflow[falsy-match]"
+  ],
+  "unmatched_report_rows": [
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted",
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]",
+   "tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]"
+  ]
+ }
+}

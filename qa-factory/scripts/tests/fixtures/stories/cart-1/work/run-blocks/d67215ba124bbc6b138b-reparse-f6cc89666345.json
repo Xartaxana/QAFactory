@@ -1,0 +1,163 @@
+{
+  "schema_version": 2,
+  "block_id": "d67215ba124bbc6b138b-reparse-f6cc89666345",
+  "attempt_id": "d67215ba124bbc6b138b",
+  "attempt_started_at": "2026-10-31T09:34:04.999136+00:00",
+  "attempt_ended_at": "2026-10-31T09:34:21.615849+00:00",
+  "dispatch_id": "S5-qa-automator-3",
+  "profile_id": "web",
+  "repo_id": "test-automation-framework",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": null,
+  "purpose": "repair_verify",
+  "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+  "source_fingerprint": {
+    "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+    "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+    "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+    "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+    "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+    "policy_revision": "config-projection-1"
+  },
+  "runtime_provenance": {
+    "profile_id": "web",
+    "timestamp": "2026-10-31T01:57:58Z",
+    "environment_id": "local",
+    "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+    "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+    "result": "matched",
+    "evidence_refs": [
+      "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+    ],
+    "provenance": {
+      "technical_verification": true,
+      "source_linkage": "exact",
+      "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  },
+  "execution_status": "passed",
+  "results": [
+    {
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "d67215ba124bbc6b138b",
+      "purpose": "repair_verify",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "1eb142bda2229b44ea5b09177a2978bd6b745862a3823d418c435d7f2b1e0aca",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+      "report_sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "d67215ba124bbc6b138b",
+    "raw_report_hash": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9",
+    "reparsed": true
+  },
+  "report_scope": {
+    "selected": [
+      "@api @regression CART-1_TC_005 cart isolation between owners",
+      "@api @regression CART-1_TC_006 guest cart merge on login",
+      "@api @regression CART-1_TC_007 update and delete cart item",
+      "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+    ],
+    "unmatched_report_rows": []
+  },
+  "supersedes_block_id": "d67215ba124bbc6b138b",
+  "reparse_of": "work/run-blocks/20261031T093422087928Z-d67215ba124bbc6b138b.json"
+}

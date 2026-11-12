@@ -1,0 +1,12 @@
+# Private planning and generated execution logs are not package content.
+# Test runs no longer write anywhere inside this directory (scripts/tests/harness.py says
+# why), and `selftest.py --hygiene` fails on anything here that git does not track — an
+# ignore rule only hides a file from git, while a local-directory marketplace installs it.
+/docs/
+*.log
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# a negate rule: the real run log fixtures are package test data, not generated logs
+!scripts/tests/fixtures/local1-playwright/*.log

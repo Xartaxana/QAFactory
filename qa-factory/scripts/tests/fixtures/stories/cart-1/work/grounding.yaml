@@ -1,0 +1,5 @@
+schema_version: 1
+implementation_source: "current-code"
+null_outcome:
+  source: "current-code"
+  words: "The implementation of this story is read from the current code, not from a recorded diff, so there are no hunks to label and no grounding rows."

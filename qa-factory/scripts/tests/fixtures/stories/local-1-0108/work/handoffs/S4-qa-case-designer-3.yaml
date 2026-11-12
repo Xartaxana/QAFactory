@@ -1,0 +1,149 @@
+# S4: the case designer hands the pinned cases to the case critic.
+#
+# The critic reviews PINNED versions and nothing else, so this file names the version of every
+# case it hands over. Pinning is the orchestrator's step (`case_versions.py --all`, then
+# `--verify`), and the designer has no Bash - which is exactly why the version has to arrive in
+# writing: on a project with its own case store, a story folder searched for cases pinned nothing
+# and the gate approved an empty set.
+#
+# `review_scope` is the second reason this file exists. Nothing computes the critic's scope for it;
+# a critic left to choose its own reviews whatever it happens to read.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-designer-3.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+# Repair of S4-qa-case-designer-2: the fields under derived: carry its accepted answers; fill the rows of this dispatch.
+schema_version: 1
+contract: s4-designer-to-case-critic
+stage: S4
+from_role: qa-case-designer
+to_role: qa-case-critic
+
+inputs:
+  - path: work/handoffs/S4-qa-case-designer-3.yaml
+    what: this file
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in `scope`, at the pinned version named here
+    required: true
+  - path: work/test-plan.json
+    what: the rows these cases answer, with their obligations and oracles
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle behind the plan row - an existing test is never one
+    required: true
+  - path: state/story-case-links.json
+    what: the pins, written by case_versions.py
+    required: true
+
+inputs_read:
+  - path: work/test-plan.json
+    version: dd0cbed90c502796
+    rows: 21 case-bearing rows (automate) of 26
+  - path: work/requirements-register.md
+    version: 8c393440ff3934be
+
+header:
+  role: qa-case-designer
+  stage: S4
+  window: LOCAL-1_TC_021,LOCAL-1_TC_022,LOCAL-1_TC_023,LOCAL-1_TC_024
+  verdict: concerns
+
+# One row per case. `state` from vocabulary.row_states: created, updated, deferred, blocked,
+# handed_to_person, impossible.
+scope:
+  - id: LOCAL-1_TC_021
+    state: updated  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: Then 1 now asserts merged quantity equals guest quantity 3, not 1
+    plan_row: TS-22
+    obligations: OB-22
+    requirements: R-22
+    case_version: pending-pin
+    origin: extended
+    reuse_of: LOCAL-1_TC_021
+    disposition: automate
+    design_review_required: true
+    self_probe: guest G x3 vs merge coerced to 1; H 2 vs 4 separates max/sum/replace; cart read via API
+  - id: LOCAL-1_TC_022
+    state: updated  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: "Q7 a: cart keeps price shown at add time (6.00 vs updated 8.00)"
+    plan_row: TS-24
+    obligations: OB-24
+    requirements: R-24
+    case_version: pending-pin
+    origin: extended
+    reuse_of: LOCAL-1_TC_022
+    disposition: manual-agent
+    design_review_required: true
+    self_probe: two distinct prices, cart read via API after update; sequenced not parallel race (gap named)
+  - id: LOCAL-1_TC_023
+    state: updated  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: "Q8 a: chosen quantity 3 added after recovery, else retry message"
+    plan_row: TS-25
+    obligations: OB-25
+    requirements: R-25
+    case_version: pending-pin
+    origin: extended
+    reuse_of: LOCAL-1_TC_023
+    disposition: manual-agent
+    design_review_required: true
+    self_probe: quantity 3 separates one item and doubled add; abort rule on the add request only; cart read via API
+  - id: LOCAL-1_TC_024
+    state: updated  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: "Q9 b: login asked, product added after re-authentication"
+    plan_row: TS-26
+    obligations: OB-26
+    requirements: R-26
+    case_version: pending-pin
+    origin: extended
+    reuse_of: LOCAL-1_TC_024
+    disposition: manual-agent
+    design_review_required: true
+    self_probe: cookie really cleared before click; cart read via API after fresh sign-in; no duplicate
+
+# The critic's scope, computed from `design_review_required` and stated here. The critic reviews
+# exactly this set and answers for each id; anything outside it is `review_skipped` by rule.
+review_scope:
+  cases: LOCAL-1_TC_021, LOCAL-1_TC_022, LOCAL-1_TC_023, LOCAL-1_TC_024
+  rounds_used: 1
+  focus:
+    - "then_oracles for Q6..Q9 stay unknown until the register records the person's answers; the question_thens readings already carry those answers"
+
+artifacts:
+  cases_root: test-cases
+  case_links: state/story-case-links.json
+  appendix: <work/case-appendix.md, when it has been rendered>
+
+claims:
+  every_case_bearing_plan_row_has_at_least_one_case: true
+  every_case_quotes_its_rows_obligation_ids: true
+  every_case_in_scope_is_pinned_and_the_version_is_named: false
+  every_case_names_the_requirement_it_proves_not_a_test: true
+  existing_cases_were_checked_before_new_ones_were_written: true
+
+expected_of_the_receiver:
+  - "answer for every id in `review_scope.cases` by name - an unreviewed row makes the verdict
+     `partial`, and its id reaches the gate A message"
+  - "review the pinned `case_version` above; a review of bytes that have since changed is not a
+     review of this window"
+  - "every finding carries `expected` and `check` - see s4-case-critic-to-designer"
+
+unresolved:
+  - id: <case id or P-n>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: scope[*].case_version
+  problem: designer has no Bash; the four edited cases are not yet re-pinned, the earlier pins cv_beee818c5ed0c652255b, cv_9f6a72a1fb2befac5683, cv_6370c20e7bf6a3ad8f88, cv_5960d7b9c2b12f9bb956 are stale
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[0].rows
+    source: "carried from work/handoffs/S4-qa-case-designer-2.yaml (the accepted form this dispatch reworks)"
+  - field: inputs_read[0].version
+    source: "sha256 of work/test-plan.json"
+  - field: inputs_read[1].version
+    source: "sha256 of work/requirements-register.md"

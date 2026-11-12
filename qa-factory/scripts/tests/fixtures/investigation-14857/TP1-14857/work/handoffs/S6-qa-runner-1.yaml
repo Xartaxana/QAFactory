@@ -1,0 +1,182 @@
+# S6 -> S7: the run is handed to the failure analyst.
+#
+# The analyst gives every failure a verdict with evidence, so what it needs is not the summary but
+# the join: which row, which instance, which artifact, on which build. A row the reducer could not
+# join to a manifest instance decided `execution_status` for a whole story once, and nothing said
+# it was a ghost - so this file names the ghosts too, and says which rerun superseded them.
+#
+# `env_blocked` rows carry a remedy and the `env_probe` line that failed. A blocked row with no
+# remedy is refused by `validate_artifacts.py`, and rightly: "the stand is wrong" with nothing to
+# do about it is not a finding, it is a shrug.
+schema_version: 1
+contract: s6-runner-to-analyst
+stage: S6
+from_role: qa-runner
+to_role: qa-failure-analyst
+
+inputs:
+  - path: work/handoffs/S6-qa-runner-1.yaml
+    what: this file
+    required: true
+  - path: work/run-report.json
+    what: the whole-story report, reduced by finalize_task.py and never hand-written
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances the rows join to, with their cases and obligations
+    required: true
+  - path: work/evidence/
+    what: the artifact behind every row - logs, screenshots, manual observations
+    required: true
+  - path: test-plan.md
+    what: each row's oracle
+    required: true
+
+inputs_read:
+  - path: work/automation-manifest.json
+    version: S5 windows 1-3 (TC-001..TC-005, not rerun here)
+    instances_handed: 5
+  - path: work/test-cases/datasource/TC-006.md
+    version: S4 designer window, TC-006..TC-009
+    manual_cases_handed: 4
+  - path: work/evidence/manual/TC-006/a1/captures.jsonl
+    version: probe start/end ok, profile api, stand local-docker
+
+header:
+  role: qa-runner
+  stage: S6
+  window: TC-006,TC-007,TC-008,TC-009
+  verdict: concerns
+
+run:
+  execution_status: passed
+  report: work/run-report.json
+  witness: qa-factory/artifacts/TP1-14857/evidence/runs/1a6f06f97370911e601c/repair_verify-1a6f06f97370911e601c-20261027-014410.json exit 0 1 passed
+  environment: local-docker
+  application_build: backend main as confirmed by the person (no version endpoint); capture probe start/end ok
+  probe_before: work/evidence/manual/TC-006/a1/probes.jsonl
+  probe_after: work/evidence/manual/TC-006/a1/probes.jsonl
+  totals: "{\"error\": 9, \"failed\": 10, \"passed\": 7}"
+  # The reduced report counts every attempt the story ever made: on TP1-13797 `totals` read
+  # 69 not_run beside a current window of 20 rows. The next role is answering about THIS window,
+  # so the window's own numbers travel beside the story's.
+  window_totals: "{\"passed\": 5}"
+
+# One row per item executed or deliberately not executed. `state` from vocabulary.row_states:
+# passed, failed, error, skipped, not_run, passed_green (a reused receipt), inconclusive,
+# manual_skipped, env_blocked, broken_run, timeout.
+scope:
+  - id: TC-006
+    state: inconclusive
+    reason: failed reindex observed (null -> new trigger stamp); oracle open OQ-4
+    case: TC-006
+    obligations: "OB-6-1"
+    executed: fresh
+    evidence: work/evidence/manual/TC-006/a1/014-request-response.json
+    duration: "-"
+  - id: TC-007
+    state: env_blocked
+    reason: DATASOURCE_CONCURRENCY_LIMIT_ENABLED is off on stand; no queue can form
+    case: TC-007
+    obligations: "OB-7-1"
+    executed: fresh
+    evidence: work/evidence/manual/TC-006/a1/014-request-response.json
+    duration: "-"
+  - id: TC-008
+    state: env_blocked
+    reason: concurrency limit off on stand, so queue pressure cannot be built
+    case: TC-008
+    obligations: "OB-8-1"
+    executed: fresh
+    evidence: work/evidence/manual/TC-006/a1/014-request-response.json
+    duration: "-"
+  - id: TC-009
+    state: env_blocked
+    reason: GET /v1/providers answers 200 with an empty list; no provider or stub
+    case: TC-009
+    obligations: "OB-9-1"
+    executed: fresh
+    evidence: work/evidence/manual/TC-009/a1/001-request-response.json
+    duration: "-"
+
+# Manual-agent observations, compared with the Then as the case quoted it. This is the section
+# that makes `inconclusive` an answer instead of an improvisation.
+manual_observations:
+  - case: TC-006
+    then: "The recorded after-state of Last indexed (compared with B0) is the observation; expected value open (OQ-4)"
+    observed: "Code datasource COMPLETED, last_reindex_triggered_at null, update_date 01:16:15. PUT update with branch tc006-no-such-branch and full_reindex=true answered 201 (message says Incremental underneath started). Backend deleted the index, git clone failed exit 128. After: error=true, completed=false, current_state=0, last_reindex_triggered_at=2026-10-27T01:19:23.618629 (trigger stamp, reading b), update_date 01:19:25.64, stable over 6 polls. Also observed: the failed run left the index data deleted."
+    before_change: "not_recorded; no build was written, manual_evidence.py prepare refused the case"
+    result: inconclusive
+    evidence: work/evidence/manual/TC-006/a1/005-request-response.json
+    why_inconclusive: "Expected value is an open owner question (OQ-4), prepare refuses until it is answered. B0 was null (create does not stamp), so only null -> stamp is shown. The failure was promote by a bad branch that also changes the stored branch."
+  - case: TC-007
+    then: "recorded timeline of a manual reindex waiting in the queue; expected value open (OQ-4)"
+    observed: "not observed. Backend config default DATASOURCE_CONCURRENCY_LIMIT_ENABLED is false and the container env sets no concurrency or queue key, so the interface path (set_queued, queue timeout 3600 s default) is not active."
+    before_change: "not_recorded"
+    result: manual_skipped
+    evidence: work/evidence/manual/TC-006/a1/014-request-response.json
+    why_inconclusive: "Queue cannot form without suppress the limit (config change and restart, forbidden here)."
+  - case: TC-008
+    then: "stamp timeline after a scheduled reindex under queue pressure; expected value open (OQ-6)"
+    observed: "not observed: same stand setting as TC-007, no queue pressure possible; cron scheduling not attempted."
+    before_change: "not_recorded"
+    result: manual_skipped
+    evidence: work/evidence/manual/TC-006/a1/014-request-response.json
+    why_inconclusive: "Needs the concurrency limit enabled on the stand."
+  - case: TC-009
+    then: "end state after a provider reindex answering Failed with empty errors; open (OQ-8)"
+    observed: "GET /v1/providers answered 200 with []; no provider or stub exists on the stand."
+    before_change: "not_recorded"
+    result: manual_skipped
+    evidence: work/evidence/manual/TC-009/a1/001-request-response.json
+    why_inconclusive: "No provider, so the contract cannot be exercised; nothing invented."
+
+# Rows blocked by the stand. Every one names the remedy - names only, never a value - and the
+# `env_probe.py` line that failed.
+env_blocked:
+  - id: TC-007
+    probe_line: "no env_probe line failed; config read from container env: DATASOURCE_CONCURRENCY_LIMIT_ENABLED not set (default False)"
+    remedy: "set DATASOURCE_CONCURRENCY_LIMIT_ENABLED=true and a small MAX_CONCURRENT_DATASOURCE_INDEXING in the backend env, restart backend"
+    owner: user
+  - id: TC-008
+    probe_line: "same as TC-007"
+    remedy: "same keys as TC-007, plus a datasource cron_expression"
+    owner: user
+  - id: TC-009
+    probe_line: "GET /v1/providers 200 []"
+    remedy: "register a provider (or stub) whose datasource reindex answers Failed with empty errors"
+    owner: user
+
+# Rows that exist in the report but are not evidence about this story: a ghost the reducer could
+# not join, superseded by a rerun under the real instance ids.
+superseded: []
+
+claims:
+  every_row_carries_an_evidence_path: true
+  every_blocked_row_names_a_remedy_and_the_probe_line: true
+  every_rerun_names_the_fingerprint_that_moved: true
+  no_comparison_was_fabricated_where_before_evidence_is_missing: true
+  handed_and_manual_human_cases_are_absent_by_design: true
+  the_report_was_reduced_by_code_not_written: true
+
+expected_of_the_receiver:
+  - "triage every `failed`, every `error`, and every `inconclusive` - an inconclusive check has
+     an owner and a next step and never reaches gate B untouched"
+  - "a red instance carrying `contradicts_requirement` is an APP_BUG by construction; the
+     expectation is never adjusted to the code"
+  - "a FLAKY verdict needs three isolated reruns of that one test and a named mechanism"
+
+unresolved: []
+
+blocked: {}
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: run.execution_status
+    source: "run-report.execution_status"
+  - field: run.witness
+    source: "automation-manifest.run_witness"
+  - field: run.totals
+    source: "run-report.totals"
+  - field: run.window_totals
+    source: "run-report.current_totals"

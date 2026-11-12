@@ -1,0 +1,7 @@
+[
+  {"id": "criteria-missing", "stage": "S1", "file": "work/context-manifest.json", "op": "del", "pointer": "/acceptance_criteria",
+   "expect": {"outcome": "refused", "names": "acceptance_criteria"}, "source": "hand-assembled: the key the scout once left out"},
+  {"id": "manifest-emptied", "stage": "S1", "file": "work/context-manifest.json", "op": "replace_file",
+   "with": "variant-files/manifest-empty.json", "expect": {"outcome": "refused", "names": "ticket"},
+   "source": "hand-assembled: a manifest with nothing in it"}
+]

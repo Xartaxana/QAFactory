@@ -1,0 +1,30 @@
+{"at": "2026-10-31T12:01:40+00:00", "command": "ui", "step": "goto http://localhost:3000/login", "outcome": "ok", "detail": "0.73 s"}
+{"at": "2026-10-31T12:01:40+00:00", "command": "ui", "step": "fill-account [data-testid=login-email-input] user user", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:40+00:00", "command": "ui", "step": "fill-account [data-testid=login-password-input] user secret", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:40+00:00", "command": "ui", "step": "click [data-testid=login-submit-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:44+00:00", "command": "ui", "step": "wait 3000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:44+00:00", "command": "ui", "step": "goto http://localhost:3000/cart", "outcome": "ok", "detail": "0.30 s"}
+{"at": "2026-10-31T12:01:45+00:00", "command": "ui", "step": "click [data-testid^=remove-cart-item-]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:47+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:48+00:00", "command": "ui", "step": "goto http://localhost:3000/books/112", "outcome": "ok", "detail": "0.61 s"}
+{"at": "2026-10-31T12:01:48+00:00", "command": "ui", "step": "click [data-testid=wishlist-toggle-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:50+00:00", "command": "ui", "step": "wait 1000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:50+00:00", "command": "ui", "step": "goto http://localhost:3000/books/113", "outcome": "ok", "detail": "0.38 s"}
+{"at": "2026-10-31T12:01:51+00:00", "command": "ui", "step": "click [data-testid=wishlist-toggle-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:52+00:00", "command": "ui", "step": "wait 1000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:53+00:00", "command": "ui", "step": "goto http://localhost:3000/cart", "outcome": "ok", "detail": "0.57 s"}
+{"at": "2026-10-31T12:01:54+00:00", "command": "ui", "step": "capture supporting cart-empty-before", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:54+00:00", "command": "ui", "step": "goto http://localhost:3000/wishlist", "outcome": "ok", "detail": "0.45 s"}
+{"at": "2026-10-31T12:01:55+00:00", "command": "ui", "step": "capture pre_action wishlist-before", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:55+00:00", "command": "ui", "step": "read [data-testid=wishlist-list] text", "outcome": "ok", "detail": "QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove QA CART1 W1 QA Runner $10.00 Move to cart Remove"}
+{"at": "2026-10-31T12:01:56+00:00", "command": "ui", "step": "click [data-testid=wishlist-move-112]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:56+00:00", "command": "ui", "step": "read body text", "outcome": "ok", "detail": "Moved to cart bookstore Home Cart 1 Wishlist Profile Logout SAVED Wishlist QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove bookstore A curated catalog of books, delivered. © 2026 Bookstore. All rights reserved."}
+{"at": "2026-10-31T12:01:58+00:00", "command": "ui", "step": "wait 1500", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:01:59+00:00", "command": "ui", "step": "goto http://localhost:3000/wishlist", "outcome": "ok", "detail": "0.57 s"}
+{"at": "2026-10-31T12:02:00+00:00", "command": "ui", "step": "capture post_action wishlist-after-reload", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:00+00:00", "command": "ui", "step": "read [data-testid=wishlist-list] text", "outcome": "ok", "detail": "QA CART1 W0 QA Runner $10.00 Out of Stock Move to cart Remove"}
+{"at": "2026-10-31T12:02:00+00:00", "command": "ui", "step": "read [data-testid=wishlist-move-113] text", "outcome": "ok", "detail": "Move to cart"}
+{"at": "2026-10-31T12:02:01+00:00", "command": "ui", "step": "read [data-testid=wishlist-move-113] attr=disabled", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:01+00:00", "command": "ui", "step": "goto http://localhost:3000/cart", "outcome": "ok", "detail": "0.41 s"}
+{"at": "2026-10-31T12:02:02+00:00", "command": "ui", "step": "capture post_action completion", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:02:02+00:00", "command": "ui", "step": "read [data-testid=cart-items-list] text", "outcome": "ok", "detail": "01 QA CART1 W1 QA Runner $10.00 each QUANTITY Subtotal: $10.00 Remove"}

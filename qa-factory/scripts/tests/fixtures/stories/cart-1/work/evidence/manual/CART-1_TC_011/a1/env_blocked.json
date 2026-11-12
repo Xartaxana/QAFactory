@@ -1,0 +1,6 @@
+{
+  "id": "CART-1_TC_011",
+  "probe_line": "no runtime probe is registered for profile api (config execution.runtime_probes)",
+  "remedy": "register one: runtime_probe.py --suggest --profile api --write",
+  "owner": "factory"
+}

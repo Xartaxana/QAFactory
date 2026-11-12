@@ -1,0 +1,421 @@
+{
+  "schema_version": 2,
+  "task_id": "LOCAL-1",
+  "source_revisions": [
+    {
+      "repo": "MyBooks",
+      "source": "current-code",
+      "mr": null,
+      "branch": "main",
+      "commit": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  ],
+  "facts": [
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/app/api/cart/route.ts",
+      "line": 15,
+      "note": "POST /api/cart adds a book, 201; guest owner by bookstore_session_id cookie",
+      "id": "fact-1",
+      "source_refs": [
+        "MyBooks/src/app/api/cart/route.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 35,
+      "note": "OUT_OF_STOCK when stock<=0",
+      "id": "fact-2",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 44,
+      "note": "INSUFFICIENT_STOCK counting what is already in cart; quantity is added to existing item",
+      "id": "fact-3",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/validation/schemas.ts",
+      "line": 40,
+      "note": "quantity integer 1..999; bookId positive int",
+      "id": "fact-4",
+      "source_refs": [
+        "MyBooks/src/lib/validation/schemas.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/HomePage.tsx",
+      "line": 118,
+      "note": "path 1: catalog BookCard button add-to-cart-button-<id>, toast 'Book added to cart'",
+      "id": "fact-5",
+      "source_refs": [
+        "MyBooks/src/components/pages/HomePage.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/BookDetailPage.tsx",
+      "line": 45,
+      "note": "path 2: book detail with quantity; toast differs for quantity>1; button disabled when out of stock",
+      "id": "fact-6",
+      "source_refs": [
+        "MyBooks/src/components/pages/BookDetailPage.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/WishlistPage.tsx",
+      "line": 47,
+      "note": "path 3: Move to cart from wishlist (add then presumably removes wishlist entry)",
+      "id": "fact-7",
+      "source_refs": [
+        "MyBooks/src/components/pages/WishlistPage.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 118,
+      "note": "path 4: guest cart merged into user cart on login; higher quantity wins, capped at stock, no-stock dropped",
+      "id": "fact-8",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/pages/LoginPage.tsx",
+      "line": 36,
+      "note": "merge call on login; failure only logged to console",
+      "id": "fact-9",
+      "source_refs": [
+        "MyBooks/src/components/pages/LoginPage.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "ui",
+      "source": "current-code",
+      "path": "MyBooks/src/components/providers/AppProviders.tsx",
+      "line": 35,
+      "note": "cart badge count = sum of quantities, re-read on user change",
+      "id": "fact-10",
+      "source_refs": [
+        "MyBooks/src/components/providers/AppProviders.tsx"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "current-code",
+      "path": "MyBooks/src/lib/services/cartService.ts",
+      "line": 80,
+      "note": "PUT /api/cart/{id} cap at stock; second reader of the cart (CartPage) shows result",
+      "id": "fact-11",
+      "source_refs": [
+        "MyBooks/src/lib/services/cartService.ts"
+      ]
+    },
+    {
+      "requirement": "",
+      "kind": "api",
+      "source": "expected-contract",
+      "path": "MyBooks/docs/openapi.json",
+      "line": 2961,
+      "note": "contract: Quantity is added to what is already in the cart; 400 VALIDATION_ERROR/OUT_OF_STOCK/INSUFFICIENT_STOCK; 404 BOOK_NOT_FOUND",
+      "id": "fact-12",
+      "source_refs": [
+        "MyBooks/docs/openapi.json"
+      ]
+    }
+  ],
+  "changed_files": [],
+  "diff_summaries": [],
+  "constraints": [],
+  "unresolved_facts": [
+    {
+      "id": "https://example.invalid/2/browse/REF-1",
+      "reason": "missing_evidence",
+      "detail": "Jira filter not queried: no key and no search; stories/cases/bugs on cart unknown. Person could paste them."
+    }
+  ],
+  "known_paths": [],
+  "stale_paths": [],
+  "grounding_complete": false,
+  "grounding_gaps": [
+    "source_revision",
+    "changed_areas",
+    "existing_coverage",
+    "constraints",
+    "unresolved_facts",
+    "source_inventory_incomplete"
+  ],
+  "delta": {
+    "added_or_changed_ids": [
+      "fact-1",
+      "fact-10",
+      "fact-11",
+      "fact-12",
+      "fact-2",
+      "fact-3",
+      "fact-4",
+      "fact-5",
+      "fact-6",
+      "fact-7",
+      "fact-8",
+      "fact-9"
+    ],
+    "removed_ids": []
+  },
+  "limits": {
+    "batches_per_repo": 12,
+    "batches_per_stage": 24,
+    "active_seconds": 900,
+    "output_tokens": 12000
+  },
+  "requirement_sources": [
+    {
+      "source_id": "SRC-5b289e26d85e2794df0a",
+      "relation": "task",
+      "ref": "LOCAL-1",
+      "revision": "sha256:776ea5d1fe9f",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-5b289e26d85e2794df0a/776ea5d1fe9f/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-9b765c409c31488a634c",
+      "relation": "normative",
+      "ref": "MyBooks/docs/openapi.json",
+      "revision": "sha256:4c438111734f",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-9b765c409c31488a634c/4c438111734f/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-7a03f1a608eb7f806360",
+      "relation": "referenced",
+      "ref": "https://github.com/person-4/MyBooks",
+      "revision": "sha256:bcabea6c1565",
+      "status": "read",
+      "evidence_ref": "work/sources/SRC-7a03f1a608eb7f806360/bcabea6c1565/ticket.json",
+      "relevance": "relevant",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      }
+    },
+    {
+      "source_id": "SRC-1a8882c6347d792501ee",
+      "relation": "referenced",
+      "ref": "https://example.invalid/2/browse/REF-1",
+      "revision": "unknown",
+      "status": "unavailable",
+      "evidence_ref": "work/source-inventory.json",
+      "relevance": "unknown",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 0,
+          "status": "unknown"
+        }
+      }
+    }
+  ],
+  "coverage_search": [
+    {
+      "repo": "MyBooks",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "changed_area": "cart add paths",
+      "searched_paths": [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx"
+      ],
+      "status": "complete",
+      "reason": "grep -i cart over all unit tests"
+    },
+    {
+      "repo": "tests",
+      "revision": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+      "changed_area": "cart add paths",
+      "searched_paths": [
+        "tests/"
+      ],
+      "status": "complete",
+      "reason": "grep -ril cart over tests/: none; control: grep of 'login' finds auth spec"
+    }
+  ],
+  "existing_test_candidates": [
+    {
+      "candidate_id": "EX-1",
+      "repo": "MyBooks",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "path": "src/lib/cartRules.test.ts",
+      "selector": "fitsInStock counts what is already in the cart",
+      "parameter_ids": [],
+      "level": "unit",
+      "assertion_refs": [
+        "cartRules.test.ts:21"
+      ],
+      "candidate_requirement_refs": [],
+      "origin": "existing",
+      "result_candidate_refs": [],
+      "candidate_evidence": {
+        "valid": false,
+        "executable": false,
+        "assertion_status": "unknown",
+        "gaps": [
+          "repository root unavailable for assertion verification"
+        ]
+      },
+      "provenance": {
+        "repo": "MyBooks",
+        "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "collection_ref": null,
+        "source": "context-manifest"
+      }
+    },
+    {
+      "candidate_id": "EX-2",
+      "repo": "MyBooks",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "path": "src/lib/cartRules.test.ts",
+      "selector": "mergedQuantity keeps the higher quantity",
+      "parameter_ids": [],
+      "level": "unit",
+      "assertion_refs": [
+        "cartRules.test.ts:5"
+      ],
+      "candidate_requirement_refs": [],
+      "origin": "existing",
+      "result_candidate_refs": [],
+      "candidate_evidence": {
+        "valid": false,
+        "executable": false,
+        "assertion_status": "unknown",
+        "gaps": [
+          "repository root unavailable for assertion verification"
+        ]
+      },
+      "provenance": {
+        "repo": "MyBooks",
+        "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "collection_ref": null,
+        "source": "context-manifest"
+      }
+    }
+  ],
+  "source_inventory_ref": {
+    "path": "work/source-inventory.json",
+    "sha256": "10876c0243890a67f3e9bde4e135e7944b304fdbe0384d2164cf90d259d3540b"
+  },
+  "source_completeness": {
+    "complete": false,
+    "gate_blocked": false,
+    "pending": [],
+    "unavailable": [],
+    "incomplete_materials": [],
+    "unavailable_materials": [],
+    "accepted_gaps": [
+      "SRC-1a8882c6347d792501ee"
+    ],
+    "review_missing": false,
+    "unreviewed": [],
+    "awaiting_review": false,
+    "open_points": {},
+    "closed_by_person": {
+      "SRC-1a8882c6347d792501ee": [
+        "source:unavailable"
+      ]
+    },
+    "closed_by_class": {},
+    "defaulted_points": {},
+    "defaulted_gaps": [],
+    "gap_class_problem": "",
+    "left_out_by_word": {},
+    "earlier_rule_line": "",
+    "earlier_rule_sources": []
+  },
+  "fact_pages": [
+    {
+      "offset": 0,
+      "count": 12
+    }
+  ]
+}

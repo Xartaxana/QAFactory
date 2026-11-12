@@ -1,0 +1,598 @@
+{
+ "note": "The expected entry of each path of a story folder, written from the CL3-3 spec section 2.2/2.3 (never from a run of the matcher, FR-58). entry null = no entry names the path (negative rows). The first 94 rows are the recorded history experiments/TP1-13877 (95 files, FINDINGS.md left out: our own note, not a package writer); the rest are shapes of the 14857 run and negative controls. Rows 114-143 (30) are the CL3-3 fix round census (t-706): one row per story-scope shape the package writes that no registry named, and the MR receipt at three depths.",
+ "source": "experiments/TP1-13877 (listing); docs/tasks/specs/reviews/t-1611-qa-collect-archive-review.md sections 1 and 2",
+ "rows": [
+  {
+   "rel": "pipeline.json",
+   "entry": "B2"
+  },
+  {
+   "rel": "state/.story-case-links.lock",
+   "entry": "B13"
+  },
+  {
+   "rel": "state/case-versions/TP1-13877_TC_001/cv_ca7d356dc2656d424def.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "state/case-versions/TP1-13877_TC_002/cv_214bcc7d3938a3e8af15.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "state/case-versions/TP1-13877_TC_003/cv_77ff7263789573e4a7fb.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "state/checkpoint.json",
+   "entry": "B2"
+  },
+  {
+   "rel": "state/conductor.jsonl",
+   "entry": "B3"
+  },
+  {
+   "rel": "state/controller.json",
+   "entry": "B2"
+  },
+  {
+   "rel": "state/dispatch-denials.jsonl",
+   "entry": "B3"
+  },
+  {
+   "rel": "state/driver-answers.jsonl",
+   "entry": "B3"
+  },
+  {
+   "rel": "state/driver-question-details.md",
+   "entry": "B6"
+  },
+  {
+   "rel": "state/driver-question.answered.md",
+   "entry": "B6"
+  },
+  {
+   "rel": "state/driver-questions.jsonl",
+   "entry": "B3"
+  },
+  {
+   "rel": "state/driver-runs.jsonl",
+   "entry": "B3"
+  },
+  {
+   "rel": "state/driver-runs/S1-qa-scout-1.done.json",
+   "entry": "B6"
+  },
+  {
+   "rel": "state/driver-runs/S2-qa-requirements-tester-1.done.json",
+   "entry": "B6"
+  },
+  {
+   "rel": "state/driver-runs/S3-qa-test-strategist-1.json",
+   "entry": "B6"
+  },
+  {
+   "rel": "state/driver-state.json",
+   "entry": "B2"
+  },
+  {
+   "rel": "state/driver-tmp/S1-qa-scout-1.system.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "state/driver-tmp/S2-qa-requirements-tester-1.system.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "state/driver-tmp/S3-qa-test-strategist-1.system.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "state/driver-tmp/initialize-1790590638517.json",
+   "entry": "B16"
+  },
+  {
+   "rel": "state/events.jsonl",
+   "entry": "B1"
+  },
+  {
+   "rel": "state/events.lock",
+   "entry": "B13"
+  },
+  {
+   "rel": "state/passed-by-person.jsonl",
+   "entry": "B18"
+  },
+  {
+   "rel": "state/plan-baseline.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "state/story-case-links.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "test-plan.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "understanding.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/automation-manifest.json",
+   "entry": "E4"
+  },
+  {
+   "rel": "work/blobs/6b8c6d6b37f822e3c7a3522c7528382e0e12641ac3efdc220440b7d137b3cada",
+   "entry": "E11"
+  },
+  {
+   "rel": "work/briefs/S1-qa-scout-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S2-qa-requirements-tester-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S2-qa-requirements-tester-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S3-qa-test-strategist-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S3-qa-test-strategist-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S4-qa-case-critic-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S4-qa-case-critic-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S4-qa-case-designer-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S4-qa-case-designer-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S5-qa-automator-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S5-qa-automator-1-digests.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S5-qa-automator-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S5-qa-code-critic-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S5-qa-code-critic-1-digests.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S5-qa-code-critic-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S6-qa-runner-1-decisions.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S6-qa-runner-1-digests.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S6-qa-runner-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/context-bundle.json",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/context-manifest.json",
+   "entry": "E4"
+  },
+  {
+   "rel": "work/finalization-receipt.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "work/handoffs/S1-qa-scout-1.help.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S1-qa-scout-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S2-qa-requirements-tester-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S3-qa-test-strategist-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S4-qa-case-critic-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S4-qa-case-designer-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S5-qa-automator-1.help.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S5-qa-automator-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S5-qa-code-critic-1.help.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S5-qa-code-critic-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/handoffs/S6-qa-runner-1.yaml",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/impl-diff.txt",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/manifest-fragment-s5.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/mr-4340.json",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/requirements-readiness.json",
+   "entry": "E1"
+  },
+  {
+   "rel": "work/requirements-register.md",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/run-report.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/s5-notes.md",
+   "entry": "B17"
+  },
+  {
+   "rel": "work/sizing.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "work/source-inventory.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/sources/SRC-4954ce5edcedc9067c75/assessment/ticket.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/sources/SRC-89ac8911f03607b1c6cd/assessment/ticket.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/sources/SRC-89ac8911f03607b1c6cd/e7ec196f667d54f0/ticket.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/sources/SRC-c3e4f9404b447903833d/66fd0f0ccdcaea43/ticket.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/sources/SRC-c3e4f9404b447903833d/assessment/ticket.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/sources/SRC-e494eeca1c7a2029c65f/assessment/ticket.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/test-cases/.case-versions.lock",
+   "entry": "B13"
+  },
+  {
+   "rel": "work/test-cases/cases/TP1-13877_TC_001/cv_ca7d356dc2656d424def.json",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/cases/TP1-13877_TC_001/cv_ca7d356dc2656d424def.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/cases/TP1-13877_TC_002/cv_214bcc7d3938a3e8af15.json",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/cases/TP1-13877_TC_002/cv_214bcc7d3938a3e8af15.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/cases/TP1-13877_TC_003/cv_77ff7263789573e4a7fb.json",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/cases/TP1-13877_TC_003/cv_77ff7263789573e4a7fb.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/code-executor/TP1-13877_TC_001.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/code-executor/TP1-13877_TC_002.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/code-executor/TP1-13877_TC_003.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-cases/code-executor/critic-findings.md",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/test-code/critic-findings.md",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/test-plan.json",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/ticket-snapshot.md",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/triage.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/windows/S5-qa-code-critic-1.json",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/review-receipts/S5-qa-code-critic-1.json",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/windows/S5-qa-code-critic-2.json",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/triage-in/batch.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/triage-batch.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/digests/S8-qa-doc-scribe-1.txt",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/digests/S8-qa-doc-scribe-1.original.txt",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/S9-qa-retro-analyst-1.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/briefs/repo-map-app.md",
+   "entry": "A12"
+  },
+  {
+   "rel": "state/report-history/test-report-0123456789ab.md",
+   "entry": "E12"
+  },
+  {
+   "rel": "state/driver-tmp/S9-qa-retro-analyst-1.system.md",
+   "entry": "B16"
+  },
+  {
+   "rel": "state/driver-tmp/prepare-1790590638517.json",
+   "entry": "B16"
+  },
+  {
+   "rel": "state/driver-tmp/stage-scope-1790590638518.json",
+   "entry": "B16"
+  },
+  {
+   "rel": "work/impl-diff-tests.txt",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/impl-diff-testproject1.txt",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/SRC-1/mr-12.json",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/SRC-1/mr-12-git.md",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/base-slice/src/app.py",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/user-path-failures.json",
+   "entry": "B15"
+  },
+  {
+   "rel": "test-report.md",
+   "entry": "E12"
+  },
+  {
+   "rel": "retro.md",
+   "entry": "F1"
+  },
+  {
+   "rel": "work/judge-cases.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/judge-diff.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/probe-debt.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/ticket-raw/issue.pretty.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/ticket-raw/comments-1.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/manual-blocks/blk-1.json",
+   "entry": "B9"
+  },
+  {
+   "rel": "work/baseline-receipts/r-1.json",
+   "entry": "B9"
+  },
+  {
+   "rel": "work/sensitivity-receipts/s-1.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/probe-requests/p-1.json",
+   "entry": "E9"
+  },
+  {
+   "rel": "work/delivery-summary.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/delivery-summary.md",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/mutation-reconciliation.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/verification-gaps.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/waivers.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "work/gap-classes.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/estimate-facts.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/tms-publication-manifest.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "work/tms-publication-receipts.json",
+   "entry": "E8"
+  },
+  {
+   "rel": "state/manifest-projection-stale.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "state/test-repo-base.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "state/config-at-start.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "state/migration-intent.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "state/migration/automation-manifest.json",
+   "entry": "B17"
+  },
+  {
+   "rel": "state/coverage-migrations/m-1/test-plan.v1.json",
+   "entry": "E7"
+  },
+  {
+   "rel": "work/context-bundle.lines.md",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/mr-12.json",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/SRC-1/mrs/mr-12.json",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/SRC-1/mr-12-machine.md",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/SRC-1/mr-12-comment-1.md",
+   "entry": "B15"
+  },
+  {
+   "rel": "work/sources/SRC-1/attachment.txt",
+   "entry": "E8"
+  },
+  {
+   "rel": "src/main.ts",
+   "entry": null
+  },
+  {
+   "rel": "app/service.py",
+   "entry": null
+  },
+  {
+   "rel": "work/odd.dat",
+   "entry": null
+  },
+  {
+   "rel": "zz-unknown/x.bin",
+   "entry": null
+  }
+ ]
+}

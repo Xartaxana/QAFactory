@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "note": "FR-13: the closed variety of the census's key detector lives here, not in code. `keys`: a key with this name and a non-empty value is a machine fact whatever the value looks like (a pid, a host name, a container name, an image digest, a transcript path); `fact` is the census's name for it. Path-like values under other keys are found by the value detector. `differential_keys`: glob patterns (case-insensitive) of the keys whose values must be equal in two worlds that hold the same task bytes; a key that already differs between two runs of ONE world is noise, not a hit.",
+  "keys": [
+    {"key": "pid", "fact": "pid"},
+    {"key": "driver_pid", "fact": "pid"},
+    {"key": "hostname", "fact": "host"},
+    {"key": "container", "fact": "container"},
+    {"key": "image", "fact": "digest"},
+    {"key": "image_digest", "fact": "digest"},
+    {"key": "transcript", "fact": "other_abs"},
+    {"key": "machine", "fact": "host"}
+  ],
+  "differential_keys": ["*hash*", "*digest*", "*fingerprint*", "job_id", "command_id", "request_digest"]
+}
