@@ -1,0 +1,37 @@
+header.verdict: ok
+review.outcome: approved
+review.rollcall: 4 of 4 reviewed
+review.findings_file: work/test-cases/critic-findings.md
+review.rounds_used: 2
+review.rubric_covered: "coverage, atomicity, clarity, edge cases, negative scenarios, traceability, completeness, contradicts_source, seed the defect"
+claims.every_case_of_the_review_scope_has_a_row: true
+claims.every_finding_names_expected_and_check: true
+claims.the_verdict_was_computed_by_rollcall_not_typed: true
+claims.no_case_outside_the_review_scope_was_reviewed: true
+scope[0].id: CART-1_TC_005
+scope[0].state: approve
+scope[0].reason: F-1 resolved; guest cookie sent with signed-in read
+scope[0].case_version: cv_3767896d512c623e0b59
+scope[1].id: CART-1_TC_006
+scope[1].state: approve
+scope[1].reason: round 1 concerns resolved
+scope[1].case_version: cv_3736b2c697846070acdd
+scope[2].id: CART-1_TC_008
+scope[2].state: approve
+scope[2].reason: unchanged, approved in round 1
+scope[2].case_version: cv_ce42982f1616cbc645f9
+scope[3].id: CART-1_TC_009
+scope[3].state: approve_with_concerns
+scope[3].reason: seed user verified status unchecked until S5
+scope[3].case_version: cv_2b3ebd621560f9547704
+findings[0].id: C-1
+findings[0].case: CART-1_TC_009
+findings[0].where: preconditions PC-1
+findings[0].problem: PC-1 checks only credential keys; the user being verified is assumed in prose.
+findings[0].expected: the seed user is verified before POST /api/orders in step 4; an unverified user is reported by S5 as an environment gap.
+findings[0].fix: S5 automator confirms the seed user is verified on first login, or creates a verified user.
+findings[0].check: first S5 login and order against the seed user
+findings[0].dimension: clarity
+findings[0].blocking: false
+findings[0].replacement.new: none, concern carried to S5
+unverified: []

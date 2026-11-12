@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "note": "J2, the diagnosis of a run: what broke it, whether that is an environment block, whether two failures share one cause, and what would unblock it. Asked by scripts/judge_run.py and by scripts/stand_health.py; the shape and the rules are references/judgments.json. Every state here is ONE run or ONE pair of lines - never the whole evidence directory. A credential is NAMED and never valued, here as everywhere else (contract.remedy_errors).",
+  "judgments": [
+    {
+      "id": "run_culprit",
+      "stage": "S5/S6",
+      "script": "judge_run.py",
+      "type": "choice",
+      "replaces": "the role's own reading of a raw log: `execution_status` types the run from the exit code alone and says `broken_run` for a missing plugin, a missing account and a wrong test id alike",
+      "undecided": "the diagnosis is recorded as `unknown` and the role reads the log as it did without a judge",
+      "instructions": {
+        "question": "What broke the run described by `exit_code`, `execution_status`, `totals`, `error_head` and `first_failure`?",
+        "read": [
+          "error_head",
+          "first_failure",
+          "exit_code",
+          "totals"
+        ],
+        "focus": "Only what those lines themselves say. The names of the tests are not evidence of what went wrong."
+      },
+      "criteria": {
+        "environment": "Something the stand must provide is missing or refuses: a service that does not answer, a login that fails, a variable, key, account, feature flag or seeded record that is not there. The test code itself is intact.",
+        "tooling": "The launcher never reached the tests: the command or interpreter was not found, a plugin or its configuration is broken, or the tests that were asked for were not found by the selection.",
+        "collection": "The test files were found but could not be loaded: an import error, a syntax error or a missing module inside the tests or their conftest.",
+        "test_defect": "A test ran and failed because of what the test itself does: a wrong expectation, a stale selector or id, or its own setup failing on something only this test needs.",
+        "application": "A test ran and failed because the product answered differently from what the test expects: another status code, another value, or behaviour that is not there.",
+        "stand_degraded": "Tests ran, but waited for things that are normally there: timeouts on ordinary operations, very slow answers, a page or browser that never became ready.",
+        "unknown": "The lines given do not say who is at fault."
+      },
+      "thresholds": {
+        "confidence": 0.7
+      },
+      "calibration": "2026-09-23, shadow, the 25 distinct runs of TP1-15045 (evidence/runs/*.json): 15 decided, 10 left to the role. Decided: `ERROR: not found: <node id>` -> tooling 1.0; the pydantic warning-filter crash -> tooling 0.92; `'tests' is not recognized` (exit 255) -> tooling 1.0; ModuleNotFoundError in a conftest -> collection 1.0; `NON_OWNER_EMAIL / NON_OWNER_PASSWORD must be set` -> environment 1.0; the 404 on /v1/assistants/id/None -> environment 0.76; five playwright Locator timeouts -> stand_degraded 0.97-0.99; three `validate status for partition` assertions -> application 0.73-0.90. Undecided (0.22-0.56): a bare `Locator expected to be visible`, a run with 13 tests and three different failures, and a run whose log left no line at all - the state is one run, and one line that names no operation is not enough. Against the analyst's own triage: TC-006 ENV_ISSUE -> stand_degraded 0.99, TC-008 ENV_ISSUE -> undecided 0.26."
+    },
+    {
+      "id": "run_env_blocked",
+      "stage": "S5/S6",
+      "script": "judge_run.py",
+      "type": "noul",
+      "replaces": "the `env_blocked` typing of a run: run_suite can only prove `broken_run` from an exit code, so a stand problem is handed to the automator as a defect of the test",
+      "undecided": "execution_status stays exactly what the exit code proved",
+      "instructions": "Do the lines in `error_head` and `first_failure` say that this run could not produce a test result because something the stand must provide was missing or refused - a service, an account, a credential, a feature flag, a variable or a seeded record?",
+      "criteria": {
+        "true": "A named service did not answer, a login or authorisation failed, or a named variable, key, account, feature flag or data record that the test needs is absent, unset or rejected.",
+        "false": "The failure is in the test code, in the launcher or its plugins, in loading the test files, or is a product answer that differs from what the test expects."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.1
+      },
+      "calibration": "2026-09-23, shadow, 24 of the same runs (asked only where the status could change): 21 decided, and exactly ONE would have passed - `NON_OWNER_EMAIL / NON_OWNER_PASSWORD must be set in the environment` at 0.94, the run the factory spent repair rounds on. The second wording of the same block (`must be configured for the non-owner partition`) 0.55 and the 404 on /v1/assistants/id/None 0.82 stayed undecided, so nothing is overridden. False: the playwright timeouts 0.05-0.07, the tooling and collection crashes 0.07-0.11, the partition assertions 0.03-0.05. 0.9 is kept because a `true` in `judge.mode: on` rewrites execution_status."
+    },
+    {
+      "id": "run_same_cause",
+      "stage": "S5/S6",
+      "script": "stand_health.py",
+      "type": "noul",
+      "replaces": "the exact string equality of two normalised failure lines in stand_health._same_failure - a stand that fails in two wordings is read as two test defects",
+      "undecided": "the row of failures ends at that line, exactly as without a judge",
+      "instructions": "Are `line_1` and `line_2` both the kind of failure that happens when the application under test is not there, not answering or not ready - rather than the kind that happens when a test expects the wrong value?",
+      "criteria": {
+        "true": "Both lines are a timeout, a refused connection, or something expected on the screen or in the response that never appeared.",
+        "false": "At least one line compares a concrete value with another concrete value and finds them different."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.1
+      },
+      "calibration": "2026-09-23, the normalised lines of TP1-15045: `locator.fill: timeout ms exceeded` / `locator expected to be visible` 0.92 - the two wordings of the afternoon the stand was gone, which exact matching splits into two rows of failures; `page.goto: net::err_connection_refused` / the fill timeout 0.96 and / `locator expected to be visible` 0.90; `entity was not found within the timeout period` / the fill timeout 0.96. Not the same cause: the fill timeout / `validate status for partition` 0.35, `locator expected to be visible` / the same assertion 0.55 (undecided - the row ends there, as before), `non_owner_email must be set` / the partition assertion 0.16. The first wording tried (`report one and the same failure of the environment ... rather than two separate defects`) was rejected: the real pairs scored 0.46-0.47 and nothing decided at any honest threshold. The question that works asks what KIND of failure each line is, not whether they share a cause."
+    },
+    {
+      "id": "run_remedy_kind",
+      "stage": "S5/S6",
+      "script": "judge_run.py",
+      "type": "choice",
+      "replaces": "the automator writing the fix of a blocked partition as prose while the manifest asks for contract.REMEDY_KINDS",
+      "undecided": "the automator types the remedy itself, as without a judge",
+      "instructions": "What kind of thing has to be changed on the stand before the run whose failure is in `error_head` can get past this point?",
+      "criteria": {
+        "flag": "A setting or feature flag in a configuration file that is off, missing or set to another value.",
+        "credential": "An account, password, token or key that is missing or not accepted. It is the variable that is named, never a value.",
+        "data": "A record, entity, fixture or file the test needs that does not exist on the stand.",
+        "service": "A service, container, database or browser that is not running or does not answer."
+      },
+      "thresholds": {
+        "confidence": 0.7
+      },
+      "calibration": "2026-09-23, five error heads of TP1-15045: `NON_OWNER_EMAIL / NON_OWNER_PASSWORD must be set` -> credential 0.89; the S5 stand gap `the feature flag subWorkflow is disabled for this stand` -> flag 1.0; `net::ERR_CONNECTION_REFUSED at http://localhost:8080/` -> service 0.99; the 404 on /v1/assistants/id/None -> data 0.65 and `assert 3 == 4` -> 0.38, both under the threshold, so the automator types those two itself. 3 of 5, and the two it declines are the two whose line does not name a missing thing."
+    },
+    {
+      "id": "run_remedy_where",
+      "stage": "S5/S6",
+      "script": "judge_run.py",
+      "type": "choice",
+      "replaces": "the `where` of a remedy row: the automator greps for the flag and then guesses which hit is the one to change",
+      "undecided": "the candidates are printed for the automator to choose from, as without a judge",
+      "instructions": "Which of the places listed in `candidates` has to be changed to fix the problem described in `error_head`? Each candidate names a file and the name that was found in it.",
+      "criteria": {
+        "none": "None of the places in `candidates` is the one to change, or the lines do not say which.",
+        "<candidate id>": "Replaced at call time by judge_run.py with one entry per candidate the code found: the file, the name that matched and the line, never a value."
+      },
+      "thresholds": {
+        "confidence": 0.85
+      },
+      "calibration": "2026-09-23, TP1-15045 with the project's real app roots: `NON_OWNER_EMAIL` -> the declared env file `testproject1_test_harness/.env` at 0.90; `subWorkflow` over the 3 candidates the grep found -> `testproject1/config/customer/customer-config.yaml:309` at 0.95, the very block the automator found by hand in S5. The `net::ERR_CONNECTION_REFUSED` head, whose names match nothing on disk, stayed undecided (0.14) and the candidates were printed instead. The line offered per file is the one that CARRIES the name, not the first that mentions it: under the first-hit rule the same flag scored 0.30, because `- id: subWorkflowNode` three lines above reads like another setting. 0.85 is kept because the person's `apply` answer to the stand-gap card opens exactly the file this names."
+    }
+  ]
+}

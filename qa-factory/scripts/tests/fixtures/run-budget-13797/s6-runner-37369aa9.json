@@ -1,0 +1,377 @@
+{
+ "job_id": "7a62062ec9478f05c32c",
+ "idempotency_key": "S6-qa-runner-1:repair_verify:TC-002+TC-003:6446ca6d6787",
+ "request_digest": "7a62062ec9478f05c32c3696c55bfa6fa937497bc275048e494e836e06d2ed75",
+ "status": "completed",
+ "created_at": "2026-09-27T11:21:29+00:00",
+ "request": {
+  "task": "TP1-13797",
+  "revision": "132",
+  "dispatch_id": "S6-qa-runner-1",
+  "profile_id": "api",
+  "purpose": "repair_verify",
+  "reason": "S6 verify freshness of TC-002/TC-003 after retraction repair",
+  "idempotency_key": "S6-qa-runner-1:repair_verify:TC-002+TC-003:6446ca6d6787",
+  "input_fingerprint": "e37d447fb82e3df37ab0d518904e0abcf4df1ecc635f6a5189194909511b5d46",
+  "fingerprint_components": {
+   "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "test_content_sha": "bd6d28d6aade5182bcc10046e5b88d90aefd29fbf87ae41d7a96f2b2b76981e3",
+   "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+   "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+   "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+   "policy_revision": "unknown"
+  },
+  "fingerprint_files": [
+   {
+    "path": "<root>/testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py",
+    "sha256": "6992616693fc5ac2c7bdea596ef6c856285f71774d65cf9ffd8d1fe6d04552ca",
+    "kind": "test_files"
+   },
+   {
+    "path": "<root>/testproject1_test_harness/tests/conftest.py",
+    "sha256": "c55dfa5f861e4f638afb208ea81c055255c132a7d49cae5dab4534537a79a92c",
+    "kind": "helper_files"
+   },
+   {
+    "path": "<root>/testproject1_test_harness/tests/webhook/conftest.py",
+    "sha256": "a4faa0fc1c8ddbf322d1e437c722fce00d109c0440bbdc893be83086cad93638",
+    "kind": "helper_files"
+   },
+   {
+    "path": "<root>/qa-factory/config.json",
+    "sha256": "a7b4eab2940504ac61965989c5aefb7806dd449a6650781a7b5fbe68ffedd9d2",
+    "kind": "config_files"
+   },
+   {
+    "path": "<root>/pyproject.toml",
+    "sha256": "93316b6a223648584e8917c170771aa750e1b74b3683261a2f9aa3a163a6a787",
+    "kind": "dependency_files"
+   },
+   {
+    "path": "<root>/poetry.lock",
+    "sha256": "4073d098cdaf4142afdc0002386978687849e17349256e598d0c1a274e66143c",
+    "kind": "dependency_files"
+   }
+  ],
+  "freshness": "fresh",
+  "remaining_budget": 1,
+  "selected_instance_ids": [
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "test_json_path_filter_at_length_cap_is_accepted",
+   "test_matching_payload_triggers_workflow[exact-match]",
+   "test_matching_payload_triggers_workflow[falsy-match]"
+  ],
+  "current_scope_instance_ids": [
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "test_json_path_filter_at_length_cap_is_accepted",
+   "test_matching_payload_triggers_workflow[exact-match]",
+   "test_matching_payload_triggers_workflow[falsy-match]",
+   "test_json_path_filter_expression_persisted_unchanged",
+   "test_non_matching_payload_does_not_trigger_and_acks_filtered",
+   "test_filtered_event_creates_no_execution_row",
+   "test_event_type_and_json_path_filters_combine_with_and[pass-pass]",
+   "test_event_type_and_json_path_filters_combine_with_and[pass-fail]",
+   "test_event_type_and_json_path_filters_combine_with_and[fail-pass]",
+   "test_event_type_and_json_path_filters_combine_with_and[fail-fail]",
+   "test_event_type_only_integration_unaffected_by_json_path_filter[match]",
+   "test_event_type_only_integration_unaffected_by_json_path_filter[nomatch]",
+   "test_unconfigured_integration_dispatches_every_payload",
+   "test_oversized_payload_dispatches_unevaluated",
+   "test_event_type_filtered_request_acks_2xx_never_400"
+  ],
+  "runtime_required": true,
+  "runtime_probe": {
+   "argv": [
+    "<python>",
+    "<plugin>/scripts/runtime_probe.py",
+    "--profile",
+    "api",
+    "--environment",
+    "localhost",
+    "--container",
+    "testproject1-dev-fresh-testproject1-1",
+    "--checkout",
+    "../../testproject1",
+    "--app-root",
+    "/app"
+   ],
+   "cwd": "<root>",
+   "timeout_s": 120
+  },
+  "runtime_provenance": {
+   "profile_id": "api",
+   "timestamp": "2026-09-27T11:21:25+00:00",
+   "environment_id": "localhost",
+   "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+   "evidence_refs": [
+    "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T024630Z.json"
+   ],
+   "provenance": {
+    "technical_verification": true,
+    "source_linkage": "verified_content",
+    "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "verified_source_revisions": [
+     "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+    ]
+   },
+   "result": "matched",
+   "comparisons": [
+    {
+     "file": "src/testproject1/service/settings/settings_request_validator.py",
+     "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+     "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+     "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+     "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook.py",
+     "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+     "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+     "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+     "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+    }
+   ],
+   "container": "testproject1-dev-fresh-testproject1-1",
+   "checkout": "..\\..\\testproject1"
+  },
+  "command": {
+   "argv": [
+    "poetry",
+    "run",
+    "pytest",
+    "--reruns",
+    "2",
+    "--ui-headless"
+   ],
+   "cwd": "<root>",
+   "scope": "selected",
+   "reporter": "pytest",
+   "selector_contract_verified": true,
+   "selector_args": {
+    "test_invalid_json_path_filter_rejected_at_save_time[malformed]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]"
+    ],
+    "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]"
+    ],
+    "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]"
+    ],
+    "test_invalid_json_path_filter_rejected_at_save_time[length-501]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]"
+    ],
+    "test_json_path_filter_at_length_cap_is_accepted": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted"
+    ],
+    "test_matching_payload_triggers_workflow[exact-match]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]"
+    ],
+    "test_matching_payload_triggers_workflow[falsy-match]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]"
+    ]
+   }
+  },
+  "instance_contracts": {
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS2-1"
+    ],
+    "instance_content_sha": "1ff01b542b60bf682fcfe0f004cf0ab8bae9e730d1eec79eab4b8b78d7d17a1c",
+    "instance_content_scope": "function"
+   },
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS2-2"
+    ],
+    "instance_content_sha": "1ff01b542b60bf682fcfe0f004cf0ab8bae9e730d1eec79eab4b8b78d7d17a1c",
+    "instance_content_scope": "function"
+   },
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS2-3"
+    ],
+    "instance_content_sha": "1ff01b542b60bf682fcfe0f004cf0ab8bae9e730d1eec79eab4b8b78d7d17a1c",
+    "instance_content_scope": "function"
+   },
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "instance_content_sha": "1ff01b542b60bf682fcfe0f004cf0ab8bae9e730d1eec79eab4b8b78d7d17a1c",
+    "instance_content_scope": "function"
+   },
+   "test_json_path_filter_at_length_cap_is_accepted": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "instance_content_sha": "261144f8bd0c4900ab73576571448d43b42c3a23889d7dabd9e8526ed9a73f6b",
+    "instance_content_scope": "function"
+   },
+   "test_matching_payload_triggers_workflow[exact-match]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-003",
+      "version": "cv_84047d650b7d540c409b"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS3-1"
+    ],
+    "instance_content_sha": "2b2601bc4830d28fe40fa21a6520d820822a9fdf2beb59e9b63adeb54e228b37",
+    "instance_content_scope": "function"
+   },
+   "test_matching_payload_triggers_workflow[falsy-match]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-003",
+      "version": "cv_84047d650b7d540c409b"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS3-1"
+    ],
+    "instance_content_sha": "2b2601bc4830d28fe40fa21a6520d820822a9fdf2beb59e9b63adeb54e228b37",
+    "instance_content_scope": "function"
+   }
+  },
+  "execution": {
+   "schema_version": 1,
+   "selection": {
+    "reason": "failed_or_invalidated",
+    "evidence_refs": [
+     "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\643e9e69f97d21097d85\\repair_verify-643e9e69f97d21097d85-20260927-061055.json"
+    ]
+   },
+   "reporter": {
+    "format": "pytest",
+    "path_template": "{report_path}"
+   }
+  },
+  "built_by": {
+   "tool": "run_suite.py --mine",
+   "cases": [
+    "TC-002",
+    "TC-003"
+   ]
+  },
+  "resolved_argv": [
+   "poetry",
+   "run",
+   "pytest",
+   "--reruns",
+   "2",
+   "--ui-headless",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]"
+  ],
+  "runtime_probe_before": {
+   "profile_id": "api",
+   "timestamp": "2026-09-27T11:21:26+00:00",
+   "environment_id": "localhost",
+   "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+   "evidence_refs": [
+    "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T112126Z.json"
+   ],
+   "provenance": {
+    "technical_verification": true,
+    "source_linkage": "verified_content",
+    "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "verified_source_revisions": [
+     "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+    ]
+   },
+   "result": "matched",
+   "comparisons": [
+    {
+     "file": "src/testproject1/service/settings/settings_request_validator.py",
+     "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+     "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+     "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+     "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook.py",
+     "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+     "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+     "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+     "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+    }
+   ],
+   "container": "testproject1-dev-fresh-testproject1-1",
+   "checkout": "..\\..\\testproject1"
+  }
+ },
+ "updated_at": "2026-09-27T11:21:58+00:00",
+ "runner_pid": 7000,
+ "runner_started_at": "2026-09-27T11:20:54.842327+00:00",
+ "child_pid": 23944,
+ "child_started_at": "2026-09-27T11:21:35.082901+00:00",
+ "execution_status": "passed",
+ "freshness": "fresh",
+ "summary": "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\7a62062ec9478f05c32c\\repair_verify-7a62062ec9478f05c32c-20260927-132135.json",
+ "run_block": "qa-factory\\artifacts\\TP1-13797\\work\\run-blocks\\20260927T112158078242Z-7a62062ec9478f05c32c.json",
+ "baseline_receipt": null
+}

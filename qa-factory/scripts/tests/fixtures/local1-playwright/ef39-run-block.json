@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "block_id": "ef39dbfc032eb9587718",
+  "attempt_id": "ef39dbfc032eb9587718",
+  "attempt_started_at": "2026-11-02T23:30:00.505592+00:00",
+  "attempt_ended_at": "2026-11-02T23:30:19.592585+00:00",
+  "dispatch_id": "S5-qa-automator-3",
+  "profile_id": "web",
+  "repo_id": "",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": {
+    "reason": "failed_or_invalidated",
+    "evidence_refs": [
+      "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\a69a7634a775790e4296\\initial-a69a7634a775790e4296-20261103-002814.json"
+    ]
+  },
+  "purpose": "repair_verify",
+  "input_fingerprint": "3d9724452f7104b7be52bdabc8cbb3f50d1cfd80dd344b69de6ddda09cfa70c1",
+  "source_fingerprint": {
+    "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+    "test_content_sha": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+    "config_sha": "a6c03843b5b6878789e2487e91b09d1a7e47f37b67f183d32230cefa91ed4729",
+    "dependency_sha": "2d69ddb5a12e0cac4cf95392403b2dda743a4f73134dc79658ec24fecf8597e9",
+    "runtime_sha": "f4011b7407c035cf0f73bc04ea557a575a03c828e97f4c2a391060dce5564c50",
+    "policy_revision": "config-projection-1"
+  },
+  "runtime_provenance": {
+    "profile_id": "web",
+    "timestamp": "2026-11-02T23:29:53+00:00",
+    "environment_id": "local",
+    "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+    "observed_runtime_identity": "person-confirmed:2026-11-02T23:12:00+00:00",
+    "evidence_refs": [
+      "{project_root}/qa-factory/artifacts/LOCAL-1/evidence/runtime-provenance-web-20261102T232954Z.json"
+    ],
+    "provenance": {
+      "technical_verification": false,
+      "identity_kind": "person_confirmed"
+    },
+    "result": "person_confirmed",
+    "person_confirmation": {
+      "words": "\u0414\u0430, \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0439 (the stand runs the build of MyBooks a25b080; started with npm start on the host, not read by the factory)",
+      "at": "2026-11-02T23:12:00+00:00",
+      "task": "LOCAL-1",
+      "kind": "deployed",
+      "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    },
+    "container": "",
+    "checkout": "..\\MyBooks",
+    "comparisons": []
+  },
+  "execution_status": "passed",
+  "results": [
+    {
+      "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "test_id": "@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_010",
+          "version": "cv_d6e20d3f7121fcbe6257"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "id not in report",
+      "report_matched": false,
+      "attempt_id": "ef39dbfc032eb9587718",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d9724452f7104b7be52bdabc8cbb3f50d1cfd80dd344b69de6ddda09cfa70c1",
+      "source_fingerprint": {
+        "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "test_content_sha": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+        "config_sha": "a6c03843b5b6878789e2487e91b09d1a7e47f37b67f183d32230cefa91ed4729",
+        "dependency_sha": "2d69ddb5a12e0cac4cf95392403b2dda743a4f73134dc79658ec24fecf8597e9",
+        "runtime_sha": "f4011b7407c035cf0f73bc04ea557a575a03c828e97f4c2a391060dce5564c50",
+        "policy_revision": "config-projection-1"
+      },
+      "reason_code": "id_not_in_report"
+    },
+    {
+      "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "test_id": "@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_011",
+          "version": "cv_e6ecfbd326d46ded7a9d"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "id not in report",
+      "report_matched": false,
+      "attempt_id": "ef39dbfc032eb9587718",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d9724452f7104b7be52bdabc8cbb3f50d1cfd80dd344b69de6ddda09cfa70c1",
+      "source_fingerprint": {
+        "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "test_content_sha": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+        "config_sha": "a6c03843b5b6878789e2487e91b09d1a7e47f37b67f183d32230cefa91ed4729",
+        "dependency_sha": "2d69ddb5a12e0cac4cf95392403b2dda743a4f73134dc79658ec24fecf8597e9",
+        "runtime_sha": "f4011b7407c035cf0f73bc04ea557a575a03c828e97f4c2a391060dce5564c50",
+        "policy_revision": "config-projection-1"
+      },
+      "reason_code": "id_not_in_report"
+    },
+    {
+      "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "test_id": "@regression LOCAL-1_TC_012 guest and user carts are isolated",
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_e0d1836f44bd92be8d41"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "id not in report",
+      "report_matched": false,
+      "attempt_id": "ef39dbfc032eb9587718",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d9724452f7104b7be52bdabc8cbb3f50d1cfd80dd344b69de6ddda09cfa70c1",
+      "source_fingerprint": {
+        "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "test_content_sha": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+        "config_sha": "a6c03843b5b6878789e2487e91b09d1a7e47f37b67f183d32230cefa91ed4729",
+        "dependency_sha": "2d69ddb5a12e0cac4cf95392403b2dda743a4f73134dc79658ec24fecf8597e9",
+        "runtime_sha": "f4011b7407c035cf0f73bc04ea557a575a03c828e97f4c2a391060dce5564c50",
+        "policy_revision": "config-projection-1"
+      },
+      "reason_code": "id_not_in_report"
+    },
+    {
+      "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "test_id": "@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_013",
+          "version": "cv_297063dea3cb77a47158"
+        }
+      ],
+      "obligation_ids": [
+        "OB-11"
+      ],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "id not in report",
+      "report_matched": false,
+      "attempt_id": "ef39dbfc032eb9587718",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "3d9724452f7104b7be52bdabc8cbb3f50d1cfd80dd344b69de6ddda09cfa70c1",
+      "source_fingerprint": {
+        "source_sha": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+        "test_content_sha": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+        "config_sha": "a6c03843b5b6878789e2487e91b09d1a7e47f37b67f183d32230cefa91ed4729",
+        "dependency_sha": "2d69ddb5a12e0cac4cf95392403b2dda743a4f73134dc79658ec24fecf8597e9",
+        "runtime_sha": "f4011b7407c035cf0f73bc04ea557a575a03c828e97f4c2a391060dce5564c50",
+        "policy_revision": "config-projection-1"
+      },
+      "reason_code": "id_not_in_report"
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\ef39dbfc032eb9587718\\repair_verify-ef39dbfc032eb9587718-20261103-003000.json",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/ef39dbfc032eb9587718/repair_verify-ef39dbfc032eb9587718-20261103-003000.junit.xml",
+      "report_sha256": "24a697ba039b77534633fee57ba845a1662c8729b723ed15c03a82b749e99f6d"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "ef39dbfc032eb9587718",
+    "raw_report_hash": "24a697ba039b77534633fee57ba845a1662c8729b723ed15c03a82b749e99f6d",
+    "reparsed": false
+  },
+  "report_scope": {
+    "selected": [
+      "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "LOCAL-1_TC_012 guest and user carts are isolated",
+      "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules"
+    ],
+    "unmatched_report_rows": [
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_012 guest and user carts are isolated",
+      "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules"
+    ]
+  }
+}

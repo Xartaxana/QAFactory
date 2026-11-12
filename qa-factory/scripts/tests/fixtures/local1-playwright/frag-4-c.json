@@ -1,0 +1,338 @@
+{
+ "then_bindings": [
+  {
+   "case": "LOCAL-1_TC_001",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:30",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_001",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:36",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_001",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:42",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_007",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:57",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_007",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:60",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_007",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:61",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_008",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:73",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_008",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:79",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_008",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:81",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_009",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:94",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_009",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:96",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_009",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:101",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_009",
+   "then": 4,
+   "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:103",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_010",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:113",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_010",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:114",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_011",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:141",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_011",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:142",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_011",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:138",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_012",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:158",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_012",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:167",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_012",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:171",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_012",
+   "then": 4,
+   "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:175",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_013",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:203",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_013",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:204",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_013",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:205",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_013",
+   "then": 4,
+   "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:206",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_016",
+   "then": 1,
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:231",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_016",
+   "then": 2,
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:234",
+   "status": "covered"
+  },
+  {
+   "case": "LOCAL-1_TC_016",
+   "then": 3,
+   "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:237",
+   "status": "covered"
+  }
+ ],
+ "deviations": [
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+   "from": "function",
+   "planned": "T-1",
+   "reason": "one parameterized test became three titled tests (static ids) sharing a helper"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+   "from": "function",
+   "planned": "T-1",
+   "reason": "partition P-user-qty3 of T-1, own title"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+   "from": "function",
+   "planned": "T-1",
+   "reason": "partition P-merge of T-1, own title"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+   "from": "function",
+   "planned": "T-2",
+   "reason": "same title as planned; manifest id omits the tag only"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+   "from": "function",
+   "planned": "T-3",
+   "reason": "same title as planned; manifest id omits the tag only"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+   "from": "function",
+   "planned": "T-4",
+   "reason": "title has \"an\" before \"empty cart\""
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+   "from": "fixture",
+   "planned": "T-4",
+   "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+   "from": "fixture",
+   "planned": "T-5",
+   "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+   "from": "fixture",
+   "planned": "T-6",
+   "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_012 guest and user carts are isolated",
+   "from": "fixture",
+   "planned": "T-7",
+   "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+   "from": "fixture",
+   "planned": "T-8",
+   "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+  },
+  {
+   "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+   "from": "function",
+   "planned": "T-9",
+   "reason": "title without the tag; uses shop fixture and soft assertions per notes"
+  }
+ ],
+ "plan_remarks": [
+  {
+   "id": "PR-1",
+   "row": "applied",
+   "reason": "reuses ShopActor.changeLine, shop fixture, expectStableErrorShape"
+  },
+  {
+   "id": "PR-2",
+   "row": "applied",
+   "reason": "shop.book(stock) in core/fixtures/cart.fixture.ts, deletes at the end"
+  },
+  {
+   "id": "PR-3",
+   "row": "applied",
+   "reason": "rule stated: higher quantity wins (Q1 a), literal 3 asserted"
+  },
+  {
+   "id": "CC-1",
+   "row": "not_applicable",
+   "reason": "TC_006 is not in this window"
+  },
+  {
+   "id": "CC-2",
+   "row": "not_applicable",
+   "reason": "approved Then fixes shape not code; codes left unasserted as the case says"
+  },
+  {
+   "id": "CC-3",
+   "row": "not_applicable",
+   "reason": "same as CC-2: approved Then names no OUT_OF_STOCK literal"
+  },
+  {
+   "id": "CC-4",
+   "row": "not_applicable",
+   "reason": "same as CC-2: approved Then names no INSUFFICIENT_STOCK literal"
+  },
+  {
+   "id": "CC-5",
+   "row": "applied",
+   "reason": "quantities 1 and 2 asserted as the sum 3 in one line"
+  },
+  {
+   "id": "CC-6",
+   "row": "applied",
+   "reason": "Then 4 reads U line 2 and no other line after the G3 add"
+  },
+  {
+   "id": "CC-7",
+   "row": "applied",
+   "reason": "Then 1 asserts the literal 3"
+  },
+  {
+   "id": "CC-8",
+   "row": "applied",
+   "reason": "basis external:Q1-a; asserts 400 INSUFFICIENT_STOCK as answered"
+  }
+ ]
+}

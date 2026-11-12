@@ -1,0 +1,386 @@
+[
+  {
+    "id": "T01",
+    "label": "Behavior verified",
+    "formula": "100 * current-task obligations whose reducer completion is evidenced / all approved current-task obligations, snapshot. Also counts by evidenced/failed/blocked/not_run/stale",
+    "source_update": "P,R; T1,T2",
+    "missing": "Before A: draft counts only, no approved ratio. Accepted gaps stay in denominator; regression excluded and counted separately",
+    "formula_version": 1
+  },
+  {
+    "id": "T02",
+    "label": "Critical behavior verified",
+    "formula": "T01 restricted to P0/P1 plan priority; show n and priority breakdown",
+    "source_update": "P,R; T1,T2",
+    "missing": "Unknown priority is a separate gap; it cannot be treated as noncritical",
+    "formula_version": 1
+  },
+  {
+    "id": "T03",
+    "label": "Test outcomes",
+    "formula": "Unique current instances per pass/fail/error/blocked/skipped/not_run/stale/ambiguous, per task/level/repo/owner. Preserve source statuses; no fabricated conversion of broken_run to test failure",
+    "source_update": "R; T2",
+    "missing": "Missing report means not_run/unknown per existing reducer, never zero failures = pass",
+    "formula_version": 1
+  },
+  {
+    "id": "T04",
+    "label": "Test pyramid",
+    "formula": "Counts and percentages of T03 instances by recorded level, with separate unknown/ambiguous and manual lanes; all outcomes included",
+    "source_update": "R,P; T1,T2",
+    "missing": "Unknown level remains in total and its own lane; no removal from denominator",
+    "formula_version": 1
+  },
+  {
+    "id": "T05",
+    "label": "Manual proof completeness",
+    "formula": "100 * approved manual-agent cases whose current accepted outcome includes all required evidence / approved manual-agent cases. Show failed-with-proof separately from passed-with-proof",
+    "source_update": "P,R; T1,T2",
+    "missing": "manual-human cases shown pending separately; missing evidence is not a pass",
+    "formula_version": 1
+  },
+  {
+    "id": "T06",
+    "label": "Open obligations and regression",
+    "formula": "Counts by kind/status and age; list recommended_regression checks explicitly 'not run by factory'",
+    "source_update": "P,F; T1,T2,T4",
+    "missing": "No scope registry -> unavailable; empty valid registry -> 0",
+    "formula_version": 1
+  },
+  {
+    "id": "T07",
+    "label": "Bug snapshot",
+    "formula": "Count unique bugs by severity/status; draft and published badges. Open statuses use adapter mapping, default local Open/Fixed/Reopened/Blocked/Intended, closed local Verified/Closed/Rejected/Duplicate",
+    "source_update": "B; T3",
+    "missing": "Unknown status in separate bucket. Inventory scope label always visible; no bugs in partial export is not project-wide zero",
+    "formula_version": 1
+  },
+  {
+    "id": "T08",
+    "label": "Area defect weight",
+    "formula": "Sum weights of unique known bugs per area, weights 8/5/3/1 unless configured. Display highest ceil(share*number_of_areas) areas sorted by weight then name; default share 0.5",
+    "source_update": "B; T3",
+    "missing": "Unknown severity count shown but excluded from weighted sum; missing area grouped Unknown. Label weighted count, not density",
+    "formula_version": 1
+  },
+  {
+    "id": "T09",
+    "label": "Bug age",
+    "formula": "max(0, as_of-created_at) days for each open bug; severity then descending age ordering",
+    "source_update": "B; T3,date",
+    "missing": "Missing/invalid date: age unavailable for that bug, row retained",
+    "formula_version": 1
+  },
+  {
+    "id": "T10",
+    "label": "Bug flow",
+    "formula": "Unique bugs created within window; unique bugs entering terminal closed state within window; separately transition counts if a bug closes more than once",
+    "source_update": "B; T3",
+    "missing": "Closed count requires transition evidence; current closed snapshot alone is insufficient",
+    "formula_version": 1
+  },
+  {
+    "id": "T11",
+    "label": "Rejected-bug cohort rate",
+    "formula": "100 * window-created bugs whose current disposition is Rejected / all window-created bugs. Explicit cohort-as-of label",
+    "source_update": "B; T3",
+    "missing": "Duplicate separate, not rejected. Missing disposition for cohort -> partial lower bound with known denominator",
+    "formula_version": 1
+  },
+  {
+    "id": "T12",
+    "label": "Reopen rate",
+    "formula": "100 * unique bugs with Fixed->Reopened transition in window / unique bugs entering Fixed or leaving Fixed to Reopened in window",
+    "source_update": "B; T3",
+    "missing": "Requires complete transitions over window for cohort. Otherwise unavailable, not count-based guess",
+    "formula_version": 1
+  },
+  {
+    "id": "T13",
+    "label": "Time to first fix",
+    "formula": "Median (first Fixed timestamp-created_at)/86400 for bugs whose first Fixed occurs in window; group by priority/area; n always visible",
+    "source_update": "B; T3",
+    "missing": "Need complete origin/first-fix evidence. Eligible excluded rows make result partial with included/eligible counts",
+    "formula_version": 1
+  },
+  {
+    "id": "T14",
+    "label": "Repeated status cycles",
+    "formula": "Count/list bugs with >=2 verified reopen transitions in available complete history; disclose history start",
+    "source_update": "B; T3",
+    "missing": "Legacy trusted reopen_count can be shown as imported total, not mixed with window rate. Discussion 'ping-pong' unavailable unless explicit structured dispute events exist; no LLM reading discussions for this metric",
+    "formula_version": 1
+  },
+  {
+    "id": "A01",
+    "label": "First-attempt pass rate",
+    "formula": "100 * instances whose first conclusive behavioral attempt in each task+fingerprint passes / instances with a first conclusive pass/fail attempt; window by attempt timestamp",
+    "source_update": "R; T2",
+    "missing": "Execution errors/unknown results shown separately; incomplete attempt history -> unavailable or explicitly partial cohort",
+    "formula_version": 1
+  },
+  {
+    "id": "A02",
+    "label": "Current pass rate",
+    "formula": "100 * current passing instances / all approved selected automated instances, snapshot",
+    "source_update": "P,R; T1,T2",
+    "missing": "Pending/stale/skipped stay in denominator; not a quality certification",
+    "formula_version": 1
+  },
+  {
+    "id": "A03",
+    "label": "Flaky evidence rate",
+    "formula": "100 * unique task+instance+fingerprint with both pass and fail conclusive attempts / such identities with >=1 conclusive attempt in window. Require unchanged code/test/runtime/data-seed contract and allowed repeated-attempt provenance",
+    "source_update": "R; T2",
+    "missing": "No automatic reruns to populate rate. Show repeated-sample count; unverified equivalent inputs cannot establish flaky",
+    "formula_version": 1
+  },
+  {
+    "id": "A04",
+    "label": "Retry rescue",
+    "formula": "Count identities with fail then pass under same fingerprint; divide by identities with failed first conclusive attempt for rescue percentage",
+    "source_update": "R; T2",
+    "missing": "Fix changing fingerprint is repair, not rescue. Missing ordering -> unknown",
+    "formula_version": 1
+  },
+  {
+    "id": "A05",
+    "label": "Unexplained failure rate",
+    "formula": "100 * conclusive failed attempts not associated with a valid red_lock bug / conclusive behavioral attempts; window",
+    "source_update": "R,H; T2,T4",
+    "missing": "Report red-locked failures separately, never hide them; unknown lock linkage yields partial attribution",
+    "formula_version": 1
+  },
+  {
+    "id": "A06",
+    "label": "Automation risk coverage",
+    "formula": "100 * P0/P1 current-task obligations with accepted sufficient automated assertion links / all P0/P1 current-task obligations. Design metric, separate from executed T02",
+    "source_update": "P; T1",
+    "missing": "No area-level % inferred from arbitrary area names. Missing design assessment -> partial or uncovered, never sufficient",
+    "formula_version": 1
+  },
+  {
+    "id": "A07",
+    "label": "Run duration and volume",
+    "formula": "Job count; sum of actual ended-started execution seconds; median completed job seconds; unique instances and new/updated/reused tests by accepted lifecycle action",
+    "source_update": "R,P; T1,T2",
+    "missing": "Imported results show imported counts; missing duration excluded with n. Sum job time may exceed elapsed wall time under parallelism; label explicitly",
+    "formula_version": 1
+  },
+  {
+    "id": "A08",
+    "label": "Test health",
+    "formula": "Unique quarantined cases, active red_lock cases, open DEBT, past explicit sla_due debt. Snapshot",
+    "source_update": "H; T4,T2",
+    "missing": "No synthetic SLA from removed config. Missing full store inventory means known counts, not suite-wide clean",
+    "formula_version": 1
+  },
+  {
+    "id": "A09",
+    "label": "Duplicate execution",
+    "formula": "Count local behavioral attempts re-executing already-current passing instance/fingerprint with no invalidation and purpose initial/repair_verify; share of local behavioral attempts",
+    "source_update": "R,E; T2,T5",
+    "missing": "Allowed flaky_diagnostic/diagnostic and red proofs excluded and shown separately; this metric observes duplicates, never authorizes them",
+    "formula_version": 1
+  },
+  {
+    "id": "A10",
+    "label": "Reused evidence",
+    "formula": "Unique selected instances satisfied by imported or earlier fresh receipt without a new local launch / all selected automated instances, snapshot",
+    "source_update": "R,P; T1,T2",
+    "missing": "Reused receipt does not count as new run or extra saved hours automatically",
+    "formula_version": 1
+  },
+  {
+    "id": "F01",
+    "label": "Findings and DD",
+    "formula": "Counts by open/closed state and FB scope; open-item age days and weeks=days/7; due flags only explicit typed triggers",
+    "source_update": "F; T4,date",
+    "missing": "Missing/corrupt canonical registry -> unavailable, not 'no findings'; disclosed legacy fallback only when canonical absent",
+    "formula_version": 1
+  },
+  {
+    "id": "F02",
+    "label": "Rejects by role",
+    "formula": "Count unique rejected handoffs, group by role/reason; rejection rate = rejected handoffs / accepted+rejected handoffs within window",
+    "source_update": "E; T5",
+    "missing": "Incomplete journal coverage -> known count/partial rate; retry dispatch alone is not rejection",
+    "formula_version": 1
+  },
+  {
+    "id": "F03",
+    "label": "Blocked/unsafe handoffs",
+    "formula": "Separate counts of gate_block and unsafe_completion events",
+    "source_update": "E; T5",
+    "missing": "Neither absence of journal nor unknown event mapping yields zero. Rewrite obsolete tooltip promising break-glass success; do not change acceptance mechanics",
+    "formula_version": 1
+  },
+  {
+    "id": "F04",
+    "label": "Long dispatches",
+    "formula": "Number of role dispatches with >80 recorded model requests; show actual counts and max; orchestrator sessions listed separately",
+    "source_update": "U,E; T5,T6",
+    "missing": "Threshold is informational, not turns.soft and not hard budget. Partial usage shows 'at least'; no quadratic-cost certainty in tooltip",
+    "formula_version": 1
+  },
+  {
+    "id": "F05",
+    "label": "Retries",
+    "formula": "Controller dispatches with parent_retry as a share of all dispatches, split by the cause the parent recorded when it stopped (retry_reason)",
+    "source_update": "E; T5",
+    "missing": "No unstructured journal inference. A dispatch with no recorded cause is classified from its parent, never dropped",
+    "formula_version": 1
+  },
+  {
+    "id": "F06",
+    "label": "Blockers and lifecycle",
+    "formula": "Count/list active blocked/paused/halted tasks, stage, next action and exact reason; current revision",
+    "source_update": "E; T5",
+    "missing": "Controller is authority; do not infer success from artifact presence",
+    "formula_version": 1
+  },
+  {
+    "id": "F07",
+    "label": "Projection/evidence health",
+    "formula": "Count stale projections and missing proof/version links identified by existing validator; show revision and diagnostic",
+    "source_update": "E,P,R; T1,T2,T5",
+    "missing": "Renderer failure is distinct from product failure; no repair rerun",
+    "formula_version": 1
+  },
+  {
+    "id": "F08",
+    "label": "Orchestrator shares",
+    "formula": "Token share=100*orchestrator tokens/all tokens; cost share=100*orchestrator valued USD/all valued USD; distinct labels/trends",
+    "source_update": "U; T6",
+    "missing": "Cost share only with complete comparable valuation; token share can remain available with unknown prices",
+    "formula_version": 1
+  },
+  {
+    "id": "F09",
+    "label": "Orchestrator share over the limit",
+    "formula": "Stories whose orchestrator cost share exceeds retro.orchestrator_share_max (default 0.35), each with its share, the limit and the per-stage split of the orchestrator's own priced requests placed by that story's stage clock",
+    "source_update": "U,P; T6",
+    "missing": "A story with no orchestrator receipts, or one whose spend is a floor, is missing and never a zero share; a stage whose clock runs backwards places nothing and leaves those requests unattributed",
+    "formula_version": 1
+  },
+  {
+    "id": "C01",
+    "label": "Tokens",
+    "formula": "Sum mutually exclusive normalized categories, grouped by activity/task, role, exact model, UTC request day",
+    "source_update": "U; T6",
+    "missing": "Partial usage explicitly marked; no synthetic usage",
+    "formula_version": 1
+  },
+  {
+    "id": "C02",
+    "label": "Estimated USD",
+    "formula": "Sum over requests/categories of tokens * applicable rate / 1e6; group as C01",
+    "source_update": "U; T6",
+    "missing": "Missing price -> known subtotal and missing counts; never total label. Unconfirmed default rate still computes with label",
+    "formula_version": 1
+  },
+  {
+    "id": "C03",
+    "label": "Reconciliation",
+    "formula": "Compare activity sum, role sum, model sum with same request-set total; exact tokens, USD tolerance 0.000001 before display rounding",
+    "source_update": "U; T6",
+    "missing": "complete equal -> matched; known unequal -> mismatch; incomplete -> unknown. Partial mismatch of provably identical complete subsets may be separately diagnosed",
+    "formula_version": 1
+  },
+  {
+    "id": "C04",
+    "label": "Human wait",
+    "formula": "Sum nonnegative time the story waited for a person: each answered question put to the person (tool call to its result, uncapped) plus each gap from completed assistant response to following human input within activity (capped, cost.human_wait_cap_s=1800; the part inside a question counted once). Stage machine time = stage wall time minus the waits inside the stage window, never below 0",
+    "source_update": "U; T6",
+    "missing": "No time evidence -> unavailable; a capture that did not measure question waits -> named floor and no machine time; an open question has no known length; label turn gaps capped estimate, not billable compute",
+    "formula_version": 1
+  },
+  {
+    "id": "C05",
+    "label": "Activity time",
+    "formula": "Sum min(adjacent main-chain request time gap,120s) within each uninterrupted activity segment; also capped-wall total with 1800s cap in details",
+    "source_update": "U; T6",
+    "missing": "Fewer than two timestamps -> no_data; never bridge across doctor/story segment boundaries; not exact machine time",
+    "formula_version": 1
+  },
+  {
+    "id": "C06",
+    "label": "Requests/tools/rework",
+    "formula": "Requests and tool calls by role/type; rework USD=sum costs attributed to dispatches explicitly linked parent_retry or repair purpose; percent over complete total. Relation to the retro (retro_numbers.dispatch_rounds): the retro counts a repair round only for a re-dispatch of the same (stage, role) scope that is NOT a continuation (retry_reason checkpoint/compaction/turn_budget/subagent_silent/no_digest_at_exit/host_error, contract.CONTINUATION_RETRY_REASONS); C06 counts every parent_retry link, so C06 rework >= the retro's repair-round cost",
+    "source_update": "U,E; T5,T6",
+    "missing": "Do not classify by prose name 'fix'; unknown dispatch-purpose leaves attribution partial",
+    "formula_version": 1
+  },
+  {
+    "id": "C07",
+    "label": "Time to first test",
+    "formula": "Earliest actual behavioral execution start - verified S0 start for task, seconds; exclude red probes/build/collection",
+    "source_update": "E,R; T2,T5",
+    "missing": "No execution yet -> pending; imported-only -> not_applicable; missing start -> unavailable",
+    "formula_version": 1
+  },
+  {
+    "id": "C08",
+    "label": "Tokenomics band hit",
+    "formula": "100 * completed, fully priced tasks whose cost in inclusive [lo,hi] / completed fully priced tasks with valid final size",
+    "source_update": "X,U; T6,T7",
+    "missing": "S9 complete but session cost provisional -> show provisional dot, exclude from finalized rate. No size or full price -> excluded count",
+    "formula_version": 1
+  },
+  {
+    "id": "C09",
+    "label": "Band vs actual",
+    "formula": "For each size show preserved band and median complete task USD, with n",
+    "source_update": "X,U; T6,T7",
+    "missing": "Display actual groups only once real X records exist; no filled-in demo rows for missing groups",
+    "formula_version": 1
+  },
+  {
+    "id": "C10",
+    "label": "Cost drift",
+    "formula": "Median((actual_usd-upper_band)/upper_band) over C08 population, %",
+    "source_update": "X,U; T6,T7",
+    "missing": "No eligible tasks -> no_data",
+    "formula_version": 1
+  },
+  {
+    "id": "C11",
+    "label": "MMRE and PRED(25)",
+    "formula": "MMRE=mean(abs(actual-upper_band)/actual); PRED25=100*count(error<=0.25)/n. Label upper-band benchmark, not an individualized forecast",
+    "source_update": "X,U; T6,T7",
+    "missing": "actual=0 excluded from these two ratios with reason; C08 still includes it",
+    "formula_version": 1
+  },
+  {
+    "id": "C12",
+    "label": "Estimate revisions",
+    "formula": "Counts of (size_initial,size_final) pairs per distinct completed task; same values counted unchanged; include final revision only",
+    "source_update": "X; T7",
+    "missing": "Missing size pair -> excluded count",
+    "formula_version": 1
+  },
+  {
+    "id": "C13",
+    "label": "Divergence drivers",
+    "formula": "Count completed tasks with each distinct recorded driver label, sorted descending then label. Share=tasks with driver/tasks with >=1 driver; multi-label sum can exceed 100%",
+    "source_update": "X; T7",
+    "missing": "Do not infer causal labels from cost. No drivers -> unavailable",
+    "formula_version": 1
+  },
+  {
+    "id": "C14",
+    "label": "Automation time benefit",
+    "formula": "Potential manual hours avoided=sum baseline_manual_minutes for distinct eligible successful routine automated executions /60. Net hours=avoided-verified automation authoring hours-maintenance hours",
+    "source_update": "optional benefit inputs,R; T2,input update",
+    "missing": "Exclude red probes, diagnostics, repair retries and imported duplicate receipts. No baseline/effort -> unavailable; never assume gap-based time is human effort. Label modeled benefit, not measured savings",
+    "formula_version": 1
+  },
+  {
+    "id": "C15",
+    "label": "Monetary ROI",
+    "formula": "(documented comparable counterfactual USD - complete actual total USD)/actual total USD; actual total includes model, infra and human costs without mixing hours and USD",
+    "source_update": "optional benefit inputs,U; T6,input update",
+    "missing": "No approved baseline or labor/infra inputs -> unavailable with exact missing fields. actual=0 -> undefined, not infinite. Never monetize found bugs using arbitrary severity weights",
+    "formula_version": 1
+  }
+]

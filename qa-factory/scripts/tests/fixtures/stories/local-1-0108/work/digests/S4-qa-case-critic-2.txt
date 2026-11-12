@@ -1,0 +1,17 @@
+qa-case-critic S4 LOCAL-1_TC_002,005,007,008,009,019-024 · ok
+LOCAL-1_TC_002 · approve · round-1 concerns repaired
+LOCAL-1_TC_005 · approve · cookie lifetime Then added
+LOCAL-1_TC_007 · approve · red by person's decision
+LOCAL-1_TC_008 · approve · both partitions homed
+LOCAL-1_TC_009 · approve_with_concerns · Then 3 hedged, cannot fail alone
+LOCAL-1_TC_019 · approve_with_concerns · quantity unasserted until Q6
+LOCAL-1_TC_020 · approve_with_concerns · refusal boundary only in Notes; Q6
+LOCAL-1_TC_021 · approve_with_concerns · all Thens wait on Q6
+LOCAL-1_TC_022 · approve_with_concerns · no literal until Q4; no true race
+LOCAL-1_TC_023 · approve_with_concerns · abort never reaches server; Q4
+LOCAL-1_TC_024 · approve_with_concerns · Then 2 disjunction passes dropped add
+qa-factory/artifacts/LOCAL-1/work/test-cases/critic-findings.md
+
+11 of 11 reviewed. Round 2 verdict: approve_with_concerns.
+
+The handoff values are in qa-factory/artifacts/LOCAL-1/work/handoffs/S4-qa-case-critic-2.values.yaml. I did not run the checker.

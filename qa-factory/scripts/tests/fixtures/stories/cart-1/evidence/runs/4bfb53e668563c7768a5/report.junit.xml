@@ -1,0 +1,81 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="10.328535">
+<testsuite name="api\cart\cart-quote-order.spec.ts" timestamp="2026-10-31T10:18:38.535Z" hostname="chromium" tests="1" failures="1" skipped="0" time="4.16" errors="0">
+<testcase name="@api @regression CART-1_TC_009 quote and order from cart" classname="api\cart\cart-quote-order.spec.ts" time="4.16">
+<failure message="cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart" type="FAILURE">
+<![CDATA[  [chromium] › api\cart\cart-quote-order.spec.ts:9:1 › @api @regression CART-1_TC_009 quote and order from cart 
+
+    Error: Then 2: quote lists B1 x2 and B2 x1, equal to the cart read
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Object {
+    -     "bookId": 75,
+    -     "quantity": 2,
+    -   },
+    -   Object {
+    -     "bookId": 76,
+    -     "quantity": 1,
+    -   },
+    - ]
+    + Array []
+
+      38 |   expect.soft(quote.status, 'Then 2: quote of the filled cart succeeds').toBeLessThan(300);
+      39 |   expect.soft(cartRows, 'Then 2: cart read holds B1 x2 and B2 x1').toEqual(expected);
+    > 40 |   expect.soft(linesOf(quote.body).sort(byBook), 'Then 2: quote lists B1 x2 and B2 x1, equal to the cart read').toEqual(cartRows);
+         |                                                                                                                ^
+      41 |   // Then 3
+      42 |   expect.soft([400, 409, 422], 'Then 3: over-stock quote is rejected 400/409/422').toContain(over.status);
+      43 |   expect.soft(over.body?.error, 'Then 3: body carries error').toBeTruthy();
+        at <path-1>\test-automation-framework\tests\api\cart\cart-quote-order.spec.ts:40:112
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Then 2: quote lists B1 x2 and B2 x1, equal to the cart read
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Object {
+    -     "bookId": 77,
+    -     "quantity": 2,
+    -   },
+    -   Object {
+    -     "bookId": 78,
+    -     "quantity": 1,
+    -   },
+    - ]
+    + Array []
+
+      38 |   expect.soft(quote.status, 'Then 2: quote of the filled cart succeeds').toBeLessThan(300);
+      39 |   expect.soft(cartRows, 'Then 2: cart read holds B1 x2 and B2 x1').toEqual(expected);
+    > 40 |   expect.soft(linesOf(quote.body).sort(byBook), 'Then 2: quote lists B1 x2 and B2 x1, equal to the cart read').toEqual(cartRows);
+         |                                                                                                                ^
+      41 |   // Then 3
+      42 |   expect.soft([400, 409, 422], 'Then 3: over-stock quote is rejected 400/409/422').toContain(over.status);
+      43 |   expect.soft(over.body?.error, 'Then 3: body carries error').toBeTruthy();
+        at <path-1>\test-automation-framework\tests\api\cart\cart-quote-order.spec.ts:40:112
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\api-cart-cart-quote-order--dc27f-9-quote-and-order-from-cart-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\api-cart-cart-quote-order--dc27f-9-quote-and-order-from-cart-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\..\..\..\..\test-results\api-cart-cart-quote-order--dc27f-9-quote-and-order-from-cart-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,1 @@
+{"path": "work/evidence/manual/TC-010/a4/001-failed-step.png", "content_hash": "e0223b34ba4423b74d95a7e9757574812b6ff90fda0ffcc59cfde22344dea5a4", "kind": "image", "phase": "supporting", "captured_at": "2026-10-28T11:27:56+00:00", "proves": ["failed step: click \"#project-selector\""], "command": "ui"}

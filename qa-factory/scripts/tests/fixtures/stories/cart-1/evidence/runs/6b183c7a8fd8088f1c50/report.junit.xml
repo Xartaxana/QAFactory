@@ -1,0 +1,93 @@
+<testsuites id="" name="" tests="4" failures="1" skipped="0" errors="0" time="25.735613">
+<testsuite name="api\cart\cart-isolation.spec.ts" timestamp="2026-10-31T09:32:35.243Z" hostname="chromium" tests="1" failures="1" skipped="0" time="6.566" errors="0">
+<testcase name="@api @regression CART-1_TC_005 cart isolation between owners" classname="api\cart\cart-isolation.spec.ts" time="6.566">
+<failure message="cart-isolation.spec.ts:4:1 @api @regression CART-1_TC_005 cart isolation between owners" type="FAILURE">
+<![CDATA[  [chromium] › api\cart\cart-isolation.spec.ts:4:1 › @api @regression CART-1_TC_005 cart isolation between owners 
+
+    Error: Then 3: G2 sees no row of G1
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 11
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "bookId": 56,
+    +     "createdAt": "2026-10-31T09:32:43.569Z",
+    +     "id": 10,
+    +     "quantity": 2,
+    +     "sessionId": "a4cd9ff0-d9c5-4387-93d1-a2231787dda0",
+    +     "updatedAt": "2026-10-31T09:32:43.569Z",
+    +     "userId": null,
+    +   },
+    + ]
+
+      23 |   expect(juRows.filter((r) => r.bookId === book || g1Ids.includes(r.id)), 'Then 2: JU (U + G1 cookie) sees no row of G1').toEqual([]);
+      24 |   // Then 3
+    > 25 |   expect(g2Rows.filter((r) => r.bookId === book || g1Ids.includes(r.id)), 'Then 3: G2 sees no row of G1').toEqual([]);
+         |                                                                                                           ^
+      26 | });
+      27 |
+        at <path-1>\test-automation-framework\tests\api\cart\cart-isolation.spec.ts:25:107
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Then 3: G2 sees no row of G1
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 11
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "bookId": 62,
+    +     "createdAt": "2026-10-31T09:32:48.834Z",
+    +     "id": 19,
+    +     "quantity": 2,
+    +     "sessionId": "a4cd9ff0-d9c5-4387-93d1-a2231787dda0",
+    +     "updatedAt": "2026-10-31T09:32:48.834Z",
+    +     "userId": null,
+    +   },
+    + ]
+
+      23 |   expect(juRows.filter((r) => r.bookId === book || g1Ids.includes(r.id)), 'Then 2: JU (U + G1 cookie) sees no row of G1').toEqual([]);
+      24 |   // Then 3
+    > 25 |   expect(g2Rows.filter((r) => r.bookId === book || g1Ids.includes(r.id)), 'Then 3: G2 sees no row of G1').toEqual([]);
+         |                                                                                                           ^
+      26 | });
+      27 |
+        at <path-1>\test-automation-framework\tests\api\cart\cart-isolation.spec.ts:25:107
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\api-cart-cart-isolation--a-1872e-rt-isolation-between-owners-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\api-cart-cart-isolation--a-1872e-rt-isolation-between-owners-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\..\..\..\..\test-results\api-cart-cart-isolation--a-1872e-rt-isolation-between-owners-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="api\cart\cart-merge.spec.ts" timestamp="2026-10-31T09:32:35.243Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.811" errors="0">
+<testcase name="@api @regression CART-1_TC_006 guest cart merge on login" classname="api\cart\cart-merge.spec.ts" time="7.811">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\cart-ownership.spec.ts" timestamp="2026-10-31T09:32:35.243Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.838" errors="0">
+<testcase name="@api @regression CART-1_TC_008 foreign cart item mutation denied" classname="api\cart\cart-ownership.spec.ts" time="7.838">
+</testcase>
+</testsuite>
+<testsuite name="api\cart\cart-update-delete.spec.ts" timestamp="2026-10-31T09:32:35.243Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.841" errors="0">
+<testcase name="@api @regression CART-1_TC_007 update and delete cart item" classname="api\cart\cart-update-delete.spec.ts" time="1.841">
+</testcase>
+</testsuite>
+</testsuites>

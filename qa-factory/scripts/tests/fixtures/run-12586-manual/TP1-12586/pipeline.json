@@ -1,0 +1,395 @@
+{
+ "ticket": "TP1-12586",
+ "parent_feature": "TP1-13289",
+ "size": "XXL",
+ "environment": "local-docker",
+ "environment_pending": false,
+ "implementation_source": "diff",
+ "warnings": [
+  "host_hooks: unknown (live guard evidence incomplete; run host_probe.py --prepare/--check to certify native hooks)",
+  "tracker_write: not_configured by the project's choice (external_writes.bugs = markdown); bugs stay in the repository, none is written to the tracker",
+  "case_store: not_configured; cases stay per story under qa-factory/artifacts/TP1-12586/work/test-cases/",
+  "env_probe: 14 integration credential rows are 'unknown' (credential alternatives not discovered); only the integrations a case needs matter, and S5/S6 check again"
+ ],
+ "stages": {
+  "S0": {
+   "status": "done",
+   "started": "2026-10-27T21:51:11Z",
+   "finished": "2026-10-27T21:51:11+00:00",
+   "role": null,
+   "digest": "preflight green, env=local-docker",
+   "imported": true,
+   "reason": "preflight green, env=local-docker"
+  },
+  "S1": {
+   "status": "done",
+   "role": "qa-scout",
+   "digest": "qa-scout S1 done - qa-factory/artifacts/TP1-12586/work/context-manifest.json - concerns",
+   "dispatch_id": "S1-qa-scout-1",
+   "stage_started": 1793138005.3335674,
+   "stage_finished": 1793140667.495022,
+   "provenance": "observed",
+   "wall_seconds": null,
+   "started": "2026-10-27T21:53:25+00:00",
+   "reason": "qa-scout S1 done - qa-factory/artifacts/TP1-12586/work/context-manifest.json - concerns",
+   "agent_id": "a33bdc04e4750e473",
+   "finished": "2026-10-27T22:37:51+00:00"
+  },
+  "S2": {
+   "status": "done",
+   "dispatch_id": "S2-qa-requirements-tester-1",
+   "stage_started": 1793140698.326712,
+   "stage_finished": 1793143448.0592399,
+   "provenance": "observed",
+   "wall_seconds": null,
+   "started": "2026-10-27T22:38:18+00:00",
+   "role": "qa-requirements-tester",
+   "digest": "qa-requirements-tester S2 TP1-12586 - concerns",
+   "reason": "qa-requirements-tester S2 TP1-12586 - concerns",
+   "agent_id": "af215ad0a4d87bcc8",
+   "finished": "2026-10-27T23:24:13+00:00"
+  },
+  "S3": {
+   "status": "done",
+   "dispatch_id": "S3-qa-test-strategist-5",
+   "stage_started": 1793143480.4551778,
+   "stage_finished": 1793182813.9503164,
+   "provenance": "observed",
+   "wall_seconds": null,
+   "started": "2026-10-27T23:24:40+00:00",
+   "role": "qa-test-strategist",
+   "digest": "qa-test-strategist S3 TS-10,TS-12,TS-14 - concerns - qa-factory/artifacts/TP1-12586/work/test-plan.json",
+   "reason": "qa-test-strategist S3 TS-10,TS-12,TS-14 - concerns - qa-factory/artifacts/TP1-12586/work/test-plan.json",
+   "agent_id": "a09c22ebf268c9279",
+   "finished": "2026-10-28T10:20:37+00:00",
+   "later_work_status": "running",
+   "active_dispatch_id": "S3-qa-test-strategist-5"
+  },
+  "S4": {
+   "status": "done",
+   "dispatch_id": "S4-qa-case-critic-4",
+   "stage_started": 1793145865.9020805,
+   "stage_finished": 1793183459.5193918,
+   "provenance": "observed",
+   "wall_seconds": null,
+   "started": "2026-10-28T00:04:25+00:00",
+   "role": "qa-case-critic",
+   "digest": "qa-case-critic S4 TC-010,TC-012,TC-014 - concerns - qa-factory/artifacts/TP1-12586/work/test-cases/integrations/critic-findings.md",
+   "reason": "qa-case-critic S4 TC-010,TC-012,TC-014 - concerns - qa-factory/artifacts/TP1-12586/work/test-cases/integrations/critic-findings.md",
+   "agent_id": "a91b634c5d8c698bd",
+   "active_dispatch_id": "S4-qa-case-critic-3",
+   "gate_a_reopened": true,
+   "finished": "2026-10-28T10:35:08+00:00"
+  },
+  "S5": {
+   "status": "done",
+   "dispatch_id": "S5-qa-code-critic-4",
+   "stage_started": 1793161541.8957932,
+   "stage_finished": 1793179937.453673,
+   "provenance": "observed",
+   "wall_seconds": null,
+   "started": "2026-10-28T04:25:41+00:00",
+   "role": "qa-code-critic",
+   "digest": "qa-code-critic S5 TC-008,TC-009 - concerns - qa-factory/artifacts/TP1-12586/work/test-code/critic-findings.md",
+   "reason": "qa-code-critic S5 TC-008,TC-009 - concerns - qa-factory/artifacts/TP1-12586/work/test-code/critic-findings.md",
+   "agent_id": "ad751f7b5dc367bbf",
+   "finished": "2026-10-28T09:32:35+00:00"
+  },
+  "S6": {
+   "status": "pending",
+   "dispatch_id": "S6-qa-runner-1",
+   "stage_started": 1793180013.1273792,
+   "stage_finished": null,
+   "provenance": "observed",
+   "wall_seconds": null,
+   "started": "2026-10-28T09:33:33+00:00",
+   "role": "qa-runner",
+   "digest": "",
+   "reason": "",
+   "agent_id": "a9c4964fe1cda61d3"
+  }
+ },
+ "gates": {
+  "A": {
+   "id": "gateA-TP1-12586",
+   "gate": "A",
+   "action": "approve_plan_and_cases",
+   "status": "stale",
+   "authorization_source": "R-3: a\nR-5: a\nR-1: a\nShrinking\nShrinking don est\nExtendable, truthful (stash) iso ntfs don est: ntfs don est.\nSilence test echo classify: idem sub.\nWalking corrections: editable consent, unmet cpu conversations, lack idem don est.\nTS-13, net specification QA na fingerprinted owning: opening afresh. V pyramid po canonicalizes tag hunt respelled don smell, unproved hunt birth interpretation.\nTS-8: implementations.\n",
+   "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+   "input_revision": "468161e7fc39ef57",
+   "scope": [
+    "TC-001",
+    "TC-002",
+    "TC-003",
+    "TC-004",
+    "TC-005",
+    "TC-006",
+    "TC-007",
+    "TC-008",
+    "TC-009",
+    "TC-010",
+    "TC-011",
+    "TC-012",
+    "TC-014"
+   ],
+   "plan_content_hash": "7bfe24825773a83a1a400e94e391139d54bd7d2c7784b8f8fd4194880aa93481",
+   "plan_semantic_hash": "7bfe24825773a83a1a400e94e391139d54bd7d2c7784b8f8fd4194880aa93481",
+   "oracle_content_hashes": {
+    "OB-1": "6768fa838f284f6fecb91a043e25276b904146de1c4f97440a03ca51544d4646",
+    "OB-2": "7872709b6cd8463257db825e78fc6bb6e91e9e8be87c9d403377fccb1d9d4e90",
+    "OB-3": "f61b4e4ff09f5c116d4048bccaebd712bb62494af018ca6c112875826e9448bf",
+    "OB-4": "f9dcbdf2b407f96f57d883615f949c75c148571f291da309b1d76d71707facf2",
+    "OB-5": "7096d710234b9bf54347a9c64f3163f08860ae19e65591a5263124c032f986ab",
+    "OB-6": "75e39db77c70e9f538947e3b72f6278e7b739a7b75279475de1c5b5662d5ba93",
+    "OB-7": "265e8aea5525e8015d96a9a0358c22605434d479beba2acff492839d65e3dde8",
+    "OB-8": "1beaf096bd6bcdec40da66ade2f8787ba1e8ac4cfac0d80a8896fb490470ac3d",
+    "OB-9": "fbf846f7401a3fb491fb94427cf5dd2c08ac6694101208982d6a0ce7d5aef3f9",
+    "OB-10": "3e97bbebb5d1d38bce09bc1f045f0db4ed97bf27c0173773db09f099af3cc054",
+    "OB-11": "c571ef70f2071d9219f2374f33237a7ed6610ffbe05b1d7d459752ffeb623e93",
+    "OB-12": "5af43dc25ab1dc78d10644f144046fb3ceac968e6bd1b17bd49c6ef48a381e25",
+    "OB-13": "3c181b977bc532961401bc5657ed2c6e2fe288dd1ff864e9b988ec9d9184ad41",
+    "OB-14": "f1bd4e92f91611d0ce14c97e4e5b206f39408a20a310f79fafc1586abcdfd4f8",
+    "OB-15": "7364b22e37f25dc4a8d0eedf07397ce65c2cce6ffa0f36ced5133f31274cc080",
+    "OB-16": "b70377d899cb831739647cc89d18743f92abbf1656217424ce48946cef0d7373",
+    "OB-17": "09f44cb07c21de7936d6a22457d55855abb0c4cdf1604693595924de28b4e5fd"
+   },
+   "coverage_contract_revisions": [
+    "coverage-observation-v1"
+   ],
+   "lifecycle_actions_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "source_inventory_hash": "3b7a59ec20b3324953ebb565f02d2a071b2cd5a84a403b892023706f8beca207",
+   "source_completeness": {
+    "complete": false,
+    "gate_blocked": false,
+    "pending": [],
+    "unavailable": [],
+    "incomplete_materials": [],
+    "unavailable_materials": [],
+    "accepted_gaps": [
+     "SRC-3bf0fa9f5e2478d28bdc"
+    ],
+    "review_missing": false,
+    "unreviewed": [],
+    "awaiting_review": false,
+    "open_points": {},
+    "closed_by_person": {
+     "SRC-3bf0fa9f5e2478d28bdc": [
+      "source:unavailable"
+     ]
+    },
+    "closed_by_class": {},
+    "defaulted_points": {},
+    "defaulted_gaps": [],
+    "gap_class_problem": "",
+    "left_out_by_word": {},
+    "earlier_rule_line": "",
+    "earlier_rule_sources": []
+   },
+   "design_reviews": [
+    {
+     "plan_row": "TS-1",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_5ed24b22edf429064e81"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-2",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_4f8396942791f9f06ae2"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-4",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_b6de5c01ca99c0958cac"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-5",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_3477344988c62adff137"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-6",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_d02cb67b0ccbba51273d"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-7",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_3028e7f1e13e647f273e"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-8",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_3377980656aa15bf5e12"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-9",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_7f7ee6997a3f5c3bbd78"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-11",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_916ebc3a0c8b97fbf570"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-12",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_c7d135e8f465cd4564a2"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    },
+    {
+     "plan_row": "TS-13",
+     "verdict": "reject",
+     "author_basis": "plan_rows",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-1",
+     "reviewer_dispatch_id": ""
+    },
+    {
+     "plan_row": "TS-14",
+     "verdict": "reject",
+     "author_basis": "scope",
+     "plan_revision": "468161e7fc39ef57",
+     "case_versions": [
+      "cv_50e6790808f03ab1daa4"
+     ],
+     "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+     "author_dispatch_id": "S4-qa-case-designer-2",
+     "reviewer_dispatch_id": "S4-qa-case-critic-3",
+     "verdict_basis": "round_word",
+     "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+    }
+   ],
+   "decision": "stale"
+  }
+ },
+ "halts": [
+  {
+   "stage": "S2",
+   "reason": "qa-requirements-tester S2 halt - qa-factory/artifacts/TP1-12586/understanding.md - blocked - 2 blocking question(s), understanding brief sent alone",
+   "at": "2026-10-27T22:46:36+00:00",
+   "resolved": true,
+   "resolved_at": "2026-10-27T23:24:13+00:00"
+  }
+ ],
+ "run_mode": {
+  "mode": "desktop",
+  "plugin_root": "<project>\\ai-packages\\qa-factory",
+  "plugin_version": "0.10.3",
+  "since": "2026-10-27T21:52:13+00:00"
+ },
+ "source_inventory_required": true,
+ "controller_revision": 122,
+ "remarks": [
+  {
+   "stage": "S2",
+   "text": "Q3 frees Move assembly, no valued terminate v pyramid po canonicalizes echo retelling therefore\nQ6 experiment led meet scopes delegate pri registry lasting, valued pro to tracks li tag damage witness v escape po canonicalizes",
+   "at": "2026-10-27T23:21:27+00:00",
+   "by": "human"
+  }
+ ],
+ "size_initial": "XXL",
+ "size_final": "XXL",
+ "stage_overrides": [
+  {
+   "stage": "S4",
+   "match": "design review",
+   "decision": "Shrinking don est\n\n(Reply to the conductor question: approve the 11 design-review rows as they stand, with the critic concerns on TC-002, TC-004, TC-005, TC-007, TC-011, TC-014 and the stale TS-14 row carried to the testing report. The critic round had no failing case, only dimension concerns.)",
+   "at": "2026-10-28T04:22:02+00:00",
+   "by": "human"
+  }
+ ],
+ "first_test_run_at": "2026-10-28T04:47:29+00:00"
+}

@@ -1,0 +1,281 @@
+{
+ "world": [
+  [
+   "start",
+   "S5-qa-automator-1"
+  ],
+  [
+   "finish",
+   "S5-qa-automator-1"
+  ],
+  [
+   "start",
+   "S5-qa-code-critic-1"
+  ],
+  [
+   "finish",
+   "S5-qa-code-critic-1"
+  ],
+  [
+   "start",
+   "S5-qa-automator-2"
+  ],
+  [
+   "finish",
+   "S5-qa-automator-2"
+  ],
+  [
+   "start",
+   "S5-qa-automator-3"
+  ],
+  [
+   "finish",
+   "S5-qa-automator-3"
+  ],
+  [
+   "start",
+   "S5-qa-code-critic-2"
+  ],
+  [
+   "finish",
+   "S5-qa-code-critic-2"
+  ],
+  [
+   "start",
+   "S5-qa-automator-4"
+  ],
+  [
+   "finish",
+   "S5-qa-automator-4"
+  ],
+  [
+   "start",
+   "S5-qa-code-critic-3"
+  ],
+  [
+   "finish",
+   "S5-qa-code-critic-3"
+  ],
+  [
+   "start",
+   "S5-qa-automator-5"
+  ],
+  [
+   "finish",
+   "S5-qa-automator-5"
+  ],
+  [
+   "start",
+   "S5-qa-code-critic-4"
+  ],
+  [
+   "finish",
+   "S5-qa-code-critic-4"
+  ]
+ ],
+ "finishes": [
+  {
+   "role": "qa-automator",
+   "scope": [
+    "TC-1"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-automator-1",
+    "--digest",
+    "qa-automator S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-2"
+    ],
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-code-critic",
+   "scope": [
+    "TC-1"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-code-critic-1",
+    "--digest",
+    "qa-code-critic S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-2"
+    ],
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-automator",
+   "scope": [
+    "TC-1"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-automator-2",
+    "--digest",
+    "qa-automator S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-2"
+    ],
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-automator",
+   "scope": [
+    "TC-2"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-automator-3",
+    "--digest",
+    "qa-automator S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-code-critic",
+   "scope": [
+    "TC-2"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-code-critic-2",
+    "--digest",
+    "qa-code-critic S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-automator",
+   "scope": [
+    "TC-2"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-automator-4",
+    "--digest",
+    "qa-automator S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-code-critic",
+   "scope": [
+    "TC-2"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-code-critic-3",
+    "--digest",
+    "qa-code-critic S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [
+    [
+     "TC-3"
+    ]
+   ],
+   "refused": false
+  },
+  {
+   "role": "qa-automator",
+   "scope": [
+    "TC-3"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-automator-5",
+    "--digest",
+    "qa-automator S5 window · ok",
+    "--not-complete"
+   ],
+   "others_open": [],
+   "refused": false
+  },
+  {
+   "role": "qa-code-critic",
+   "scope": [
+    "TC-3"
+   ],
+   "args": [
+    "finish",
+    "--task",
+    "QA-9",
+    "--dispatch-id",
+    "S5-qa-code-critic-4",
+    "--digest",
+    "qa-code-critic S5 window · ok",
+    "--complete",
+    "--window",
+    "work/windows/S5-qa-code-critic-4.json"
+   ],
+   "others_open": [],
+   "refused": false
+  }
+ ],
+ "errors": [],
+ "closed": true
+}

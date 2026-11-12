@@ -1,0 +1,373 @@
+{
+  "schema": 1,
+  "task": "LOCAL-1",
+  "size": "L",
+  "size_unit": "functions",
+  "function_count": 6,
+  "functions": [
+    {
+      "name": "Add a book from the product page",
+      "requirements": [
+        "R-1",
+        "R-2",
+        "R-3",
+        "R-7"
+      ]
+    },
+    {
+      "name": "Quantity validation on add",
+      "requirements": [
+        "R-8",
+        "R-9",
+        "R-10",
+        "R-13",
+        "R-14",
+        "R-15"
+      ]
+    },
+    {
+      "name": "Stock limits on add",
+      "requirements": [
+        "R-11",
+        "R-12",
+        "R-18"
+      ]
+    },
+    {
+      "name": "Cart composition and price after adds",
+      "requirements": [
+        "R-4",
+        "R-16",
+        "R-17"
+      ]
+    },
+    {
+      "name": "Cart persistence for guest and signed-in user, merge",
+      "requirements": [
+        "R-5",
+        "R-6",
+        "R-22"
+      ]
+    },
+    {
+      "name": "Other add paths (catalog card, wishlist, quick view)",
+      "requirements": [
+        "R-19",
+        "R-20",
+        "R-21"
+      ]
+    }
+  ],
+  "functions_unlisted": [],
+  "functions_unknown_ids": [],
+  "cited_files": 6,
+  "cap": 28,
+  "computed_budget": 50,
+  "computed_budget_raw": 50.4,
+  "recommended_budget": 28,
+  "overage": 22,
+  "verifiable_count": 22,
+  "unverifiable": [
+    {
+      "r": "R-23",
+      "reason": "verifiable: no; observable: none"
+    },
+    {
+      "r": "R-24",
+      "reason": "verifiable: no; observable: none"
+    },
+    {
+      "r": "R-25",
+      "reason": "verifiable: no; observable: none"
+    },
+    {
+      "r": "R-26",
+      "reason": "verifiable: no; observable: none"
+    }
+  ],
+  "requirements": [
+    {
+      "r": "R-1",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-2",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-3",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-4",
+      "impact": "money",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-5",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-6",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-7",
+      "impact": "cosmetic",
+      "priority": "P3",
+      "weight": 0.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 1.2
+    },
+    {
+      "r": "R-8",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-9",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-10",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-11",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-12",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-13",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-14",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-15",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-16",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-17",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-18",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-19",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-20",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-21",
+      "impact": "data-loss",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-22",
+      "impact": "data-loss",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": "sign-in and user accounts",
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    }
+  ],
+  "reducers_applied": [],
+  "signals": {
+    "repos": [
+      "MyBooks"
+    ],
+    "surfaces": [
+      "api",
+      "ui"
+    ],
+    "surfaces_signal": false,
+    "migration_signal": false,
+    "migration_files": []
+  },
+  "precedents": {
+    "checked": false,
+    "nearest": []
+  },
+  "config": {
+    "weights": {
+      "P0": 1.6,
+      "P1": 1.3,
+      "P2": 1.0,
+      "P3": 0.6
+    },
+    "weights_source": "config.sizing.weights",
+    "has_impact_column": true
+  },
+  "size_override": null,
+  "size_override_reason": null,
+  "reasoning": [
+    "function 'Add under stress (price change, network, session)' holds no verifiable requirement - not counted (R-24, R-25, R-26 unverifiable)",
+    "R-23: verifiable: no; observable: none — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "R-24: verifiable: no; observable: none — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "R-25: verifiable: no; observable: none — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "R-26: verifiable: no; observable: none — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "ticket type unknown (no issue_type on the manifest or readiness, and none passed in) — the defect-ticket cap was not evaluated",
+    "size L from the function table: 6 functions: Add a book from the product page, Quantity validation on add, Stock limits on add, Cart composition and price after adds, Cart persistence for guest and signed-in user, merge, Other add paths (catalog card, wishlist, quick view) (2 x 6); what the requirements weigh sets the test ceiling, not the size",
+    "cited_files 6: distinct files the non-derived rows' observables cite, beside 6 functions (reported, decides nothing)",
+    "computed budget 50 exceeds the test ceiling of 28 by 22 — shown, not silently trimmed; a gate-A question, not a block",
+    "qa-factory/records/estimation-ledger.jsonl is absent or empty — no precedent to check against"
+  ]
+}

@@ -1,0 +1,158 @@
+# S7 -> S8: the triage is handed to the scribe, who writes what the person reads.
+#
+# Everything the person decides at gate B rests on this file, so its rules are about completeness
+# rather than shape. A failure with no verdict must not reach the gate: on TP1-15045 two of
+# four bugs shown to the owner rested on no triage row at all, and the person was asked to file
+# something nobody had diagnosed. A draft here carries its `triage_ref`, the steps a person can
+# follow in the product, and its confirmation state - unconfirmed until a human reproduces it. When the analyst
+# itself saw it fail again (a rerun on fresh data, or its own script), the entry goes in `reproduction` and the CODE
+# shows the bug as reproduced by the factory; no person has confirmed it, and it changes no verdict.
+#
+# No bug file is created at this stage. `bugs/BUG-n.md` exists only after a gate B decision names
+# the draft, and a draft the person calls "not a bug" is neither filed nor deleted.
+schema_version: 1
+contract: s7-analyst-to-scribe
+stage: S7
+from_role: qa-failure-analyst
+to_role: qa-doc-scribe
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/triage.json
+    what: one verdict per failure, with its evidence
+    required: true
+  - path: work/bug-drafts/
+    what: the drafts, each resting on an APP_BUG row of the triage
+    required: false
+  - path: work/run-report.json
+    what: the rows the ledger is built from
+    required: true
+
+# Reviewed dispatch (as in your brief): the LAST `inputs_read` row naming a qa-runner dispatch must be `path: work/handoffs/<the runner's dispatch>.yaml` (other qa-runner forms go above it; a review binds only that dispatch)
+inputs_read:
+  - path: work/handoffs/<the author's dispatch>.yaml
+    version: <its window id>
+    failures_handed: <n>
+    inconclusive_handed: <n>
+
+# The runner's handoff is ACCEPTED by this role (X7-6, stage S6 `acceptance_by`): the verdict word below is read for it too. `ok` accepts it
+# (no quote needed); `concerns` sends it back to the runner for one repair round and makes the triage in this file stale - then the
+# section `stage_acceptance` is owed (see `required_when`). The runner's form is named in `inputs_read` above; a concern about your own
+# triage belongs in `unresolved`, not in the verdict word.
+required_when:
+  concerns: [stage_acceptance]
+
+header:
+  role: qa-failure-analyst
+  stage: S7
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+# Acceptance of the runner's handoff (X7-6), owed on `header.verdict: concerns`: the failure class and a verbatim quote (path#anchor, at
+# most 300 characters) of the runner's artifact; the driver records it with `stage_done.py --acceptance`.
+stage_acceptance:
+  failure_class: <spec|capability|data|tooling>
+  quote: "<the runner's own words, with path#anchor>"
+  witness_paths:
+    - <task-relative path the verdict rests on, or omit when none>
+
+# One row per triaged item. `state` is the verdict, from the restricted part of the vocabulary.
+# A triage row marked `source: code` (verdict NOT_EXECUTED, written by code for a manual check whose
+# own record says what stopped it) is an item like any other: it gets its row here. So does a RUNNER_MISREAD_EVIDENCE row
+# (the manual runner's verdict contradicts the text its own attempt captured): no bug draft rests on it, the delivery stays red
+# with the factory as owner until the runner's new record replaces the result.
+scope:
+  - id: <instance or case id>
+    state: <APP_BUG|TEST_BUG|TEST_BUG:collection|ENV_ISSUE|FLAKY|APP_CHANGED|CASE_DEFECT|ASSERT_STRICTER|NOT_EXECUTED|RUNNER_MISREAD_EVIDENCE|NO_DEFECT>
+    reason: <= 80 characters>
+    case: <case id>
+    requirement: <R-n - what the product was supposed to do>
+    evidence: <path>
+    repaired: <fixed|not_fixed|not_applicable>
+
+# What the person will be asked about, one entry per draft. Numbered at the gate; the answer comes
+# back by number, so the numbering is built by code from this list and never composed in prose.
+bug_drafts:
+  - ref: <the immutable draft ref - this is what `gate-decision --drafts` records>
+    path: work/bug-drafts/<file>.json
+    triage_ref: <the triage.json row it rests on>     # required; a draft without one is repaired here
+    requirement: <R-n, with the expected and observed values quoted from the row>
+    damage: <the damage class that sets the priority>
+    manual_steps: <the steps a person follows in the product to see it>
+    confirmation: unconfirmed    # always; the code derives the step from `reproduction` below (a role's other word is not read as proof)
+    reproduction: <optional list; absent or [] = nobody reproduced it. One entry {kind, evidence, observed} per reproduction: kind is a word of vocabulary.bug_reproduction_kinds (fresh_data_rerun, own_script or walk); evidence = a non-empty file under evidence/ (the log of the rerun, your script's output, or for a walk evidence/place-answer-<id>.json, the record place_answers.py write made for this draft's bug answer); observed = what it showed; a fresh_data_rerun also names attempt_id, the later attempt of run-report.json that failed again, which is not the attempt of triage_ref. Whether the data was fresh is your word, not the code's>
+    duplicate_of: <an existing bug id the role found, or a dash - a proposal, never a drop>
+
+# Stand problems, split by who owns them. A `factory` owner is reported at the gate, never put to
+# the person as a choice.
+env_issues:
+  - id: <instance or case id>
+    owner: <factory|user>
+    dismissal: <one of vocabulary.env_dismissals - our_signal|env_fix|unverified>
+    remedy: <the exact change, by name>
+    fixed_in_this_stage: <true|false>
+
+# Tests the repair cap did not save. They travel to the ledger as `not_verified_flaky` and turn
+# `delivery_ready` to no; quarantine is the person's word at gate B, with a debt file and a
+# trigger that reopens it.
+not_verified:
+  - id: <instance id>
+    rounds_used: <2>
+    last_error: <one line>
+
+# Cases the analyst sent back to the designer. No bug, no draft: the case misread the requirement
+# and the register says so.
+case_defects:
+  - case: <case id>
+    requirement_text: "<the register's words that prove the case is wrong>"
+    rework_dispatch: <the controller rework id>
+
+counts:
+  failures: <n>
+  app_bug: <n>
+  test_bug: <n>
+  flaky: <n>
+  fixed: <n>
+  not_fixed: <n>
+  inconclusive: <n>
+
+claims:
+  every_failure_and_every_inconclusive_has_a_verdict_with_evidence: <true|false>
+  every_draft_carries_triage_ref_manual_steps_and_a_confirmation_state: <true|false>
+  every_draft_rests_on_an_app_bug_row: <true|false>
+  no_bug_file_was_created_in_this_stage: <true|false>
+  no_bug_reaches_the_gate_without_a_draft_and_a_triage_row: <true|false>
+  # On TP1-13797 triage.json held zero rows, work/bug-drafts/ was empty, and BUG-1 was
+  # nevertheless filed from the gate answer. The bug was real; the record behind it was not.
+  no_expectation_was_adjusted_to_the_code: <true|false>
+
+expected_of_the_receiver:
+  - "the ledger and the traceability table are generated, never authored - a row you disagree
+     with is a defect upstream, not a number to adjust"
+  - "the report's bug list is built from `bug_drafts` above, with the refs unchanged"
+  - "a reason whose owner is the factory is reported, never put to the person as a choice"
+
+# For each red test, the experiment you ran and the outcome (red x experiment x outcome; spec t-1765 X7-7): the scribe reads it
+# against your Good outcome. Empty only with `tried_note` saying why nothing was tried. Never relaxed by `required_when` or by
+# the verdict. Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: <the red test or case id>
+    technique: <the experiment you ran to tell a product bug from a test or env defect>
+    observation: <the outcome, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <instance or case id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

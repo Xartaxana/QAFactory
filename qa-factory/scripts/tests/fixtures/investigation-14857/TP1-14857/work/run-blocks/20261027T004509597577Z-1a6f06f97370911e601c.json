@@ -1,0 +1,144 @@
+{
+  "schema_version": 2,
+  "block_id": "1a6f06f97370911e601c",
+  "attempt_id": "1a6f06f97370911e601c",
+  "attempt_started_at": "2026-10-27T00:44:10.171956+00:00",
+  "attempt_ended_at": "2026-10-27T00:44:59.370371+00:00",
+  "dispatch_id": "S5-qa-automator-3",
+  "profile_id": "api",
+  "repo_id": "",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": {
+    "reason": "failed_or_invalidated",
+    "evidence_refs": [
+      "qa-factory\\artifacts\\TP1-14857\\evidence\\runs\\5958d3de3cb11a945715\\initial-5958d3de3cb11a945715-20261027-014102.json"
+    ]
+  },
+  "purpose": "repair_verify",
+  "input_fingerprint": "4a54899f7c08f8757b029f07aa8dc0f49c2747cd8ee6242150480980b96dee65",
+  "source_fingerprint": {
+    "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+    "test_content_sha": "99508ed49d97c227c0777d721cf48ece476750ed5ea8bd89a694151f8385a684",
+    "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+    "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+    "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+    "policy_revision": "unknown"
+  },
+  "runtime_provenance": {
+    "profile_id": "api",
+    "timestamp": "2026-10-27T00:43:06+00:00",
+    "environment_id": "local-docker",
+    "expected_source_revision": "1bc3ce13666f38b08067562f331a4cae83c02363",
+    "observed_runtime_identity": "verified_content:b9812614ffac|11354ae0323b|cf7406489cec|a5bf81af5b15|b75999e8f72c|ea91d7fea52a",
+    "evidence_refs": [
+      "C:/Projects/testproject1-stand/testproject1-sdk-14857-0102/test-harness/qa-factory/artifacts/TP1-14857/evidence/runtime-provenance-api-20261027T004307Z.json"
+    ],
+    "provenance": {
+      "technical_verification": true,
+      "source_linkage": "verified_content",
+      "deployed_source_revision": "1bc3ce13666f38b08067562f331a4cae83c02363",
+      "verified_source_revisions": [
+        "1bc3ce13666f38b08067562f331a4cae83c02363"
+      ]
+    },
+    "result": "matched",
+    "comparisons": [
+      {
+        "file": "Makefile",
+        "container_sha256": null,
+        "local_sha256": "e692ca91defbfc35d53964860fb77e963b20380ec4c31f2b7e6601d5102052ff",
+        "note": "non-runtime build file, not shipped in the image (not compared)"
+      },
+      {
+        "file": "src/testproject1/datasource/base_datasource_processor.py",
+        "container_sha256": "b9812614ffacd7ec53fa900aff519b3c3faa24026bb812e8a0be12cdc685efac",
+        "local_sha256": "b9812614ffacd7ec53fa900aff519b3c3faa24026bb812e8a0be12cdc685efac"
+      },
+      {
+        "file": "src/testproject1/datasource/code/code_datasource_processor.py",
+        "container_sha256": "11354ae0323be60a20fadb4ca558b0dc80e7ed331954afa1d34da6394b3c142b",
+        "local_sha256": "11354ae0323be60a20fadb4ca558b0dc80e7ed331954afa1d34da6394b3c142b"
+      },
+      {
+        "file": "src/testproject1/datasource/svn/svn_index_service.py",
+        "container_sha256": "cf7406489cec5a5fc5beb4b2f461a61046e7c9ac8b2417f34616f96c46c25287",
+        "local_sha256": "cf7406489cec5a5fc5beb4b2f461a61046e7c9ac8b2417f34616f96c46c25287"
+      },
+      {
+        "file": "src/testproject1/rest_api/models/index.py",
+        "container_sha256": "a5bf81af5b15bc2d05c11176ddbd782158ce4e956cb051a86e10e86719bacef9",
+        "local_sha256": "a5bf81af5b15bc2d05c11176ddbd782158ce4e956cb051a86e10e86719bacef9"
+      },
+      {
+        "file": "src/testproject1/rest_api/routers/index/code_repositories.py",
+        "container_sha256": "b75999e8f72c6aca463e77987e0dbeadc40831e2e65b3e2cac7d054f45812ac2",
+        "local_sha256": "b75999e8f72c6aca463e77987e0dbeadc40831e2e65b3e2cac7d054f45812ac2"
+      },
+      {
+        "file": "src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py",
+        "container_sha256": "ea91d7fea52ae06f95c2419f4194681209af5f8a83e1ad97ca05be674f873bc3",
+        "local_sha256": "ea91d7fea52ae06f95c2419f4194681209af5f8a83e1ad97ca05be674f873bc3"
+      }
+    ],
+    "container": "testproject1-stand-testproject1-1",
+    "checkout": "..\\..\\testproject1"
+  },
+  "execution_status": "passed",
+  "results": [
+    {
+      "instance_id": "test_git_faq_full_reindex_moves_last_indexed",
+      "test_id": "tests.assistant.datasource.test_code_datasource_last_indexed::test_git_faq_full_reindex_moves_last_indexed",
+      "case_version_links": [
+        {
+          "case_id": "TC-005",
+          "version": "cv_b9952b332d545cb207bb"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5-1"
+      ],
+      "parameters": {},
+      "status": "passed",
+      "reason": "",
+      "report_matched": true,
+      "attempt_id": "1a6f06f97370911e601c",
+      "purpose": "repair_verify",
+      "repo_id": "",
+      "profile_id": "api",
+      "equivalence_verified": false,
+      "input_fingerprint": "4a54899f7c08f8757b029f07aa8dc0f49c2747cd8ee6242150480980b96dee65",
+      "source_fingerprint": {
+        "source_sha": "1bc3ce13666f38b08067562f331a4cae83c02363",
+        "test_content_sha": "99508ed49d97c227c0777d721cf48ece476750ed5ea8bd89a694151f8385a684",
+        "config_sha": "d3ea581a29be5f9c911af43853aba499038c70549d0191691d2d78ba11f4b770",
+        "dependency_sha": "77b6b1ab368826d65be2c10ba5117bf99b90497af2a2f7b95e2ac7939fb8c13e",
+        "runtime_sha": "590cf4221a50b4e5ed2df197b76c69e06b3b579779e770aa3a8d3ad61265ec4f",
+        "policy_revision": "unknown"
+      },
+      "instance_content_sha": "cb8021f40e2ea67a85204f7d7d72840291a569374bb81fdd488e5d802b75d7b4",
+      "instance_content_scope": "function",
+      "instance_code_sha": "1a6b26dd8e1699caac39a8fb11db15e28f0aa0a5df7f2adbcfb0421e3e0d9c9a"
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "qa-factory\\artifacts\\TP1-14857\\evidence\\runs\\1a6f06f97370911e601c\\repair_verify-1a6f06f97370911e601c-20261027-014410.json",
+      "reporter": "pytest",
+      "report_path": "evidence/runs/1a6f06f97370911e601c/repair_verify-1a6f06f97370911e601c-20261027-014410.junit.xml",
+      "report_sha256": "36542d4378e0c9977f971dd65f962a30c9ba5f05f9792f1b562e5b9abf376943"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "1a6f06f97370911e601c",
+    "raw_report_hash": "36542d4378e0c9977f971dd65f962a30c9ba5f05f9792f1b562e5b9abf376943",
+    "reparsed": false
+  },
+  "report_scope": {
+    "selected": [
+      "test_git_faq_full_reindex_moves_last_indexed"
+    ],
+    "unmatched_report_rows": []
+  }
+}

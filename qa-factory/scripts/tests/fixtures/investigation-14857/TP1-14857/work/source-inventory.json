@@ -1,0 +1,481 @@
+{
+  "field_ids": {
+    "epic_link": [
+      "customfield_32201",
+      "customfield_14500"
+    ],
+    "fetched_at": "2026-10-26T15:57:31.804533Z"
+  },
+  "prefix_probes": {
+    "TP1": {
+      "checked_at": "2026-10-26T15:57:31.804533Z",
+      "reason": "known at S0 without a request: the story's own prefix, its parent or links, a /browse/ link in its text, or adapters.ticket.project_keys",
+      "result": "tracker"
+    }
+  },
+  "proof_key": "TP1-14857",
+  "reads_skipped": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "assessment_ref": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-10937",
+      "content_hash": "e855296605cdd9136d7e9e9780a0bc0b3eefa0c6b528b7f741f5c80021a24214",
+      "discovered_from": "TP1-15791",
+      "exclusion_or_error": null,
+      "fetched_at": "2026-10-26T16:08:41.877502Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 6,
+          "items": [
+            {
+              "access_problem": null,
+              "analysis_cause": null,
+              "analysis_evidence_ref": "blobs/9a87164d587b8dd5b3631e139aad08f18d2ccd40291a238c8db38a59bf101c04",
+              "analysis_reason": "Viewed: data-sources list row, Updated 03/02/2026 10:45, status COMPLETED (stale-timestamp symptom)",
+              "analysis_status": "read",
+              "analyzed_at": "2026-10-26T16:21:35.649436Z",
+              "attachment_id": "6120565",
+              "content_hash": "9a87164d587b8dd5b3631e139aad08f18d2ccd40291a238c8db38a59bf101c04",
+              "error": null,
+              "filename": "2026-03-11_10h40_43.png",
+              "local_ref": "blobs/9a87164d587b8dd5b3631e139aad08f18d2ccd40291a238c8db38a59bf101c04",
+              "media_type": "image/png",
+              "original_ref": "https://example.org/secure/attachment/6120565/2026-03-11_10h40_43.png",
+              "size": 8533,
+              "status": "read"
+            },
+            {
+              "analysis_status": "skipped_by_policy",
+              "attachment_id": "6468043",
+              "content_hash": null,
+              "error": null,
+              "filename": "plan.md",
+              "local_ref": null,
+              "media_type": null,
+              "original_ref": "https://example.org/secure/attachment/6468043/plan.md",
+              "reason": "skipped_by_policy:type",
+              "size": 6023,
+              "skipped_by_policy": "type",
+              "status": "skipped_by_policy"
+            },
+            {
+              "access_problem": null,
+              "analysis_cause": null,
+              "analysis_evidence_ref": "blobs/6c618699df5d47d6a94eaeb0261519b1cb4a22d5df0da5423d070e398632ed99",
+              "analysis_reason": "Viewed: datasource edit form, Reindex Type Scheduler, Every hour",
+              "analysis_status": "read",
+              "analyzed_at": "2026-10-26T16:21:37.544118Z",
+              "attachment_id": "6121803",
+              "content_hash": "6c618699df5d47d6a94eaeb0261519b1cb4a22d5df0da5423d070e398632ed99",
+              "error": null,
+              "filename": "screenshot-1.png",
+              "local_ref": "blobs/6c618699df5d47d6a94eaeb0261519b1cb4a22d5df0da5423d070e398632ed99",
+              "media_type": "image/png",
+              "original_ref": "https://example.org/secure/attachment/6121803/screenshot-1.png",
+              "size": 93414,
+              "status": "read"
+            },
+            {
+              "access_problem": null,
+              "analysis_cause": null,
+              "analysis_evidence_ref": "blobs/d627b94aade0cf56e2deffbe763fada2ffb143224cbf1cf3cb6ed6be674d5f57",
+              "analysis_reason": "Viewed: integrations list row, Scheduler alias, type Scheduler",
+              "analysis_status": "read",
+              "analyzed_at": "2026-10-26T16:21:39.055733Z",
+              "attachment_id": "6121804",
+              "content_hash": "d627b94aade0cf56e2deffbe763fada2ffb143224cbf1cf3cb6ed6be674d5f57",
+              "error": null,
+              "filename": "screenshot-2.png",
+              "local_ref": "blobs/d627b94aade0cf56e2deffbe763fada2ffb143224cbf1cf3cb6ed6be674d5f57",
+              "media_type": "image/png",
+              "original_ref": "https://example.org/secure/attachment/6121804/screenshot-2.png",
+              "size": 10330,
+              "status": "read"
+            },
+            {
+              "access_problem": null,
+              "analysis_cause": null,
+              "analysis_evidence_ref": "blobs/c4048a24e28a5ad5a433f1e85424493db498e11a9f635af50250cdc909ef43c4",
+              "analysis_reason": "Viewed: scheduler integration form, cron 0 * * * *, resource type Datasource",
+              "analysis_status": "read",
+              "analyzed_at": "2026-10-26T16:21:40.604178Z",
+              "attachment_id": "6121805",
+              "content_hash": "c4048a24e28a5ad5a433f1e85424493db498e11a9f635af50250cdc909ef43c4",
+              "error": null,
+              "filename": "screenshot-3.png",
+              "local_ref": "blobs/c4048a24e28a5ad5a433f1e85424493db498e11a9f635af50250cdc909ef43c4",
+              "media_type": "image/png",
+              "original_ref": "https://example.org/secure/attachment/6121805/screenshot-3.png",
+              "size": 83997,
+              "status": "read"
+            },
+            {
+              "analysis_status": "skipped_by_policy",
+              "attachment_id": "6468042",
+              "content_hash": null,
+              "error": null,
+              "filename": "spec.md",
+              "local_ref": null,
+              "media_type": null,
+              "original_ref": "https://example.org/secure/attachment/6468042/spec.md",
+              "reason": "skipped_by_policy:type",
+              "size": 5814,
+              "skipped_by_policy": "type",
+              "status": "skipped_by_policy"
+            }
+          ],
+          "status": "read"
+        },
+        "comments": {
+          "count": 2,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "TP1-10937",
+        "TP1-12034",
+        "TP1-12780",
+        "TP1-13171",
+        "TP1-13289",
+        "TP1-14857",
+        "TP1-15791",
+        "TP1-217"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-23T10:38:43.013+0000",
+      "snapshot_ref": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "source_id": "SRC-e3b288d3ebe1bb04b0c6",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-ab28fc266fe3b0484d1a/assessment/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-12034",
+      "content_hash": null,
+      "discovered_from": "SRC-e3b288d3ebe1bb04b0c6",
+      "exclusion_or_error": "Concerns the widened scheduler not triggering a run; trigger defect, not the reindex completion timestamp stamp of repository full reindex",
+      "fetched_at": "2026-10-26T16:08:47.578570Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": 3,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 2,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "Concerns the widened scheduler not triggering a run; trigger defect, not the reindex completion timestamp stamp of repository full reindex",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-ab28fc266fe3b0484d1a",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": "sources/SRC-8ed85689b4ac76bde624/assessment/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-12780",
+      "content_hash": null,
+      "discovered_from": "SRC-e3b288d3ebe1bb04b0c6",
+      "exclusion_or_error": "Scheduler settings watcher crash / missed cron triggers; scheduler trigger defect, not reindex timestamp stamping",
+      "fetched_at": "2026-10-26T16:11:47.724669Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 0,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "Scheduler settings watcher crash / missed cron triggers; scheduler trigger defect, not reindex timestamp stamping",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-8ed85689b4ac76bde624",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": "sources/SRC-68db81fac6909eac3018/assessment/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-13171",
+      "content_hash": null,
+      "discovered_from": "SRC-e3b288d3ebe1bb04b0c6",
+      "exclusion_or_error": "Scheduler Data Source not firing; trigger defect, no timestamp contract for manual or repository reindex",
+      "fetched_at": "2026-10-26T16:11:51.386470Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 1,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "Scheduler Data Source not firing; trigger defect, no timestamp contract for manual or repository reindex",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-68db81fac6909eac3018",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": "sources/SRC-fb6eba4fbc5e3ad00118/assessment/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-13289",
+      "content_hash": null,
+      "discovered_from": "SRC-060145c7e93542a69692",
+      "exclusion_or_error": "Composer roadmap epic: description lists themes only, no AC, no reindex or timestamp behaviour",
+      "fetched_at": "2026-10-26T16:05:37.879156Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 0,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-060145c7e93542a69692/5135419c94a054ec/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "Composer roadmap epic: description lists themes only, no AC, no reindex or timestamp behaviour",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-fb6eba4fbc5e3ad00118",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": "sources/SRC-060145c7e93542a69692/5135419c94a054ec/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-14857",
+      "content_hash": "64ee4ce8339c7f623a0efdc726fbffb171d3991dcf148c19133e25d40668fbf9",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-10-26T16:04:58.744000Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-060145c7e93542a69692/5135419c94a054ec/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 1,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "TP1-13289",
+        "TP1-15791"
+      ],
+      "relation": "task",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-22T14:17:45.340+0000",
+      "snapshot_ref": "sources/SRC-060145c7e93542a69692/5135419c94a054ec/ticket.json",
+      "source_id": "SRC-060145c7e93542a69692",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-5a93606917e1f7d2c56b/1e078cd66fafecf9/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-15791",
+      "content_hash": "18f549c6d3b9d20a2d26aa8567cb952175609eb959e44eb7eb9f05f95653ebfb",
+      "discovered_from": "TP1-14857",
+      "exclusion_or_error": null,
+      "fetched_at": "2026-10-26T16:07:10.076791Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-5a93606917e1f7d2c56b/1e078cd66fafecf9/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 1,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 1,
+          "items": [
+            {
+              "content_hash": "197f793caa437ae26540caa21b1a9ebcd79e155da939e65fc1f21616077401aa",
+              "error": "MR fetched via glab",
+              "local_ref": "sources/SRC-5a93606917e1f7d2c56b/mr-4566.diff",
+              "provenance": "fetched",
+              "status": "read",
+              "url": "https://git.example/tp1-group/testproject1/-/merge\\_requests/4566"
+            }
+          ],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "TP1-10937",
+        "TP1-13289",
+        "TP1-14857"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-20T15:32:33.416+0000",
+      "snapshot_ref": "sources/SRC-5a93606917e1f7d2c56b/1e078cd66fafecf9/ticket.json",
+      "source_id": "SRC-5a93606917e1f7d2c56b",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-5ed252fcfa756899ddd1/assessment/ticket.json",
+      "canonical_ref": "https://example.org/browse/TP1-217",
+      "content_hash": null,
+      "discovered_from": "SRC-e3b288d3ebe1bb04b0c6",
+      "exclusion_or_error": "Generic structure-features epic; no reindex or timestamp content",
+      "fetched_at": "2026-10-26T16:11:54.655485Z",
+      "human_review": {
+        "at": "2026-10-26T16:18:35.386624Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Source review answered by the standing instruction the user left while away (verbatim): \"continue untranslated with the fresh /qa-factory:qa-story TP1-14857 run ... Follow the documented workflow, accept safe defaults, and perform routine configuration repairs without asking me for every step.\" The stand is local-docker (probe ok). The factory's kept/left-out table is accepted as the default; the user will review the left-out sources (methods parent epic TP1-13289) on return."
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": 0,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-e3b288d3ebe1bb04b0c6/f6c7cc56f07df69b/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "Generic structure-features epic; no reindex or timestamp content",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-5ed252fcfa756899ddd1",
+      "status": "excluded"
+    }
+  ]
+}

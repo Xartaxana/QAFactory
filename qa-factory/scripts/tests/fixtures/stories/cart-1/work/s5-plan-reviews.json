@@ -1,0 +1,50 @@
+[
+  {
+    "dispatch": "S5-qa-code-critic-1",
+    "plan_sha256": "cf62dde255eeaff08afa50b3894f16eeacda93273db3e774a540ad94b99baa04",
+    "rows_sha": {
+      "CART-1_TC_001": "5f24f29f851ac48ad823f40872feaa32807fa9c963f5775040f1b3ec65e4f413",
+      "CART-1_TC_002": "65839b0d50b37d5f1cf92700a74b082cc1acf0eedc0f84f3cfa85cef2b20a6b9",
+      "CART-1_TC_003": "7d2b4465edfcd89881e006526229eab5a665dd3996c631ca94c75beada471ba8",
+      "CART-1_TC_004": "1a7e405291ad9c81c8162eea5504084e0abb9ac9e8e7b37c67ebfe884ebf210a",
+      "CART-1_TC_005": "b5479d9b8ff82bec125639c047616d44d3deaec5830eece5b77bea7bfc9f2c2b",
+      "CART-1_TC_006": "b10ab4c6d54018183dcdd56b7e1d5eb90705910892ef3a4ccedfb8dc365546f7",
+      "CART-1_TC_007": "ee8065f561962deee545399d619b1359d4ce3c33c0d6545627eff0099fc196bc",
+      "CART-1_TC_008": "1a540ee811423b5481cdf00525737a04d2d8514ec41de6e9818e4e5943a2c42d",
+      "CART-1_TC_009": "d875fc5eb76322c947ed78b7f8bee464fb6acae74a2665ce0b1f19cd3cb10498",
+      "CART-1_TC_010": "09c928afa0e9342ba850542cc9bab4b4438b44dcb52cfbea178bcf980135a3f1"
+    },
+    "tests": {
+      "T-1": [
+        "CART-1_TC_001"
+      ],
+      "T-2": [
+        "CART-1_TC_002"
+      ],
+      "T-3": [
+        "CART-1_TC_003"
+      ],
+      "T-4": [
+        "CART-1_TC_004"
+      ],
+      "T-5": [
+        "CART-1_TC_005"
+      ],
+      "T-6": [
+        "CART-1_TC_006"
+      ],
+      "T-7": [
+        "CART-1_TC_007"
+      ],
+      "T-8": [
+        "CART-1_TC_008"
+      ],
+      "T-9": [
+        "CART-1_TC_009"
+      ],
+      "T-10": [
+        "CART-1_TC_010"
+      ]
+    }
+  }
+]

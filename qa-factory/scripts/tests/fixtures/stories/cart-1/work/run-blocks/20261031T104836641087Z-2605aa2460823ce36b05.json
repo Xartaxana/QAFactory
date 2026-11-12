@@ -1,0 +1,553 @@
+{
+  "schema_version": 2,
+  "block_id": "2605aa2460823ce36b05",
+  "attempt_id": "2605aa2460823ce36b05",
+  "attempt_started_at": "2026-10-31T10:47:52.573277+00:00",
+  "attempt_ended_at": "2026-10-31T10:48:36.078305+00:00",
+  "dispatch_id": "S6-qa-runner-1",
+  "profile_id": "web",
+  "repo_id": "test-automation-framework",
+  "equivalence_verified": false,
+  "data_seed_contract": null,
+  "selection_provenance": {
+    "reason": "failed_or_invalidated",
+    "evidence_refs": [
+      "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+    ]
+  },
+  "purpose": "initial",
+  "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+  "source_fingerprint": {
+    "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+    "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+    "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+    "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+    "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+    "policy_revision": "config-projection-1"
+  },
+  "runtime_provenance": {
+    "profile_id": "web",
+    "timestamp": "2026-10-31T01:57:58Z",
+    "environment_id": "local",
+    "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+    "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+    "result": "matched",
+    "evidence_refs": [
+      "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+    ],
+    "provenance": {
+      "technical_verification": true,
+      "source_linkage": "exact",
+      "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  },
+  "execution_status": "failed",
+  "results": [
+    {
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "test_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "test_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "test_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-id-fraction"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "test_id": "@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-qty-min"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "test_id": "@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-qty-max"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-qty-over"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-qty-zero"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-qty-fraction"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-qty-string"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-id-zero"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "test_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {
+        "partition": "P-id-negative"
+      },
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    },
+    {
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "test_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "case_version_links": [],
+      "obligation_ids": [],
+      "parameters": {},
+      "status": "not_run",
+      "reason": "report row missing",
+      "report_matched": false,
+      "attempt_id": "2605aa2460823ce36b05",
+      "purpose": "initial",
+      "repo_id": "test-automation-framework",
+      "profile_id": "web",
+      "equivalence_verified": false,
+      "input_fingerprint": "22316563938b4d1a3f3ef3a4f7d5b8edcc1076ee8dfa4c61f90a68b501298fd6",
+      "source_fingerprint": {
+        "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+        "test_content_sha": "93053ebe54d4e4a38ca2aa3e93e93242e534d6df9fb87dd75a715f5a2c2e77f9",
+        "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+        "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+        "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+        "policy_revision": "config-projection-1"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\2605aa2460823ce36b05\\initial-2605aa2460823ce36b05-20261031-114752.json",
+      "reporter": "junit-xml",
+      "report_path": "evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.junit.xml",
+      "report_sha256": "b3db605e9b6595398ab24964c08c97842874ba420e50bad657251ae2679764bd"
+    }
+  ],
+  "reporter_mapping": {
+    "mode": "exact",
+    "source_attempt_id": "2605aa2460823ce36b05",
+    "raw_report_hash": "b3db605e9b6595398ab24964c08c97842874ba420e50bad657251ae2679764bd",
+    "reparsed": false
+  },
+  "report_scope": {
+    "selected": [
+      "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "@api @regression CART-1_TC_003 repeat add accumulates",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "@api @regression CART-1_TC_005 cart isolation between owners",
+      "@api @regression CART-1_TC_006 guest cart merge on login",
+      "@api @regression CART-1_TC_007 update and delete cart item",
+      "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "@api @regression CART-1_TC_009 quote and order from cart",
+      "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+    ],
+    "unmatched_report_rows": [
+      "api\\cart\\add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "api\\cart\\add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "api\\cart\\add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "api\\cart\\add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+      "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+      "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+      "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "api\\cart\\cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+      "e2e\\cart\\add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page"
+    ]
+  }
+}

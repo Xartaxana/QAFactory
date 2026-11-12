@@ -1,0 +1,19 @@
+# The request a role makes when it cannot fill its handoff. The conductor answers
+# in `answer:`; the role never takes a filling problem to the person.
+schema_version: 1
+contract: role-to-conductor
+request:
+  contract: "s1-scout-to-tester"
+  file: "qa-factory\\artifacts\\CART-1\\work\\handoffs\\S1-qa-scout-1.yaml"
+  dispatch: "S1-qa-scout-1"
+  role: "qa-scout"
+  stage: "S1"
+  field: "person.words"
+  problem: "no person review of the sources recorded yet; a role never records a person's word. Sources SRC-ad1a8a3b1d2d9cd1f90f (Jira 404) and REF left out await the conductor's recorded acceptance"
+  refusal: "no person review of the sources recorded yet; a role never records a person's word. Sources SRC-ad1a8a3b1d2d9cd1f90f (Jira 404) and REF left out await the conductor's recorded acceptance"
+answer:
+  resolution: <one of vocabulary.conductor_resolutions>
+  authority: <one of vocabulary.conductor_authorities>
+  source: <the file and section the answer comes from>
+  write: <exactly what the role puts in the field>
+  why: <one sentence, in the role's own terms>

@@ -1,0 +1,10 @@
+{
+  "task": "QA-1",
+  "label": "sanity",
+  "command": ["poetry", "run", "pytest", "tests/test_coupon.py", "-q"],
+  "exit_code": 0,
+  "duration_s": 4.2,
+  "totals": {"tests": 1, "failures": 0, "errors": 0, "skipped": 0, "passed": 1, "time_s": 4.2},
+  "failed": [],
+  "execution_status": "passed"
+}

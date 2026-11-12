@@ -1,0 +1,8 @@
+diff --git a/src/other/second_repo_service.py b/src/other/second_repo_service.py
+index 1a1a1a1..2b2b2b2 100644
+--- a/src/other/second_repo_service.py
++++ b/src/other/second_repo_service.py
+@@ -1,2 +1,2 @@
+-LIMIT = 10
++LIMIT = 20
+ NAME = "second"

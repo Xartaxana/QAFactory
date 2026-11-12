@@ -1,0 +1,85 @@
+<testsuites id="" name="" tests="10" failures="1" skipped="0" errors="0" time="29.934379">
+<testsuite name="api\cart\add-to-cart.spec.ts" timestamp="2026-11-02T23:43:17.151Z" hostname="chromium" tests="10" failures="1" skipped="0" time="15.045" errors="0">
+<testcase name="@regression LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read" classname="api\cart\add-to-cart.spec.ts" time="0.427">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read" classname="api\cart\add-to-cart.spec.ts" time="2.964">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge" classname="api\cart\add-to-cart.spec.ts" time="2.659">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged" classname="api\cart\add-to-cart.spec.ts" time="0.712">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted" classname="api\cart\add-to-cart.spec.ts" time="0.6">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line" classname="api\cart\add-to-cart.spec.ts" time="0.63">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line" classname="api\cart\add-to-cart.spec.ts" time="0.983">
+<failure message="add-to-cart.spec.ts:106:1 @regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line" type="FAILURE">
+<![CDATA[  [chromium] › api\cart\add-to-cart.spec.ts:106:1 › @regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line 
+
+    Error: setup: first add accepted
+
+    expect(received).not.toBeLessThan(expected)
+
+    Expected: not < 300
+    Received:       201
+
+      107 |   const b = await shop.book(5);
+      108 |   const actor = await shop.guest();
+    > 109 |   expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').not.toBeLessThan(300);
+          |                                                                                    ^
+      110 |   expect((await actor.addToCart(b.id, 2)).status, 'setup: second add accepted').toBeLessThan(300);
+      111 |
+      112 |   const lines = (await actor.readCart()).filter((l) => l.bookId === b.id);
+        at {project_root}\tests\api\cart\add-to-cart.spec.ts:109:84
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: setup: first add accepted
+
+    expect(received).not.toBeLessThan(expected)
+
+    Expected: not < 300
+    Received:       201
+
+      107 |   const b = await shop.book(5);
+      108 |   const actor = await shop.guest();
+    > 109 |   expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').not.toBeLessThan(300);
+          |                                                                                    ^
+      110 |   expect((await actor.addToCart(b.id, 2)).status, 'setup: second add accepted').toBeLessThan(300);
+      111 |
+      112 |   const lines = (await actor.readCart()).filter((l) => l.bookId === b.id);
+        at {project_root}\tests\api\cart\add-to-cart.spec.ts:109:84
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\api-cart-add-to-cart--regr-5a931-sums-quantities-in-one-line-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\api-cart-add-to-cart--regr-5a931-sums-quantities-in-one-line-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\..\..\..\..\test-results\api-cart-add-to-cart--regr-5a931-sums-quantities-in-one-line-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted" classname="api\cart\add-to-cart.spec.ts" time="0.701">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_012 guest and user carts are isolated" classname="api\cart\add-to-cart.spec.ts" time="2.717">
+<properties>
+<property name="sessions" value="G1 guest-session=none user=none | G2 guest-session=none user=none | U guest-session=none user=qa.cart.mvzwnbdvm046.2.2@example.com | G3 guest-session=none user=none">
+</property>
+<property name="g3-change-status" value="404">
+</property>
+</properties>
+</testcase>
+<testcase name="@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules" classname="api\cart\add-to-cart.spec.ts" time="2.652">
+<properties>
+<property name="sessions" value="account jar guest-session=none user=qa.cart.mvzwndi0hnmd.2.5@example.com | merging jar guest-session=b1563e63-2a52-4380-8f33-2fde9d36f7b3 user=qa.cart.mvzwndi0hnmd.2.5@example.com">
+</property>
+</properties>
+</testcase>
+</testsuite>
+</testsuites>

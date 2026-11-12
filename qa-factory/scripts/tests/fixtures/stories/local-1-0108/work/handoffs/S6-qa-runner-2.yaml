@@ -1,0 +1,141 @@
+# S6 -> S7: the run is handed to the failure analyst.
+#
+# The analyst gives every failure a verdict with evidence, so what it needs is not the summary but
+# the join: which row, which instance, which artifact, on which build. A row the reducer could not
+# join to a manifest instance decided `execution_status` for a whole story once, and nothing said
+# it was a ghost - so this file names the ghosts too, and says which rerun superseded them.
+#
+# `env_blocked` rows carry a remedy and the `env_probe` line that failed. A blocked row with no
+# remedy is refused by `validate_artifacts.py`, and rightly: "the stand is wrong" with nothing to
+# do about it is not a finding, it is a shrug.
+# Fill: write your fields as "path: value" lines to work/handoffs/S6-qa-runner-2.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S6-qa-runner-2.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s6-runner-to-analyst
+stage: S6
+from_role: qa-runner
+to_role: qa-failure-analyst
+
+inputs:
+  - path: work/handoffs/S6-qa-runner-2.yaml
+    what: this file
+    required: true
+  - path: work/run-report.json
+    what: the whole-story report, reduced by finalize_task.py and never hand-written
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances the rows join to, with their cases and obligations
+    required: true
+  - path: work/evidence/
+    what: the artifact behind every row - logs, screenshots, manual observations
+    required: true
+  - path: test-plan.md
+    what: each row's oracle
+    required: true
+
+inputs_read:
+  - path: work/handoffs/S6-qa-runner-1.yaml
+    version: S6-qa-runner-1
+    instances_handed: 0
+  - path: work/handoffs/S4-qa-case-designer.yaml
+    version: S4
+    manual_cases_handed: 1
+  - path: work/evidence/manual/LOCAL-1_TC_022/a1/probes.jsonl
+    version: probe at attempt a1
+
+header:
+  role: qa-runner
+  stage: S6
+  window: LOCAL-1_TC_022
+  verdict: halt
+
+run:
+  execution_status: env_blocked
+  report: work/run-report.json
+  witness: "no run_suite summary: manual capture a1 exited 3 (env_blocked), record work/evidence/manual/LOCAL-1_TC_022/a1/env_blocked.json; totals 0 passed/0 failed"
+  environment: local
+  application_build: not read; the capture stopped at login by code before a build record
+  probe_before: work/evidence/manual/LOCAL-1_TC_022/a1/probes.jsonl
+  probe_after: work/evidence/manual/LOCAL-1_TC_022/a1/probes.jsonl
+  totals: 0 passed / 0 failed / 0 error / 0 skipped / 0 not_run for this window
+  # The reduced report counts every attempt the story ever made: on REF-30 `totals` read
+  # 69 not_run beside a current window of 20 rows. The next role is answering about THIS window,
+  # so the window's own numbers travel beside the story's.
+  window_totals: 0 passed / 0 failed / 0 error / 0 skipped / 0 not_run
+
+# One row per item executed or deliberately not executed. `state` from vocabulary.row_states:
+# passed, failed, error, skipped, not_run, passed_green (a reused receipt), inconclusive,
+# manual_skipped, env_blocked, broken_run, timeout.
+scope:
+  - id: LOCAL-1_TC_022
+    state: env_blocked  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: login by code not recorded (manual_capture.login.http); nothing sent
+    case: LOCAL-1_TC_022
+    obligations: OB-24
+    executed: fresh
+    rerun_reason: <the exact fingerprint or provenance that moved, when this was rerun>
+    evidence: work/evidence/manual/LOCAL-1_TC_022/a1/env_blocked.json
+    duration: -
+
+# Manual-agent observations, compared with the Then as the case quoted it. This is the section
+# that makes `inconclusive` an answer instead of an improvisation.
+manual_observations:
+  - case: LOCAL-1_TC_022
+    then: the cart line for B is priced 6.00 (Q7 = a) and the add causes no error
+    observed: "nothing observed: the capture tool could not sign in; no request was sent"
+    before_change: not_recorded
+    result: inconclusive
+    evidence: work/evidence/manual/LOCAL-1_TC_022/a1/env_blocked.json
+    why_inconclusive: manual_capture.login.http not recorded; the person accepted this as a stand gap (state/words/s6-manual-login-gap.txt)
+
+# Rows blocked by the stand. Every one names the remedy - names only, never a value - and the
+# `env_probe.py` line that failed.
+env_blocked:
+  - id: LOCAL-1_TC_022
+    probe_line: "login by code: this project's sign-in is not an HTTP request the factory knows (environment.access.kind harness_command); nothing was sent"
+    remedy: record manual_capture.login.http in config.json (path and token_field), or null; or sign in via fill-account steps
+    owner: user
+
+# Rows that exist in the report but are not evidence about this story: a ghost the reducer could
+# not join, superseded by a rerun under the real instance ids.
+superseded:
+  - row: none
+    superseded_by: none
+    note: "a rerun is a repair, not an attempt anyone has to waive"
+
+claims:
+  every_row_carries_an_evidence_path: true
+  every_blocked_row_names_a_remedy_and_the_probe_line: true
+  no_comparison_was_fabricated_where_before_evidence_is_missing: true
+  handed_and_manual_human_cases_are_absent_by_design: true
+  the_report_was_reduced_by_code_not_written: true
+
+expected_of_the_receiver:
+  - "triage every `failed`, every `error`, and every `inconclusive` - an inconclusive check has
+     an owner and a next step and never reaches gate B untouched"
+  - "a red instance carrying `contradicts_requirement` goes through your rule 2d. A red on an
+     extra or different value gets the control experiment first; the expectation is never
+     adjusted to the code"
+  - "a FLAKY verdict needs three isolated reruns of that one test and a named mechanism"
+
+unresolved:
+  - id: LOCAL-1_TC_022
+    reason: blocked_by_env
+    detail: login by code not recorded; accepted by the person as a stand gap; Q7 price-at-add-time stays unverified
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: run.witness
+    source: "automation-manifest.run_witness"
+  - field: run.totals
+    source: "run-report.totals"
+  - field: run.window_totals
+    source: "run-report.current_totals"

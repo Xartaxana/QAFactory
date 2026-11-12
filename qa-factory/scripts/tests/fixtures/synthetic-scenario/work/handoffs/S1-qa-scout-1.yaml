@@ -1,0 +1,138 @@
+# S1 -> S2: the scout hands the story's ground to the requirements tester.
+#
+# This is the handoff that cost the most, and it cost it silently: a tester told to slice
+# `impl-diff.txt` (Grep first) that never opens the rest of the hunks returns a register with
+# fewer requirements than a full read gives, and nobody refuses anything.
+#
+# So this file does two things a path in a prompt cannot. It states the SIZE of what it hands over
+# - files and hunks, counted - so the tester's own handoff can answer `21 of 21` and the exit gate
+# can check it. And it states what the scout decided about every source, with the person's words on
+# the gaps, so the register knows which sources it is allowed to be silent about.
+# Fill: write your fields as "path: value" lines to work/handoffs/S1-qa-scout-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S1-qa-scout-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s1-scout-to-tester
+stage: S1
+from_role: qa-scout
+to_role: qa-requirements-tester
+
+inputs:
+  - path: work/handoffs/S1-qa-scout-1.yaml
+    what: this file
+    required: true
+  - path: work/context-bundle.json
+    what: the versioned sources, bounded search areas, existing test candidates - read FIRST
+    required: true
+  - path: work/context-manifest.json
+    what: referenced detail only; the bundle is the working document
+    required: true
+  - path: work/impl-diff.txt
+    what: the implementation, in full - see `implementation.diff` below for what full means
+    required: true          # absent only when implementation_source is `ungrounded`
+  - path: work/source-inventory.json
+    what: every source with its decision, the person's review and the accepted gaps
+    required: false
+
+header:
+  role: qa-scout
+  stage: S1
+  window: SYN-1
+  verdict: <one of vocabulary.header_verdicts - concerns|halt|impossible|ok>
+
+# What the story is grounded in, and how much of it there is. `hunks` is what the next role answers
+# `<read> of <handed>` against; `files` and `production_files` are terminal: they size the change,
+# and no field downstream is measured against them.
+implementation:
+  source: ungrounded
+  reference: <the MR id, branch or commit the diff came from, or what current-code was read from>
+  diff:
+    path: work/impl-diff.txt
+    files: <how many files the diff touches>
+    hunks: <how many hunks in total>
+    production_files: <how many of those files are production code, not tests or fixtures>
+    bytes: <size on disk>
+  ac_code_conflict:
+    present: <true|false>
+    decision: "<the person's words, verbatim, when one was taken - which side is the oracle>"
+
+# One row per source. `state` from vocabulary.row_states, normally: found, not_found, blocked for
+# an unreachable one, `waived` for a gap the person passed, `subtask_in_progress`.
+scope:
+  - id: <SRC-ID or tracker key>
+    state: <one of vocabulary.row_states - blocked|found|handed|handed_to_person|impossible|not_found|subtask_in_progress|unresolved|waived>   # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: <= 80 characters>
+    relation: <task|subject|parent|normative|referenced|mention>
+    relevance: <relevant|not_relevant|unknown>
+    revision: <the revision or hash this story read>
+    read: <full|peek|none>
+    attachments_inspected: <n of m, or a dash>
+    # What was COLLECTED for this source and where it lies, task-relative: the merge
+    # requests the factory pulled through its own authenticated route, an attachment's
+    # evidence file, text the person pasted. Code fills this from the inventory; a dash
+    # means nothing was collected. The next role reads these the way it reads the diff.
+    material_collected: <paths, comma-separated, or a dash>
+
+# Sources the person spoke about. Their words are the authority - the check holds only a silent
+# pass, never a person's word, so this section is what lets the register be silent about a gap.
+person:
+  review_recorded: <true|false>
+  words: "<the answer about the sources, verbatim>"
+  accepted_gaps:
+    - id: <SRC-ID>
+      words: "<the words for this gap, verbatim>"
+  late_sources:
+    - id: <SRC-ID found after the review; shown at gate A, never a second stop>
+
+artifacts:
+  context_bundle: work/context-bundle.json
+  context_manifest: work/context-manifest.json
+  impl_diff: work/impl-diff.txt
+  source_inventory: work/source-inventory.json
+  existing_coverage: <the bundle's candidate list with exact selectors and assertion refs>
+
+claims:
+  every_source_carries_a_decision: <true|false>
+  every_unavailable_source_carries_the_recorded_words: <true|false>
+  diff_is_complete_not_truncated: <true|false>           # the whole change, not the first N lines
+  implementation_source_recorded_in_pipeline: <true|false>
+  # A fact the next stages depend on is a field of the handoff, not a side effect of a command.
+  existing_coverage_search_was_bounded_and_says_so: <true|false>   # partial stays partial
+
+# What this handoff REQUIRES of the receiving role, because the receiving role's own file answers
+# it field by field. This is not advice: `s2-tester-to-strategist.inputs_read` has a line for each
+# of these, written by the role as `<read> of <handed>`; no code compares the numbers. Which
+# requirement each hunk implements, or why it bears none, is the S3 grounding table
+# (work/grounding.yaml).
+expected_of_the_receiver:
+  - "read every one of the `hunks` above - a requirement derived from an unread hunk is a
+     requirement nobody wrote (TP1-13797: 14 of 21)"
+  - "a source this file marks `not_relevant` is not evidence; a source it marks `waived` may be
+     absent from the register, and the register says so"
+
+# What you tried and saw, one row per attempt: the acceptor of the stage reads it against your Good outcome
+# (spec t-1765 B3). Empty only with `tried_note` saying why nothing was tried (a grounding window, a repair of
+# named findings). Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: <R-n, a source id or an area>
+    technique: <the technique by its name in your charter>
+    observation: <what you saw, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <SRC-ID or area>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: implementation.source
+    source: "pipeline.json / context-manifest.json"

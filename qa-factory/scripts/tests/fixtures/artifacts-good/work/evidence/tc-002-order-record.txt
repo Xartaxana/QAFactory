@@ -1,0 +1,3 @@
+GET /v1/orders/8812
+{"id": 8812, "subtotal": 200.00, "discount_percent": 10, "total": 180.00}
+read back through the API, not from the rendered cart label

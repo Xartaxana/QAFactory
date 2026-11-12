@@ -1,0 +1,9 @@
+qa-automator S5 window 5 (CART-1_TC_009) · concerns
+CART-1_TC_009 · contradicts_requirement · tests[] row added, red; Then 2 red (quote has no items)
+qa-factory/artifacts/CART-1/work/handoffs/S5-qa-automator-5.yaml
+
+The tests[] row for tests/api/cart/cart-quote-order.spec.ts, case CART-1_TC_009, was missing from the manifest and is back. s5_precheck.py is OK and handoff_check.py reports the S5-qa-automator-5 form complete.
+- **Row:** it is red and carries the real obligation_hash for OB-9. The `contradicts_requirement` row on Then 2 (R-15) is unchanged.
+- **Test code changed:** s5_precheck.py refused Thens 3, 4 and 5 for sitting after the red Then 2. I moved the Then 2 quote-items assert to the end of the test. It is still a soft assert and the value is unchanged. The Then bindings now point at lines 33, 53, 41, 49 and 51.
+- **Re-run:** the changed test ran once. It is still 0 passed / 1 failed, with only Then 2 failing. The witness is qa-factory/artifacts/CART-1/evidence/runs/c7f56259e689c93a9ddf/repair_verify-c7f56259e689c93a9ddf-20261031-112433.json, and it is in `runs[]` and `run_witness`.
+- **Still not re-run:** the TC_007 and TC_008 mechanical fixes.

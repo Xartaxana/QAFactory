@@ -1,0 +1,109 @@
+{
+ "task": "CART-1",
+ "label": "repair_verify-d67215ba124bbc6b138b",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit=<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\evidence\\runs\\d67215ba124bbc6b138b\\report.junit.xml",
+  "--project=chromium",
+  "tests/api/cart/cart-isolation.spec.ts",
+  "tests/api/cart/cart-merge.spec.ts",
+  "tests/api/cart/cart-update-delete.spec.ts",
+  "tests/api/cart/cart-ownership.spec.ts"
+ ],
+ "exit_code": 0,
+ "duration_s": 16.6,
+ "log": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\d67215ba124bbc6b138b\\repair_verify-d67215ba124bbc6b138b-20261031-103404.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-10-31T09:34:04.999136+00:00",
+ "ended_at": "2026-10-31T09:34:21.615849+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 4,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 19.1,
+  "passed": 4
+ },
+ "failed": [],
+ "results": [
+  {
+   "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+   "status": "passed",
+   "reason": ""
+  }
+ ],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\d67215ba124bbc6b138b\\repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+ "report_hash": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9",
+ "report_evidence": {
+  "path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+  "sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "passed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "repair_verify",
+ "dispatch_id": "S5-qa-automator-3",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T09:34:00Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T09:34:21Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "summary_path": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\d67215ba124bbc6b138b\\repair_verify-d67215ba124bbc6b138b-20261031-103404.json"
+}

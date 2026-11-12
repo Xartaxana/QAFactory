@@ -1,0 +1,42 @@
+{
+ "title": "Invalid quantities (0, -1, 1.5, abc) are rewritten to a valid number and added to the cart instead of being rejected",
+ "impact": "degraded",
+ "violates": "requirement:R-8",
+ "case": "LOCAL-1_TC_007",
+ "plan_row": "TS-8",
+ "triage_ref": {
+  "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+  "attempt_id": "ee7c46807bbf891ddc5e"
+ },
+ "manual_steps": [
+  "Sign in and open the product page of an in-stock book",
+  "Type 0 into the quantity field and click Add to Cart; then open the cart page and watch the message area and the quantity field",
+  "Repeat with -1",
+  "Repeat with 1.5",
+  "Repeat with abc (the field may only accept it as a number input; use paste or keyboard entry)"
+ ],
+ "confirmation": "unconfirmed",
+ "expected": "R-8 (0), R-9 (-1, 1.5), R-10 (abc): each value is rejected with a clear message, nothing is added to the cart, the field keeps the typed value",
+ "actual": "One root cause, BookDetailPage.tsx:164 setQuantity(Math.max(1, parseInt(v) || 1)): the invalid input is rewritten and the add proceeds with no message. Observed per input: 0 -> field shows 1, cart line quantity 1; -1 -> field shows 11, cart line quantity 1; 1.5 -> field shows 1, cart line quantity 1; abc -> field shows 1, cart line quantity 1.",
+ "cases": [
+  "LOCAL-1_TC_007",
+  "LOCAL-1_TC_008",
+  "LOCAL-1_TC_009",
+  "LOCAL-1_TC_012"
+ ],
+ "also_triage_refs": [
+  {
+   "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+   "attempt_id": "b3914dc75fbd4d3b446f"
+  },
+  {
+   "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+   "attempt_id": "001bd334b84d23a46f7b"
+  },
+  {
+   "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+   "attempt_id": "e8b888d314fa6393c611"
+  }
+ ],
+ "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164"
+}

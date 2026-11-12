@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "note": "The closed words of the first look (t-2277 FL-2, AR-1): `scripts/first_look.py` reads every word it checks from here and holds none in code. `statuses` are what one row says about one requirement of the register on the stand; `reachable` are the statuses that count as 'the stand showed it' in the share the driver's question prints (a requirement the stand does not show, or that no route reaches, is not reachable); `blocked_by_required_for` are the statuses that must carry `blocked_by` and the only ones that may; `share_excludes` are the `blocked_by` words left out of the share; `no_capture_needed` are the `blocked_by` words whose row may cite no capture; `attempt_settled` are the attempt outcomes after which the paid walk is not repeated on the same code and register. `blocked_by` says who or what stopped a `missing` / `unreachable` row (`product` = the stand does not have it, `access` = no way in for the walker, `nature` = nothing a walker can observe, such as a build setting); the share leaves `access` and `nature` out of its denominator (owner's word J-7). `null_reasons` are the declared empty outcomes of a first look (a record with `null: <reason>`, `rows: []` and one gap line). `open_retry_max` is how many times the driver may open the walk again on the same code and register after it could not be opened. `attempt_outcomes` are the words an attempt carries (`walking` is written by `begin`, the rest by `end` or by the writer of the record). `seen` and `auth` are the closed words of a locator and of an API route of a row's `path`. `red_statuses` are the statuses the briefs of S3 and S7 list as rows where the stand did not show what a requirement says; `bug_candidate_blocked_by` maps a status to the `blocked_by` words a row of that status must carry to reach S7 as a bug candidate (an `unreachable` row only when the stand does not have it, not when the walker lacked a way in); a red status not in the map reaches S7 whatever its `blocked_by`; `stand_build_confirmed` is the `stand_build` word of a record whose deployed revision was confirmed, any other word is 'not established' (read by `brief_pack.py` through `first_look.py`).",
+  "statuses": ["confirms", "contradicts", "missing", "unreachable"],
+  "blocked_by": ["product", "access", "nature"],
+  "reachable": ["confirms", "contradicts"],
+  "blocked_by_required_for": ["missing", "unreachable"],
+  "share_excludes": ["access", "nature"],
+  "no_capture_needed": ["nature"],
+  "attempt_settled": ["walking", "written", "nothing_written"],
+  "red_statuses": ["contradicts", "missing", "unreachable"],
+  "bug_candidate_blocked_by": {"unreachable": ["product"]},
+  "stand_build_confirmed": "confirmed",
+  "null_reasons": ["no_code_yet", "empty_register", "register_unreadable", "no_stand", "no_reachable_surface", "profile_not_chosen", "walk_not_opened"],
+  "open_retry_max": 1,
+  "attempt_outcomes": ["walking", "written", "nothing_written", "open_failed"],
+  "seen": ["yes", "no"],
+  "auth": ["none", "token"],
+  "auth_account_prefix": "account:"
+}

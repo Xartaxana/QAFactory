@@ -1,0 +1,5 @@
+{"at": "2026-10-01T10:00:02+00:00", "command": "ui", "step": "login by code", "outcome": "ok", "detail": "landed on / in 0 s (the sign-in field is gone)"}
+{"at": "2026-10-01T10:00:03+00:00", "command": "ui", "step": "goto http://localhost:5173/workflows/w1/diff", "outcome": "ok", "detail": "0.20 s"}
+{"at": "2026-10-01T10:00:05+00:00", "command": "ui", "step": "capture pre_action initial", "outcome": "ok", "detail": ""}
+{"at": "2026-10-01T10:00:06+00:00", "command": "ui", "step": "click \"button[aria-label='Zoom in']\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-01T10:00:08+00:00", "command": "ui", "step": "capture post_action completion", "outcome": "ok", "detail": ""}

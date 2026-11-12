@@ -1,0 +1,20 @@
+{
+  "rows": [
+    {"id": "TS-1", "schema_version": 2, "disposition": "manual-agent",
+     "coverage_obligations": [{"obligation_id": "OB-1", "decision": "manual-agent", "execution_scope": "current_task",
+                               "oracle_status": "resolved", "evidence_policy": "ui",
+                               "requirement_refs": [{"ref": "R-1"}]}]},
+    {"id": "TS-2", "schema_version": 2, "disposition": "manual-agent",
+     "coverage_obligations": [{"obligation_id": "OB-2", "decision": "manual-agent", "execution_scope": "current_task",
+                               "oracle_status": "resolved", "evidence_policy": "ui",
+                               "requirement_refs": [{"ref": "R-2"}]}]},
+    {"id": "TS-3", "schema_version": 2, "disposition": "manual-agent",
+     "coverage_obligations": [{"obligation_id": "OB-3", "decision": "manual-agent", "execution_scope": "current_task",
+                               "oracle_status": "resolved", "evidence_policy": "ui",
+                               "requirement_refs": [{"ref": "R-3"}]}]},
+    {"id": "TS-4", "schema_version": 2, "disposition": "automate",
+     "coverage_obligations": [{"obligation_id": "OB-4", "decision": "new", "execution_scope": "current_task",
+                               "oracle_status": "resolved", "evidence_policy": "api",
+                               "requirement_refs": [{"ref": "R-4"}]}]}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "note": "The closed variety of the collector's loop rule (scripts/collect_stall.py, CL3-9): which recorded state means a story looped - a role dispatched again and again, a cap of rounds hit, a limit passed by the person's word. Read by code only (collect_stall.load_loops). The record shapes (series, records, nested_records, rows) are code; the keys, kinds, fields and values are here. Every key, kind and value is a literal the driver writes (the driver set: scripts/story_run.py, scripts/driver_*.py); test_collect_stall.py ties them. Error direction: a lower threshold or one more value packs more transcripts, which is the safe side.",
+  "repeat_dispatch": {
+    "id": "L1",
+    "max_normal": 2,
+    "max_normal_repair_roles": 5,
+    "why": "one relaunch of a role is normal; a repair-loop role (controller.REPAIR_LOOP_ROLES) has its opener, two test_defect rounds, one mechanical round and one relaunch"
+  },
+  "records": [
+    {"id": "L2", "carrier": "driver-state.json", "key": "window_rounds", "shape": "series", "field": "outcome", "values": ["cap", "same_set"], "time": "at", "what": "a window's rework rounds hit their cap or came back with the same findings"},
+    {"id": "L3", "carrier": "driver-runs.jsonl", "kind": "gate_repair", "shape": "rows", "field": "stop", "values": ["cap", "same_set"], "time": "ts", "what": "a gate's repair rounds hit their cap or repeated"},
+    {"id": "L4", "carrier": "driver-state.json", "key": "repair_limit", "shape": "records", "field": "token", "values": ["round", "debt", "fixed", "review"], "time": "at", "what": "the person answered the repair-limit question of a window"},
+    {"id": "L4", "carrier": "driver-state.json", "key": "repair_limit_s7", "shape": "records", "field": "token", "values": ["round", "debt", "fixed", "review"], "time": "at", "what": "the person answered the repair-limit question of a failing test"},
+    {"id": "L6", "carrier": "driver-state.json", "key": "exit_limit", "shape": "nested_records", "inner": "rounds", "field": "granted", "min": 1, "time": "at", "what": "the exit gate's resume limit was reached and the person granted a round"},
+    {"id": "L7", "carrier": "driver-questions.jsonl", "shape": "rows", "field": "kind", "values": ["repair_limit", "exit_limit"], "time": "ts", "what": "the person was asked at a repair or exit limit; this journal outlives the window and dispatch records the driver removes when they close"}
+  ]
+}

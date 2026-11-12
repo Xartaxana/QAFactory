@@ -1,0 +1,1 @@
+Da (na vremya napisaniya okon 2-8 prinyat otsutstvie privyazok u Then keisov vne tekuschego okna; privyazki proveryayutsya po polnomu naboru testov v kontse S5)

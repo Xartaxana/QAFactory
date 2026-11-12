@@ -1,0 +1,3 @@
+qa-case-critic S2 S2-qa-case-critic-1 · ok
+register · reviewed · 14 requirements, branches, matrix and questions carried whole
+qa-factory/artifacts/LOCAL-1/work/handoffs/S2-qa-case-critic-1.yaml

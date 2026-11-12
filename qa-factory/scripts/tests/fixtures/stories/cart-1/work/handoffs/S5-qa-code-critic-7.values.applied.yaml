@@ -1,0 +1,20 @@
+header.verdict: concerns
+review.outcome: unverified
+review.rounds_used: 0
+review.receipt_ref: work/windows/S5-qa-code-critic-7.json
+scope[0].id: "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+scope[0].state: unverified
+scope[0].reason: "probe tool cannot read Playwright TS; person accepted gap"
+probes.runtime_provenance: qa-factory/artifacts/CART-1/evidence/runs/c9286026d096394cd0e6
+probes.records[0].instance: "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+probes.records[0].verdict: not_executed
+probes.records[0].record: work/probes/none.json
+probes.records[0].note: "tooling: probe_by_code cannot read Playwright TypeScript; person accepted the gap"
+tooling_findings[0].id: F-1
+tooling_findings[0].tool: probe_by_code.py
+tooling_findings[0].backlog_row: "-"
+tooling_findings[0].instances: "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+unverified[0].id: "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+unverified[0].why: "probe_by_code cannot read Playwright TypeScript"
+unverified[0].expected: "intended_failure receipt on the badge/cart assertion"
+unverified[0].would_settle_it: "a TS-capable probe or a person-run mutation"

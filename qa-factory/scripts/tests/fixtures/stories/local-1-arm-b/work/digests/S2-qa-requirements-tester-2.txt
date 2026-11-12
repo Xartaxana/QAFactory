@@ -1,0 +1,13 @@
+qa-requirements-tester S2 S2-qa-requirements-tester-2 · ok
+Q1 · routed · answered a: the norm holds in all three places
+Q2 · routed · answered a: PUT is right
+Q3 · routed · answered a: quantity grows by 1
+Q4 · routed · answered a: current behaviour is the expected result
+Q6 · routed · answered a: behaviour now is expected
+Q7 · routed · answered a: behaviour now is expected
+Q8 · routed · answered a: behaviour now is expected
+Q9 · routed · answered a: behaviour now is expected
+Q10 · routed · answered a: behaviour now is expected
+Q11 · routed · answered a: behaviour now is expected
+Q12 · routed · answered a: behaviour now is expected
+work/requirements-readiness.json

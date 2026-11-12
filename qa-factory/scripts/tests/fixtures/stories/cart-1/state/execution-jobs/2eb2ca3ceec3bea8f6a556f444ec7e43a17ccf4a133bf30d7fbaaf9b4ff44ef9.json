@@ -1,0 +1,184 @@
+{
+  "job_id": "c9286026d096394cd0e6",
+  "idempotency_key": "S5-qa-automator-7:initial:1",
+  "request_digest": "c9286026d096394cd0e6b608f44b256fb0bbf60409563de4074c27bbdec4f4d7",
+  "status": "completed",
+  "created_at": "2026-10-31T10:36:15+00:00",
+  "request": {
+    "task": "CART-1",
+    "revision": "44",
+    "dispatch_id": "S5-qa-automator-7",
+    "profile_id": "web",
+    "purpose": "initial",
+    "reason": "first run of window 7 new e2e-ui add-to-cart test, one scoped Playwright run",
+    "idempotency_key": "S5-qa-automator-7:initial:1",
+    "input_fingerprint": "0e0709a5db9c7083d1569103b2dce82fbefeff70ca8fbc0dd42149cd6d81dc23",
+    "fingerprint_components": {
+      "source_sha": "5cd21eb101943e64421bf90f6e78d56f8db84d1a",
+      "test_content_sha": "69e7e29238f0c4d32ba5f65db37394bc6adafd7e23295fddd232507ade5f4bda",
+      "config_sha": "445e1f46fc019e7259c045d903614b92b6afeb6188668929d7d62d0bb103b7c4",
+      "dependency_sha": "f617e6788de4c0aae8f45ab0a2a728fbaec4ad5da9393a2cd33dcc0865c3cb54",
+      "runtime_sha": "c99341ce08a4e948e4b29529bb5a5895162daa56237b50176a7f13dfef996eee",
+      "policy_revision": "config-projection-1"
+    },
+    "fingerprint_files": [
+      {
+        "path": "<path-1>\\test-automation-framework\\tests\\e2e\\cart\\add-to-cart.spec.ts",
+        "sha256": "3a0dd8c705cf8f613e32dc88eba21379a720b62b8d23431780dd449845438362",
+        "kind": "test_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\clients\\cartApi.ts",
+        "sha256": "7649585511952857704de173d64092265562955e48127d1d304f3a8152ac897e",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\fixtures\\cartApi.fixture.ts",
+        "sha256": "e405b974d079e9621543c9c7bffa212b4e73e381eff710c90d7723807c104c9c",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\pages\\HomePage.ts",
+        "sha256": "ebaaa348a31171607d4e70c54820c6b843f1db0505414d80a8c7e49c782bf850",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\pages\\CartPage.ts",
+        "sha256": "9a07229cf0400ef95b334d215aa3fab3154de2d8956271cc41658c152288675b",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\pages\\LoginPage.ts",
+        "sha256": "97caf793b9bc0a680e85053be8b54ee9e16315ecb12830966da1c2c6528d5039",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\core\\pages\\BasePage.ts",
+        "sha256": "d5102e4aed11bad7cc2e0c744ac081c3c7855186b193203f66fb778b49a9ca14",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\qa-factory\\config.json",
+        "sha256": "1f8afbe781d38451e08158a013f8901da1e97d606b14a97360924d6aab910041",
+        "kind": "config_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\playwright.config.ts",
+        "sha256": "e399f10b8f99a40354e440f503e6d49a9419420d5ca08ce8610fca98ab7d6947",
+        "kind": "config_files"
+      },
+      {
+        "path": "<path-1>\\test-automation-framework\\package-lock.json",
+        "sha256": "0193ca801951b5674e4356c0cf20b110bdc06f5af312e313e8e2e7d1451cf9e5",
+        "kind": "dependency_files"
+      }
+    ],
+    "freshness": "fresh",
+    "remaining_budget": 1,
+    "selected_instance_ids": [
+      "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+    ],
+    "current_scope_instance_ids": [
+      "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+    ],
+    "runtime_required": true,
+    "target_kind": "deployed_stand",
+    "runtime_provenance": {
+      "profile_id": "web",
+      "timestamp": "2026-10-31T01:57:58Z",
+      "environment_id": "local",
+      "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+      "result": "matched",
+      "evidence_refs": [
+        "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "exact",
+        "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+      }
+    },
+    "runtime_probe": {
+      "argv": [
+        "node",
+        "-e",
+        "const sha=require('child_process').execSync('git -C ../MyBooks rev-parse HEAD').toString().trim();const o={\"profile_id\": \"web\", \"timestamp\": \"2026-10-31T01:57:58Z\", \"environment_id\": \"local\", \"expected_source_revision\": \"a25b0801669b97d76f96f5a981fdc9ad4525d63d\", \"observed_runtime_identity\": \"MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)\", \"result\": \"matched\", \"evidence_refs\": [\"qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json\"], \"provenance\": {\"technical_verification\": true, \"source_linkage\": \"exact\", \"deployed_source_revision\": \"a25b0801669b97d76f96f5a981fdc9ad4525d63d\"}};o.timestamp=new Date().toISOString().slice(0,19)+'Z';o.deployed=sha;o.provenance.deployed_source_revision=sha;o.result=sha===o.expected_source_revision?'matched':'mismatched';console.log(JSON.stringify(o))"
+      ],
+      "cwd": "<path-1>\\test-automation-framework",
+      "timeout_s": 30
+    },
+    "command": {
+      "argv": [
+        "node",
+        "scripts/run-playwright.mjs",
+        "--junit={report_path}",
+        "--project=chromium"
+      ],
+      "cwd": "<path-1>\\test-automation-framework",
+      "reporter": "junit-xml",
+      "report_path": "{report_path}",
+      "scope": "selected",
+      "repo_id": "test-automation-framework",
+      "selector_contract_verified": true,
+      "selector_args": {
+        "@regression CART-1_TC_010 add from catalog shows badge and cart page": [
+          "tests/e2e/cart/add-to-cart.spec.ts"
+        ]
+      }
+    },
+    "instance_contracts": {
+      "@regression CART-1_TC_010 add from catalog shows badge and cart page": {
+        "report_test_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+        "parameters": {}
+      }
+    },
+    "execution": {
+      "schema_version": 1,
+      "reporter": {
+        "format": "junit-xml",
+        "path_template": "{report_path}"
+      },
+      "selection": {
+        "reason": "missing_fresh_evidence",
+        "evidence_refs": [
+          "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+        ]
+      }
+    },
+    "resolved_argv": [
+      "node",
+      "scripts/run-playwright.mjs",
+      "--junit={report_path}",
+      "--project=chromium",
+      "tests/e2e/cart/add-to-cart.spec.ts"
+    ],
+    "runtime_probe_before": {
+      "profile_id": "web",
+      "timestamp": "2026-10-31T10:36:14Z",
+      "environment_id": "local",
+      "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+      "result": "matched",
+      "evidence_refs": [
+        "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "exact",
+        "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+      },
+      "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+    }
+  },
+  "updated_at": "2026-10-31T10:36:44+00:00",
+  "runner_pid": 19436,
+  "runner_started_at": "2026-10-31T10:36:13.856214+00:00",
+  "child_pid": 36052,
+  "child_started_at": "2026-10-31T10:36:21.057643+00:00",
+  "execution_status": "passed",
+  "freshness": "fresh",
+  "summary": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c9286026d096394cd0e6\\initial-c9286026d096394cd0e6-20261031-113621.json",
+  "run_block": "qa-factory\\artifacts\\CART-1\\work\\run-blocks\\20261031T103644314576Z-c9286026d096394cd0e6.json",
+  "baseline_receipt": null
+}

@@ -1,0 +1,373 @@
+# S4: the case designer hands the pinned cases to the case critic.
+#
+# The critic reviews PINNED versions and nothing else, so this file names the version of every
+# case it hands over. Pinning is the orchestrator's step (`case_versions.py --all`, then
+# `--verify`) and the designer has no Bash, so the version has to arrive in writing.
+#
+# `review_scope` is the second reason this file exists: nothing else computes the critic's scope.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-designer-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s4-designer-to-case-critic
+stage: S4
+from_role: qa-case-designer
+to_role: qa-case-critic
+
+inputs:
+  - path: work/handoffs/S4-qa-case-designer-1.yaml
+    what: this file
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in `scope`, at the pinned version named here
+    required: true
+  - path: work/test-plan.json
+    what: the rows these cases answer, with their obligations and oracles
+    required: true
+  - path: work/requirements-register.md
+    what: the oracle behind the plan row - an existing test is never one
+    required: true
+  - path: state/story-case-links.json
+    what: the pins, written by case_versions.py
+    required: true
+
+inputs_read:
+  - path: work/test-plan.json
+    version: plan_revision 35
+    rows: 20
+  - path: work/requirements-register.md
+    version: 58081e5119e9cdda
+
+header:
+  role: qa-case-designer
+  stage: S4
+  window: LOCAL-1_TC_001..LOCAL-1_TC_020
+  verdict: concerns
+
+# One row per case. `state` from vocabulary.row_states: created, updated, deferred, blocked,
+# handed_to_person, impossible.
+scope:
+  - id: LOCAL-1_TC_001
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: catalog add, success and badge, short stock error
+    plan_row: TS-1
+    obligations: OB-1
+    requirements: R-1
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: badge read back through GET /api/cart; stock-0 book tells refusal from success
+  - id: LOCAL-1_TC_002
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: book page add, message differs above 1, disabled button
+    plan_row: TS-2
+    obligations: OB-2
+    requirements: R-2
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: quantity 1 vs 3 gives two messages that must differ; cart read back sums 4
+  - id: LOCAL-1_TC_003
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: move to cart, quantity 1, gone from wishlist
+    plan_row: TS-3
+    obligations: OB-3
+    requirements: R-3
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: wishlist and cart read through their own APIs, not the page
+  - id: LOCAL-1_TC_004
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: move of a book already in cart, quantity raised until Q3
+    plan_row: TS-4
+    obligations: OB-4
+    requirements: R-3
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: quantity before is 2 so an unchanged cart and a summed cart read differently
+  - id: LOCAL-1_TC_005
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: "merge: higher wins, cap, no-stock dropped, empty guest"
+    plan_row: TS-5
+    obligations: OB-5
+    requirements: R-4
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: guest 4 vs account 2 gives 4 not 6, so a summing bug goes red
+  - id: LOCAL-1_TC_006
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: failed merge not shown as success, expected red
+    plan_row: TS-6
+    obligations: OB-6
+    requirements: R-12
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: guest cart read back separately from the page; 500 and timeout both run
+  - id: LOCAL-1_TC_007
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: re-add sums into one item, 201
+    plan_row: TS-7
+    obligations: OB-7
+    requirements: R-5
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: 2 then 3 gives one line of 5; a replace bug reads 3, a duplicate bug two lines
+  - id: LOCAL-1_TC_008
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: quantity and bookId boundaries refused, cart unchanged
+    plan_row: TS-8
+    obligations: OB-8
+    requirements: R-6
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: 0, 1, 999, 1000 cover each edge; cart read back after every refusal
+  - id: LOCAL-1_TC_009
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: OUT_OF_STOCK and INSUFFICIENT_STOCK at stock edge
+    plan_row: TS-9
+    obligations: OB-9
+    requirements: R-7
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: "stock 5 with 3 in cart: add 2 accepted, add 3 refused, tells a cart-ignoring check apart"
+  - id: LOCAL-1_TC_010
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: unknown book id gives 404 BOOK_NOT_FOUND
+    plan_row: TS-10
+    obligations: OB-10
+    requirements: R-8
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: id above the highest book id; cart read back for an empty line
+  - id: LOCAL-1_TC_011
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: guest, user, admin carts separate; foreign item id refused
+    plan_row: TS-11
+    obligations: OB-11
+    requirements: R-9
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: the owner of the foreign item reads it back after the refused PUT and DELETE
+  - id: LOCAL-1_TC_012
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: quantity update capped at stock; PUT/PATCH open (Q2)
+    plan_row: TS-12
+    obligations: OB-12
+    requirements: R-10
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: stock 5 and 6 on both sides of the cap; stored quantity read back
+  - id: LOCAL-1_TC_013
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: badge is the sum of quantities, total is price x quantity
+    plan_row: TS-13
+    obligations: OB-13
+    requirements: R-11
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: true
+    self_probe: "2 of A and 1 of B: a line-counting badge gives 2, a unit-counting one 3"
+  - id: LOCAL-1_TC_014
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: walk of sign-in with guest cart, second sign-in
+    plan_row: TS-14
+    obligations: OB-14
+    requirements: R-4, R-12
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: manual-agent
+    design_review_required: true
+    self_probe: "-: a walk, not run by the designer"
+  - id: LOCAL-1_TC_015
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: walk of real input, double click, sold out meanwhile
+    plan_row: TS-15
+    obligations: OB-15
+    requirements: R-5, R-6, R-7, R-8
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: manual-agent
+    design_review_required: true
+    self_probe: "-: a walk, not run by the designer"
+  - id: LOCAL-1_TC_016
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: walk of guest and signed-in browsers, sign-out leftovers
+    plan_row: TS-16
+    obligations: OB-16
+    requirements: R-9
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: manual-agent
+    design_review_required: true
+    self_probe: "-: a walk, not run by the designer"
+  - id: LOCAL-1_TC_017
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: cart page under failed calls, likely red
+    plan_row: TS-17
+    obligations: OB-17
+    requirements: R-14
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: stored cart read through an unintercepted GET after each failed write
+  - id: LOCAL-1_TC_018
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: wishlist move under failed calls, likely red
+    plan_row: TS-18
+    obligations: OB-18
+    requirements: R-13
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: both lists read through their own APIs, not the page
+  - id: LOCAL-1_TC_019
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: catalog add under failed POST shows error not success
+    plan_row: TS-19
+    obligations: OB-19
+    requirements: R-1
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: badge compared with the stored cart, not only the toast
+  - id: LOCAL-1_TC_020
+    state: created  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: book page add and read under failed calls
+    plan_row: TS-20
+    obligations: OB-20
+    requirements: R-2
+    case_version: pinned by case_versions.py after handover
+    origin: new
+    reuse_of: -
+    disposition: automate
+    design_review_required: false
+    self_probe: quantity 3 failed add must show neither success message; cart read back
+
+# The critic's scope, computed from `design_review_required` and stated here. The critic reviews
+# exactly this set and answers for each id; anything outside it is `review_skipped` by rule.
+review_scope:
+  cases: LOCAL-1_TC_005, LOCAL-1_TC_006, LOCAL-1_TC_007, LOCAL-1_TC_009, LOCAL-1_TC_011, LOCAL-1_TC_012, LOCAL-1_TC_013, LOCAL-1_TC_014, LOCAL-1_TC_015, LOCAL-1_TC_016
+  rounds_used: 0
+  focus:
+    - R-5 to R-14 are derived from code, so their Thens wait on Q4 or a raised question; the values sit in question_thens
+    - TC_004 and TC_012 hold open Q3 and Q2; TC_006 is an expected red under Q5
+    - cases are in the project store test-cases/cart/ because the guard refused work/test-cases
+
+artifacts:
+  cases_root: test-cases
+  case_links: state/story-case-links.json
+  appendix: <work/case-appendix.md, when it has been rendered>
+
+claims:
+  every_case_bearing_plan_row_has_at_least_one_case: true
+  every_case_quotes_its_rows_obligation_ids: true
+  every_case_in_scope_is_pinned_and_the_version_is_named: false
+  every_case_names_the_requirement_it_proves_not_a_test: true
+  existing_cases_were_checked_before_new_ones_were_written: true
+
+expected_of_the_receiver:
+  - "answer for every id in `review_scope.cases` by name - an unreviewed row makes the verdict
+     `partial`, and its id reaches the gate A message"
+  - "review the pinned `case_version` above; a review of bytes that have since changed is not a
+     review of this window"
+  - "every finding carries `expected` and `check` - see s4-case-critic-to-designer"
+
+# What you tried and saw, one row per attempt: the acceptor of the stage reads it against your Good outcome
+# (spec t-1765 B3). Empty only with `tried_note` saying why nothing was tried (a grounding window, a repair of
+# named findings). Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: R-5
+    technique: Error guessing
+    observation: validator refused implementation-only R as Then oracle; rewrote TC_007 to unknown under Q4
+    evidence: "test-cases/cart/LOCAL-1_TC_007.md#then_oracles"
+  - requirement: R-7
+    technique: Boundary value analysis
+    observation: "stock 5 with 3 in cart: 5 accepted, 6 refused"
+    evidence: "test-cases/cart/LOCAL-1_TC_009.md#Steps"
+  - requirement: R-6
+    technique: Boundary value analysis
+    observation: quantity 0, 1, 999, 1000, 1.5, -1; bookId 0 and -3 each one case input
+    evidence: "test-cases/cart/LOCAL-1_TC_008.md#Steps"
+  - requirement: R-4
+    technique: Equivalence partitioning
+    observation: five merge partitions, each with a different expected quantity
+    evidence: "test-cases/cart/LOCAL-1_TC_005.md#Then"
+  - requirement: cart
+    technique: Error guessing
+    observation: searched the tests store for cart cases; none, only EX-1 and EX-2 helper tests, read only
+    evidence: "qa-factory/artifacts/LOCAL-1/test-plan.md#Recommended regression"
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: LOCAL-1_TC_004
+    reason: expectation_unconfirmed
+    detail: quantity after move of a book already in cart waits on Q3 (raised)
+  - id: LOCAL-1_TC_006
+    reason: contradicts_requirement
+    detail: code shows success on failed merge; expected red, wording waits on Q5
+  - id: LOCAL-1_TC_012
+    reason: expectation_unconfirmed
+    detail: PUT or PATCH (Q2) and the three update Thens are raised
+  - id: LOCAL-1_TC_009
+    reason: expectation_unconfirmed
+    detail: R-7 codes at the stock edge are raised; no ticket text gives them
+  - id: LOCAL-1_TC_015
+    reason: expectation_unconfirmed
+    detail: sold-out-meanwhile Then is raised
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[1].version
+    source: "sha256 of work/requirements-register.md"

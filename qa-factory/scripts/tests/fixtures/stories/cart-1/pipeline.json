@@ -1,0 +1,429 @@
+{
+  "ticket": "CART-1",
+  "parent_feature": null,
+  "size": "XXL",
+  "environment": "local",
+  "environment_pending": false,
+  "implementation_source": "current-code",
+  "warnings": [
+    "ticket is the person's text (qa-factory/tickets/CART-1.md), not read from Jira; CART-1 is a local placeholder key (supersedes ADD-TO-CART)",
+    "host_hooks unknown; vcs_api unknown; no lock file the factory reads"
+  ],
+  "stages": {
+    "S0": {
+      "status": "done",
+      "role": null,
+      "digest": "preflight green, env=local",
+      "started": "2026-10-31T00:53:58+00:00",
+      "finished": "2026-10-31T00:53:58+00:00",
+      "imported": true,
+      "reason": "preflight green, env=local"
+    },
+    "S1": {
+      "status": "done",
+      "role": "qa-scout",
+      "digest": "qa-scout S1 grounding · CART-1 · concerns · qa-factory/artifacts/CART-1/work/context-manifest.json",
+      "dispatch_id": "S1-qa-scout-1",
+      "stage_started": 1793408053.880105,
+      "stage_finished": 1793408406.864916,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T00:54:13+00:00",
+      "reason": "qa-scout S1 grounding · CART-1 · concerns · qa-factory/artifacts/CART-1/work/context-manifest.json",
+      "agent_id": "aeb416fdfbda86736",
+      "finished": "2026-10-31T01:00:10+00:00"
+    },
+    "S2": {
+      "status": "done",
+      "dispatch_id": "S2-qa-requirements-tester-1",
+      "stage_started": 1793408424.0283241,
+      "stage_finished": 1793408751.8837945,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T01:00:24+00:00",
+      "role": "qa-requirements-tester",
+      "digest": "qa-requirements-tester S2 CART-1 · concerns · qa-factory/artifacts/CART-1/understanding.md",
+      "reason": "qa-requirements-tester S2 CART-1 · concerns · qa-factory/artifacts/CART-1/understanding.md",
+      "agent_id": "a07c8fc6bc95456f9",
+      "finished": "2026-10-31T01:05:55+00:00"
+    },
+    "S3": {
+      "status": "done",
+      "dispatch_id": "S3-qa-test-strategist-1",
+      "stage_started": 1793408767.266585,
+      "stage_finished": 1793409215.4659636,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T01:06:07+00:00",
+      "role": "qa-test-strategist",
+      "digest": "qa-test-strategist S3 CART-1 · concerns · qa-factory/artifacts/CART-1/test-plan.md",
+      "reason": "qa-test-strategist S3 CART-1 · concerns · qa-factory/artifacts/CART-1/test-plan.md",
+      "agent_id": "aad0cd258bd2a720f",
+      "finished": "2026-10-31T01:13:37+00:00"
+    },
+    "S4": {
+      "status": "done",
+      "dispatch_id": "S4-qa-case-critic-2",
+      "stage_started": 1793409231.6365385,
+      "stage_finished": 1793410023.3058076,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T01:13:51+00:00",
+      "role": "qa-case-critic",
+      "digest": "qa-case-critic S4 CART-1_TC_005,TC_006,TC_008,TC_009 · ok · qa-factory/artifacts/CART-1/work/test-cases/critic-findings.md",
+      "reason": "qa-case-critic S4 CART-1_TC_005,TC_006,TC_008,TC_009 · ok · qa-factory/artifacts/CART-1/work/test-cases/critic-findings.md",
+      "agent_id": "a883227f7747bf090",
+      "later_work_status": "running",
+      "active_dispatch_id": "S4-qa-case-critic-2",
+      "finished": "2026-10-31T01:27:10+00:00"
+    },
+    "S5": {
+      "status": "done",
+      "dispatch_id": "S5-qa-code-critic-7",
+      "stage_started": 1793411234.3936388,
+      "stage_finished": 1793443487.0098023,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T01:47:14+00:00",
+      "role": "qa-code-critic",
+      "digest": "qa-code-critic S5 CART-1_TC_010 · concerns · qa-factory/artifacts/CART-1/work/test-code/critic-findings-7.md",
+      "reason": "qa-code-critic S5 CART-1_TC_010 · concerns · qa-factory/artifacts/CART-1/work/test-code/critic-findings-7.md",
+      "agent_id": "aabe1558e663fcc3d",
+      "finished": "2026-10-31T10:44:50+00:00"
+    },
+    "S6": {
+      "status": "done",
+      "dispatch_id": "S6-qa-runner-2",
+      "stage_started": 1793443520.1228323,
+      "stage_finished": 1793448245.81752,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T10:45:20+00:00",
+      "role": "qa-runner",
+      "digest": "qa-runner S6 CART-1_TC_011,CART-1_TC_012 · ok · qa-factory/artifacts/CART-1/work/handoffs/S6-qa-runner-2.yaml",
+      "reason": "qa-runner S6 CART-1_TC_011,CART-1_TC_012 · ok · qa-factory/artifacts/CART-1/work/handoffs/S6-qa-runner-2.yaml",
+      "agent_id": "aa3061d5e707c928a",
+      "repaired_by_recover": true,
+      "finished": "2026-10-31T12:04:14+00:00"
+    },
+    "S7": {
+      "status": "done",
+      "dispatch_id": "S7-qa-failure-analyst-1",
+      "stage_started": 1793448288.397026,
+      "stage_finished": 1793448476.370183,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T12:04:48+00:00",
+      "role": "qa-failure-analyst",
+      "digest": "qa-failure-analyst S7 CART-1 (TC_001-TC_012) · concerns · qa-factory/artifacts/CART-1/work/triage.json",
+      "reason": "qa-failure-analyst S7 CART-1 (TC_001-TC_012) · concerns · qa-factory/artifacts/CART-1/work/triage.json",
+      "agent_id": "a0879df61820441cb",
+      "finished": "2026-10-31T12:08:03+00:00"
+    },
+    "S8": {
+      "status": "done",
+      "dispatch_id": "S8-qa-doc-scribe-1",
+      "stage_started": 1793448503.343282,
+      "stage_finished": 1793448712.6292884,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T12:08:23+00:00",
+      "role": "qa-doc-scribe",
+      "digest": "qa-doc-scribe S8 CART-1 · concerns · qa-factory/artifacts/CART-1/test-report.md",
+      "reason": "qa-doc-scribe S8 CART-1 · concerns · qa-factory/artifacts/CART-1/test-report.md",
+      "agent_id": "acd9a4df05b3a381b",
+      "finished": "2026-10-31T12:11:59+00:00"
+    },
+    "S9": {
+      "status": "done",
+      "dispatch_id": "S9-qa-retro-analyst-1",
+      "stage_started": 1793455951.010623,
+      "stage_finished": 1793456327.7815018,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-31T14:12:31+00:00",
+      "role": "qa-retro-analyst",
+      "digest": "qa-retro-analyst S9 CART-1 · concerns · qa-factory/artifacts/CART-1/retro.md",
+      "reason": "qa-retro-analyst S9 CART-1 · concerns · qa-factory/artifacts/CART-1/retro.md",
+      "agent_id": "a5ac1ca19470c0a8c",
+      "finished": "2026-10-31T14:21:04+00:00"
+    }
+  },
+  "gates": {
+    "A": {
+      "id": "gateA-CART-1",
+      "gate": "A",
+      "action": "approve_plan_and_cases",
+      "status": "approved",
+      "authorization_source": "Test it as one story.\nQ1: a (but if the code does not let a user do the intended action, or has any other error that contradicts the application's logic, that is a bug)\nQ2: a\nQ3: a\nQ4: a\nUncommitted changes: go on on this branch.\nThe application is not in a container: MyBooks runs as a local node process (npm run start in ../MyBooks, port 3000); docker holds only the database and Mailpit. The story has no code changes, so there is nothing to compare.\nFor the user: use EMAIL_USER / EMAIL_PASS, they are this project's user keys.\nValues are set in .env now, rehearse again.\nTS-10: automate it\napprove\n",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "input_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+      "scope": [
+        "CART-1_TC_001",
+        "CART-1_TC_002",
+        "CART-1_TC_003",
+        "CART-1_TC_004",
+        "CART-1_TC_005",
+        "CART-1_TC_006",
+        "CART-1_TC_007",
+        "CART-1_TC_008",
+        "CART-1_TC_009",
+        "CART-1_TC_010",
+        "CART-1_TC_011",
+        "CART-1_TC_012"
+      ],
+      "plan_content_hash": "bb3dc3a9487d2607d929236cecbd67f3f090e3e986f7a5aae941d07b0b712e65",
+      "plan_semantic_hash": "bb3dc3a9487d2607d929236cecbd67f3f090e3e986f7a5aae941d07b0b712e65",
+      "oracle_content_hashes": {
+        "OB-1": "d2ca65757cc854a76e84b98f80a0f765ce6d738122fb730146f94a1cbcf35f06",
+        "OB-2": "d86597cc78d67d98cba38d36d265b7f4bd62ffdf81eba475bd5f2ee0abc8a828",
+        "OB-3": "f5a5b65234691e3806879f8396e0a0a77fd25de49c1c4e1bbfae6d4a40dc9216",
+        "OB-4": "f948154dd47fde64d88152ad5e04b95bd4243631ca89e37157945ac77b6602ac",
+        "OB-5": "0ce7ed3f9fa9b9d0180d5bd135b0f8ae7a5519efc8cc011d068bdebf7df731da",
+        "OB-6": "928cdb331141c7d291f056cef47fd8552d898793e5445b5ab826a02a52ffccf4",
+        "OB-7": "e88e852b5559fe65f49bbfc9176d12fc761c9d0fa5eba6111043f21cb95fbd8b",
+        "OB-8": "d3f9b3b1ea7e99658ac358a9c941d9e2b8053bca45bc69bc938049bf861f1940",
+        "OB-9": "df41d75c92cffac4fb5456de7efe680584d3bb280e804a4d00c2b64b7d4766b4",
+        "OB-10": "b126dc157be0b3f1eb27d9315b74291af37d227f17775c63baaeb22cd427a67d",
+        "OB-11": "c57f1206ee6f7dfecb96ef592b552ad40d1ca79dcab14f824407e6381cbdd220",
+        "OB-12": "62c60a55201a903e32ecaf12068fd6210fcf7c661c0c55a96cb34957ff699f83"
+      },
+      "coverage_contract_revisions": [
+        "coverage-observation-v1"
+      ],
+      "lifecycle_actions_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_inventory_hash": "a8b4824bc60736226248c77e262102b9d4ca73861a666421c26a84871b6440e7",
+      "source_completeness": {
+        "complete": false,
+        "gate_blocked": false,
+        "pending": [],
+        "unavailable": [],
+        "incomplete_materials": [],
+        "unavailable_materials": [],
+        "accepted_gaps": [
+          "SRC-ad1a8a3b1d2d9cd1f90f"
+        ],
+        "review_missing": false,
+        "unreviewed": [],
+        "awaiting_review": false,
+        "open_points": {},
+        "closed_by_person": {
+          "SRC-ad1a8a3b1d2d9cd1f90f": [
+            "source:unavailable"
+          ]
+        },
+        "closed_by_class": {},
+        "defaulted_points": {},
+        "defaulted_gaps": [],
+        "gap_class_problem": "",
+        "left_out_by_word": {},
+        "earlier_rule_line": "",
+        "earlier_rule_sources": []
+      },
+      "design_reviews": [
+        {
+          "plan_row": "TS-5",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+          "case_versions": [
+            "cv_3767896d512c623e0b59"
+          ],
+          "input_hash": "d8a436dc0656612f1c97b4682c521e4433547b1a38a615b78d3db7b068791b0e",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-6",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+          "case_versions": [
+            "cv_3736b2c697846070acdd"
+          ],
+          "input_hash": "d8a436dc0656612f1c97b4682c521e4433547b1a38a615b78d3db7b068791b0e",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-8",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+          "case_versions": [
+            "cv_ce42982f1616cbc645f9"
+          ],
+          "input_hash": "d8a436dc0656612f1c97b4682c521e4433547b1a38a615b78d3db7b068791b0e",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        },
+        {
+          "plan_row": "TS-9",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+          "case_versions": [
+            "cv_2b3ebd621560f9547704"
+          ],
+          "input_hash": "d8a436dc0656612f1c97b4682c521e4433547b1a38a615b78d3db7b068791b0e",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-2"
+        }
+      ],
+      "decision": "approved"
+    },
+    "B": {
+      "id": "gateB-CART-1",
+      "gate": "B",
+      "action": "approve_delivery",
+      "status": "approved",
+      "authorization_source": "No MR needed, otherwise continue with what we have. (original: MR ne nado v ostalnom prodolzhai s tem chto est)\ndeliver with known gaps: the person chose to continue with what exists (R-9, R-13, R-16 stay without cases).\nCART-1_TC_009: open\n",
+      "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+      "input_revision": "1f36712b712e366ea8aa411180340cb0eb996d021f50e33001f9011a17112452",
+      "scope": [
+        "CART-1_TC_001",
+        "CART-1_TC_002",
+        "CART-1_TC_003",
+        "CART-1_TC_004",
+        "CART-1_TC_005",
+        "CART-1_TC_006",
+        "CART-1_TC_007",
+        "CART-1_TC_008",
+        "CART-1_TC_009",
+        "CART-1_TC_010",
+        "CART-1_TC_011",
+        "CART-1_TC_012"
+      ],
+      "selected_drafts": [],
+      "orders": {
+        "bugs": "not_ordered",
+        "mr": "not_ordered"
+      },
+      "decided_seq": 142,
+      "decided_at": "2026-10-31T14:11:54+00:00",
+      "orders_settled": {},
+      "decision": "approved",
+      "orders_due": []
+    }
+  },
+  "halts": [],
+  "controller_revision": 147,
+  "run_mode": {
+    "mode": "desktop",
+    "plugin_root": "<path-2>\\ai-packages\\qa-factory",
+    "plugin_version": "0.10.6",
+    "since": "2026-10-31T00:54:12+00:00"
+  },
+  "size_initial": "XXL",
+  "size_final": "XXL",
+  "stage_overrides": [
+    {
+      "stage": "S4",
+      "match": "vcs-1",
+      "decision": "Uncommitted changes: go on on this branch.",
+      "at": "2026-10-31T01:45:43+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S4",
+      "match": "s5_runtime_probe-1",
+      "decision": "The application is not in a container: MyBooks runs as a local node process (npm run start in ../MyBooks, port 3000); docker holds only the database and Mailpit. The story has no code changes, so there is nothing to compare.",
+      "at": "2026-10-31T01:45:45+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "the test repository has 7 uncommitted change",
+      "decision": "Uncommitted changes: go on on this branch.",
+      "at": "2026-10-31T01:46:18+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "runtime probe: web",
+      "decision": "The application is not in a container: MyBooks runs as a local node process (npm run start in ../MyBooks, port 3000); docker holds only the database and Mailpit. The story has no code changes, so there is nothing to compare.",
+      "at": "2026-10-31T01:46:20+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_001",
+      "decision": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+      "at": "2026-10-31T09:26:06+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_002",
+      "decision": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+      "at": "2026-10-31T09:26:08+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_003",
+      "decision": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+      "at": "2026-10-31T09:26:09+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_004",
+      "decision": "Accept unprobed (Recommended): the factory probe tool cannot read the TypeScript tests of window 1 (CART-1_TC_001..004); keep them, list them under Left with you.",
+      "at": "2026-10-31T09:26:10+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_005",
+      "decision": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+      "at": "2026-10-31T10:11:36+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_006",
+      "decision": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+      "at": "2026-10-31T10:11:37+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_007",
+      "decision": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+      "at": "2026-10-31T10:11:38+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_008",
+      "decision": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+      "at": "2026-10-31T10:11:39+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_009",
+      "decision": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+      "at": "2026-10-31T10:11:40+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: CART-1_TC_010",
+      "decision": "Accept unprobed (Recommended): the UI test CART-1_TC_010 stays green-but-unprobed (probe tool cannot read the TypeScript tests); list it under Left with you.",
+      "at": "2026-10-31T10:43:09+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S6",
+      "match": "no runtime probe registered",
+      "decision": "The stand runs the right version. Do not skip the cases. (original: Na stende pravilnaya versiya. Keisy ne propuskat)",
+      "at": "2026-10-31T11:51:54+00:00",
+      "by": "human"
+    }
+  ],
+  "first_test_run_at": "2026-10-31T02:01:01+00:00",
+  "closed_at": "2026-10-31T14:11:54+00:00",
+  "closed_by": "gate B + S8 done"
+}

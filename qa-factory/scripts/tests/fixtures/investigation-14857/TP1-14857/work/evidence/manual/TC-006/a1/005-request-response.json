@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940",
+    "headers": {
+      "User-Agent": "qa-factory/0.10.2",
+      "Authorization": "[redacted]"
+    },
+    "body": "",
+    "body_encoding": "utf-8",
+    "body_bytes_stored": 0,
+    "truncated": false
+  },
+  "response": {
+    "status": 200,
+    "elapsed_s": 0.039,
+    "headers": {
+      "date": "Obl, 27 Oct 2026 01:18:01 DOT",
+      "server": "uvicorn",
+      "content-length": "1665",
+      "content-type": "application/json",
+      "Connection": "close"
+    },
+    "body": "{\"description\":\"tc006 probe\",\"current__chunks_state\":1,\"link\":\"https://github.com/weights/Hello-World\",\"jira\":null,\"tokens_usage\":{\"input_tokens\":0,\"output_tokens\":0,\"cached_tokens\":0,\"money_spent\":0.0,\"cached_tokens_money_spent\":0.0,\"cached_tokens_creation_money_spent\":0.0,\"routing\":null},\"processing_info\":{\"total_size_kb\":0.0126953125,\"total_documents\":1,\"skipped_documents\":0,\"unique_extensions\":[\"\"],\"filtered_documents\":[],\"documents_count_key\":1,\"average_file_size_bytes\":13.0},\"repo_name\":\"tc006-15247\",\"processed_files\":[\"README\"],\"files_filter\":\"\",\"xray\":null,\"provider_fields\":null,\"lifecycle_state\":\"ACTIVE\",\"index_type\":\"code\",\"completed\":true,\"google_doc_link\":\"\",\"azure_devops_wiki\":null,\"bedrock\":null,\"prompt\":null,\"error\":false,\"text\":\"\",\"user_abilities\":[\"read\",\"write\",\"delete\"],\"azure_devops_work_item\":null,\"uses_legacy_es_naming\":false,\"embeddings_model\":\"ada-002\",\"uploaded_files\":[],\"full_name\":\"4164ee0b-2a2e-420a-849d-7f365f23b940-testproject1-tc006-15247-code\",\"xwiki\":null,\"is_queued\":false,\"marked_stale_at\":null,\"date\":\"2026-10-27T01:16:08.812440\",\"summarization_model\":null,\"created_by\":{\"id\":\"759ca562-f4ad-4d2e-934c-283289253c65\",\"username\":\"admin\",\"name\":\"System Administrator\"},\"updated_by\":null,\"sharepoint\":null,\"last_reindex_triggered_at\":null,\"update_date\":\"2026-10-27T01:16:15.540576\",\"id\":\"4164ee0b-2a2e-420a-849d-7f365f23b940\",\"current_state\":1,\"project_space_visible\":false,\"docs_generation\":false,\"is_fetching\":false,\"setting_id\":null,\"project_name\":\"testproject1\",\"complete_state\":1,\"branch\":\"master\",\"confluence\":null,\"vcs_type\":\"git\",\"guardrail_assignments\":[],\"last_reindex_date\":null,\"cron_expression\":null,\"timezone\":\"UTC\"}",
+    "body_encoding": "utf-8",
+    "body_bytes_stored": 1665,
+    "truncated": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "ticket": "QA-1",
+  "generated": "2026-09-16T12:29:40+00:00",
+  "rows": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "failed:FLAKY",
+      "detail": "TC-002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "impossible",
+      "detail": "TC-003"
+    },
+    {
+      "ref": "TC-001",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/test_coupon.py::TC-001"
+    },
+    {
+      "ref": "TC-002",
+      "kind": "test",
+      "state": "not_verified_flaky",
+      "detail": "tests/test_cart_banner.py::TC-002 — mechanism unnamed"
+    },
+    {
+      "ref": "QA-1-2",
+      "kind": "plan_row",
+      "state": "subtask_in_progress",
+      "detail": "status in progress at S1 — not closed by this story"
+    }
+  ],
+  "delivery_ready": false,
+  "reasons": [
+    "manifest: TC-003 is impossible and carries no gate decision",
+    "traceability: R-3 has no terminal outcome (TC-003: unresolved (impossible) with no decision attached)",
+    "traceability: R-4 has no terminal outcome (no row of test-plan.md names this requirement)",
+    "triage: tests/test_cart_banner.py::test_banner is FLAKY and was not fixed (fix_result: none) — it is not verified; quarantine is a human decision at gate B, with a debt and a trigger",
+    "review: no critic verdict for at least one test",
+    "subtask QA-1-2 is still in progress — the story's own scope is not closed",
+    "ledger: TS-2 is `failed:FLAKY` (TC-002)",
+    "ledger: TS-3 is `impossible` (TC-003)",
+    "ledger: TC-002 is `not_verified_flaky` (tests/test_cart_banner.py::TC-002 — mechanism unnamed)"
+  ],
+  "subtasks_open": [
+    {
+      "key": "QA-1-2",
+      "status": "in progress"
+    }
+  ],
+  "review_skipped": true
+}

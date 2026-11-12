@@ -1,0 +1,11 @@
+{
+  "answered": {
+    "fingerprint": "0e020639ef6b1c61",
+    "reason": "the assistant answered: it can create issues",
+    "status": "confirmed"
+  },
+  "channel": "jira",
+  "checked_at": "2026-09-01T10:00:00+00:00",
+  "fingerprint": "0123456789abcdef",
+  "status": "confirmed"
+}

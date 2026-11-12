@@ -1,0 +1,142 @@
+# S2 -> S3: the requirements register is handed to the strategist.
+#
+# The register is the story's oracle, so this file is where the factory proves the register was
+# built from everything it was given. `inputs_read` is not bookkeeping: it is the answer to the
+# one failure that has no refusal attached to it - a source or a diff hunk nobody opened. On
+# TP1-13797 the tester read part of `impl-diff.txt`, wrote 14 requirements, and every later
+# stage was correct about the wrong 14. The repaired run read every hunk and reached 21.
+#
+# The strategist may not add a requirement and may not repair one. Whatever is missing here is
+# missing from the plan, the cases, the tests and the report.
+schema_version: 1
+contract: s2-tester-to-strategist
+stage: S2
+from_role: qa-requirements-tester
+to_role: qa-test-strategist
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/requirements-register.md
+    what: every requirement with its source, revision, impact class and observable, the branches of the requirements (`## Branches`, BN-n) and a home for every sentence of the story's text (`## Source obligations`)
+    required: true
+  - path: work/requirements-readiness.json
+    what: the open questions with their readings and owners
+    required: true
+  - path: understanding.md
+    what: the brief the person reads at gate A, and the Size line
+    required: true
+  - path: work/sizing.json
+    what: the computed size, weights and the arithmetic behind them
+    required: true
+
+# One line per entry of the scout's `inputs`, with what was actually read of it. The counts come
+# from the scout's handoff and the answer is `<read> of <handed>`; anything short of the whole
+# is a `blocked` field, not a smaller number quietly written.
+inputs_read:
+  - path: work/impl-diff.txt   # absent when the source is `ungrounded` or `current-code`
+    handed: <the scout's `implementation.diff.hunks`>
+    read: <how many hunks were actually opened>
+  - path: work/context-bundle.json
+    version: <the bundle revision or hash>
+  - path: <each source the scout marked `relevant`>
+    version: <the revision the register cites>
+
+header:
+  role: qa-requirements-tester
+  stage: S2
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per requirement. This is the register in its machine form; the prose stays in the
+# register file. `state` from vocabulary.row_states - normally `found`, or `unresolved` for a
+# requirement whose oracle nobody can name yet.
+scope:
+  - id: <R-n>
+    state: <one of vocabulary.row_states>   # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: <= 80 characters>
+    kind: <one of vocabulary.requirement_kinds - confirmed_ac|technical_invariant|derived_risk>
+    source: <SRC-ID or path, plus the revision it was read at>
+    observable: <how it can be observed, or `none` with the reason>
+    impact_class: <the damage class, carried to the plan as impact_class>
+    delta: <the register's delta column, new, changed or unchanged - optional; leave it out when the register has no such column>
+    derived_from_hunk: <path:line of the diff hunk, for a derived requirement; a dash otherwise>
+    # the register's `derived_from` cell takes the marks of vocabulary.derived_from_marks (`bug:candidate-defect`) as a segment
+
+# Requirements that disagree with each other or with a source. Both readings travel: the plan row
+# carries `source_conflict` or `oracle_unknown`, the design review is forced, and the owner sees
+# BOTH readings at gate A. A matrix cell that reaches no plan row is an exit-gate error at S3.
+contradiction_matrix:
+  - id: <C-n>
+    requirement: <R-n>
+    contradicts: <R-m, or the source and what it says>
+    reading_a: <what follows if the requirement stands>
+    reading_b: <what follows if the other side stands>
+    owner_role: <one of vocabulary.question_owners - po_ba|dev_arch|qa>
+
+# Questions that block understanding. Each travels whole - the statement, what the sources say and
+# where, and the lettered readings with what each one costs. A question that arrives without its
+# readings goes back to this role, never to the person (TP1-15045).
+open_questions:
+  - id: <Q-n>
+    statement: <the question, one sentence>
+    owner_role: <one of vocabulary.question_owners - po_ba|dev_arch|qa>
+    severity: <blocking|non_blocking>
+    sources_say: <what the sources say, with where>
+    readings:
+      - id: a
+        reading: <what it would mean>
+        cost: <what testing it this way costs or risks>
+
+size:
+  computed: <one of vocabulary.sizes - XS|S|M|L|XL|XXL>
+  override: <the role's override, or a dash>
+  reasoning_ref: work/sizing.json
+
+artifacts:
+  register: work/requirements-register.md
+  readiness: work/requirements-readiness.json
+  understanding: understanding.md
+  sizing: work/sizing.json
+
+claims:
+  every_hunk_of_the_diff_was_read: <true|false>
+  every_requirement_has_an_observable_or_says_none: <true|false>
+  contradiction_matrix_walked_in_full: <true|false>
+  size_computed_by_sizing_py_not_quoted: <true|false>
+  size_recorded_in_pipeline: <true|false>     # `null` in pipeline.json while sizing.json said XXL
+
+expected_of_the_receiver:
+  - "every requirement above reaches a plan row (a `skip` row with a reason is a row) - the
+     strategist may not drop one silently and may not invent one"
+  - "a row touched by the contradiction matrix carries `source_conflict: true` or
+     `oracle_unknown: true` and forces design review at S4"
+  - "`observable: none` is a gate A question AND a plan row (`unverifiable` with `question_refs` and `if_answered`), never a
+     reason to skip the requirement; a register row marked `derived_from: bug:candidate-defect` (a suspect place in the code,
+     `observable: current-code:<file>:<line>`) asks for a test row: `automate` or `manual-agent`, or `unverifiable` with a branch
+     that sets one"
+  - "every branch of the register (`## Branches`, BN-n) is read as a unit of its own: a plan row carries it or it is named with a reason - it is never folded into the text of its requirement"
+
+# What you tried and saw, one row per attempt: the acceptor of the stage reads it against your Good outcome
+# (spec t-1765 B3). Empty only with `tried_note` saying why nothing was tried (a grounding window, a repair of
+# named findings). Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: <R-n, a source id or an area>
+    technique: <the technique by its name in your charter>
+    observation: <what you saw, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <R-n or Q-n>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

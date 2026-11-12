@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "**Test ID**: TC-001\n**Test Title**: Add in-stock product to cart with default quantity\n**Preconditions**: User is on product page of an in-stock item\n**Test Steps**:\n1. Click \"Add to Cart\" button\n**Expected Results**:\n1. Item appears in cart with correct price and quantity = 1\n2. Cart icon updates to show item count\n3. Success message is displayed\n**Test Type**: Functional\n**Priority**: Critical\n**Classification**: Positive",
+  "id": "13527654",
+  "key": "REF-27",
+  "labels": [
+    "shopping-cart",
+    "test-case"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-16",
+        "relation": "duplicates",
+        "status": "Open",
+        "summary": "Add in-stock book to cart with quantity 1",
+        "type": "Duplicate"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Critical",
+  "provenance": {
+    "bytes": 14903,
+    "fields_requested": "*all",
+    "sha256": "73adec2b5d9e28881faf317b2a6c9243d4329305afc52c24122aca0295505def",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T11:46:42.596+0000",
+  "status": "Closed",
+  "subtasks": [],
+  "title": "TC-001: Add in-stock product to cart with default quantity",
+  "type": "Test"
+}

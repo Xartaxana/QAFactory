@@ -1,0 +1,1 @@
+Pokazat v otchete (Rekomenduyu): 11 krasnykh testov s proverkoi tseny cherez GET /api/cart ostayutsya defektami keisov (CASE_DEFECT), bez perepisyvaniya keisov i bez zavedeniya bagov; v otchete dlya gate B pokazat kak defekt keisov, pravku Then reshaet chelovek.

@@ -1,0 +1,230 @@
+{
+ "schema_version": 2,
+ "task_id": "TP1-12586",
+ "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+ "head": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+ "controller_revision": 158,
+ "execution_status": "failed",
+ "results": [
+  {
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_ms_teams_integration",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_948bf9ee76564b469863"
+    }
+   ],
+   "obligation_ids": [
+    "OB-2",
+    "OB-3"
+   ],
+   "parameters": {},
+   "status": "failed",
+   "reason": "AssertionError: Then 1: the PUT must answer 2xx for MS Teams, body: {\"error\":{\"message\":\"Project mismatch\",\"details\":\"Setting '489a4ddf-5dc2-4684-bd49-48739a7d6",
+   "report_matched": true,
+   "attempt_id": "a96f5e653377735139aa",
+   "purpose": "initial",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+   "source_fingerprint": {
+    "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+    "test_content_sha": "d1ffc6750878161745c9b8a3001f1e1853f5390cfb10d6893eb48f858d874638",
+    "config_sha": "871d2fe9533513742838a6d604cb177dbe2e33657d5c94aa73b005df1bbd1b70",
+    "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+    "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "2a0e8ac22811c61c2e9d525ca06b31d8cc2abdf3c6e3adf79f59950911de1120",
+   "instance_content_scope": "function",
+   "instance_code_sha": "8bd09753cdea3af1e6b87bc614889783a505d2dad8c00507c0e9d11ae2807d7c"
+  },
+  {
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "test_id": "tests.integrations.project.test_ms_teams_integration::test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "case_version_links": [
+    {
+     "case_id": "TC-003",
+     "version": "cv_2ac2e11b9742c96c2d8a"
+    }
+   ],
+   "obligation_ids": [
+    "OB-4"
+   ],
+   "parameters": {},
+   "status": "failed",
+   "reason": "AssertionError: Then 2: the rejection reason must not be the 'Project mismatch' text.",
+   "report_matched": true,
+   "attempt_id": "a96f5e653377735139aa",
+   "purpose": "initial",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+   "source_fingerprint": {
+    "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+    "test_content_sha": "d1ffc6750878161745c9b8a3001f1e1853f5390cfb10d6893eb48f858d874638",
+    "config_sha": "871d2fe9533513742838a6d604cb177dbe2e33657d5c94aa73b005df1bbd1b70",
+    "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+    "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "006845b804bedb40a845315329ad82e44cf818fa98f080bc3e1b7711709ba193",
+   "instance_content_scope": "function",
+   "instance_code_sha": "af4571a8a89328b36b07a6a0dbb065a5b41ea726fa493c18fd275daf2e3ce306"
+  },
+  {
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_ms_teams_integration",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_948bf9ee76564b469863"
+    }
+   ],
+   "obligation_ids": [
+    "OB-2",
+    "OB-3"
+   ],
+   "parameters": {},
+   "status": "failed",
+   "reason": "AssertionError: Then 1: the PUT must answer 2xx for MS Teams, body: {\"error\":{\"message\":\"Project mismatch\",\"details\":\"Setting 'b06c750c-92fc-4650-b052-ba88fe70d",
+   "report_matched": true,
+   "attempt_id": "a5ba38dc967d56c26201",
+   "purpose": "diagnostic",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "e3f40ee208460bebb4cc84255f31e35a1c0d86dcf206acd5d02a1bdae94a9ada",
+   "source_fingerprint": {
+    "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+    "test_content_sha": "84e044ec9baa1b4108abcbf84da27967d20d6d898ea9b1fa4a7dd7a54e70faab",
+    "config_sha": "25a887221cc6989d71c0799d10d3737f7d94718dc85d9ea5c2732b5e37dfb228",
+    "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+    "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "2a0e8ac22811c61c2e9d525ca06b31d8cc2abdf3c6e3adf79f59950911de1120",
+   "instance_content_scope": "function",
+   "instance_code_sha": "8bd09753cdea3af1e6b87bc614889783a505d2dad8c00507c0e9d11ae2807d7c"
+  },
+  {
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "test_id": "tests.integrations.project.test_ms_teams_integration::test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "case_version_links": [
+    {
+     "case_id": "TC-003",
+     "version": "cv_2ac2e11b9742c96c2d8a"
+    }
+   ],
+   "obligation_ids": [
+    "OB-4"
+   ],
+   "parameters": {},
+   "status": "failed",
+   "reason": "AssertionError: Then 2: the rejection reason must not be the 'Project mismatch' text.",
+   "report_matched": true,
+   "attempt_id": "a5ba38dc967d56c26201",
+   "purpose": "diagnostic",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "e3f40ee208460bebb4cc84255f31e35a1c0d86dcf206acd5d02a1bdae94a9ada",
+   "source_fingerprint": {
+    "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+    "test_content_sha": "84e044ec9baa1b4108abcbf84da27967d20d6d898ea9b1fa4a7dd7a54e70faab",
+    "config_sha": "25a887221cc6989d71c0799d10d3737f7d94718dc85d9ea5c2732b5e37dfb228",
+    "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+    "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "006845b804bedb40a845315329ad82e44cf818fa98f080bc3e1b7711709ba193",
+   "instance_content_scope": "function",
+   "instance_code_sha": "af4571a8a89328b36b07a6a0dbb065a5b41ea726fa493c18fd275daf2e3ce306"
+  }
+ ],
+ "current_results": [
+  {
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_ms_teams_integration",
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_948bf9ee76564b469863"
+    }
+   ],
+   "obligation_ids": [
+    "OB-2",
+    "OB-3"
+   ],
+   "parameters": {},
+   "status": "failed",
+   "reason": "AssertionError: Then 1: the PUT must answer 2xx for MS Teams, body: {\"error\":{\"message\":\"Project mismatch\",\"details\":\"Setting '489a4ddf-5dc2-4684-bd49-48739a7d6",
+   "report_matched": true,
+   "attempt_id": "a96f5e653377735139aa",
+   "purpose": "initial",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+   "source_fingerprint": {
+    "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+    "test_content_sha": "d1ffc6750878161745c9b8a3001f1e1853f5390cfb10d6893eb48f858d874638",
+    "config_sha": "871d2fe9533513742838a6d604cb177dbe2e33657d5c94aa73b005df1bbd1b70",
+    "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+    "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "2a0e8ac22811c61c2e9d525ca06b31d8cc2abdf3c6e3adf79f59950911de1120",
+   "instance_content_scope": "function",
+   "instance_code_sha": "8bd09753cdea3af1e6b87bc614889783a505d2dad8c00507c0e9d11ae2807d7c"
+  },
+  {
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "test_id": "tests.integrations.project.test_ms_teams_integration::test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "case_version_links": [
+    {
+     "case_id": "TC-003",
+     "version": "cv_2ac2e11b9742c96c2d8a"
+    }
+   ],
+   "obligation_ids": [
+    "OB-4"
+   ],
+   "parameters": {},
+   "status": "failed",
+   "reason": "AssertionError: Then 2: the rejection reason must not be the 'Project mismatch' text.",
+   "report_matched": true,
+   "attempt_id": "a96f5e653377735139aa",
+   "purpose": "initial",
+   "repo_id": "",
+   "profile_id": "api",
+   "equivalence_verified": false,
+   "input_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+   "source_fingerprint": {
+    "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+    "test_content_sha": "d1ffc6750878161745c9b8a3001f1e1853f5390cfb10d6893eb48f858d874638",
+    "config_sha": "871d2fe9533513742838a6d604cb177dbe2e33657d5c94aa73b005df1bbd1b70",
+    "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+    "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+    "policy_revision": "unknown"
+   },
+   "instance_content_sha": "006845b804bedb40a845315329ad82e44cf818fa98f080bc3e1b7711709ba193",
+   "instance_content_scope": "function",
+   "instance_code_sha": "af4571a8a89328b36b07a6a0dbb065a5b41ea726fa493c18fd275daf2e3ce306"
+  }
+ ],
+ "impossible": [],
+ "env_blocked": [],
+ "current_env_blocked": [],
+ "totals": {
+  "failed": 4
+ },
+ "current_totals": {
+  "failed": 2
+ },
+ "attempt_order": "ordered_by_attempt_started_at",
+ "factory_findings": []
+}

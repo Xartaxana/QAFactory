@@ -1,0 +1,269 @@
+{
+  "skill_name": "qa-doctor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run qa-doctor in a fresh git repository where the qa-factory plugin is installed but qa-onboarding has never been run.",
+      "expected_output": "Reports the install smoke result, notes there is no qa-factory/config.json, skips the readiness and stories sections, and ends with exactly one next action: run /qa-factory:qa-onboarding.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "next-action-is-onboarding",
+          "description": "The single recommended next action is /qa-factory:qa-onboarding, not a guess at config content and not a list of several options."
+        },
+        {
+          "name": "no-fabricated-readiness",
+          "description": "The response does not print a readiness table or claim a capability status, since readiness.py has nothing to report without config.json."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Run qa-doctor. The project has one open story (QA-1) whose pipeline.json shows S5 halted with an unresolved entry in halts[] because the working tree was dirty before branching.",
+      "expected_output": "Reports the smoke result, the readiness table, QA-1's last done stage and its halted stage, then ends with exactly one next action that repeats the halt's own instruction (stash / commit / proceed with a warning / abort) for QA-1 rather than suggesting a new story or a generic fix.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "next-action-repeats-halt",
+          "description": "The next action names the specific halted stage and ticket and restates the halt's own remedy, not a generic \"check the story\" instruction."
+        },
+        {
+          "name": "does-not-outrank-with-audit",
+          "description": "Even if the factory audit also reports unrelated violations, the halted story still wins the priority order and is the reported next action."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Run qa-doctor in a healthy project: install smoke passes, config.json is current schema, every readiness capability the project uses is ok, the factory audit is clean, and the only story on file (QA-2) is fully closed through S9 with both gates approved.",
+      "expected_output": "Reports smoke PASSED, a readiness table with every capability ok, QA-2 shown fully done with no open halts or gates, an audit section saying clean, and ends with exactly one next action: /qa-factory:qa-story <ticket> to start or continue work, naming no ticket since none is open.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "next-action-is-qa-story",
+          "description": "With nothing blocking, missing, or open, the next action falls through to suggesting /qa-factory:qa-story rather than stopping silently or repeating an already-approved gate."
+        },
+        {
+          "name": "dashboard-rebuilt",
+          "description": "The report confirms factory_dashboard.py was run as the one write this skill performs; no other file is claimed to have been created or modified."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Ask what files qa-doctor creates or modifies when it runs.",
+      "expected_output": "States that qa-doctor creates and modifies no files in the project except rebuilding qa-factory/state/factory-dashboard.html, and that it never writes config, strategy, or artifact files, never answers a gate, and never asks a question.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "dashboard-is-only-write",
+          "description": "The only file named as written or modified is the dashboard; qa-onboarding and qa-story are cited as owning every other write."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Run qa-doctor on a project whose config declares the Jira ticket adapter as a CLI command with status 'configured', where that CLI is not installed in this session.",
+      "expected_output": "readiness.py reports ticket_adapter as missing, owner user, with a note naming the executable and saying the adapter was declared configured but never detected. The doctor prints that line as it stands - it does not report the capability as ok, does not summarize the readiness section as fine, and does not reach the /qa-factory:qa-story next action. The single next action is the fix from the note with its owner: install the CLI, or re-run qa-onboarding and record a way this session can actually reach the tracker. A capability reported as unknown (an MCP tool or an assistant no script can call) is listed too, with the note that the orchestrator verifies it at S0 - never rounded up to ok.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "declared-is-not-detected",
+          "description": "The ticket_adapter line shows missing (not ok) for a command adapter whose executable is absent from PATH, and the reported note names the executable rather than repeating the config's status field."
+        },
+        {
+          "name": "no-green-summary-over-a-red-capability",
+          "description": "Neither the readiness section nor the verdict describes the setup as healthy while any capability is missing; the next action is the capability's own fix, not /qa-factory:qa-story."
+        },
+        {
+          "name": "unknown-is-printed-as-unknown",
+          "description": "A capability that no script can verify is reported as unknown with its owner and note, not omitted from the report and not merged into the ok ones."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Run qa-doctor in an onboarded project whose corporate VPN is off, so neither the GitLab host nor the Jira host can be reached. The machine's Jira API token and SSH keys are present and valid.",
+      "expected_output": "One line says there is no network route to the two hosts and that a VPN which is off is the usual cause, with 'turn the VPN on' as the first step. The capabilities that depend on those hosts read as not verified and not denied, owned by the factory. Nothing in the report mentions credentials, tokens, keys or SSH as a problem, and the next action is not addressed to the person's access.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "one-cause-one-line",
+          "description": "The unreachable hosts are reported once, together, above the capabilities they explain - not as several independent red capability rows."
+        },
+        {
+          "name": "no-credentials-blame",
+          "description": "No sentence suggests checking credentials, tokens, keys, SSH or authentication. A dropped network is never reported as an access problem."
+        },
+        {
+          "name": "not-verified-not-denied",
+          "description": "Host-dependent capabilities are unknown with owner factory and state explicitly that access was neither verified nor denied, because nothing was asked of the host."
+        },
+        {
+          "name": "vpn-step-first",
+          "description": "The remedy's first step is turning the VPN on, and a second step covers the case where the VPN is already on."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Run qa-doctor in an onboarded project where the Jira credentials in the environment work, the hosts are reachable, and no probe receipt exists yet.",
+      "expected_output": "The doctor runs the read-only ticket_adapter probe itself in step 2b and reports ticket_adapter as ok with its receipt as evidence. The report shows the outcome only.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "probe-is-run-not-recommended",
+          "description": "The doctor executes the read-only probe rather than printing an instruction to run it. A capability a probe can settle is never left unknown with working credentials."
+        },
+        {
+          "name": "no-journey-in-the-report",
+          "description": "The report does not narrate the diagnosis: no 'was unknown, now ok', no before/after, no statement that a probe was run. Only the settled outcome and its evidence reference."
+        },
+        {
+          "name": "evidence-backs-the-green",
+          "description": "The ok row carries the receipt path as evidence_ref, so the green line is backed by a file."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Run qa-doctor in an onboarded project where one capability genuinely requires the person: the GitLab host answers but rejects the token with 401.",
+      "expected_output": "The row is missing with owner user and carries a complete remedy: what is missing in plain words, what still works, an alternative route the factory can try first, and numbered steps that say where to get a token and with which scopes before naming any command.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "remedy-is-complete",
+          "description": "The steps name what to obtain, where, and with what minimal rights before naming a command. A bare command that would stop and ask for a token the person does not hold fails this assertion."
+        },
+        {
+          "name": "factory-routes-come-first",
+          "description": "An authorized connector or browser route the factory can take itself is offered before anything is asked of the person."
+        },
+        {
+          "name": "cost-is-not-overstated",
+          "description": "The report states both what is blocked (MR descriptions and discussions) and what still works (git over SSH, branches, commits, a diff between pinned SHAs). It does not claim diffs or repository access are unavailable."
+        },
+        {
+          "name": "no-factory-defect-assigned-to-the-person",
+          "description": "Any row whose owner is the factory is printed without steps and does not become the next action."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Run qa-doctor on Claude Code. After host_probe.py --prepare, the two echo calls and --check, the result is status unverified with an empty checks object: no guard receipt arrived.",
+      "expected_output": "One report row: host_hooks unknown, owner factory, the observed fact (no guard receipt in this session after the probe pair), one recommendation. The doctor does not open host_probe.py, hooks.json or any other plugin file, does not grep the plugin, and does not repeat the probe with variations.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "reports-instead-of-debugging",
+          "description": "No Read, Grep or Glob call targets a file under the plugin root after the unverified --check. Reading the plugin's source to explain a missing receipt fails this assertion."
+        },
+        {
+          "name": "owner-is-factory",
+          "description": "The row says unknown with owner factory and states the observed fact; it does not call the hooks broken and does not ask the person to fix anything."
+        },
+        {
+          "name": "one-probe-only",
+          "description": "The --prepare / echo pair / --check sequence runs once. A second --prepare in the same run fails this assertion."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Run qa-doctor on a plugin build where one agents/*.md role's charter tells it to run a script (for example artifact_producer.py) but that role's tools: frontmatter does not list Bash. No story is open.",
+      "expected_output": "Step 3 runs both audit_factory.py and role_permissions.py and reports 'A23 role/Bash parity: VIOLATIONS (1)' with owner factory, naming the role file, the script, and the tools it actually holds. Since nothing else is open, the next action is that audit line verbatim, not a guess at which tool to add and not a claim that the plugin is broken beyond repair.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "a23-is-factory-owned",
+          "description": "The A23 finding is printed with owner: factory and no steps asked of the person; the report never tells the person to edit an agents/*.md file themselves."
+        },
+        {
+          "name": "both-scripts-ran",
+          "description": "The report reflects output from both audit_factory.py and role_permissions.py, not only one of the two step-3 scripts."
+        },
+        {
+          "name": "does-not-outrank-open-story-work",
+          "description": "If any story instead had an unresolved halt or an open gate, that story's own instruction would still be the next action ahead of this audit line, per the verdict table's priority order."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Run qa-doctor. One open story shows stage S3 as running although every dispatch of it was accepted and S4 is done; the person says no session is working on that story.",
+      "expected_output": "The doctor reads phases/repair.md, runs controller.py --operation recover for that story once, and reports one line per repaired stage (for example 'S3: running -> done, repaired by recover') with owner factory and the next_action recover printed. It does not edit pipeline.json or controller.json, does not ask the person to fix anything, and does not read the controller's source.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "repairs-by-code",
+          "description": "The only state change is made by controller.py --operation recover. Any Write or Edit to pipeline.json, controller.json or events.jsonl fails this assertion."
+        },
+        {
+          "name": "asks-before-repairing-a-possibly-live-story",
+          "description": "recover runs only after the person confirmed no session is working on the story; with no such statement the doctor asks once."
+        },
+        {
+          "name": "reports-as-factory-defect",
+          "description": "The repaired stage is reported with owner factory and nothing is requested from the person."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Run qa-doctor in an onboarded project whose merge requests live on a self-hosted GitLab host. The host answers 401 to the API probe; glab holds a token for a different host only, and the variable GITLAB_TOKEN is set in the environment.",
+      "expected_output": "The vcs_api row is missing with owner user and a remedy that names both hosts (the project's and the one glab holds a token for), the rights a new token needs (read_api and read_repository), and the environment variable, saying that glab prefers it to a token saved for a host. The authorized connector or browser route the factory can take itself stays the first step. The one door printed is: take the variable out of the environment glab runs in (after checking which other tools of the person read it), run glab auth login for the project's host, reopen the session. No internal label reaches the person.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "both-hosts-named",
+          "description": "The report names the host the project lives on and the other host glab lists, so the person sees which token is for which host."
+        },
+        {
+          "name": "rights-named",
+          "description": "The steps say which scopes the new token needs (read_api and read_repository) and where to issue it, before naming a command."
+        },
+        {
+          "name": "variable-named-and-overriding",
+          "description": "The environment variable (GITLAB_TOKEN) is named and the report says glab prefers it to a token saved for a host. It does not say the host refused this variable's token, and it does not tell the person to put a token into that variable."
+        },
+        {
+          "name": "factory-route-first",
+          "description": "An authorized connector or browser route the factory can take itself is the first step, before anything is asked of the person."
+        },
+        {
+          "name": "no-internal-labels",
+          "description": "The text shown to the person contains none of DD-1, vcs_api, missing, or a bare 401 label standing in for an action; the steps are in plain language."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Run qa-doctor from a folder nested in a git repository, where the project has no qa-factory/config.json yet (not onboarded). host_probe.py --prepare and --check are the only way the doctor knows to see the hooks.",
+      "expected_output": "host_probe.py refuses with exit 3 and writes nothing. The doctor does not dispatch the allow/deny pair and does not dispatch the context probe. host_hooks is reported as unknown with owner factory, with the fact that the project is not onboarded. The next step is onboarding. No qa-factory folder appears at the root of the repository.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no-pair-no-probe",
+          "description": "No allow/deny pair and no context probe are dispatched; the exit 3 refusal is taken as the answer."
+        },
+        {
+          "name": "unknown-owner-factory",
+          "description": "host_hooks is unknown with owner factory, and the report states that the project is not onboarded yet."
+        },
+        {
+          "name": "no-inactive-hooks-claim",
+          "description": "The report does not say the hooks are inactive, broken or not firing."
+        },
+        {
+          "name": "next-step-onboarding",
+          "description": "The next step offered is onboarding (/qa-factory:qa-onboarding)."
+        },
+        {
+          "name": "nothing-created-at-repo-root",
+          "description": "No qa-factory folder was created at the root of the repository by the probe."
+        }
+      ]
+    }
+  ]
+}

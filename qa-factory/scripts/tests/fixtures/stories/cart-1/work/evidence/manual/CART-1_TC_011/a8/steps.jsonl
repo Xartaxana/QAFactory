@@ -1,0 +1,12 @@
+{"at": "2026-10-31T12:00:47+00:00", "command": "ui", "step": "goto http://localhost:3000/login", "outcome": "ok", "detail": "0.71 s"}
+{"at": "2026-10-31T12:00:48+00:00", "command": "ui", "step": "fill-account [data-testid=login-email-input] user user", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:00:48+00:00", "command": "ui", "step": "fill-account [data-testid=login-password-input] user secret", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:00:48+00:00", "command": "ui", "step": "click [data-testid=login-submit-button]", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:00:52+00:00", "command": "ui", "step": "wait 3000", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:00:53+00:00", "command": "ui", "step": "goto http://localhost:3000/books/110", "outcome": "ok", "detail": "0.36 s"}
+{"at": "2026-10-31T12:00:53+00:00", "command": "ui", "step": "read [data-testid=book-detail-add-to-cart-button] attr=disabled", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:00:53+00:00", "command": "ui", "step": "read [data-testid=book-detail-add-to-cart-button] attr=class", "outcome": "ok", "detail": "btn btn-primary min-w-[220px] justify-between"}
+{"at": "2026-10-31T12:00:54+00:00", "command": "ui", "step": "goto http://localhost:3000/books/111", "outcome": "ok", "detail": "0.40 s"}
+{"at": "2026-10-31T12:00:54+00:00", "command": "ui", "step": "read [data-testid=book-detail-add-to-cart-button] attr=disabled", "outcome": "ok", "detail": ""}
+{"at": "2026-10-31T12:00:55+00:00", "command": "ui", "step": "read [data-testid=book-detail-add-to-cart-button] attr=class", "outcome": "ok", "detail": "btn btn-primary min-w-[220px] justify-between"}
+{"at": "2026-10-31T12:00:55+00:00", "command": "ui", "step": "read [data-testid=book-detail-add-to-cart-button] text", "outcome": "ok", "detail": "Out of Stock"}

@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "note": "Mechanical detectors used by validate_artifacts.py. The test-code lists (sleep, locator, negative_code, dead_code) are data for the code critic's rubric and for arch_check / judge_code; no script refuses a test file on them. plan_antipatterns runs against a test-plan.md row line. Every entry is a Python regex, matched case-sensitively unless the pattern says otherwise. A hit is a reject with the matched line quoted — not an opinion to discuss (design section 8).",
+  "sleep": [
+    "time\\.sleep\\(",
+    "Thread\\.sleep",
+    "sleep\\(\\d",
+    "\\bsleep\\(\\s*\\d",
+    "wait_for_timeout\\(",
+    "waitForTimeout\\(",
+    "Task\\.Delay\\(",
+    "Thread\\.Sleep\\(",
+    "time\\.Sleep\\(",
+    "\\bcy\\.wait\\(\\s*\\d"
+  ],
+  "sleep_note": "A fixed-time wait in test code. Read by scripts/arch_check.py (a finding) and scripts/judge_code.py (asks `sleep_justified`), both through assertion_detectors.shape_patterns; an unreadable key means today's regex in arch_check and the question asked of every test in judge_code (B-407 C).",
+  "locator": [
+    "\\.locator\\(",
+    "\\bBy\\.",
+    "find_element(?:s)?\\(",
+    "get_by_(?:role|text|label|placeholder|test_id)\\(",
+    "getBy[A-Z]\\w*\\(",
+    "\\bcy\\.get\\(",
+    "\\$\\$?\\(\\s*['\"]"
+  ],
+  "locator_note": "The shape of a UI locator CALL in test code. Read by scripts/arch_check.py (a locator outside the page-object layer is a finding) and scripts/judge_code.py (asks `locator_fragile`), through assertion_detectors.shape_patterns. Keep it to calls: arch_check flags every line that matches it. An unreadable key means today's regex in arch_check and the question asked of every test in judge_code (B-407 C).",
+  "locator_words": [
+    "(?i)\\blocator\\b",
+    "(?i)\\bget_by_",
+    "(?i)\\bfind_element\\b",
+    "(?i)\\bquery_selector\\b",
+    "(?i)\\bcss_selector\\b",
+    "(?i)\\bxpath\\b",
+    "(?i)\\bpage\\.",
+    "(?i)\\bselenium\\b",
+    "(?i)\\bplaywright\\b"
+  ],
+  "locator_words_note": "Words that make a test worth the question `locator_fragile`, wider than a locator call (a `page.` use, the word playwright). Read ONLY by scripts/judge_code.py, beside `locator`, through assertion_detectors.shape_patterns; arch_check never reads it, because it would flag `page.goto(...)`. An unreadable key means the question is asked of every test (B-407 C).",
+  "negative_code": [
+    "(?i)\\binvalid\\b",
+    "(?i)\\breject\\b",
+    "(?i)\\bdenied\\b",
+    "(?i)\\bforbidden\\b",
+    "(?i)\\bunauthori[sz]ed\\b",
+    "(?i)\\bnot_allowed\\b",
+    "(?i)\\braises\\b",
+    "(?i)\\b4\\d\\d\\b",
+    "(?i)\\b5\\d\\d\\b",
+    "(?i)\\berror\\b",
+    "assertThrows\\(",
+    "\\.toThrow\\(",
+    "Assert\\.Throws"
+  ],
+  "negative_code_note": "The shape of a negative check IN TEST CODE (an error word, a 4xx/5xx, an expected throw). Read by scripts/judge_code.py (asks `narrow_negative`) through assertion_detectors.shape_patterns; whether the CASE is negative is a field, never this list. An unreadable key means the question is asked of every test (B-407 C).",
+  "assert_lines": [
+    "(?i)assert",
+    "\\bexpect\\s*\\(",
+    "(?i)\\bshould\\b",
+    "\\bverify\\s*\\(",
+    "\\brequire\\.\\w+\\(",
+    "\\bt\\.(Error|Errorf|Fatal|Fatalf|Fail|FailNow)\\("
+  ],
+  "assert_lines_note": "Which lines of a self_fixes `before`/`after` count as an assertion, in any language: validate_artifacts.check_self_fixes refuses a fix whose `after` lacks one that `before` had. Read ONLY through assertion_detectors.assert_line_patterns, and unioned by check_self_fixes with the head of every assertion form of `assertion_probes`. A key that cannot be read leaves the built-in floor of these same six patterns, plus one note line (B-407 C).",
+  "dead_code": [
+    "@deprecated",
+    "# TODO remove",
+    "warnings\\.warn\\(.*deprecat"
+  ],
+  "plan_antipatterns": [
+    "(?i)\\bis\\s+visible\\b",
+    "(?i)\\bvisibility\\s+of\\b",
+    "(?i)\\belement\\s+(is\\s+)?displayed\\b",
+    "(?i)\\bpage\\s+title\\b",
+    "(?i)\\btitle\\s+is\\s+correct\\b",
+    "(?i)\\burl\\s+after\\s+navigat",
+    "(?i)\\bredirects?\\s+to\\s+url\\b",
+    "(?i)\\bfirst\\s+(available\\s+)?record\\b",
+    "(?i)\\bfirst\\s+(available\\s+)?(entity|item|row)\\s+exists\\b"
+  ],
+  "plan_antipatterns_note": "Visibility-only, title-only, URL-only and first-record rows are smoke at most and may never carry disposition automate (design section 7.5a). The detector reads the whole plan row, so the wording of either the hypothesis or the observable triggers it.",
+  "copy_detector": {"min_function_statements": 2, "fragment_window": 3, "max_files": 40},
+  "copy_detector_note": "How much code is a copy (scripts/copy_detector.py, read through scripts/s5_precheck.py check_copies). min_function_statements: a function with fewer statements is not compared as a whole; fragment_window: a run of this many consecutive statements that repeats under other names is a copy; max_files: files of a story's history read as units per run (the rest is named, not checked). Positive integers. An unreadable key means the default in the code and a note (the check never switches off).",
+  "baseline_names": ["before", "baseline", "original", "prev", "old"],
+  "baseline_names_note": "The words that make a variable the value a test took BEFORE an action (scripts/s5_precheck.py check_relative_oracle, TQ1-18): a name is split into words (`x_before`, `beforeMove` hold `before`), and a comparison of such a value with another that nothing asks to be a working answer is advice for the code critic (an ADVICE line, never a refusal), because a refusal before and a refusal after are equal. Plain lowercase words, not regexes. An unreadable key means no word-based judging and a note: the pair of one call before and after the action is still judged.",
+  "assertion_probes": {
+    "csharp": {
+      "suffixes": [".cs"],
+      "lexer": {
+        "line_comments": ["//"],
+        "block_comments": [["/*", "*/"]],
+        "strings": [
+          {"open": "@\"", "close": "\"", "escape": "double"},
+          {"open": "\"\"\"", "close": "\"\"\"", "escape": "none"},
+          {"open": "\"", "close": "\"", "escape": "backslash", "multiline": false},
+          {"open": "'", "close": "'", "escape": "backslash", "multiline": false}
+        ]
+      },
+      "conditional_directive": "^[ \\t]*#[ \\t]*(?:if|elif|else|endif)\\b",
+      "declaration_style": "method",
+      "test_declaration": "\\b(?:void|Task|ValueTask)\\s+{name}\\s*\\(",
+      "body_open": "\\s*\\{",
+      "helper_declaration": "\\b(?:void|Task|ValueTask)\\s+{name}\\s*\\(",
+      "name_separators": ["::", ".", "+"],
+      "tail_join": ".",
+      "statement_end": "semicolon",
+      "marker_expr": "string.Join(\"-\", \"qa-probe\", \"{token}\")",
+      "marker_read": ["message", "text"],
+      "soft_assert_patterns": [],
+      "soft_scopes": [
+        {"opens": "\\bAssert\\.Multiple(?:Async)?\\s*\\("}
+      ],
+      "assertions": [
+        {"head": "\\bAssert\\.Equal\\b", "matcher_at": "head", "actual_arg": 2, "message": [], "invert": [
+          {"id": "X1", "find": "^Assert\\.Equal\\b", "replace": "Assert.NotEqual", "fires_as": "^Assert\\.NotEqual\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.NotEqual\\b", "matcher_at": "head", "actual_arg": 2, "message": [], "invert": [
+          {"id": "X2", "find": "^Assert\\.NotEqual\\b", "replace": "Assert.Equal", "fires_as": "^Assert\\.Equal\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.True\\b", "matcher_at": "head", "actual_arg": 1, "message": [
+          {"id": "M-CS1", "at": "args_close", "args": 1, "insert": ", {marker}"},
+          {"id": "M-CS2", "at": "arg_start:2", "args": 2, "string_arg": 2, "insert": "{marker} + \" \" + "}
+        ], "invert": [
+          {"id": "X3", "find": "^Assert\\.True\\b", "replace": "Assert.False", "fires_as": "^Assert\\.False\\(\\) Failure|(?m:^\\s*Expected: False\\b)"}
+        ]},
+        {"head": "\\bAssert\\.False\\b", "matcher_at": "head", "actual_arg": 1, "message": [
+          {"id": "M-CS1", "at": "args_close", "args": 1, "insert": ", {marker}"},
+          {"id": "M-CS2", "at": "arg_start:2", "args": 2, "string_arg": 2, "insert": "{marker} + \" \" + "}
+        ], "invert": [
+          {"id": "X4", "find": "^Assert\\.False\\b", "replace": "Assert.True", "fires_as": "^Assert\\.True\\(\\) Failure|(?m:^\\s*Expected: True\\b)"}
+        ]},
+        {"head": "\\bAssert\\.Null\\b", "matcher_at": "head", "actual_arg": 1, "message": [], "invert": [
+          {"id": "X5", "find": "^Assert\\.Null\\b", "replace": "Assert.NotNull", "fires_as": "^Assert\\.NotNull\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.NotNull\\b", "matcher_at": "head", "actual_arg": 1, "message": [], "invert": [
+          {"id": "X6", "find": "^Assert\\.NotNull\\b", "replace": "Assert.Null", "fires_as": "^Assert\\.Null\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.Empty\\b", "matcher_at": "head", "actual_arg": 1, "message": [], "invert": [
+          {"id": "X7", "find": "^Assert\\.Empty\\b", "replace": "Assert.NotEmpty", "fires_as": "^Assert\\.NotEmpty\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.NotEmpty\\b", "matcher_at": "head", "actual_arg": 1, "message": [], "invert": [
+          {"id": "X8", "find": "^Assert\\.NotEmpty\\b", "replace": "Assert.Empty", "fires_as": "^Assert\\.Empty\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.Contains\\b", "matcher_at": "head", "actual_arg": 2, "message": [], "invert": [
+          {"id": "X9", "find": "^Assert\\.Contains\\b", "replace": "Assert.DoesNotContain", "fires_as": "^Assert\\.DoesNotContain\\(\\) Failure"}
+        ]},
+        {"head": "\\bAssert\\.DoesNotContain\\b", "matcher_at": "head", "actual_arg": 2, "message": [], "invert": [
+          {"id": "X10", "find": "^Assert\\.DoesNotContain\\b", "replace": "Assert.Contains", "fires_as": "^Assert\\.Contains\\(\\) Failure"}
+        ]},
+        {"head": "\\b(?:Classic)?Assert\\.That\\b", "matcher_at": "second_arg", "actual_arg": 1, "message": [
+          {"id": "M-CS3", "at": "args_close", "args": 2, "insert": ", {marker}"},
+          {"id": "M-CS3b", "at": "arg_start:3", "args": 3, "string_arg": 3, "insert": "{marker} + \" \" + "}
+        ], "invert": [
+          {"id": "N1", "find": "^Is\\.(?!Not\\b)", "replace": "Is.Not.", "fires_as": "(?m)^\\s*Expected: not\\b"},
+          {"id": "N2", "find": "^Is\\.Not\\.", "replace": "Is.", "fires_as": "(?m)^\\s*Expected: (?!not\\b)"}
+        ]},
+        {"head": "\\b(?:Classic)?Assert\\.AreEqual\\b", "matcher_at": "head", "actual_arg": 2, "message": [
+          {"id": "M-CS4", "at": "args_close", "args": 2, "insert": ", {marker}"}
+        ], "invert": [
+          {"id": "N3", "find": "^((?:Classic)?Assert\\.)AreEqual\\b", "replace": "\\1AreNotEqual", "fires_as": "(?m)^\\s*Expected: not equal to\\b"}
+        ]},
+        {"head": "\\b(?:Classic)?Assert\\.AreNotEqual\\b", "matcher_at": "head", "actual_arg": 2, "message": [
+          {"id": "M-CS4", "at": "args_close", "args": 2, "insert": ", {marker}"}
+        ], "invert": [
+          {"id": "N4", "find": "^((?:Classic)?Assert\\.)AreNotEqual\\b", "replace": "\\1AreEqual", "fires_as": "(?m)^\\s*Expected: (?!not\\b)"}
+        ]},
+        {"head": "\\bAssert\\.(?:Throws|ThrowsAsync|ThrowsAny|Single|IsType|IsAssignableFrom|Collection|All|Equivalent|InRange|Matches|StartsWith|EndsWith|Same|NotSame)\\b", "matcher_at": "head", "invert": null}
+      ],
+      "frames": ["^\\s*at\\s+.+?\\s+in\\s+(?P<path>.+?):line\\s+(?P<line>\\d+)\\s*$"],
+      "skip_frames": ["^\\s*at\\s+(?:Xunit|NUnit\\.Framework|System|Microsoft)\\."],
+      "frame_path": "path",
+      "frames_deepest": "first",
+      "compiled": true,
+      "builds_by_default": ["dotnet test"],
+      "no_rebuild_flags": ["--no-build"]
+    },
+    "java": {
+      "suffixes": [".java"],
+      "lexer": {
+        "line_comments": ["//"],
+        "block_comments": [["/*", "*/"]],
+        "strings": [
+          {"open": "\"\"\"", "close": "\"\"\"", "escape": "backslash"},
+          {"open": "\"", "close": "\"", "escape": "backslash", "multiline": false},
+          {"open": "'", "close": "'", "escape": "backslash", "multiline": false}
+        ]
+      },
+      "declaration_style": "method",
+      "test_declaration": "\\bvoid\\s+{name}\\s*\\(",
+      "body_open": "\\s*(?:throws\\s+[\\w.]+(?:\\s*,\\s*[\\w.]+)*\\s*)?\\{",
+      "helper_declaration": "\\bvoid\\s+{name}\\s*\\(",
+      "import_forms": [{"pattern": "^import\\s+(?:static\\s+)?(?P<path>[\\w.]+);", "resolve": "dotted", "suffixes": [".java"]}],
+      "display_name": "@DisplayName\\s*\\(",
+      "name_separators": ["::", ".", "#"],
+      "tail_join": ".",
+      "statement_end": "semicolon",
+      "marker_expr": "String.join(\"-\", \"qa-probe\", \"{token}\")",
+      "marker_read": ["message", "text"],
+      "soft_assert_patterns": [],
+      "soft_scopes": [
+        {"opens": "(?<![\\w$.])(?:Assertions\\.)?assertAll\\s*\\("},
+        {"opens": "(?<![\\w$.])(?:SoftAssertions\\.)?assertSoftly\\s*\\(", "head": "(?<=\\w\\.)assertThat\\s*\\("},
+        {"opens": "(?<![\\w$.])try\\s*\\(\\s*(?:final\\s+)?[\\w.]+\\s+\\w+\\s*=\\s*new\\s+(?:[\\w.]+\\.)?AutoCloseableSoftAssertions\\s*\\(\\s*\\)\\s*\\)\\s*\\{", "head": "(?<=\\w\\.)assertThat\\s*\\("},
+        {"opens": "(?<![\\w$.])(?:(?:final\\s+)?(?:var|[\\w.]+)\\s+)?(?P<var>\\w+)\\s*=\\s*new\\s+(?:[\\w.]+\\.)?SoftAssertions\\s*\\(\\s*\\)\\s*;", "closes": "(?<![\\w$.]){var}\\s*\\.\\s*assertAll\\s*\\(", "head": "(?<=(?<![\\w$.]){var}\\.)"},
+        {"opens": "(?<![\\w$.])(?:(?:final\\s+)?(?:var|[\\w.]+)\\s+)?(?P<var>\\w+)\\s*=\\s*new\\s+(?:[\\w.]+\\.)?SoftAssert\\s*\\(\\s*\\)\\s*;", "closes": "(?<![\\w$.]){var}\\s*\\.\\s*assertAll\\s*\\(", "head": "(?<=(?<![\\w$.]){var}\\.)"}
+      ],
+      "assertions": [
+        {"head": "\\b(?:Assertions\\.|Assert\\.)?assertEquals\\b", "matcher_at": "head", "message": [
+          {"id": "M-J5", "at": "args_close", "args": 2, "source": "org\\.junit\\.jupiter\\.api\\.Assertions", "not_source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "insert": ", {marker}"},
+          {"id": "M-J4", "at": "arg_start:1", "args": 2, "source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "not_source": "org\\.junit\\.jupiter\\.api\\.Assertions", "insert": "{marker}, "}
+        ], "invert": [
+          {"id": "J1", "find": "^((?:Assertions\\.|Assert\\.)?)assertEquals\\b", "replace": "\\1assertNotEquals", "fires_as": "^(?:org\\.opentest4j\\.AssertionFailedError: |java\\.lang\\.AssertionError: )?(?:.*? ==> )?(?:expected: not equal but was:|Values should be different\\.)"}
+        ]},
+        {"head": "\\b(?:Assertions\\.|Assert\\.)?assertNotEquals\\b", "matcher_at": "head", "message": [
+          {"id": "M-J5", "at": "args_close", "args": 2, "source": "org\\.junit\\.jupiter\\.api\\.Assertions", "not_source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "insert": ", {marker}"},
+          {"id": "M-J4", "at": "arg_start:1", "args": 2, "source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "not_source": "org\\.junit\\.jupiter\\.api\\.Assertions", "insert": "{marker}, "}
+        ], "invert": [
+          {"id": "J2", "find": "^((?:Assertions\\.|Assert\\.)?)assertNotEquals\\b", "replace": "\\1assertEquals", "fires_as": "^(?:org\\.opentest4j\\.AssertionFailedError: |java\\.lang\\.AssertionError: )?(?:.*? ==> )?expected: ?<.*> but was: ?<"}
+        ]},
+        {"head": "\\b(?:Assertions\\.|Assert\\.)?assertTrue\\b", "matcher_at": "head", "message": [
+          {"id": "M-J5", "at": "args_close", "args": 1, "source": "org\\.junit\\.jupiter\\.api\\.Assertions", "not_source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "insert": ", {marker}"},
+          {"id": "M-J4", "at": "arg_start:1", "args": 1, "source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "not_source": "org\\.junit\\.jupiter\\.api\\.Assertions", "insert": "{marker}, "}
+        ], "invert": [
+          {"id": "J3", "find": "^((?:Assertions\\.|Assert\\.)?)assertTrue\\b", "replace": "\\1assertFalse", "fires_as": "^(?:org\\.opentest4j\\.AssertionFailedError: |java\\.lang\\.AssertionError: )?expected: <false> but was: <true>"}
+        ]},
+        {"head": "\\b(?:Assertions\\.|Assert\\.)?assertFalse\\b", "matcher_at": "head", "message": [
+          {"id": "M-J5", "at": "args_close", "args": 1, "source": "org\\.junit\\.jupiter\\.api\\.Assertions", "not_source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "insert": ", {marker}"},
+          {"id": "M-J4", "at": "arg_start:1", "args": 1, "source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "not_source": "org\\.junit\\.jupiter\\.api\\.Assertions", "insert": "{marker}, "}
+        ], "invert": [
+          {"id": "J4", "find": "^((?:Assertions\\.|Assert\\.)?)assertFalse\\b", "replace": "\\1assertTrue", "fires_as": "^(?:org\\.opentest4j\\.AssertionFailedError: |java\\.lang\\.AssertionError: )?expected: <true> but was: <false>"}
+        ]},
+        {"head": "\\b(?:Assertions\\.|Assert\\.)?assertNull\\b", "matcher_at": "head", "message": [
+          {"id": "M-J5", "at": "args_close", "args": 1, "source": "org\\.junit\\.jupiter\\.api\\.Assertions", "not_source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "insert": ", {marker}"},
+          {"id": "M-J4", "at": "arg_start:1", "args": 1, "source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "not_source": "org\\.junit\\.jupiter\\.api\\.Assertions", "insert": "{marker}, "}
+        ], "invert": [
+          {"id": "J5", "find": "^((?:Assertions\\.|Assert\\.)?)assertNull\\b", "replace": "\\1assertNotNull", "fires_as": "^(?:org\\.opentest4j\\.AssertionFailedError: |java\\.lang\\.AssertionError: )?expected: not <null>"}
+        ]},
+        {"head": "\\b(?:Assertions\\.|Assert\\.)?assertNotNull\\b", "matcher_at": "head", "message": [
+          {"id": "M-J5", "at": "args_close", "args": 1, "source": "org\\.junit\\.jupiter\\.api\\.Assertions", "not_source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "insert": ", {marker}"},
+          {"id": "M-J4", "at": "arg_start:1", "args": 1, "source": "import\\s+(?:static\\s+)?org\\.junit\\.Assert\\b", "not_source": "org\\.junit\\.jupiter\\.api\\.Assertions", "insert": "{marker}, "}
+        ], "invert": [
+          {"id": "J6", "find": "^((?:Assertions\\.|Assert\\.)?)assertNotNull\\b", "replace": "\\1assertNull", "fires_as": "^(?:org\\.opentest4j\\.AssertionFailedError: |java\\.lang\\.AssertionError: )?expected: <null> but was:"}
+        ]},
+        {"head": "\\b(?:Assertions\\.)?assertThat\\s*\\(", "matcher_at": "after_args", "actual_arg": 1, "message": [
+          {"id": "M-AJ", "at": "after_args", "args": 1, "not_after": "^\\s*\\.(?:as|describedAs|withFailMessage|overridingErrorMessage)\\s*\\(", "insert": ".as({marker})"}
+        ], "invert": [
+          {"id": "A1", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.isEqualTo\\b", "replace": "\\1.isNotEqualTo", "fires_as": "(?s)not to be equal to:"},
+          {"id": "A2", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.isNotEqualTo\\b", "replace": "\\1.isEqualTo", "fires_as": "(?s)^\\s*(?:\\[.*?\\]\\s*)?expected: .*\\bbut was:"},
+          {"id": "A3", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.isTrue\\b", "replace": "\\1.isFalse", "fires_as": "Expecting value to be false but was true"},
+          {"id": "A4", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.isFalse\\b", "replace": "\\1.isTrue", "fires_as": "Expecting value to be true but was false"},
+          {"id": "A5", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.isNull\\b", "replace": "\\1.isNotNull", "fires_as": "Expecting actual not to be null"},
+          {"id": "A6", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.isNotNull\\b", "replace": "\\1.isNull", "fires_as": "(?s)expected: null\\b.*but was:"},
+          {"id": "A7", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.contains\\b", "replace": "\\1.doesNotContain", "fires_as": "(?m)^\\s*not to contain:"},
+          {"id": "A8", "find": "^((?:\\s*\\.(?:as|describedAs)\\((?:[^()]|\\([^()]*\\))*\\))*)\\s*\\.doesNotContain\\b", "replace": "\\1.contains", "fires_as": "(?m)^\\s*to contain:"}
+        ]},
+        {"head": "\\b(?:Assertions\\.)?(?:assertThrows|assertDoesNotThrow|assertAll|assertSame|assertNotSame|assertArrayEquals|assertIterableEquals|assertLinesMatch|assertTimeout|fail)\\s*\\(", "matcher_at": "head", "invert": null}
+      ],
+      "frames": ["^\\s*at\\s+(?P<qual>[\\w$.<>/]+)\\((?P<path>[\\w$]+\\.java):(?P<line>\\d+)\\)"],
+      "skip_frames": ["^\\s*at\\s+(?:org\\.junit|org\\.opentest4j|org\\.assertj|org\\.hamcrest|java\\.|jdk\\.|sun\\.|org\\.apache\\.maven|org\\.gradle)"],
+      "frame_path": "basename",
+      "frames_deepest": "first",
+      "compiled": true,
+      "builds_by_default": ["mvn", "mvnw", "gradle", "gradlew"],
+      "no_rebuild_flags": ["surefire:test", "compileTestJava"]
+    },
+    "typescript": {
+      "suffixes": [".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".mts", ".cts"],
+      "lexer": {
+        "line_comments": ["//"],
+        "block_comments": [["/*", "*/"]],
+        "strings": [
+          {"open": "'", "close": "'", "escape": "backslash", "multiline": false},
+          {"open": "\"", "close": "\"", "escape": "backslash", "multiline": false},
+          {"open": "`", "close": "`", "escape": "backslash"}
+        ],
+        "regex_literal": {"open": "/", "close": "/", "escape": "\\", "class_open": "[", "class_close": "]", "multiline": false,
+                          "after": {"chars": "(,=:[!&|?{};+-*%<>~^",
+                                    "words": ["return", "typeof", "instanceof", "in", "of", "new", "delete", "void", "throw", "case", "do", "else", "yield", "await"]}}
+      },
+      "declaration_style": "call",
+      "test_declaration": "\\b(?:it|test)(?:\\.(?:only|concurrent|fixme|fail|slow|skip))?\\s*\\(\\s*(['\"`]){name}\\1",
+      "title_tag": "(?<![\\w.])@[\\w:-]+",
+      "title_template": {"open": "${", "close": "}"},
+      "title_placeholders": ["%s", "%d", "%i", "%j", "%o", "\\$[\\w.]+"],
+      "group_declaration": "\\b(?:test\\.)?describe(?:\\.(?:only|skip|parallel|serial|fixme|configure))*\\s*\\(\\s*(['\"`])",
+      "each_declaration": "\\b(?:it|test)\\.each\\s*\\(",
+      "group_each_declaration": "\\b(?:test\\.)?describe\\.each\\s*\\(",
+      "loop_heads": "\\bfor\\s*\\(|\\.forEach\\s*\\(|\\.map\\s*\\(",
+      "body_open": "=>\\s*\\{|\\bfunction\\b\\s*\\*?\\s*[\\w$]*\\s*\\([^()]*\\)\\s*\\{",
+      "helper_declaration": "(?:(?P<fn>\\b(?:async\\s+)?function\\s*\\*?\\s*)|(?<![\\w$.])(?:const|let|var)\\s+|(?<![\\w$.])(?:(?:public|private|protected|static|async|override|readonly|get|set)\\s+)*(?!(?:if|for|while|switch|catch|with|function|async|await|return|typeof|new|super)\\b)){name}\\s*(?(fn)|(?:=\\s*(?:async\\s*)?)?)\\((?(fn)|(?=[^()]*\\)\\s*(?::\\s*[^{};=?\\n()]+)?(?:=>\\s*)?\\{))",
+      "helper_body_open": "\\s*(?::\\s*[^{};=?\\n()]+)?(?:=>\\s*)?\\{",
+      "import_forms": [{"pattern": "from\\s+['\"](?P<path>\\.[^'\"]+)['\"]", "resolve": "relative"}],
+      "name_separators": ["::"],
+      "report_separators": [" > "],
+      "soft_assert_patterns": ["\\bexpect\\.soft\\s*\\("],
+      "probe_no_retry": [{"source": "from\\s+['\"]@playwright/test['\"]", "flags": ["--retries=0"]}],
+      "interruption_texts": ["Test timeout of \\d+ms exceeded"],
+      "soft_report": {"error_head": "^\\s*Error:", "after_frame_ok": ["^\\s*Error Context:"]},
+      "tail_join": " ",
+      "statement_end": "semicolon_or_newline",
+      "marker_expr": "['qa-probe', '{token}'].join('-')",
+      "marker_read": ["message", "text"],
+      "assertions": [
+        {"head": "\\bexpect(?:\\.soft)?\\s*\\(", "matcher_at": "after_args", "actual_arg": 1, "message": [
+          {"id": "M-TS1", "at": "arg_start:2", "args": 2, "string_arg": 2, "insert": "{marker} + ' ' + "},
+          {"id": "M-TS2", "at": "args_close", "args": 1, "source": "from\\s+['\"]@playwright/test['\"]", "insert": ", {marker}"}
+        ], "invert": [
+          {"id": "T1", "find": "^((?:\\s*\\.(?:resolves|rejects))?)\\s*\\.not(\\s*\\.to[A-Z]\\w*\\s*\\()", "replace": "\\1\\2", "fires_as": "^(?:Error: )?expect\\(received\\)(?:\\.(?:resolves|rejects))?\\.to[A-Z]\\w*\\(|^Error: (?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.to[A-Z]\\w*\\(|^(?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.to[A-Z]\\w*\\([^\\n]*\\) failed\\b|^(?:AssertionError: )?expected (?:(?! not to ).)+ to "},
+          {"id": "T2", "find": "^((?:\\s*\\.(?:resolves|rejects))?)(\\s*\\.to[A-Z]\\w*\\s*\\()", "replace": "\\1.not\\2", "fires_as": "^(?:Error: )?expect\\(received\\)(?:\\.(?:resolves|rejects))?\\.not\\.to[A-Z]\\w*\\(|^Error: (?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.not\\.to[A-Z]\\w*\\(|^(?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.not\\.to[A-Z]\\w*\\([^\\n]*\\) failed\\b|^(?:AssertionError: )?expected .+ not to "}
+        ]},
+        {"head": "\\bassert(?:\\.(?:equal|strictEqual|deepEqual|deepStrictEqual|ok|notEqual|throws|rejects|match))?\\s*\\(", "matcher_at": "head", "invert": null}
+      ],
+      "frames": [
+        "^\\s*at\\s+(?:.*?\\()?(?P<path>(?:[A-Za-z]:)?[^():\\s][^():]*?):(?P<line>\\d+):\\d+\\)?\\s*$",
+        "^\\s*\\u276f\\s+(?P<path>(?:[A-Za-z]:)?[^():\\s][^():]*?):(?P<line>\\d+):\\d+\\s*$"
+      ],
+      "skip_frames": ["node_modules|node:internal|^\\s*at\\s+(?:new\\s+)?Promise\\b|\\(<anonymous>\\)\\s*$|^\\s*at\\s+<anonymous>\\s*$"],
+      "frame_path": "path",
+      "frames_deepest": "first",
+      "compiled": false,
+      "builds_by_default": [],
+      "no_rebuild_flags": [],
+      "passed_residual": "the entry is not compiled: a project that runs its compiled output through a wrapper of its own would have run the author's build, not the mutated source (E14)"
+    }
+  },
+  "assertion_probes_ast": {
+    "python": {
+      "suffixes": [".py"],
+      "marker_expr": "'-'.join(['qa-probe', '{token}'])",
+      "marker_read": ["message"],
+      "soft_assert_patterns": [],
+      "frames": ["^(?P<path>[^\\s:]+?\\.py):(?P<line>\\d+)(?::|\\s|$)"],
+      "skip_frames": [],
+      "frame_path": "path",
+      "frames_deepest": "last",
+      "compiled": false,
+      "builds_by_default": [],
+      "no_rebuild_flags": [],
+      "forms": [
+        {"id": "PY-assert", "shape": "assert", "invert": {"kind": "wrap_test"}, "message": {"at": "assert_msg"}, "fires_as": null, "matcher_at": "head", "actual_arg": "compare_left"},
+        {"id": "PY-assert_that", "shape": "call", "names": ["assert_that"], "min_args": 2,
+         "invert": {"kind": "wrap_arg", "arg": 1, "wrap": "__import__(\"hamcrest\").is_not({arg})"},
+         "message": {"at": "arg", "arg": 2}, "fires_as": null, "matcher_at": "second_arg", "actual_arg": 1},
+        {"id": "PY-unittest", "shape": "method", "receivers": ["self"],
+         "invert": {"kind": "rename", "names": {
+           "assertEqual": {"to": "assertNotEqual", "args": 2}, "assertNotEqual": {"to": "assertEqual", "args": 2},
+           "assertTrue": {"to": "assertFalse", "args": 1}, "assertFalse": {"to": "assertTrue", "args": 1},
+           "assertIn": {"to": "assertNotIn", "args": 2}, "assertNotIn": {"to": "assertIn", "args": 2},
+           "assertIs": {"to": "assertIsNot", "args": 2}, "assertIsNot": {"to": "assertIs", "args": 2},
+           "assertIsNone": {"to": "assertIsNotNone", "args": 1}, "assertIsNotNone": {"to": "assertIsNone", "args": 1},
+           "assertGreater": {"to": "assertLessEqual", "args": 2}, "assertLessEqual": {"to": "assertGreater", "args": 2},
+           "assertLess": {"to": "assertGreaterEqual", "args": 2}, "assertGreaterEqual": {"to": "assertLess", "args": 2},
+           "assertRegex": {"to": "assertNotRegex", "args": 2}, "assertNotRegex": {"to": "assertRegex", "args": 2},
+           "assertIsInstance": {"to": "assertNotIsInstance", "args": 2}, "assertNotIsInstance": {"to": "assertIsInstance", "args": 2},
+           "assertAlmostEqual": {"to": "assertNotAlmostEqual", "args": 3}, "assertNotAlmostEqual": {"to": "assertAlmostEqual", "args": 3},
+           "assertDictEqual": {"to": "assertNotEqual", "args": 2}, "assertListEqual": {"to": "assertNotEqual", "args": 2},
+           "assertSetEqual": {"to": "assertNotEqual", "args": 2}, "assertTupleEqual": {"to": "assertNotEqual", "args": 2},
+           "assertSequenceEqual": {"to": "assertNotEqual", "args": 2}, "assertMultiLineEqual": {"to": "assertNotEqual", "args": 2}}},
+         "message": {"at": "kw", "kw": "msg"}, "fires_as": null, "matcher_at": "head"},
+        {"id": "PY-unittest-none", "shape": "method", "receivers": ["self"],
+         "names": ["assertRaises", "assertRaisesRegex", "assertWarns", "assertWarnsRegex", "assertLogs", "assertCountEqual", "fail"], "invert": null},
+        {"id": "PY-pw-expect", "shape": "chain", "names": ["expect"], "source": "from\\s+playwright\\.(?:sync|async)_api\\s+import",
+         "invert": {"kind": "method_pattern", "pairs": [{"find": "^not_to_(.+)$", "replace": "to_\\1"}, {"find": "^to_(.+)$", "replace": "not_to_\\1"}]},
+         "message": {"at": "head_kw", "kw": "message", "args": 1}, "fires_as": null, "matcher_at": "after_args", "actual_arg": 1},
+        {"id": "PY-with-unittest", "shape": "with", "receivers": ["self"],
+         "names": ["assertRaises", "assertRaisesRegex", "assertWarns", "assertWarnsRegex", "assertLogs", "assertNoLogs"], "invert": null},
+        {"id": "PY-with-pytest", "shape": "with", "receivers": ["pytest"], "names": ["raises", "warns", "deprecated_call"], "invert": null}
+      ]
+    }
+  },
+  "assertion_probes_note": "How probe_by_code.py probes a test that is not Python (B-373, D-0028), read ONLY through scripts/assertion_detectors.py. One entry per language; a suffix belongs to one entry and is never .py. A row that is wrong or missing never gives a verdict on the test: the probe refuses or answers incomplete. FR-13: the table grows by data as projects report what they meet. Entry: lexer {line_comments, block_comments, strings[{open, close, escape backslash|double|none, multiline (false = a string that crosses a line break is a lexer error and a refusal: it means a regex literal or an apostrophe opened one where none is)}]}; lexer.regex_literal (optional, JS/TS: a `/` opens a regular-expression literal when the last code character before it is in after.chars, the word it ends is in after.words, or it starts a line or the file - otherwise it divides; inside, `escape` skips one character, a [class] may hold `/`, and a line break before the close is a lexer error and a refusal); conditional_directive (optional regex, matched per line: a file holding one - C# #if/#else - is refused, because which branch is compiled is not knowable here); declaration_style method (a name, a parameter list, then body_open) or call (it('title', () => {...})); test_declaration and helper_declaration hold exactly one {name}, replaced by re.escape; name_separators split the --test tail, the segments are joined by tail_join and compared with the report id (report_separators are more separators of the report id); display_name (optional) marks a title the runner may report instead of the method name; soft_assert_patterns (optional list of regexes, matched at the start of an assertion head) names the forms that record a failure and let the test go on (Playwright expect.soft). `soft_report` {error_head, after_frame_ok} (regexes) says how the runner's failure text for such a test is built: every error of the text starts at a line matching `error_head`, has a frame line, and after its last frame only lines matching `after_frame_ok` follow - a text that does not fit is a test that may have stopped (a timeout, a throw with no frame), so the finding stays; with no `soft_report` the finding always stays. assertions: one form per assertion call, head (a regex; the first head in the body is the target) and matcher_at head | after_args (after the balanced parentheses of the head) | second_arg; invert is null (a form no pair inverts: the probe refuses, it never skips to a later assertion) or a list of pairs {find, replace, fires_as} tried in order, find applied with re.match at exactly that position, fires_as a regex that must match the failure message of the INVERTED form and is searched with no flags (a call-style entry anchors every alternative with ^, so a code frame echoing the mutated statement never matches), and the plan is refused when fires_as matches the mutated statement itself. An optional pair id names the row in a refusal. frames and skip_frames read the runner's stack (named groups path and line; basename also needs qual, the qualified method name, whose package must be a suffix of the file's directory); compiled is true where a test binary is built, builds_by_default lists the launchers (argv basenames joined by spaces) that rebuild by themselves, no_rebuild_flags the argv tokens that stop one. The factory's own marker (t-1968 N1): an entry may hold `marker_expr`, an expression of the language that builds the string qa-probe-{token} AT RUN TIME from separate pieces (exactly one {token}; never a `+` of two literals, which a transpiler folds into one contiguous string that a code frame would then echo), and a form may hold `message`, the ways the probe puts that expression into the message of the broken check: `[]` (or no key) = the form takes no message, nothing is added, never an error; otherwise variants tried in order, the first whose conditions hold applies, none = no marker. Variant {id, at, args, insert[, string_arg, source, not_source, not_after]}: `at` is args_close (after the last argument), arg_start:<n> (before the n-th argument) or after_args (after the call's closing parenthesis); `args` is the count of top-level arguments the call must have; `string_arg` is the argument that must begin with a string literal; `source` / `not_source` are regexes the whole test file must / must not match (an import decides which library's signature is meant); `not_after` is a regex the text right after the call must not match; `insert` holds {marker} once. Read ONLY through assertion_detectors.message_forms / marker_expression. A failed run whose failure text holds the exact marker of THIS probe is the broken check's own failure (proved_by marker), whatever the wording; no row here changes a verdict without it. Every message and stack shape below is an ESTIMATE from the libraries' documented output (xUnit 2.5, NUnit 3/4, JUnit 5, AssertJ 3.19+, Jest, Vitest, Playwright); measurement M2/M3 corrects a row, and a runner that words a message differently gives incomplete. Not covered, and left to give incomplete: NUnit 3 classic X5-X10, JUnit 4 J3-J6, AssertJ before 3.19, Hamcrest assertThat(x, is(y)), Chai, a test whose expectation lives in a helper the probe is not told about (--oracle). Two keys beside the table (t-2045 N2): `frames_deepest` (optional, on an entry of either key) says which frame of a failure's stack lies deepest in the code under test: `first` (the runner prints the innermost frame first: Playwright, measured by N0; csharp and java by the runtimes' documented order, not measured) or `last` (pytest's traceback, measured by N0); absent or any other word reads as unknown (assertion_detectors.frames_deepest gives None), never as a guess. `assertion_probes_ast`: the same shared contract (suffixes, marker_expr, frames, skip_frames, frame_path, frames_deepest, compiled, builds_by_default, no_rebuild_flags) for a language read by an AST and not by this table's lexer - today Python, whose suffix `.py` is never an entry of `assertion_probes`; it is the AST reader's, read ONLY through assertion_detectors.ast_entry (assertion_detectors.entry_for_suffix does not read it), and its marker_expr builds the factory's marker the same way. Its `forms` (t-2045 N2b) are the check vocabulary of that language, read by `probe_by_code._form_of`: a row {id, shape assert|call|method|chain, invert, ...}; the shape is a closed set of AST shapes, every name, rename, wrap text and message slot is the row's data. `call`: a statement calling one of `names` (bare or `obj.name`) with `min_args` arguments, inverted by `wrap_arg` {arg, wrap with {arg}}; `method`: `<receiver>.<method>(...)` with a receiver in `receivers` and a method in `names` (or in the rename map), inverted by `rename` {method: {to, args}} (the arguments up to `args` are kept); `chain`: `<head>(...).<method>(...)` with the head in `names`, also under await, inverted by `method_pattern` {pairs of find/replace tried in order on the method name}; `source` (optional regex) must match the whole file (an import decides which library is meant); `message` says where the marker goes: assert_msg, arg {arg}, kw {kw} (a method keyword; a positional beyond the row's args is replaced), head_kw {kw, args} (a keyword on the head call; positionals beyond `args` are replaced); a row with no `message` carries no marker. `with`: a `with <receiver>.<name>(...):` statement (`with self.assertRaises(E):`, `with pytest.raises(E):`) of the row's receivers and names; the check spans the with HEADER, not the block (a line inside the body is its own check), and its invert is null (no inversion of a context manager exists in data). `invert: null` is a check no inversion exists for: it is the first check and is refused as not invertible by code (the critic's red probe or the role's model), never skipped. `matcher_at` (optional, one of the table's words) is the detail's label of where the inverted part sits; `fires_as` is null on these rows. The first row that matches a statement wins. One hop out of a test body that holds no check (t-2045 N5): the probe follows the helpers the body calls, by name, into the test's own file and then into the files the test imports, read ONLY through assertion_detectors.import_forms. `helper_declaration` is the shape of a declaration of a helper by name (a function, an arrow const, a class method; it must not match a call) and `helper_body_open` the text between its parameter list and its block; `import_forms` (optional on a table entry; absent or [] = this file only, which the probe says) is a list of {pattern, resolve, suffixes (optional, the entry's own when absent)}: `pattern` is a regex (matched per line, multiline) with a named group `path`; `resolve` is `relative` (the path is joined to the importing file's folder, tried as written, with each suffix added, and as a folder's index) or `dotted` (the path is a dotted name, tried from the full name down to its first segment, as a file under the importing file's folder and each folder above it up to the project root). A file the import names is hopped into only when it lies under a test root and no protected product path. What does not stop, which argument is the value, the runner's rows (t-2064 P1; read ONLY through assertion_detectors.soft_stated, actual_arg_of, no_retry_flags, interruption_texts): `soft_assert_patterns` (on every entry of either key) STATES it: a list of the forms that record a failure and let the test go on, and `[]` means this framework's plain forms have no soft form (csharp, java, python today); a key that is absent says nothing and reads as `[]` with a note that the row does not say. A soft SCOPE is not a head: it is `soft_scopes` (t-2064 P1b; optional, on a table entry; read ONLY through assertion_detectors.soft_scopes_of): rows {opens, head?, closes?}; `opens` is a regex over the code (strings and comments blanked) that must END on the opening bracket of the scope, which runs to its balanced closing, unless the row has `closes`: then the scope opens at the declaration `opens` matches (a variable: `SoftAssertions softly = new SoftAssertions();`) and ends at the first later statement of the SAME body (the same bracket depth) that `closes` matches (`softly.assertAll(`); `opens` may hold named groups and `{name}` in `closes` and `head` is replaced by what the group matched, regex-escaped (`{var}`); no closing call found (returned, passed to a helper, closed in an after-each) = no scope, a note, the checks read by the plain rule (stopping); the closing call is not a check; every check inside it does not stop (the scope's own end does: a failure inside it ends the test there), `head` (optional) is a regex matched where a check starts, and only the checks it matches are the scope's soft ones (AssertJ: `softly.assertThat`, never a static `assertThat`, which throws at once). Written only where the form is verified in the library's documentation and run on a sample: csharp NUnit Assert.Multiple and MultipleAsync; java JUnit assertAll, AssertJ assertSoftly, try-with-resources AutoCloseableSoftAssertions, and (rows with `closes`, t-2273) AssertJ `new SoftAssertions()` ... `softly.assertAll()` and TestNG `new SoftAssert()` ... `sa.assertAll()`. NOT written, a form in doubt: the JUnit-extension field (the scope is the whole test), and NUnit EnterMultipleScope (a newer NUnit than the one checked). A scope with no check found inside reads as a head of an unknown form, never as a soft group. `actual_arg` (optional, on a form of either key): the 1-based number of the call's argument that holds the value the check reads, or `compare_left` (Python assert: the left side of the comparison). It is written only where the argument order is verified in the library's documentation and on a sample; a form in doubt has no key (JUnit assertEquals/assertTrue and the like have none: the head also matches JUnit 4, whose message comes first, so the number moves with a message). `probe_no_retry` (optional, on an entry): rows {source, flags}; when the test file matches `source` (what it imports) the runner is called with `flags` added so a probe's purpose-made red is not run twice; a flag never becomes a verdict on the test and no project config is touched. `interruption_texts` (optional, on an entry): regexes of the runner's own text for a test that was cut (Playwright: Test timeout of Nms exceeded); a hit only demotes a marker read in that failure, it never proves anything; absent = nothing to demote on that language."
+}

@@ -1,0 +1,6 @@
+{
+  "observables": [
+    {"path": "app/api.py"},
+    {"path": "testproject1-backend:src/testproject1/rest_api/routers/workflow.py"}
+  ]
+}

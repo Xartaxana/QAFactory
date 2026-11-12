@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "secret_content_patterns": [
+    "-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----",
+    "eyJ[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}\\."
+  ],
+  "environment": {
+    "env_file": "testproject1_test_harness/env.fixture",
+    "env_files": [
+      "testproject1_test_harness/env.fixture"
+    ],
+    "base_url_key": "TESTPROJECT1_API_DOMAIN",
+    "user_key": "AUTH_USERNAME",
+    "secret_keys": [
+      "AUTH_PASSWORD"
+    ],
+    "health_path": "/v1/info",
+    "health_url": "http://localhost:8080/v1/info",
+    "health_expect": [
+      200
+    ],
+    "access": {
+      "kind": "local_login",
+      "url": "http://localhost:8080/v1/local-auth/login",
+      "user_key": "AUTH_USERNAME",
+      "secret_key": "AUTH_PASSWORD",
+      "user_field": "email",
+      "secret_field": "password",
+      "unauth_status": [
+        401
+      ]
+    },
+    "extra_keys": [],
+    "integrations": [
+      {
+        "name": "jira-integration",
+        "keys": [
+          "JIRA_URL",
+          "JIRA_TOKEN"
+        ],
+        "owner": "not named by the team",
+        "required_by": [
+          "api: Jira datasources and tools"
+        ]
+      }
+    ]
+  },
+  "test_data": {
+    "accounts_by_role": "Default user from AUTH_USERNAME/AUTH_PASSWORD; extra users created per test through the admin API (LocalUserUtils) on the local stand"
+  },
+  "environments": [
+    {
+      "name": "local-docker",
+      "base_url": "http://localhost:8080",
+      "frontend_url": "http://localhost:5173",
+      "bring_up": "docker compose from ../../docker-compose.yaml (backend built from main); already running, recreating the containers is slow and done only when needed",
+      "credentials_by_role": {
+        "default user": "AUTH_USERNAME / AUTH_PASSWORD in testproject1_test_harness/.env"
+      },
+      "safe_to_break": true
+    }
+  ],
+  "default_environment": "local-docker"
+}

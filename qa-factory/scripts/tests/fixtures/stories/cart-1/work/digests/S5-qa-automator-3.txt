@@ -1,0 +1,14 @@
+qa-automator S5 CART-1_TC_005..008 (window 2 of 4) · ok
+CART-1_TC_005 · green · isolation holds; the red was a test defect (cookie jar), recorded
+CART-1_TC_006 · green · merge max, cap at stock, drop stock 0, 401 unauth
+CART-1_TC_007 · green · PUT sets within stock, 400 above, DELETE removes
+CART-1_TC_008 · green · foreign PUT/DELETE 404, owner row unchanged
+qa-factory/artifacts/CART-1/work/handoffs/S5-qa-automator-3.yaml
+
+`s5_precheck.py` now returns OK for the 4 cases, and `handoff_check.py --fix` passes (101 fields). The `changed-after-red` finding cleared, but not by re-recording it:
+- **Case copies:** the checker reads case files from `work/test-cases/<area>/`, which was empty. I copied `CART-1_TC_005` to `CART-1_TC_008` there from `test-cases/cart/`. I diffed only TC_005 against the pinned `cv_3767896d512c623e0b59` and it matched.
+- **Obligation hashes:** they are now real. The hash is the sha256 of the plan obligation as JSON with sorted keys and compact separators. That form reproduces window 1's OB-3 hash.
+- **Obligation bindings:** the four `obligation_bindings[]` rows for OB-5 to OB-8 are added, with `code_validity` "unverified" and `sensitivity` "missing". No probe was run, so the critic fills those.
+- **TC_005 record:** the `expectation_changes` row is unchanged and says only the fixture's cookie jar changed. No assertion changed.
+
+Files are under `<path-1>\test-automation-framework`. Run witness: `qa-factory/artifacts/CART-1/evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.json`, exit 0, 4 passed.

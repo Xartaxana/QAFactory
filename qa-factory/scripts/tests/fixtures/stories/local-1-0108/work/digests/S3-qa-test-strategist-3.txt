@@ -1,0 +1,5 @@
+qa-test-strategist S3 TS-24..26 · ok
+TS-24 · unverifiable · question_refs Q7; if_answered[Q7] has * and not_needed
+TS-25 · unverifiable · question_refs Q8; if_answered[Q8] has * and not_needed
+TS-26 · unverifiable · question_refs Q9; if_answered[Q9] has * and not_needed
+qa-factory/artifacts/LOCAL-1/test-plan.md

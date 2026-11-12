@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "task_id": "TP1-14857",
+  "triage": [
+    {
+      "test": "TC-006",
+      "case": "TC-006",
+      "verdict": "NOT_EXECUTED",
+      "evidence": "evidence/manual/TC-006/a1/steps.jsonl",
+      "note": "Inconclusive: oracle open (R-16/OQ-4). Observation: PUT full_reindex=true with nonexistent branch returned 201, old index data deleted before git clone exit 128, branch changed, last_reindex_triggered_at null->stamp. Not a grounded defect: no requirement states what a failed reindex must keep (stamp-on-failure is the MR4566 non-goal; data cleanup before load is pre-existing generic flow, not in the MR diff). Owner: product owner / dev team (OQ-4); next step: owner decides failed-reindex stamp and data-preservation expectation, then automate as api row (TS-6 option a).",
+      "instance_id": "TC-006",
+      "attempt_id": "a1"
+    },
+    {
+      "test": "TC-007",
+      "case": "TC-007",
+      "verdict": "ENV_ISSUE",
+      "evidence": "evidence/manual/TC-007/request.json",
+      "our_signal": "Checked the case needs a talkative concurrency queue (DATASOURCE_CONCURRENCY_LIMIT_ENABLED); the story diff stamps before the queue wait, the stand has the flag off so no queue exists.",
+      "env_fix": {
+        "step": "Set DATASOURCE_CONCURRENCY_LIMIT_ENABLED (+limit/timeout vars) in the testproject1 service env and restart testproject1 container",
+        "owner": "user"
+      },
+      "unverified": "Stamp-before-queue-wait timeline and STALE-on-timeout (R-15, OQ-4) stay unverified",
+      "instance_id": "TC-007",
+      "attempt_id": "a1"
+    },
+    {
+      "test": "TC-008",
+      "case": "TC-008",
+      "verdict": "ENV_ISSUE",
+      "evidence": "evidence/manual/TC-008/request.json",
+      "our_signal": "Checked the cron/queue-pressure path (R-13) needs the concurrency assumes; flag off on local-docker so set_queued()/clear_queued() full update() never runs.",
+      "env_fix": {
+        "step": "Set DATASOURCE_CONCURRENCY_LIMIT_ENABLED and a low slot count, restart testproject1 container",
+        "owner": "user"
+      },
+      "unverified": "Whether a later full update() overwrites the stamp (R-13, OQ-6) stays unverified",
+      "instance_id": "TC-008",
+      "attempt_id": "a1"
+    },
+    {
+      "test": "TC-009",
+      "case": "TC-009",
+      "verdict": "ENV_ISSUE",
+      "evidence": "evidence/manual/TC-009/a1/steps.jsonl",
+      "our_signal": "Checked the provider list endpoint on the stand: no provider datasource/stub exists, so provider reindex status handling (R-11/R-18) cannot be exercised.",
+      "env_fix": {
+        "step": "Register a provider (or stub) returning Failed/unknown status in the stand",
+        "owner": "user"
+      },
+      "unverified": "Provider reindex end state for non-Started/InProgress/Completed statuses (R-18, OQ-8) stays unverified",
+      "instance_id": "TC-009",
+      "attempt_id": "a1"
+    },
+    {
+      "test": "TC-010",
+      "case": "TC-010",
+      "verdict": "ENV_ISSUE",
+      "evidence": "evidence/manual/TC-010/a1/captures.jsonl",
+      "our_signal": "Checked API only: raw last_reindex_triggered_at has no zone suffix and equals server UTC wall time while client is UTC+1; the UI rendering was not observed (no e2e-ui profile).",
+      "env_fix": {
+        "step": "Provide an e2e-ui profile (browser + testproject1-ui against the stand) for the factory run",
+        "owner": "factory"
+      },
+      "unverified": "Displayed Last indexed text vs trigger time across zones (R-19, OQ-9) stays unverified; zone-less naive datetime is an owner question, not a defect",
+      "instance_id": "TC-010",
+      "attempt_id": "a1"
+    },
+    {
+      "test": "TC-011",
+      "case": "TC-011",
+      "verdict": "NOT_EXECUTED",
+      "evidence": "evidence/manual/TC-011/a1/steps.jsonl",
+      "note": "Inconclusive: expectation unconfirmed (open question). Owner: product owner (OQ-5 reading of which manual flows move Last indexed); next step: owner answer, then automate or close.",
+      "instance_id": "TC-011",
+      "attempt_id": "a1"
+    },
+    {
+      "test": "TC-012",
+      "case": "TC-012",
+      "verdict": "NOT_EXECUTED",
+      "evidence": "evidence/manual/TC-012/a1/steps.jsonl",
+      "note": "Inconclusive: oracle open (OQ-3, AC-5 flows unspecified). Observations are hypotheses needing evidence, no requirement violated: (a) file-KB created datasource stuck completed=false 9+ min (pre-existing indexing, outside MR4566 diff; needs the stand's container log to separate from environment/embedding model); (b) code datasource accepting incremental_reindex=true vs SDK validator is an API-contract question for the dev team; (c) FAQ incremental/resume with minimal body returns 200 without reindex needs the endpoint's documented contract. Owner: dev team + product owner; next step: check testproject1 container logs for (a), cite API docs for (b)/(c).",
+      "instance_id": "TC-012",
+      "attempt_id": "a1"
+    }
+  ]
+}

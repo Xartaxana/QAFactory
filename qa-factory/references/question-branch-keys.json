@@ -1,0 +1,3 @@
+{
+  "patch_keys": ["disposition", "level", "fit", "reason", "oracle_unknown", "test_level_rationale", "coverage_obligations", "rung_basis"]
+}

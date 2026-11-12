@@ -1,0 +1,7 @@
+qa-code-critic S5 CART-1_TC_009 · concerns
+CART-1_TC_009 · unverified · test faithful and red on Then 2; manifest has no instance, no receipt
+qa-factory/artifacts/CART-1/work/test-code/critic-findings-4.md
+
+I could not build the review receipt, so step 3 (`review_receipt_ref` for OB-9 through `manifest_put.py`) was not done. `window_record.py --review-receipt` refused again with `empty_scope`. `automation-manifest.json` still has no `tests[]` row for TC_009: `manifest_view.py --summary` shows 16 tests, none of them TC_009, and the only TC_009 entry is the unresolved `contradicts_requirement` row. The author's instance row was not committed to the manifest, so it needs re-sending through `manifest_put.py`. After that, re-run `window_record.py --review-receipt`.
+
+On the re-review: the Then 2 assert moved to the end of the test. Its value and message are unchanged, so it is not fitted to the code. The test is still red on Then 2 alone (witness `evidence/runs/c7f56259e689c93a9ddf`). Since it is red with `contradicts_requirement`, no probe applies. The handoff form for dispatch -5 passes `handoff_check.py --fix`.

@@ -1,0 +1,7 @@
+qa-test-strategist S3 S3-qa-test-strategist-2 · concerns
+TS-4 · automate · Q6 a: quantity is summed
+TS-9 · automate · Q7, Q8 a: stock rules as written
+TS-12 · automate · PUT kept; source_conflict true (matrix says PATCH)
+TS-15 · manual-agent · Q12 a: OUT_OF_STOCK shown, cart unchanged
+TS-6 · automate · Q5 is not a register id; raised as new:1
+test-plan.md

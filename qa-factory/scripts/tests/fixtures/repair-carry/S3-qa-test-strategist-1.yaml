@@ -1,0 +1,58 @@
+# S3 -> S4: the test plan is handed to the case designer. (trimmed accepted form of a parent dispatch, ticket QA-1)
+# Fill: write your fields as "path: value" lines to work/handoffs/S3-qa-test-strategist-1.values.yaml in one Write.
+schema_version: 1
+contract: s3-strategist-to-designer
+stage: S3
+from_role: qa-test-strategist
+to_role: qa-case-designer
+
+inputs:
+  - path: work/handoffs/S3-qa-test-strategist-1.yaml
+    what: this file
+    required: true
+
+inputs_read:
+  - path: work/requirements-register.md
+    version: register 11 rows
+    requirements: 11
+  - path: work/context-bundle.json
+    version: 2f10c6d89198c206160c21879dc7c6f5d9cee0ff7accf671f986b647d03d9572
+    existing_candidates_considered: 4 of 4
+
+header:
+  role: qa-test-strategist
+  stage: S3
+  window: QA-1
+  verdict: concerns
+
+scope:
+  - id: TS-1
+    state: automate
+    reason: no API check reads the stamp
+    requirements: R-1, R-2
+    obligations: OB-1
+    behaviour: A reindex stamps the trigger time.
+    risk: moderate
+    impact_class: degraded
+    oracle: "requirement:R-1"
+    level: api
+    existing_coverage: new
+    environment: local-docker
+    design_review_required: true
+    source_conflict: false
+    oracle_unknown: false
+    coverage_contract_revision: coverage-observation-v1
+
+budget:
+  size: M
+  cap: 10
+  planned_rows: 4
+  within_cap: true
+  if_over: nothing cut
+
+claims:
+  every_register_requirement_reaches_a_row: true
+  every_row_has_a_disposition_and_a_reason: true
+  every_row_mints_obligation_ids: true
+  every_contradiction_matrix_cell_reached_a_row: true
+  no_test_was_run_in_this_stage: true

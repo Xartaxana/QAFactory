@@ -1,0 +1,1 @@
+Prinyat kak probel (Rekomenduyu): TC_022 i TC_023 ostayutsya neproverennymi, instrument ruchnoi proverki ne umeet vkhodit na stend; konfig ne trogat; v otchete dlya gate B otmetit kak probel stenda.

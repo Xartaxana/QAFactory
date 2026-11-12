@@ -1,0 +1,1 @@
+Da (mozhno ostavit TypeScript-testy bez mutatsionnoi proby: instrument prob ne chitaet TypeScript; v otchete pometit zelenye testy kak ne proverennye mutatsiei)

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "_note": "Closed variety of scripts/stand_access.py (FR-13, AR-1, OH3-10): the shapes in which a stand's 400/422 answer to the login call names the body fields it complains about. One reader: stand_access.complained_fields(). A shape is {kind, ...}: kind `list_item_path` = the answer's top-level `list` key holds a list, and each item holds the field name at `name_at` (a path of object keys; a string there is the name, a list there yields its LAST string, so FastAPI's loc [\"body\", \"email\"] names `email`); kind `key_names` = the answer's top-level `map` key holds an object whose KEYS are the field names (a Laravel/Django-style {\"errors\": {\"email\": [...]}}). Only NAMES come out: a candidate must match `name_pattern`, is dropped when it is one of `not_fields` (the places of a field, not a field) or contains a credential the call used, and at most `max_names` are kept. Nothing else of the answer is ever read out. A shape this table does not hold names nothing, and the receipt says only the status.",
+  "name_pattern": "^[A-Za-z_][A-Za-z0-9_.\\-]{0,63}$",
+  "max_names": 5,
+  "not_fields": ["body", "query", "header", "headers", "path", "cookie", "form", "json"],
+  "shapes": [
+    {"kind": "list_item_path", "list": "detail", "name_at": ["loc"]},
+    {"kind": "list_item_path", "list": "errors", "name_at": ["field"]},
+    {"kind": "list_item_path", "list": "errors", "name_at": ["loc"]},
+    {"kind": "list_item_path", "list": "errors", "name_at": ["param"]},
+    {"kind": "list_item_path", "list": "errors", "name_at": ["path"]},
+    {"kind": "list_item_path", "list": "violations", "name_at": ["field"]},
+    {"kind": "key_names", "map": "errors"},
+    {"kind": "key_names", "map": "fieldErrors"}
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "schema_version": 2,
+  "receipt_kind": "s5_review_window",
+  "immutable": true,
+  "reviewer_dispatch_id": "S5-qa-code-critic-3",
+  "author_dispatch_id": "S5-qa-automator-3",
+  "input_hash": "ffc7c3737535a405008987b7660a0d29e57055aa7d7cb7f794ee3ac77ae6c40d",
+  "scope_instances": {
+    "CART-1_TC_005": [
+      "@api @regression CART-1_TC_005 cart isolation between owners"
+    ],
+    "CART-1_TC_006": [
+      "@api @regression CART-1_TC_006 guest cart merge on login"
+    ],
+    "CART-1_TC_007": [
+      "@api @regression CART-1_TC_007 update and delete cart item"
+    ],
+    "CART-1_TC_008": [
+      "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+    ]
+  },
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "input_hash": "d1b4dcfa5653375458fc33b7e21a9d6d8f0f008578dcd5646ccd74f48ae803e7",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-5",
+          "obligation_hash": "2b892b48dd40008804ec358f876535e14c07053e006e84cadb8711118b8a32d0"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "obligation_hash": "f44e84b53365e79da90a673e5b18807925caa5903372278f34a107cb62253d81",
+      "assertion_id": "tests/api/cart/cart-isolation.spec.ts:21",
+      "defect_location": "MyBooks/src/lib/cartOwner.ts:1",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_005",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "d1b4dcfa5653375458fc33b7e21a9d6d8f0f008578dcd5646ccd74f48ae803e7"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/d67215ba124bbc6b138b-reparse-f6cc89666345.json",
+          "sha256": "996c59ff1faa5d3fbe85de3df7340bab141a91201d236766190915cc9867a9fb"
+        },
+        {
+          "path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+          "sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_005",
+        "words": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+        "at": "2026-10-31T10:11:36+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/cart-isolation.spec.ts:21"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "input_hash": "fcbcf75292c6c69147c19dd4811eb0e33caeb25a76ca00d90afbc50c8d376063",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-6",
+          "obligation_hash": "d8b2880a830b3dca03a6c034de7a14f61de36822eed3775fafdbc976f9754ac2"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "obligation_hash": "0aee8925331a1c63febe090f609191131f47845497666c3d623b0d53ef2ea204",
+      "assertion_id": "tests/api/cart/cart-merge.spec.ts:35",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:103",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_006",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "fcbcf75292c6c69147c19dd4811eb0e33caeb25a76ca00d90afbc50c8d376063"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/d67215ba124bbc6b138b-reparse-f6cc89666345.json",
+          "sha256": "996c59ff1faa5d3fbe85de3df7340bab141a91201d236766190915cc9867a9fb"
+        },
+        {
+          "path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+          "sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_006",
+        "words": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+        "at": "2026-10-31T10:11:37+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/cart-merge.spec.ts:35"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "input_hash": "251f7d6006487a4717362be19f4670da213582265394b795956bb9ba10325b3e",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-7",
+          "obligation_hash": "ba2602f3c1a21125b815da75eb3d66537721b13b3678318a9720e1b92b9e0bc6"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "obligation_hash": "b340fc0b625e6402270f3d2a8caaa7426ce4e8e92c964f1827e0b4583e53c648",
+      "assertion_id": "tests/api/cart/cart-update-delete.spec.ts:21",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:72",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_007",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "251f7d6006487a4717362be19f4670da213582265394b795956bb9ba10325b3e"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/d67215ba124bbc6b138b-reparse-f6cc89666345.json",
+          "sha256": "996c59ff1faa5d3fbe85de3df7340bab141a91201d236766190915cc9867a9fb"
+        },
+        {
+          "path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+          "sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_007",
+        "words": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+        "at": "2026-10-31T10:11:38+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/cart-update-delete.spec.ts:21"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "input_hash": "e6ebd27c2ddda0e970da14e1640a72f79062465a5cce455171036528e2db7be4",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8",
+          "obligation_hash": "3105c8be5825f55016b6d74c2d70f145793bfee338d1d7d22c5bbb10896f374c"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "obligation_hash": "8f7fee1eb91ab3b7fc58a99ebca8c4bdadd7510a0f380e385b30e00cdc00dc0b",
+      "assertion_id": "tests/api/cart/cart-ownership.spec.ts:21",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:72",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_008",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "e6ebd27c2ddda0e970da14e1640a72f79062465a5cce455171036528e2db7be4"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "passed",
+      "execution_fingerprint": "c6a59d4630ce79f37d8963225900b5d85af40ef5946cbbaa06048eeb51b7f2cd",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/d67215ba124bbc6b138b-reparse-f6cc89666345.json",
+          "sha256": "996c59ff1faa5d3fbe85de3df7340bab141a91201d236766190915cc9867a9fb"
+        },
+        {
+          "path": "evidence/runs/d67215ba124bbc6b138b/repair_verify-d67215ba124bbc6b138b-20261031-103404.junit.xml",
+          "sha256": "387475ae2dc86a264a038c85e0c1525897336e3b415f78e2cb69ef57a17968a9"
+        }
+      ],
+      "probe_gap": {
+        "verdict": "not_run",
+        "record": null,
+        "why": "no probe of these bytes was run",
+        "named_by": "CART-1_TC_008",
+        "words": "Accept for windows 2-3 (Recommended): TC_005 to TC_009 stay green-but-unprobed (the probe tool cannot read the TypeScript tests); list them under Left with you.",
+        "at": "2026-10-31T10:11:39+00:00"
+      },
+      "assertion_refs": [
+        "tests/api/cart/cart-ownership.spec.ts:21"
+      ]
+    }
+  ],
+  "receipt_hash": "f53033b03379f53a143e78506714176c09dd75b92bc5b90e8cd0df6bc01f82ad"
+}

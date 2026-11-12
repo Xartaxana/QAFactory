@@ -1,0 +1,50 @@
+---
+id: TC-006
+title: A project PUT that changes a field and the project persists neither when the move fails
+area: integrations
+priority: P0
+status: Draft
+channel: auto
+reuse_decision: extend
+updated: 2026-10-28
+task: TP1-12586
+covers: [R-11, R-8]
+defect_class: data-loss
+basis: "requirement:R-11"
+then_oracles: [{"then": 1, "source": "requirement", "ref": "R-8"}, {"then": 2, "source": "requirement", "ref": "R-8"}, {"then": 3, "source": "requirement", "ref": "R-11"}, {"then": 4, "source": "requirement", "ref": "R-11"}, {"then": 5, "source": "requirement", "ref": "R-11"}]
+plan_row: TS-6
+reuse_reason: "extend:T4 (test_integration_update.py::test_project_integration_update) - happy path only; no failure parameter"
+preconditions: [{"id": "PC-1", "kind": "data", "what": "source and target projects; the target holds an integration with the same alias, created by the case", "partitions": ["P-fail", "P-ok"], "check": {"case_seeds": "projects, a colliding integration in the target, the integration to update in the source"}}]
+---
+Requirements: R-11, R-8
+Plan row: TS-6
+
+Obligations: OB-8.
+
+## Given
+- Source integration S (alias A, a recaptured field F = f0).
+- Partition P-fail: the target project holds an integration that makes the move collide with S (same alias and type).
+- Partition P-ok: a clean target without collision.
+
+## When
+1. P-fail: PUT S with F = f1 and project_name = target.
+2. GET S, list source and target.
+3. P-ok: PUT S with F = f1 and project_name = clean target.
+
+## Then
+1. P-fail: the PUT answers 4xx.
+2. The error body states in clear words why the move was refused (not a bare 500 or empty message).
+3. S still has F = f0.
+4. S is listed in the source and absent from the target.
+5. P-ok (positive control): both changes land, F = f1 and S is in the clean target.
+
+## Self-probe notes
+- Discriminating input: field change plus a move that must fail; Then 3 detects half-saved state. The failure is forced by data, not mocked.
+- Reads are independent GET and lists. Then 5 shows that the 4xx in P-fail comes from the collision, not from the field change.
+- If the stand returns 5xx for P-fail it is a failed outcome for triage.
+
+## Obligation coverage
+| obligation/part | oracle | boundary | Then | residual gap |
+|---|---|---|---|---|
+| OB-8 atomic | R-11 | API GET + lists | 3, 4, 5 | internal session seam developer-owned |
+| OB-8 clear error | R-8 | API error body | 1, 2 | UI side in TC-010 |

@@ -1,0 +1,6 @@
+{
+  "id": "CART-1_TC_012",
+  "probe_line": "no runtime probe is registered for profile e2e-ui (config execution.runtime_probes)",
+  "remedy": "register one: runtime_probe.py --suggest --profile e2e-ui --write",
+  "owner": "factory"
+}

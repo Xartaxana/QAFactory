@@ -1,0 +1,69 @@
+# The window form of release 0.10.2, filled: the contract s5-automator-to-critic as it stood BEFORE the two optional
+# sections of the S5 plan were added (a copy of its sections, every value filled). A window started on 0.10.2 reaches
+# `finish` on 0.10.3 with this form, and the new sections are not in it (S5 plan, part A2, E5).
+schema_version: 1
+contract: s5-automator-to-critic
+stage: S5
+from_role: qa-automator
+to_role: qa-code-critic
+
+inputs:
+  - path: work/handoffs/S5-qa-automator-1.yaml
+    what: this file
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances this window added or changed, with their case links and obligations
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every approved case in `scope`, at the pinned version named here
+    required: true
+  - path: <test files listed in artifacts.tests>
+    what: the code this window wrote
+    required: true
+  - path: work/probes/<instance>.json
+    what: one code probe per new or changed instance, when the automator ran them
+    required: false
+
+header:
+  role: qa-automator
+  stage: S5
+  window: TC-001
+  verdict: ok
+
+scope:
+  - id: test_one
+    state: green
+    reason: written in this window
+    origin: new
+    case_version: cv_new
+    obligations: []
+
+artifacts:
+  manifest: work/automation-manifest.json
+  runtime_provenance: evidence/runtime-provenance-api-20260101T000000Z.json
+  tests:
+    - tests/test_one.py
+  run_witness: evidence/runs/abc/initial-abc.json
+  probes:
+    - work/probes/test_one.json
+  notes: work/s5-notes.md
+
+claims:
+  every_case_in_scope_has_an_instance: true
+  every_instance_names_its_current_case_version: true
+  every_instance_ran: true
+  every_expectation_change_after_red_is_recorded: true
+  manifest_matches_the_tests: true
+
+unresolved: []
+
+for_the_reviewer:
+  - "the shared helper holds the oracle"
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

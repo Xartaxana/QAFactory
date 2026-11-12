@@ -1,0 +1,12 @@
+header.window: TICKET
+header.verdict: concerns
+claims.every_register_requirement_reaches_a_row: true
+claims.every_row_has_a_disposition_and_a_reason: true
+claims.every_row_mints_obligation_ids: true
+claims.every_contradiction_matrix_cell_reached_a_row: true
+claims.no_test_was_run_in_this_stage: true
+claims.every_hunk_of_the_diff_has_a_grounding_row: true
+claims.every_register_requirement_has_a_grounding_line: true
+claims.every_risk_and_uncovered_area_reaches_a_row_or_not_planned: true
+claims.every_area_that_matters_has_regression_or_a_gap: true
+tried_note: "repair dispatch: rows TS-4, TS-9, TS-12, TS-15 follow answers Q6-Q12; TS-12 keeps source_conflict (matrix PATCH vs PUT); TS-6 Q5 raised as new:1"

@@ -1,0 +1,4 @@
+{"at": "2026-10-28T11:27:15+00:00", "command": "ui", "step": "login by code", "outcome": "ok", "detail": "landed on / in 0.78 s (cookie testproject1_access_token)"}
+{"at": "2026-10-28T11:27:20+00:00", "command": "ui", "step": "goto \"http://localhost:5173/integrations/user/edit?project_name=qa12586-t10-src&credential_type=Sonar&alias=qa12586-t10-ualias\"", "outcome": "ok", "detail": "5.14 s"}
+{"at": "2026-10-28T11:27:25+00:00", "command": "ui", "step": "wait \"#project-selector\"", "outcome": "ok", "detail": ""}
+{"at": "2026-10-28T11:27:56+00:00", "command": "ui", "step": "click \"#project-selector\"", "outcome": "failed", "detail": "no element matched within 30 s"}

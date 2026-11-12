@@ -1,0 +1,391 @@
+{
+  "job_id": "a96f5e653377735139aa",
+  "idempotency_key": "S5-qa-automator-2:initial:TC-001+TC-002+TC-003+TC-004:13d1579da044",
+  "request_digest": "a96f5e653377735139aa56016bfd83c8fe02c5f210a395cb02ecbb4a2290922e",
+  "status": "completed",
+  "created_at": "2026-10-28T04:47:19+00:00",
+  "request": {
+    "task": "TP1-12586",
+    "revision": "58",
+    "dispatch_id": "S5-qa-automator-2",
+    "profile_id": "api",
+    "purpose": "initial",
+    "reason": "S5-qa-automator-2: --mine TC-001,TC-002,TC-003,TC-004 (initial)",
+    "idempotency_key": "S5-qa-automator-2:initial:TC-001+TC-002+TC-003+TC-004:13d1579da044",
+    "input_fingerprint": "591151a991faeb53e8b3483679856f8a82b4c841b5213e66b71b7a1f0b3fc743",
+    "fingerprint_components": {
+      "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+      "test_content_sha": "d1ffc6750878161745c9b8a3001f1e1853f5390cfb10d6893eb48f858d874638",
+      "config_sha": "871d2fe9533513742838a6d604cb177dbe2e33657d5c94aa73b005df1bbd1b70",
+      "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+      "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+      "policy_revision": "unknown"
+    },
+    "fingerprint_files": [
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\project\\test_integration_project_change.py",
+        "sha256": "1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32",
+        "kind": "test_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\project\\test_ms_teams_integration.py",
+        "sha256": "840f534c94bdfa9e45b1afadb0b336d4831dddaac0751696eb2a9eab88f1aac4",
+        "kind": "test_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\conftest.py",
+        "sha256": "597b95c60d4712ba39411ca07440b2768f546500ee7efcc3fe7b2ff089e91ead",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\conftest.py",
+        "sha256": "c2ede09c8ea20c15c7dfe8d398b83998256b6ada02876cd5830dbaac1f60ce9a",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\project\\conftest.py",
+        "sha256": "ac17962ea819e4b3a01ce7cd3c4785f050ce675ffe11bacbb6323a21cb68042d",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\qa-factory\\config.json",
+        "sha256": "472bcd52223e18ca3d18251ba2bc21dc63f2701e7dc3ce21fe7778d07bab6149",
+        "kind": "config_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\pyproject.toml",
+        "sha256": "e7482177dbfaa17dbab95b4d12c736d9edc35de0b62f4ad2da5a16655d4ae6d9",
+        "kind": "dependency_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\poetry.lock",
+        "sha256": "5836130f4b3dcc35031c530d2c2f12207ee4078fb7304017b952a4342949761a",
+        "kind": "dependency_files"
+      }
+    ],
+    "freshness": "fresh",
+    "remaining_budget": 1,
+    "selected_instance_ids": [
+      "test_put_project_change_moves_integration[TC-001-sonar]",
+      "test_put_project_change_moves_integration[TC-001-jira]",
+      "test_put_project_change_moves_ms_teams_integration",
+      "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "test_put_project_change_requires_admin_in_target"
+    ],
+    "current_scope_instance_ids": [
+      "test_put_project_change_moves_integration[TC-001-sonar]",
+      "test_put_project_change_moves_integration[TC-001-jira]",
+      "test_put_project_change_moves_ms_teams_integration",
+      "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "test_put_project_change_requires_admin_in_target"
+    ],
+    "runtime_required": true,
+    "runtime_probe": {
+      "argv": [
+        "<home>\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "<project>\\ai-packages\\qa-factory/scripts/runtime_probe.py",
+        "--profile",
+        "api",
+        "--environment",
+        "local-docker",
+        "--container",
+        "testproject1-dev-010-testproject1-1",
+        "--checkout",
+        "../../testproject1",
+        "--app-root",
+        "/app"
+      ],
+      "cwd": "<project>\\testproject1-sdk\\test-harness",
+      "timeout_s": 120
+    },
+    "runtime_provenance": {
+      "profile_id": "api",
+      "timestamp": "2026-10-28T04:46:21+00:00",
+      "environment_id": "local-docker",
+      "expected_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+      "observed_runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+      "evidence_refs": [
+        "<project>/testproject1-sdk/test-harness/qa-factory/artifacts/TP1-12586/evidence/runtime-provenance-api-20261028T044621Z.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "verified_content",
+        "deployed_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+        "verified_source_revisions": [
+          "a29f2604effe72999478a8de2d5fb23b80b38833"
+        ]
+      },
+      "result": "matched",
+      "comparisons": [
+        {
+          "file": "src/pages/integrations/components/SettingsForm/SettingsForm.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/pages/integrations/components/EditSettingPageBase.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/testproject1/clients/postgres.py",
+          "container_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7",
+          "local_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7"
+        },
+        {
+          "file": "src/testproject1/rest_api/models/base.py",
+          "container_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10",
+          "local_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/project_settings.py",
+          "container_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d",
+          "local_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/settings.py",
+          "container_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec",
+          "local_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/user_settings.py",
+          "container_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49",
+          "local_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49"
+        },
+        {
+          "file": "src/testproject1/service/settings/settings_transfer_service.py",
+          "container_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3",
+          "local_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3"
+        }
+      ],
+      "container": "testproject1-dev-010-testproject1-1",
+      "checkout": "..\\..\\testproject1"
+    },
+    "command": {
+      "argv": [
+        "poetry",
+        "run",
+        "pytest",
+        "-v"
+      ],
+      "cwd": "<project>\\testproject1-sdk\\test-harness",
+      "scope": "selected",
+      "reporter": "pytest",
+      "selector_args": {
+        "test_put_project_change_moves_integration[TC-001-sonar]": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-sonar]"
+        ],
+        "test_put_project_change_moves_integration[TC-001-jira]": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-jira]"
+        ],
+        "test_put_project_change_moves_ms_teams_integration": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_ms_teams_integration"
+        ],
+        "test_put_project_change_into_project_with_ms_teams_is_rejected": [
+          "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::test_put_project_change_into_project_with_ms_teams_is_rejected"
+        ],
+        "test_put_project_change_requires_admin_in_target": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_requires_admin_in_target"
+        ]
+      },
+      "selector_contract_verified": true
+    },
+    "instance_contracts": {
+      "test_put_project_change_moves_integration[TC-001-sonar]": {
+        "report_test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_integration[TC-001-sonar]",
+        "parameters": {},
+        "case_version_links": [
+          {
+            "case_id": "TC-001",
+            "version": "cv_060164c2f864d235eef8"
+          }
+        ],
+        "obligation_ids": [
+          "OB-1"
+        ],
+        "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+        "instance_content_scope": "function",
+        "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c"
+      },
+      "test_put_project_change_moves_integration[TC-001-jira]": {
+        "report_test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_integration[TC-001-jira]",
+        "parameters": {},
+        "case_version_links": [
+          {
+            "case_id": "TC-001",
+            "version": "cv_060164c2f864d235eef8"
+          }
+        ],
+        "obligation_ids": [
+          "OB-1"
+        ],
+        "instance_content_sha": "bd894e756ac29b677b6aa554fa1f28419e72cce31386182a0b39acb0f8676bf9",
+        "instance_content_scope": "function",
+        "instance_code_sha": "f99fb4a128ff501f42c6dbbfefcd7be97e3bb025d0a73086531b4803911b8b9c"
+      },
+      "test_put_project_change_moves_ms_teams_integration": {
+        "report_test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_ms_teams_integration",
+        "parameters": {},
+        "case_version_links": [
+          {
+            "case_id": "TC-002",
+            "version": "cv_948bf9ee76564b469863"
+          }
+        ],
+        "obligation_ids": [
+          "OB-2",
+          "OB-3"
+        ],
+        "instance_content_sha": "2a0e8ac22811c61c2e9d525ca06b31d8cc2abdf3c6e3adf79f59950911de1120",
+        "instance_content_scope": "function",
+        "instance_code_sha": "8bd09753cdea3af1e6b87bc614889783a505d2dad8c00507c0e9d11ae2807d7c"
+      },
+      "test_put_project_change_into_project_with_ms_teams_is_rejected": {
+        "report_test_id": "tests.integrations.project.test_ms_teams_integration::test_put_project_change_into_project_with_ms_teams_is_rejected",
+        "parameters": {},
+        "case_version_links": [
+          {
+            "case_id": "TC-003",
+            "version": "cv_2ac2e11b9742c96c2d8a"
+          }
+        ],
+        "obligation_ids": [
+          "OB-4"
+        ],
+        "instance_content_sha": "006845b804bedb40a845315329ad82e44cf818fa98f080bc3e1b7711709ba193",
+        "instance_content_scope": "function",
+        "instance_code_sha": "af4571a8a89328b36b07a6a0dbb065a5b41ea726fa493c18fd275daf2e3ce306"
+      },
+      "test_put_project_change_requires_admin_in_target": {
+        "report_test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_requires_admin_in_target",
+        "parameters": {},
+        "case_version_links": [
+          {
+            "case_id": "TC-004",
+            "version": "cv_bf0b424eeff643f7d464"
+          }
+        ],
+        "obligation_ids": [
+          "OB-5"
+        ],
+        "instance_content_sha": "44c5119cf969cc09998b1491504bf75d222db8252074f056e34063f18f9b4f23",
+        "instance_content_scope": "function",
+        "instance_code_sha": "c8472d1ddf5776e892177ab403f9c91437647db837d3c17b2b870cf71c6f3698"
+      }
+    },
+    "execution": {
+      "schema_version": 1,
+      "selection": {
+        "reason": "missing_fresh_evidence",
+        "evidence_refs": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-sonar]",
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-jira]",
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_ms_teams_integration",
+          "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::test_put_project_change_into_project_with_ms_teams_is_rejected",
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_requires_admin_in_target"
+        ]
+      },
+      "reporter": {
+        "format": "pytest",
+        "path_template": "{report_path}"
+      }
+    },
+    "built_by": {
+      "tool": "run_suite.py --mine",
+      "cases": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004"
+      ]
+    },
+    "resolved_argv": [
+      "poetry",
+      "run",
+      "pytest",
+      "-v",
+      "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-sonar]",
+      "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-jira]",
+      "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_ms_teams_integration",
+      "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_requires_admin_in_target"
+    ],
+    "runtime_probe_before": {
+      "profile_id": "api",
+      "timestamp": "2026-10-28T04:46:21+00:00",
+      "environment_id": "local-docker",
+      "expected_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+      "observed_runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+      "evidence_refs": [
+        "<project>/testproject1-sdk/test-harness/qa-factory/artifacts/TP1-12586/evidence/runtime-provenance-api-20261028T044621Z.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "verified_content",
+        "deployed_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+        "verified_source_revisions": [
+          "a29f2604effe72999478a8de2d5fb23b80b38833"
+        ]
+      },
+      "result": "matched",
+      "comparisons": [
+        {
+          "file": "src/pages/integrations/components/SettingsForm/SettingsForm.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/pages/integrations/components/EditSettingPageBase.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/testproject1/clients/postgres.py",
+          "container_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7",
+          "local_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7"
+        },
+        {
+          "file": "src/testproject1/rest_api/models/base.py",
+          "container_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10",
+          "local_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/project_settings.py",
+          "container_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d",
+          "local_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/settings.py",
+          "container_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec",
+          "local_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/user_settings.py",
+          "container_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49",
+          "local_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49"
+        },
+        {
+          "file": "src/testproject1/service/settings/settings_transfer_service.py",
+          "container_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3",
+          "local_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3"
+        }
+      ],
+      "container": "testproject1-dev-010-testproject1-1",
+      "checkout": "..\\..\\testproject1"
+    }
+  },
+  "updated_at": "2026-10-28T04:48:13+00:00",
+  "runner_pid": 35240,
+  "runner_started_at": "2026-10-28T04:46:19.111945+00:00",
+  "child_pid": 25612,
+  "child_started_at": "2026-10-28T04:47:29.186161+00:00",
+  "execution_status": "failed",
+  "freshness": "fresh",
+  "summary": "qa-factory\\artifacts\\TP1-12586\\evidence\\runs\\a96f5e653377735139aa\\initial-a96f5e653377735139aa-20261028-054729.json",
+  "run_block": "qa-factory\\artifacts\\TP1-12586\\work\\run-blocks\\20261028T044813481713Z-a96f5e653377735139aa.json",
+  "baseline_receipt": null
+}

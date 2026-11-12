@@ -1,0 +1,6 @@
+{"tests":[
+{"instance_id":"@api @regression LOCAL-1_TC_010 unknown book id is 404 BOOK_NOT_FOUND, cart untouched","file":"tests/api/cart/cart.spec.ts","covers":["LOCAL-1_TC_010"],"critic_verdict":"approved"},
+{"instance_id":"@api @regression LOCAL-1_TC_011 user cart and guest carts do not see each other lines","file":"tests/api/cart/cart.spec.ts","covers":["LOCAL-1_TC_011"],"critic_verdict":"approved"},
+{"instance_id":"@api @regression LOCAL-1_TC_011 admin cart and guest carts do not see each other lines","file":"tests/api/cart/cart.spec.ts","covers":["LOCAL-1_TC_011"],"critic_verdict":"approved"},
+{"instance_id":"@api @regression LOCAL-1_TC_011 foreign PUT and DELETE leave the owner line unchanged","file":"tests/api/cart/cart.spec.ts","covers":["LOCAL-1_TC_011"],"critic_verdict":"approved"},
+{"instance_id":"@api @regression LOCAL-1_TC_012 update to stock is accepted, one over is INSUFFICIENT_STOCK and keeps 5","file":"tests/api/cart/cart.spec.ts","covers":["LOCAL-1_TC_012"],"critic_verdict":"approved"}]}

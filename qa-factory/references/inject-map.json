@@ -1,0 +1,122 @@
+{
+  "note": "Injection map for inject_context.py (PreToolUse: Agent|Task). 'common' (the tester's manifesto) is delivered to every qa-* role dispatch; common-rules.md reaches each role as its own slice (first entry of the role's list) and is never named on demand; 'roles' adds the role's own slice on top. A path prefixed 'plugin:' resolves against the installed plugin root (ai-packages/qa-factory/...); a path prefixed 'project:' resolves against the project's qa-factory/ state directory and is delivered fail-open — a missing project: file (not yet onboarded, or the project has none of that kind) is not silent: the role's prompt carries a line that names the missing file, and the person gets a hook_signal of kind inject; it is never a hard error. Edits go here only, never copied into role prompts. Writer roles receive the artifact contract (json or md part) so the keys and frontmatter they produce are the ones the validator and the exit gate check. 'kinds' (repair|rework -> role -> drop_sections -> entry -> heading lines) names sections of a role's own plugin: slice that a dispatch of that kind is NOT handed; a dispatch is a repair when its record carries rework_of and repair_cause, a rework when it carries rework_of only, and every other dispatch - and any whose kind cannot be told - is 'first', the full text; a common entry or a common-rules slice is never cut, and a row naming an entry or heading that is not there is reported by inject_context.map_problems and fails its test. Readers: inject_context.dispatch_kind, entries_for and delivered_text (the hook) and role_load (and through it audit A22), all through those functions.",
+  "slices": "plugin:references/slices/<role>/<subject>.md is GENERATED from references/<subject>.md by scripts/contract_slices.py --write and committed: the source stays one file per subject (one owner per fact, audit A21) while a role is injected only the sections marked for it (audit A22 judges the role's whole start load in tokens, scripts/role_load.py, against references/role-load.json). Add a reader by putting a marker line <!-- roles: qa-x, qa-y --> directly ABOVE the section heading in the SOURCE (never inside the heading: other checks match heading text exactly) and adding the slice entry here, then re-running --write; selftest --slices and audit A9 refuse a stale slice.",
+  "common": [
+    "plugin:references/tester-manifesto.md"
+  ],
+  "kinds": {
+    "repair": {
+      "qa-automator": {
+        "drop_sections": {
+          "plugin:references/slices/qa-automator/execution-lifecycle.md": [
+            "### Importing a developer or CI result",
+            "### Profiles, leases and build commands"
+          ]
+        }
+      }
+    }
+  },
+  "roles": {
+    "qa-scout": [
+      "plugin:references/slices/qa-scout/common-rules.md",
+      "plugin:references/slices/qa-scout/handoff-keys.md",
+      "plugin:references/slices/qa-scout/vocabularies.md",
+      "plugin:references/artifact-contract-grounding.md",
+      "plugin:references/adapters-read.md",
+      "project:qa-factory/strategy/framework-rules.md"
+    ],
+    "qa-requirements-tester": [
+      "plugin:references/slices/qa-requirements-tester/common-rules.md",
+      "plugin:references/slices/qa-requirements-tester/handoff-keys.md",
+      "plugin:references/slices/qa-requirements-tester/artifact-contract.md",
+      "plugin:references/slices/qa-requirements-tester/vocabularies.md",
+      "project:qa-factory/strategy/aspect-profile.md",
+      "project:qa-factory/strategy/project-profile.md"
+    ],
+    "qa-test-strategist": [
+      "plugin:references/slices/qa-test-strategist/common-rules.md",
+      "plugin:references/slices/qa-test-strategist/handoff-keys.md",
+      "plugin:references/risk-policy.md",
+      "plugin:references/slices/qa-test-strategist/artifact-contract-plan.md",
+      "plugin:references/automation-candidacy.md",
+      "project:qa-factory/strategy/test-strategy.md",
+      "project:qa-factory/strategy/project-profile.md"
+    ],
+    "qa-case-designer": [
+      "plugin:references/slices/qa-case-designer/common-rules.md",
+      "plugin:references/slices/qa-case-designer/handoff-keys.md",
+      "plugin:references/slices/qa-case-designer/artifact-contract.md",
+      "plugin:references/slices/qa-case-designer/vocabularies.md"
+    ],
+    "qa-case-critic": [
+      "plugin:references/slices/qa-case-critic/common-rules.md",
+      "plugin:references/slices/qa-case-critic/coverage-design.md",
+      "plugin:references/risk-policy.md",
+      "plugin:references/slices/qa-case-critic/artifact-contract.md",
+      "plugin:references/slices/qa-case-critic/case-lifecycle.md",
+      "plugin:references/slices/qa-case-critic/vocabularies.md"
+    ],
+    "qa-automator": [
+      "plugin:references/slices/qa-automator/common-rules.md",
+      "plugin:references/slices/qa-automator/handoff-keys.md",
+      "plugin:references/slices/qa-automator/execution-lifecycle.md",
+      "plugin:references/slices/qa-automator/vocabularies.md",
+      "plugin:references/slices/qa-automator/artifact-contract-automation.md",
+      "plugin:references/slices/qa-automator/test-code-patterns.md",
+      "project:qa-factory/strategy/framework-rules.md"
+    ],
+    "qa-code-critic": [
+      "plugin:references/slices/qa-code-critic/common-rules.md",
+      "plugin:references/slices/qa-code-critic/handoff-keys.md",
+      "plugin:references/slices/qa-code-critic/execution-lifecycle.md",
+      "plugin:references/code-review-rubric.md",
+      "plugin:references/slices/qa-code-critic/artifact-contract-automation.md",
+      "plugin:references/slices/qa-code-critic/test-code-patterns.md",
+      "project:qa-factory/strategy/framework-rules.md"
+    ],
+    "qa-runner": [
+      "plugin:references/slices/qa-runner/common-rules.md",
+      "plugin:references/slices/qa-runner/handoff-keys.md",
+      "plugin:references/walk-charter.md",
+      "plugin:references/slices/qa-runner/vocabularies.md",
+      "plugin:references/slices/qa-runner/artifact-contract-run.md",
+      "plugin:references/environments.md",
+      "project:qa-factory/strategy/project-profile.md"
+    ],
+    "qa-failure-analyst": [
+      "plugin:references/slices/qa-failure-analyst/common-rules.md",
+      "plugin:references/slices/qa-failure-analyst/handoff-keys.md",
+      "plugin:references/slices/qa-failure-analyst/vocabularies.md",
+      "plugin:references/slices/qa-failure-analyst/artifact-contract-run.md",
+      "plugin:references/slices/qa-failure-analyst/artifact-contract-automation.md",
+      "plugin:references/environments.md",
+      "project:qa-factory/strategy/faq.md"
+    ],
+    "qa-bug-reporter": [
+      "plugin:references/slices/qa-bug-reporter/common-rules.md",
+      "plugin:references/slices/qa-bug-reporter/handoff-keys.md",
+      "plugin:references/slices/qa-bug-reporter/artifact-contract.md",
+      "plugin:references/slices/qa-bug-reporter/vocabularies.md",
+      "plugin:references/external-writes.md"
+    ],
+    "qa-doc-scribe": [
+      "plugin:references/slices/qa-doc-scribe/common-rules.md",
+      "plugin:references/slices/qa-doc-scribe/handoff-keys.md",
+      "plugin:references/slices/qa-doc-scribe/artifact-contract.md",
+      "plugin:references/slices/qa-doc-scribe/artifact-contract-results.md",
+      "plugin:references/slices/qa-doc-scribe/coverage-design.md",
+      "plugin:references/slices/qa-doc-scribe/vocabularies.md",
+      "plugin:references/artifact-contract-ledger.md",
+      "plugin:references/slices/qa-doc-scribe/artifact-contract-run.md",
+      "plugin:references/stage-model.md"
+    ],
+    "qa-retro-analyst": [
+      "plugin:references/slices/qa-retro-analyst/common-rules.md",
+      "plugin:references/slices/qa-retro-analyst/handoff-keys.md",
+      "plugin:references/slices/qa-retro-analyst/artifact-contract.md",
+      "plugin:references/slices/qa-retro-analyst/artifact-contract-results.md",
+      "plugin:references/slices/qa-retro-analyst/vocabularies.md",
+      "plugin:references/artifact-contract-ledger.md"
+    ]
+  }
+}

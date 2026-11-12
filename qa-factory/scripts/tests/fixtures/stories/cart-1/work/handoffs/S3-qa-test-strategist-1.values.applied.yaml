@@ -1,0 +1,237 @@
+"inputs_read[0].version": "register ids R-1..R-16"
+"inputs_read[0].requirements": "16"
+"inputs_read[1].version": "ed92ac22589c426c597acd5371f76421789012550af43750859b2ed3632a0136"
+"inputs_read[1].existing_candidates_considered": "2 of 2"
+"header.verdict": concerns
+"scope[0].id": TS-1
+"scope[0].state": automate
+"scope[0].reason": "gap on cart API contract, P1 area"
+"scope[0].requirements": "R-3"
+"scope[0].obligations": "OB-1"
+"scope[0].behaviour": "Unknown book 404, stock 0 gives 400 OUT_OF_STOCK"
+"scope[0].risk": moderate
+"scope[0].impact_class": blocked-flow
+"scope[0].oracle": "requirement:R-3"
+"scope[0].level": api
+"scope[0].existing_coverage": new
+"scope[0].environment": local
+"scope[0].design_review_required": false
+"scope[0].source_conflict": false
+"scope[0].oracle_unknown": false
+"scope[0].coverage_contract_revision": coverage-observation-v1
+"scope[1].id": TS-2
+"scope[1].state": automate
+"scope[1].reason": "CAND-1 unit partial; service boundary open"
+"scope[1].requirements": "R-4"
+"scope[1].obligations": "OB-2"
+"scope[1].behaviour": "Quantity never exceeds stock; equal allowed"
+"scope[1].risk": moderate
+"scope[1].impact_class": degraded
+"scope[1].oracle": "requirement:R-4"
+"scope[1].level": api
+"scope[1].existing_coverage": new
+"scope[1].environment": local
+"scope[1].design_review_required": false
+"scope[1].source_conflict": false
+"scope[1].oracle_unknown": false
+"scope[1].coverage_contract_revision": coverage-observation-v1
+"scope[2].id": TS-3
+"scope[2].state": automate
+"scope[2].reason": "contract gap, openapi states it"
+"scope[2].requirements": "R-5"
+"scope[2].obligations": "OB-3"
+"scope[2].behaviour": "Repeat add increments the one row"
+"scope[2].risk": moderate
+"scope[2].impact_class": degraded
+"scope[2].oracle": "requirement:R-5"
+"scope[2].level": api
+"scope[2].existing_coverage": new
+"scope[2].environment": local
+"scope[2].design_review_required": false
+"scope[2].source_conflict": false
+"scope[2].oracle_unknown": false
+"scope[2].coverage_contract_revision": coverage-observation-v1
+"scope[3].id": TS-4
+"scope[3].state": automate
+"scope[3].reason": "HTTP error shape undefended"
+"scope[3].requirements": "R-6"
+"scope[3].obligations": "OB-4"
+"scope[3].behaviour": "Invalid quantity/bookId rejected with stable error shape"
+"scope[3].risk": moderate
+"scope[3].impact_class": degraded
+"scope[3].oracle": "requirement:R-6"
+"scope[3].level": api
+"scope[3].existing_coverage": new
+"scope[3].environment": local
+"scope[3].design_review_required": false
+"scope[3].source_conflict": false
+"scope[3].oracle_unknown": false
+"scope[3].coverage_contract_revision": coverage-observation-v1
+"scope[4].id": TS-5
+"scope[4].state": automate
+"scope[4].reason": "P0 access, no test"
+"scope[4].requirements": "R-7"
+"scope[4].obligations": "OB-5"
+"scope[4].behaviour": "Guest cart separate from account cart"
+"scope[4].risk": severe
+"scope[4].impact_class": access
+"scope[4].oracle": "requirement:R-7"
+"scope[4].level": api
+"scope[4].existing_coverage": new
+"scope[4].environment": local
+"scope[4].design_review_required": true
+"scope[4].source_conflict": false
+"scope[4].oracle_unknown": false
+"scope[4].coverage_contract_revision": coverage-observation-v1
+"scope[5].id": TS-6
+"scope[5].state": automate
+"scope[5].reason": "P0 data-loss; CAND-1 partial"
+"scope[5].requirements": "R-8"
+"scope[5].obligations": "OB-6"
+"scope[5].behaviour": "Merge keeps higher quantity capped at stock"
+"scope[5].risk": severe
+"scope[5].impact_class": data-loss
+"scope[5].oracle": "requirement:R-8"
+"scope[5].level": api
+"scope[5].existing_coverage": new
+"scope[5].environment": local
+"scope[5].design_review_required": true
+"scope[5].source_conflict": false
+"scope[5].oracle_unknown": false
+"scope[5].coverage_contract_revision": coverage-observation-v1
+"scope[6].id": TS-7
+"scope[6].state": automate
+"scope[6].reason": "contract gap, deterministic"
+"scope[6].requirements": "R-11"
+"scope[6].obligations": "OB-7"
+"scope[6].behaviour": "PUT sets quantity within stock; DELETE removes"
+"scope[6].risk": moderate
+"scope[6].impact_class": degraded
+"scope[6].oracle": "requirement:R-11"
+"scope[6].level": api
+"scope[6].existing_coverage": new
+"scope[6].environment": local
+"scope[6].design_review_required": false
+"scope[6].source_conflict": false
+"scope[6].oracle_unknown": false
+"scope[6].coverage_contract_revision": coverage-observation-v1
+"scope[7].id": TS-8
+"scope[7].state": automate
+"scope[7].reason": "P0 access, no test"
+"scope[7].requirements": "R-12"
+"scope[7].obligations": "OB-8"
+"scope[7].behaviour": "Foreign item id 404 and foreign cart unchanged"
+"scope[7].risk": severe
+"scope[7].impact_class": access
+"scope[7].oracle": "requirement:R-12"
+"scope[7].level": api
+"scope[7].existing_coverage": new
+"scope[7].environment": local
+"scope[7].design_review_required": true
+"scope[7].source_conflict": false
+"scope[7].oracle_unknown": false
+"scope[7].coverage_contract_revision": coverage-observation-v1
+"scope[8].id": TS-9
+"scope[8].state": automate
+"scope[8].reason": "P0 money, checkout seam undefended"
+"scope[8].requirements": "R-15"
+"scope[8].obligations": "OB-9"
+"scope[8].behaviour": "Quote reads cart; order clears it"
+"scope[8].risk": severe
+"scope[8].impact_class": money
+"scope[8].oracle": "requirement:R-15"
+"scope[8].level": api
+"scope[8].existing_coverage": new
+"scope[8].environment": local
+"scope[8].design_review_required": true
+"scope[8].source_conflict": false
+"scope[8].oracle_unknown": false
+"scope[8].coverage_contract_revision": coverage-observation-v1
+"scope[9].id": TS-10
+"scope[9].state": automate
+"scope[9].reason": "main user path, key flow"
+"scope[9].requirements": "R-1, R-2, R-10"
+"scope[9].obligations": "OB-10"
+"scope[9].behaviour": "Catalog card add shows badge and cart page content"
+"scope[9].risk": moderate
+"scope[9].impact_class": blocked-flow
+"scope[9].oracle": "requirement:R-1"
+"scope[9].level": e2e-ui
+"scope[9].existing_coverage": new
+"scope[9].environment": local
+"scope[9].design_review_required": false
+"scope[9].source_conflict": false
+"scope[9].oracle_unknown": false
+"scope[9].coverage_contract_revision": coverage-observation-v1
+"scope[10].id": TS-11
+"scope[10].state": manual-agent
+"scope[10].reason": "UI check once; API covers the rule"
+"scope[10].requirements": "R-1, R-2"
+"scope[10].obligations": "OB-11"
+"scope[10].behaviour": "Book detail add with quantity and stock edges"
+"scope[10].risk": moderate
+"scope[10].impact_class": blocked-flow
+"scope[10].oracle": "requirement:R-1"
+"scope[10].level": e2e-ui
+"scope[10].existing_coverage": new
+"scope[10].environment": local
+"scope[10].design_review_required": false
+"scope[10].source_conflict": false
+"scope[10].oracle_unknown": false
+"scope[10].coverage_contract_revision": coverage-observation-v1
+"scope[11].id": TS-12
+"scope[11].state": manual-agent
+"scope[11].reason": "degraded impact does not earn e2e"
+"scope[11].requirements": "R-14"
+"scope[11].obligations": "OB-12"
+"scope[11].behaviour": "Wishlist move adds to cart and removes item"
+"scope[11].risk": moderate
+"scope[11].impact_class": degraded
+"scope[11].oracle": "requirement:R-14"
+"scope[11].level": e2e-ui
+"scope[11].existing_coverage": new
+"scope[11].environment": local
+"scope[11].design_review_required": false
+"scope[11].source_conflict": false
+"scope[11].oracle_unknown": false
+"scope[11].coverage_contract_revision": coverage-observation-v1
+"not_planned[0].requirement": R-9
+"not_planned[0].state": unverifiable
+"not_planned[0].reason": "No source states the expectation; gate-A question Q2."
+"not_planned[1].requirement": R-13
+"not_planned[1].state": unverifiable
+"not_planned[1].reason": "Expected cart page behaviour unconfirmed; gate-A question Q3."
+"not_planned[2].requirement": R-16
+"not_planned[2].state": unverifiable
+"not_planned[2].reason": "Observable none; gate-A question Q4."
+"manual_policy[0].row": TS-11
+"manual_policy[0].executed_by": agent
+"manual_policy[0].evidence": "before and after screenshots with actual steps"
+"manual_policy[0].required_fields": "steps taken, toast text, cart page rows, button state"
+"manual_policy[0].inconclusive_when": "evidence missing or final state not read"
+"manual_policy[1].row": TS-12
+"manual_policy[1].executed_by": agent
+"manual_policy[1].evidence": "before and after screenshots of wishlist and cart"
+"manual_policy[1].required_fields": "steps taken, wishlist rows, cart rows"
+"manual_policy[1].inconclusive_when": "evidence missing or final state not read"
+"budget.size": XXL
+"budget.cap": "28"
+"budget.planned_rows": "12"
+"budget.within_cap": false
+"budget.if_over": "Nothing cut; computed 32 vs cap 28 goes to gate A; lowest-impact tail TS-12, TS-11, TS-7 first."
+"regression_recommendations[0].suite_or_command": "run_suite.py --label cart -- npm --prefix ../MyBooks run test -- src/lib/cartRules.test.ts"
+"regression_recommendations[0].why": "Developer-owned unit defence of the stock and merge rules."
+"claims.every_register_requirement_reaches_a_row_or_is_in_not_planned": true
+"claims.every_row_has_a_disposition_and_a_reason": true
+"claims.every_row_mints_obligation_ids": true
+"claims.every_contradiction_matrix_cell_reached_a_row": true
+"claims.no_test_was_run_in_this_stage": true
+"unresolved[0].id": R-9
+"unresolved[0].reason": expectation_unconfirmed
+"unresolved[0].detail": "Guest cart after register then login; Q2 at gate A."
+"unresolved[1].id": R-13
+"unresolved[1].reason": expectation_unconfirmed
+"unresolved[1].detail": "Cart page NaN input and unchecked fetches; Q3."
+"unresolved[2].id": R-16
+"unresolved[2].reason": blocked_by_check
+"unresolved[2].detail": "Concurrent add race has no observable; Q4."

@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "task_id": "TP1-13877",
+  "execution_status": "not_executed",
+  "results": [],
+  "current_results": [],
+  "manual_checks": [],
+  "current_manual_checks": [],
+  "impossible": [],
+  "env_blocked": [],
+  "current_env_blocked": [],
+  "evidence": [],
+  "env_preflight": "pass",
+  "totals": {},
+  "current_totals": {},
+  "attempt_order": "ordered_by_attempt_started_at",
+  "factory_findings": []
+}

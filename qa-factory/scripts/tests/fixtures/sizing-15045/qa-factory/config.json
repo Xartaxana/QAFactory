@@ -1,0 +1,12 @@
+{
+  "impact_scale": {
+    "data-loss": {"priority": "P0", "severity": "blocker"},
+    "money": {"priority": "P0", "severity": "blocker"},
+    "access": {"priority": "P0", "severity": "critical"},
+    "blocked-flow": {"priority": "P1", "severity": "major"},
+    "degraded": {"priority": "P2", "severity": "minor"},
+    "cosmetic": {"priority": "P3", "severity": "minor"},
+    "none": {"priority": "P3", "severity": "minor"}
+  },
+  "impact_scale_note": "Canonical defect impact mapping approved during re-onboarding. Numeric coverage multipliers were replaced because they are not a valid priority/severity contract."
+}

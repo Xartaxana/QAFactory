@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "note": "For every required field whose value cannot be written from a role's own prose - a receipt, a hash, a provenance record, a count code computes - what produces it, and whether that producer is something the role may run (factory rule FR-11, design/factory-rules.md). A field whose deriver is in `handoff_check.DERIVERS` needs no row here: the code fills it and `scripts/tests/test_field_producers.py` reads that map directly rather than copying it. This file holds the rest, and a field with an empty `producer` is a declared gap with its reason - the shape FR-11 was written from, where a contract requires what the role's own tools cannot make. The walk is 738 required fields across the twenty handoff contracts (counted as the fields of `handoff.spec(c)` over `handoff.index()` that are not optional and not written by the contract itself, SC1-2 and SC1-14, 27.10.2026); 27 of them need a tool (RN1-2, 02.11.2026: `scope[].coverage_contract_revision` of the S3 form is gone - code writes the mark, nothing reads the form field).",
+  "fields": [
+    {
+      "field": "claims.*",
+      "producer": "the role's own reading of the artifacts it wrote",
+      "verified_by": "handoff_check.CLAIMS, for the 9 claims it has a verifier for",
+      "why": "a claim is an assertion, not a value: the role states it and the check re-computes what it can; each of the eight claims that had no verifier in design/factory-rules-debt.md (FR-18) now has one or was removed (SC1-2, 27.10.2026; see FR-18 under 'Fixed'), and the rest are the role's own statement"
+    },
+    {
+      "field": "scope[].revision",
+      "producer": "controller.py --operation prepare",
+      "why": "the dispatch request carries `source_revision`, and the brief prints it: the role copies what it was handed rather than resolving a revision itself"
+    },
+    {
+      "field": "scope[].source",
+      "producer": "the role's own artifact (work/requirements-register.md)",
+      "why": "the register's own row names the source and the revision it was read at; the form repeats the register, it does not compute it"
+    },
+    {
+      "field": "decision.plan_revision",
+      "producer": "controller.py --operation gate-inputs",
+      "why": "the gate packet states the revision the scope was pinned at; the person's decision repeats it, so the automator that reads the decision knows what was approved"
+    },
+    {
+      "field": "size.reasoning_ref",
+      "producer": "sizing.py",
+      "why": "the path of the sizing record it writes (work/sizing.json); `size.computed` beside it is derived by handoff_check from the same file"
+    },
+    {
+      "field": "execution[].steps_ref",
+      "producer": "the role's own artifact (the case file's Steps section)",
+      "why": "a pointer into the case the designer wrote, never a copy of the steps"
+    },
+    {
+      "field": "bug_drafts[].triage_ref",
+      "producer": "the role's own artifact (work/triage.json)",
+      "why": "the analyst writes the triage row and then names it; nothing else can, because the row is its own verdict"
+    },
+    {
+      "field": "bug_drafts[].reproduction",
+      "producer": "the failure analyst (rule 7b of its role): one entry {kind, evidence, observed, attempt_id} for each time it saw the red fail again, a rerun on fresh data or its own script; the evidence file is the analyst's own run output under evidence/",
+      "readers": ["bug_records.confirmation_of / reproduction_problems (the one reader: the step reproduced_by_factory is derived from a checked entry; report_facts, traceability, gate_brief, delivery_summary and the board read the derived word)", "gate_preflight.check_bug_drafts (the finding for an entry the code cannot check)"],
+      "why": "whether the red failed again, and on fresh data, is the analyst's judgment and its own run; the code checks that the receipt exists and belongs to a later attempt, never that the data was fresh; the optional key is absent in a draft nobody reproduced, and then the bug reads unconfirmed"
+    },
+    {
+      "field": "triage[].blocked_thens (work/triage.json)",
+      "producer": "the failure analyst (the 'One red, one triage' technique of its role): one entry {then, blocking_check, detail} for each Then a red stops that cannot answer while another case's defect stands",
+      "readers": ["contract.triage_blocked_problems (the validator and the delivery check: the form, the Then of the case, not a red Then, a live blocker)", "contract.triage_blocked_rows -> contract.then_remainders (ledger, check_delivery.blocked_records: the 'Left with you' line)"],
+      "why": "which Thens wait for another case's fix is the analyst's judgment about requirements and the defect, not a value code can compute; the optional key is absent in a triage that blocks nothing, and then nothing reads it"
+    },
+    {
+      "field": "triage[].blocking_check (work/triage.json)",
+      "producer": "the failure analyst (the 'One red, one triage' technique of its role): the case whose defect this row's own red is",
+      "readers": ["contract.triage_blocked_problems (the form, and a blocker that is red in the current run)", "bug_records.pair_drafts (the row is covered by the blocker's draft when that draft lists the case in `cases`; handoff_check claim `no_bug_reaches_the_gate_without_a_draft_and_a_triage_row`)"],
+      "why": "whose defect a red is, is the analyst's judgment; the key is optional and its absence leaves the row needing its own draft as before"
+    },
+    {
+      "field": "triage[].reorder (work/triage.json)",
+      "producer": "the failure analyst (the 'One red, one triage' technique of its role): `reorder: true` on the row of a red whose independent Thens stand behind it (with `blocked_thens`); absent for a row that asks for no reorder",
+      "readers": ["s7_reorder.wants_reorder / s7_reorder.row_problems (the driver's story_run.s7_repair_rows and the round's start/finish)", "handoff_check._null_outcome_view (a row that asks for a reorder is a repair: the empty `scope` is not accepted over it)"],
+      "why": "whether the Thens after a red are independent of it is the analyst's judgment about the requirements, not a value code can compute; the optional key is absent in a triage that asks for no reorder, and then no round is run"
+    },
+    {
+      "field": "triage[].carried_attempts (work/triage.json)",
+      "producer": "s7_reorder.py finish: the attempt id of the author's new red run, written with `carried_by: s7_reorder` only after the edit was judged a move of lines and the run is red; the analyst never writes it",
+      "readers": ["contract._attempt_fits (the one binding of a triage row to a failure: a row whose own attempt is not the failure's still answers it when one of its carried attempts is an attempt of the failure itself)"],
+      "why": "which attempt a reordered test's row now answers is a fact of the run report and of the edit, computed by code after the round; the key is absent until a reorder round ended carried, and then the binding is the one it always was"
+    },
+    {
+      "field": "tests[].sensitivity_proof (automation-manifest.json)",
+      "producer": "probe_by_code.py (the check is live: one probe call per new or changed instance, every check of the test, per its code bytes); red_sandbox.py --probe (catches a broken product: on the critic's doubt; it proves the one check it names and the other checks stay owed, so the row takes its receipt only for a test whose checks the factory cannot list); a probe of unchanged bytes and the same entries is answered `already_probed`",
+      "why": "THE instance of this rule, closed by the owner's decisions D-0010 and D-0012. `window_record.py` and the ledger demand a typed receipt with an immutable `receipt_ref` and a matching sha256 (contract.sensitivity_proof_receipt); until then only `red_sandbox.py --probe` emitted it while the code critic is permitted `probe_by_code.py`, which did not — nine instances stood `not_verified:missing_sensitivity_proof` on TP1-13797 and that alone held `delivery_ready: no` on a run where every case was green. Now `probe_by_code.py` writes the immutable live receipt for every new or changed test, and the product level is a rare exception on the critic's doubt (references/verification-levels.json is the vocabulary). The three checks that read it are `acceptance.validate_window`'s `sensitivity`, `semantic_sensitivity` and `probe_evidence`"
+    },
+    {
+      "field": "then_quotes[] (manual evidence record)",
+      "producer": "manual_evidence.py build --then-quote (also rejudge)",
+      "verified_by": "manual_evidence._then_quote_errors, re-read from the capture files at every validation",
+      "why": "the words a manual verdict stands on cannot come from the runner's prose alone: code checks each quote is in a text capture of the same attempt, so the runner copies it with the flag and the form tells it which Thens need one (request.json `thens`, named in `required_actual_fields`)"
+    },
+    {
+      "field": "triage[].contradiction (work/triage.json, a RUNNER_MISREAD_EVIDENCE row)",
+      "producer": "qa-failure-analyst (artifact_producer.py prepare --kind triage): the Then number, the runner's own words, the capture file of the attempt and the quote that decides it - the analyst's judgment, never computed by code",
+      "readers": ["contract.triage_contradiction_problems (the ONE reader: the validator, the delivery check and the S7 re-judge reader `Driver.s7_rejudge_rows` all ask it)", "Driver.s7_rejudge_round (puts the words into the runner's brief)"],
+      "verified_by": "contract.triage_contradiction_problems: the file lies in an attempt of the row's case and the quote is in it (the code never judges whether the quote contradicts the Then)",
+      "why": "that a manual runner misread its own captures is a judgment only the analyst makes; code checks that the block names a Then, the runner's words and a quote that stands in the attempt's own text, so a verdict that sends a paid re-judge and keeps the delivery red rests on a file, not on prose"
+    },
+    {
+      "field": "plan_remarks[]",
+      "producer": "the window's automator (qa-automator): one row for each remark `s5_plan.remarks_of` hands the window, `applied` or `not_applicable` with a reason",
+      "readers": ["s5_precheck.check_plan_conformance (S5 part B2: a remark with no row, or two, is a finding; the id list is `s5_plan.remark_rows_missing`)", "qa-code-critic (the window's: the truth of a `not_applicable` reason)"],
+      "why": "an answer to the critic's remark is a decision of the window's author, not a value code can compute; the optional section (the contract says `or the empty list`) is empty in a window of a story whose S5 began without a plan, and in a window of a plan with no remark"
+    },
+    {
+      "field": "deviations[]",
+      "producer": "the window's automator (qa-automator): one row for each place where the code is not what `work/s5-plan.json` said",
+      "readers": ["s5_precheck.check_plan_conformance (S5 part B2: a difference with a row is not a finding, one without is)", "qa-code-critic (the window's: whether the reason holds)"],
+      "why": "a departure from the plan is the author's judgment, recorded so the critic of the window reads a decision instead of finding a surprise; the empty list says the code is the plan"
+    },
+    {
+      "field": "remarks[]",
+      "producer": "the plan's code critic (qa-code-critic): one row for each place the plan must change (`blocker`) or a window must answer (`remark`), with `expected` and the `check` that raised it",
+      "readers": ["s5_plan.reviews (the one reader of the review chain; `s5_plan.remarks_of` and `s5_plan.window_slice` read through it)"],
+      "why": "a review of intent is the critic's judgment; the form carries the verdict (`review.outcome`) and the rows, and carries no hash of the plan: `s5_plan.stamp_review` writes that receipt at `finish`; the empty list is the answer to an `approved` plan"
+    }
+  ]
+}

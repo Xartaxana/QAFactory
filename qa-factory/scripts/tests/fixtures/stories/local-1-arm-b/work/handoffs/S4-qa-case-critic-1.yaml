@@ -1,0 +1,196 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces: A REFUSAL THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A
+# REFUSAL, IT IS A RIDDLE. The author guesses, every guess is a round, and S4 allows two. So every
+# finding carries the expected state in the reviewer's own words and, where one exists, the way
+# the author can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-critic-1.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the designer's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# One line per entry of the designer's `inputs`, with the version read (a review of a case since
+# re-pinned is not a review of this window).
+inputs_read:
+  - path: work/handoffs/S4-qa-case-designer-1.yaml   # person's repair (arm B 03:08): the author's form, as stage_done asks
+    sha256: d756bca21ba1a2a15c697cd27a0458d4c8e0a0bcda47012988a06906359de8c5
+  - path: state/case-versions/LOCAL-1_TC_005/cv_2f86bbc08f746fb5c1b6.md
+    version: cv_2f86bbc08f746fb5c1b6
+  - path: state/case-versions/LOCAL-1_TC_006/cv_0d8c83b22a99a8e6390b.md
+    version: cv_0d8c83b22a99a8e6390b
+  - path: state/case-versions/LOCAL-1_TC_007/cv_123c0496becbde9af1c8.md
+    version: cv_123c0496becbde9af1c8
+  - path: state/case-versions/LOCAL-1_TC_009/cv_32d46944a9ca56b2ba99.md
+    version: cv_32d46944a9ca56b2ba99
+  - path: state/case-versions/LOCAL-1_TC_011/cv_628e66c0b4330bca3086.md
+    version: cv_628e66c0b4330bca3086
+  - path: state/case-versions/LOCAL-1_TC_012/cv_8f518f2030802670d131.md
+    version: cv_8f518f2030802670d131
+  - path: state/case-versions/LOCAL-1_TC_013/cv_b2b90e5ca1bf7455dbb8.md
+    version: cv_b2b90e5ca1bf7455dbb8
+  - path: state/case-versions/LOCAL-1_TC_014/cv_2c52556ff55fcd53e894.md
+    version: cv_2c52556ff55fcd53e894
+  - path: state/case-versions/LOCAL-1_TC_015/cv_0b5c0fde84a74590c05e.md
+    version: cv_0b5c0fde84a74590c05e
+  - path: state/case-versions/LOCAL-1_TC_016/cv_203088c70403eb2a330e.md
+    version: cv_203088c70403eb2a330e
+
+required_when:
+  concerns: [stage_acceptance, questions]
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: LOCAL-1_TC_005,LOCAL-1_TC_006,LOCAL-1_TC_007,LOCAL-1_TC_009,LOCAL-1_TC_011,LOCAL-1_TC_012,LOCAL-1_TC_013,LOCAL-1_TC_014,LOCAL-1_TC_015,LOCAL-1_TC_016
+  verdict: ok
+
+review:
+  outcome: approved
+  rollcall: 10 of 10 reviewed
+  findings_file: work/test-cases/critic-findings.md   # required; the stage is not receipted without it
+  rounds_used: 1
+  rubric_covered: "coverage, atomicity and duplicates, clarity, edge cases, negative scenarios, traceability, completeness against the plan, oracle source and field checks (7b-7g), seed the defect"
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: LOCAL-1_TC_005
+    state: approve_with_concerns
+    reason: P-cap guest A=12 above stock 10 unreachable via add; seeding unstated
+    case_version: cv_2f86bbc08f746fb5c1b6
+  - id: LOCAL-1_TC_006
+    state: approve_with_concerns
+    reason: Then 2 cannot fail; owner read by guest cookie after sign-in unclear
+    case_version: cv_0d8c83b22a99a8e6390b
+  - id: LOCAL-1_TC_007
+    state: approve_with_concerns
+    reason: openapi gives 201 and sum, but Thens say what Q4 gives
+    case_version: cv_123c0496becbde9af1c8
+  - id: LOCAL-1_TC_009
+    state: approve_with_concerns
+    reason: codes named by R-7 left to the raised question; reset call unnamed
+    case_version: cv_32d46944a9ca56b2ba99
+  - id: LOCAL-1_TC_011
+    state: approve_with_concerns
+    reason: R-9 value not written in Thens; foreign refusal code has no source
+    case_version: cv_628e66c0b4330bca3086
+  - id: LOCAL-1_TC_012
+    state: approve_with_concerns
+    reason: Then 3 UI check in an api row and cannot fail as worded
+    case_version: cv_8f518f2030802670d131
+  - id: LOCAL-1_TC_013
+    state: approve_with_concerns
+    reason: independent channel good; badge and total values left to Q4
+    case_version: cv_b2b90e5ca1bf7455dbb8
+  - id: LOCAL-1_TC_014
+    state: approve_with_concerns
+    reason: account cart before sign-in not stated; no evidence policy; lower level api
+    case_version: cv_2c52556ff55fcd53e894
+  - id: LOCAL-1_TC_015
+    state: approve_with_concerns
+    reason: covers R-8 with no step; no evidence policy; lower level api
+    case_version: cv_0b5c0fde84a74590c05e
+  - id: LOCAL-1_TC_016
+    state: approve_with_concerns
+    reason: Thens are Q4 placeholders; no evidence policy; lower level api
+    case_version: cv_203088c70403eb2a330e
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: F-1
+    case: LOCAL-1_TC_007
+    where: "## Then 1-3 and then_oracles"
+    problem: "Thens say 'the status that Q4 gives' although openapi/R-5 state 201 and one summed line."
+    expected: "Then 1: 201; Then 2: 201; Then 3: GET /api/cart holds one line for A with quantity 5; then_oracles external:MyBooks/docs/openapi.json."
+    fix: Write the values from the openapi source into the Thens.
+    check: A re-add that replaces quantity (3) or adds a second line fails Then 3.
+    dimension: clarity and seed the defect
+    blocking: false
+  - id: F-2
+    case: LOCAL-1_TC_005
+    where: "## Given, step 3 (guest A=12, stock 10)"
+    problem: "R-7 refuses an add above stock, so a guest cart of 12 against stock 10 cannot be built by the add call."
+    expected: "Given names how the state arises (seed stock 20, add 12, then lower stock to 10) and a precondition for the means."
+    fix: State the seeding path for P-cap.
+    check: The P-cap branch is reachable in the stated steps.
+    dimension: negative scenarios and reachability
+    blocking: false
+  - id: F-3
+    case: LOCAL-1_TC_015
+    where: "frontmatter covers: R-8"
+    problem: "R-8 is claimed but no step adds an unknown book id."
+    expected: "A step for an unknown book id with the 404 BOOK_NOT_FOUND Then, or R-8 removed from covers."
+    fix: Add the step or drop R-8.
+    check: Every R in covers has a step and a Then.
+    dimension: traceability
+    blocking: false
+  - id: F-4
+    case: LOCAL-1_TC_014
+    where: "## Given"
+    problem: "The account cart before sign-in is not stated, so 'both guest books are in the account cart' is not checkable; no evidence_policy for the manual walk."
+    expected: "A data precondition: account cart empty; evidence_policy ui with before/after captures and actual steps."
+    fix: Add the precondition and the evidence policy.
+    check: Then 1 reads the same lines from an empty account cart.
+    dimension: clarity and manual-evidence policy
+    blocking: false
+  - id: F-5
+    case: LOCAL-1_TC_011
+    where: "## Then 1-4"
+    problem: "R-9 says 'never visible to or changed by another owner', Thens say what Q4 gives; no source names a status or reason code for the foreign PUT/DELETE."
+    expected: "Then 1-3: the other owner's cart does not hold the item; Then 4: the item unchanged for its owner (GET by the same account); the refusal code raised, not asserted."
+    fix: Write the R-9 expected values, assert unchanged state only for Then 4.
+    check: A cart shared across owners fails Then 1 or 2.
+    dimension: clarity and seed the defect
+    blocking: false
+
+# What the review could not settle: an `unverified` with a named cause beats a verdict the
+# evidence does not carry.
+unverified: []
+
+# Stage acceptance (X2-7), owed on `header.verdict: concerns` (see `required_when`): the failure class and a verbatim quote
+# (path#anchor, at most 300 characters); the driver records it with `stage_done.py --acceptance`.
+stage_acceptance:
+  failure_class: spec
+  quote: "state/case-versions/LOCAL-1_TC_007/cv_123c0496becbde9af1c8.md#Then: P-first: the first add answers the status that Q4 gives for a new cart line."
+  witness_paths:
+    - work/test-cases/critic-findings.md
+
+# One row per place the brief named and the critic did not look at, with the reason; an empty list means all were seen.
+not_looked: []
+#"
+
+advice_read: "- work/advice-S4.json was not written (the brief says so)"
+advice_rejected: []
+
+# An INTENT question no file settles (X2-6); `[]` is a legal answer; the driver raises it into the register.
+questions: []
+
+claims:
+  every_case_of_the_review_scope_has_a_row: true
+  every_finding_names_expected_and_check: true
+  the_verdict_was_computed_by_rollcall_not_typed: true
+  no_case_outside_the_review_scope_was_reviewed: true

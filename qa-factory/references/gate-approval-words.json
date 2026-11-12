@@ -1,0 +1,6 @@
+{
+  "gate_approval_words": {
+    "approve": {"gates": ["A", "B"], "says": "approved as shown, with no change asked"},
+    "approve as is": {"gates": ["A"], "says": "approved over every open item shown, each recorded with your words", "passes_open_items": true}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "description": "The kinds of requirement source a project's config.json `requirements_sources` may name, the route a story's scout takes to read each, and the statuses a source may be in. Code reads this file (config_contract.requirement_source_kinds, the one reader); it holds no list of its own (FR-13, AR-1). route: `adapter` = read through the ticket adapter; `grep` = the scout searches the locator with Grep for the story's words; `role` = the scout reads it itself if it can reach it. A kind that is not in this table is routed to `role`. not_read_routes: the `method` words of a `tracker` row that name a WRITE channel (an agent, a skill, an MCP tool), never a way to read; such a row is no route (SS1-15). pointer_ref_prefixes: a tracker row whose `invoke_or_command_ref` starts with one of these (lower-cased) is a pointer to a setting of the config (an onboarding row such as `adapters.ticket.direct_api`), not a way to read; such a row is no route either.",
+  "kinds": {
+    "tracker": {"route": "adapter"},
+    "wiki": {"route": "role"},
+    "repository": {"route": "grep"},
+    "file": {"route": "grep"},
+    "other": {"route": "role"}
+  },
+  "statuses": ["verified", "unavailable", "unknown"],
+  "not_read_routes": ["agent", "skill", "mcp_tool", "mcp"],
+  "pointer_ref_prefixes": ["adapters."]
+}

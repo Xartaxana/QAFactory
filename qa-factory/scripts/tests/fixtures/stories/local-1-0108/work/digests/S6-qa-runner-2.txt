@@ -1,0 +1,10 @@
+qa-runner S6 LOCAL-1_TC_022 · halt
+LOCAL-1_TC_022 · env_blocked · manual login by code not recorded; person accepted gap; Q7 unverified
+qa-factory/artifacts/LOCAL-1/work/handoffs/S6-qa-runner-2.yaml
+
+The form is complete: `handoff_check.py` reports 85 fields checked.
+- **Evidence paths:** the env_blocked row keeps its remedy and probe line. Its evidence is the attempt record `work/evidence/manual/LOCAL-1_TC_022/a1/env_blocked.json`.
+- **Observation row:** TC_022 is recorded as inconclusive with the reason that `manual_capture.login.http` is not recorded.
+- **Unresolved row:** TC_022 is also listed as `blocked_by_env` under `unresolved`.
+- **Superseded row:** there are no ghost rows, so I wrote `none` in both superseded fields.
+- **Untouched:** `qa-factory/config.json`, and no login workaround was tried.

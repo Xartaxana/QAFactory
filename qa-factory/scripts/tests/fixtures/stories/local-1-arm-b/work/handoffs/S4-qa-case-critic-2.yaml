@@ -1,0 +1,158 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces: A REFUSAL THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A
+# REFUSAL, IT IS A RIDDLE. The author guesses, every guess is a round, and S4 allows two. So every
+# finding carries the expected state in the reviewer's own words and, where one exists, the way
+# the author can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-critic-2.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the designer's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# One line per entry of the designer's `inputs`, with the version read (a review of a case since
+# re-pinned is not a review of this window).
+inputs_read:
+  - path: work/handoffs/S4-qa-case-designer-2.yaml
+    version: designer handoff as present at review
+
+required_when:
+  concerns: [stage_acceptance, questions]
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: LOCAL-1_TC_005,LOCAL-1_TC_006,LOCAL-1_TC_007,LOCAL-1_TC_009,LOCAL-1_TC_011,LOCAL-1_TC_012,LOCAL-1_TC_013,LOCAL-1_TC_014,LOCAL-1_TC_015,LOCAL-1_TC_016
+  verdict: ok
+
+review:
+  outcome: approved  # approved | approved_with_fixes | rejected
+  rollcall: 10 of 10 reviewed
+  findings_file: work/test-cases/critic-findings.md   # required; the stage is not receipted without it
+  rounds_used: 2
+  rubric_covered: coverage, atomicity, duplicates and level, clarity, edge cases, negative scenarios, traceability, completeness against the plan, oracle sources, seed the defect
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: LOCAL-1_TC_005
+    state: approve
+    reason: P-cap reachable, Thens concrete with independent GET
+    case_version: cv_63c288a61eb8991687ce
+  - id: LOCAL-1_TC_006
+    state: approve_with_concerns
+    reason: "Then 2 observable loose; lower level: impossible"
+    case_version: cv_53582e9fd2b6ca89c1d8
+  - id: LOCAL-1_TC_007
+    state: approve
+    reason: 201, 201, one line quantity 5 on independent GET
+    case_version: cv_c9db7e5d30cd72586fd9
+  - id: LOCAL-1_TC_009
+    state: approve
+    reason: codes named, boundaries stock and stock+1, GET after refusals
+    case_version: cv_076607482889f76c8067
+  - id: LOCAL-1_TC_011
+    state: approve
+    reason: owner absence Thens plus allowed same-account GET
+    case_version: cv_1034782aa1322af81825
+  - id: LOCAL-1_TC_012
+    state: approve
+    reason: api only, 5 accepted and 6 refused, GET unchanged
+    case_version: cv_449be24f68e1f4525921
+  - id: LOCAL-1_TC_013
+    state: approve_with_concerns
+    reason: "values written; lower level: impossible (UI providers)"
+    case_version: cv_a66f995d657e98e066b3
+  - id: LOCAL-1_TC_014
+    state: approve_with_concerns
+    reason: "lower level: api, kept for UI walk (P19)"
+    case_version: cv_6a7b2dde6d47ad7bccd9
+  - id: LOCAL-1_TC_015
+    state: approve_with_concerns
+    reason: "lower level: api, kept for typed input and double click (P19)"
+    case_version: cv_d5f8d0a9c43032173271
+  - id: LOCAL-1_TC_016
+    state: approve_with_concerns
+    reason: "lower level: api, kept for cookies and two browsers (P19)"
+    case_version: cv_f3d9f6c5056b38862707
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: F-1
+    case: LOCAL-1_TC_006
+    where: Then 2
+    problem: the signed-in page is identified as 'account header/menu' without naming the element
+    expected: Then 2 names the element read, e.g. the sign-out control or account name visible on the page
+    fix: name the element the automator reads
+    check: the automator can write one locator from the Then alone
+    dimension: clarity
+    blocking: false
+    replacement:
+      old: shows the account header/menu of the signed-in user
+      new: shows the signed-in user's sign-out control or account name in the page header
+
+# What the review could not settle: an `unverified` with a named cause beats a verdict the
+# evidence does not carry.
+unverified:
+  - id: <case id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or access would>
+
+# Stage acceptance (X2-7), owed on `header.verdict: concerns` (see `required_when`): the failure class and a verbatim quote
+# (path#anchor, at most 300 characters); the driver records it with `stage_done.py --acceptance`.
+stage_acceptance:
+  failure_class: <spec|capability|data|tooling>
+  quote: "<the artifact's own words, with path#anchor>"
+  witness_paths:
+    - <task-relative path the verdict rests on, or omit when the acceptor cited no evidence paths>
+
+# One row per place the brief named and the critic did not look at, with the reason; an empty list means all were seen.
+not_looked:
+  - where: <path or area>
+    why: "<one sentence>"
+
+advice_read: - (work/advice-S4.json absent)
+advice_rejected:
+  - script: <the adviser>
+    why: "<one sentence: why its remark is not a defect>"
+
+# An INTENT question no file settles (X2-6); `[]` is a legal answer; the driver raises it into the register.
+questions: []
+
+claims:
+  every_case_of_the_review_scope_has_a_row: true
+  every_finding_names_expected_and_check: true
+  the_verdict_was_computed_by_rollcall_not_typed: true
+  no_case_outside_the_review_scope_was_reviewed: true
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

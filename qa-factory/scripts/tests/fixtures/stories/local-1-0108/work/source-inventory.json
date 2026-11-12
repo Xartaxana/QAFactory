@@ -1,0 +1,2267 @@
+{
+  "prefix_probes": {
+    "RUN": {
+      "checked_at": "2026-11-01T22:24:25.647778Z",
+      "reason": "tracker answered 404 for the project while other tickets of this tracker were readable: local numbering (a document's own requirement or case ids), not a tracker project",
+      "result": "not_tracker"
+    },
+    "TC": {
+      "checked_at": "2026-11-01T22:15:21.800448Z",
+      "reason": "tracker answered 404 for the project while other tickets of this tracker were readable: local numbering (a document's own requirement or case ids), not a tracker project",
+      "result": "not_tracker"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/RUN-2026",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'RUN' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.654305Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'RUN' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-0cfc1568a999475eb12b",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-001",
+      "content_hash": null,
+      "discovered_from": "SRC-1a8882c6347d792501ee",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:15:21.804226Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-1a8882c6347d792501ee/e64ba6169308c6be/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-8537debe9342e4875453",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-002",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-82c1f0af4aa9edc5755e",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-003",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-6b350334927e6733de23",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-004",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-4746538369d5155221ce",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-005",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-0b42dc49fcb02bca7ace",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-006",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-b5b5943068167727904a",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-007",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-caf387c4aa307cee84c1",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-008",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-cd2242ae81f7ae4eb1ee",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-009",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-fc7967e5f67cbdb53fda",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-010",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-5aa2c951512bf3390cef",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-011",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-deac0d7e9e5317c04898",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-012",
+      "content_hash": null,
+      "discovered_from": "SRC-be14dea130fb839bff9a",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:25.655980Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-a719b013649514e11505",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-013",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-9bf1df17a256991afe0e",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-014",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-e4f9c362e5858232556d",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-015",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-3aa9d042ec74c52d0663",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-016",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-fc472b6ef125e1cdb947",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-017",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-aa93e31580710423962c",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": null,
+      "canonical_ref": "https://example.invalid/1/browse/TC-018",
+      "content_hash": null,
+      "discovered_from": "SRC-f15b77e64a72005ef02d",
+      "exclusion_or_error": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "fetched_at": "2026-11-01T22:24:35.139884Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "not_relevant",
+          "status": "excluded"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_ref": null,
+      "inspection_status": "pending",
+      "materials": {
+        "attachments": {
+          "count": null,
+          "items": [],
+          "status": "unknown"
+        },
+        "comments": {
+          "count": null,
+          "status": "unknown"
+        }
+      },
+      "mentioned_ticket_keys": [],
+      "not_found": true,
+      "relation": "referenced",
+      "relation_evidence": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "relevance": "not_relevant",
+      "relevance_reason": "tracker project 'TC' does not exist while other tickets of this tracker were readable: local numbering, not a tracker project",
+      "required": true,
+      "revision": null,
+      "snapshot_ref": null,
+      "source_id": "SRC-67650f05b7eea5d7a4a6",
+      "status": "excluded"
+    },
+    {
+      "assessment_ref": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-2",
+      "content_hash": "61e50b7310ac8084993fb2a5f42728f7dbea55baed298afb8e205898e131b5dc",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:24:24.841490Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 1,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 1,
+          "items": [
+            {
+              "content_hash": "3b5d8ef237e640f4ba27e634a5e3dadd0cfb37e1590d8f0784e95678488397a6",
+              "error": null,
+              "local_ref": "evidence/stand-root-REF-140.html",
+              "provenance": "fetched",
+              "status": "read",
+              "url": "http://localhost:3000,"
+            }
+          ],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-12T11:25:56.642+0000",
+      "snapshot_ref": "sources/SRC-be14dea130fb839bff9a/1412e185e5793bfd/ticket.json",
+      "source_id": "SRC-be14dea130fb839bff9a",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-1a8882c6347d792501ee/e64ba6169308c6be/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-16",
+      "content_hash": "08ec41e170a821638e10681933078c268c3dc6b5ec4376183a6e42e914b84063",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:15:21.007657Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-1a8882c6347d792501ee/e64ba6169308c6be/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-27",
+        "REF-28"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T11:41:28.632+0000",
+      "snapshot_ref": "sources/SRC-1a8882c6347d792501ee/e64ba6169308c6be/ticket.json",
+      "source_id": "SRC-1a8882c6347d792501ee",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-65f05cbe28565a6d76e0/9512fe6848c9f36b/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-17",
+      "content_hash": "a5aca1c28ee91b68d2c593fd521193cde522b3f9c92720e9ab5c7719ec1b5427",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:19.940526Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-65f05cbe28565a6d76e0/9512fe6848c9f36b/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-12T15:02:55.500+0000",
+      "snapshot_ref": "sources/SRC-65f05cbe28565a6d76e0/9512fe6848c9f36b/ticket.json",
+      "source_id": "SRC-65f05cbe28565a6d76e0",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-ae8da5710cf7217f902a/56ecdc4a3ef2702a/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-15",
+      "content_hash": "13914e42fdc340d14268677a674858b152072bc1d34afaf1337bd3826a027bb8",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:24.497514Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-ae8da5710cf7217f902a/56ecdc4a3ef2702a/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:21:53.891+0000",
+      "snapshot_ref": "sources/SRC-ae8da5710cf7217f902a/56ecdc4a3ef2702a/ticket.json",
+      "source_id": "SRC-ae8da5710cf7217f902a",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-5e358d050f1036f829dc/c68f01eae80912f1/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-11",
+      "content_hash": "a019b979a38e8457ab64da3a896239e48915ba5215ce8f2ef8aed8fbd9225b57",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:29.343451Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-5e358d050f1036f829dc/c68f01eae80912f1/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:21:42.243+0000",
+      "snapshot_ref": "sources/SRC-5e358d050f1036f829dc/c68f01eae80912f1/ticket.json",
+      "source_id": "SRC-5e358d050f1036f829dc",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-7e76faf77bf2714a9210/ae6168f7a768c0a5/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-18",
+      "content_hash": "736f0e805a5317fcf3cead7cdbd6391c1c0c0edada44f6669edc219fa674608d",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:35.239721Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-7e76faf77bf2714a9210/ae6168f7a768c0a5/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:26:19.017+0000",
+      "snapshot_ref": "sources/SRC-7e76faf77bf2714a9210/ae6168f7a768c0a5/ticket.json",
+      "source_id": "SRC-7e76faf77bf2714a9210",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-8ac0c186efb60ad43eae/89c8fa642d3078df/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-1",
+      "content_hash": "177a168d4c405139425b4b859cbf43bca66a0fdbf603b57a6d473d10b46e8234",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:40.254189Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-8ac0c186efb60ad43eae/89c8fa642d3078df/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-2",
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:26:29.458+0000",
+      "snapshot_ref": "sources/SRC-8ac0c186efb60ad43eae/89c8fa642d3078df/ticket.json",
+      "source_id": "SRC-8ac0c186efb60ad43eae",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-25b972858e247f855443/0b76820a30626e92/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-19",
+      "content_hash": "ecf2a2069ab27d81d3170646d77de3786d8c66aa28e79d52d99f1c9b88c49858",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:44.819698Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-25b972858e247f855443/0b76820a30626e92/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-12T15:03:00.515+0000",
+      "snapshot_ref": "sources/SRC-25b972858e247f855443/0b76820a30626e92/ticket.json",
+      "source_id": "SRC-25b972858e247f855443",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-532fac988c7abdfde19c/267d05571251e550/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-9",
+      "content_hash": "a95759991064027eec9a6aa9fc2da8730f1819e5c5623a4213eda914baf85c92",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:50.127882Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-532fac988c7abdfde19c/267d05571251e550/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:26:38.362+0000",
+      "snapshot_ref": "sources/SRC-532fac988c7abdfde19c/267d05571251e550/ticket.json",
+      "source_id": "SRC-532fac988c7abdfde19c",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-98efeac7278a4f83d417/2842c0a0529f2735/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-4",
+      "content_hash": "e29db588e8be56bea5e146b0d186c776bc9f878cada17e53e976ceb3f6aa3df6",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:20:57.096245Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-98efeac7278a4f83d417/2842c0a0529f2735/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:26:47.506+0000",
+      "snapshot_ref": "sources/SRC-98efeac7278a4f83d417/2842c0a0529f2735/ticket.json",
+      "source_id": "SRC-98efeac7278a4f83d417",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-5acb41ec072c8b2ae18f/677d92d57f2040af/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-20",
+      "content_hash": "eebd98da4e538cc3d11a469b0374a5dedfb6ea3627055f4b36a1267cf23e6dee",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:04.644373Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-5acb41ec072c8b2ae18f/677d92d57f2040af/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-29"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T14:26:56.301+0000",
+      "snapshot_ref": "sources/SRC-5acb41ec072c8b2ae18f/677d92d57f2040af/ticket.json",
+      "source_id": "SRC-5acb41ec072c8b2ae18f",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-7574f79b8af093b82457/e1d2ebce571d2b89/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-13",
+      "content_hash": "142cf0341d893eb9a0c5f008b3dc7e9132123b46bd31f31c95b76e8d748c04cf",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:11.961124Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-7574f79b8af093b82457/e1d2ebce571d2b89/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T13:27:49.888+0000",
+      "snapshot_ref": "sources/SRC-7574f79b8af093b82457/e1d2ebce571d2b89/ticket.json",
+      "source_id": "SRC-7574f79b8af093b82457",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-23527c743637f949cc5b/dbbb8f935424c3b2/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-21",
+      "content_hash": "421b4a3dd4629ce5a72cc8e23effbbb9202711a54b1e19b201394c4b4b165302",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:19.375609Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-23527c743637f949cc5b/dbbb8f935424c3b2/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-15T13:27:51.196+0000",
+      "snapshot_ref": "sources/SRC-23527c743637f949cc5b/dbbb8f935424c3b2/ticket.json",
+      "source_id": "SRC-23527c743637f949cc5b",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-4d67f2c635de7b1cba3d/9f951dd5f405b4db/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-22",
+      "content_hash": "beb0c6d8cd7020ff432ad2255e31cef8556fa52cf1c4240a70896cee8a6834f8",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:26.402322Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-4d67f2c635de7b1cba3d/9f951dd5f405b4db/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:04.708+0000",
+      "snapshot_ref": "sources/SRC-4d67f2c635de7b1cba3d/9f951dd5f405b4db/ticket.json",
+      "source_id": "SRC-4d67f2c635de7b1cba3d",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-68783a68a9e3d54ca46d/3431dfa876f2e6f6/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-12",
+      "content_hash": "30b2f51858deb38e6c1468c781c071b6736a41ef334e3bbc4913bdfe7835d80f",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:33.431737Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-68783a68a9e3d54ca46d/3431dfa876f2e6f6/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:06.004+0000",
+      "snapshot_ref": "sources/SRC-68783a68a9e3d54ca46d/3431dfa876f2e6f6/ticket.json",
+      "source_id": "SRC-68783a68a9e3d54ca46d",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-409d413a973bb51e5826/39f11bfd31e97a36/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-3",
+      "content_hash": "926391a97e2e58d8e17d5e7a58beeecb2d7ae672e3758ab510d7b58fb13627ad",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:39.283404Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-409d413a973bb51e5826/39f11bfd31e97a36/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:07.333+0000",
+      "snapshot_ref": "sources/SRC-409d413a973bb51e5826/39f11bfd31e97a36/ticket.json",
+      "source_id": "SRC-409d413a973bb51e5826",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-ecd332a32e00d33ae620/a279e2ba959f1ee3/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-23",
+      "content_hash": "8f45e31b6dc368a2a8299eca354fd63fda72e4d649cb9449061e5f10ea5e63d2",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:47.209211Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-ecd332a32e00d33ae620/a279e2ba959f1ee3/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:09.150+0000",
+      "snapshot_ref": "sources/SRC-ecd332a32e00d33ae620/a279e2ba959f1ee3/ticket.json",
+      "source_id": "SRC-ecd332a32e00d33ae620",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-a970b21553b38c912509/7cca5675b4ed8b46/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-5",
+      "content_hash": "4f8f19a1946c94a4e4565bc2855b8d579e3fb08aac8068130cb985391c51df10",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:52.997292Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-a970b21553b38c912509/7cca5675b4ed8b46/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:10.910+0000",
+      "snapshot_ref": "sources/SRC-a970b21553b38c912509/7cca5675b4ed8b46/ticket.json",
+      "source_id": "SRC-a970b21553b38c912509",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-7287a9a4c3b9929a9827/8dff6fcd511b6bb8/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-24",
+      "content_hash": "ed34b8f33343cc963cefe890eb7c51a74a3619b4b3b623b23926f8162727eda9",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:21:59.485555Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-7287a9a4c3b9929a9827/8dff6fcd511b6bb8/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:12.964+0000",
+      "snapshot_ref": "sources/SRC-7287a9a4c3b9929a9827/8dff6fcd511b6bb8/ticket.json",
+      "source_id": "SRC-7287a9a4c3b9929a9827",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-943d3802d15714f575b7/82561886ce27ac92/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-6",
+      "content_hash": "230aa63e895c22d966eb50c7af300bba2bda18975b86a57172ea12c7291e2ab1",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:22:05.109200Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-943d3802d15714f575b7/82561886ce27ac92/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:14.387+0000",
+      "snapshot_ref": "sources/SRC-943d3802d15714f575b7/82561886ce27ac92/ticket.json",
+      "source_id": "SRC-943d3802d15714f575b7",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-562e1f196971c6bb559f/ee0f25cc2f089d0f/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-7",
+      "content_hash": "58409c82e858f76f6b47b87ce85dc4b6a4dc464c37ea0ae3c4a8f611644b98ce",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:22:10.380748Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-562e1f196971c6bb559f/ee0f25cc2f089d0f/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:16.219+0000",
+      "snapshot_ref": "sources/SRC-562e1f196971c6bb559f/ee0f25cc2f089d0f/ticket.json",
+      "source_id": "SRC-562e1f196971c6bb559f",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-3bb49dfdd928a8fc4c5f/b86f33dad316bfa8/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-8",
+      "content_hash": "d339c238c0a84f3fa5ace71d34a15b33861e20958eec1fb4d2be64a2fc2bd233",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:22:17.097893Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-3bb49dfdd928a8fc4c5f/b86f33dad316bfa8/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:18.326+0000",
+      "snapshot_ref": "sources/SRC-3bb49dfdd928a8fc4c5f/b86f33dad316bfa8/ticket.json",
+      "source_id": "SRC-3bb49dfdd928a8fc4c5f",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-c478105cd79559de251d/1136e4c7a166a084/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-14",
+      "content_hash": "dcc07bc477ea6016df744cf137e690c2f45f8808e3083a0855dc03bdbe8cf0e8",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:22:25.678762Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-c478105cd79559de251d/1136e4c7a166a084/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:20.779+0000",
+      "snapshot_ref": "sources/SRC-c478105cd79559de251d/1136e4c7a166a084/ticket.json",
+      "source_id": "SRC-c478105cd79559de251d",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-b8ad129913f9cbb25ab3/22aa3746735e12c0/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-10",
+      "content_hash": "e965ab169994d5a0b9bc14966f82496af383fc572afc527ec165734ecbca24f3",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:16:31.286545Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-b8ad129913f9cbb25ab3/22aa3746735e12c0/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-16",
+        "REF-17",
+        "REF-15",
+        "REF-11",
+        "REF-18",
+        "REF-1",
+        "REF-19",
+        "REF-9",
+        "REF-4",
+        "REF-20",
+        "REF-13",
+        "REF-21",
+        "REF-22",
+        "REF-12",
+        "REF-3",
+        "REF-23",
+        "REF-5",
+        "REF-24",
+        "REF-6",
+        "REF-7",
+        "REF-8",
+        "REF-14"
+      ],
+      "relation": "normative",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:00:20.795+0000",
+      "snapshot_ref": "sources/SRC-b8ad129913f9cbb25ab3/22aa3746735e12c0/ticket.json",
+      "source_id": "SRC-b8ad129913f9cbb25ab3",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-25",
+      "content_hash": "d9c2a80b5661641b38b868b8e1d1496ecb4735b660c056a1daefa743e41f0ac0",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:24:34.639981Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 2,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-16",
+        "REF-17",
+        "REF-15",
+        "REF-11",
+        "REF-18",
+        "REF-1",
+        "REF-19",
+        "REF-9",
+        "REF-4",
+        "REF-20",
+        "REF-13",
+        "REF-21",
+        "REF-22",
+        "REF-12",
+        "REF-3",
+        "REF-23",
+        "REF-5",
+        "REF-24",
+        "REF-6",
+        "REF-7",
+        "REF-8",
+        "REF-14",
+        "REF-10",
+        "REF-26"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T12:04:46.766+0000",
+      "snapshot_ref": "sources/SRC-f15b77e64a72005ef02d/21441f36d9310c66/ticket.json",
+      "source_id": "SRC-f15b77e64a72005ef02d",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-3bb45c6cea570a851d30/ad312d568b857944/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-26",
+      "content_hash": "f2b798587b683d4567198b6407288a2162ef8fbac30dec3192c9225ce394ba67",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:24:57.454941Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-3bb45c6cea570a851d30/ad312d568b857944/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-10",
+        "REF-25"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T11:46:52.759+0000",
+      "snapshot_ref": "sources/SRC-3bb45c6cea570a851d30/ad312d568b857944/ticket.json",
+      "source_id": "SRC-3bb45c6cea570a851d30",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-b8fe9071fad5da85a384/9f72eea69755be33/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-27",
+      "content_hash": "7876244769f3d7164b594a23259670e9ff803f7a74e54e028f55d5bf338dac6e",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:16:37.022036Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-b8fe9071fad5da85a384/9f72eea69755be33/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-16"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T11:46:42.596+0000",
+      "snapshot_ref": "sources/SRC-b8fe9071fad5da85a384/9f72eea69755be33/ticket.json",
+      "source_id": "SRC-b8fe9071fad5da85a384",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-d40a6a45611a09fa6ab5/3485b58772d969f8/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-28",
+      "content_hash": "a3103fa0bd45fc60e548b8ebb5d0797a853c9eed1a29556842506f849cbeb261",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:16:41.558300Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-d40a6a45611a09fa6ab5/3485b58772d969f8/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 0,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-16",
+        "REF-10"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-13T11:46:50.775+0000",
+      "snapshot_ref": "sources/SRC-d40a6a45611a09fa6ab5/3485b58772d969f8/ticket.json",
+      "source_id": "SRC-d40a6a45611a09fa6ab5",
+      "status": "read"
+    },
+    {
+      "assessment_ref": "sources/SRC-352f03ede5182c2ecf33/7fd104ec72c266ea/ticket.json",
+      "canonical_ref": "https://example.invalid/1/browse/REF-29",
+      "content_hash": "eaffc40d639158ad3a3c8c1cf7d3cd7e137a1bfb2bf2bbe7f73fd4027f078061",
+      "discovered_from": null,
+      "exclusion_or_error": null,
+      "fetched_at": "2026-11-01T22:24:29.508941Z",
+      "human_review": {
+        "at": "2026-11-01T22:33:02.621692Z",
+        "by": "human",
+        "shown": {
+          "relevance": "relevant",
+          "status": "read"
+        },
+        "words": "Soglasna s tablitsei"
+      },
+      "inspection_by": "code:snapshot",
+      "inspection_ref": "sources/SRC-352f03ede5182c2ecf33/7fd104ec72c266ea/ticket.json",
+      "inspection_status": "read",
+      "materials": {
+        "attachments": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        },
+        "comments": {
+          "count": 1,
+          "status": "read"
+        },
+        "external_media": {
+          "count": 0,
+          "items": [],
+          "status": "read"
+        }
+      },
+      "mentioned_ticket_keys": [
+        "REF-2",
+        "REF-10"
+      ],
+      "relation": "referenced",
+      "relation_evidence": null,
+      "relevance": "relevant",
+      "relevance_reason": "explicit required source",
+      "required": true,
+      "revision": "2026-10-09T14:05:59.917+0000",
+      "snapshot_ref": "sources/SRC-352f03ede5182c2ecf33/7fd104ec72c266ea/ticket.json",
+      "source_id": "SRC-352f03ede5182c2ecf33",
+      "status": "read"
+    }
+  ]
+}

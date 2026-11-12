@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of code shapes that swallow a failure a user would meet (G2-14, AR-1, FR-13). Read by scripts/user_path_failures.py, which matches line by line and never decides whether a place is on a user path: the requirements tester does. A match is `start` on a line, `quiet` in the next `window_lines` lines (the line itself counts) and `loud` in none of them. Every pattern is a Python regular expression; a line starting a comment never starts a match. A new language or a new shape is a new row here, never a second list in code. A row that does not compile is named as not measured, the others still run.",
+  "patterns": [
+    {
+      "id": "swallowed_catch",
+      "why": "an error is caught and only logged or dropped, so the user sees nothing happen (the window is lines, not the block: read the block)",
+      "languages": [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".vue", ".java"],
+      "start": "^(?!\\s*(?://|/\\*|\\*|#)).*(?:\\bcatch\\b\\s*(?:\\([^)]*\\))?\\s*(?:\\{|$)|\\.catch\\s*\\()",
+      "quiet": "console\\.(?:error|log|warn|debug)\\s*\\(|\\b(?:logger|log)\\.\\w+\\s*\\(|printStackTrace\\s*\\(|\\bcatch\\b[^{]*\\{\\s*\\}|^\\s*\\}\\s*$|\\.catch\\s*\\(\\s*(?:\\([^)]*\\)|\\w+)?\\s*=>\\s*(?:null|undefined|void 0|\\[\\s*\\]|false)",
+      "loud": "(?i)toast|alert\\s*\\(|setError|showError|notify|snackbar|\\bthrow\\b|reject\\s*\\(|errorMessage|message\\.error|\\bModal\\b|\\.error\\s*=|dispatch\\s*\\(",
+      "window_lines": 12
+    },
+    {
+      "id": "unchecked_response",
+      "why": "a response is read as a success without looking at its status, so a failed call looks like a good answer",
+      "languages": [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".vue"],
+      "start": "^(?!\\s*(?://|/\\*|\\*|#)).*\\b(?:fetch|axios(?:\\.\\w+)?|\\$http\\.\\w+)\\s*\\(",
+      "quiet": "\\.json\\s*\\(\\s*\\)|\\.text\\s*\\(\\s*\\)|\\.data\\b",
+      "loud": "\\.ok\\b|\\.status\\b|statusCode|statusText|validateStatus|raise_for_status|instanceof Response",
+      "window_lines": 15
+    },
+    {
+      "id": "discarded_response",
+      "why": "a request is sent and its answer is never looked at, so a failed call goes on as a success (a 500 does not throw)",
+      "languages": [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".vue"],
+      "start": "^(?!\\s*(?://|/\\*|\\*|#))\\s*(?:await\\s+)?(?:fetch|axios(?:\\.\\w+)?)\\s*\\(",
+      "quiet": "\\b(?:fetch|axios)\\b",
+      "loud": "\\.then\\s*\\(|\\.ok\\b|\\.status\\b|validateStatus|statusCode",
+      "window_lines": 4
+    }
+  ]
+}

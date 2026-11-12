@@ -1,0 +1,44 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 1,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Found by:* manual test TC-006 (run RUN-2026-10-09-001), confirmed by the tester on 2026-10-09.\n*Environment:* http://localhost:3000, local disposable env (Docker Postgres, seed data), regular user.\n*Related:* REF-10, REF-29.\n\n*Steps to reproduce*\n# Log in as the regular user and make sure the cart is empty.\n# Open /books/3 (1984, in stock).\n# Type 0 into the \"Quantity\" field.\n# Click \"Add to Cart\".\n# Open /cart.\n\n*Expected:* quantity must be a whole number from 1 up to stock (REF-29). A quantity of 0 is rejected with a clear message and nothing is added.\n\n*Actual:* the add succeeds. A \"Book added to cart\" toast appears, the nav cart badge shows 1, the quantity field reverts to 1, and /cart lists one \"1984\" line with quantity 1 and subtotal $13.99. No console errors.\n\n*Notes*\n* The UI appears to coerce 0 to 1 before calling /api/cart, so the server-side validation from the REF-29 fix is not reached for this input.\n* Not yet tested: -1, 1.5, and a direct POST /api/cart with invalid quantities.",
+  "id": "14504405",
+  "key": "REF-2",
+  "labels": [
+    "cart",
+    "product-bug",
+    "validation"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-29",
+        "relation": "relates to",
+        "status": "Resolved",
+        "summary": "B3: Add to cart does not check stock or quantity; deleted books leave orphan cart rows",
+        "type": "Relates"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 20080,
+    "fields_requested": "*all",
+    "sha256": "99be7e953d5af7ea8acaf2ffa82da928480e0405baf2f66cf474f976b1a638e5",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-12T11:25:56.642+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add to cart: quantity 0 on the book page is added to the cart as 1 instead of being rejected",
+  "type": "Bug"
+}

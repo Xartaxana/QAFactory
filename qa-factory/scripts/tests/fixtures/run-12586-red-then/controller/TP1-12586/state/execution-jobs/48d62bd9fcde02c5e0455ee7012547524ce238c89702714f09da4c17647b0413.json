@@ -1,0 +1,288 @@
+{
+  "job_id": "f49fa2698e9b32b9341e",
+  "idempotency_key": "S5-qa-code-critic-4:red_probe:probe-test_put_project_change_moves_integration[TC-001-jira]:invert:346d59999647",
+  "request_digest": "f49fa2698e9b32b9341ed2afb1bc4d12e64a4cf391410c0aaaf0ccaabf71a7ce",
+  "status": "completed",
+  "created_at": "2026-10-28T08:48:42+00:00",
+  "request": {
+    "task": "TP1-12586",
+    "revision": "103",
+    "dispatch_id": "S5-qa-code-critic-4",
+    "profile_id": "api",
+    "purpose": "red_probe",
+    "reason": "probe-test_put_project_change_moves_integration[TC-001-jira]: invert of the first assert at testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:96 (S5-qa-code-critic-4)",
+    "idempotency_key": "S5-qa-code-critic-4:red_probe:probe-test_put_project_change_moves_integration[TC-001-jira]:invert:346d59999647",
+    "input_fingerprint": "346d59999647c7fedbcdbba72ffb685e4c850fd80ef265d6943c0fd365b33390",
+    "fingerprint_components": {
+      "source_sha": "a29f2604effe72999478a8de2d5fb23b80b38833",
+      "test_content_sha": "7a57022094c8e4857eaf750d615ac1d9d5f680f15f6c6d541225be8743ff6843",
+      "config_sha": "de09f7e5e047f63c4f4be4c9d67008b23ca30f99da3316168960f9b3af145394",
+      "dependency_sha": "782d871ad919a200c8eb1694ec847b8d4df9541ecb333ce732b9462f5f205e39",
+      "runtime_sha": "59f6054d6f0290c46c4ac96f282d5d891c5bb747e151e162dcfb85e3e3520c31",
+      "policy_revision": "unknown"
+    },
+    "fingerprint_files": [
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\project\\test_integration_project_change.py",
+        "sha256": "c89274c0c530381c3d931e90c913dc53333c780d993d41f643785ff52d287899",
+        "kind": "test_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\conftest.py",
+        "sha256": "597b95c60d4712ba39411ca07440b2768f546500ee7efcc3fe7b2ff089e91ead",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\conftest.py",
+        "sha256": "c2ede09c8ea20c15c7dfe8d398b83998256b6ada02876cd5830dbaac1f60ce9a",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\testproject1_test_harness\\tests\\integrations\\project\\conftest.py",
+        "sha256": "d2475053253fdb4b33782f901673add38ccecfc23279d171e5a0339dd237befb",
+        "kind": "helper_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\qa-factory\\config.json",
+        "sha256": "aafa9f0ad6952e23b63719b98aaa8387d592b40af80a91263c9c3779acdf553d",
+        "kind": "config_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\pyproject.toml",
+        "sha256": "e7482177dbfaa17dbab95b4d12c736d9edc35de0b62f4ad2da5a16655d4ae6d9",
+        "kind": "dependency_files"
+      },
+      {
+        "path": "<project>\\testproject1-sdk\\test-harness\\poetry.lock",
+        "sha256": "5836130f4b3dcc35031c530d2c2f12207ee4078fb7304017b952a4342949761a",
+        "kind": "dependency_files"
+      }
+    ],
+    "freshness": "fresh",
+    "remaining_budget": 1,
+    "selected_instance_ids": [
+      "test_put_project_change_moves_integration[TC-001-jira]"
+    ],
+    "current_scope_instance_ids": [
+      "test_put_project_change_moves_integration[TC-001-jira]",
+      "test_edit_integration_change_project_confirmation_modal",
+      "test_edit_integration_project_change_keeps_credential_fields",
+      "test_put_project_change_moves_integration[TC-001-sonar]"
+    ],
+    "runtime_required": true,
+    "runtime_probe": {
+      "argv": [
+        "<home>\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "<project>\\ai-packages\\qa-factory/scripts/runtime_probe.py",
+        "--profile",
+        "api",
+        "--environment",
+        "local-docker",
+        "--container",
+        "testproject1-dev-010-testproject1-1",
+        "--checkout",
+        "../../testproject1",
+        "--app-root",
+        "/app"
+      ],
+      "cwd": "<project>\\testproject1-sdk\\test-harness",
+      "timeout_s": 120
+    },
+    "runtime_provenance": {
+      "profile_id": "api",
+      "timestamp": "2026-10-28T08:48:13+00:00",
+      "environment_id": "local-docker",
+      "expected_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+      "observed_runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+      "evidence_refs": [
+        "<project>/testproject1-sdk/test-harness/qa-factory/artifacts/TP1-12586/evidence/runtime-provenance-api-20261028T081424Z.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "verified_content",
+        "deployed_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+        "verified_source_revisions": [
+          "a29f2604effe72999478a8de2d5fb23b80b38833"
+        ]
+      },
+      "result": "matched",
+      "comparisons": [
+        {
+          "file": "src/pages/integrations/components/SettingsForm/SettingsForm.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/pages/integrations/components/EditSettingPageBase.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/testproject1/clients/postgres.py",
+          "container_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7",
+          "local_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7"
+        },
+        {
+          "file": "src/testproject1/rest_api/models/base.py",
+          "container_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10",
+          "local_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/project_settings.py",
+          "container_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d",
+          "local_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/settings.py",
+          "container_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec",
+          "local_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/user_settings.py",
+          "container_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49",
+          "local_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49"
+        },
+        {
+          "file": "src/testproject1/service/settings/settings_transfer_service.py",
+          "container_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3",
+          "local_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3"
+        }
+      ],
+      "container": "testproject1-dev-010-testproject1-1",
+      "checkout": "..\\..\\testproject1"
+    },
+    "command": {
+      "argv": [
+        "poetry",
+        "run",
+        "pytest",
+        "-v"
+      ],
+      "cwd": "<project>\\testproject1-sdk\\test-harness",
+      "scope": "selected",
+      "reporter": "pytest",
+      "selector_contract_verified": true,
+      "selector_args": {
+        "test_put_project_change_moves_integration[TC-001-jira]": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-jira]"
+        ]
+      }
+    },
+    "instance_contracts": {
+      "test_put_project_change_moves_integration[TC-001-jira]": {
+        "report_test_id": "tests.integrations.project.test_integration_project_change::test_put_project_change_moves_integration[TC-001-jira]",
+        "parameters": {},
+        "case_version_links": [],
+        "instance_content_sha": "134fcbe3ad53a1758da11949110aece6cc15340c75c5dc26ae02e80ddaf678f1",
+        "instance_content_scope": "function",
+        "instance_code_sha": "8d42685a80ff7edb40a23f8fffd6a07e97b47b61470d6ebdc4cb860d6d988ac0"
+      }
+    },
+    "execution": {
+      "schema_version": 1,
+      "selection": {
+        "reason": "diagnostic",
+        "evidence_refs": [
+          "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-jira]"
+        ]
+      },
+      "reporter": {
+        "format": "pytest",
+        "path_template": "{report_path}"
+      }
+    },
+    "built_by": {
+      "tool": "probe_by_code.py",
+      "cases": [
+        "TC-001"
+      ],
+      "instance_id": "test_put_project_change_moves_integration[TC-001-jira]",
+      "mutation": "invert",
+      "mutation_kind": "assertion"
+    },
+    "resolved_argv": [
+      "poetry",
+      "run",
+      "pytest",
+      "-v",
+      "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_integration[TC-001-jira]"
+    ],
+    "runtime_probe_before": {
+      "profile_id": "api",
+      "timestamp": "2026-10-28T08:48:14+00:00",
+      "environment_id": "local-docker",
+      "expected_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+      "observed_runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+      "evidence_refs": [
+        "<project>/testproject1-sdk/test-harness/qa-factory/artifacts/TP1-12586/evidence/runtime-provenance-api-20261028T084814Z.json"
+      ],
+      "provenance": {
+        "technical_verification": true,
+        "source_linkage": "verified_content",
+        "deployed_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+        "verified_source_revisions": [
+          "a29f2604effe72999478a8de2d5fb23b80b38833"
+        ]
+      },
+      "result": "matched",
+      "comparisons": [
+        {
+          "file": "src/pages/integrations/components/SettingsForm/SettingsForm.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/pages/integrations/components/EditSettingPageBase.tsx",
+          "container_sha256": null,
+          "local_sha256": null,
+          "note": "no local file"
+        },
+        {
+          "file": "src/testproject1/clients/postgres.py",
+          "container_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7",
+          "local_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7"
+        },
+        {
+          "file": "src/testproject1/rest_api/models/base.py",
+          "container_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10",
+          "local_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/project_settings.py",
+          "container_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d",
+          "local_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/settings.py",
+          "container_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec",
+          "local_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec"
+        },
+        {
+          "file": "src/testproject1/rest_api/routers/user_settings.py",
+          "container_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49",
+          "local_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49"
+        },
+        {
+          "file": "src/testproject1/service/settings/settings_transfer_service.py",
+          "container_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3",
+          "local_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3"
+        }
+      ],
+      "container": "testproject1-dev-010-testproject1-1",
+      "checkout": "..\\..\\testproject1"
+    }
+  },
+  "updated_at": "2026-10-28T08:49:02+00:00",
+  "runner_pid": 16332,
+  "runner_started_at": "2026-10-28T08:48:13.722020+00:00",
+  "child_pid": 10728,
+  "child_started_at": "2026-10-28T08:48:42.248683+00:00",
+  "execution_status": "failed",
+  "freshness": "fresh",
+  "summary": "qa-factory\\artifacts\\TP1-12586\\evidence\\runs\\f49fa2698e9b32b9341e\\red_probe-f49fa2698e9b32b9341e-20261028-094842.json",
+  "run_block": null,
+  "baseline_receipt": null
+}

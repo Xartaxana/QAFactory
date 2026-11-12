@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="20.783963">
+<testsuite name="e2e\cart\add-to-cart.spec.ts" timestamp="2026-10-31T10:36:33.511Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.903" errors="0">
+<testcase name="@regression CART-1_TC_010 add from catalog shows badge and cart page" classname="e2e\cart\add-to-cart.spec.ts" time="7.903">
+</testcase>
+</testsuite>
+</testsuites>

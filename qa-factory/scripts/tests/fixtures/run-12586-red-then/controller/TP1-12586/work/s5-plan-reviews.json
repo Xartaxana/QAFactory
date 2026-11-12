@@ -1,0 +1,50 @@
+[
+  {
+    "dispatch": "S5-qa-code-critic-1",
+    "plan_sha256": "d20e63168e3c2f6a807dbb4257e446e53f936757969fb77e6e7e6b34568ff987",
+    "rows_sha": {
+      "TC-001": "18da2f65f23aa5986f3f5c3e46cb45e06550e8ced09145f497ab56759f5b7071",
+      "TC-002": "916bd9adb42c00a450691f32071000cdf6424500ad4baae81591e349e605bcea",
+      "TC-003": "8d61b46cd4d4840556b69a58911f6762024c95a852d0183c61ab238f61caef6c",
+      "TC-004": "e794cfff0460f73054fc5a028a9508840c03b52e817cb5c5e612a0870f90cfcc",
+      "TC-005": "914e660a32bfc00e9578fcea8aa0dd4f2e6f169089a864f13820ef23e01d47c7",
+      "TC-006": "d08e1ffa1b2b31cf11f65490580d66095c971989c1705f284600844d61f2c16e",
+      "TC-007": "618ec412a69ccdc14d691fed8a3f44f4b89670fac8cecb9722ff435c0e645c36",
+      "TC-008": "246b91a9c1f6dcaeb80a866eae0a1ac5b252992514a1c57ef5730c5c27591cb7",
+      "TC-009": "b0617e8393f4e31bdb7c132da0cf2fab2d4a813d8c7fae99fb31f48921796a18",
+      "TC-011": "94a38fa8dd102b00cb30d592fb5ec4a9a673e0f6268624d42305eeff485b880b"
+    },
+    "tests": {
+      "test_put_project_change_moves_integration": [
+        "TC-001"
+      ],
+      "test_put_project_change_moves_ms_teams_integration": [
+        "TC-002"
+      ],
+      "test_put_project_change_into_project_with_ms_teams_is_rejected": [
+        "TC-003"
+      ],
+      "test_put_project_change_requires_admin_in_target": [
+        "TC-004"
+      ],
+      "test_put_project_change_from_user_scope_and_collision": [
+        "TC-005"
+      ],
+      "test_put_project_change_failing_move_persists_nothing": [
+        "TC-006"
+      ],
+      "test_put_project_change_clears_dependent_setting_link": [
+        "TC-007"
+      ],
+      "test_edit_integration_change_project_confirmation_modal": [
+        "TC-008"
+      ],
+      "test_edit_integration_project_change_keeps_credential_fields": [
+        "TC-009"
+      ],
+      "test_put_project_change_leaves_project_settings_and_lists_intact": [
+        "TC-011"
+      ]
+    }
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "dispatch": "S6-qa-runner-2",
+  "stage": "S6",
+  "close": {
+    "words_ref": "state/words/s6-manual-login-gap.txt",
+    "words_sha256": "690eb056c71556610167254868cc287fb9e9a29622c53ca575ce284c1e0e3884",
+    "at": "2026-11-02T09:12:11+00:00"
+  }
+}

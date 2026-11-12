@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "subject": "form",
+  "note": "Package A: judged refusals of FORM. Every question here stands in front of a refusal that fires because a word is spelled outside a closed list - a digest verdict, a row state, an `unresolved[]` reason, a pytest node id. The rule itself is right; what deviates is a spelling its author did not foresee. The judge is asked ONE mapping question over ONE small state (the line, or the asked id and its candidates - never the whole message and never an id looked up in a shared state), and in `judge.mode: on` a decided answer rewrites the item into the vocabulary's own spelling instead of refusing it. The original words are never thrown away: the digest keeps its raw line in the journal, an `unresolved[]` row keeps them in `detail`. Every one of these passes a block, so every threshold is 0.9 - under it the refusal fires exactly as it does today. A person's word passes what is left, the way it passes every block of this factory (`waiver.py --stage <S> --block \"digest\"`). `other` is always an option: a judge that cannot map the word must be able to say so instead of picking the nearest thing.",
+  "judgments": [
+    {
+      "id": "form_digest_verdict",
+      "stage": "S1-S9",
+      "script": "judge_form.py",
+      "type": "choice",
+      "replaces": "the `digest` refusal of exit_gate.py when a role's header states its verdict in a word the form does not list",
+      "undecided": "the handoff is refused as today, with the unmapped word named in the refusal",
+      "instructions": "A role of a test factory finished a dispatch and its last line in `header` ends with the word in `word`. The factory's orchestrator branches on exactly four verdicts. Which one does `word` mean here?",
+      "criteria": {
+        "ok": "The role did the work and is satisfied with it: nothing is left for anyone to decide. Words like done, complete, green, approved, passed.",
+        "concerns": "The role did the work and is NOT satisfied with all of it: it names findings, doubts, rejected items or work left over for the next role or a person. Words like concerns, rejected, not approved, needs rework, send back to the author, partially done, delivery not ready.",
+        "halt": "The role could not do the work and stopped, handing the decision back: something it needed was missing or broken. Words like halt, blocked, stopped, cannot continue, waiting for.",
+        "impossible": "The role established that this work cannot be done at all, by anyone, as it stands - not that IT could not do it now.",
+        "other": "The word means none of these four, or it is not a verdict about this dispatch at all."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      },
+      "calibration": "2026-09-23, live, the wordings the 16 S5 dispatches of TP1-15045 actually used: 10 of 11 decided, none wrong. `done` 1.00, `complete` 1.00 and `green` 0.99 -> ok; `not approved`, `reject and return to the author`, `rejected`, `delivery_ready: no` and `concerns (not approved)` -> concerns, all 1.00; `blocked` -> halt 1.00; a header with no verdict at all (`qa-scout S1 twelve sources`) -> other 0.92, so the refusal still fires. The one undecided is a sentence, not a verdict: `repair cap reached, presented to triage` (concerns 0.43). First round of the same eleven decided only 5: the options had to name the words themselves (`rejected` read as halt until `concerns` said \"rejected, not approved, send back to the author\")."
+    },
+    {
+      "id": "form_row_state",
+      "stage": "S1-S9",
+      "script": "judge_form.py",
+      "type": "choice",
+      "replaces": "the `digest` refusal of exit_gate.py for one row whose state word is outside the vocabulary the artifacts use",
+      "undecided": "the line is refused as not in the form, as today",
+      "instructions": "One line of a test factory's handoff says what became of the item in `id`. The word the role used is in `word`, and the line it stands in is `line`. Which state of the factory's own vocabulary does that word mean?",
+      "criteria": {
+        "green": "A piece of test CODE that exists and passes. The word an automator or a code critic uses about a test it wrote.",
+        "red": "A piece of test CODE that exists and fails. The word an automator or a code critic uses about a test it wrote.",
+        "handed": "The item was handed to another role or to a person to carry on.",
+        "unresolved": "The item was worked on and reached no conclusion.",
+        "impossible": "The item cannot be done at all as it stands.",
+        "passed": "An item that was EXECUTED and came out a pass - a run, a manual step, a check. The word a runner uses about an execution, not about code.",
+        "failed": "An item that was EXECUTED and came out a failure - a run, a manual step, a check. The word a runner uses about an execution, not about code.",
+        "not_executed": "The item was never run at all: no result of any kind exists for it.",
+        "env_blocked": "The item could not run because the environment, stand, account, credential, flag or data was missing or broken.",
+        "error": "The item was run and neither passed nor failed: it broke before it could decide.",
+        "timeout": "The item was run and was cut off for taking too long.",
+        "found": "The item was searched for and exists.",
+        "not_found": "The item was searched for and does not exist.",
+        "created": "The item was written for the first time.",
+        "updated": "The item already existed and was changed.",
+        "routed": "The item was sent somewhere outside this story.",
+        "deferred": "The item was deliberately left for later.",
+        "blocked": "The item could not be worked on because something outside it is in the way, and that something is NOT the environment - the environment has its own word above.",
+        "waived": "A person decided this item does not have to be satisfied.",
+        "skipped": "The item was deliberately not worked on.",
+        "reviewed": "The item was read and judged, without being changed.",
+        "other": "The word means none of these, or it is not a state of this item at all."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      },
+      "calibration": "2026-09-23, live, words taken from the same 16 digests: 4 of 11 decided, none wrong. `approved-with-fixes` -> approved_with_fixes 1.00 (the code critic's own vocabulary), `never executed` -> not_executed 0.96, `product bug` -> APP_BUG 0.97, `automated` -> automate 0.99. Undecided, so those lines are refused exactly as today: `passing` (passed 0.83), `stays red` (red 0.69), `no permission` (env_blocked 0.70), `not-executed` (not_executed 0.57), `red/undiagnosed` (red 0.56), `carried forward` (handed 0.34), and the invented `mostly-fine` (passed 0.63). The reason is in the vocabulary, not the judge: green/passed, red/failed and not_executed/skipped/deferred are synonyms of each other in it, so one word of a role honestly names two options and at 0.9 the judge declines. What it does decide is the mechanical half - a closed verdict spelled with a hyphen, or its plain-English name."
+    },
+    {
+      "id": "form_unresolved_reason",
+      "stage": "S5-S8",
+      "script": "judge_form.py",
+      "type": "choice",
+      "replaces": "the `validate_artifacts` refusal of an `automation-manifest.json` `unresolved[]` row whose reason is outside contract.UNRESOLVED_REASONS",
+      "undecided": "the row is written as the role wrote it and the artifact check refuses it, as today",
+      "instructions": "A test could not be finished. The role wrote the words in `reason` for why, and the note it left is in `detail`. The factory records exactly one closed reason per row. Which one do those words mean?",
+      "criteria": {
+        "impossible": "Nothing could make this case verifiable: the starting situation it needs cannot be brought about at all, on any environment, by anybody, however the environment is repaired.",
+        "blocked_by_env": "Something the run needed was missing or broken - the stand, an account, a credential, a feature flag, test data, the toolchain - and nobody has yet said who will deal with it. Repair it and the test runs.",
+        "pending_implementation": "The behaviour the test checks is not built yet, so there is nothing to run the test against.",
+        "contradicts_requirement": "The product's real behaviour and the requirement the case came from say different things, and that must be settled before the test can be true.",
+        "handed_to_person": "A named person has said they will run this themselves, elsewhere, because the machine, runner or account it needs does not exist where the factory works. Someone has taken it; it is not waiting for a repair.",
+        "deferred_by_decision": "Somebody decided to leave this for later, or sent it back to another role to re-decide - a decision, not an obstacle.",
+        "other": "The words mean none of these."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      },
+      "calibration": "2026-09-23, live, the four real `unresolved[]` rows of TP1-15045 plus the words the roles first wrote for them in the S5 digests: 8 of 9 decided, every one matching the row the manifest now carries. `env blocker` 1.00 and `toolchain missing, nothing ran` 1.00 and `the stand has features:subWorkflow disabled` 0.94 -> blocked_by_env; `person will run it where there are AWS keys` -> handed_to_person 0.97 (TC-012 and TC-013's real rows); `dagre discards stored positions, contradicting R-4` -> contradicts_requirement 1.00; `designer must re-decide Then 2` -> deferred_by_decision 0.98; `not built yet` -> pending_implementation 0.99; `cannot be verified at all` -> impossible 0.93 (TC-010's real row). Undecided and left to the artifact check: `repair cap reached, presented not resent` (deferred_by_decision 0.33). First round decided 5 of 9: blocked_by_env and handed_to_person competed for every missing credential until blocked_by_env said \"nobody has yet said who will deal with it\"."
+    },
+    {
+      "id": "form_node_id",
+      "stage": "S5-S6",
+      "script": "judge_form.py",
+      "type": "choice",
+      "replaces": "the `node_id_mismatch` refusal of run_suite.py / red_sandbox.py for one asked id that pytest does not collect under that spelling",
+      "undecided": "the id stays `missing` and the launch is refused with the nearest ids, as today",
+      "instructions": "A test run was asked for the pytest node id in `asked`. pytest does not collect anything under that exact spelling. The ids it does collect that are nearest to it are the options below. Which of them is the same test the asked id names - the same test function and the same parameters, spelled the way this project's plugins spell them? The options are replaced with the real collected ids before the question is sent; the two below are the shape.",
+      "criteria": {
+        "<a collected node id>": "This collected id is the same test the asked id names: same file, same function, same parameters under another spelling.",
+        "none": "None of the collected ids is that test; the asked id names something that is not there."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      },
+      "calibration": "2026-09-23, live, on the real ids of testproject1_test_harness: 3 of 5 decided. The TP1-15045 incident id `...not_a_stale_pair[buffer-R3-vs-selected-R1]` against its three nearest -> the `[chromium-...]` spelling 0.99 (the deterministic path resolves that one already; the judge only confirms it). `[Reload]` against the same function's `[chromium-Reload-reload_page]` and a neighbouring function's -> the right function 1.00. `test_validate_persists_nothing` against two ids of other files -> none 0.96. Undecided, so the launch is refused with the nearest ids as today: a parameter that is really gone (`[buffer-R9]`, none 0.69) and the same parameters under two browsers (0.68) - which is the right answer, because nothing should guess which browser to run. Whole bill of this calibration: 36 questions, 27,367 input tokens, $0.00115."
+    }
+  ]
+}

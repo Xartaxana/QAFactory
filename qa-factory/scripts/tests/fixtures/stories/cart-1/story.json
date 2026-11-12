@@ -1,0 +1,407 @@
+{
+ "id": "cart-1",
+ "task": "CART-1",
+ "synthetic": true,
+ "package_version": "0.10.6",
+ "cut_after_seq": null,
+ "walk": [
+  {
+   "stage": "S1",
+   "role": "qa-scout",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "accepted"
+   ]
+  },
+  {
+   "stage": "S2",
+   "role": "qa-requirements-tester",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "accepted"
+   ]
+  },
+  {
+   "stage": "S2",
+   "role": "qa-requirements-tester",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S3",
+    "role": "qa-test-strategist"
+   }
+  },
+  {
+   "stage": "S3",
+   "role": "qa-test-strategist",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S4",
+    "role": "qa-case-designer"
+   }
+  },
+  {
+   "stage": "S4",
+   "role": "qa-case-critic",
+   "door": {
+    "kind": "exit_gate",
+    "digest_file": "work/digests/S4-qa-case-critic-2.txt"
+   },
+   "facets": [
+    "accepted"
+   ]
+  },
+  {
+   "stage": "S4",
+   "role": "qa-case-critic",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S5",
+    "role": "qa-automator"
+   }
+  },
+  {
+   "stage": "S5",
+   "role": "qa-code-critic",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "accepted"
+   ]
+  },
+  {
+   "stage": "S5",
+   "role": "qa-code-critic",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S6",
+    "role": "qa-runner"
+   }
+  },
+  {
+   "stage": "S6",
+   "role": "qa-runner",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S7",
+    "role": "qa-failure-analyst"
+   }
+  },
+  {
+   "stage": "S7",
+   "role": "qa-failure-analyst",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S8",
+    "role": "qa-doc-scribe"
+   }
+  },
+  {
+   "stage": "S8",
+   "role": "qa-doc-scribe",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "handed"
+   ],
+   "next": {
+    "stage": "S9",
+    "role": "qa-retro-analyst"
+   }
+  },
+  {
+   "stage": "S9",
+   "role": "qa-retro-analyst",
+   "door": {
+    "kind": "exit_gate"
+   },
+   "facets": [
+    "accepted"
+   ]
+  },
+  {
+   "stage": "gateA",
+   "door": {
+    "kind": "gate",
+    "gate": "A",
+    "cut_before_seq": 34,
+    "words_file": "state/words/gateA-20261031-0200.txt"
+   },
+   "facets": [
+    "decision"
+   ]
+  },
+  {
+   "stage": "gateB",
+   "door": {
+    "kind": "gate",
+    "gate": "B",
+    "cut_before_seq": 142,
+    "words_file": "state/words/gateB-20261031-0600.txt"
+   },
+   "facets": [
+    "decision"
+   ]
+  },
+  {
+   "stage": "S8",
+   "door": {
+    "kind": "delivery"
+   },
+   "facets": [
+    "delivery"
+   ]
+  }
+ ],
+ "not_walked": [
+  {
+   "stage": "S0",
+   "facet": "accepted",
+   "why": "the run recorded only a stage_transition done (preflight digest); S0 has no role and no dispatch, so no door judges it"
+  },
+  {
+   "stage": "gateA",
+   "facet": "question",
+   "why": "no carrier: the root holds no driver-questions.jsonl and no gate-a-brief.md, so neither the question kind nor its closed tokens were recorded"
+  },
+  {
+   "stage": "gateB",
+   "facet": "question",
+   "why": "no carrier: the root holds no driver-questions.jsonl, so neither the question kind nor its closed tokens were recorded"
+  },
+  {
+   "stage": "S1",
+   "facet": "handed",
+   "by": "lead",
+   "why": "red by a defect of today's package recorded in docs/tasks/test-diet.md (commit fec3f4593 forbids the diff file at the S1 exit while handoffs/s1-scout-to-tester.yaml still requires it); returns to the walk when the package is fixed"
+  },
+  {
+   "stage": "S9",
+   "facet": "handed",
+   "why": "S9 is the last stage: no next role to start"
+  },
+  {
+   "stage": "S8",
+   "facet": "accepted",
+   "by": "lead",
+   "why": "not comparable: test-report.md changed after the recorded accept (later rounds of the same run); the cut world would judge bytes the accept never saw"
+  },
+  {
+   "stage": "S3",
+   "facet": "accepted",
+   "by": "lead",
+   "why": "not comparable: test-plan.md, work/test-plan.json changed after the recorded accept (later rounds of the same run); the cut world would judge bytes the accept never saw"
+  },
+  {
+   "stage": "S6",
+   "facet": "accepted",
+   "by": "lead",
+   "why": "not comparable: work/run-report.json changed after the recorded accept (later rounds of the same run); the cut world would judge bytes the accept never saw"
+  },
+  {
+   "stage": "S7",
+   "facet": "accepted",
+   "by": "lead",
+   "why": "not comparable: work/triage.json changed after the recorded accept (later rounds of the same run); the cut world would judge bytes the accept never saw"
+  }
+ ],
+ "dropped": [
+  "evidence/161312019d970d8b8711dbcc9cab050321950775c2eac687accfa885bb6a0770.png",
+  "evidence/4aea8ba2847493a33f514e72a17cb574a222c486ea6202a7d3b318d8c7d9b240.png",
+  "evidence/55499a13daa0ea54a2c6bae741bf57b762a26fb2e246bad83c18db00ed8a5d53.png",
+  "evidence/62f16f2b0ca23210fd07c5612ea53af57ba7eafe66ec7c032b22cc5412dd758b.png",
+  "evidence/8b1888b0ad54a18e12416fc24e07b3aa943421227bc84c60ccf7e1b5cc394d1d.png",
+  "evidence/9dbf38c45a25b1b3ecc9786fd83804309655e08b11b209ed7aea0ec706b1bdcf.png",
+  "evidence/c29fe4ce9032e9f6aa7c0358f2824ed8dbd835eeaeb4c7794e7ac33aea714bbf.png",
+  "evidence/cd5fa896b6f7d616696ee877e626b44bf0cbfbba6584a34f28bf4650676af035.png",
+  "evidence/f82bf1e6a40739fae456d69aca7f7a16e11e05d8b886f641be584b2fd4cd8ecb.png",
+  "state/.story-case-links.lock",
+  "state/events.lock",
+  "work/evidence/manual/CART-1_TC_011/a5/001-supporting-created.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/007-click.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/008-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/009-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/010-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/011-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/012-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/013-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/014-click.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/015-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/016-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/017-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/018-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/019-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/020-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/021-click.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/022-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/023-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/024-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/025-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/026-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/027-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/028-click.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/029-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/030-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/031-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/032-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/033-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/034-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/035-click.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/036-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a5/observe/037-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a6/001-supporting-cart-before.png",
+  "work/evidence/manual/CART-1_TC_011/a6/002-pre_action-d3-detail-before.png",
+  "work/evidence/manual/CART-1_TC_011/a6/003-post_action-d3-added-toast.png",
+  "work/evidence/manual/CART-1_TC_011/a6/004-post_action-cart-after-valid.png",
+  "work/evidence/manual/CART-1_TC_011/a6/005-failed-step.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/007-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/008-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/009-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/010-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/011-click.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/012-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/013-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/014-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a6/observe/015-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/001-supporting-cart-empty-before.png",
+  "work/evidence/manual/CART-1_TC_011/a7/002-pre_action-d3-detail-before.png",
+  "work/evidence/manual/CART-1_TC_011/a7/004-post_action-d3-added-toast.png",
+  "work/evidence/manual/CART-1_TC_011/a7/005-post_action-cart-after-valid.png",
+  "work/evidence/manual/CART-1_TC_011/a7/008-post_action-d3-above-stock-toast.png",
+  "work/evidence/manual/CART-1_TC_011/a7/009-post_action-cart-after-above-stock.png",
+  "work/evidence/manual/CART-1_TC_011/a7/013-post_action-completion.png",
+  "work/evidence/manual/CART-1_TC_011/a7/014-supporting-cart-final.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/007-click.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/008-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/009-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/010-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/011-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/012-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/013-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/014-click.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/015-read.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/016-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/017-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/018-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/019-read.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/020-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/021-fill.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/022-click.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/023-read.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/024-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/025-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/026-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/027-read.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/028-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/029-read.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/030-read.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/031-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/032-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/033-capture.png",
+  "work/evidence/manual/CART-1_TC_011/a7/observe/034-read.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/007-read.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/008-read.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/009-goto.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/010-read.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/011-read.png",
+  "work/evidence/manual/CART-1_TC_011/a8/observe/012-read.png",
+  "work/evidence/manual/CART-1_TC_012/a7/001-supporting-signedin.png",
+  "work/evidence/manual/CART-1_TC_012/a7/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a7/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_012/a7/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a7/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a7/observe/007-capture.png",
+  "work/evidence/manual/CART-1_TC_012/a8/001-supporting-cart-empty-before.png",
+  "work/evidence/manual/CART-1_TC_012/a8/002-pre_action-wishlist-before.png",
+  "work/evidence/manual/CART-1_TC_012/a8/005-post_action-wishlist-after-reload.png",
+  "work/evidence/manual/CART-1_TC_012/a8/009-post_action-completion.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/007-click.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/008-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/009-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/010-click.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/011-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/012-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/013-click.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/014-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/015-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/016-capture.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/017-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/018-capture.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/019-read.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/020-click.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/021-read.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/022-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/023-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/024-capture.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/025-read.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/026-read.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/027-read.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/028-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/029-capture.png",
+  "work/evidence/manual/CART-1_TC_012/a8/observe/030-read.png",
+  "work/evidence/manual/CART-1_TC_012/a9/005-failed-step.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/001-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/004-click.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/005-wait.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/006-goto.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/007-read.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/008-read.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/009-read.png",
+  "work/evidence/manual/CART-1_TC_012/a9/observe/010-read.png"
+ ]
+}

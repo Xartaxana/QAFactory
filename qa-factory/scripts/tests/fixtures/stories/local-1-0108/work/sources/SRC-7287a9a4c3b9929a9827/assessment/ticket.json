@@ -1,0 +1,43 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that an extremely large quantity is handled appropriately (an error or a maximum limit) and the system stays stable.\n\n*Type:* negative  \n*Priority:* low\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512251",
+  "key": "REF-24",
+  "labels": [
+    "negative",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Low",
+  "provenance": {
+    "bytes": 14512,
+    "fields_requested": "*all",
+    "sha256": "df31436795962e761775f4e57be6a92514052d96bd2c9035615ccedcb151d31b",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:12.964+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add product with extremely large quantity",
+  "type": "Test"
+}

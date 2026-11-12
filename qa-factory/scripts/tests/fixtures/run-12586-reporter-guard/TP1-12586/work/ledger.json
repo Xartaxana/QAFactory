@@ -1,0 +1,1143 @@
+{
+  "ticket": "TP1-12586",
+  "generated": "2026-10-28T12:23:14+00:00",
+  "rows": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "TC-002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "TC-003"
+    },
+    {
+      "ref": "TS-4",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-004"
+    },
+    {
+      "ref": "TS-5",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-005"
+    },
+    {
+      "ref": "TS-6",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-006"
+    },
+    {
+      "ref": "TS-7",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-007"
+    },
+    {
+      "ref": "TS-8",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-008"
+    },
+    {
+      "ref": "TS-9",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-009"
+    },
+    {
+      "ref": "TS-10",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "TC-010"
+    },
+    {
+      "ref": "TS-11",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-011"
+    },
+    {
+      "ref": "TS-12",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "TC-012"
+    },
+    {
+      "ref": "TS-13",
+      "kind": "plan_row",
+      "state": "skipped:developer-owned unit/component matter; rollback proved via API in TS-5/TS-6; commit semantics defended by the regression suites below",
+      "detail": ""
+    },
+    {
+      "ref": "TS-14",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "TC-014"
+    },
+    {
+      "ref": "test_put_project_change_moves_integration[TC-001-sonar]",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-001 \u2014 its receipt is for other bytes (test_content_hash 1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32, the test file now hashes ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2) and other code: probe the current bytes again with probe_by_code.py --instance test_put_project_change_moves_integration[TC-001-sonar]; sensitivity_proof.instance_id does not match the manifest instance",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_moves_integration[TC-001-jira]",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-001",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_requires_admin_in_target",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-004 \u2014 its receipt is for other bytes (test_content_hash 1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32, the test file now hashes ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2) and other code: probe the current bytes again with probe_by_code.py --instance test_put_project_change_requires_admin_in_target",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_moves_ms_teams_integration",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-002 (the test changed after this run: the test, or a fixture or helper it uses, changed since run a96f5e653377735139aa)",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::TC-003 (the test changed after this run: the test, or a fixture or helper it uses, changed since run a96f5e653377735139aa)",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_from_user_scope_and_collision",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-005",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_failing_move_persists_nothing[TC-006-sonar]",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-006",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_failing_move_persists_nothing[TC-006-jira]",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-006",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_clears_dependent_setting_link",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-007",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_put_project_change_leaves_project_settings_and_lists_intact",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-011",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_edit_integration_change_project_confirmation_modal",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py::TC-008 \u2014 probe_by_code.py not_executed: the assertion fired at the intended line (junit row carries a [chromium] suffix the tool cannot map to the instance); tooling gap, not a test verdict",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "test_edit_integration_project_change_keeps_credential_fields",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py::TC-009 \u2014 probe_by_code.py not_executed: the assertion fired at the intended line (junit row carries a [chromium] suffix the tool cannot map to the instance); tooling gap, not a test verdict",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    }
+  ],
+  "delivery_ready": false,
+  "delivery_verdict": "no",
+  "left_items": [
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "TC-008",
+      "case": "TC-008",
+      "requirements": [
+        "R-1",
+        "R-2",
+        "R-4",
+        "R-14"
+      ],
+      "tests": [
+        "TC-008"
+      ],
+      "to_check": "The Project dropdown is enabled on the edit page of an existing integration (R-1, R-2).; P-changed-confirm and P-changed-cancel: pressing Save with a changed project shows a modal titled \"Change integration project?\" before any request is sent.; P-changed-cancel: no save request is made and the API shows the integration still in the source, fields unchanged.; P-changed-confirm: the API read-back shows the integration in the target project and absent from the source.; P-unchanged: no modal appears and the alias is saved.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "TC-009",
+      "case": "TC-009",
+      "requirements": [
+        "R-16"
+      ],
+      "tests": [
+        "TC-009"
+      ],
+      "to_check": "P-project-change: the stored non-secret credential fields equal the values loaded before the edit, and the integration is in the target.; P-alias-only: the stored non-secret credential fields still equal the loaded values.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "regression",
+      "ref": "regression",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "lines": [
+        "Not run by us. Area labels point to `work/grounding.yaml`.",
+        "",
+        "- blast:B-3 (edit form) - `python \"<stand>/ai-packages/qa-factory/scripts/run_suite.py\" --label B-3 -- testproject1_test_harness/tests/ui/integrations/test_edit_integration.py`",
+        "- blast:B-5 (edit page) - same command with `--label B-5`.",
+        "- blast:B-7 (project PUT) - `python \"<stand>/ai-packages/qa-factory/scripts/run_suite.py\" --label B-7 -- testproject1_test_harness/tests/integrations/test_integration_update.py`",
+        "- blast:B-8 (project router) - `python \"<stand>/ai-packages/qa-factory/scripts/run_suite.py\" --label B-8 -- testproject1_test_harness/tests/projects/test_projects_positive.py`",
+        "- blast:B-9 (MS Teams, transfer) - `python \"<stand>/ai-packages/qa-factory/scripts/run_suite.py\" --label B-9 -- testproject1_test_harness/tests/integrations/test_integration_update.py testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py testproject1_test_harness/tests/integrations/test_settings_transfer.py`",
+        "- blast:B-11 (user settings) - `python \"<stand>/ai-packages/qa-factory/scripts/run_suite.py\" --label B-11 -- testproject1_test_harness/tests/integrations/user/test_user_integrations.py`",
+        "- blast:B-12 (transfer service) - `python \"<stand>/ai-packages/qa-factory/scripts/run_suite.py\" --label B-12 -- testproject1_test_harness/tests/integrations/test_settings_transfer.py`",
+        "- Areas B-1, B-2, B-4, B-6, B-10 and B-13..B-22 do not matter (docs-only, docstring, imports, refactoring with the same checks) and have no run.",
+        "",
+        "For the developers (component level, not ours): a test that `save()`/`update()` keep the old commit semantics outside a transaction; a deleted record inside a transaction still raises StaleDataError; the ambient session does not leak between concurrent requests (K-4, K-5, K-6); the modal text and the computed look of the Project dropdown on edit.",
+        "",
+        "<!-- qa-factory:case-appendix:start -->"
+      ],
+      "to_check": "",
+      "how": "",
+      "words": "",
+      "source": "plan",
+      "counts": false
+    }
+  ],
+  "reasons": [
+    "traceability: R-4 has no terminal outcome (TC-008: passed; TC-012: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-5 has no terminal outcome (TC-002: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-6 has no terminal outcome (TC-002: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-8 has no terminal outcome (TC-006: passed; TC-010: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-9 has no terminal outcome (TC-011: passed; TC-012: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-10 has no terminal outcome (TC-003: unresolved (contradicts_requirement) with no decision attached)",
+    "ledger: TS-2 is `failed:APP_BUG` (TC-002)",
+    "ledger: TS-3 is `failed:APP_BUG` (TC-003)",
+    "ledger: TS-10 is `not_executed:no result recorded for this row's cases` (TC-010)",
+    "ledger: TS-12 is `not_executed:no result recorded for this row's cases` (TC-012)",
+    "ledger: test_put_project_change_moves_ms_teams_integration is `failed:APP_BUG` (testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-002 (the test changed after this run: the test, or a fixture or helper it uses, changed since run a96f5e653377735139aa))",
+    "ledger: test_put_project_change_into_project_with_ms_teams_is_rejected is `failed:APP_BUG` (testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::TC-003 (the test changed after this run: the test, or a fixture or helper it uses, changed since run a96f5e653377735139aa))",
+    "coverage: OB-1 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-2 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-3 \u2014 none",
+    "coverage: OB-4 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-5 \u2014 none",
+    "coverage: OB-6 \u2014 none",
+    "coverage: OB-7 \u2014 none",
+    "coverage: OB-8 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-9 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-10 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-11 \u2014 none",
+    "coverage: OB-12 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-13 \u2014 none",
+    "coverage: OB-14 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-15 \u2014 none",
+    "case TC-001: approved green test lacks current pinned CaseVersion proof",
+    "case TC-004: approved green test lacks current pinned CaseVersion proof",
+    "test instance test_put_project_change_moves_integration[TC-001-sonar] has stale case link TC-001/cv_060164c2f864d235eef8",
+    "test instance test_put_project_change_moves_integration[TC-001-sonar] requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-1): its receipt is for other bytes (test_content_hash 1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32, the test file now hashes ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2) and other code: probe the current bytes again with probe_by_code.py --instance test_put_project_change_moves_integration[TC-001-sonar]",
+    "test instance test_put_project_change_moves_integration[TC-001-sonar] requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-1): sensitivity_proof.instance_id does not match the manifest instance",
+    "test instance test_put_project_change_moves_integration[TC-001-jira] has stale case link TC-001/cv_060164c2f864d235eef8",
+    "test instance test_put_project_change_requires_admin_in_target has stale case link TC-004/cv_bf0b424eeff643f7d464",
+    "test instance test_put_project_change_requires_admin_in_target requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): its receipt is for other bytes (test_content_hash 1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32, the test file now hashes ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2) and other code: probe the current bytes again with probe_by_code.py --instance test_put_project_change_requires_admin_in_target"
+  ],
+  "reason_records": [
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-4",
+      "detail": "traceability: R-4 has no terminal outcome (TC-008: passed; TC-012: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-5",
+      "detail": "traceability: R-5 has no terminal outcome (TC-002: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-6",
+      "detail": "traceability: R-6 has no terminal outcome (TC-002: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-8",
+      "detail": "traceability: R-8 has no terminal outcome (TC-006: passed; TC-010: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-9",
+      "detail": "traceability: R-9 has no terminal outcome (TC-011: passed; TC-012: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-10",
+      "detail": "traceability: R-10 has no terminal outcome (TC-003: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "kind": "chain_broken"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-2",
+      "detail": "ledger: TS-2 is `failed:APP_BUG` (TC-002)",
+      "owner": "product",
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-3",
+      "detail": "ledger: TS-3 is `failed:APP_BUG` (TC-003)",
+      "owner": "product",
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-10",
+      "detail": "ledger: TS-10 is `not_executed:no result recorded for this row's cases` (TC-010)",
+      "owner": "product",
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-12",
+      "detail": "ledger: TS-12 is `not_executed:no result recorded for this row's cases` (TC-012)",
+      "owner": "product",
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "test_put_project_change_moves_ms_teams_integration",
+      "detail": "ledger: test_put_project_change_moves_ms_teams_integration is `failed:APP_BUG` (testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::TC-002 (the test changed after this run: the test, or a fixture or helper it uses, changed since run a96f5e653377735139aa))",
+      "owner": "product",
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+      "detail": "ledger: test_put_project_change_into_project_with_ms_teams_is_rejected is `failed:APP_BUG` (testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::TC-003 (the test changed after this run: the test, or a fixture or helper it uses, changed since run a96f5e653377735139aa))",
+      "owner": "product",
+      "kind": "red"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-1",
+      "detail": "coverage: OB-1 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-2",
+      "detail": "coverage: OB-2 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-3",
+      "detail": "coverage: OB-3 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-4",
+      "detail": "coverage: OB-4 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-5",
+      "detail": "coverage: OB-5 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-6",
+      "detail": "coverage: OB-6 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-7",
+      "detail": "coverage: OB-7 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-8",
+      "detail": "coverage: OB-8 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-9",
+      "detail": "coverage: OB-9 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-10",
+      "detail": "coverage: OB-10 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-11",
+      "detail": "coverage: OB-11 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-12",
+      "detail": "coverage: OB-12 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-13",
+      "detail": "coverage: OB-13 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-14",
+      "detail": "coverage: OB-14 \u2014 reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-15",
+      "detail": "coverage: OB-15 \u2014 none",
+      "owner": "product",
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "approved",
+      "detail": "case TC-001: approved green test lacks current pinned CaseVersion proof",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "approved",
+      "detail": "case TC-004: approved green test lacks current pinned CaseVersion proof",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "test",
+      "detail": "test instance test_put_project_change_moves_integration[TC-001-sonar] has stale case link TC-001/cv_060164c2f864d235eef8",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance test_put_project_change_moves_integration[TC-001-sonar] requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-1): its receipt is for other bytes (test_content_hash 1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32, the test file now hashes ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2) and other code: probe the current bytes again with probe_by_code.py --instance test_put_project_change_moves_integration[TC-001-sonar]",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "sensitivity_proof.instance_id",
+      "detail": "test instance test_put_project_change_moves_integration[TC-001-sonar] requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-1): sensitivity_proof.instance_id does not match the manifest instance",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "test",
+      "detail": "test instance test_put_project_change_moves_integration[TC-001-jira] has stale case link TC-001/cv_060164c2f864d235eef8",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "test",
+      "detail": "test instance test_put_project_change_requires_admin_in_target has stale case link TC-004/cv_bf0b424eeff643f7d464",
+      "owner": "factory",
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance test_put_project_change_requires_admin_in_target requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): its receipt is for other bytes (test_content_hash 1bbe7d804f64a486c726e4e47878312366e0db198f6c93ac3e7b325ef58d7f32, the test file now hashes ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2) and other code: probe the current bytes again with probe_by_code.py --instance test_put_project_change_requires_admin_in_target",
+      "owner": "factory",
+      "kind": "factory_record"
+    }
+  ],
+  "blocked_by": [
+    "product",
+    "factory"
+  ],
+  "superseded_blocks": [],
+  "coverage": {
+    "schema_version": 2,
+    "status": "current",
+    "obligations": [
+      {
+        "obligation_id": "OB-1",
+        "plan_row": "TS-1",
+        "decision": "extend",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_moves_integration[TC-001-jira]",
+          "test_put_project_change_moves_integration[TC-001-sonar]"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-2",
+        "plan_row": "TS-2",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_moves_ms_teams_integration"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-3",
+        "plan_row": "TS-2",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_moves_ms_teams_integration"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-4",
+        "plan_row": "TS-3",
+        "decision": "extend",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_into_project_with_ms_teams_is_rejected"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-5",
+        "plan_row": "TS-4",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_requires_admin_in_target"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-6",
+        "plan_row": "TS-5",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_from_user_scope_and_collision"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-7",
+        "plan_row": "TS-5",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_from_user_scope_and_collision"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-8",
+        "plan_row": "TS-6",
+        "decision": "extend",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_failing_move_persists_nothing[TC-006-jira]",
+          "test_put_project_change_failing_move_persists_nothing[TC-006-sonar]"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-9",
+        "plan_row": "TS-7",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_clears_dependent_setting_link"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-10",
+        "plan_row": "TS-8",
+        "decision": "extend",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_edit_integration_change_project_confirmation_modal"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-11",
+        "plan_row": "TS-8",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_edit_integration_change_project_confirmation_modal"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-12",
+        "plan_row": "TS-9",
+        "decision": "extend",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_edit_integration_project_change_keeps_credential_fields"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-13",
+        "plan_row": "TS-10",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-14",
+        "plan_row": "TS-11",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [
+          "test_put_project_change_leaves_project_settings_and_lists_intact"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-15",
+        "plan_row": "TS-12",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-16",
+        "plan_row": "TS-13",
+        "decision": "unresolved",
+        "execution_scope": "recommended_regression",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": "no QA-owned assertion of the session joining; recommended to the developers"
+      },
+      {
+        "obligation_id": "OB-17",
+        "plan_row": "TS-14",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": true,
+        "person_debt": false,
+        "instance_ids": [],
+        "gap": ""
+      }
+    ],
+    "unique_instances": 12
+  },
+  "manual_evidence": {
+    "rows": [
+      {
+        "schema_version": 2,
+        "case": "TC-014",
+        "case_version": "cv_fdb829d700e61f126a9a",
+        "obligation_ids": [
+          "OB-17"
+        ],
+        "obligation_hashes": {
+          "OB-17": "b96043c20755fe344b7a7184e92bb44ee85a89dfd4a127b31fb0f2fea5bea3e2"
+        },
+        "attempt_id": "a1",
+        "dispatch_id": "S6-qa-runner-2",
+        "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+        "runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+        "steps_actual": [
+          "http POST http://localhost:8080/v1/settings/user -> ok: status 200",
+          "http GET http://localhost:8080/v1/settings/user?per_page=200 (state) -> ok: status 200",
+          "http PUT http://localhost:8080/v1/settings/user/ac4289b1-9068-4cbd-a9c2-c810278d20cc -> ok: status 200",
+          "http GET http://localhost:8080/v1/settings/user?per_page=200 (state) -> ok: status 200",
+          "http PUT http://localhost:8080/v1/settings/user/ac4289b1-9068-4cbd-a9c2-c810278d20cc -> ok: status 200",
+          "http GET http://localhost:8080/v1/settings/user?per_page=200 (state) -> ok: status 200",
+          "http PUT http://localhost:8080/v1/settings/user/ac4289b1-9068-4cbd-a9c2-c810278d20cc -> ok: status 403",
+          "http GET http://localhost:8080/v1/settings/user?per_page=200 (state) -> ok: status 200"
+        ],
+        "expected": [
+          "A user-scope move into an unadministered project is refused or accepted exactly as the existing project change for Data sources / Assistants / Workflows does (Q7)."
+        ],
+        "actual": "As the second account: PUT to qa12586-proj-b (plain member) 200 and the user integration listed in proj-b; PUT to qa12586-proj-a (admin) 200 and listed in proj-a; PUT to qa12586-t10-tgt (no role) 403 'You do not have permission to access the project' and still in proj-a, one project each time.",
+        "completion_condition": "PUT answered with a status and the integration and target project are read back after",
+        "attempt_started_at": "2026-10-28T11:39:12+00:00",
+        "attempt_ended_at": "2026-10-28T11:41:26+00:00",
+        "result": "pass",
+        "runtime_before": {
+          "profile_id": "api",
+          "timestamp": "2026-10-28T11:39:04+00:00",
+          "environment_id": "local-docker",
+          "expected_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+          "observed_runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+          "evidence_refs": [
+            "<stand>/testproject1-sdk/test-harness/qa-factory/artifacts/TP1-12586/evidence/runtime-provenance-api-20261028T113904Z.json"
+          ],
+          "provenance": {
+            "technical_verification": true,
+            "source_linkage": "verified_content",
+            "deployed_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+            "verified_source_revisions": [
+              "a29f2604effe72999478a8de2d5fb23b80b38833"
+            ]
+          },
+          "result": "matched",
+          "comparisons": [
+            {
+              "file": "src/pages/integrations/components/SettingsForm/SettingsForm.tsx",
+              "container_sha256": null,
+              "local_sha256": null,
+              "note": "no local file"
+            },
+            {
+              "file": "src/pages/integrations/components/EditSettingPageBase.tsx",
+              "container_sha256": null,
+              "local_sha256": null,
+              "note": "no local file"
+            },
+            {
+              "file": "src/testproject1/clients/postgres.py",
+              "container_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7",
+              "local_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7"
+            },
+            {
+              "file": "src/testproject1/rest_api/models/base.py",
+              "container_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10",
+              "local_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10"
+            },
+            {
+              "file": "src/testproject1/rest_api/routers/project_settings.py",
+              "container_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d",
+              "local_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d"
+            },
+            {
+              "file": "src/testproject1/rest_api/routers/settings.py",
+              "container_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec",
+              "local_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec"
+            },
+            {
+              "file": "src/testproject1/rest_api/routers/user_settings.py",
+              "container_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49",
+              "local_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49"
+            },
+            {
+              "file": "src/testproject1/service/settings/settings_transfer_service.py",
+              "container_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3",
+              "local_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3"
+            }
+          ],
+          "container": "testproject1-dev-010-testproject1-1",
+          "checkout": "..\\..\\testproject1"
+        },
+        "runtime_after": {
+          "profile_id": "api",
+          "timestamp": "2026-10-28T11:41:18+00:00",
+          "environment_id": "local-docker",
+          "expected_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+          "observed_runtime_identity": "verified_content:d82d52d6345e|1fa3df5ce909|0e06b4c3b34d|182f2c7e6755|bc1e455f08a8|b5f89698b9c1",
+          "evidence_refs": [
+            "<stand>/testproject1-sdk/test-harness/qa-factory/artifacts/TP1-12586/evidence/runtime-provenance-api-20261028T114118Z.json"
+          ],
+          "provenance": {
+            "technical_verification": true,
+            "source_linkage": "verified_content",
+            "deployed_source_revision": "a29f2604effe72999478a8de2d5fb23b80b38833",
+            "verified_source_revisions": [
+              "a29f2604effe72999478a8de2d5fb23b80b38833"
+            ]
+          },
+          "result": "matched",
+          "comparisons": [
+            {
+              "file": "src/pages/integrations/components/SettingsForm/SettingsForm.tsx",
+              "container_sha256": null,
+              "local_sha256": null,
+              "note": "no local file"
+            },
+            {
+              "file": "src/pages/integrations/components/EditSettingPageBase.tsx",
+              "container_sha256": null,
+              "local_sha256": null,
+              "note": "no local file"
+            },
+            {
+              "file": "src/testproject1/clients/postgres.py",
+              "container_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7",
+              "local_sha256": "d82d52d6345e72517fbd8961841e29c9e009295ee37bd3ff86051b030cdff7b7"
+            },
+            {
+              "file": "src/testproject1/rest_api/models/base.py",
+              "container_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10",
+              "local_sha256": "1fa3df5ce909f66b40fdf50067c632c5a591f5aedc52b965c6680c277b63fb10"
+            },
+            {
+              "file": "src/testproject1/rest_api/routers/project_settings.py",
+              "container_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d",
+              "local_sha256": "0e06b4c3b34deaeb8eeb6728893c858295a11e7415c434d11c71a3292158dc4d"
+            },
+            {
+              "file": "src/testproject1/rest_api/routers/settings.py",
+              "container_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec",
+              "local_sha256": "182f2c7e6755a01ccb90085d6807a1fa4d47fb54b89bbdfbd7a2d84776b21bec"
+            },
+            {
+              "file": "src/testproject1/rest_api/routers/user_settings.py",
+              "container_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49",
+              "local_sha256": "bc1e455f08a8173262002386eec5668af876978e0d5670a2bb54bd18ac9d3d49"
+            },
+            {
+              "file": "src/testproject1/service/settings/settings_transfer_service.py",
+              "container_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3",
+              "local_sha256": "b5f89698b9c1250685f4756db87e366aea883275a9eea00f2c93c2c123975bd3"
+            }
+          ],
+          "container": "testproject1-dev-010-testproject1-1",
+          "checkout": "..\\..\\testproject1"
+        },
+        "evidence_policy": "api",
+        "limitations": [],
+        "evidence_refs": [
+          {
+            "path": "evidence/93c87e99af8b3eb854163c35c825848f84e037bb011a23dc58ce3f3651c24068.json",
+            "content_hash": "93c87e99af8b3eb854163c35c825848f84e037bb011a23dc58ce3f3651c24068",
+            "kind": "request_response",
+            "phase": "supporting",
+            "captured_at": "2026-10-28T11:39:13+00:00",
+            "proves": [
+              "request and response"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "93c87e99af8b3eb854163c35c825848f84e037bb011a23dc58ce3f3651c24068"
+          },
+          {
+            "path": "evidence/2de5b40d2851dcfca0cccb7bbc04e8aaf340e7146c393d661feb2111b68282e8.json",
+            "content_hash": "2de5b40d2851dcfca0cccb7bbc04e8aaf340e7146c393d661feb2111b68282e8",
+            "kind": "state",
+            "phase": "supporting",
+            "captured_at": "2026-10-28T11:39:13+00:00",
+            "proves": [
+              "state"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "2de5b40d2851dcfca0cccb7bbc04e8aaf340e7146c393d661feb2111b68282e8"
+          },
+          {
+            "path": "evidence/38e92488efa8a8b9febbc9445e5b672938e23b9c14fd1ce45b89aba0f5152df8.json",
+            "content_hash": "38e92488efa8a8b9febbc9445e5b672938e23b9c14fd1ce45b89aba0f5152df8",
+            "kind": "request_response",
+            "phase": "post_action",
+            "captured_at": "2026-10-28T11:40:35+00:00",
+            "proves": [
+              "completion"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "38e92488efa8a8b9febbc9445e5b672938e23b9c14fd1ce45b89aba0f5152df8"
+          },
+          {
+            "path": "evidence/b1c028c2094e2e759d635bbd38c88cb708ca687c220f322f282939126ea92262.json",
+            "content_hash": "b1c028c2094e2e759d635bbd38c88cb708ca687c220f322f282939126ea92262",
+            "kind": "state",
+            "phase": "post_action",
+            "captured_at": "2026-10-28T11:40:35+00:00",
+            "proves": [
+              "state"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "b1c028c2094e2e759d635bbd38c88cb708ca687c220f322f282939126ea92262"
+          },
+          {
+            "path": "evidence/2be124a40ed25f836e3648731da1b283720e7ff51bef48a6919a231c881994d0.json",
+            "content_hash": "2be124a40ed25f836e3648731da1b283720e7ff51bef48a6919a231c881994d0",
+            "kind": "request_response",
+            "phase": "post_action",
+            "captured_at": "2026-10-28T11:40:56+00:00",
+            "proves": [
+              "completion"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "2be124a40ed25f836e3648731da1b283720e7ff51bef48a6919a231c881994d0"
+          },
+          {
+            "path": "evidence/bd011e82b0e05f5b32b594cf7d1016cccda2e98a6b07473917bdaa7af3b5a599.json",
+            "content_hash": "bd011e82b0e05f5b32b594cf7d1016cccda2e98a6b07473917bdaa7af3b5a599",
+            "kind": "state",
+            "phase": "post_action",
+            "captured_at": "2026-10-28T11:40:56+00:00",
+            "proves": [
+              "state"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "bd011e82b0e05f5b32b594cf7d1016cccda2e98a6b07473917bdaa7af3b5a599"
+          },
+          {
+            "path": "evidence/745dea06a4109d62fb96f54435e6087de31b4ac512e42ff11e9003ef7edd91a0.json",
+            "content_hash": "745dea06a4109d62fb96f54435e6087de31b4ac512e42ff11e9003ef7edd91a0",
+            "kind": "request_response",
+            "phase": "post_action",
+            "captured_at": "2026-10-28T11:41:17+00:00",
+            "proves": [
+              "completion"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "745dea06a4109d62fb96f54435e6087de31b4ac512e42ff11e9003ef7edd91a0"
+          },
+          {
+            "path": "evidence/506f859c4b967f08974ac7c6c89bcd15661f10a86661728ec2be25d668ec1c44.json",
+            "content_hash": "506f859c4b967f08974ac7c6c89bcd15661f10a86661728ec2be25d668ec1c44",
+            "kind": "state",
+            "phase": "post_action",
+            "captured_at": "2026-10-28T11:41:17+00:00",
+            "proves": [
+              "state"
+            ],
+            "mask_acknowledged": true,
+            "sha256": "506f859c4b967f08974ac7c6c89bcd15661f10a86661728ec2be25d668ec1c44"
+          }
+        ],
+        "gate_a_decision_ref": "gateA-TP1-12586-2",
+        "approved_policy_hash": "c2eaaf90ea8d738542fed3641bcad20744cac6417130f1f9b51de7b3ce0eba37",
+        "before_change": {
+          "r": "R-15",
+          "value": "unknown",
+          "ref": "diff:-src/testproject1/rest_api/routers/user_settings.py:245",
+          "source": "claim"
+        },
+        "current_obligation_ids": [
+          "OB-17"
+        ],
+        "evidence_validated": true
+      }
+    ],
+    "errors": []
+  },
+  "subtasks_open": [],
+  "review_skipped": false,
+  "repair_windows": [],
+  "repair_windows_problem": "",
+  "source_inputs": {
+    "schema_version": 1,
+    "files": {
+      "test-plan.json": {
+        "path": "work/test-plan.json",
+        "sha256": "077c8a7394167b9f5b302ea05a69f24cbb4772c5f59c2ef9a11db5c85b918e01"
+      },
+      "run-report.json": {
+        "path": "work/run-report.json",
+        "sha256": "8adb809463a7a9945ea655d7bd64008e8c27a39072f78a0b61ae4b57ca8c8da6"
+      },
+      "automation-manifest.json": {
+        "path": "work/automation-manifest.json",
+        "sha256": "a2c3fc952fbb8c4d4afb2c8785bddd89096b9450b29f2310d5d2a1e8cfb763f8"
+      },
+      "triage.json": {
+        "path": "work/triage.json",
+        "sha256": "07dbe44473a651946f48dbb2453f79b6e3653c2b0d4e8c35877eb6a798c3cea3"
+      }
+    },
+    "fingerprint": "9bba4b693806466a96c43b99bdf6be9fe853d7fadeb8af5cce1d7a16dd1f92e3"
+  },
+  "person_debts": [],
+  "factory_findings": []
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "note": "The thresholds of the S3 grounding step (FR-13: a closed variety lives in a data file). ONE reader: planning_contract.grounding_policy(); a file it cannot read gives the caller `road: unknown`, never a stop card and never `none`. The share is `100*W` against `<percent>*T`, strict, in integers, with W the changed production lines carried by the hunks whose label is in `numerator_labels` and T all changed production lines: `notify` when `100*W > notify_above_percent*T`, `stop` when `100*W > stop_above_percent*T`. The coverage stop is `100*(implemented+partial) < coverage_stop_below_percent*N`, so exactly the threshold is not a stop. Every threshold is a whole number 0..100 (not a float, a boolean or a string); `notify_above_percent` is below `stop_above_percent`.",
+  "measure": "changed_production_lines",
+  "notify_above_percent": 30,
+  "stop_above_percent": 50,
+  "numerator_labels": ["refactoring", "unclassified"],
+  "coverage_stop_below_percent": 50,
+  "null_outcome_words": {
+    "current-code": "The implementation of this story is read from the current code, not from a recorded diff, so there are no hunks to label and no grounding rows.",
+    "ungrounded": "This story records no implementation to read (ungrounded), so there are no hunks to label; the plan rests on the requirements alone.",
+    "absent": "No implementation source is recorded and no implementation diff is on disk, so there are no hunks to label; the plan rests on the requirements alone."
+  }
+}

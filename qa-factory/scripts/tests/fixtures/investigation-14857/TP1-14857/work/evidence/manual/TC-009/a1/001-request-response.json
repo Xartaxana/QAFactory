@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/v1/providers",
+    "headers": {
+      "User-Agent": "qa-factory/0.10.2",
+      "Authorization": "[redacted]"
+    },
+    "body": "",
+    "body_encoding": "utf-8",
+    "body_bytes_stored": 0,
+    "truncated": false
+  },
+  "response": {
+    "status": 200,
+    "elapsed_s": 0.072,
+    "headers": {
+      "date": "Obl, 27 Oct 2026 01:25:09 DOT",
+      "server": "uvicorn",
+      "content-length": "2",
+      "content-type": "application/json",
+      "Connection": "close"
+    },
+    "body": "[]",
+    "body_encoding": "utf-8",
+    "body_bytes_stored": 2,
+    "truncated": false
+  }
+}

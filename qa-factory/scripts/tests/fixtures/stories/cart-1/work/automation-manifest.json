@@ -1,0 +1,1741 @@
+{
+  "unresolved": [
+    {
+      "case": "CART-1_TC_009",
+      "reason": "contradicts_requirement",
+      "thens": [
+        2
+      ],
+      "requirement_id": "R-15",
+      "expected": "POST /api/checkout/quote lists B1 x2 and B2 x1 (items and quantities in the quote body match GET /api/cart)",
+      "observed": "quote body carries only shippingMethod, promoCode, subtotal, discount, shipping, tax, total; no items array (MyBooks route.ts:14-21)",
+      "detail": "Then 1, 3, 4, 5 asserted green; only Then 2 red"
+    }
+  ],
+  "tests": [
+    {
+      "covers": [
+        "CART-1_TC_001"
+      ],
+      "file": "tests/api/cart/add-rejections.spec.ts",
+      "marker": "CART-1_TC_001",
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_001"
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_001",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_001",
+          "version": "cv_4752342fab279cf316cc"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-rejections.spec.ts:22",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "29b84ab7c852bbcd94cf3dbe248c20a599a17808c267f63ece5f857a57979c72"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+        "assertion_refs": [
+          "tests/api/cart/add-rejections.spec.ts:14",
+          "tests/api/cart/add-rejections.spec.ts:19",
+          "tests/api/cart/add-rejections.spec.ts:22"
+        ],
+        "test_content_sha": "a25b727396ccf9edcb9a18d2cea2a2842ea7f908db55c91650778386fdd24900"
+      },
+      "selector": "tests/api/cart/add-rejections.spec.ts::@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "case": "CART-1_TC_001",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_002"
+      ],
+      "file": "tests/api/cart/add-stock-limit.spec.ts",
+      "marker": "CART-1_TC_002",
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_002"
+      ],
+      "obligation_ids": [
+        "OB-2"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_002",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_002",
+          "version": "cv_aaed235e685cdb6d3318"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-stock-limit.spec.ts:18",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-2",
+          "obligation_hash": "699a11a2c0930d9737b6105f556584cabce1e2b46a804bdc02d0a36675eb9b1d"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+        "assertion_refs": [
+          "tests/api/cart/add-stock-limit.spec.ts:15",
+          "tests/api/cart/add-stock-limit.spec.ts:18",
+          "tests/api/cart/add-stock-limit.spec.ts:22",
+          "tests/api/cart/add-stock-limit.spec.ts:24"
+        ],
+        "test_content_sha": "88321178eebeb2f67acce0139b58deb80ac30fab4bb34a70a9745d6685b7bb15"
+      },
+      "selector": "tests/api/cart/add-stock-limit.spec.ts::@api @regression CART-1_TC_002 add beyond stock rejected",
+      "case": "CART-1_TC_002",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_003"
+      ],
+      "file": "tests/api/cart/add-accumulate.spec.ts",
+      "marker": "CART-1_TC_003",
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_003"
+      ],
+      "obligation_ids": [
+        "OB-3"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_003",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_003",
+          "version": "cv_0f8aaebc21c72b94456c"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-accumulate.spec.ts:15",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-3",
+          "obligation_hash": "b377588045ae4920e879065c2bb608923576f8d465187383a0656de795a6dfec"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+        "assertion_refs": [
+          "tests/api/cart/add-accumulate.spec.ts:13",
+          "tests/api/cart/add-accumulate.spec.ts:15"
+        ],
+        "test_content_sha": "e5defa4cec2d0bcecd5032cfe22d415956d584e0cb268fb1182194c758f14cce"
+      },
+      "selector": "tests/api/cart/add-accumulate.spec.ts::@api @regression CART-1_TC_003 repeat add accumulates",
+      "case": "CART-1_TC_003",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "partitions": [
+        "P-id-fraction"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-id-fraction",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]",
+      "parameter": "P-id-fraction",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:34",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 quantity accepted",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:34"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "parameter": "P-qty-min",
+      "partitions": [
+        "P-qty-min"
+      ],
+      "function": "@api @regression CART-1_TC_004 quantity accepted",
+      "param": "P-qty-min",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:34",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 quantity accepted",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:34"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "parameter": "P-qty-max",
+      "partitions": [
+        "P-qty-max"
+      ],
+      "function": "@api @regression CART-1_TC_004 quantity accepted",
+      "param": "P-qty-max",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "parameter": "P-qty-over",
+      "partitions": [
+        "P-qty-over"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-qty-over",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "parameter": "P-qty-zero",
+      "partitions": [
+        "P-qty-zero"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-qty-zero",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "parameter": "P-qty-fraction",
+      "partitions": [
+        "P-qty-fraction"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-qty-fraction",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "parameter": "P-qty-string",
+      "partitions": [
+        "P-qty-string"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-qty-string",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "parameter": "P-id-zero",
+      "partitions": [
+        "P-id-zero"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-id-zero",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "covers": [
+        "CART-1_TC_004"
+      ],
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "marker": "CART-1_TC_004",
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "shape": "parameterize",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_004"
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_004",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_004",
+          "version": "cv_59c8d14f1852702b39cb"
+        }
+      ],
+      "assertion_id": "tests/api/cart/add-boundaries.spec.ts:55",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:30",
+      "profile_id": "web",
+      "test": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "427e273c1ce171a747d96547be46592abacb8c0c4c39be153935a1fac0d815da"
+        }
+      ],
+      "trace_binding": {
+        "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+        "assertion_refs": [
+          "tests/api/cart/add-boundaries.spec.ts:49",
+          "tests/api/cart/add-boundaries.spec.ts:55"
+        ],
+        "test_content_sha": "44a170661007456aa0361f8ab40cd4445f3f599c99eddc24ce66aa00df9889de"
+      },
+      "selector": "tests/api/cart/add-boundaries.spec.ts::@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "parameter": "P-id-negative",
+      "partitions": [
+        "P-id-negative"
+      ],
+      "function": "@api @regression CART-1_TC_004 rejected with a stable error shape",
+      "param": "P-id-negative",
+      "case": "CART-1_TC_004",
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "case": "CART-1_TC_005",
+      "covers": [
+        "CART-1_TC_005"
+      ],
+      "file": "tests/api/cart/cart-isolation.spec.ts",
+      "marker": "CART-1_TC_005",
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "selector": "tests/api/cart/cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_005"
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-5",
+          "obligation_hash": "2b892b48dd40008804ec358f876535e14c07053e006e84cadb8711118b8a32d0"
+        }
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_005",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_005",
+          "version": "cv_3767896d512c623e0b59"
+        }
+      ],
+      "assertion_id": "tests/api/cart/cart-isolation.spec.ts:21",
+      "defect_location": "MyBooks/src/lib/cartOwner.ts:1",
+      "profile_id": "web",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+        "assertion_refs": [
+          "tests/api/cart/cart-isolation.spec.ts:21",
+          "tests/api/cart/cart-isolation.spec.ts:23",
+          "tests/api/cart/cart-isolation.spec.ts:25"
+        ],
+        "test_content_sha": "d1b4dcfa5653375458fc33b7e21a9d6d8f0f008578dcd5646ccd74f48ae803e7"
+      },
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "covers": [
+        "CART-1_TC_006"
+      ],
+      "file": "tests/api/cart/cart-merge.spec.ts",
+      "marker": "CART-1_TC_006",
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "selector": "tests/api/cart/cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_006"
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-6",
+          "obligation_hash": "d8b2880a830b3dca03a6c034de7a14f61de36822eed3775fafdbc976f9754ac2"
+        }
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_006",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_006",
+          "version": "cv_3736b2c697846070acdd"
+        }
+      ],
+      "assertion_id": "tests/api/cart/cart-merge.spec.ts:35",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:103",
+      "profile_id": "web",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+        "assertion_refs": [
+          "tests/api/cart/cart-merge.spec.ts:35",
+          "tests/api/cart/cart-merge.spec.ts:37",
+          "tests/api/cart/cart-merge.spec.ts:39",
+          "tests/api/cart/cart-merge.spec.ts:41",
+          "tests/api/cart/cart-merge.spec.ts:43",
+          "tests/api/cart/cart-merge.spec.ts:49"
+        ],
+        "test_content_sha": "fcbcf75292c6c69147c19dd4811eb0e33caeb25a76ca00d90afbc50c8d376063"
+      },
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "case": "CART-1_TC_007",
+      "covers": [
+        "CART-1_TC_007"
+      ],
+      "file": "tests/api/cart/cart-update-delete.spec.ts",
+      "marker": "CART-1_TC_007",
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test": "@api @regression CART-1_TC_007 update and delete cart item",
+      "selector": "tests/api/cart/cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_007"
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-7",
+          "obligation_hash": "ba2602f3c1a21125b815da75eb3d66537721b13b3678318a9720e1b92b9e0bc6"
+        }
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_007",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_007",
+          "version": "cv_2d9d27c7521bc3c4edcf"
+        }
+      ],
+      "assertion_id": "tests/api/cart/cart-update-delete.spec.ts:25",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:72",
+      "profile_id": "web",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+        "assertion_refs": [
+          "tests/api/cart/cart-update-delete.spec.ts:25",
+          "tests/api/cart/cart-update-delete.spec.ts:27",
+          "tests/api/cart/cart-update-delete.spec.ts:30",
+          "tests/api/cart/cart-update-delete.spec.ts:33"
+        ],
+        "test_content_sha": "e01e6ef8320fe3b410cc43e48d2a631e5375ccb313c8a8d89e28ba8f7d1d0add"
+      },
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "case": "CART-1_TC_008",
+      "covers": [
+        "CART-1_TC_008"
+      ],
+      "file": "tests/api/cart/cart-ownership.spec.ts",
+      "marker": "CART-1_TC_008",
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "selector": "tests/api/cart/cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_008"
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8",
+          "obligation_hash": "3105c8be5825f55016b6d74c2d70f145793bfee338d1d7d22c5bbb10896f374c"
+        }
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_008",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_008",
+          "version": "cv_ce42982f1616cbc645f9"
+        }
+      ],
+      "assertion_id": "tests/api/cart/cart-ownership.spec.ts:25",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:72",
+      "profile_id": "web",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+        "assertion_refs": [
+          "tests/api/cart/cart-ownership.spec.ts:25",
+          "tests/api/cart/cart-ownership.spec.ts:28",
+          "tests/api/cart/cart-ownership.spec.ts:31",
+          "tests/api/cart/cart-ownership.spec.ts:34",
+          "tests/api/cart/cart-ownership.spec.ts:36"
+        ],
+        "test_content_sha": "b313b7efa30708f8203ce866fa907853a525399bebfd5f4e8d84919816d8afdc"
+      },
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "case": "CART-1_TC_009",
+      "covers": [
+        "CART-1_TC_009"
+      ],
+      "file": "tests/api/cart/cart-quote-order.spec.ts",
+      "marker": "CART-1_TC_009",
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "test": "@api @regression CART-1_TC_009 quote and order from cart",
+      "selector": "tests/api/cart/cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "shape": "new",
+      "status": "red",
+      "consolidates": [
+        "CART-1_TC_009"
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9",
+          "obligation_hash": "605e7f02cc76cc8a1d34b60dc7fbbb8c411cfab77e6796adc506b50e57a81cc2"
+        }
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_009",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_009",
+          "version": "cv_2b3ebd621560f9547704"
+        }
+      ],
+      "assertion_id": "tests/api/cart/cart-quote-order.spec.ts:53",
+      "defect_location": "MyBooks/src/app/api/checkout/quote/route.ts:14",
+      "profile_id": "web",
+      "trace_binding": {
+        "selector": "tests/api/cart/cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+        "assertion_refs": [
+          "tests/api/cart/cart-quote-order.spec.ts:33",
+          "tests/api/cart/cart-quote-order.spec.ts:53",
+          "tests/api/cart/cart-quote-order.spec.ts:41",
+          "tests/api/cart/cart-quote-order.spec.ts:49",
+          "tests/api/cart/cart-quote-order.spec.ts:51"
+        ],
+        "test_content_sha": "b5b9a49fc08486347b9e67cc940f2dc62bbcc8ecb6d51d7e16ade94b3c89e05c"
+      },
+      "critic_verdict": "approved",
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test",
+      "critic_note": "faithful red check of the approved case; probe not applicable: red"
+    },
+    {
+      "case": "CART-1_TC_010",
+      "covers": [
+        "CART-1_TC_010"
+      ],
+      "file": "tests/e2e/cart/add-to-cart.spec.ts",
+      "marker": "CART-1_TC_010",
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "test": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "selector": "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "shape": "new",
+      "status": "green",
+      "consolidates": [
+        "CART-1_TC_010"
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-10",
+          "obligation_hash": "1f380f95500bcdf2a6c6d4beaf4694d776e840d821aec845796c562155adcef8"
+        }
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_010",
+      "case_version_links": [
+        {
+          "case_id": "CART-1_TC_010",
+          "version": "cv_514d05efe43b2506bb5f"
+        }
+      ],
+      "assertion_id": "tests/e2e/cart/add-to-cart.spec.ts:33",
+      "defect_location": "MyBooks/src/components/Navigation.tsx:60",
+      "profile_id": "web",
+      "trace_binding": {
+        "selector": "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+        "assertion_refs": [
+          "tests/e2e/cart/add-to-cart.spec.ts:26",
+          "tests/e2e/cart/add-to-cart.spec.ts:27",
+          "tests/e2e/cart/add-to-cart.spec.ts:32",
+          "tests/e2e/cart/add-to-cart.spec.ts:33",
+          "tests/e2e/cart/add-to-cart.spec.ts:37",
+          "tests/e2e/cart/add-to-cart.spec.ts:38"
+        ],
+        "test_content_sha": "3a0dd8c705cf8f613e32dc88eba21379a720b62b8d23431780dd449845438362"
+      },
+      "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read Playwright TypeScript; person accepted probe gap: CART-1_TC_010",
+      "critic_verdict": "unverified"
+    }
+  ],
+  "revision": 30,
+  "retracted_instances": [
+    "@api @regression CART-1_TC_004 [P-qty-min] quantity 1 accepted",
+    "@api @regression CART-1_TC_004 [P-qty-max] quantity 999 accepted",
+    "@api @regression CART-1_TC_004 [P-qty-over] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 [P-qty-zero] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 [P-qty-fraction] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 [P-qty-string] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 [P-id-zero] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 [P-id-negative] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+    "@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+    "@api @regression CART-1_TC_004 [P-id-fraction] rejected with a stable error shape",
+    "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+    "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+    "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-fraction]"
+  ],
+  "then_bindings": [
+    {
+      "case": "CART-1_TC_001",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "assertion_ref": "tests/api/cart/add-rejections.spec.ts:14",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_001",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "assertion_ref": "tests/api/cart/add-rejections.spec.ts:19",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_001",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "assertion_ref": "tests/api/cart/add-rejections.spec.ts:22",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_002",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "assertion_ref": "tests/api/cart/add-stock-limit.spec.ts:15",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_002",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "assertion_ref": "tests/api/cart/add-stock-limit.spec.ts:18",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_002",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "assertion_ref": "tests/api/cart/add-stock-limit.spec.ts:22",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_002",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "assertion_ref": "tests/api/cart/add-stock-limit.spec.ts:24",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_003",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "assertion_ref": "tests/api/cart/add-accumulate.spec.ts:13",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_003",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "assertion_ref": "tests/api/cart/add-accumulate.spec.ts:15",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted [P-qty-min]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:34",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted [P-qty-max]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:34",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-over]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-fraction]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-qty-string]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape [P-id-negative]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:34",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:34",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_004",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "assertion_ref": "tests/api/cart/add-boundaries.spec.ts:55",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_005",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "assertion_ref": "tests/api/cart/cart-isolation.spec.ts:21",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_005",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "assertion_ref": "tests/api/cart/cart-isolation.spec.ts:23",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_005",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "assertion_ref": "tests/api/cart/cart-isolation.spec.ts:25",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "assertion_ref": "tests/api/cart/cart-merge.spec.ts:35",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "assertion_ref": "tests/api/cart/cart-merge.spec.ts:37",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "assertion_ref": "tests/api/cart/cart-merge.spec.ts:39",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "assertion_ref": "tests/api/cart/cart-merge.spec.ts:41",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "then": 5,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "assertion_ref": "tests/api/cart/cart-merge.spec.ts:43",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_006",
+      "then": 6,
+      "instance_id": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "assertion_ref": "tests/api/cart/cart-merge.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_007",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "assertion_ref": "tests/api/cart/cart-update-delete.spec.ts:21",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_007",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "assertion_ref": "tests/api/cart/cart-update-delete.spec.ts:23",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_007",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "assertion_ref": "tests/api/cart/cart-update-delete.spec.ts:26",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_007",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_007 update and delete cart item",
+      "assertion_ref": "tests/api/cart/cart-update-delete.spec.ts:29",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_008",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "assertion_ref": "tests/api/cart/cart-ownership.spec.ts:21",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_008",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "assertion_ref": "tests/api/cart/cart-ownership.spec.ts:24",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_008",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "assertion_ref": "tests/api/cart/cart-ownership.spec.ts:27",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_008",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "assertion_ref": "tests/api/cart/cart-ownership.spec.ts:30",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_008",
+      "then": 5,
+      "instance_id": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "assertion_ref": "tests/api/cart/cart-ownership.spec.ts:32",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_009",
+      "then": 1,
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "assertion_ref": "tests/api/cart/cart-quote-order.spec.ts:33",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_009",
+      "then": 2,
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "assertion_ref": "tests/api/cart/cart-quote-order.spec.ts:53",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_009",
+      "then": 3,
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "assertion_ref": "tests/api/cart/cart-quote-order.spec.ts:41",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_009",
+      "then": 4,
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "assertion_ref": "tests/api/cart/cart-quote-order.spec.ts:49",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_009",
+      "then": 5,
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "assertion_ref": "tests/api/cart/cart-quote-order.spec.ts:51",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_010",
+      "then": 1,
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "assertion_ref": "tests/e2e/cart/add-to-cart.spec.ts:26",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_010",
+      "then": 2,
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "assertion_ref": "tests/e2e/cart/add-to-cart.spec.ts:33",
+      "status": "covered"
+    },
+    {
+      "case": "CART-1_TC_010",
+      "then": 3,
+      "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "assertion_ref": "tests/e2e/cart/add-to-cart.spec.ts:38",
+      "status": "covered"
+    }
+  ],
+  "runs": [
+    {
+      "role": "qa-automator",
+      "label": "initial-446b57460fbe233362ab",
+      "scope": [
+        "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+        "@api @regression CART-1_TC_002 add beyond stock rejected",
+        "@api @regression CART-1_TC_003 repeat add accumulates",
+        "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+        "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]"
+      ],
+      "code_fingerprint": "265c12c",
+      "warranted": true,
+      "result": "12 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-446b57460fbe233362ab",
+      "scope": [
+        "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+        "@api @regression CART-1_TC_002 add beyond stock rejected",
+        "@api @regression CART-1_TC_003 repeat add accumulates",
+        "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+        "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+        "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]"
+      ],
+      "code_fingerprint": "265c12c",
+      "warranted": true,
+      "result": "12 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-6b183c7a8fd8088f1c50",
+      "scope": [
+        "@api @regression CART-1_TC_005 cart isolation between owners",
+        "@api @regression CART-1_TC_006 guest cart merge on login",
+        "@api @regression CART-1_TC_007 update and delete cart item",
+        "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+      ],
+      "code_fingerprint": "5cd21eb",
+      "warranted": true,
+      "result": "3 passed, 1 failed (TC_005: test defect, shared saved session cookie)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-d67215ba124bbc6b138b",
+      "scope": [
+        "@api @regression CART-1_TC_005 cart isolation between owners",
+        "@api @regression CART-1_TC_006 guest cart merge on login",
+        "@api @regression CART-1_TC_007 update and delete cart item",
+        "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+      ],
+      "code_fingerprint": "5cd21eb+fixture",
+      "warranted": true,
+      "result": "4 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-4d9f931528dfe8f92f72",
+      "scope": [
+        "@api @regression CART-1_TC_009 quote and order from cart"
+      ],
+      "code_fingerprint": "5cd21eb+cart-quote-order",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-4bfb53e668563c7768a5",
+      "scope": [
+        "@api @regression CART-1_TC_009 quote and order from cart"
+      ],
+      "code_fingerprint": "5cd21eb+cart-quote-order-orderItems",
+      "warranted": true,
+      "result": "0 passed 1 failed (Then 2 only)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-4d9f931528dfe8f92f72",
+      "scope": [
+        "@api @regression CART-1_TC_009 quote and order from cart"
+      ],
+      "code_fingerprint": "5cd21eb+cart-quote-order",
+      "warranted": true,
+      "result": "0 passed 1 failed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-4bfb53e668563c7768a5",
+      "scope": [
+        "@api @regression CART-1_TC_009 quote and order from cart"
+      ],
+      "code_fingerprint": "5cd21eb+cart-quote-order-orderItems",
+      "warranted": true,
+      "result": "0 passed 1 failed (Then 2 only)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-c7f56259e689c93a9ddf",
+      "scope": [
+        "@api @regression CART-1_TC_009 quote and order from cart"
+      ],
+      "code_fingerprint": "5cd21eb+reorder",
+      "warranted": true,
+      "result": "0 passed 1 failed (Then 2 only; assert order change)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-c9286026d096394cd0e6",
+      "scope": [
+        "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+      ],
+      "code_fingerprint": "5cd21eb+add-to-cart",
+      "warranted": true,
+      "result": "1 passed"
+    }
+  ],
+  "run_witness": "qa-factory/artifacts/CART-1/evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.json exit 0 1 passed",
+  "probe": {
+    "layers": "ok",
+    "reuse": "ok",
+    "then_channel": "ok",
+    "duplicates": "none",
+    "own_data": "yes",
+    "collected": 1
+  },
+  "plan_remarks": [
+    {
+      "id": "PR-2",
+      "row": "applied",
+      "reason": "CartApi and cartApi fixtures from core reused; no per-spec copy"
+    }
+  ],
+  "deviations": [
+    {
+      "test": "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "from": "function",
+      "planned": "T-10",
+      "reason": "title carries tags and case id per framework-rules"
+    }
+  ],
+  "obligation_bindings": [
+    {
+      "obligation_id": "OB-1",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-2",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-3",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-4",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-5",
+      "obligation_hash": "2b892b48dd40008804ec358f876535e14c07053e006e84cadb8711118b8a32d0",
+      "instance_ids": [
+        "@api @regression CART-1_TC_005 cart isolation between owners"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/cart-isolation.spec.ts:21",
+        "tests/api/cart/cart-isolation.spec.ts:23",
+        "tests/api/cart/cart-isolation.spec.ts:25"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_005",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "probe_receipt_ref": "",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-6",
+      "obligation_hash": "d8b2880a830b3dca03a6c034de7a14f61de36822eed3775fafdbc976f9754ac2",
+      "instance_ids": [
+        "@api @regression CART-1_TC_006 guest cart merge on login"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/cart-merge.spec.ts:35",
+        "tests/api/cart/cart-merge.spec.ts:37",
+        "tests/api/cart/cart-merge.spec.ts:39",
+        "tests/api/cart/cart-merge.spec.ts:41",
+        "tests/api/cart/cart-merge.spec.ts:43",
+        "tests/api/cart/cart-merge.spec.ts:49"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_006",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "probe_receipt_ref": "",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-7",
+      "obligation_hash": "ba2602f3c1a21125b815da75eb3d66537721b13b3678318a9720e1b92b9e0bc6",
+      "instance_ids": [
+        "@api @regression CART-1_TC_007 update and delete cart item"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/cart-update-delete.spec.ts:21",
+        "tests/api/cart/cart-update-delete.spec.ts:23",
+        "tests/api/cart/cart-update-delete.spec.ts:26",
+        "tests/api/cart/cart-update-delete.spec.ts:29"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_007",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "probe_receipt_ref": "",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-8",
+      "obligation_hash": "3105c8be5825f55016b6d74c2d70f145793bfee338d1d7d22c5bbb10896f374c",
+      "instance_ids": [
+        "@api @regression CART-1_TC_008 foreign cart item mutation denied"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/cart-ownership.spec.ts:21",
+        "tests/api/cart/cart-ownership.spec.ts:24",
+        "tests/api/cart/cart-ownership.spec.ts:27",
+        "tests/api/cart/cart-ownership.spec.ts:30",
+        "tests/api/cart/cart-ownership.spec.ts:32"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_008",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "probe_receipt_ref": "",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-3.json"
+    },
+    {
+      "obligation_id": "OB-9",
+      "obligation_hash": "605e7f02cc76cc8a1d34b60dc7fbbb8c411cfab77e6796adc506b50e57a81cc2",
+      "instance_ids": [
+        "@api @regression CART-1_TC_009 quote and order from cart"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/cart-quote-order.spec.ts:33",
+        "tests/api/cart/cart-quote-order.spec.ts:53",
+        "tests/api/cart/cart-quote-order.spec.ts:41",
+        "tests/api/cart/cart-quote-order.spec.ts:49",
+        "tests/api/cart/cart-quote-order.spec.ts:51"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_009",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "probe_receipt_ref": "",
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-6.json"
+    },
+    {
+      "obligation_id": "OB-10",
+      "obligation_hash": "1f380f95500bcdf2a6c6d4beaf4694d776e840d821aec845796c562155adcef8",
+      "instance_ids": [
+        "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/e2e/cart/add-to-cart.spec.ts:26",
+        "tests/e2e/cart/add-to-cart.spec.ts:27",
+        "tests/e2e/cart/add-to-cart.spec.ts:32",
+        "tests/e2e/cart/add-to-cart.spec.ts:33",
+        "tests/e2e/cart/add-to-cart.spec.ts:37",
+        "tests/e2e/cart/add-to-cart.spec.ts:38"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_010",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-7.json"
+    }
+  ],
+  "self_fixes": [
+    {
+      "test": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "what": "fixture data preparation",
+      "why_test_defect": "playwright.config preloads storageState with a bookstore_session_id cookie, so every new request context shared one guest sessionId; the app keys guests by that cookie and is correct",
+      "evidence": "qa-factory/artifacts/CART-1/evidence/runs/6b183c7a8fd8088f1c50 (G2 row sessionId equals G1's) vs d67215ba124bbc6b138b green",
+      "before": "expect(g2Rows.filter(...), 'Then 3: G2 sees no row of G1').toEqual([])",
+      "after": "expect(g2Rows.filter(...), 'Then 3: G2 sees no row of G1').toEqual([])"
+    },
+    {
+      "test": "tests/api/cart/cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "what": "response key",
+      "before": "linesOf(order.body)",
+      "after": "linesOf(order.body, 'orderItems')",
+      "why_test_defect": "the order body carries its lines under orderItems; items was a key I invented, the Then 4 value (B1 x2, B2 x1) is unchanged",
+      "evidence": "MyBooks/src/lib/services/orderService.ts:35 withItems = { orderItems }; run 4d9f931528dfe8f92f72 vs 4bfb53e668563c7768a5"
+    }
+  ],
+  "expectation_changes": [
+    {
+      "function": "cart-isolation.spec.@api @regression CART-1_TC_005 cart isolation between owners",
+      "red_attempt": "6b183c7a8fd8088f1c50",
+      "green_attempt": "d67215ba124bbc6b138b",
+      "then_refs": [
+        {
+          "case": "CART-1_TC_005",
+          "then": 3
+        }
+      ],
+      "what_changed": "no assertion changed; fixture guest/ownBooks jars start with an empty storageState",
+      "reason": "playwright.config preloads a saved bookstore_session_id so G1 and G2 shared one guest session (test defect); Then 3 value unchanged",
+      "critic_verdict": "legitimate_correction",
+      "critic_note": "No assertion changed; fixture fix so G1 and G2 do not share a preloaded guest session. Then 3 value unchanged."
+    }
+  ]
+}

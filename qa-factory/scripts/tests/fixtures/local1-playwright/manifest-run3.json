@@ -1,0 +1,1273 @@
+{
+  "tests": [
+    {
+      "case": "LOCAL-1_TC_001",
+      "covers": [
+        "LOCAL-1_TC_001"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_001",
+          "version": "cv_6d90ac0d6e1464865adf"
+        }
+      ],
+      "requirements": [
+        "R-1"
+      ],
+      "plan_row": "TS-1",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_001",
+      "test": "LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "instance_id": "LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+        "assertion_refs": [],
+        "test_content_sha": "40218023506cfb04eb9ab8bf22430aa713f3e249fc91a81b644afad102ea0333"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_001"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:30",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:48",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_001",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "@regression LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "444a1bc8b6e2a7797a8da88557262d91f2bb6218b4d85cc8c92c52a29f1218f4"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "stand build identity unreadable; probe not_executed"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "covers": [
+        "LOCAL-1_TC_001"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_001",
+          "version": "cv_6d90ac0d6e1464865adf"
+        }
+      ],
+      "requirements": [
+        "R-1"
+      ],
+      "plan_row": "TS-1",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_001",
+      "test": "LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "instance_id": "LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+        "assertion_refs": [],
+        "test_content_sha": "40218023506cfb04eb9ab8bf22430aa713f3e249fc91a81b644afad102ea0333"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_001"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:36",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:48",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_001",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "@regression LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "444a1bc8b6e2a7797a8da88557262d91f2bb6218b4d85cc8c92c52a29f1218f4"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "stand build identity unreadable; probe not_executed"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "covers": [
+        "LOCAL-1_TC_001"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_001",
+          "version": "cv_6d90ac0d6e1464865adf"
+        }
+      ],
+      "requirements": [
+        "R-1"
+      ],
+      "plan_row": "TS-1",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_001",
+      "test": "LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "instance_id": "LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+        "assertion_refs": [],
+        "test_content_sha": "40218023506cfb04eb9ab8bf22430aa713f3e249fc91a81b644afad102ea0333"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_001"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:42",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:121",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_001",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "@regression LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-1",
+          "obligation_hash": "444a1bc8b6e2a7797a8da88557262d91f2bb6218b4d85cc8c92c52a29f1218f4"
+        }
+      ],
+      "obligation_ids": [
+        "OB-1"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "stand build identity unreadable; probe not_executed"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "covers": [
+        "LOCAL-1_TC_007"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_007",
+          "version": "cv_bd2fdb0f5bab2744a941"
+        }
+      ],
+      "requirements": [
+        "R-3"
+      ],
+      "plan_row": "TS-4",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_007",
+      "test": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+        "assertion_refs": [],
+        "test_content_sha": "40218023506cfb04eb9ab8bf22430aa713f3e249fc91a81b644afad102ea0333"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_007"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:61",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:33",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_007",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "@regression LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-4",
+          "obligation_hash": "37e4eee995b796b89093465db0b42edbf73ab8c8224f1b429df08f06aba51059"
+        }
+      ],
+      "obligation_ids": [
+        "OB-4"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe not_executed: stand build identity unreadable"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "covers": [
+        "LOCAL-1_TC_008"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_008",
+          "version": "cv_e173cdddeb20e9c8297a"
+        }
+      ],
+      "requirements": [
+        "R-4"
+      ],
+      "plan_row": "TS-5",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_008",
+      "test": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+        "assertion_refs": [],
+        "test_content_sha": "40218023506cfb04eb9ab8bf22430aa713f3e249fc91a81b644afad102ea0333"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_008"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:81",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:35",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_008",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "@regression LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-5",
+          "obligation_hash": "a939e1f41d7ca9d8bf61f4619268932f7bff1ecac8bb3a3b57ff6d19be8d62b3"
+        }
+      ],
+      "obligation_ids": [
+        "OB-5"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "stand build identity unreadable; probe not_executed"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "covers": [
+        "LOCAL-1_TC_009"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_009",
+          "version": "cv_be18c9ce3a34e07b29e3"
+        }
+      ],
+      "requirements": [
+        "R-5"
+      ],
+      "plan_row": "TS-6",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_009",
+      "test": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+        "assertion_refs": [],
+        "test_content_sha": "40218023506cfb04eb9ab8bf22430aa713f3e249fc91a81b644afad102ea0333"
+      },
+      "status": "pending_run",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_009"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:103",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:45",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_009",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "@regression LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-6",
+          "obligation_hash": "bcb73154f8e439242fa14be7bd4c5ad5db0a2264be2e60adefda09ab7afa78b2"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "stand build identity unreadable; probe not_executed; F-1 test_defect noted in findings"
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "covers": [
+        "LOCAL-1_TC_010"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_010",
+          "version": "cv_d6e20d3f7121fcbe6257"
+        }
+      ],
+      "requirements": [
+        "R-6"
+      ],
+      "plan_row": "TS-7",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_010",
+      "test": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+        "assertion_refs": [
+          "tests/api/cart/add-to-cart.spec.ts:113",
+          "tests/api/cart/add-to-cart.spec.ts:114"
+        ],
+        "test_content_sha": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_010"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:114",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:53",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_010",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-7",
+          "obligation_hash": "5813c0cbd1713a9098219f5e54bce1f27f8620e4376dd790e8fb6c12ad00732b"
+        }
+      ],
+      "obligation_ids": [
+        "OB-7"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "cause tooling: probe_by_code mutated the first assert and the test failed at it, but the tool could not match the Playwright failure message to its assertion_probes row (incomplete); the test is not judged"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "covers": [
+        "LOCAL-1_TC_011"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_011",
+          "version": "cv_e6ecfbd326d46ded7a9d"
+        }
+      ],
+      "requirements": [
+        "R-7"
+      ],
+      "plan_row": "TS-8",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_011",
+      "test": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+        "assertion_refs": [
+          "tests/api/cart/add-to-cart.spec.ts:141",
+          "tests/api/cart/add-to-cart.spec.ts:142",
+          "tests/api/cart/add-to-cart.spec.ts:138"
+        ],
+        "test_content_sha": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_011"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:138",
+      "defect_location": "MyBooks/src/lib/validation/schemas.ts:47",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_011",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8",
+          "obligation_hash": "cd30a7cd8cd3c3963abecf7ada508695fe56e9d46eef80182d488256c9e61f1c"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "cause tooling: probe_by_code mutated the first assert and the test failed at it, but the tool could not match the Playwright failure message to its assertion_probes row (incomplete); the test is not judged"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "covers": [
+        "LOCAL-1_TC_012"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_012",
+          "version": "cv_e0d1836f44bd92be8d41"
+        }
+      ],
+      "requirements": [
+        "R-8"
+      ],
+      "plan_row": "TS-9",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_012",
+      "test": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_012 guest and user carts are isolated",
+      "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_012 guest and user carts are isolated",
+        "assertion_refs": [
+          "tests/api/cart/add-to-cart.spec.ts:158",
+          "tests/api/cart/add-to-cart.spec.ts:167",
+          "tests/api/cart/add-to-cart.spec.ts:171",
+          "tests/api/cart/add-to-cart.spec.ts:175"
+        ],
+        "test_content_sha": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_012"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:175",
+      "defect_location": "MyBooks/src/lib/session.ts:34",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_012 guest and user carts are isolated",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9",
+          "obligation_hash": "a7fe66e3eaa26d40f1a75d00c51cd90df7a15c5b1798b5e1f2f868a01bf068cf"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "cause tooling: probe_by_code mutated the first assert and the test failed at it, but the tool could not match the Playwright failure message to its assertion_probes row (incomplete); the test is not judged"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "covers": [
+        "LOCAL-1_TC_013"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_013",
+          "version": "cv_297063dea3cb77a47158"
+        }
+      ],
+      "requirements": [
+        "R-10"
+      ],
+      "plan_row": "TS-11",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_013",
+      "test": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+        "assertion_refs": [
+          "tests/api/cart/add-to-cart.spec.ts:203",
+          "tests/api/cart/add-to-cart.spec.ts:204",
+          "tests/api/cart/add-to-cart.spec.ts:205",
+          "tests/api/cart/add-to-cart.spec.ts:206"
+        ],
+        "test_content_sha": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_013"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:206",
+      "defect_location": "MyBooks/src/lib/cartRules.ts:3",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_013",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-11",
+          "obligation_hash": "97aec5c630f054b325d4a0ff12fee5d1894d0119f840f2e31884f694881015f3"
+        }
+      ],
+      "obligation_ids": [
+        "OB-11"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "cause tooling: probe_by_code mutated the first assert and the test failed at it, but the tool could not match the Playwright failure message to its assertion_probes row (incomplete); the test is not judged"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "covers": [
+        "LOCAL-1_TC_016"
+      ],
+      "case_version_links": [
+        {
+          "case_id": "LOCAL-1_TC_016",
+          "version": "cv_30882562565a1386b5ca"
+        }
+      ],
+      "requirements": [
+        "R-13"
+      ],
+      "plan_row": "TS-14",
+      "file": "tests/api/cart/add-to-cart.spec.ts",
+      "marker": "LOCAL-1_TC_016",
+      "test": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "trace_binding": {
+        "selector": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+        "assertion_refs": [
+          "tests/api/cart/add-to-cart.spec.ts:231",
+          "tests/api/cart/add-to-cart.spec.ts:232",
+          "tests/api/cart/add-to-cart.spec.ts:234",
+          "tests/api/cart/add-to-cart.spec.ts:235",
+          "tests/api/cart/add-to-cart.spec.ts:237"
+        ],
+        "test_content_sha": "4a9c11e29af38634c1c19230cb987969baec60593a016b88a46f0a84b69ccf0b"
+      },
+      "status": "green",
+      "shape": "new",
+      "consolidates": [
+        "LOCAL-1_TC_016"
+      ],
+      "generated_from": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "assertion_id": "tests/api/cart/add-to-cart.spec.ts:237",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:80",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_016",
+      "selector_args": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "report_test_id": "api\\cart\\add-to-cart.spec.ts::@regression LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-14",
+          "obligation_hash": "c37bb4054ceb64d8e715151920a94a5ca874f6c4bab7358e96ef2fe5a9765168"
+        }
+      ],
+      "obligation_ids": [
+        "OB-14"
+      ],
+      "critic_verdict": "unverified",
+      "sensitivity_proof_missing_reason": "probe_by_code incomplete (tooling, FB-4): Playwright failure not matchable; setup assert at line 213 was mutated, not a Then"
+    }
+  ],
+  "revision": 25,
+  "unresolved": [
+    {
+      "case": "LOCAL-1_TC_001",
+      "reason": "blocked_by_env",
+      "instance_ids": [
+        "LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+        "LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+        "LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge"
+      ],
+      "remedy": {
+        "kind": "service",
+        "where": "qa-factory/records/stand-identity.json",
+        "change": "record how the local stand build is read (container name or image label org.opencontainers.image.revision)",
+        "restart": "none"
+      },
+      "detail": "run_suite --mine refused before launch: runtime probe returned unknown (no container named for the profile); control: stand_health.py --probe --env local answers (liveness and BASE_URL healthy), so the stand is up and only its build identity is unreadable; no test ran"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "reason": "blocked_by_env",
+      "instance_ids": [
+        "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged"
+      ],
+      "remedy": {
+        "kind": "service",
+        "where": "qa-factory/records/stand-identity.json",
+        "change": "record how the local stand build is read (container name or image label org.opencontainers.image.revision)",
+        "restart": "none"
+      },
+      "detail": "run_suite --mine refused before launch: runtime probe returned unknown (no container named for the profile); control: stand_health.py --probe --env local answers (liveness and BASE_URL healthy), so the stand is up and only its build identity is unreadable; no test ran"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "reason": "blocked_by_env",
+      "instance_ids": [
+        "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted"
+      ],
+      "remedy": {
+        "kind": "service",
+        "where": "qa-factory/records/stand-identity.json",
+        "change": "record how the local stand build is read (container name or image label org.opencontainers.image.revision)",
+        "restart": "none"
+      },
+      "detail": "run_suite --mine refused before launch: runtime probe returned unknown (no container named for the profile); control: stand_health.py --probe --env local answers (liveness and BASE_URL healthy), so the stand is up and only its build identity is unreadable; no test ran"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "reason": "blocked_by_env",
+      "instance_ids": [
+        "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line"
+      ],
+      "remedy": {
+        "kind": "service",
+        "where": "qa-factory/records/stand-identity.json",
+        "change": "record how the local stand build is read (container name or image label org.opencontainers.image.revision)",
+        "restart": "none"
+      },
+      "detail": "run_suite --mine refused before launch: runtime probe returned unknown (no container named for the profile); control: stand_health.py --probe --env local answers (liveness and BASE_URL healthy), so the stand is up and only its build identity is unreadable; no test ran"
+    }
+  ],
+  "then_bindings": [
+    {
+      "case": "LOCAL-1_TC_016",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:231",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:234",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_016",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:237",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:30",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:36",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_001",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:42",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:57",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:60",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_007",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:61",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:73",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:79",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_008",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:81",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:94",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:96",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:101",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_009",
+      "then": 4,
+      "instance_id": "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:103",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:113",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_010",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:114",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:141",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:142",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_011",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:138",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:158",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:167",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:171",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_012",
+      "then": 4,
+      "instance_id": "LOCAL-1_TC_012 guest and user carts are isolated",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:175",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "then": 1,
+      "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:203",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "then": 2,
+      "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:204",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "then": 3,
+      "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:205",
+      "status": "covered"
+    },
+    {
+      "case": "LOCAL-1_TC_013",
+      "then": 4,
+      "instance_id": "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "assertion_ref": "tests/api/cart/add-to-cart.spec.ts:206",
+      "status": "covered"
+    }
+  ],
+  "probe": {
+    "layers": "ok",
+    "reuse": "ok",
+    "then_channel": "ok",
+    "duplicates": "none",
+    "own_data": "yes",
+    "collected": 11
+  },
+  "obligation_bindings": [
+    {
+      "obligation_id": "OB-1",
+      "obligation_hash": "444a1bc8b6e2a7797a8da88557262d91f2bb6218b4d85cc8c92c52a29f1218f4",
+      "instance_ids": [
+        "LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+        "LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+        "LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:30",
+        "tests/api/cart/add-to-cart.spec.ts:36",
+        "tests/api/cart/add-to-cart.spec.ts:42"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_001",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-4",
+      "obligation_hash": "37e4eee995b796b89093465db0b42edbf73ab8c8224f1b429df08f06aba51059",
+      "instance_ids": [
+        "LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:61"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_007",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-5",
+      "obligation_hash": "a939e1f41d7ca9d8bf61f4619268932f7bff1ecac8bb3a3b57ff6d19be8d62b3",
+      "instance_ids": [
+        "LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:81"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_008",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-6",
+      "obligation_hash": "bcb73154f8e439242fa14be7bd4c5ad5db0a2264be2e60adefda09ab7afa78b2",
+      "instance_ids": [
+        "LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:103"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_009",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": [],
+      "review_receipt_ref": "work/review-receipts/S5-qa-code-critic-2.json"
+    },
+    {
+      "obligation_id": "OB-7",
+      "obligation_hash": "5813c0cbd1713a9098219f5e54bce1f27f8620e4376dd790e8fb6c12ad00732b",
+      "instance_ids": [
+        "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:113",
+        "tests/api/cart/add-to-cart.spec.ts:114"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_010",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-8",
+      "obligation_hash": "cd30a7cd8cd3c3963abecf7ada508695fe56e9d46eef80182d488256c9e61f1c",
+      "instance_ids": [
+        "LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:141",
+        "tests/api/cart/add-to-cart.spec.ts:142",
+        "tests/api/cart/add-to-cart.spec.ts:138"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_011",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-9",
+      "obligation_hash": "a7fe66e3eaa26d40f1a75d00c51cd90df7a15c5b1798b5e1f2f868a01bf068cf",
+      "instance_ids": [
+        "LOCAL-1_TC_012 guest and user carts are isolated"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:158",
+        "tests/api/cart/add-to-cart.spec.ts:167",
+        "tests/api/cart/add-to-cart.spec.ts:171",
+        "tests/api/cart/add-to-cart.spec.ts:175"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_012",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-11",
+      "obligation_hash": "97aec5c630f054b325d4a0ff12fee5d1894d0119f840f2e31884f694881015f3",
+      "instance_ids": [
+        "LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:203",
+        "tests/api/cart/add-to-cart.spec.ts:204",
+        "tests/api/cart/add-to-cart.spec.ts:205",
+        "tests/api/cart/add-to-cart.spec.ts:206"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_013",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    },
+    {
+      "obligation_id": "OB-14",
+      "obligation_hash": "c37bb4054ceb64d8e715151920a94a5ca874f6c4bab7358e96ef2fe5a9765168",
+      "instance_ids": [
+        "LOCAL-1_TC_016 update quantity respects stock, including zero stock"
+      ],
+      "design_assessment": "sufficient",
+      "assertion_refs": [
+        "tests/api/cart/add-to-cart.spec.ts:231",
+        "tests/api/cart/add-to-cart.spec.ts:232",
+        "tests/api/cart/add-to-cart.spec.ts:234",
+        "tests/api/cart/add-to-cart.spec.ts:235",
+        "tests/api/cart/add-to-cart.spec.ts:237"
+      ],
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_016",
+      "code_validity": "unverified",
+      "sensitivity": "missing",
+      "quality_receipt_refs": []
+    }
+  ],
+  "run_witness": "qa-factory/artifacts/LOCAL-1/evidence/runs/5aebb5b3b4cb0827502e/initial-5aebb5b3b4cb0827502e-20261103-005854.json exit 0 11 passed",
+  "deviations": [
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read",
+      "from": "function",
+      "planned": "T-1",
+      "reason": "one parameterized test became three titled tests (static ids) sharing a helper"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read",
+      "from": "function",
+      "planned": "T-1",
+      "reason": "partition P-user-qty3 of T-1, own title"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge",
+      "from": "function",
+      "planned": "T-1",
+      "reason": "partition P-merge of T-1, own title"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged",
+      "from": "function",
+      "planned": "T-2",
+      "reason": "same title as planned; manifest id omits the tag only"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted",
+      "from": "function",
+      "planned": "T-3",
+      "reason": "same title as planned; manifest id omits the tag only"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "from": "function",
+      "planned": "T-4",
+      "reason": "title has \"an\" before \"empty cart\""
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line",
+      "from": "fixture",
+      "planned": "T-4",
+      "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+      "from": "fixture",
+      "planned": "T-5",
+      "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted",
+      "from": "fixture",
+      "planned": "T-6",
+      "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_012 guest and user carts are isolated",
+      "from": "fixture",
+      "planned": "T-7",
+      "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules",
+      "from": "fixture",
+      "planned": "T-8",
+      "reason": "cart.fixture (shop) instead of the api fixture; own data via the admin API"
+    },
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_016 update quantity respects stock, including zero stock",
+      "from": "function",
+      "planned": "T-9",
+      "reason": "title without the tag; uses shop fixture and soft assertions per notes"
+    }
+  ],
+  "plan_remarks": [
+    {
+      "id": "PR-1",
+      "row": "applied",
+      "reason": "reuses ShopActor.changeLine, shop fixture, expectStableErrorShape"
+    },
+    {
+      "id": "PR-2",
+      "row": "applied",
+      "reason": "shop.book(stock) in core/fixtures/cart.fixture.ts, deletes at the end"
+    },
+    {
+      "id": "PR-3",
+      "row": "applied",
+      "reason": "rule stated: higher quantity wins (Q1 a), literal 3 asserted"
+    },
+    {
+      "id": "CC-1",
+      "row": "not_applicable",
+      "reason": "TC_006 is not in this window"
+    },
+    {
+      "id": "CC-2",
+      "row": "not_applicable",
+      "reason": "approved Then fixes shape not code; codes left unasserted as the case says"
+    },
+    {
+      "id": "CC-3",
+      "row": "not_applicable",
+      "reason": "same as CC-2: approved Then names no OUT_OF_STOCK literal"
+    },
+    {
+      "id": "CC-4",
+      "row": "not_applicable",
+      "reason": "same as CC-2: approved Then names no INSUFFICIENT_STOCK literal"
+    },
+    {
+      "id": "CC-5",
+      "row": "applied",
+      "reason": "quantities 1 and 2 asserted as the sum 3 in one line"
+    },
+    {
+      "id": "CC-6",
+      "row": "applied",
+      "reason": "Then 4 reads U line 2 and no other line after the G3 add"
+    },
+    {
+      "id": "CC-7",
+      "row": "applied",
+      "reason": "Then 1 asserts the literal 3"
+    },
+    {
+      "id": "CC-8",
+      "row": "applied",
+      "reason": "basis external:Q1-a; asserts 400 INSUFFICIENT_STOCK as answered"
+    }
+  ],
+  "self_fixes": [
+    {
+      "test": "tests/api/cart/add-to-cart.spec.ts::LOCAL-1_TC_011",
+      "what": "fixture data preparation",
+      "why_test_defect": "first run: every shop.guest() jar carried the config's saved guest session cookie (same sessionId in four jars), so carts leaked between actors; storageState left unset in newContext inherited it",
+      "evidence": "qa-factory/artifacts/LOCAL-1/evidence/runs/ef39dbfc032eb9587718/repair_verify-ef39dbfc032eb9587718-20261103-003000.json",
+      "before": "newContext({ ignoreHTTPSErrors: true })",
+      "after": "newContext({ ignoreHTTPSErrors: true, storageState: { cookies: [], origins: [] } })"
+    }
+  ],
+  "runs": [
+    {
+      "role": "qa-automator",
+      "label": "initial-a69a7634a775790e4296",
+      "scope": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "code_fingerprint": "a69a7634a775",
+      "warranted": true,
+      "result": "7 passed 3 failed (TC_011, TC_012 and W1 TC_009: shared guest session in the fixture)"
+    },
+    {
+      "role": "qa-automator",
+      "label": "repair_verify-ef39dbfc032eb9587718",
+      "scope": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "code_fingerprint": "ef39dbfc032e",
+      "warranted": true,
+      "result": "10 passed"
+    },
+    {
+      "role": "qa-automator",
+      "label": "initial-5aebb5b3b4cb0827502e",
+      "scope": [
+        "tests/api/cart/add-to-cart.spec.ts"
+      ],
+      "code_fingerprint": "5aebb5b3b4cb",
+      "warranted": true,
+      "result": "11 passed"
+    }
+  ],
+  "expectation_changes": [
+    {
+      "function": "add-to-cart.spec.LOCAL-1_TC_011",
+      "red_attempt": "a69a7634a775790e4296",
+      "green_attempt": "ef39dbfc032eb9587718",
+      "then_refs": [
+        {
+          "case": "LOCAL-1_TC_011",
+          "then": 1
+        },
+        {
+          "case": "LOCAL-1_TC_011",
+          "then": 2
+        },
+        {
+          "case": "LOCAL-1_TC_011",
+          "then": 3
+        }
+      ],
+      "what_changed": "no assertion or expected value; fixture jars now start with an empty storage state",
+      "reason": "red came from one shared guest session across jars (fixture flaw), not from the Thens"
+    },
+    {
+      "function": "add-to-cart.spec.LOCAL-1_TC_012",
+      "red_attempt": "a69a7634a775790e4296",
+      "green_attempt": "ef39dbfc032eb9587718",
+      "then_refs": [
+        {
+          "case": "LOCAL-1_TC_012",
+          "then": 1
+        },
+        {
+          "case": "LOCAL-1_TC_012",
+          "then": 2
+        },
+        {
+          "case": "LOCAL-1_TC_012",
+          "then": 3
+        },
+        {
+          "case": "LOCAL-1_TC_012",
+          "then": 4
+        }
+      ],
+      "what_changed": "no assertion or expected value; fixture jars now start with an empty storage state",
+      "reason": "red came from one shared guest session across jars (fixture flaw), not from the Thens"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+ "tests": [
+  {
+   "case": "TC-002",
+   "covers": [
+    "TC-002"
+   ],
+   "case_version_links": [
+    {
+     "case_id": "TC-002",
+     "version": "cv_948bf9ee76564b469863"
+    }
+   ],
+   "requirements": [
+    "R-5",
+    "R-6"
+   ],
+   "plan_row": "TS-2",
+   "file": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+   "marker": "TC-002",
+   "test": "test_put_project_change_moves_ms_teams_integration",
+   "selector": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_ms_teams_integration",
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "obligation_ids": [
+    "OB-2",
+    "OB-3"
+   ],
+   "obligation_refs": [
+    {
+     "obligation_id": "OB-2",
+     "obligation_hash": "b6dae76df447336422d29afd618305b72dc586a9643e8ad57e1aed4e796dd746"
+    },
+    {
+     "obligation_id": "OB-3",
+     "obligation_hash": "85a945eb2ddb79ff92f28a7d35759ef620b3a8eeded79c953dee8d771184cde6"
+    }
+   ],
+   "shape": "new",
+   "trace_binding": {
+    "selector": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py::test_put_project_change_moves_ms_teams_integration",
+    "assertion_refs": [
+     "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:160-189"
+    ],
+    "test_content_sha": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2"
+   },
+   "status": "red",
+   "consolidates": [
+    "TC-002"
+   ],
+   "generated_from": [
+    "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+    "testproject1_test_harness/tests/test_data/project_change_test_data.py"
+   ],
+   "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:151-180",
+   "defect_location": "src/testproject1/service/settings/settings_request_validator.py:327",
+   "change_disposition": "new_or_changed",
+   "change_basis_ref": "manifest:TC-002",
+   "profile_id": "api",
+   "critic_verdict": "approved"
+  },
+  {
+   "case": "TC-003",
+   "covers": [
+    "TC-003"
+   ],
+   "case_version_links": [
+    {
+     "case_id": "TC-003",
+     "version": "cv_2ac2e11b9742c96c2d8a"
+    }
+   ],
+   "requirements": [
+    "R-10"
+   ],
+   "plan_row": "TS-3",
+   "file": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py",
+   "marker": "TC-003",
+   "test": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "selector": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "obligation_ids": [
+    "OB-4"
+   ],
+   "obligation_refs": [
+    {
+     "obligation_id": "OB-4",
+     "obligation_hash": "c3c9acc9497a1ee72dd105ab61160ee4bfbe69241e5f50655959e88274527544"
+    }
+   ],
+   "shape": "extend",
+   "trace_binding": {
+    "selector": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py::test_put_project_change_into_project_with_ms_teams_is_rejected",
+    "assertion_refs": [
+     "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364"
+    ],
+    "test_content_sha": "840f534c94bdfa9e45b1afadb0b336d4831dddaac0751696eb2a9eab88f1aac4"
+   },
+   "status": "red",
+   "consolidates": [
+    "TC-003"
+   ],
+   "generated_from": [
+    "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py",
+    "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py",
+    "testproject1_test_harness/tests/test_data/project_change_test_data.py"
+   ],
+   "assertion_id": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364",
+   "defect_location": "src/testproject1/rest_api/routers/project_settings.py:185",
+   "change_disposition": "new_or_changed",
+   "change_basis_ref": "manifest:TC-003",
+   "profile_id": "api",
+   "sensitivity_proof": {
+    "receipt_ref": {
+     "path": "work/sensitivity-receipts/test_put_project_change_into_project_with_ms_teams_is_rejected-live-a00f2791dd25d251.json",
+     "sha256": "5a261517f4c4a84036b548d109d97d9a2cdfb809e32cac0d941ba639d108c553"
+    }
+   },
+   "critic_verdict": "approved"
+  }
+ ],
+ "then_bindings": [
+  {
+   "case": "TC-003",
+   "then": 1,
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364",
+   "status": "covered"
+  },
+  {
+   "case": "TC-003",
+   "then": 2,
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364",
+   "status": "covered"
+  },
+  {
+   "case": "TC-003",
+   "then": 3,
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364",
+   "status": "covered"
+  },
+  {
+   "case": "TC-003",
+   "then": 4,
+   "instance_id": "test_put_project_change_into_project_with_ms_teams_is_rejected",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_ms_teams_integration.py:345-364",
+   "status": "covered"
+  },
+  {
+   "case": "TC-002",
+   "then": 1,
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:160-189",
+   "status": "covered"
+  },
+  {
+   "case": "TC-002",
+   "then": 2,
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:160-189",
+   "status": "covered"
+  },
+  {
+   "case": "TC-002",
+   "then": 3,
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:160-189",
+   "status": "covered"
+  },
+  {
+   "case": "TC-002",
+   "then": 4,
+   "instance_id": "test_put_project_change_moves_ms_teams_integration",
+   "assertion_ref": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:160-189",
+   "status": "covered"
+  }
+ ],
+ "unresolved": [
+  {
+   "case": "TC-002",
+   "reason": "contradicts_requirement",
+   "requirement": "R-5",
+   "expected": "PUT 2xx moving an MS Teams integration",
+   "observed": "400 Project mismatch",
+   "instance_ids": [
+    "test_put_project_change_moves_ms_teams_integration"
+   ],
+   "thens": [
+    1
+   ],
+   "detail": "R-5 expects 2xx; observed 400 Project mismatch"
+  },
+  {
+   "case": "TC-003",
+   "reason": "contradicts_requirement",
+   "requirement": "R-10",
+   "expected": "4xx rejection other than Project mismatch",
+   "observed": "400 Project mismatch",
+   "instance_ids": [
+    "test_put_project_change_into_project_with_ms_teams_is_rejected"
+   ],
+   "thens": [
+    2
+   ],
+   "detail": "R-10 rejection reason must not be Project mismatch; observed it is"
+  }
+ ]
+}

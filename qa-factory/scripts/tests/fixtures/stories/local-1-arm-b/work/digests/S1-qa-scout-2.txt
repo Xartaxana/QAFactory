@@ -1,0 +1,4 @@
+qa-scout S1 S1-qa-scout-2 · concerns
+work/context-manifest.json
+LOCAL-1 · found · placeholder work/impl-diff.txt removed and diff_path dropped from the manifest. The source stays current-code. The bundle was rebuilt and validates, but it reports grounding_complete false (gaps: source_revision, changed_areas, existing_coverage, constraints, unresolved_facts, source_inventory_incomplete). I did not check whether those gaps were already there before this repair. I did not write work/handoffs/S1-qa-scout-2.yaml.
+notes: state/findings/S1-qa-scout-2-digest-notes.md

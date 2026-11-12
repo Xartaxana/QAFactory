@@ -1,0 +1,451 @@
+{
+  "sessions": {
+    "S1-qa-scout-1": "d50f01f6-e613-4eb0-930d-ba62c286dee1",
+    "S2-qa-requirements-tester-1": "14edb76f-03b4-4a6f-93f9-4282d06c1ed7",
+    "S2-qa-case-critic-1": "b3d83a80-41a8-4a8d-b819-a4505a0525aa",
+    "S2-qa-case-critic-2": "062a92c2-f792-40a4-aec9-ce352bb83682",
+    "S1-qa-scout-2": "a91d9f43-0766-48aa-accb-f1f6faa64f8d",
+    "S3-qa-test-strategist-1": "c54428e9-c7da-4d77-b8c3-34927150e912",
+    "S3-qa-case-critic-1": "db6c319b-f382-4063-9ba9-201fe2560a3f",
+    "S4-qa-case-designer-1": "82bd2d93-56f8-4e1d-87b9-fe4aa8833c37",
+    "S4-qa-case-critic-1": "e37e446f-6ea4-4eb8-b1c8-8da2b0f3a64e",
+    "S2-qa-requirements-tester-2": "b92acda8-fb93-417e-a2ba-164de44652da",
+    "S3-qa-test-strategist-2": "603e2d78-d16c-4e7d-a68b-d7d958790c5c",
+    "S4-qa-case-designer-2": "6d3c1d29-5dad-41c2-8df3-52bbe5363fdf",
+    "S4-qa-case-critic-2": "53f0f4c1-dd28-4549-aee3-b14beab2e28c",
+    "S5-qa-automator-1": "a49f4d56-821d-4d23-9be1-c550d0d0c790",
+    "S5-qa-code-critic-1": "c7883e14-92f1-4f6a-b68d-70986721d888",
+    "S5-qa-automator-2": "5d38a934-256c-48c3-bf37-1762e5e9e139",
+    "S5-qa-code-critic-2": "1ae9dcfc-202e-4a54-99fe-81b900a170e2",
+    "S5-qa-automator-3": "269c373c-a20a-4e3e-9002-e75741f89625",
+    "S5-qa-code-critic-3": "a3a7ba4b-c775-4b59-a0b7-21db9e0fd21a",
+    "S5-qa-automator-4": "e16f4823-2fe9-4038-8a9c-c33381efc5ef",
+    "S5-qa-code-critic-4": "2f05c908-9b04-423a-be9a-c197b15e2b2e",
+    "S5-qa-automator-5": "65945c45-26c9-4023-a8ba-0ee55b9c9366",
+    "S5-qa-code-critic-5": "b8327dc2-683f-4944-8f34-7a2bce0f718c",
+    "S5-qa-automator-6": "7a382a4f-4c3b-48db-b74d-e6ecebadab5c",
+    "S5-qa-code-critic-6": "299c25dd-43aa-4080-ab70-539bcf043a28",
+    "S5-qa-automator-7": "63cf76f1-eda4-4448-8e66-babdc182920b",
+    "S5-qa-code-critic-7": "5c55bcc3-26e6-4824-99d2-1383c68d665a",
+    "S5-qa-automator-8": "1072a8e9-d1c6-4ca1-adff-030fd4504b70",
+    "S5-qa-code-critic-8": "f435bdd8-a034-443e-a880-4c3e55e776dc",
+    "S5-qa-automator-9": "f7b40c24-7cc1-4305-9f7c-eeaf156adc4f",
+    "S5-qa-code-critic-9": "7d0342b7-b17d-4853-86c7-962d22d889aa",
+    "S5-qa-automator-10": "8689c266-ae11-4720-ab00-0b98ed6c6924",
+    "S5-qa-code-critic-10": "fb68216f-17bb-4f58-9393-5f9aa54ba5a1",
+    "S5-qa-automator-11": "9c9bfe4f-9cb0-4550-8f7c-14929c8f1fd7",
+    "S5-qa-code-critic-11": "a49f8caa-4a00-4ece-a935-0b3420c4890a",
+    "S5-qa-automator-12": "de48a6ed-3d12-4fce-aad7-65a90f60d637",
+    "S5-qa-code-critic-12": "543fb9c1-fc6d-40b2-a79c-a1f96e63816d",
+    "S5-qa-automator-13": "ee7a695c-45b1-4892-8608-98f850000438",
+    "S5-qa-code-critic-13": "4ef4ea49-f60b-4ec3-ade0-63ba6b2b1353",
+    "S6-qa-runner-1": "ffce314e-6839-4898-a7bb-b4a0c8cf5ae0",
+    "S7-qa-failure-analyst-1": "279f33e0-2bd9-4a7e-8143-3913bde39155",
+    "S7-qa-failure-analyst-2": "291b2c73-cf97-462a-8459-2bf1884644c3",
+    "S8-qa-doc-scribe-1": "3124f2fb-d939-4cb2-a830-f01adb1fbbdd",
+    "S8-qa-bug-reporter-1": "1dc0383d-aac7-4e6d-813e-9371942c5633",
+    "S9-qa-retro-analyst-1": "32534149-18d8-40be-bd3f-17c7bd391afe",
+    "S5-qa-automator-15": "95cfabce-fc45-4ca1-b1f4-f3f2b0ec0b32",
+    "S5-qa-automator-16": "51049fd1-9e49-4a9c-8e0a-5640239392dc",
+    "S5-qa-code-critic-14": "3acf5183-08c7-4b17-a67d-c3098c77a415",
+    "S6-qa-runner-2": "8732af56-22a8-4f15-a7de-5712f7bfbb2a",
+    "S6-qa-runner-3": "0b9956f8-1a2c-4ee3-bcc5-51adeedd6abb",
+    "S6-qa-runner-4": "b90bbf7d-747c-4531-a8ba-14d222c142fb",
+    "S6-qa-runner-5": "004d0cd6-5682-4c5e-b6cb-470a43c8a904",
+    "S7-qa-failure-analyst-3": "7deb8d58-c917-4b7e-9594-30f6fa011fcf",
+    "S7-qa-failure-analyst-4": "8865a052-614e-4e5d-af5d-b2d1f4d24b4f",
+    "S7-qa-failure-analyst-5": "47149461-e46f-4391-817f-908e63bb49fa"
+  },
+  "pending_words": {},
+  "asked": {
+    "kind": "code_close",
+    "stage": "S7",
+    "dispatch": "",
+    "at": "2026-11-05T18:55:22+00:00"
+  },
+  "interrupted": {},
+  "launch": {
+    "env": "local",
+    "no_trace": true,
+    "implementation_source": "current-code"
+  },
+  "package_check": {
+    "ok": true,
+    "root": "<path-1>\\pkg-b\\ai-packages\\qa-factory",
+    "version": "0.10.9",
+    "session": "4360a98b-70bb-4d94-b06a-3bb38f70113e"
+  },
+  "refusal_resumes": {
+    "S4-qa-case-critic-1": {
+      "e37e446f-6ea4-4eb8-b1c8-8da2b0f3a64e": {
+        "1bfcf625e3dab4a9452b522264bbeb87b70ea6a8dac6625e1778cc5fac2f15cd": "handoff"
+      }
+    }
+  },
+  "gate_entry_owed": {},
+  "last_rehearsal_doors": {
+    "A": {
+      "vcs-test-repo": [
+        {
+          "block": "test repository state: 5cd21eb10194",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ],
+      "actor_sign_in-1": [],
+      "open_questions-1": [
+        {
+          "block": "Q1",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ],
+      "open_questions-2": [
+        {
+          "block": "Q2",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ],
+      "open_questions-3": [
+        {
+          "block": "Q3",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ]
+    },
+    "B": {
+      "delivery-1": []
+    }
+  },
+  "last_rehearsal_gaps": {
+    "A": {
+      "gaps": [],
+      "covered": []
+    },
+    "B": {
+      "gaps": [],
+      "covered": []
+    }
+  },
+  "gate_repair": {},
+  "question_stop": {
+    "stage": "S2",
+    "dispatch": "S2-qa-requirements-tester-2",
+    "count": 11,
+    "share": null,
+    "at": "2026-11-05T02:15:45+00:00",
+    "shown": {
+      "Q1": "21accb10f4d563125712b308cf6399992b07cdb4af3fac2b6b8b0dc5130b1a0f",
+      "Q2": "9319878060aee046f9a64d28d232e02a96e877ce65ace0e604c50f87b29ed013",
+      "Q3": "7daf7ababa3e38c4063e210599e15ad0b1e2e81251ba8f3a1f8009e9274d5b38",
+      "Q4": "2b2a6b082f9041b9396d752329f4869e3814506a38213bd7d5c5a5062ca5e488",
+      "Q6": "9e7468ba44e5222cdd6b5850ed123f86756075cdb3f8c66d8c05d85178d2b714",
+      "Q7": "bd2fcdf9300feb34f3d806b54c9ff48df3026e5f04986be61dddb7fd10233602",
+      "Q8": "7a39eb113027ab4000078380146c32060c8569faa4a96440f863a30ff4bc875f",
+      "Q9": "e0892e6917ba4dcbe56b88b06c1724843217fa6abb02a79a41954cfb47e807fa",
+      "Q10": "02f8408ed6ee053e30732a637f358396a798e581792585892a68d1edc6cdec5c",
+      "Q11": "1c1ec74e182f76036830a1b1e6ebd87e0bfa557fa551355de3371e16c5546a8e",
+      "Q12": "115bd9cfc41169b3a556f7b4bce13b8c4add0eb8da6d778988102a4e25688dc6"
+    },
+    "reasons": [
+      "over_threshold"
+    ],
+    "blocking_ids_shown": {},
+    "answered": {
+      "count": 11,
+      "share": null,
+      "at": "2026-11-05T02:18:01+00:00",
+      "blocking_ids": {}
+    }
+  },
+  "question_pass_lines": {},
+  "gate_noted": {
+    "A": [
+      "S1-qa-scout-2",
+      "S2-qa-requirements-tester-2",
+      "S3-qa-test-strategist-2"
+    ],
+    "B": [
+      "S1-qa-scout-2",
+      "S2-qa-requirements-tester-2",
+      "S3-qa-test-strategist-2",
+      "S5-qa-automator-4",
+      "S5-qa-automator-5",
+      "S5-qa-automator-8",
+      "S5-qa-automator-9",
+      "S5-qa-automator-11",
+      "S5-qa-automator-12"
+    ]
+  },
+  "shown_doors": {
+    "A": {
+      "vcs-test-repo": [
+        {
+          "block": "test repository state: 5cd21eb10194",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ],
+      "actor_sign_in-1": [],
+      "open_questions-1": [
+        {
+          "block": "Q1",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ],
+      "open_questions-2": [
+        {
+          "block": "Q2",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ],
+      "open_questions-3": [
+        {
+          "block": "Q3",
+          "stage": "S5",
+          "option": "accept"
+        }
+      ]
+    },
+    "B": {
+      "delivery-1": []
+    }
+  },
+  "shown_gaps": {
+    "A": {
+      "gaps": [],
+      "covered": []
+    },
+    "B": {
+      "gaps": [],
+      "covered": []
+    }
+  },
+  "shown_attachments": {
+    "A": [],
+    "A_named": []
+  },
+  "stand_identity_answers": {
+    "local|web": "deployed"
+  },
+  "noted": [
+    "S5-qa-code-critic-3||note",
+    "S5-qa-code-critic-4||note",
+    "S5-qa-code-critic-5||note",
+    "S5-qa-code-critic-7||note",
+    "S5-qa-code-critic-8||note",
+    "S5-qa-code-critic-9||note",
+    "S5-qa-code-critic-10||note",
+    "S5-qa-code-critic-11||note",
+    "S5-qa-code-critic-12||note",
+    "S5-qa-code-critic-13||note"
+  ],
+  "window_rounds": {
+    "S5|LOCAL-1_TC_019,LOCAL-1_TC_020": [
+      {
+        "at": "2026-11-05T06:53:22+00:00",
+        "dispatch": "S5-qa-code-critic-13",
+        "set": [
+          "story_step: refused - accepting <dispatch> with stage_complete: false leaves S5 with no role to close it — pass stage_complete: true, name the unresolved work with its reason, or checkpoint the dispatch if the work is not done (`controller.py --task-root <stand>\\qa-factory\\artifacts\\LOCAL-1 --operation checkpoint --dispatch <dispatch> --status incomplete --reason \"<what is left>\" --brief`)"
+        ],
+        "outcome": "to_conductor",
+        "cause": "refusal"
+      }
+    ]
+  },
+  "repair_limit": {
+    "S5|LOCAL-1_TC_001,LOCAL-1_TC_002": {
+      "dispatch": "S5-qa-code-critic-5",
+      "token": "debt",
+      "cases": [
+        "LOCAL-1_TC_001",
+        "LOCAL-1_TC_002"
+      ],
+      "key": "s5.repair_limit",
+      "at": "2026-11-05T04:02:38+00:00",
+      "words_file": "state/words/driver-answer-1793851358295.txt",
+      "cause": "",
+      "reason": "",
+      "executed": true
+    },
+    "S5|LOCAL-1_TC_006,LOCAL-1_TC_013": {
+      "dispatch": "S5-qa-code-critic-9",
+      "token": "debt",
+      "cases": [
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_013"
+      ],
+      "key": "s5.repair_limit",
+      "at": "2026-11-05T04:59:38+00:00",
+      "words_file": "state/words/driver-answer-1793854777911.txt",
+      "cause": "",
+      "reason": "",
+      "executed": true
+    },
+    "S5|LOCAL-1_TC_017,LOCAL-1_TC_018": {
+      "dispatch": "S5-qa-code-critic-12",
+      "token": "debt",
+      "cases": [
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018"
+      ],
+      "key": "s5.repair_limit",
+      "at": "2026-11-05T06:25:53+00:00",
+      "words_file": "state/words/driver-answer-1793859953708.txt",
+      "cause": "",
+      "reason": "",
+      "executed": true
+    }
+  },
+  "s6_reproved": {
+    "@api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 edge quantity 999 is accepted": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_008 edge quantity 1 is accepted": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged": "aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f:",
+    "@regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it": "f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c:",
+    "@regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist": "f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c:",
+    "@regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove": "c1065221ef6a8f204e21866a6609424633fd29bddcf6b79d36bab778cce6129e:",
+    "@regression LOCAL-1_TC_001 stock-0 book: error shown, no success, badge stays 1, no cart line": "0f2fa8b6981ed8ce5dd75959a1dbe27c771a702d16ad5eb9c13c17c8a91d47da:"
+  },
+  "shown_exploratory": [],
+  "exploratory_open": {},
+  "delivery": {
+    "done": true,
+    "at": "2026-11-05T07:41:59+00:00",
+    "action": "nothing_outward",
+    "did": "nothing outward (experiment): no branch, commit, push, merge request or tracker write"
+  },
+  "retro_asked": true,
+  "retro_feedback": "Three things. (1) The stage critics at S2 and S4 could not fill their own handoff form (the author form path and its sha256; a template question row), and I had to repair the forms by hand four times - the factory should write what it already knows into the form, and never read a template row as a question. (2) The conductor diagnosed every stop correctly, but its moves (restart, go on, resume) were refused by the move table for carrying arguments or the wrong token, so I got a generic retry/go on/stop question instead of its own words - the conductor must be able to act on what it found. (3) The three manual-agent cases (TC_014, TC_015, TC_016) were never checked by hand: their preparation failed with a TypeError, so the exploratory recorder never ran, and the report has no manual observations at all. Also: the code critic rejected 11 tests without typed findings, so the automator repaired blind and three windows ended in debt.",
+  "deferred": [
+    {
+      "n": 1,
+      "kind": "conductor",
+      "stage": "S6",
+      "dispatch": "S6-qa-runner-3",
+      "holds": [
+        "LOCAL-1_TC_014"
+      ],
+      "asked": {
+        "kind": "conductor",
+        "stage": "S6",
+        "dispatch": "S6-qa-runner-3",
+        "at": "2026-11-05T16:49:27+00:00",
+        "offered": [
+          "retry",
+          "stop"
+        ],
+        "options": [
+          {
+            "token": "retry",
+            "move": "person_does",
+            "says": "You add manual_capture.login to config.json (or set it to null for sign-in through screen steps), then the factory looks again and the case is walked in a new attempt."
+          },
+          {
+            "token": "stop",
+            "move": "stop_here",
+            "says": "Stop the story at S6."
+          }
+        ],
+        "words_file": "",
+        "why": "refusal",
+        "block": "",
+        "why_person": "access",
+        "blocks": []
+      },
+      "flags": {},
+      "at": "2026-11-05T16:49:28+00:00"
+    },
+    {
+      "n": 2,
+      "kind": "conductor",
+      "stage": "S6",
+      "dispatch": "S6-qa-runner-4",
+      "holds": [
+        "LOCAL-1_TC_015"
+      ],
+      "asked": {
+        "kind": "conductor",
+        "stage": "S6",
+        "dispatch": "S6-qa-runner-4",
+        "at": "2026-11-05T17:26:37+00:00",
+        "offered": [
+          "retry",
+          "go on",
+          "restart",
+          "stop"
+        ],
+        "options": [
+          {
+            "token": "retry",
+            "move": "person_does",
+            "says": "You set manual_capture.login.http in config.json (path and token_field, or null), then the factory looks again."
+          },
+          {
+            "token": "go on",
+            "move": "go_on_as_is",
+            "says": "Go on without this case; your words are recorded as the reason."
+          },
+          {
+            "token": "restart",
+            "move": "release_and_restart",
+            "says": "Free the S6 runner dispatch so the driver starts it again, giving it your words."
+          },
+          {
+            "token": "stop",
+            "move": "stop_here",
+            "says": "Stop the story here."
+          }
+        ],
+        "words_file": "",
+        "why": "refusal",
+        "block": "",
+        "why_person": "access",
+        "blocks": []
+      },
+      "flags": {},
+      "at": "2026-11-05T17:26:38+00:00"
+    }
+  ],
+  "deferred_seq": 2,
+  "exit_limit": {},
+  "code_close": {
+    "S7": {
+      "passed": [],
+      "refused": [],
+      "filed": [
+        "s7.after_repairs:133a830668e7eaaf71b9daa87e49687a28bf4f393b0a8c21bbb22c5239dab7d3",
+        "s7.accepted:133a830668e7eaaf71b9daa87e49687a28bf4f393b0a8c21bbb22c5239dab7d3"
+      ],
+      "recovered": false,
+      "recover_failed": "",
+      "pending": null,
+      "site": "s7.accepted",
+      "step": "receipt",
+      "key": "code_close.stage",
+      "block": "",
+      "offer": [
+        "retry",
+        "stop"
+      ],
+      "lead": "The story is at the triage stage (S7). No role works at this step: the factory closes it by itself (the doc scribe accepted the failure analyst's triage), and its own record of that close was refused. The reason is the factory's own; it is filed as a defect of ours, and the factory's own words are in the file named below.\nGoing on as it is is not possible here: no word of yours passes what refused.\nThe factory cannot finish this step by itself. Which of these should happen?",
+      "details": "controller code_only (exit 2):\n{\"error\": \"required prior logical stage incomplete\"}",
+      "at": "2026-11-05T18:55:22+00:00"
+    }
+  }
+}

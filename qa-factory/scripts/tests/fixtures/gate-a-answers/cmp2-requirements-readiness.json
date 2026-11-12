@@ -1,0 +1,228 @@
+{
+  "verdict": "ready",
+  "confidence": "low",
+  "goal_summary": "Workflow authors compare a saved revision against the current editor on one read-only graph and get restore checked by a no-write validate endpoint, so a broken restore is seen before Save.",
+  "aspects": {
+    "roles-and-permissions": {
+      "status": "ready",
+      "reason": "R-16 covers WRITE ability and project access; localhost has one account so role cases run on preview"
+    },
+    "spend-and-budget-attribution": {
+      "status": "n/a",
+      "reason": "no spend or budget path is touched by the diff"
+    },
+    "config-precedence-and-defaults": {
+      "status": "n/a",
+      "reason": "no configuration layering is changed"
+    },
+    "async-and-eventual-consistency": {
+      "status": "ready",
+      "reason": "R-23 stale restore-validation results"
+    },
+    "persistence-across-reload": {
+      "status": "ready",
+      "reason": "R-12 stored workflow unchanged until Save"
+    },
+    "llm-nondeterminism": {
+      "status": "n/a",
+      "reason": "no model output is involved"
+    },
+    "integration-credential-scope": {
+      "status": "n/a",
+      "reason": "no integration credential is involved"
+    },
+    "enterprise-vs-opensource-licensing": {
+      "status": "n/a",
+      "reason": "no licence-gated feature in the diff"
+    },
+    "data-isolation-under-parallel-run": {
+      "status": "ready",
+      "reason": "tests must create their own workflow; validate must not write"
+    },
+    "inputs-and-validation": {
+      "status": "ready",
+      "reason": "R-17, R-20"
+    },
+    "failure-and-error-paths": {
+      "status": "ready",
+      "reason": "R-19, R-20 invalid YAML and invalid config paths"
+    }
+  },
+  "register": {
+    "total": 36,
+    "by_source": {
+      "story": 0,
+      "feature": 1,
+      "assumption": 0,
+      "discussion": 0,
+      "ac": 15,
+      "derived": 20
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "Which two revisions does the visual diff compare?",
+      "source_says": [
+        {
+          "quote": "Exactly two revisions are compared.",
+          "where": "TP1-14482 AC8"
+        },
+        {
+          "quote": "canvas = selected history entry, baseline = current editor YAML",
+          "where": "testproject1-ui!1881 prepareVisualDiffCanvas.ts:64, WorkflowVisualVersionHistoryPopup.tsx"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "The selected saved revision against the current editor buffer, which may hold unsaved edits.",
+          "from": "code",
+          "if_chosen": "Then-steps compare the selected revision with the editor text; an unsaved-edit case is written and AC8 is read as selected vs current."
+        },
+        {
+          "reading": "Two saved revisions chosen by the user.",
+          "from": "acceptance_criteria:AC-8",
+          "if_chosen": "The code behavior is reported as an APP_BUG proposal and the compare cases are held until a two-revision picker exists."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q2",
+      "question": "Must a removed node appear at exactly its former coordinates?",
+      "source_says": [
+        {
+          "quote": "Removed nodes are displayed at their former position",
+          "where": "TP1-14482 AC4"
+        },
+        {
+          "quote": "diff layout reuses the Beautify mechanism so positions need not match the real restoration state",
+          "where": "developer comment on TP1-14482 (per S1 manifest conflicts)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Former position means the node keeps the coordinates saved in the baseline.",
+          "from": "acceptance_criteria:AC-4",
+          "if_chosen": "A coordinate assertion on the removed node is written; the Beautify re-layout is reported as a defect."
+        },
+        {
+          "reading": "Former position means its place in the graph topology; layout is recomputed.",
+          "from": "comment:TP1-14482",
+          "if_chosen": "Only presence, red styling, badge and strikethrough are asserted; no coordinate check."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q3",
+      "question": "Is a separate Version History button the intended entry to the visual diff, or a YAML/Visual toggle?",
+      "source_says": [
+        {
+          "quote": "separate entry points rather than a toggle",
+          "where": "TP1-14482 parent AC1"
+        },
+        {
+          "quote": "when the user switches to Visual mode",
+          "where": "TP1-14482 parent AC2; mockup has a YAML/Visual toggle"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Separate toolbar button on the visual editor (as built).",
+          "from": "code",
+          "if_chosen": "The entry-point case clicks the toolbar Version History button."
+        },
+        {
+          "reading": "A toggle inside the popup.",
+          "from": "description",
+          "if_chosen": "The entry-point case is held as a defect and the toggle case stays manual."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q4",
+      "question": "Is the aria-label rename on the YAML panel history button intended?",
+      "source_says": [
+        {
+          "quote": "versionHistoryAriaLabel=\"Version History (YAML)\" replaces \"Version History (visual editor)\"",
+          "where": "testproject1-ui!1881 YamlPanel.tsx:166"
+        },
+        {
+          "quote": "looks for the old label in the YAML panel",
+          "where": "test_workflow_version_history.py:25"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended; the old label now belongs to the toolbar button and the existing UI test is retargeted.",
+          "from": "code",
+          "if_chosen": "The existing test is extended to the toolbar button; a YAML-panel case uses the new label."
+        },
+        {
+          "reading": "Unintended regression of existing behavior.",
+          "from": "acceptance_criteria:AC-15",
+          "if_chosen": "A bug proposal is written and the existing test is kept as the oracle."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "dev_arch"
+    },
+    {
+      "id": "Q5",
+      "question": "Does restoring a revision ever persist to the backend before Save?",
+      "source_says": [
+        {
+          "quote": "Restore validation does not persist workflow changes to the backend.",
+          "where": "TP1-14482 AC12"
+        },
+        {
+          "quote": "final design restores via backend rollback API",
+          "where": "TP1-8827 spec-4/5 (UF-4, inspected by structure only)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Restore only replaces the editor YAML; nothing is stored until Save.",
+          "from": "code",
+          "if_chosen": "The no-persist case reloads the workflow and asserts the stored config and history are unchanged."
+        },
+        {
+          "reading": "Restore is a backend rollback that stores a new revision.",
+          "from": "precedent",
+          "if_chosen": "AC12 is read as validation-only; a stored-revision case is added and the no-persist assertion is limited to the validate call."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q6",
+      "question": "Does GuardrailService dry_run also skip deleting stale guardrail assignments?",
+      "source_says": [
+        {
+          "quote": "if dry_run: return placed before Step 6 (create new assignments)",
+          "where": "testproject1!4214 guardrail_service.py:284; the delete step location was not shown in the hunk"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Both create and delete are skipped on dry run.",
+          "from": "code",
+          "if_chosen": "A before/after assignments check on validate is written as a no-write proof."
+        },
+        {
+          "reading": "Deletes of stale assignments run before the return.",
+          "from": "description",
+          "if_chosen": "A data-loss APP_BUG proposal is written against POST /validate."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "dev_arch"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "execution_status": "passed",
+  "env_preflight": "pass",
+  "stage": "feature",
+  "head": "abc1234",
+  "totals": {"passed": 1, "failed": 0, "skipped": 0, "passed_on_retry": 0},
+  "results": [
+    {"test": "tests/test_coupon.py::test_cap_rejected", "case": "TC-001", "result": "passed",
+     "evidence": "evidence/sanity-20260911-105500.json"}
+  ],
+  "manual_checks": [
+    {"case": "TC-002", "result": "inconclusive", "attempt_id": "a1", "evidence_validated": true,
+     "limitations": ["the order record page returned 503 for the whole window"],
+     "evidence_refs": [{"path": "evidence/tc-002-order-record.txt"}]}
+  ],
+  "current_manual_checks": [
+    {"case": "TC-002", "result": "inconclusive", "attempt_id": "a1", "evidence_validated": true,
+     "limitations": ["the order record page returned 503 for the whole window"],
+     "evidence_refs": [{"path": "evidence/tc-002-order-record.txt"}]}
+  ],
+  "manual_skipped": [],
+  "env_blocked": [],
+  "impossible": [],
+  "witness": "evidence/sanity-20260911-105500.json exit 0 - 1 passed; manual-agent TC-002 executed once on local"
+}

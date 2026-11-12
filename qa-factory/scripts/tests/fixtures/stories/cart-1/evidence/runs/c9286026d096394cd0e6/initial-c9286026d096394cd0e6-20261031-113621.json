@@ -1,0 +1,91 @@
+{
+ "task": "CART-1",
+ "label": "initial-c9286026d096394cd0e6",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit=<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\evidence\\runs\\c9286026d096394cd0e6\\report.junit.xml",
+  "--project=chromium",
+  "tests/e2e/cart/add-to-cart.spec.ts"
+ ],
+ "exit_code": 0,
+ "duration_s": 22.8,
+ "log": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c9286026d096394cd0e6\\initial-c9286026d096394cd0e6-20261031-113621.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-10-31T10:36:21.050391+00:00",
+ "ended_at": "2026-10-31T10:36:43.809620+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 7.9,
+  "passed": 1
+ },
+ "failed": [],
+ "results": [
+  {
+   "test_id": "e2e\\cart\\add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "status": "passed",
+   "reason": ""
+  }
+ ],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c9286026d096394cd0e6\\initial-c9286026d096394cd0e6-20261031-113621.junit.xml",
+ "report_hash": "55b41d35cac7bf3ed14b2c2bb5d587bc3194ec509c8c670af68ed52851edbc02",
+ "report_evidence": {
+  "path": "evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.junit.xml",
+  "sha256": "55b41d35cac7bf3ed14b2c2bb5d587bc3194ec509c8c670af68ed52851edbc02"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "passed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "initial",
+ "dispatch_id": "S5-qa-automator-7",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T10:36:14Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T10:36:44Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "summary_path": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\c9286026d096394cd0e6\\initial-c9286026d096394cd0e6-20261031-113621.json"
+}

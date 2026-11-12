@@ -1,0 +1,17 @@
+[
+  {
+    "id": "TS-1",
+    "impact": "medium",
+    "likelihood": "medium",
+    "confidence": "high",
+    "risk_rationale": "Coupon rejection protects the order total without a safety-critical consequence.",
+    "risk_source_refs": ["requirement:R-1", "diff:src/app.py:12"],
+    "risk_policy_revision": "v1",
+    "coverage_refs": ["TC-001"],
+    "unknowns": [],
+    "verification_depth": "normal",
+    "required_scenarios": ["reject a coupon above the cap"],
+    "test_level_rationale": "An API-level check observes the contract and stored total.",
+    "design_review_required": false
+  }
+]

@@ -1,0 +1,2303 @@
+{
+  "ticket": "LOCAL-1",
+  "generated": "2026-11-05T07:45:24+00:00",
+  "rows": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "failed:ASSERT_STRICTER",
+      "detail": "LOCAL-1_TC_001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_003"
+    },
+    {
+      "ref": "TS-4",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_004"
+    },
+    {
+      "ref": "TS-5",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_005"
+    },
+    {
+      "ref": "TS-6",
+      "kind": "plan_row",
+      "state": "failed:untriaged",
+      "detail": "LOCAL-1_TC_006"
+    },
+    {
+      "ref": "TS-7",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_007"
+    },
+    {
+      "ref": "TS-8",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_008"
+    },
+    {
+      "ref": "TS-9",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_009"
+    },
+    {
+      "ref": "TS-10",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_010"
+    },
+    {
+      "ref": "TS-11",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_011"
+    },
+    {
+      "ref": "TS-12",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_012"
+    },
+    {
+      "ref": "TS-13",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_013"
+    },
+    {
+      "ref": "TS-14",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "LOCAL-1_TC_014"
+    },
+    {
+      "ref": "TS-15",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "LOCAL-1_TC_015"
+    },
+    {
+      "ref": "TS-16",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "LOCAL-1_TC_016"
+    },
+    {
+      "ref": "TS-17",
+      "kind": "plan_row",
+      "state": "failed:untriaged",
+      "detail": "LOCAL-1_TC_017"
+    },
+    {
+      "ref": "TS-18",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "LOCAL-1_TC_018"
+    },
+    {
+      "ref": "TS-19",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_019"
+    },
+    {
+      "ref": "TS-20",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_020"
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged; sensitivity_proof.instance_id does not match the manifest instance",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_007 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 edge quantity 999 is accepted",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted; sensitivity_proof.instance_id does not match the manifest instance",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_009 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted; sensitivity_proof.instance_id does not match the manifest instance",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_008 edge quantity 1 is accepted",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 edge quantity 1 is accepted",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_009 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_009 — its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_005 guest quantity above stock is capped at stock",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_007 re-adding a book sums into one line, answers 201",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_007",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_008 quantity ${name} (${qty}) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_008 bookId ${name} (${id}) is refused with VALIDATION_ERROR",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_008 edge quantity ${qty} is accepted",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_008",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_009",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_009",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_009 total exactly equal to stock is accepted",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_009",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_010 unknown book id is 404 BOOK_NOT_FOUND, cart untouched",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_010 — run freshness not measured: the run recorded no per-test identity",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_011 user cart and guest carts do not see each other lines",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_011 — run freshness not measured: the run recorded no per-test identity",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_011 admin cart and guest carts do not see each other lines",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_011 — run freshness not measured: the run recorded no per-test identity",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_011 foreign PUT and DELETE leave the owner line unchanged",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_011 — run freshness not measured: the run recorded no per-test identity",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@api @regression LOCAL-1_TC_012 update to stock is accepted, one over is INSUFFICIENT_STOCK and keeps 5",
+      "kind": "test",
+      "state": "passed_green",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_012 — run freshness not measured: the run recorded no per-test identity",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_002 — probe_by_code.py could not conclude on a Playwright toast/disabled assert (no_failure/wrong_location/incomplete); tooling",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_002 — probe_by_code.py could not conclude on a Playwright toast/disabled assert (no_failure/wrong_location/incomplete); tooling",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_001 — probe_by_code.py could not conclude on a Playwright toast/disabled assert (no_failure/wrong_location/incomplete); tooling",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_001 stock-0 book: error shown, no success, badge stays 1, no cart line",
+      "kind": "test",
+      "state": "failed:ASSERT_STRICTER",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_001",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_001",
+      "case": "LOCAL-1_TC_001",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_003 — its receipt is for other bytes (test_content_hash 52e579f5278bd3ec84395593d474ad105c3559086f040101fae4efc3f69c6e5d, the test file now hashes f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_004 — its receipt is for other bytes (test_content_hash 52e579f5278bd3ec84395593d474ad105c3559086f040101fae4efc3f69c6e5d, the test file now hashes f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_006 P-merge500 merge failure is not silent, shopper is signed in",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_006 — inverted probe at :87 no_failure (tooling E14: entry not compiled); static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_006 P-mergetimeout merge failure is not silent, shopper is signed in",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_006",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_006",
+      "case": "LOCAL-1_TC_006",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove",
+      "kind": "test",
+      "state": "not_verified:missing_sensitivity_proof",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_013 — its receipt is for other bytes (test_content_hash 395f28035d735e92d08510940ffe4dfbe034a1d9914b46cfcde99fb65cc528a6, the test file now hashes c1065221ef6a8f204e21866a6609424633fd29bddcf6b79d36bab778cce6129e) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_006 ${p.name} merge failure is not silent, shopper is signed in",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_006",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_013",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_003",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_004",
+      "proof_level": "not_required",
+      "proof_words": "not probed (unchanged test)",
+      "proof_reason": "unmeasured"
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-cartread-error500 failed cart read says so, not the empty-cart text",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_017",
+      "case": "LOCAL-1_TC_017",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-cartread-timeout failed cart read says so, not the empty-cart text",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_017",
+      "case": "LOCAL-1_TC_017",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-bookread-error500 failed book read shows an error or the lines, not a blank page",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_017",
+      "case": "LOCAL-1_TC_017",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-bookread-timeout failed book read shows an error or the lines, not a blank page",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-putfail-error500 failed quantity change shows an error, stored quantity stays 1",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-putfail-timeout failed quantity change shows an error, stored quantity stays 1",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-deletefail-error500 failed remove shows a message, the line stays",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_017 P-deletefail-timeout failed remove shows a message, the line stays",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-deletefail-error500 move with a failed wishlist delete is not reported as moved",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_018",
+      "case": "LOCAL-1_TC_018",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-deletefail-timeout move with a failed wishlist delete is not reported as moved",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_018",
+      "case": "LOCAL-1_TC_018",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-postfail-error500 move with a failed cart add keeps the book on the wishlist and says so",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": "live",
+      "proof_words": "the check is live",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-postfail-timeout move with a failed cart add keeps the book on the wishlist and says so",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_018",
+      "case": "LOCAL-1_TC_018",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-removefail-error500 failed remove shows an error, the book stays on the wishlist",
+      "kind": "test",
+      "state": "review_skipped",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-removefail-timeout failed remove shows an error, the book stays on the wishlist",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_018",
+      "case": "LOCAL-1_TC_018",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-getfail-error500 failed wishlist read shows an error, not the empty-wishlist text",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_018",
+      "case": "LOCAL-1_TC_018",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_018 P-getfail-timeout failed wishlist read shows an error, not the empty-wishlist text",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": "",
+      "repair_limit": {
+        "stage": "S5",
+        "counted": 2,
+        "cap": 2,
+        "reason": "cap"
+      },
+      "function": "LOCAL-1_TC_018",
+      "case": "LOCAL-1_TC_018",
+      "remarks": []
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_019 P-error500 failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_019 — probe incomplete: failed at the mutated line in inverted form (cause data_row), detector wording mismatch",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_019 P-timeout failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_019 — probe incomplete: failed at the mutated line in inverted form (cause data_row), detector wording mismatch",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_020 P-addfail-error500 failed add of quantity 3: error shown, no success message, no cart line",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_020 — probe incomplete: failed at the mutated line in inverted form (cause data_row), detector wording mismatch",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_020 P-readfail-error500 failed book read: the page shows a message, not a blank page",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_020 — probe incomplete: failed at the mutated line in inverted form (cause data_row), detector wording mismatch",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_020 P-addfail-timeout failed add of quantity 3: error shown, no success message, no cart line",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_020 — probe incomplete: failed at the mutated line in inverted form (cause data_row), detector wording mismatch",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "@regression LOCAL-1_TC_020 P-readfail-timeout failed book read: the page shows a message, not a blank page",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/add_to_cart.spec.ts::LOCAL-1_TC_020 — probe incomplete: failed at the mutated line in inverted form (cause data_row), detector wording mismatch",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    }
+  ],
+  "delivery_ready": false,
+  "delivery_verdict": "no",
+  "left_items": [
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_002",
+      "case": "LOCAL-1_TC_002",
+      "requirements": [
+        "R-2"
+      ],
+      "tests": [
+        "LOCAL-1_TC_002"
+      ],
+      "to_check": "P-qty1: a success message M1 is shown.; P-qty3: a success message M3 is shown and M3 differs from M1 (R-2 \"differs for quantity above 1\").; GET /api/cart holds one line for A with quantity 4 (1+3), read independently of the page.; P-outofstock: on B the button is disabled and no POST /api/cart is sent when it is clicked; the cart has no line for B.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified",
+        "assert_stricter"
+      ],
+      "ref": "LOCAL-1_TC_001",
+      "case": "LOCAL-1_TC_001",
+      "requirements": [
+        "R-1"
+      ],
+      "tests": [
+        "LOCAL-1_TC_001"
+      ],
+      "to_check": "P-shortstock: for B an error message is shown, no success message, the badge stays 1 and GET /api/cart has no line for B. - without this story's change it showed: other Then 3 asserts passed (no success toast, badge 1, cart {A:1}); only the extra error toast is absent. R-1 says \"sees a success message and an updated cart badge\", no error message named.",
+      "how": "Decide: remove this check from the test, or refine the requirement it goes beyond (R-1) - the same action without this story's change gives the same result; tell the delivery gate in your own words which one you want, and the factory lays out what it can do, at what cost",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_006",
+      "case": "LOCAL-1_TC_006",
+      "requirements": [
+        "R-12"
+      ],
+      "tests": [
+        "LOCAL-1_TC_006"
+      ],
+      "to_check": "R-12: after the failed merge EITHER the page shows a visible error/notice text about the cart not being carried over, OR the guest item is still readable in the guest cart (GET /api/cart with the guest cookie returns the marked book). Both P-merge500 and P-mergetimeout. Success-only outcome (no text on the page, guest cart empty, account cart empty) fails; the code today is this outcome (merge failure only logged), so the case is expected red.; The signed-in user's page is reached (URL is not the login form, the page body is non-blank) and shows the account header/menu of the signed-in user; the shopper is not stuck on the login form. This holds in both runs.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified_factory",
+      "kinds": [
+        "review_unverified_factory",
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_019",
+      "case": "LOCAL-1_TC_019",
+      "requirements": [
+        "R-1"
+      ],
+      "tests": [
+        "LOCAL-1_TC_019"
+      ],
+      "to_check": "In both runs an error text is shown and no success message appears (R-1 promises success only for an add that happened).; The badge stays 0 and GET /api/cart holds no line, so the badge and the stored cart agree.; The catalog list is still shown and the Add button works again after the failure.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified_factory",
+      "kinds": [
+        "review_unverified_factory",
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_020",
+      "case": "LOCAL-1_TC_020",
+      "requirements": [
+        "R-2"
+      ],
+      "tests": [
+        "LOCAL-1_TC_020"
+      ],
+      "to_check": "After the failed add an error text is shown and neither the single-item nor the quantity-above-1 success message appears.; GET /api/cart holds no line for the book (independent of the page).; With the book read failed the page shows a message and is not blank.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_unproven",
+      "kinds": [
+        "branch_unproven"
+      ],
+      "ref": "BN-1",
+      "case": "",
+      "requirements": [
+        "R-1"
+      ],
+      "tests": [],
+      "to_check": "book out of stock or short of stock from the catalog card: error toast, badge unchanged",
+      "how": "LOCAL-1_TC_001 carries it, but no test or recorded check proves it",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "source_unreconciled",
+      "kinds": [
+        "source_unreconciled"
+      ],
+      "ref": "ticket-text:REF-1",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "the text of REF-1 was not read (relevance unknown, status unavailable)",
+      "how": "read REF-1 yourself: it is in the scope of the story and nobody read it",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "regression",
+      "ref": "regression",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "lines": [
+        "No regression: the story changes no code (grounded on current code) and `tests/` holds no cart, wishlist or sign-in-merge test; the only existing tests of the area, EX-1 and EX-2 in the application's `src/lib/cartRules.test.ts`, are read only here and cover pure helpers."
+      ],
+      "to_check": "",
+      "how": "",
+      "words": "",
+      "source": "plan",
+      "counts": false
+    }
+  ],
+  "reasons": [
+    "traceability: R-4 has no terminal outcome (LOCAL-1_TC_005: passed; LOCAL-1_TC_014: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-6 has no terminal outcome (LOCAL-1_TC_008: passed; LOCAL-1_TC_015: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-7 has no terminal outcome (LOCAL-1_TC_009: passed; LOCAL-1_TC_015: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-8 has no terminal outcome (LOCAL-1_TC_010: passed; LOCAL-1_TC_015: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-9 has no terminal outcome (LOCAL-1_TC_011: passed; LOCAL-1_TC_016: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-12 has no terminal outcome (LOCAL-1_TC_006: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-13 has no terminal outcome (LOCAL-1_TC_018: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-14 has no terminal outcome (LOCAL-1_TC_017: unresolved (contradicts_requirement) with no decision attached)",
+    "ledger: TS-14 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_014)",
+    "ledger: TS-15 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_015)",
+    "ledger: TS-16 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_016)",
+    "ledger: TS-18 is `failed:APP_BUG` (LOCAL-1_TC_018)",
+    "ledger: @regression LOCAL-1_TC_006 P-mergetimeout merge failure is not silent, shopper is signed in is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_006); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_017 P-cartread-error500 failed cart read says so, not the empty-cart text is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_017 P-cartread-timeout failed cart read says so, not the empty-cart text is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_017 P-bookread-error500 failed book read shows an error or the lines, not a blank page is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_018 P-deletefail-error500 move with a failed wishlist delete is not reported as moved is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_018 P-deletefail-timeout move with a failed wishlist delete is not reported as moved is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_018 P-postfail-timeout move with a failed cart add keeps the book on the wishlist and says so is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_018 P-removefail-timeout failed remove shows an error, the book stays on the wishlist is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_018 P-getfail-error500 failed wishlist read shows an error, not the empty-wishlist text is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "ledger: @regression LOCAL-1_TC_018 P-getfail-timeout failed wishlist read shows an error, not the empty-wishlist text is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+    "coverage red: OB-1 — current sufficient evidence incomplete",
+    "coverage red: OB-6 — current sufficient evidence incomplete",
+    "coverage red: OB-17 — current sufficient evidence incomplete",
+    "coverage red: OB-18 — current sufficient evidence incomplete",
+    "review: no critic verdict for LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped, LOCAL-1_TC_005 guest quantity above stock is capped at stock, LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged, LOCAL-1_TC_007 re-adding a book sums into one line, answers 201, LOCAL-1_TC_008 quantity ${name} (${qty}) is refused with VALIDATION_ERROR, LOCAL-1_TC_008 bookId ${name} (${id}) is refused with VALIDATION_ERROR, LOCAL-1_TC_008 edge quantity ${qty} is accepted, LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged, LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged, LOCAL-1_TC_009 total exactly equal to stock is accepted, LOCAL-1_TC_006 ${p.name} merge failure is not silent, shopper is signed in, LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove, LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it, LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist, @regression LOCAL-1_TC_017 P-bookread-timeout failed book read shows an error or the lines, not a blank page, @regression LOCAL-1_TC_017 P-putfail-error500 failed quantity change shows an error, stored quantity stays 1, @regression LOCAL-1_TC_017 P-putfail-timeout failed quantity change shows an error, stored quantity stays 1, @regression LOCAL-1_TC_017 P-deletefail-error500 failed remove shows a message, the line stays, @regression LOCAL-1_TC_017 P-deletefail-timeout failed remove shows a message, the line stays, @regression LOCAL-1_TC_018 P-postfail-error500 move with a failed cart add keeps the book on the wishlist and says so, @regression LOCAL-1_TC_018 P-removefail-error500 failed remove shows an error, the book stays on the wishlist",
+    "test instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged",
+    "test instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): sensitivity_proof.instance_id does not match the manifest instance",
+    "test instance @api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201 requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-7): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201",
+    "test instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-8): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted",
+    "test instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-8): sensitivity_proof.instance_id does not match the manifest instance",
+    "test instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-9): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted",
+    "test instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-9): sensitivity_proof.instance_id does not match the manifest instance",
+    "test instance @api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped",
+    "test instance @api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock",
+    "test instance @api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR",
+    "test instance @api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR",
+    "test instance @api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR",
+    "test instance @api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR",
+    "test instance @api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR",
+    "test instance @api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR",
+    "test instance @api @regression LOCAL-1_TC_008 edge quantity 1 is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-8): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 edge quantity 1 is accepted",
+    "test instance @api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged",
+    "test instance @api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-9): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged",
+    "test instance @regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-3): its receipt is for other bytes (test_content_hash 52e579f5278bd3ec84395593d474ad105c3559086f040101fae4efc3f69c6e5d, the test file now hashes f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it",
+    "test instance @regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-4): its receipt is for other bytes (test_content_hash 52e579f5278bd3ec84395593d474ad105c3559086f040101fae4efc3f69c6e5d, the test file now hashes f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist",
+    "test instance @regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-13): its receipt is for other bytes (test_content_hash 395f28035d735e92d08510940ffe4dfbe034a1d9914b46cfcde99fb65cc528a6, the test file now hashes c1065221ef6a8f204e21866a6609424633fd29bddcf6b79d36bab778cce6129e) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove",
+    "test instance @regression LOCAL-1_TC_017 P-bookread-timeout failed book read shows an error or the lines, not a blank page requires current sensitivity proof: no sensitivity receipt",
+    "test instance @regression LOCAL-1_TC_017 P-putfail-error500 failed quantity change shows an error, stored quantity stays 1 requires current sensitivity proof: no sensitivity receipt",
+    "test instance @regression LOCAL-1_TC_017 P-putfail-timeout failed quantity change shows an error, stored quantity stays 1 requires current sensitivity proof: no sensitivity receipt",
+    "test instance @regression LOCAL-1_TC_017 P-deletefail-error500 failed remove shows a message, the line stays requires current sensitivity proof: no sensitivity receipt",
+    "test instance @regression LOCAL-1_TC_017 P-deletefail-timeout failed remove shows a message, the line stays requires current sensitivity proof: no sensitivity receipt",
+    "test instance @regression LOCAL-1_TC_018 P-removefail-error500 failed remove shows an error, the book stays on the wishlist requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-18): sensitivity_proof.instance_id does not match the manifest instance",
+    "ledger: TS-6 is `failed:untriaged` (LOCAL-1_TC_006)",
+    "ledger: TS-17 is `failed:untriaged` (LOCAL-1_TC_017)",
+    "coverage: OB-3 — current sufficient evidence incomplete",
+    "coverage: OB-4 — current sufficient evidence incomplete",
+    "coverage: OB-5 — current sufficient evidence incomplete",
+    "coverage: OB-7 — current sufficient evidence incomplete",
+    "coverage: OB-8 — current sufficient evidence incomplete",
+    "coverage: OB-9 — current sufficient evidence incomplete",
+    "coverage: OB-10 — current sufficient evidence incomplete",
+    "coverage: OB-11 — current sufficient evidence incomplete",
+    "coverage: OB-12 — current sufficient evidence incomplete",
+    "coverage: OB-13 — current sufficient evidence incomplete",
+    "coverage: OB-14 — current sufficient evidence incomplete",
+    "coverage: OB-15 — current sufficient evidence incomplete",
+    "coverage: OB-16 — current sufficient evidence incomplete"
+  ],
+  "reason_records": [
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-4",
+      "detail": "traceability: R-4 has no terminal outcome (LOCAL-1_TC_005: passed; LOCAL-1_TC_014: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_014",
+        "R-4"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-6",
+      "detail": "traceability: R-6 has no terminal outcome (LOCAL-1_TC_008: passed; LOCAL-1_TC_015: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_015",
+        "R-6"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-7",
+      "detail": "traceability: R-7 has no terminal outcome (LOCAL-1_TC_009: passed; LOCAL-1_TC_015: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009",
+        "LOCAL-1_TC_015",
+        "R-7"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-8",
+      "detail": "traceability: R-8 has no terminal outcome (LOCAL-1_TC_010: passed; LOCAL-1_TC_015: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_010",
+        "LOCAL-1_TC_015",
+        "R-8"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-9",
+      "detail": "traceability: R-9 has no terminal outcome (LOCAL-1_TC_011: passed; LOCAL-1_TC_016: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_011",
+        "LOCAL-1_TC_016",
+        "R-9"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-12",
+      "detail": "traceability: R-12 has no terminal outcome (LOCAL-1_TC_006: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_006",
+        "R-12"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-13",
+      "detail": "traceability: R-13 has no terminal outcome (LOCAL-1_TC_018: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018",
+        "R-13"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-14",
+      "detail": "traceability: R-14 has no terminal outcome (LOCAL-1_TC_017: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017",
+        "R-14"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-14",
+      "detail": "ledger: TS-14 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_014)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_014",
+        "TS-14"
+      ],
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-15",
+      "detail": "ledger: TS-15 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_015)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_015",
+        "TS-15"
+      ],
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-16",
+      "detail": "ledger: TS-16 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_016)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_016",
+        "TS-16"
+      ],
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-18",
+      "detail": "ledger: TS-18 is `failed:APP_BUG` (LOCAL-1_TC_018)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018",
+        "TS-18"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_006 P-mergetimeout merge failure is not silent, shopper is signed in is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_006); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_006"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_017 P-cartread-error500 failed cart read says so, not the empty-cart text is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_017 P-cartread-timeout failed cart read says so, not the empty-cart text is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_017 P-bookread-error500 failed book read shows an error or the lines, not a blank page is `failed:APP_BUG` (tests/e2e/cart/cart_page.spec.ts::LOCAL-1_TC_017); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_018 P-deletefail-error500 move with a failed wishlist delete is not reported as moved is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_018 P-deletefail-timeout move with a failed wishlist delete is not reported as moved is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_018 P-postfail-timeout move with a failed cart add keeps the book on the wishlist and says so is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_018 P-removefail-timeout failed remove shows an error, the book stays on the wishlist is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_018 P-getfail-error500 failed wishlist read shows an error, not the empty-wishlist text is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "@regression",
+      "detail": "ledger: @regression LOCAL-1_TC_018 P-getfail-timeout failed wishlist read shows an error, not the empty-wishlist text is `failed:APP_BUG` (tests/e2e/cart/wishlist_move.spec.ts::LOCAL-1_TC_018); repair limit exhausted: 2 of 2 rounds about the tests themselves",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-1",
+      "detail": "coverage red: OB-1 — current sufficient evidence incomplete",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-6",
+      "detail": "coverage red: OB-6 — current sufficient evidence incomplete",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-17",
+      "detail": "coverage red: OB-17 — current sufficient evidence incomplete",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-18",
+      "detail": "coverage red: OB-18 — current sufficient evidence incomplete",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "REVIEW_GAP",
+      "entity": "no",
+      "detail": "review: no critic verdict for LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped, LOCAL-1_TC_005 guest quantity above stock is capped at stock, LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged, LOCAL-1_TC_007 re-adding a book sums into one line, answers 201, LOCAL-1_TC_008 quantity ${name} (${qty}) is refused with VALIDATION_ERROR, LOCAL-1_TC_008 bookId ${name} (${id}) is refused with VALIDATION_ERROR, LOCAL-1_TC_008 edge quantity ${qty} is accepted, LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged, LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged, LOCAL-1_TC_009 total exactly equal to stock is accepted, LOCAL-1_TC_006 ${p.name} merge failure is not silent, shopper is signed in, LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove, LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it, LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist, @regression LOCAL-1_TC_017 P-bookread-timeout failed book read shows an error or the lines, not a blank page, @regression LOCAL-1_TC_017 P-putfail-error500 failed quantity change shows an error, stored quantity stays 1, @regression LOCAL-1_TC_017 P-putfail-timeout failed quantity change shows an error, stored quantity stays 1, @regression LOCAL-1_TC_017 P-deletefail-error500 failed remove shows a message, the line stays, @regression LOCAL-1_TC_017 P-deletefail-timeout failed remove shows a message, the line stays, @regression LOCAL-1_TC_018 P-postfail-error500 move with a failed cart add keeps the book on the wishlist and says so, @regression LOCAL-1_TC_018 P-removefail-error500 failed remove shows an error, the book stays on the wishlist",
+      "owner": "review",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_007",
+        "LOCAL-1_TC_008",
+        "LOCAL-1_TC_009",
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_003",
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "review_gap"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "sensitivity_proof.instance_id",
+      "detail": "test instance @api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): sensitivity_proof.instance_id does not match the manifest instance",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201 requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-7): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_007"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-8): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "sensitivity_proof.instance_id",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 edge quantity 999 is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-8): sensitivity_proof.instance_id does not match the manifest instance",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-9): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "sensitivity_proof.instance_id",
+      "detail": "test instance @api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-9): sensitivity_proof.instance_id does not match the manifest instance",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 higher quantity wins, guest-only kept, no-stock dropped",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-5): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity zero (0) is refused with VALIDATION_ERROR",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity negative (-1) is refused with VALIDATION_ERROR",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity above-max-1000 (1000) is refused with VALIDATION_ERROR",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 quantity fraction (1.5) is refused with VALIDATION_ERROR",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 bookId zero (0) is refused with VALIDATION_ERROR",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 bookId negative (-3) is refused with VALIDATION_ERROR",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_008 edge quantity 1 is accepted requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-8): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_008 edge quantity 1 is accepted",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged requires current sensitivity proof: its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 out-of-stock book is refused with OUT_OF_STOCK, cart unchanged",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-9): its receipt is for other bytes (test_content_hash 4e426dc123ef70c4f45a874f368b346cd2cef37f8e8b873e31b1f066efad8051, the test file now hashes aac099d3347a985ce415b5d176bfe295f32556fd354fbf0fe46a376fc028d74f) and other code: probe the current bytes again with probe_by_code.py --instance @api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "one",
+      "detail": "test instance @regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-3): its receipt is for other bytes (test_content_hash 52e579f5278bd3ec84395593d474ad105c3559086f040101fae4efc3f69c6e5d, the test file now hashes f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_003"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "one",
+      "detail": "test instance @regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-4): its receipt is for other bytes (test_content_hash 52e579f5278bd3ec84395593d474ad105c3559086f040101fae4efc3f69c6e5d, the test file now hashes f8d7d5297f4e545977a4fd77e80d5afed6d0b4d6f551a9b2b798600d3f9f7e0c) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_004"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "its",
+      "detail": "test instance @regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-13): its receipt is for other bytes (test_content_hash 395f28035d735e92d08510940ffe4dfbe034a1d9914b46cfcde99fb65cc528a6, the test file now hashes c1065221ef6a8f204e21866a6609424633fd29bddcf6b79d36bab778cce6129e) and other code: probe the current bytes again with probe_by_code.py --instance @regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_013"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "no",
+      "detail": "test instance @regression LOCAL-1_TC_017 P-bookread-timeout failed book read shows an error or the lines, not a blank page requires current sensitivity proof: no sensitivity receipt",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "no",
+      "detail": "test instance @regression LOCAL-1_TC_017 P-putfail-error500 failed quantity change shows an error, stored quantity stays 1 requires current sensitivity proof: no sensitivity receipt",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "no",
+      "detail": "test instance @regression LOCAL-1_TC_017 P-putfail-timeout failed quantity change shows an error, stored quantity stays 1 requires current sensitivity proof: no sensitivity receipt",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "no",
+      "detail": "test instance @regression LOCAL-1_TC_017 P-deletefail-error500 failed remove shows a message, the line stays requires current sensitivity proof: no sensitivity receipt",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "no",
+      "detail": "test instance @regression LOCAL-1_TC_017 P-deletefail-timeout failed remove shows a message, the line stays requires current sensitivity proof: no sensitivity receipt",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "sensitivity_proof.instance_id",
+      "detail": "test instance @regression LOCAL-1_TC_018 P-removefail-error500 failed remove shows an error, the book stays on the wishlist requires current sensitivity proof (looked in tests[].sensitivity_proof and in obligation binding OB-18): sensitivity_proof.instance_id does not match the manifest instance",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-6",
+      "detail": "ledger: TS-6 is `failed:untriaged` (LOCAL-1_TC_006)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_006",
+        "TS-6"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-17",
+      "detail": "ledger: TS-17 is `failed:untriaged` (LOCAL-1_TC_017)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_017",
+        "TS-17"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-3",
+      "detail": "coverage: OB-3 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-4",
+      "detail": "coverage: OB-4 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-5",
+      "detail": "coverage: OB-5 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-7",
+      "detail": "coverage: OB-7 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-8",
+      "detail": "coverage: OB-8 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-9",
+      "detail": "coverage: OB-9 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-10",
+      "detail": "coverage: OB-10 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-11",
+      "detail": "coverage: OB-11 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-12",
+      "detail": "coverage: OB-12 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-13",
+      "detail": "coverage: OB-13 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-14",
+      "detail": "coverage: OB-14 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-15",
+      "detail": "coverage: OB-15 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-16",
+      "detail": "coverage: OB-16 — current sufficient evidence incomplete",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    }
+  ],
+  "blocked_by": [
+    "product",
+    "review",
+    "factory"
+  ],
+  "superseded_blocks": [],
+  "coverage": {
+    "schema_version": 2,
+    "status": "current",
+    "obligations": [
+      {
+        "obligation_id": "OB-1",
+        "plan_row": "TS-1",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_001 in-stock add shows success toast, badge 1 and one cart line",
+          "@regression LOCAL-1_TC_001 stock-0 book: error shown, no success, badge stays 1, no cart line"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-2",
+        "plan_row": "TS-2",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": true,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_002 out-of-stock book: button disabled, no POST /api/cart, no cart line",
+          "@regression LOCAL-1_TC_002 success message differs for quantity 1 and 3, cart holds 4"
+        ],
+        "gap": "the code critic could not verify the test that covers it; it is left with you: run it where you can, or accept the risk"
+      },
+      {
+        "obligation_id": "OB-3",
+        "plan_row": "TS-3",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_003 book not in cart: one line quantity 1, badge 1, off the wishlist; undo path repeats it"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-4",
+        "plan_row": "TS-4",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_004 book already in cart with quantity 2: one line, quantity 3, off the wishlist"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-5",
+        "plan_row": "TS-5",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_005 empty guest cart leaves the account cart unchanged",
+          "@api @regression LOCAL-1_TC_005 guest quantity above stock is capped at stock"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-6",
+        "plan_row": "TS-6",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "valid",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_006 P-merge500 merge failure is not silent, shopper is signed in",
+          "@regression LOCAL-1_TC_006 P-mergetimeout merge failure is not silent, shopper is signed in"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-7",
+        "plan_row": "TS-7",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_007 re-adding a book sums into one line, answers 201"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-8",
+        "plan_row": "TS-8",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_008 edge quantity 1 is accepted",
+          "@api @regression LOCAL-1_TC_008 edge quantity 999 is accepted"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-9",
+        "plan_row": "TS-9",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_009 one over stock with cart contents is INSUFFICIENT_STOCK, cart unchanged",
+          "@api @regression LOCAL-1_TC_009 total exactly equal to stock is accepted"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-10",
+        "plan_row": "TS-10",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_010 unknown book id is 404 BOOK_NOT_FOUND, cart untouched"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-11",
+        "plan_row": "TS-11",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_011 admin cart and guest carts do not see each other lines",
+          "@api @regression LOCAL-1_TC_011 foreign PUT and DELETE leave the owner line unchanged",
+          "@api @regression LOCAL-1_TC_011 user cart and guest carts do not see each other lines"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-12",
+        "plan_row": "TS-12",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@api @regression LOCAL-1_TC_012 update to stock is accepted, one over is INSUFFICIENT_STOCK and keeps 5"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-13",
+        "plan_row": "TS-13",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "valid",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_013 badge is the sum of quantities, total follows add, update and remove"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-14",
+        "plan_row": "TS-14",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-15",
+        "plan_row": "TS-15",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-16",
+        "plan_row": "TS-16",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-17",
+        "plan_row": "TS-17",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_017 P-bookread-error500 failed book read shows an error or the lines, not a blank page",
+          "@regression LOCAL-1_TC_017 P-bookread-timeout failed book read shows an error or the lines, not a blank page",
+          "@regression LOCAL-1_TC_017 P-cartread-error500 failed cart read says so, not the empty-cart text",
+          "@regression LOCAL-1_TC_017 P-cartread-timeout failed cart read says so, not the empty-cart text",
+          "@regression LOCAL-1_TC_017 P-deletefail-error500 failed remove shows a message, the line stays",
+          "@regression LOCAL-1_TC_017 P-deletefail-timeout failed remove shows a message, the line stays",
+          "@regression LOCAL-1_TC_017 P-putfail-error500 failed quantity change shows an error, stored quantity stays 1",
+          "@regression LOCAL-1_TC_017 P-putfail-timeout failed quantity change shows an error, stored quantity stays 1"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-18",
+        "plan_row": "TS-18",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "proven",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_018 P-deletefail-error500 move with a failed wishlist delete is not reported as moved",
+          "@regression LOCAL-1_TC_018 P-deletefail-timeout move with a failed wishlist delete is not reported as moved",
+          "@regression LOCAL-1_TC_018 P-getfail-error500 failed wishlist read shows an error, not the empty-wishlist text",
+          "@regression LOCAL-1_TC_018 P-getfail-timeout failed wishlist read shows an error, not the empty-wishlist text",
+          "@regression LOCAL-1_TC_018 P-postfail-error500 move with a failed cart add keeps the book on the wishlist and says so",
+          "@regression LOCAL-1_TC_018 P-postfail-timeout move with a failed cart add keeps the book on the wishlist and says so",
+          "@regression LOCAL-1_TC_018 P-removefail-error500 failed remove shows an error, the book stays on the wishlist",
+          "@regression LOCAL-1_TC_018 P-removefail-timeout failed remove shows an error, the book stays on the wishlist"
+        ],
+        "gap": "current sufficient evidence incomplete"
+      },
+      {
+        "obligation_id": "OB-19",
+        "plan_row": "TS-19",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": true,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_019 P-error500 failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again",
+          "@regression LOCAL-1_TC_019 P-timeout failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again"
+        ],
+        "gap": "the code critic could not verify the test that covers it; it is left with you: run it where you can, or accept the risk"
+      },
+      {
+        "obligation_id": "OB-20",
+        "plan_row": "TS-20",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "sufficient",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": true,
+        "oracle_open": false,
+        "instance_ids": [
+          "@regression LOCAL-1_TC_020 P-addfail-error500 failed add of quantity 3: error shown, no success message, no cart line",
+          "@regression LOCAL-1_TC_020 P-addfail-timeout failed add of quantity 3: error shown, no success message, no cart line",
+          "@regression LOCAL-1_TC_020 P-readfail-error500 failed book read: the page shows a message, not a blank page",
+          "@regression LOCAL-1_TC_020 P-readfail-timeout failed book read: the page shows a message, not a blank page"
+        ],
+        "gap": "the code critic could not verify the test that covers it; it is left with you: run it where you can, or accept the risk"
+      }
+    ],
+    "unique_instances": 43
+  },
+  "manual_evidence": {
+    "rows": [],
+    "errors": []
+  },
+  "subtasks_open": [],
+  "review_skipped": true,
+  "repair_windows": [
+    {
+      "stage": "S5",
+      "cases": [
+        "LOCAL-1_TC_001",
+        "LOCAL-1_TC_002"
+      ],
+      "tests": [],
+      "reason": "cap",
+      "counted": 2,
+      "cap": 2,
+      "token": "debt",
+      "at": "2026-11-05T04:02:38+00:00",
+      "refs": [
+        "@regression LOCAL-1_TC_001 stock-0 book: error shown, no success, badge stays 1, no cart line"
+      ],
+      "fixed": false,
+      "fixed_by": "",
+      "missing": [],
+      "remarks": []
+    },
+    {
+      "stage": "S5",
+      "cases": [
+        "LOCAL-1_TC_006",
+        "LOCAL-1_TC_013"
+      ],
+      "tests": [],
+      "reason": "cap",
+      "counted": 2,
+      "cap": 2,
+      "token": "debt",
+      "at": "2026-11-05T04:59:38+00:00",
+      "refs": [
+        "@regression LOCAL-1_TC_006 P-mergetimeout merge failure is not silent, shopper is signed in"
+      ],
+      "fixed": false,
+      "fixed_by": "",
+      "missing": [],
+      "remarks": []
+    },
+    {
+      "stage": "S5",
+      "cases": [
+        "LOCAL-1_TC_017",
+        "LOCAL-1_TC_018"
+      ],
+      "tests": [],
+      "reason": "cap",
+      "counted": 2,
+      "cap": 2,
+      "token": "debt",
+      "at": "2026-11-05T06:25:53+00:00",
+      "refs": [
+        "@regression LOCAL-1_TC_017 P-cartread-error500 failed cart read says so, not the empty-cart text",
+        "@regression LOCAL-1_TC_017 P-cartread-timeout failed cart read says so, not the empty-cart text",
+        "@regression LOCAL-1_TC_017 P-bookread-error500 failed book read shows an error or the lines, not a blank page",
+        "@regression LOCAL-1_TC_018 P-deletefail-error500 move with a failed wishlist delete is not reported as moved",
+        "@regression LOCAL-1_TC_018 P-deletefail-timeout move with a failed wishlist delete is not reported as moved",
+        "@regression LOCAL-1_TC_018 P-postfail-timeout move with a failed cart add keeps the book on the wishlist and says so",
+        "@regression LOCAL-1_TC_018 P-removefail-timeout failed remove shows an error, the book stays on the wishlist",
+        "@regression LOCAL-1_TC_018 P-getfail-error500 failed wishlist read shows an error, not the empty-wishlist text",
+        "@regression LOCAL-1_TC_018 P-getfail-timeout failed wishlist read shows an error, not the empty-wishlist text"
+      ],
+      "fixed": false,
+      "fixed_by": "",
+      "missing": [],
+      "remarks": []
+    }
+  ],
+  "repair_windows_problem": "",
+  "source_inputs": {
+    "schema_version": 1,
+    "files": {
+      "test-plan.json": {
+        "path": "work/test-plan.json",
+        "sha256": "9878751114b61b420ae68462948f186db9fcc3d7445ab80a61fa77571d80f652"
+      },
+      "run-report.json": {
+        "path": "work/run-report.json",
+        "sha256": "f23f0baee6ae0f3d118d67d1aae7c3d0dba780299e9b28900fda4cd3363e69a6"
+      },
+      "automation-manifest.json": {
+        "path": "work/automation-manifest.json",
+        "sha256": "a662505230b6fe0e79715fb0021a70237a1c83ffc80c31950dbc12175292f6cd"
+      },
+      "triage.json": {
+        "path": "work/triage.json",
+        "sha256": "52b737c0a26ccbe56d19e31c1999d94cc69ae0d07f83167426919bfa9bd29ede"
+      }
+    },
+    "fingerprint": "5a412b85ee5c3fc5c5f9cadbfe00c76ffa4f2370f67e6116b67259f350505cff"
+  },
+  "person_debts": [],
+  "factory_findings": [
+    {
+      "code": "PROBE_DETECTOR_ROW_MISSING",
+      "entity": "@regression LOCAL-1_TC_019 P-error500 failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again",
+      "owner": "factory",
+      "detail": "factory: the probe of @regression LOCAL-1_TC_019 P-error500 failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again failed at the mutated line, but the detector row does not know the failure's wording (cause: data_row); the test is left with you unprobed - the factory's data to correct"
+    },
+    {
+      "code": "PROBE_DETECTOR_ROW_MISSING",
+      "entity": "@regression LOCAL-1_TC_019 P-timeout failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again",
+      "owner": "factory",
+      "detail": "factory: the probe of @regression LOCAL-1_TC_019 P-timeout failed POST /api/cart: error shown, no success, badge 0, no cart line, Add works again failed at the mutated line, but the detector row does not know the failure's wording (cause: data_row); the test is left with you unprobed - the factory's data to correct"
+    },
+    {
+      "code": "PROBE_DETECTOR_ROW_MISSING",
+      "entity": "@regression LOCAL-1_TC_020 P-addfail-error500 failed add of quantity 3: error shown, no success message, no cart line",
+      "owner": "factory",
+      "detail": "factory: the probe of @regression LOCAL-1_TC_020 P-addfail-error500 failed add of quantity 3: error shown, no success message, no cart line failed at the mutated line, but the detector row does not know the failure's wording (cause: data_row); the test is left with you unprobed - the factory's data to correct"
+    },
+    {
+      "code": "PROBE_DETECTOR_ROW_MISSING",
+      "entity": "@regression LOCAL-1_TC_020 P-readfail-error500 failed book read: the page shows a message, not a blank page",
+      "owner": "factory",
+      "detail": "factory: the probe of @regression LOCAL-1_TC_020 P-readfail-error500 failed book read: the page shows a message, not a blank page failed at the mutated line, but the detector row does not know the failure's wording (cause: data_row); the test is left with you unprobed - the factory's data to correct"
+    },
+    {
+      "code": "PROBE_DETECTOR_ROW_MISSING",
+      "entity": "@regression LOCAL-1_TC_020 P-addfail-timeout failed add of quantity 3: error shown, no success message, no cart line",
+      "owner": "factory",
+      "detail": "factory: the probe of @regression LOCAL-1_TC_020 P-addfail-timeout failed add of quantity 3: error shown, no success message, no cart line failed at the mutated line, but the detector row does not know the failure's wording (cause: data_row); the test is left with you unprobed - the factory's data to correct"
+    },
+    {
+      "code": "PROBE_DETECTOR_ROW_MISSING",
+      "entity": "@regression LOCAL-1_TC_020 P-readfail-timeout failed book read: the page shows a message, not a blank page",
+      "owner": "factory",
+      "detail": "factory: the probe of @regression LOCAL-1_TC_020 P-readfail-timeout failed book read: the page shows a message, not a blank page failed at the mutated line, but the detector row does not know the failure's wording (cause: data_row); the test is left with you unprobed - the factory's data to correct"
+    }
+  ]
+}

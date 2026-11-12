@@ -1,0 +1,111 @@
+# S4: the case critic hands the review back - to the designer for a repair round, or on to the
+# gate. The same file serves both: `review.outcome` decides which.
+#
+# The rule this file enforces is the one the whole factory pays for when it is missing: A REFUSAL
+# THAT DOES NOT SAY WHAT THE REVIEWER EXPECTS IS NOT A REFUSAL, IT IS A RIDDLE. The author then
+# guesses, and every guess is a round - and S4 allows two. So every finding carries, beside the
+# problem, the expected state in the reviewer's own words and, where one exists, the way the author
+# can tell it is satisfied without asking again.
+#
+# The verdict is computed, not written: `critic_rollcall.py` reads the roll-call in the findings
+# file. An unreviewed case makes it `partial` and puts that id in front of the person at gate A.
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-critic-2.values.yaml in one Write; a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s4-case-critic-to-designer
+stage: S4
+from_role: qa-case-critic
+to_role: qa-case-designer            # on `approved` the same file closes S4 instead
+
+inputs:
+  - path: work/handoffs/<the designer's dispatch>.yaml
+    what: the designer's handoff for this window
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every case in review_scope, at its pinned version
+    required: true
+  - path: work/test-plan.json
+    what: the rows and obligations the roll-call is taken against
+    required: true
+
+# One line per entry of the designer's `inputs`, with the version read. A review of a case that
+# has since been re-pinned is not a review of this window.
+inputs_read:
+  - path: <path exactly as the designer listed it>
+    version: <the pinned cv_ id, or the file's sha256>
+
+header:
+  role: qa-case-critic
+  stage: S4
+  window: CART-1_TC_005,CART-1_TC_006,CART-1_TC_008,CART-1_TC_009
+  verdict: ok
+
+review:
+  outcome: approved  # approved | approved_with_fixes | rejected
+  rollcall: 4 of 4 reviewed
+  findings_file: work/test-cases/critic-findings.md  # required; the stage is not receipted without it
+  rounds_used: 2
+  rubric_covered: coverage, atomicity, clarity, edge cases, negative scenarios, traceability, completeness, contradicts_source, seed the defect
+
+# One row per case in the designer's review_scope. `state` from vocabulary.row_states, allowed for
+# qa-case-critic: approve, approve_with_fixes, approve_with_concerns, partial, reject (the words of the role file, rule 4;
+# `unverified` and `review_skipped` stay legal), written alone.
+scope:
+  - id: CART-1_TC_005
+    state: approve
+    reason: F-1 resolved; guest cookie sent with signed-in read
+    case_version: cv_3767896d512c623e0b59
+  - id: CART-1_TC_006
+    state: approve
+    reason: round 1 concerns resolved
+    case_version: cv_3736b2c697846070acdd
+  - id: CART-1_TC_008
+    state: approve
+    reason: unchanged, approved in round 1
+    case_version: cv_ce42982f1616cbc645f9
+  - id: CART-1_TC_009
+    state: approve_with_concerns
+    reason: seed user verified status unchecked until S5
+    case_version: cv_2b3ebd621560f9547704
+
+# What the author must change. `fix` is the action; `expected` is the condition the author can
+# check its own work against; `check` is how to check it without another round of asking.
+#
+# `replacement` is what lets code apply the fix with no dispatch at all: an exact old-text and
+# new-text pair is applied by `critic_rollcall.py --apply-fixes`, the case is re-pinned and the
+# change is verified. A replacement that matches zero or several places is left alone and becomes
+# a gate A debt with an owner - which is still better than a round.
+findings:
+  - id: C-1
+    case: CART-1_TC_009
+    where: preconditions PC-1
+    problem: PC-1 checks only credential keys; the user being verified is assumed in prose.
+    expected: the seed user is verified before POST /api/orders in step 4; an unverified user is reported by S5 as an environment gap.
+    fix: S5 automator confirms the seed user is verified on first login, or creates a verified user.
+    check: first S5 login and order against the seed user
+    dimension: clarity
+    blocking: false
+    replacement:
+      old: "<the exact text to replace, or omit the block entirely>"
+      new: none, concern carried to S5
+
+# What the review could not settle. An honest `unverified` with a named cause is worth more than a
+# verdict the evidence does not carry - and it is a word of the vocabulary, not an improvisation.
+unverified:
+  - id: <case id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or access would>
+
+claims:
+  every_case_of_the_review_scope_has_a_row: true
+  every_finding_names_expected_and_check: true
+  the_verdict_was_computed_by_rollcall_not_typed: true
+  no_case_outside_the_review_scope_was_reviewed: true
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

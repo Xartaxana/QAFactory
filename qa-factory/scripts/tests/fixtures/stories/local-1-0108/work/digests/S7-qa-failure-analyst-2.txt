@@ -1,0 +1,12 @@
+qa-failure-analyst S7 LOCAL-1 rework (dispatch 2) · ok
+LOCAL-1_TC_007 · APP_BUG · covered by the one merged draft qty-invalid-input-coerced (0 -> 1)
+LOCAL-1_TC_008 · APP_BUG · covered by the merged draft, both instances (-1 and 1.5 rewritten to a valid qu…
+LOCAL-1_TC_009 · APP_BUG · covered by the merged draft (abc -> 1)
+LOCAL-1_TC_012 · APP_BUG · p_zero, p_negative, p_non_integer and p_non_numeric covered by the merged draft…
+qa-factory/artifacts/LOCAL-1/work/bug-drafts/qty-invalid-input-coerced.json
+The one draft replaces the three old ones, which I deleted, so the gate B list shows exactly one bug. Its triage_ref is TC_007, confirmation is unconfirmed, and cases lists TC_007, TC_008, TC_009 and TC_012.
+Its manual_steps and actual give every input example. The observed results are 0 -> 1, -1 -> 11 shown in the field with a line quantity of 1, 1.5 -> 1, and abc -> 1. The expected result per R-8, R-9 and R-10 is rejection with a clear message, nothing added, and the field keeping the typed value.
+The TC_008 (both instances) and TC_009 triage refs are in the draft's also_triage_refs field, which is my own addition, not a contract field. It is not checked, and triage_ref accepts only the one row.
+triage.json is unchanged, with all verdicts the same, and its blocking_check links on the TC_012 rows still resolve to TC_007, TC_008 and TC_009.
+Old traces remain in delivery-summary.json, delivery-summary.md, traceability.json, the S7-1 digests and the S7-1 form. They still name the three old draft slugs, and I did not edit them. They are generated or earlier-dispatch records, so regenerate the delivery summary and traceability to drop them.
+The S7-2 handoff form is complete: qa-factory/artifacts/LOCAL-1/work/handoffs/S7-qa-failure-analyst-2.yaml.

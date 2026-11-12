@@ -1,0 +1,532 @@
+{
+  "schema": 1,
+  "scope_hash": "242b2ad22ab28f7fe47feb14ecb449bc9c5d6078e9b75283904b72919a8998a1",
+  "gate_a_plan_hash": "bb3dc3a9487d2607d929236cecbd67f3f090e3e986f7a5aae941d07b0b712e65",
+  "cases": [
+    {
+      "case": "CART-1_TC_001",
+      "requirements": [
+        "R-3"
+      ],
+      "s3": {
+        "row": "TS-1",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-3"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-unknown: HTTP 404 with body code BOOK_NOT_FOUND (body has error and code)."
+        },
+        {
+          "n": 2,
+          "text": "P-soldout: HTTP 400 with body code OUT_OF_STOCK."
+        },
+        {
+          "n": 3,
+          "text": "Independent read: GET /api/cart in the same cookie jar returns no row for S0 and no row for the nonexistent id (read through the cart list, not the POST response)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_002",
+      "requirements": [
+        "R-4"
+      ],
+      "s3": {
+        "row": "TS-2",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-4"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-equal: the second add (to exactly stock) succeeds with a 2xx status."
+        },
+        {
+          "n": 2,
+          "text": "P-plus-one: the third add answers HTTP 400 with code INSUFFICIENT_STOCK."
+        },
+        {
+          "n": 3,
+          "text": "GET /api/cart shows exactly one row for B with quantity 5 (not 6)."
+        },
+        {
+          "n": 4,
+          "text": "The row quantity read in Then 3 equals the stock of B (5) after the rejected add, so the rejected request changed nothing."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_003",
+      "requirements": [
+        "R-5"
+      ],
+      "s3": {
+        "row": "TS-3",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-5"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "GET /api/cart contains exactly one row for B (no second row)."
+        },
+        {
+          "n": 2,
+          "text": "That row has quantity 3 (1 + 2: added, not replaced)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_004",
+      "requirements": [
+        "R-6"
+      ],
+      "s3": {
+        "row": "TS-4",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-6"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-qty-min and P-qty-max: 2xx; GET /api/cart in that jar shows B with quantity 1 and 999 respectively."
+        },
+        {
+          "n": 2,
+          "text": "P-qty-over, P-qty-zero, P-qty-fraction, P-qty-string: a 4xx rejection (never 5xx), not a 2xx."
+        },
+        {
+          "n": 3,
+          "text": "P-id-zero, P-id-negative, P-id-fraction: a 4xx rejection (never 5xx)."
+        },
+        {
+          "n": 4,
+          "text": "Every rejection body contains both `error` and `code` fields, and GET /api/cart in that jar has no row created by the rejected request."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_005",
+      "requirements": [
+        "R-7"
+      ],
+      "s3": {
+        "row": "TS-5",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-7"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "Control: G1's GET /api/cart lists B with quantity 2 (the guest sees its own row)."
+        },
+        {
+          "n": 2,
+          "text": "P-user: JU's GET /api/cart payload (request carrying both U's session and G1's guest cookie) contains no row for B and none of G1's rows (payload inspected directly; a user-owner query that also matches the guest sessionId would return B x2 here)."
+        },
+        {
+          "n": 3,
+          "text": "P-other-guest: G2's GET /api/cart payload contains no row for B and none of G1's rows (payload inspected directly)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_006",
+      "requirements": [
+        "R-8"
+      ],
+      "s3": {
+        "row": "TS-6",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-8"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-overlap-higher-guest: B2 in U's cart has quantity 4 (guest 4 over user 1: max, not sum 5)."
+        },
+        {
+          "n": 2,
+          "text": "P-overlap-higher-user: B1 in U's cart has quantity 5 (user 5 over guest 2: max, not sum 7)."
+        },
+        {
+          "n": 3,
+          "text": "P-cap: B3 in U's cart has quantity 3 (guest 6 capped at stock 3)."
+        },
+        {
+          "n": 4,
+          "text": "P-soldout: U's cart has no row for B4."
+        },
+        {
+          "n": 5,
+          "text": "P-disjoint: B5 is in U's cart with quantity 2; U's cart contains exactly the rows B1 x5, B2 x4, B3 x3, B5 x2 (and no row for B4)."
+        },
+        {
+          "n": 6,
+          "text": "P-unauth: the merge without a session answers 401."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_007",
+      "requirements": [
+        "R-11"
+      ],
+      "s3": {
+        "row": "TS-7",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-11"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-set-equal: PUT succeeds (2xx) and the read-back row for B has quantity 5 (set, not added to 1)."
+        },
+        {
+          "n": 2,
+          "text": "P-over: PUT answers 400 INSUFFICIENT_STOCK."
+        },
+        {
+          "n": 3,
+          "text": "After P-over the read-back row for B still has quantity 5."
+        },
+        {
+          "n": 4,
+          "text": "P-delete: DELETE succeeds and the final GET /api/cart has no row for B."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_008",
+      "requirements": [
+        "R-12"
+      ],
+      "s3": {
+        "row": "TS-8",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-12"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "Foreign PUT answers HTTP 404 with code CART_ITEM_NOT_FOUND."
+        },
+        {
+          "n": 2,
+          "text": "Foreign DELETE answers HTTP 404 with code CART_ITEM_NOT_FOUND."
+        },
+        {
+          "n": 3,
+          "text": "A's after_read rows are identical to the before_read rows (row R_A for K, quantity 2); mutable entity checked: CartItem only."
+        },
+        {
+          "n": 4,
+          "text": "Positive control: A's own PUT succeeds and the next read shows K with quantity 3, proving R_A is reachable and mutable by its owner (so the 404s and the unchanged state are not an artifact of an unreachable id)."
+        },
+        {
+          "n": 5,
+          "text": "B's own GET /api/cart payload has no row for K."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_009",
+      "requirements": [
+        "R-15"
+      ],
+      "s3": {
+        "row": "TS-9",
+        "level": "api",
+        "fit": "new",
+        "oracle": "requirement:R-15"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "P-empty: the quote answers 400/409/422 (not 401, 404 or 5xx) with a JSON body carrying `error` and `code`, and issues no quote (no quote items in the body). The signed-in session is proven by Then 2 succeeding on the same jar and path."
+        },
+        {
+          "n": 2,
+          "text": "P-quote: the quote lists B1 x2 and B2 x1 (items and quantities read from the quote body match the cart read from GET /api/cart)."
+        },
+        {
+          "n": 3,
+          "text": "P-overstock: the quote answers 400/409/422 (not 401, 404 or 5xx) with a JSON body carrying `error` and `code`, and the body or message identifies B1 (the item above stock); no quote items are issued. Exact code value is not asserted (Q1)."
+        },
+        {
+          "n": 4,
+          "text": "P-order: the order succeeds (2xx) with items B1 x2 and B2 x1."
+        },
+        {
+          "n": 5,
+          "text": "After the order GET /api/cart as U has no row for B1 or B2 (cart cleared)."
+        }
+      ],
+      "remainders": []
+    },
+    {
+      "case": "CART-1_TC_010",
+      "requirements": [
+        "R-1",
+        "R-2",
+        "R-10"
+      ],
+      "s3": {
+        "row": "TS-10",
+        "level": "e2e-ui",
+        "fit": "new",
+        "oracle": "requirement:R-1"
+      },
+      "thens": [
+        {
+          "n": 1,
+          "text": "The add call for B completes successfully (2xx) after the click."
+        },
+        {
+          "n": 2,
+          "text": "The cart badge text equals the sum of quantities in the cart, 1."
+        },
+        {
+          "n": 3,
+          "text": "The cart page lists B (by its unique title) with quantity 1; the content, not just the page visibility, is asserted."
+        }
+      ],
+      "remainders": []
+    }
+  ],
+  "tests": [
+    {
+      "test": "CART-1_TC_001 add unknown or sold-out book rejected",
+      "function": "CART-1_TC_001 add unknown or sold-out book rejected",
+      "file": "tests/api/cart/add-rejections.spec.ts",
+      "cases": [
+        "CART-1_TC_001"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + guest cookie jar; own book via admin API",
+      "thens": [
+        "CART-1_TC_001#1",
+        "CART-1_TC_001#2",
+        "CART-1_TC_001#3"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-1",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_001 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_002 add beyond stock rejected",
+      "function": "CART-1_TC_002 add beyond stock rejected",
+      "file": "tests/api/cart/add-stock-limit.spec.ts",
+      "cases": [
+        "CART-1_TC_002"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + own book stock 5",
+      "thens": [
+        "CART-1_TC_002#1",
+        "CART-1_TC_002#2",
+        "CART-1_TC_002#3",
+        "CART-1_TC_002#4"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-2",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_002 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_003 repeat add accumulates",
+      "function": "CART-1_TC_003 repeat add accumulates",
+      "file": "tests/api/cart/add-accumulate.spec.ts",
+      "cases": [
+        "CART-1_TC_003"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + own book",
+      "thens": [
+        "CART-1_TC_003#1",
+        "CART-1_TC_003#2"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-3",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_003 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_004 quantity and id boundaries",
+      "function": "CART-1_TC_004 quantity and id boundaries",
+      "file": "tests/api/cart/add-boundaries.spec.ts",
+      "cases": [
+        "CART-1_TC_004"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + own book stock>=999",
+      "thens": [
+        "CART-1_TC_004#1",
+        "CART-1_TC_004#2",
+        "CART-1_TC_004#3",
+        "CART-1_TC_004#4"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-4",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_004 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_005 cart isolation between owners",
+      "function": "CART-1_TC_005 cart isolation between owners",
+      "file": "tests/api/cart/cart-isolation.spec.ts",
+      "cases": [
+        "CART-1_TC_005"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + two guest jars + user account",
+      "thens": [
+        "CART-1_TC_005#1",
+        "CART-1_TC_005#2",
+        "CART-1_TC_005#3"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-5",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_005 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_006 guest cart merge on login",
+      "function": "CART-1_TC_006 guest cart merge on login",
+      "file": "tests/api/cart/cart-merge.spec.ts",
+      "cases": [
+        "CART-1_TC_006"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + own books B1-B5 + user account",
+      "thens": [
+        "CART-1_TC_006#1",
+        "CART-1_TC_006#2",
+        "CART-1_TC_006#3",
+        "CART-1_TC_006#4",
+        "CART-1_TC_006#5",
+        "CART-1_TC_006#6"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-6",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_006 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_007 update and delete cart item",
+      "function": "CART-1_TC_007 update and delete cart item",
+      "file": "tests/api/cart/cart-update-delete.spec.ts",
+      "cases": [
+        "CART-1_TC_007"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + own book",
+      "thens": [
+        "CART-1_TC_007#1",
+        "CART-1_TC_007#2",
+        "CART-1_TC_007#3",
+        "CART-1_TC_007#4"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-7",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_007 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_008 foreign cart item mutation denied",
+      "function": "CART-1_TC_008 foreign cart item mutation denied",
+      "file": "tests/api/cart/cart-ownership.spec.ts",
+      "cases": [
+        "CART-1_TC_008"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + two owners",
+      "thens": [
+        "CART-1_TC_008#1",
+        "CART-1_TC_008#2",
+        "CART-1_TC_008#3",
+        "CART-1_TC_008#4",
+        "CART-1_TC_008#5"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-8",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_008 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_009 quote and order from cart",
+      "function": "CART-1_TC_009 quote and order from cart",
+      "file": "tests/api/cart/cart-quote-order.spec.ts",
+      "cases": [
+        "CART-1_TC_009"
+      ],
+      "shape": "new",
+      "level": "api",
+      "fixture": "api + signed-in user, own books",
+      "thens": [
+        "CART-1_TC_009#1",
+        "CART-1_TC_009#2",
+        "CART-1_TC_009#3",
+        "CART-1_TC_009#4",
+        "CART-1_TC_009#5"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-9",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_009 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    },
+    {
+      "test": "CART-1_TC_010 add from catalog shows badge and cart page",
+      "function": "CART-1_TC_010 add from catalog shows badge and cart page",
+      "file": "tests/e2e/cart/add-to-cart.spec.ts",
+      "cases": [
+        "CART-1_TC_010"
+      ],
+      "shape": "new",
+      "level": "e2e-ui",
+      "fixture": "UI + Page Objects (new CartPage); own book via API",
+      "thens": [
+        "CART-1_TC_010#1",
+        "CART-1_TC_010#2",
+        "CART-1_TC_010#3"
+      ],
+      "apart_reason": "own setup and distinct Thens; no sibling case shares setup and action",
+      "id": "T-10",
+      "data": "own",
+      "assert": "Each Then of CART-1_TC_010 asserted as written, state read back through GET /api/cart (UI: badge and cart page for TC_010)"
+    }
+  ],
+  "fixtures": [
+    "own-book creation/cleanup via admin API",
+    "guest cookie jar helper",
+    "user account from EMAIL_USER/EMAIL_PASS"
+  ],
+  "refactor": "none; new core/pages/CartPage.ts and a cart API client helper"
+}

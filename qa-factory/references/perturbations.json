@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "note": "Closed list of perturbations the factory applies, read by scripts/user_path_failures.py `perturbation_axis` (the one reader; `failure_axis` is its `request_failure` view) for the S3 request rows, and by `perturbation_axes` for the S6 brief, which prints every axis as `Exploration cells:`. A kind is what the run does to the world (`fail_request` is the runner's own step: a url glob and a status 400-599 or `timeout`); `steps` are lines of a `ui --steps-file` with placeholders the runner fills (the selector and the values are the page's, open variety the code does not know); the oracle is what must stay true while it happens, taken from the requirements and never from the code (FR-58).",
+  "axes": [
+    {
+      "id": "request_failure",
+      "applies_to": "requests",
+      "kinds": [
+        {"id": "500", "fail_request": "500", "why": "the dependency answers an error: fetch does not throw, the page must look at the status"},
+        {"id": "timeout", "fail_request": "timeout", "why": "the dependency never answers: the call rejects, the page must leave its loading state"}
+      ],
+      "oracle": "the page stays alive (the rest of it still shows), the person is told of the error in words, and no data is lost silently"
+    },
+    {
+      "id": "keyboard_input",
+      "applies_to": "fields",
+      "subject": "every input field of the flow you meet",
+      "kinds": [
+        {"id": "multi_digit", "steps": ["fill <selector> 12"], "why": "a value saved on every change is cut at the first character when the page redraws"},
+        {"id": "empty", "steps": ["press <selector> Control+A", "press <selector> Backspace"], "why": "an emptied field sends null or not-a-number"},
+        {"id": "paste", "steps": ["paste <selector> 12"], "why": "an inserted value reaches no key handler"},
+        {"id": "beyond_limit", "steps": ["type <selector> <the limit plus one, 0, -1>"], "why": "a value past the limit is clamped silently or refused in words"}
+      ],
+      "oracle": "the value typed is kept whole, the field keeps its focus, and a value the product refuses is refused in words"
+    },
+    {
+      "id": "reload_mid_operation",
+      "applies_to": "actions",
+      "subject": "every action that saves",
+      "kinds": [
+        {"id": "reload", "steps": ["goto <the same address>"], "why": "a save in flight is lost, applied twice or shown as saved when it was not"}
+      ],
+      "oracle": "after the reload the page shows what was saved and nothing else, and an unsaved change is told"
+    },
+    {
+      "id": "session_transition",
+      "applies_to": "actions",
+      "subject": "every sign-in you can reach with state built as a guest",
+      "kinds": [
+        {"id": "sign_in_with_state", "steps": ["click <the control that builds the guest state>", "click <the sign-in control>", "fill-account <selector> <actor> user", "fill-account <selector> <actor> secret", "click <the sign-in submit>"], "why": "state built before sign-in is merged into the account: it is dropped, doubled or replaced"},
+        {"id": "sign_in_merge_failed", "steps": ["fail_request <the glob of the merge request> 500", "click <the sign-in submit>"], "why": "the merge call fails while the sign-in still says success: the state is gone with no word"}
+      ],
+      "oracle": "after the sign-in the account holds what was built as a guest, or the person is told in words what was not kept"
+    }
+  ]
+}

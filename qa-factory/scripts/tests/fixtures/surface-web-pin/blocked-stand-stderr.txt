@@ -1,0 +1,1 @@
+manual_capture: the stand could not be identified (e2e-ui start: runtime probe returned unknown: the probe gave no reason); this attempt has no record. Put the case in env_blocked[] with this line and the remedy: bring the stand up on the build under test, then capture again

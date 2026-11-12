@@ -1,0 +1,3 @@
+qa-case-critic S3 S3-qa-case-critic-1 · ok
+TS-1..TS-20 · approved · all of R-1..R-14 reach a row; tried table covers the risky R's
+qa-factory/artifacts/LOCAL-1/work/handoffs/S3-qa-case-critic-1.yaml

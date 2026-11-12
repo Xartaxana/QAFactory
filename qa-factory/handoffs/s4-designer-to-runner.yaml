@@ -1,0 +1,98 @@
+# S4 -> S6: the manual-agent cases are handed to the runner, skipping S5 entirely.
+#
+# This is the handoff that has no stage boundary of its own, which is why it was the easiest to
+# lose. A manual-agent case is approved at gate A, sits untouched through S5, and reaches a runner
+# two stages later that knows the case text but not what it is allowed to count as proof. On
+# TP1-13797 the runner reached exactly that point and the observation it produced settled
+# nothing - there was no word for "I looked and it did not answer" until `inconclusive` was added
+# to the vocabulary.
+#
+# So the evidence policy is decided where the case is designed and travels with it, in writing:
+# what artifact proves the Then, what the runner must record, and what it does when the product
+# does not answer. `manual-human` cases are listed too and are NOT the runner's to execute - they
+# are the person's, and the report says so.
+schema_version: 1
+contract: s4-designer-to-runner
+stage: S4
+from_role: qa-case-designer
+to_role: qa-runner
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: <cases_root>/<area>/<case>.md
+    what: every manual case in scope, at the pinned version named here
+    required: true
+  - path: work/test-plan.json
+    what: the row each case answers, with its oracle and obligations
+    required: true
+
+inputs_read:
+  - path: work/test-plan.json
+    version: <plan_revision>
+    manual_rows: <how many rows carried a manual disposition>
+
+header:
+  role: qa-case-designer
+  stage: S4
+  window: <the manual case ids>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per manual case. `state` is normally `created` or `updated`; `handed_to_person` for a
+# manual-human case, which the runner does not execute and does not report on.
+scope:
+  - id: <case id>
+    state: <one of vocabulary.row_states>   # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: <= 80 characters>
+    plan_row: <P-n>
+    obligations: "<the obligation ids, quoted unchanged>"
+    requirements: "<the R-ids this case proves>"
+    case_version: <the pinned cv_ id>
+    executed_by: <agent|human>
+
+# The whole of what the runner needs to turn a case into evidence. One block per case id above.
+execution:
+  - case: <case id>
+    preconditions:
+      - <state the stand must be in, in the product's own terms>
+    data_and_accounts:
+      - <what the case needs, by NAME only - never a value, never a secret>
+    steps_ref: <the section of the case file that holds the steps; the steps themselves are not
+                copied here and are never retyped from memory>
+    then: "<the expectation, quoted from the case, word for word - this is what the observation
+            is compared against>"
+    evidence:
+      artifact: <what proves it - a screenshot, a log line with its grep, a record in the product>
+      required_fields: "<what the runner records for the evidence to count>"
+      where: work/evidence/<case>/
+    inconclusive_when: <what makes the observation fail to answer the Then>
+    on_inconclusive: >-
+      record `inconclusive` with what was seen; it is triaged at S7 like a failure and never
+      reaches gate B untouched
+    not_executable_when: <the condition under which the case is `manual_skipped`, with the reason>
+
+claims:
+  every_manual_row_of_the_plan_has_a_case: <true|false>
+  every_case_names_an_evidence_artifact_the_runner_can_actually_produce: <true|false>
+  no_secret_value_appears_in_this_file: <true|false>
+  manual_human_cases_are_marked_and_excluded_from_the_runner_scope: <true|false>
+
+expected_of_the_receiver:
+  - "execute only the ids whose `executed_by` is `agent`, and only those the controller's
+     stage-scope still carries - a case of a profile the person took over is not yours"
+  - "compare the observation with `then` as quoted, not with what the product seems to do"
+  - "an observation that does not answer is `inconclusive`, not a pass and not a failure"
+
+unresolved:
+  - id: <case id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

@@ -1,0 +1,41 @@
+{
+  "key": "TP1-15045",
+  "type": "Sub-task",
+  "status": "Ready for Review",
+  "title": "Testing TP1-14482 Visual Workflow Diff for Revisions",
+  "description": "Purpose: validate TP1-14482 \"Visual Workflow Diff for Revisions\".\n\nImplementation: backend repository testproject1, MR !4214 — TP1-14482: Add POST /v1/workflows/{workflow_id}/validate dry-run endpoint; frontend repository testproject1-ui, MR !1881 — TP1-14482: Add visual workflow diff view to version history.",
+  "acceptance_criteria": [
+    "Visual revision diff opens from workflow version history.",
+    "A single graph represents the target revision.",
+    "Added nodes are highlighted in green.",
+    "Removed nodes are displayed at their former position with red styling, REMOVED badge and strikethrough label.",
+    "Modified nodes are highlighted distinctly/amber without exposing exact changed values in the visual view.",
+    "YAML/text diff remains available as the detailed alternative view.",
+    "Zoom, fit-view and drag-to-pan work correctly.",
+    "Exactly two revisions are compared.",
+    "Visual diff is read-only.",
+    "Restoring a revision triggers workflow validation automatically.",
+    "Validation errors are displayed inline after restore.",
+    "Restore validation does not persist workflow changes to the backend.",
+    "POST /v1/workflows/{workflow_id}/validate executes the same required pre-persist validation pipeline as workflow update.",
+    "Validation endpoint performs no database write.",
+    "Existing workflow versioning/text diff behavior is not regressed."
+  ],
+  "comments": [
+    {
+      "author": "Exemplar Test Author",
+      "date": "2026-09-18T08:20:40.161+0000",
+      "text": "Draft MR is intended for evaluation of QA Factory output and is not merge-ready product test coverage https://gi.example.test/org-cdme/testproject1-ui/-/merge_requests/1924"
+    }
+  ],
+  "parent": "TP1-14482",
+  "subtasks": [],
+  "links": {
+    "merge_request": null,
+    "branch": null
+  },
+  "provenance": {
+    "source": "file",
+    "fetched_at": null
+  }
+}

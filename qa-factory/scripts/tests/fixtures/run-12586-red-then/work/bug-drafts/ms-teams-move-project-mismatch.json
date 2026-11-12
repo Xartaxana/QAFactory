@@ -1,0 +1,23 @@
+{
+ "title": "MS Teams integration cannot be moved to another project: PUT answers 400 'Project mismatch'",
+ "impact": "degraded",
+ "violates": "requirement:R-5",
+ "case": "TC-002",
+ "plan_row": "TS-2",
+ "triage_ref": {
+  "instance_id": "test_put_project_change_moves_ms_teams_integration",
+  "attempt_id": "a96f5e653377735139aa"
+ },
+ "manual_steps": [
+  "Create projects A and B that you administer, and an MS Teams integration in A",
+  "Open the integration, change its Project to B and save (or PUT /v1/settings/project/<id> with project_name = B)",
+  "Observe 400 'Project mismatch' instead of the integration appearing in B",
+  "List MS Teams integrations of B: the integration is not there"
+ ],
+ "expected": "2xx; the integration moves to B (R-5, owner answer Q2 a)",
+ "actual": "400 {\"error\":{\"message\":\"Project mismatch\"}}",
+ "confirmation": "unconfirmed",
+ "siblings": [
+  "TC-003: the same validator error masks the R-10 singleton rejection in an occupied project"
+ ]
+}

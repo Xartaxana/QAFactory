@@ -1,0 +1,76 @@
+# REAL capture: pytest-timeout 2.4.0, thread method, run through a throwaway project (RH2-9 critic t-720); absolute paths redacted.
++++++++++++++++++++++++++++++++++++ Timeout +++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Captured stdout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ConnectionResetError, retrying
+ConnectionResetError, retrying
+ConnectionResetError, retrying
+ConnectionResetError, retrying
+ConnectionResetError, retrying
+~~~~~~~~~~~~~~~~~~~~~~~~~ Stack of MainThread (1264) ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "<site-packages>\pytest\__main__.py", line 9, in <module>
+    raise SystemExit(_console_main())
+  File "<site-packages>\_pytest\config\__init__.py", line 286, in _console_main
+    code = _main(prog=_get_prog_name(sys.argv))
+  File "<site-packages>\_pytest\config\__init__.py", line 262, in _main
+    ret: ExitCode | int = config.hook.pytest_cmdline_main(config=config)
+  File "<site-packages>\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+  File "<site-packages>\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "<site-packages>\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "<site-packages>\_pytest\main.py", line 380, in pytest_cmdline_main
+    return wrap_session(config, _main)
+  File "<site-packages>\_pytest\main.py", line 333, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+  File "<site-packages>\_pytest\main.py", line 387, in _main
+    config.hook.pytest_runtestloop(session=session)
+  File "<site-packages>\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+  File "<site-packages>\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "<site-packages>\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "<site-packages>\_pytest\main.py", line 411, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+  File "<site-packages>\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+  File "<site-packages>\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "<site-packages>\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "<site-packages>\_pytest\runner.py", line 118, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+  File "<site-packages>\_pytest\runner.py", line 139, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+  File "<site-packages>\_pytest\runner.py", line 249, in call_and_report
+    call = CallInfo.from_call(
+  File "<site-packages>\_pytest\runner.py", line 361, in from_call
+    result: TResult | None = func()
+  File "<site-packages>\_pytest\runner.py", line 250, in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+  File "<site-packages>\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+  File "<site-packages>\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "<site-packages>\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "<site-packages>\_pytest\runner.py", line 184, in pytest_runtest_call
+    item.runtest()
+  File "<site-packages>\_pytest\python.py", line 1798, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+  File "<site-packages>\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+  File "<site-packages>\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "<site-packages>\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "<site-packages>\_pytest\python.py", line 187, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+  File "<project>\tests\test_reindex.py", line 12, in test_reindex_last_indexed
+    wait_for_indexing()
+  File "<project>\tests\test_reindex.py", line 9, in wait_for_indexing
+    time.sleep(0.5)
++++++++++++++++++++++++++++++++++++ Timeout +++++++++++++++++++++++++++++++++++

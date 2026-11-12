@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "capabilities": {
+    "jira_direct_api": {
+      "status": "unknown",
+      "note": "Applicable only to Jira; verify the sample-ticket direct API probe."
+    },
+    "ticket_adapter": {
+      "status": "unknown",
+      "note": ""
+    },
+    "test_repo": {
+      "status": "unknown",
+      "note": ""
+    },
+    "case_store": {
+      "status": "unknown",
+      "note": ""
+    },
+    "case_id_form": {
+      "status": "unknown",
+      "note": ""
+    },
+    "adapter_forms": {
+      "status": "unknown",
+      "note": ""
+    },
+    "app_repo": {
+      "status": "unknown",
+      "note": ""
+    },
+    "vcs": {
+      "status": "unknown",
+      "note": ""
+    },
+    "environment": {
+      "status": "unknown",
+      "note": ""
+    },
+    "external_writes": {
+      "status": "unknown",
+      "note": ""
+    },
+    "config_schema": {
+      "status": "unknown",
+      "note": ""
+    },
+    "vcs_api": {
+      "status": "unknown",
+      "owner": "orchestrator",
+      "note": "Verify provider API access separately from Git."
+    },
+    "host_hooks": {
+      "status": "unknown",
+      "owner": "factory",
+      "note": "Native allow/deny and delivered-context probes required."
+    },
+    "tracker_write": {
+      "status": "unknown",
+      "note": ""
+    },
+    "project_dependencies": {
+      "status": "unknown",
+      "note": ""
+    }
+  },
+  "profiles": {},
+  "profile_contract": {
+    "status": "unknown",
+    "owner": "user",
+    "errors": []
+  },
+  "implementation_repos": [],
+  "runtime_provenance": {
+    "profile_id": "",
+    "timestamp": "",
+    "environment_id": "",
+    "component_ids": [],
+    "expected_source_revision": "",
+    "mr_source_revision": "",
+    "observed_runtime_identity": "",
+    "provenance": {
+      "technical_verification": false,
+      "source_linkage": "unknown",
+      "deployed_source_revision": ""
+    },
+    "evidence_refs": [],
+    "result": "unknown"
+  }
+}

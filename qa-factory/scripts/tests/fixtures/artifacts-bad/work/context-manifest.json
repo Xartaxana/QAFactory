@@ -1,0 +1,17 @@
+{
+  "ticket": "QA-1",
+  "acceptance_criteria": ["AC-1: a coupon above the cap is rejected", "AC-2: the total is recalculated"],
+  "implementation": {"source": "diff", "mr": "!42", "branch": "feature/qa-1", "commit": "abc1234", "diff_path": "impl-diff.txt"},
+  "observables": [
+    {"requirement": "R-1", "kind": "api", "source": "diff", "path": "src/app.py", "line": 12},
+    {"requirement": "R-2", "kind": "ui", "source": "diff", "path": "src/ui/cart.js", "line": 44}
+  ],
+  "parent_feature": {"id": "STORY-9", "title": "Coupons at checkout"},
+  "related": [],
+  "subtasks": [{"key": "QA-1-2", "status": "in progress"}],
+  "existing_tests": [],
+  "test_path": {"layers": ["api", "e2e-ui"], "fixtures": ["tests/conftest.py"], "data": "builders"},
+  "area_bugs": [],
+  "conflicts": [],
+  "witness": "diff read from impl-diff.txt, 3 files, 48 added lines; MR !42 description read"
+}

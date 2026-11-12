@@ -1,0 +1,43 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 0,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Objective:* Verify that several different in-stock products can be added to the cart, and the cart shows each line with the correct price and quantity and the correct subtotal.\n\n*Type:* positive  \n*Priority:* medium\n\n*Steps & Expected results:* To be authored. The original wording is in REF-25.\n\n*Traceability:*\n* User story: REF-10\n* Source: REF-25",
+  "id": "14512156",
+  "key": "REF-22",
+  "labels": [
+    "positive",
+    "shopping_cart"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 14558,
+    "fields_requested": "*all",
+    "sha256": "60d05c5bf20f47cf950f0274766c5801eca9cf4b898acf5bb60af5a999ef6595",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-13T12:00:04.708+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add multiple different products to cart",
+  "type": "Test"
+}

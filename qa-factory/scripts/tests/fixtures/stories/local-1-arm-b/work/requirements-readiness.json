@@ -1,0 +1,457 @@
+{
+  "verdict": "ready",
+  "goal_summary": "Check every way a book can get into the cart (catalog card, book page, wishlist move, guest-cart merge at sign-in) and the stock, quantity and ownership rules around adding, on the current code.",
+  "aspects": {
+    "checkout and payment": {
+      "status": "n/a",
+      "reason": "the story stops at the cart; checkout and payment are not entered"
+    },
+    "shopping cart": {
+      "status": "ready",
+      "reason": "R-1..R-11 and R-14 cover adding, quantity rules, merge, badge and total"
+    },
+    "orders, cancellation and refunds": {
+      "status": "n/a",
+      "reason": "orders are outside the add-to-cart story"
+    },
+    "sign-in and user accounts": {
+      "status": "ready",
+      "reason": "R-4 and R-12 cover the guest cart carried over at sign-in"
+    },
+    "roles and permissions": {
+      "status": "ready",
+      "reason": "R-9 separates guest and user carts; ADMIN uses the same cart rules (BN-9)"
+    },
+    "API contract and errors": {
+      "status": "ready",
+      "reason": "R-5..R-8 follow openapi.json POST /api/cart codes and schema"
+    }
+  },
+  "register": {
+    "total": 14,
+    "by_source": {
+      "story": 4,
+      "derived": 10
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "Do the derived norms hold: a failed call is never shown as success (R-12 merge at sign-in, R-13 wishlist move, R-14 cart page)?",
+      "statement": "Confirm the derived norm that a failed call is not shown as success, for the three places the scout flagged.",
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "readings": [
+        {
+          "reading": "The norm holds in all three places: a failed call is never shown as success",
+          "from": "requirement: R-12, R-13, R-14",
+          "if_chosen": "Cases assert a visible failure; where the code ignores it they are red"
+        },
+        {
+          "reading": "One place does not apply (the person says which)",
+          "from": "requirement: R-12, R-13, R-14 (person narrows)",
+          "if_chosen": "That requirement leaves the register or is rewritten"
+        }
+      ],
+      "source_says": [
+        {
+          "quote": "LoginPage.tsx:36 ignores the answer; WishlistPage.tsx:58 ignores the answer; CartPage.tsx:30,36 read it without its status",
+          "where": "scout user-path-failures.json"
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "question": "Is the quantity-update call PUT or PATCH on /api/cart/{id}?",
+      "statement": "The scout note says PATCH, the contract and the route say PUT.",
+      "severity": "minor",
+      "owner_role": "dev_arch",
+      "readings": [
+        {
+          "reading": "PUT is right and the scout note is a slip",
+          "from": "external: MyBooks/docs/openapi.json /api/cart/{id}",
+          "if_chosen": "Cases call PUT; no bug"
+        },
+        {
+          "reading": "PATCH is intended and the code is wrong",
+          "from": "requirement: R-10",
+          "if_chosen": "R-10 becomes a predicted bug against the intended method"
+        }
+      ],
+      "source_says": [
+        {
+          "quote": "/api/cart/{id} put",
+          "where": "MyBooks/docs/openapi.json"
+        },
+        {
+          "quote": "export PUT",
+          "where": "MyBooks/src/app/api/cart/[id]/route.ts:8"
+        },
+        {
+          "quote": "PATCH /api/cart/{id} capped at stock",
+          "where": "scout note U-38ad887a4f2a"
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "question": "When a wishlist book already in the cart is moved to the cart, should its quantity grow by 1?",
+      "statement": "Move to cart posts quantity 1, which the add rule sums with the existing item; the story does not say.",
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "readings": [
+        {
+          "reading": "Quantity grows by 1, capped by stock",
+          "from": "external: MyBooks/docs/openapi.json POST /api/cart",
+          "if_chosen": "One case for the already-in-cart branch BN-4 expects +1"
+        },
+        {
+          "reading": "The cart is left as it was",
+          "from": "requirement: R-3",
+          "if_chosen": "The case expects no change; current code is then red"
+        }
+      ],
+      "source_says": [
+        {
+          "quote": "quantity is added to what is already in the cart",
+          "where": "MyBooks/docs/openapi.json POST /api/cart"
+        },
+        {
+          "quote": "posts quantity 1",
+          "where": "MyBooks/src/components/pages/WishlistPage.tsx:48; story silent"
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "question": "Is the behaviour the current code shows for R-5, R-6, R-8, R-9, R-11, R-12, R-13 and R-14 the one you expect?",
+      "statement": "These requirements are read from the current code only; no earlier behaviour can be read, so the code's value is a claim, not the expected result.",
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision to compare; implementation_source is current-code"
+      },
+      "now": {
+        "value": "as listed per row in ## Behaviour claims",
+        "where": "work/requirements-register.md ## Behaviour claims"
+      },
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one.",
+          "from": "claim",
+          "if_chosen": "Cases assert the current behaviour",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The person states it; cases expect that and the code is red",
+          "claim": "before"
+        }
+      ],
+      "source_says": [
+        {
+          "quote": "no base revision to compare; implementation_source is current-code",
+          "where": "register ## Behaviour claims R-5, R-6, R-8, R-9, R-11, R-12, R-13, R-14"
+        }
+      ]
+    },
+    {
+      "id": "Q6",
+      "question": "When a wishlist book already in the cart (quantity 2) is moved to the cart, what quantity must the cart line read afterwards?",
+      "source_says": [
+        {
+          "quote": "quantity is added to what is already in the cart",
+          "where": "MyBooks/docs/openapi.json POST /api/cart; story silent (register Reading forks R-3, Q3)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (quantity grows by 1 (reading A)).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (quantity grows by 1 (reading A)); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision; implementation_source is current-code"
+      },
+      "now": {
+        "value": "quantity grows by 1 (reading A)",
+        "where": "MyBooks/src/components/pages/WishlistPage.tsx:48 posts quantity 1, summed by cartService.ts:53"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_004",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q7",
+      "question": "Which refusal codes must an add give at stock 0, and when the amount plus what is already in the cart is exactly the stock and one over the stock?",
+      "source_says": [
+        {
+          "quote": "400 codes (OUT_OF_STOCK, INSUFFICIENT_STOCK)",
+          "where": "MyBooks/docs/openapi.json POST /api/cart; register R-7"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (stock 0 gives 400 OUT_OF_STOCK; cart plus amount over stock gives 400 INSUFFICIENT_STOCK; equal to stock is accepted).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (stock 0 gives 400 OUT_OF_STOCK; cart plus amount over stock gives 400 INSUFFICIENT_STOCK; equal to stock is accepted); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision; implementation_source is current-code"
+      },
+      "now": {
+        "value": "stock 0 gives 400 OUT_OF_STOCK; cart plus amount over stock gives 400 INSUFFICIENT_STOCK; equal to stock is accepted",
+        "where": "MyBooks/src/lib/services/cartService.ts:35"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_009",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q8",
+      "question": "After a stock refusal must the cart stay exactly as it was?",
+      "source_says": [
+        {
+          "quote": "stock is respected, the cart is unchanged",
+          "where": "register R-7 (derived, invariant)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (refused add writes nothing).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (refused add writes nothing); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision; implementation_source is current-code"
+      },
+      "now": {
+        "value": "refused add writes nothing",
+        "where": "MyBooks/src/lib/services/cartService.ts:35"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_009",
+        "then": 2
+      }
+    },
+    {
+      "id": "Q9",
+      "question": "Setting a cart item to exactly the stock and to stock plus 1: which answer and which stored quantity must result (PUT /api/cart/{id}; the scout note says PATCH)?",
+      "source_says": [
+        {
+          "quote": "PATCH /api/cart/{id} capped at stock",
+          "where": "scout note U-38ad887a4f2a; openapi.json and src/app/api/cart/[id]/route.ts:8 say PUT (register Q2)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (quantity equal to stock accepted; stock+1 gives INSUFFICIENT_STOCK).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (quantity equal to stock accepted; stock+1 gives INSUFFICIENT_STOCK); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "dev_arch",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision"
+      },
+      "now": {
+        "value": "quantity equal to stock accepted; stock+1 gives INSUFFICIENT_STOCK",
+        "where": "MyBooks/src/lib/services/cartService.ts:80"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_012",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q10",
+      "question": "After a refused quantity update, must the stored quantity stay as it was?",
+      "source_says": [
+        {
+          "quote": "never exceeds stock (INSUFFICIENT_STOCK)",
+          "where": "register R-10 (derived)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (item unchanged).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (item unchanged); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision"
+      },
+      "now": {
+        "value": "item unchanged",
+        "where": "MyBooks/src/lib/services/cartService.ts:80"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_012",
+        "then": 2
+      }
+    },
+    {
+      "id": "Q11",
+      "question": "Must the cart page show a refused quantity update in words?",
+      "source_says": [
+        {
+          "quote": "the cart page shows the result",
+          "where": "register R-10 (derived)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (a message is shown).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (a message is shown); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision"
+      },
+      "now": {
+        "value": "a message is shown",
+        "where": "MyBooks/src/components/pages/CartPage.tsx"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_012",
+        "then": 3
+      }
+    },
+    {
+      "id": "Q12",
+      "question": "When the last copy is bought in another tab before the add, what must the shopper see and what must the cart hold?",
+      "source_says": [
+        {
+          "quote": "stock is respected",
+          "where": "register R-7 (derived, invariant)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (400 OUT_OF_STOCK shown, cart unchanged).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (400 OUT_OF_STOCK shown, cart unchanged); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no base revision"
+      },
+      "now": {
+        "value": "400 OUT_OF_STOCK shown, cart unchanged",
+        "where": "MyBooks/src/lib/services/cartService.ts:35"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_015",
+        "then": 2
+      }
+    },
+    {
+      "id": "Q13",
+      "question": "When the cart merge at sign-in fails, should the shopper see an error message, or should the guest cart be kept and the merge retried?",
+      "source_says": [
+        {
+          "quote": "a failed call is never shown as success; the page stays alive, the person is told of the error in words, and no data is lost silently",
+          "where": "work/requirements-register.md R-12"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "a visible error text is shown",
+          "from": "description: R-12 oracle, the person is told in words",
+          "if_chosen": "assert the visible error text"
+        },
+        {
+          "reading": "the guest cart survives the failed merge",
+          "from": "description: R-12 oracle, no data lost silently",
+          "if_chosen": "assert the guest cart survives"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "product owner",
+      "raised_for": {
+        "row": "TS-6",
+        "origin": "S3-plan",
+        "key": "new:1",
+        "digest": "aec96baafc9f"
+      }
+    }
+  ]
+}

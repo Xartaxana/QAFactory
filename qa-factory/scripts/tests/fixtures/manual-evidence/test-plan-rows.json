@@ -1,0 +1,475 @@
+{
+  "rows": [
+    {
+      "id": "TS-7",
+      "schema_version": 2,
+      "coverage_contract_revision": "coverage-observation-v1",
+      "requirement_refs": [
+        "R-7"
+      ],
+      "what_we_verify": "Zoom in/out, fit-view and drag-to-pan respond in the visual diff canvas.",
+      "defect_hypothesis": "state @ DiffCanvasControls.tsx:103 viewport controls",
+      "impact_class": "degraded",
+      "priority": "P2",
+      "impact": "moderate",
+      "likelihood": "low",
+      "confidence": "medium",
+      "risk_rationale": "Reversible viewport behaviour; developer component tests exist.",
+      "risk_source_refs": [
+        "register:R-7",
+        "TP1-14482:AC7"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [
+        "DEV-UI-1"
+      ],
+      "unknowns": [
+        "developer assertions not read one by one"
+      ],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "positive: zoom in changes scale",
+        "positive: fit-view",
+        "positive: drag pans"
+      ],
+      "test_level_rationale": "Viewport transform is brittle in e2e; one manual pass, component recommendation.",
+      "design_review_required": false,
+      "observable": "diff:testproject1-ui:src/pages/workflows/editor/DiffCanvasControls.tsx:103",
+      "oracle": "requirement:R-7",
+      "disposition": "manual-agent",
+      "reason": "Interaction visible only live; not the risk that earns e2e code; dev tests own the unit side.",
+      "fit": "",
+      "level": "e2e-ui",
+      "technique": "interaction walkthrough",
+      "evidence_policy": "ui",
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-7",
+          "requirement_refs": [
+            {
+              "ref": "R-7",
+              "revision": "7139cb00"
+            }
+          ],
+          "behavior": "Zoom, fit-view and pan change the viewport.",
+          "oracle_source_ref": "requirement:R-7",
+          "oracle_status": "resolved",
+          "applicable_scenarios": [
+            {
+              "id": "TS-7.s1",
+              "variant": "positive",
+              "rationale": "zoom, fit, pan"
+            }
+          ],
+          "observation_boundary": "canvas viewport transform",
+          "completion_condition": "viewport settled after each action",
+          "coverage_links": [
+            {
+              "candidate_ref": "DEV-UI-1",
+              "test_ref": "src/pages/workflows/components/__tests__/WorkflowVisualDiffView.test.tsx",
+              "assertion_refs": [
+                "src/pages/workflows/components/__tests__/WorkflowVisualDiffView.test.tsx"
+              ],
+              "proves": [
+                "controls wired"
+              ],
+              "does_not_prove": [
+                "real viewport change"
+              ],
+              "assessment": "unknown",
+              "assessment_reason": "developer file not read assertion by assertion",
+              "reason": "developer file not read assertion by assertion"
+            }
+          ],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-9",
+            "input_hash": "ff970bbb661a80a772e5d2602358318e2590e5e9a8bf115b4c10c3cd51a9ec3c",
+            "rationale": "test proves wiring only; real viewport change unproven"
+          },
+          "decision": "new",
+          "remaining_gap": "live viewport not covered",
+          "planned_check_refs": [
+            "TS-7.c1"
+          ],
+          "execution_scope": "current_task",
+          "evidence_policy": "ui",
+          "evidence_kinds": [
+            "screenshot_before",
+            "screenshot_after",
+            "actual_steps"
+          ],
+          "source_conflict_refs": [],
+          "observation_contract": {
+            "claim_kind": [
+              "rendered_behavior"
+            ],
+            "oracle_ref": {
+              "ref": "R-7",
+              "revision": "7139cb00"
+            },
+            "surfaces": [
+              {
+                "id": "TS-7.sf1",
+                "boundary": "canvas viewport before and after each control",
+                "status": "planned",
+                "assertion_ref": "TS-7.c1"
+              }
+            ],
+            "controls": [
+              "TS-7.c1"
+            ],
+            "completion_ref": "TS-7.c1",
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan of the story; the factory has no checks of its own yet.",
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 0
+        },
+        "planned_instance_ids": [],
+        "entries": [
+          {
+            "obligation_id": "OB-7",
+            "disposition": "gap",
+            "rationale": "no live viewport check",
+            "gap_reason": "unit tests only"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TS-12",
+      "schema_version": 2,
+      "coverage_contract_revision": "coverage-observation-v1",
+      "requirement_refs": [
+        "R-14"
+      ],
+      "what_we_verify": "POST validate on a stored workflow writes no workflow row or history entry, while a PUT of the same body does.",
+      "defect_hypothesis": "data-loss @ guardrail_service.py:284 / workflow.py:103 validate side effects",
+      "impact_class": "data-loss",
+      "priority": "P0",
+      "impact": "severe",
+      "likelihood": "medium",
+      "confidence": "medium",
+      "risk_rationale": "A write hidden in the validate pipeline would change stored workflows on every editor restore.",
+      "risk_source_refs": [
+        "register:R-14",
+        "TP1-14482:AC14"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [
+        "DEV-BE-1"
+      ],
+      "unknowns": [
+        "guardrail assignment read surface unknown"
+      ],
+      "verification_depth": "critical",
+      "required_scenarios": [
+        "negative: workflow unchanged after validate",
+        "negative: history count unchanged",
+        "positive control: PUT changes the workflow"
+      ],
+      "test_level_rationale": "Public HTTP contract with real storage; backend tests mock services so they cannot see a write.",
+      "design_review_required": true,
+      "observable": "diff:testproject1-backend:src/testproject1/service/guardrail/guardrail_service.py:284",
+      "oracle": "requirement:R-14",
+      "disposition": "automate",
+      "reason": "Input 1 and 3: DoD wants the new endpoint covered; data-loss risk, no live check. Before/after read with PUT positive control. Own workflow per test; delete returns 500 (TP1-13156), residue goes to gate A.",
+      "fit": "new",
+      "level": "api",
+      "technique": "state transition with positive control",
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-12",
+          "requirement_refs": [
+            {
+              "ref": "R-14",
+              "revision": "b9c0c4e0"
+            }
+          ],
+          "behavior": "Stored workflow and history are equal before and after POST validate; a PUT of the same body changes them.",
+          "oracle_source_ref": "requirement:R-14",
+          "oracle_status": "resolved",
+          "applicable_scenarios": [
+            {
+              "id": "TS-12.s1",
+              "variant": "negative",
+              "rationale": "valid body"
+            },
+            {
+              "id": "TS-12.s2",
+              "variant": "negative",
+              "rationale": "invalid body"
+            }
+          ],
+          "observation_boundary": "GET workflow and history around POST validate, completed by the response",
+          "completion_condition": "validate HTTP response received",
+          "coverage_links": [
+            {
+              "candidate_ref": "DEV-BE-1",
+              "test_ref": "tests/testproject1/rest_api/routers/test_workflow.py",
+              "assertion_refs": [
+                "tests/testproject1/rest_api/routers/test_workflow.py"
+              ],
+              "proves": [
+                "router logic with mocks"
+              ],
+              "does_not_prove": [
+                "no write on the real stack"
+              ],
+              "assessment": "unknown",
+              "assessment_reason": "developer file not read assertion by assertion",
+              "reason": "developer file not read assertion by assertion"
+            }
+          ],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-9",
+            "input_hash": "ff970bbb661a80a772e5d2602358318e2590e5e9a8bf115b4c10c3cd51a9ec3c",
+            "rationale": "mocked router tests; no-write on the real stack unproven"
+          },
+          "decision": "new",
+          "remaining_gap": "guardrail assignments have no confirmed read endpoint",
+          "planned_check_refs": [
+            "TS-12.c1",
+            "TS-12.c2",
+            "TS-12.c3",
+            "TS-12.c4",
+            "TS-12.c5",
+            "TS-12.c6"
+          ],
+          "execution_scope": "current_task",
+          "source_conflict_refs": [],
+          "observation_contract": {
+            "claim_kind": [
+              "state_unchanged"
+            ],
+            "oracle_ref": {
+              "ref": "R-14",
+              "revision": "b9c0c4e0"
+            },
+            "surfaces": [
+              {
+                "id": "TS-12.sf1",
+                "boundary": "workflow row and history via GET",
+                "status": "planned",
+                "assertion_ref": "TS-12.c4"
+              },
+              {
+                "id": "TS-12.sfg1",
+                "boundary": "guardrail assignments",
+                "status": "gap",
+                "gap_reason": "no confirmed read endpoint for assignments; unknown whether the API exposes them"
+              }
+            ],
+            "controls": [
+              "TS-12.c5"
+            ],
+            "completion_ref": "TS-12.c3",
+            "independent_expectations": [],
+            "source_conflicts": [],
+            "sequence": [
+              {
+                "phase": "before_read",
+                "ref": "TS-12.c1"
+              },
+              {
+                "phase": "action",
+                "ref": "TS-12.c2"
+              },
+              {
+                "phase": "completion",
+                "ref": "TS-12.c3"
+              },
+              {
+                "phase": "after_read",
+                "ref": "TS-12.c4"
+              }
+            ],
+            "positive_control_ref": "TS-12.c5",
+            "reachability_assertion_ref": "TS-12.c6"
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan of the story; the factory has no checks of its own yet.",
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 2
+        },
+        "planned_instance_ids": [
+          "TS-12.i1-validate-no-write",
+          "TS-12.i2-positive-control-put"
+        ],
+        "entries": [
+          {
+            "obligation_id": "OB-12",
+            "disposition": "gap",
+            "rationale": "no live API check of side effects",
+            "gap_reason": "only mocked unit tests"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TS-15",
+      "schema_version": 2,
+      "coverage_contract_revision": "coverage-observation-v1",
+      "requirement_refs": [
+        "R-19"
+      ],
+      "what_we_verify": "PUT update after the pipeline refactor returns the same code per invalid input and still persists a valid body.",
+      "defect_hypothesis": "order @ workflow.py:532 _run_pre_persist_update_validation reorder",
+      "impact_class": "degraded",
+      "priority": "P2",
+      "impact": "moderate",
+      "likelihood": "medium",
+      "confidence": "medium",
+      "risk_rationale": "Guardrail dry run now runs before MCP, autonomous and executor checks; a body failing two checks may change its code.",
+      "risk_source_refs": [
+        "register:R-19",
+        "diff:workflow.py:532"
+      ],
+      "risk_policy_revision": "factory-starter-v1",
+      "coverage_refs": [
+        "DEV-BE-1"
+      ],
+      "unknowns": [
+        "no pre-change baseline recorded"
+      ],
+      "verification_depth": "normal",
+      "required_scenarios": [
+        "boundary: body failing guardrail and MCP checks",
+        "positive: valid PUT persists"
+      ],
+      "test_level_rationale": "HTTP contract of an existing write endpoint; mocks do not exercise the order.",
+      "design_review_required": false,
+      "observable": "diff:testproject1-backend:src/testproject1/rest_api/routers/workflow.py:532",
+      "oracle": "requirement:R-19",
+      "disposition": "automate",
+      "reason": "Input 3: shared update path in the blast radius with changed check order; instances shared with TS-10 parity. Own workflow per test; delete 500 residue to gate A.",
+      "fit": "new",
+      "level": "api",
+      "technique": "decision table of check order",
+      "coverage_obligations": [
+        {
+          "obligation_id": "OB-15",
+          "requirement_refs": [
+            {
+              "ref": "R-19",
+              "revision": "b9c0c4e0"
+            }
+          ],
+          "behavior": "PUT returns the documented code per invalid input and persists valid input.",
+          "oracle_source_ref": "requirement:R-19",
+          "oracle_status": "resolved",
+          "applicable_scenarios": [
+            {
+              "id": "TS-15.s1",
+              "variant": "boundary",
+              "rationale": "two failing checks"
+            },
+            {
+              "id": "TS-15.s2",
+              "variant": "positive",
+              "rationale": "valid body"
+            }
+          ],
+          "observation_boundary": "PUT response and persisted read-back",
+          "completion_condition": "HTTP response received",
+          "coverage_links": [
+            {
+              "candidate_ref": "DEV-BE-1",
+              "test_ref": "tests/testproject1/rest_api/routers/test_workflow.py",
+              "assertion_refs": [
+                "tests/testproject1/rest_api/routers/test_workflow.py"
+              ],
+              "proves": [
+                "router with mocks"
+              ],
+              "does_not_prove": [
+                "order on the real stack"
+              ],
+              "assessment": "unknown",
+              "assessment_reason": "developer file not read assertion by assertion",
+              "reason": "developer file not read assertion by assertion"
+            }
+          ],
+          "sufficiency_review": {
+            "author_dispatch_id": "S3-qa-test-strategist-9",
+            "input_hash": "ff970bbb661a80a772e5d2602358318e2590e5e9a8bf115b4c10c3cd51a9ec3c",
+            "rationale": "mocked router; check order on real stack unproven"
+          },
+          "decision": "new",
+          "remaining_gap": "",
+          "planned_check_refs": [
+            "TS-15.c1",
+            "TS-15.c2"
+          ],
+          "execution_scope": "current_task",
+          "source_conflict_refs": [],
+          "observation_contract": {
+            "claim_kind": [
+              "ordinary"
+            ],
+            "oracle_ref": {
+              "ref": "R-19",
+              "revision": "b9c0c4e0"
+            },
+            "surfaces": [
+              {
+                "id": "TS-15.sf1",
+                "boundary": "PUT status",
+                "status": "planned",
+                "assertion_ref": "TS-15.c1"
+              },
+              {
+                "id": "TS-15.sf2",
+                "boundary": "persisted read-back",
+                "status": "planned",
+                "assertion_ref": "TS-15.c2"
+              }
+            ],
+            "controls": [
+              "TS-15.c1"
+            ],
+            "completion_ref": "TS-15.c2",
+            "independent_expectations": [],
+            "source_conflicts": []
+          }
+        }
+      ],
+      "coverage_delta": {
+        "baseline_kind": "initial",
+        "initial_scope_rationale": "First plan of the story; the factory has no checks of its own yet.",
+        "counts": {
+          "logical_cases_before": 0,
+          "logical_cases_after": 1,
+          "executable_instances_before": 0,
+          "executable_instances_after": 2
+        },
+        "planned_instance_ids": [
+          "TS-15.i1-two-failing-checks",
+          "TS-15.i2-valid-persists"
+        ],
+        "entries": [
+          {
+            "obligation_id": "OB-15",
+            "disposition": "gap",
+            "rationale": "no live PUT regression check",
+            "gap_reason": "only mocked unit tests"
+          }
+        ]
+      }
+    }
+  ]
+}

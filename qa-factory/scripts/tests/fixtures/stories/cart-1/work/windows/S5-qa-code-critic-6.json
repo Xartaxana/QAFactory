@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "author_dispatch_id": "S5-qa-automator-6",
+  "reviewer_dispatch_id": "S5-qa-code-critic-6",
+  "input_hash": "ffc7c3737535a405008987b7660a0d29e57055aa7d7cb7f794ee3ac77ae6c40d",
+  "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "scope_instances": {
+    "CART-1_TC_009": [
+      "@api @regression CART-1_TC_009 quote and order from cart"
+    ]
+  },
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "input_hash": "b5b9a49fc08486347b9e67cc940f2dc62bbcc8ecb6d51d7e16ade94b3c89e05c",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9",
+          "obligation_hash": "605e7f02cc76cc8a1d34b60dc7fbbb8c411cfab77e6796adc506b50e57a81cc2"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "obligation_hash": "a266ad809d204856475101efe00a5de5afb74c99d63b2a74c0eb525551745fc0",
+      "assertion_id": "tests/api/cart/cart-quote-order.spec.ts:53",
+      "defect_location": "MyBooks/src/app/api/checkout/quote/route.ts:14",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:CART-1_TC_009",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "b5b9a49fc08486347b9e67cc940f2dc62bbcc8ecb6d51d7e16ade94b3c89e05c"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "3959095e401a353eaa463221cc3796a5aa3607a095535e1b415758cbb1fa191d",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/c7f56259e689c93a9ddf-reparse-a0cb4a33e66f.json",
+          "sha256": "ac8bfdb810dc8e763ebfe1d8b783d494b6f2e1f0972fc515a76c17f05aebe519"
+        },
+        {
+          "path": "evidence/runs/c7f56259e689c93a9ddf/repair_verify-c7f56259e689c93a9ddf-20261031-112433.junit.xml",
+          "sha256": "0fe121fd65bb1d1b925b879b2f8bcc421ff3abd9db720490a38eb3dd8d581474"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "CART-1_TC_009",
+            "thens": [
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "quality_not_run": [],
+  "expectation_changes": [],
+  "blocked_by_env": [],
+  "expectation_changes_unmeasured": "a red run has no later pass for cart-quote-order.spec.@api @regression CART-1_TC_009 quote and order from cart, and the test file that would say whether the test still exists cannot be read (not a Python file, a syntax error, or no file named by the manifest)"
+}

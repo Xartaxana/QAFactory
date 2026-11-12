@@ -1,0 +1,45 @@
+{
+  "note": "The shape of one row of profiles[] in qa-factory/config.json, with a row of implementation_repos[] and one of managed_dependencies[] that name it. `commands` is an OBJECT keyed by command name (`one_test` runs ONE test file, `suite` runs the whole suite), never a list; each command is {kind, scope, argv, cwd}, `argv` is an array of words, and a word that is only <placeholder> is filled in by the factory. A command whose report is junit-xml or trx holds `{report_path}` in exactly ONE place, so the factory reads the report from a file of its own: in one word of `argv`, or, for a runner that names its report file by a variable, in one value of the optional `env` (an object of variable name to exactly `{report_path}`; the factory sets those variables for that command only). `adapter_capabilities` below is a top-level key of the configuration (not of the profile): for each `adapter_id` the capabilities its tests really exercise, a word of `supported_capabilities`; a profile whose adapter or capability is not there reads as not ready. A project with no test framework yet writes `profiles: []` and `implementation_repos: []` and records the deferral at phase 4. The values below are examples: use the project's own commands, paths and versions.",
+  "profile": {
+    "profile_id": "web-tests",
+    "revision": "1",
+    "adapter_id": "playwright",
+    "adapter_version": "1",
+    "roots": {"test": "tests"},
+    "capabilities": ["web"],
+    "commands": {
+      "one_test": {"kind": "test", "scope": "selected", "argv": ["npx", "playwright", "test", "--reporter=junit", "<test-file>"], "cwd": ".", "env": {"PLAYWRIGHT_JUNIT_OUTPUT_NAME": "{report_path}"}},
+      "suite": {"kind": "test", "scope": "full_suite", "argv": ["npx", "playwright", "test"], "cwd": "."}
+    },
+    "selectors": {},
+    "reporter": {"kind": "junit-xml"},
+    "quality_gates": {},
+    "execution_prerequisites": {"runtime": "node 20", "package_manager": "npm 10", "dependency_state": "locked", "hook_executables": []},
+    "conventions_refs": [],
+    "environment_refs": [],
+    "data_refs": [],
+    "ownership_refs": [],
+    "extensions": {"schema_version": "1"}
+  },
+  "implementation_repo": {
+    "repo_id": "web-tests-repo",
+    "role": "tests",
+    "local_path": ".",
+    "remote_identity": "origin/web-tests",
+    "source_ref": "refs/heads/main",
+    "source_sha": "0000000000000000000000000000000000000000",
+    "execution_profile_id": "web-tests",
+    "write_target": false,
+    "readiness_evidence": []
+  },
+  "managed_dependency": {
+    "dependency_id": "playwright",
+    "upstream_source": "project lockfile",
+    "exact_version_or_revision": "1.0.0",
+    "capability": "web",
+    "consumer": "runner",
+    "owner": "project",
+    "status": "unknown"
+  },
+  "adapter_capabilities": {"playwright": ["web"]}
+}

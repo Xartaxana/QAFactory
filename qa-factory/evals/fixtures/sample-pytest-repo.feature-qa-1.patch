@@ -1,0 +1,65 @@
+diff --git a/src/inventory/__init__.py b/src/inventory/__init__.py
+index db60af2..f295afb 100644
+--- a/src/inventory/__init__.py
++++ b/src/inventory/__init__.py
+@@ -6,6 +6,7 @@ through the public API only (create, get, list, delete). No HTTP layer — the "
+ from __future__ import annotations
+ 
+ from dataclasses import dataclass, field
++import re
+ 
+ 
+ class ValidationError(ValueError):
+@@ -24,6 +25,20 @@ class Item:
+     tags: list[str] = field(default_factory=list)
+ 
+ 
++_TAG_RE = re.compile(r"^[a-z0-9-]{1,20}$")
++
++
++def _normalize_tags(tags: list[str] | None) -> list[str]:
++    out: list[str] = []
++    for raw in tags or []:
++        tag = (raw or "").strip().lower()
++        if not _TAG_RE.match(tag):
++            raise ValidationError(f"invalid tag '{raw}'")
++        if tag not in out:
++            out.append(tag)
++    return out
++
++
+ class InventoryStore:
+     """In-memory inventory. Names are unique and case-insensitive; quantity is a non-negative int."""
+ 
+@@ -31,7 +46,7 @@ class InventoryStore:
+         self._items: dict[int, Item] = {}
+         self._next_id = 1
+ 
+-    def create(self, name: str, quantity: int = 0) -> Item:
++    def create(self, name: str, quantity: int = 0, tags: list[str] | None = None) -> Item:
+         name = (name or "").strip()
+         if not name:
+             raise ValidationError("name is required")
+@@ -41,7 +56,7 @@ class InventoryStore:
+             raise ValidationError(f"name '{name}' already exists")
+         if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 0:
+             raise ValidationError("quantity must be a non-negative integer")
+-        item = Item(id=self._next_id, name=name, quantity=quantity)
++        item = Item(id=self._next_id, name=name, quantity=quantity, tags=_normalize_tags(tags))
+         self._items[item.id] = item
+         self._next_id += 1
+         return item
+@@ -52,8 +67,11 @@ class InventoryStore:
+         except KeyError:
+             raise NotFound(item_id) from None
+ 
+-    def list(self) -> list[Item]:
+-        return sorted(self._items.values(), key=lambda i: i.id)
++    def list(self, tag: str | None = None) -> list[Item]:
++        items = sorted(self._items.values(), key=lambda i: i.id)
++        if tag is None:
++            return items
++        return [i for i in items if tag in i.tags]
+ 
+     def delete(self, item_id: int) -> None:
+         if item_id not in self._items:

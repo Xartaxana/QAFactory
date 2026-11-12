@@ -1,0 +1,48 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [
+    {
+      "author": "person-2",
+      "date": "2026-10-12T11:25:56.642+0000",
+      "id": "15986626",
+      "text": "Test coverage for this bug (manual QA, local env http://localhost:3000, 2026-10-12). Case files are kept in the QA repository under tasks/; this comment only references them.\n\n*UI cases that fail because of this bug* (suite cart-and-cancellation, run RUN-2026-10-12-001)\n* TC-006 Reject quantity 0 when adding to cart: FAIL. Control shows 1, Add to Cart adds 1 copy, toast \"Book added to cart\".\n* TC-011 Reject quantity -1 when adding to cart: FAIL. Same behaviour (-1 becomes 1, one copy added).\n* TC-012 Reject quantity 1.5 when adding to cart: FAIL. Same behaviour (1.5 becomes 1, one copy added).\n\n*API cases that show the server side is fine* (suite cart-api, run RUN-2026-10-12-002, POST /api/cart as guest)\n* TC-001 quantity 0, TC-002 quantity -1, TC-003 quantity 1.5, TC-004 quantity \"abc\", TC-005 quantity missing: all PASS with 400 VALIDATION\\_ERROR.\n* TC-006 quantity above stock: PASS with 400 INSUFFICIENT\\_STOCK.\n* TC-007 unknown book: PASS with 404 BOOK\\_NOT\\_FOUND.\n* TC-008 valid quantity 1: PASS with 201 (positive control).\n\n*What this means*\nThe server validation from REF-29 works. The problem is in the UI: the Quantity field turns an invalid value into 1 before the request is sent, so the server check is never reached and 1 copy is added silently. The issue is not limited to quantity 0; -1 and 1.5 behave the same way.\n\nReports: reports/RUN-2026-10-12-001.md (UI), reports/RUN-2026-10-12-002.md (API)."
+    }
+  ],
+  "description": "*Found by:* manual test TC-006 (run RUN-2026-10-09-001), confirmed by the tester on 2026-10-09.\n*Environment:* http://localhost:3000, local disposable env (Docker Postgres, seed data), regular user.\n*Related:* REF-10, REF-29.\n\n*Steps to reproduce*\n# Log in as the regular user and make sure the cart is empty.\n# Open /books/3 (1984, in stock).\n# Type 0 into the \"Quantity\" field.\n# Click \"Add to Cart\".\n# Open /cart.\n\n*Expected:* quantity must be a whole number from 1 up to stock (REF-29). A quantity of 0 is rejected with a clear message and nothing is added.\n\n*Actual:* the add succeeds. A \"Book added to cart\" toast appears, the nav cart badge shows 1, the quantity field reverts to 1, and /cart lists one \"1984\" line with quantity 1 and subtotal $13.99. No console errors.\n\n*Notes*\n* The UI appears to coerce 0 to 1 before calling /api/cart, so the server-side validation from the REF-29 fix is not reached for this input.\n* Not yet tested: -1, 1.5, and a direct POST /api/cart with invalid quantities.",
+  "id": "14504405",
+  "key": "REF-2",
+  "labels": [
+    "cart",
+    "product-bug",
+    "validation"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-29",
+        "relation": "relates to",
+        "status": "Resolved",
+        "summary": "B3: Add to cart does not check stock or quantity; deleted books leave orphan cart rows",
+        "type": "Relates"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 20082,
+    "fields_requested": "*all",
+    "sha256": "97fd6939bc28c2af4a7ebe4cdcd65587cbc7d9115ca9d994bb8780e7c10e6831",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-12T11:25:56.642+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add to cart: quantity 0 on the book page is added to the cart as 1 instead of being rejected",
+  "type": "Bug"
+}

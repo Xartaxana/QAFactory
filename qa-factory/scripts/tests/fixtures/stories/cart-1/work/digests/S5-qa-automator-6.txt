@@ -1,0 +1,9 @@
+qa-automator S5 window 6 (CART-1_TC_009) · concerns
+CART-1_TC_009 · contradicts_requirement · tests[] row re-sent and verified (17 tests), red; Then 2 red
+qa-factory/artifacts/CART-1/work/handoffs/S5-qa-automator-6.yaml
+
+- **Cause of the missing row:** the TC_009 test row went in correctly in window 5 (revision 22). My next put then carried the `contradicts_requirement` unresolved row, and that re-send replaced the case's slice, which removed the tests[] row. The contract says a re-sent `contradicts_requirement` row replaces its slice.
+- **Fix:** I re-sent only the test row, with no unresolved row. Revision 24, `manifest_view.py --summary` now lists 17 tests including TC_009, and the unresolved `contradicts_requirement` row for it is intact. A red `contradicts_requirement` instance lives in tests[] with `status: red`. The unresolved row is a separate list entry. Order matters: send unresolved first, then tests[], or don't re-send the unresolved row.
+- **Run mapping:** the run block for c7f56259e689c93a9ddf read `not_run` (report row missing), because the hand-built request used a report_test_id the JUnit file doesn't have. I reparsed the block with `api\cart\cart-quote-order.spec.ts::<title>` and no test was re-run.
+- **Checks:** s5_precheck.py is OK and handoff_check.py reports the S5-qa-automator-6 form complete.
+- **Not re-run:** the TC_007 and TC_008 mechanical fixes are still not re-run.

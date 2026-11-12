@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "note": "The factory's own case markers on a test: `@pytest.mark.<case>(case=..., then=..., ...)` binds a test to its case, `@pytest.mark.<unresolved>(case=..., reason=...)` records a case the test cannot prove. Closed variety of the factory itself, so it lives here and code reads it (FR-13): manifest_from_tests.py reads the marker names from this file, and diff_scope.py counts such a decorator line - with its continuation lines up to the balancing ')' - as cosmetic: adding, editing or removing a case marker changes no executable line, so a receipt and a green run keep what they proved (D-0017, D-0019 item 3). Any other decorator (skip, parametrize, xfail, usefixtures, a project's own) stays code.",
+  "decorator_prefix": "@pytest.mark.",
+  "pytest": {
+    "case": "qa",
+    "unresolved": "qa_unresolved"
+  }
+}

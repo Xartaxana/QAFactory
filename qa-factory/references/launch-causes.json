@@ -1,0 +1,168 @@
+{
+  "about": "Why a project's test command did not launch or ran nothing (scripts/launch_check.py). Closed variety (FR-13): the cause ids, the spellings of the output that name each cause, the sentence each audience reads for it, and the runner-shaped facts the probe needs. `causes` are tried IN THIS ORDER among causes that hold; a cause holds when one of its output lines has a marker AND passes the cause's own confirmation (`requires`, `named_option_patterns`); a matching line that is not confirmed never wins, and the result is the next cause that holds or `unknown`. Markers are matched case-sensitively, as plain substrings, after ANSI escape sequences are removed. A cause without markers matches nothing and is the fallback. `requires: program_run` means the line must name the program the profile actually runs (its argv[0], or the program a `wrappers` entry starts). `named_option_patterns` (regexes with one group) say where the output names the rejected option; such a cause holds only when one of those options is in the profile's own argv. `doors` is what each audience reads for a cause: `role` (S5), `gate` (a person at gate A, plain words), `onboarding` (the onboarding role); an audience that is missing reads an empty string, never another audience's text; `<argv0>` and `<resolved>` are filled by the caller. `deactivated_variables` are the variables an activated virtual environment sets; `--deactivated` removes them, and removes the PATH entries that lie under the directories they name AND are one of `environment_folders` of that environment (`.` is the directory itself; a folder is compared relative to it). `positional_placeholders` are the placeholder tokens that stand for a bare positional argument (the factory's own S5 drops just that token); any other placeholder is the value of the flag before it and goes with the flag. `wrappers` are the launchers whose real program is a later token (`subcommands` are the words that may follow the launcher name, empty when none). `collect_forms` say, per runner, how a one-test command becomes a collect: `tool` names the runner (the code knows how to recognise `pytest`; a row for a tool it cannot recognise never applies), `append` is added to the one-test command, `ok_exits` are the exit codes that mean the collect worked. `not_executed_exits` (optional, a list of integers, `[]` allowed) are the exit codes of that runner that mean no test was executed (pytest: 2 interrupted, 3 internal error, 4 usage error, 5 nothing collected); run_suite reads it for `nothing_ran` and stand_health for the runs it counts; a row without the field states no exit fact, so its exit codes are read by the legacy rule (2, 3, 4, 5) and the run's `exit_note` says so; 124 (timeout) and 127 (launch failure) are the runner's own codes and are never listed. Partial collect (optional keys of the same row, RH1-3): `continue_tokens` (argv tokens that make the runner keep collecting past a file or folder that fails to import, added to the collect command when absent), `partial_exits` (the exit codes the runner ends with when it did so and some files failed; never 124 or 127, never one of `ok_exits`), `broken_line` (a regex with a group `path` and an optional group `cause`: the line that names one file or folder that could not be collected), `count_line` (a regex with the groups `selected` and optionally `total`, `deselected` (the count the runner prints when a filter took tests out: a total of `selected + deselected` when `total` is absent) and `errors`: the runner's own count of what it collected and how many errors it met), `stopped_line` (a regex for the line that says the collect was cut short, for example by `-x`). Per-test timeout (optional keys of the same row, RH2-9, verified against pytest-timeout 2.4.0 source: pytest_timeout.py:24, :226, :521/:535, :557): `timeout_kill_line` (a regex for the banner the runner's timeout plugin prints when it kills the whole process: pytest-timeout's `thread` method, the Windows default, prints `+++ Timeout +++`, a stack dump of every thread with the test's captured output, the banner again, then exits at once with no report written), `timeout_failure_message` (a regex with the group `limit`, seconds: the `message` of a report row the plugin FAILED, pytest-timeout's `signal` method, where the test fails and the run goes on; the real message is `Failed: Timeout (>300.0s) from pytest-timeout.`, and the optional `\\(?` before `>` is load-bearing), `timeout_header_line` (a regex with the group `limit`: the session header line that names the limit, printed only without `-q`). A row without these keys states no timeout fact, and run_suite applies nothing to the output of that runner. `partial_exits` needs `broken_line` and `count_line`. The flag stays although the ids are printed without it: without it exit 2 does not tell 'interrupted by collection errors' from other interruptions, and exit 1 with it is one thing only. A row with no `continue_tokens` describes a runner that cannot continue: one broken file hides the rest. `node_ids` (optional, a checker name) says the factory can list this runner's collected tests to verify the node ids a run asks for (only `pytest` exists today); a launch that is NOT pytest, with no row or no `node_ids`, runs its ids as written and says so in `node_id_notes`; pytest ids are always verified. A command no row applies to is not probed with a suffix. `run_forms` is read by the quiet-runs guard (hooklib.py `direct_test_form`) and, for the optional `selection` of a form, by `launch_check.runner_identity`: it names the direct test launches the guard refuses outside run_suite.py. `forms` are `{id, argv, diagnostics, negators}` and an optional `selection` (how the runner is asked for one test and how its report names that test; a form without it states nothing, and no selector is built for it): `form` (the selector form, `file_line`), `args` (the arguments added to the command, with `{file}` and `{line}`), `report_id` (how the report names a test, with `{classname}` and `{title_path}`), `title_join` (the string that joins the titles of a test in its report name), `classname` (`file`: the report writes the file as it is; `file_suffix`: the report writes the path from the runner's test root, matched by its tail on a segment boundary), `escape_file` (the file goes into the argument as a regular expression: escaped, with a `/` before the name) (argv[0] is the program, compared by its lowercased basename; argv[1:] are subcommand words that must follow it in order in the same command segment; `diagnostics` are flags that make the call a no-run diagnostic; a subcommand word right after a `negators` word does not count, and a word after a literal `--` is never a subcommand). `diagnostics` are the no-run flags of every form; `subcommand_diagnostics` are words that are a no-run diagnostic only right after the program of a form that has a subcommand. `launchers` have the schema of `wrappers` and are joined with them (an empty `subcommands` in either list means the launcher is always passed over); `verbs` are the words after which the next token is a command position; `shells` are the programs whose payload is a command line (`flag_style` posix, powershell, cmd or none says which flag introduces it, `dialect` bash or powershell is the quoting the payload is read in). A form word holds no whitespace and none of the quote or escape characters. Without a valid pytest form the guard adds the built-in pytest form, never fewer forms than before this key existed.",
+  "deactivated_variables": ["VIRTUAL_ENV", "CONDA_PREFIX", "POETRY_ACTIVE", "PIPENV_ACTIVE"],
+  "environment_folders": [".", "Scripts", "bin", "Library/bin", "Library/usr/bin", "Library/mingw-w64/bin"],
+  "positional_placeholders": ["<test-file>", "<test-path>"],
+  "wrappers": [
+    {"program": "poetry", "subcommands": ["run"]},
+    {"program": "pipenv", "subcommands": ["run"]},
+    {"program": "pdm", "subcommands": ["run"]},
+    {"program": "hatch", "subcommands": ["run"]},
+    {"program": "uv", "subcommands": ["run"]},
+    {"program": "bundle", "subcommands": ["exec"]},
+    {"program": "pnpm", "subcommands": ["exec"]},
+    {"program": "npx", "subcommands": []},
+    {"program": "uvx", "subcommands": []},
+    {"program": "xvfb-run", "subcommands": []}
+  ],
+  "collect_forms": [
+    {"tool": "pytest", "append": ["--collect-only", "-q"], "ok_exits": [0, 5], "not_executed_exits": [2, 3, 4, 5], "node_ids": "pytest",
+     "continue_tokens": ["--continue-on-collection-errors"], "partial_exits": [1],
+     "broken_line": "^ERROR (?P<path>\\S+)(?: - (?P<cause>.*))?$",
+     "count_line": "^=*\\s*(?:(?P<selected>\\d+)(?:/(?P<total>\\d+))?|no) tests? collected(?: \\((?P<deselected>\\d+) deselected\\))?(?:, (?P<errors>\\d+) errors?)?",
+     "stopped_line": "stopping after \\d+ failures",
+     "timeout_kill_line": "^\\+{3,} Timeout \\+{3,}\\s*$",
+     "timeout_failure_message": "^Failed: Timeout \\(?>\\s*(?P<limit>[0-9]+(?:\\.[0-9]+)?)s\\)?",
+     "timeout_header_line": "^timeout: (?P<limit>[0-9]+(?:\\.[0-9]+)?)s\\s*$"}
+  ],
+  "run_forms": {
+    "forms": [
+      {"id": "pytest", "argv": ["pytest"], "diagnostics": ["--collect-only", "--co", "--fixtures", "--fixtures-per-test", "--markers"]},
+      {"id": "dotnet-test", "argv": ["dotnet", "test"], "diagnostics": ["--list-tests"], "negators": ["-o", "--output", "--project", "-n", "--name"]},
+      {"id": "jest", "argv": ["jest"], "diagnostics": ["--listTests", "--showConfig"]},
+      {"id": "vitest", "argv": ["vitest"], "diagnostics": ["list"]},
+      {"id": "mocha", "argv": ["mocha"], "diagnostics": ["--dry-run"]},
+      {"id": "playwright-test", "argv": ["playwright", "test"], "diagnostics": ["--list"],
+       "selection": {"form": "file_line", "args": ["{file}:{line}"], "report_id": "{classname}::{title_path}", "title_join": " \u203a ", "classname": "file_suffix", "escape_file": true}},
+      {"id": "npm-test", "argv": ["npm", "test"], "negators": ["--prefix", "-w", "--workspace", "-C", "--dir", "--cwd", "--filter"]},
+      {"id": "yarn-test", "argv": ["yarn", "test"], "negators": ["--prefix", "-w", "--workspace", "-C", "--dir", "--cwd", "--filter"]},
+      {"id": "pnpm-test", "argv": ["pnpm", "test"], "negators": ["--prefix", "-w", "--workspace", "-C", "--dir", "--cwd", "--filter"]},
+      {"id": "bun-test", "argv": ["bun", "test"], "negators": ["--prefix", "-w", "--workspace", "-C", "--dir", "--cwd", "--filter"]},
+      {"id": "go-test", "argv": ["go", "test"], "diagnostics": ["-list"], "negators": ["-o", "-C"]},
+      {"id": "cargo-test", "argv": ["cargo", "test"], "diagnostics": ["--no-run", "--list"], "negators": ["-p", "--package", "--bin", "--example"]},
+      {"id": "mvn-test", "argv": ["mvn", "test"], "diagnostics": ["-DskipTests", "-Dmaven.test.skip"], "negators": ["-pl", "--projects", "-rf", "--resume-from"]},
+      {"id": "mvn-verify", "argv": ["mvn", "verify"], "diagnostics": ["-DskipTests", "-Dmaven.test.skip"], "negators": ["-pl", "--projects", "-rf", "--resume-from"]},
+      {"id": "mvnw-test", "argv": ["mvnw", "test"], "diagnostics": ["-DskipTests", "-Dmaven.test.skip"], "negators": ["-pl", "--projects", "-rf", "--resume-from"]},
+      {"id": "mvnw-verify", "argv": ["mvnw", "verify"], "diagnostics": ["-DskipTests", "-Dmaven.test.skip"], "negators": ["-pl", "--projects", "-rf", "--resume-from"]},
+      {"id": "gradle-test", "argv": ["gradle", "test"], "negators": ["-x", "--exclude-task"]},
+      {"id": "gradle-check", "argv": ["gradle", "check"], "negators": ["-x", "--exclude-task"]},
+      {"id": "gradlew-test", "argv": ["gradlew", "test"], "negators": ["-x", "--exclude-task"]},
+      {"id": "gradlew-check", "argv": ["gradlew", "check"], "negators": ["-x", "--exclude-task"]},
+      {"id": "rspec", "argv": ["rspec"], "diagnostics": ["--dry-run"]},
+      {"id": "phpunit", "argv": ["phpunit"], "diagnostics": ["--list-tests"]}
+    ],
+    "diagnostics": ["--version", "--help", "-h"],
+    "subcommand_diagnostics": ["help"],
+    "launchers": [
+      {"program": "python", "subcommands": ["-m"]},
+      {"program": "python3", "subcommands": ["-m"]},
+      {"program": "pythonw", "subcommands": ["-m"]},
+      {"program": "py", "subcommands": ["-m"]},
+      {"program": "coverage", "subcommands": ["run"]},
+      {"program": "env", "subcommands": []},
+      {"program": "time", "subcommands": []},
+      {"program": "nohup", "subcommands": []},
+      {"program": "nice", "subcommands": []},
+      {"program": "timeout", "subcommands": []},
+      {"program": "xargs", "subcommands": []},
+      {"program": "yarn", "subcommands": []},
+      {"program": "pnpm", "subcommands": []},
+      {"program": "bunx", "subcommands": []}
+    ],
+    "verbs": ["run", "exec"],
+    "shells": [
+      {"program": "bash", "flag_style": "posix", "dialect": "bash"},
+      {"program": "sh", "flag_style": "posix", "dialect": "bash"},
+      {"program": "zsh", "flag_style": "posix", "dialect": "bash"},
+      {"program": "dash", "flag_style": "posix", "dialect": "bash"},
+      {"program": "ksh", "flag_style": "posix", "dialect": "bash"},
+      {"program": "fish", "flag_style": "posix", "dialect": "bash"},
+      {"program": "pwsh", "flag_style": "powershell", "dialect": "powershell"},
+      {"program": "powershell", "flag_style": "powershell", "dialect": "powershell"},
+      {"program": "cmd", "flag_style": "cmd", "dialect": "bash"},
+      {"program": "invoke-expression", "flag_style": "none", "dialect": "powershell"},
+      {"program": "iex", "flag_style": "none", "dialect": "powershell"},
+      {"program": "eval", "flag_style": "none", "dialect": "bash"}
+    ]
+  },
+  "reader_runs": {
+    "about": "Read commands that can make the shell run ANOTHER program (CX1-20; one table for the runner guard, the read guard and the launch matcher, hooklib.reader_runs). `flags` are keyed by the command's own head: a flag after which the next words are a program (`find -exec L {} +`, `rg --pre L`); the words after it are judged as a NEW head - a reader passes, anything else is a launch. `patterns` are regexes keyed by head, searched in each word of the command: a word that is itself a script running a program (awk system(), GNU sed `<n>e <cmd>`). A row of another head never applies: `rg -n -e foo`, `rg -- -exec`, `sed -n 1,40p` run nothing. `xargs` has no row: it is no read command (it is a launcher in run_forms and never exempt in the runner guard).",
+    "flags": {
+      "find": ["-exec", "-execdir", "-ok", "-okdir"],
+      "rg": ["--pre", "--pre-glob"]
+    },
+    "patterns": {
+      "awk": ["system\\s*\\("],
+      "gawk": ["system\\s*\\("],
+      "sed": ["(?:^|[;{}\\n])\\s*(?:(?:\\d+|\\$|/[^/\\n]*/)(?:,(?:\\d+|\\$|\\+\\d+|/[^/\\n]*/))?\\s*!?\\s*)?e\\s+\\S"]
+    }
+  },
+  "causes": [
+    {
+      "id": "executable_not_found",
+      "markers": [
+        "command not found",
+        "Command not found",
+        "is not recognized as an internal or external command"
+      ],
+      "requires": "program_run",
+      "doors": {
+        "role": "The program this run starts (`<argv0>`) was not found. The command is the profile's (onboarding's), not your test. Do not edit qa-factory/config.json. Name `launch: executable_not_found` and the evidence line in your digest, and stop repairing this run. After the profile is fixed: `--mine … --again --reason \"profile fixed\"`.",
+        "gate": "The program that starts your tests (`<argv0>`) was not found on this machine, so no test can run here. The factory needs your project's own launcher: the command your team uses to run its tests, for example the package manager's run command.",
+        "onboarding": "The check could not find the program this profile starts (`<argv0>`). Choose the project's own launcher as a wrapper argv (the package manager's `run`, `npx`, the project's own script), never an absolute interpreter path; rewrite that profile's `commands` argvs and `test_command_templates` with it, then run `launch_check.py --deactivated --json` again."
+      }
+    },
+    {
+      "id": "launcher_rejected_arguments",
+      "markers": [
+        "unrecognized arguments",
+        "no such option",
+        "No such option"
+      ],
+      "named_option_patterns": [
+        "unrecognized arguments:\\s*(.*)$",
+        "[Nn]o such option:\\s*(\\S+)"
+      ],
+      "doors": {
+        "role": "`<argv0>` started as `<resolved>` and rejected this project's own options. The command is the profile's (onboarding's), not your test. Do not edit qa-factory/config.json. Name `launch: launcher_rejected_arguments` and the evidence line in your digest, and stop repairing this run. After the profile is fixed: `--mine … --again --reason \"profile fixed\"`.",
+        "gate": "`<argv0>` started as `<resolved>` but does not know this project's own test options: it is not the copy of the tool your project installs for its tests. The factory needs your project's own launcher, the command your team uses to start the tests (for example the package manager's run command); once it is recorded the check is repeated.",
+        "onboarding": "`<argv0>` started as `<resolved>` and rejected this project's own options: it is not the copy of the tool the project installs (a system copy has none of the project's plugins). Choose the project's own launcher as a wrapper argv (`poetry run pytest ...`, `uv run pytest ...`, `npx ...`), never an absolute interpreter path; rewrite that profile's `commands` argvs and `test_command_templates`, then run `launch_check.py --deactivated --json` again."
+      }
+    },
+    {
+      "id": "dependency_missing",
+      "markers": [
+        "ModuleNotFoundError",
+        "No module named",
+        "ImportError"
+      ],
+      "doors": {
+        "role": "The command started and stopped on a module it could not import before any test ran (see the evidence line). If the evidence names a file you wrote, fix that file and run again. Otherwise it is the project's environment, not your test: do not edit qa-factory/config.json, name `launch: dependency_missing` and the evidence line in your digest, and stop repairing this run. After the environment is fixed: `--mine … --again --reason \"environment fixed\"`.",
+        "gate": "The tests started but stopped on a library they could not load, before any test ran; the line shown says which. Either the project's environment lacks it, or the tests are started outside that environment. The factory needs your project's own launcher, or the missing library installed; once that is done the check is repeated.",
+        "onboarding": "The command started and stopped on a module it could not import before any test ran (see the evidence line): it probably runs outside the project's environment. Choose the project's own launcher as a wrapper argv (`poetry run ...`, `uv run ...`), never an absolute interpreter path; rewrite that profile's `commands` argvs and `test_command_templates`, then run `launch_check.py --deactivated --json` again. If the evidence names a file of the project rather than a library, the launcher may be right: record a finding instead of rewriting the profile."
+      }
+    },
+    {
+      "id": "collection_error",
+      "markers": [
+        "ERROR collecting",
+        "errors during collection",
+        "1 error during collection"
+      ],
+      "doors": {
+        "role": "The run stopped while collecting tests and wrote no result. If the evidence line names a file you wrote, fix that file and run again. Otherwise it is the project's: do not edit qa-factory/config.json, name `launch: collection_error` and the evidence line in your digest, and stop repairing this run.",
+        "gate": "The tests started but stopped while the test files were being read, so nothing ran; the line shown says where. If it names one of the project's own test files, that file has to be fixed by the project's team; if it names a library or a program, the tests are not started with your project's own launcher, which the factory needs.",
+        "onboarding": "The run stopped while collecting tests (see the evidence line). If the evidence names a library or a program, choose the project's own launcher as a wrapper argv, never an absolute interpreter path, rewrite that profile's `commands` argvs and `test_command_templates`, then run `launch_check.py --deactivated --json` again. If it names one of the project's test files, the launcher works: record a finding instead of rewriting the profile."
+      }
+    },
+    {
+      "id": "unknown",
+      "markers": [],
+      "doors": {
+        "role": "Nothing ran and the factory does not recognise the reason. Read the log tail in this summary: if it points at a file you wrote, fix that file and run again. Otherwise name `launch: unknown` and the last lines of the log in your digest, and stop repairing this run. Do not edit qa-factory/config.json.",
+        "gate": "The tests could not be started and the factory does not recognise the reason; the last line shown is all it has. What it needs is your project's own launcher: the command your project itself uses to run its tests, so it can start them the same way.",
+        "onboarding": "The check could not tell why the command did not start. Read the evidence and the reason. Choose the project's own launcher as a wrapper argv, never an absolute interpreter path; rewrite that profile's `commands` argvs and `test_command_templates`, then run `launch_check.py --deactivated --json` again."
+      }
+    }
+  ]
+}

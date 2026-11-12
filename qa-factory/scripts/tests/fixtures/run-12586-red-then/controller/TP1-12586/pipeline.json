@@ -1,0 +1,642 @@
+{
+  "ticket": "TP1-12586",
+  "parent_feature": "TP1-13289",
+  "size": "XXL",
+  "environment": "local-docker",
+  "environment_pending": false,
+  "implementation_source": "diff",
+  "warnings": [
+    "host_hooks: unknown (live guard evidence incomplete; run host_probe.py --prepare/--check to certify native hooks)",
+    "tracker_write: not_configured by the project's choice (external_writes.bugs = markdown); bugs stay in the repository, none is written to the tracker",
+    "case_store: not_configured; cases stay per story under qa-factory/artifacts/TP1-12586/work/test-cases/",
+    "env_probe: 14 integration credential rows are 'unknown' (credential alternatives not discovered); only the integrations a case needs matter, and S5/S6 check again"
+  ],
+  "stages": {
+    "S0": {
+      "status": "done",
+      "started": "2026-10-27T21:51:11Z",
+      "finished": "2026-10-27T21:51:11+00:00",
+      "role": null,
+      "digest": "preflight green, env=local-docker",
+      "imported": true,
+      "reason": "preflight green, env=local-docker"
+    },
+    "S1": {
+      "status": "done",
+      "role": "qa-scout",
+      "digest": "qa-scout S1 done · qa-factory/artifacts/TP1-12586/work/context-manifest.json · concerns",
+      "dispatch_id": "S1-qa-scout-1",
+      "stage_started": 1793138005.3335674,
+      "stage_finished": 1793140667.495022,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-27T21:53:25+00:00",
+      "reason": "qa-scout S1 done · qa-factory/artifacts/TP1-12586/work/context-manifest.json · concerns",
+      "agent_id": "a33bdc04e4750e473",
+      "finished": "2026-10-27T22:37:51+00:00"
+    },
+    "S2": {
+      "status": "done",
+      "dispatch_id": "S2-qa-requirements-tester-1",
+      "stage_started": 1793140698.326712,
+      "stage_finished": 1793143448.0592399,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-27T22:38:18+00:00",
+      "role": "qa-requirements-tester",
+      "digest": "qa-requirements-tester S2 TP1-12586 · concerns",
+      "reason": "qa-requirements-tester S2 TP1-12586 · concerns",
+      "agent_id": "af215ad0a4d87bcc8",
+      "finished": "2026-10-27T23:24:13+00:00"
+    },
+    "S3": {
+      "status": "done",
+      "dispatch_id": "S3-qa-test-strategist-5",
+      "stage_started": 1793143480.4551778,
+      "stage_finished": 1793182813.9503164,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-27T23:24:40+00:00",
+      "role": "qa-test-strategist",
+      "digest": "qa-test-strategist S3 TS-10,TS-12,TS-14 · concerns · qa-factory/artifacts/TP1-12586/work/test-plan.json",
+      "reason": "qa-test-strategist S3 TS-10,TS-12,TS-14 · concerns · qa-factory/artifacts/TP1-12586/work/test-plan.json",
+      "agent_id": "a09c22ebf268c9279",
+      "finished": "2026-10-28T10:20:37+00:00",
+      "later_work_status": "running",
+      "active_dispatch_id": "S3-qa-test-strategist-5"
+    },
+    "S4": {
+      "status": "done",
+      "dispatch_id": "S4-qa-case-critic-4",
+      "stage_started": 1793145865.9020805,
+      "stage_finished": 1793183459.5193918,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-28T00:04:25+00:00",
+      "role": "qa-case-critic",
+      "digest": "qa-case-critic S4 TC-010,TC-012,TC-014 · concerns · qa-factory/artifacts/TP1-12586/work/test-cases/integrations/critic-findings.md",
+      "reason": "qa-case-critic S4 TC-010,TC-012,TC-014 · concerns · qa-factory/artifacts/TP1-12586/work/test-cases/integrations/critic-findings.md",
+      "agent_id": "a91b634c5d8c698bd",
+      "active_dispatch_id": "S4-qa-case-critic-3",
+      "gate_a_reopened": true,
+      "finished": "2026-10-28T10:35:08+00:00"
+    },
+    "S5": {
+      "status": "done",
+      "dispatch_id": "S5-qa-code-critic-4",
+      "stage_started": 1793161541.8957932,
+      "stage_finished": 1793179937.453673,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-28T04:25:41+00:00",
+      "role": "qa-code-critic",
+      "digest": "qa-code-critic S5 TC-008,TC-009 · concerns · qa-factory/artifacts/TP1-12586/work/test-code/critic-findings.md",
+      "reason": "qa-code-critic S5 TC-008,TC-009 · concerns · qa-factory/artifacts/TP1-12586/work/test-code/critic-findings.md",
+      "agent_id": "ad751f7b5dc367bbf",
+      "finished": "2026-10-28T09:32:35+00:00",
+      "later_work_status": "paused",
+      "active_dispatch_id": "S5-qa-automator-5",
+      "later_work_settled": true
+    },
+    "S6": {
+      "status": "done",
+      "dispatch_id": "S6-qa-runner-2",
+      "stage_started": 1793180013.1273792,
+      "stage_finished": 1793187960.596714,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-28T09:33:33+00:00",
+      "role": "qa-runner",
+      "digest": "qa-runner S6 TC-010,TC-012,TC-014 · concerns · qa-factory/artifacts/TP1-12586/work/handoffs/S6-qa-runner-2.yaml",
+      "reason": "qa-runner S6 TC-010,TC-012,TC-014 · concerns · qa-factory/artifacts/TP1-12586/work/handoffs/S6-qa-runner-2.yaml",
+      "agent_id": "acc5e05573848b684",
+      "finished": "2026-10-28T11:46:08+00:00"
+    },
+    "S7": {
+      "status": "done",
+      "dispatch_id": "S7-qa-failure-analyst-2",
+      "stage_started": 1793188049.4388123,
+      "stage_finished": 1793189890.0161955,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-28T11:47:29+00:00",
+      "role": "qa-failure-analyst",
+      "digest": "qa-failure-analyst S7 TC-003 · concerns · qa-factory/artifacts/TP1-12586/work/triage.json",
+      "reason": "qa-failure-analyst S7 TC-003 · concerns · qa-factory/artifacts/TP1-12586/work/triage.json",
+      "agent_id": "adcc62f4c39429f29",
+      "finished": "2026-10-28T12:18:17+00:00",
+      "later_work_status": "running",
+      "active_dispatch_id": "S7-qa-failure-analyst-2"
+    },
+    "S8": {
+      "status": "done",
+      "dispatch_id": "S8-qa-doc-scribe-2",
+      "stage_started": 1793188773.8906531,
+      "stage_finished": 1793190379.3119838,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-28T11:59:33+00:00",
+      "role": "qa-doc-scribe",
+      "digest": "qa-doc-scribe S8 TS-1..TS-14 · concerns · qa-factory/artifacts/TP1-12586/test-report.md",
+      "reason": "qa-doc-scribe S8 TS-1..TS-14 · concerns · qa-factory/artifacts/TP1-12586/test-report.md",
+      "agent_id": "a141994c32b83d52b",
+      "finished": "2026-10-28T12:26:27+00:00",
+      "later_work_status": "running",
+      "active_dispatch_id": "S8-qa-bug-reporter-1",
+      "later_work_settled": true
+    },
+    "S9": {
+      "status": "done",
+      "dispatch_id": "S9-qa-retro-analyst-1",
+      "stage_started": 1793191940.9296803,
+      "stage_finished": 1793192229.5519602,
+      "provenance": "observed",
+      "wall_seconds": null,
+      "started": "2026-10-28T12:52:20+00:00",
+      "role": "qa-retro-analyst",
+      "digest": "qa-retro-analyst S9 TP1-12586 · concerns · qa-factory/artifacts/TP1-12586/retro.md",
+      "reason": "qa-retro-analyst S9 TP1-12586 · concerns · qa-factory/artifacts/TP1-12586/retro.md",
+      "agent_id": "ab3e07a9e96c580c8",
+      "finished": "2026-10-28T13:00:05+00:00"
+    }
+  },
+  "gates": {
+    "A": {
+      "id": "gateA-TP1-12586-2",
+      "gate": "A",
+      "action": "approve_plan_and_cases",
+      "status": "approved",
+      "authorization_source": "approve as is\n",
+      "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+      "input_revision": "468161e7fc39ef57",
+      "scope": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010",
+        "TC-011",
+        "TC-012",
+        "TC-014"
+      ],
+      "plan_content_hash": "b871e0e3be1870292abf7855426ba0d1de0e5d3514370db3b20d1af7cb793da1",
+      "plan_semantic_hash": "b871e0e3be1870292abf7855426ba0d1de0e5d3514370db3b20d1af7cb793da1",
+      "oracle_content_hashes": {
+        "OB-1": "6768fa838f284f6fecb91a043e25276b904146de1c4f97440a03ca51544d4646",
+        "OB-2": "7872709b6cd8463257db825e78fc6bb6e91e9e8be87c9d403377fccb1d9d4e90",
+        "OB-3": "f61b4e4ff09f5c116d4048bccaebd712bb62494af018ca6c112875826e9448bf",
+        "OB-4": "f9dcbdf2b407f96f57d883615f949c75c148571f291da309b1d76d71707facf2",
+        "OB-5": "7096d710234b9bf54347a9c64f3163f08860ae19e65591a5263124c032f986ab",
+        "OB-6": "75e39db77c70e9f538947e3b72f6278e7b739a7b75279475de1c5b5662d5ba93",
+        "OB-7": "265e8aea5525e8015d96a9a0358c22605434d479beba2acff492839d65e3dde8",
+        "OB-8": "1beaf096bd6bcdec40da66ade2f8787ba1e8ac4cfac0d80a8896fb490470ac3d",
+        "OB-9": "fbf846f7401a3fb491fb94427cf5dd2c08ac6694101208982d6a0ce7d5aef3f9",
+        "OB-10": "3e97bbebb5d1d38bce09bc1f045f0db4ed97bf27c0173773db09f099af3cc054",
+        "OB-11": "c571ef70f2071d9219f2374f33237a7ed6610ffbe05b1d7d459752ffeb623e93",
+        "OB-12": "5af43dc25ab1dc78d10644f144046fb3ceac968e6bd1b17bd49c6ef48a381e25",
+        "OB-13": "9bc25eae7ba1601b70f4fcda4ac4d3c4962c91cf62842d04eda66435bc263570",
+        "OB-14": "f1bd4e92f91611d0ce14c97e4e5b206f39408a20a310f79fafc1586abcdfd4f8",
+        "OB-15": "e87b91576c4a78f144ef9e6fa909f4623f84084d7173fc0ded30da21ffd70d81",
+        "OB-16": "b70377d899cb831739647cc89d18743f92abbf1656217424ce48946cef0d7373",
+        "OB-17": "d8c7799163ec796e14cbcb82e0df7250346492b30d1b257cd03b51c1ccdf549f"
+      },
+      "coverage_contract_revisions": [
+        "coverage-observation-v1"
+      ],
+      "lifecycle_actions_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_inventory_hash": "3b7a59ec20b3324953ebb565f02d2a071b2cd5a84a403b892023706f8beca207",
+      "source_completeness": {
+        "complete": false,
+        "gate_blocked": false,
+        "pending": [],
+        "unavailable": [],
+        "incomplete_materials": [],
+        "unavailable_materials": [],
+        "accepted_gaps": [
+          "SRC-3bf0fa9f5e2478d28bdc"
+        ],
+        "review_missing": false,
+        "unreviewed": [],
+        "awaiting_review": false,
+        "open_points": {},
+        "closed_by_person": {
+          "SRC-3bf0fa9f5e2478d28bdc": [
+            "source:unavailable"
+          ]
+        },
+        "closed_by_class": {},
+        "defaulted_points": {},
+        "defaulted_gaps": [],
+        "gap_class_problem": "",
+        "left_out_by_word": {},
+        "earlier_rule_line": "",
+        "earlier_rule_sources": []
+      },
+      "design_reviews": [
+        {
+          "plan_row": "TS-1",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_9342b71470e02c52cfaa"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-2",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_948bf9ee76564b469863"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-4",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_05e9226b163aa18ce90b"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-5",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_efcdf2bfbbe3c6b8048d"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-6",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_694388e7d4244ecc8327"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-7",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_920af2601b8b0edc486d"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-8",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_3d9f776fbc026a39ebd4"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-9",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_7f7ee6997a3f5c3bbd78"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-11",
+          "verdict": "reject",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_916ebc3a0c8b97fbf570"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-3",
+          "verdict_basis": "round_word",
+          "verdict_source": "round of dispatch S4-qa-case-critic-3: the round's word is 'reject'"
+        },
+        {
+          "plan_row": "TS-12",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_a22fb13f599b58dc39dc"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": "S4-qa-case-critic-4"
+        },
+        {
+          "plan_row": "TS-13",
+          "verdict": "accepted",
+          "author_basis": "plan_rows",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-1",
+          "reviewer_dispatch_id": ""
+        },
+        {
+          "plan_row": "TS-14",
+          "verdict": "accepted",
+          "author_basis": "scope",
+          "plan_revision": "468161e7fc39ef57",
+          "case_versions": [
+            "cv_fdb829d700e61f126a9a"
+          ],
+          "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+          "author_dispatch_id": "S4-qa-case-designer-2",
+          "reviewer_dispatch_id": "S4-qa-case-critic-4"
+        }
+      ],
+      "decision": "approved"
+    },
+    "B": {
+      "id": "gateB-TP1-12586",
+      "gate": "B",
+      "action": "approve_delivery",
+      "status": "approved",
+      "authorization_source": "1) 1 i 2 eto odin bag\n2) proveryu rukami\n3) MR ne nuzhen\n",
+      "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+      "input_revision": "468161e7fc39ef57",
+      "scope": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010",
+        "TC-011",
+        "TC-012",
+        "TC-014"
+      ],
+      "selected_drafts": [
+        "ms-teams-move-project-mismatch",
+        "ms-teams-occupied-project-mismatch"
+      ],
+      "decision": "approved"
+    }
+  },
+  "halts": [
+    {
+      "stage": "S2",
+      "reason": "qa-requirements-tester S2 halt · qa-factory/artifacts/TP1-12586/understanding.md · blocked — 2 blocking question(s), understanding brief sent alone",
+      "at": "2026-10-27T22:46:36+00:00",
+      "resolved": true,
+      "resolved_at": "2026-10-27T23:24:13+00:00"
+    }
+  ],
+  "run_mode": {
+    "mode": "desktop",
+    "plugin_root": "<project>\\ai-packages\\qa-factory",
+    "plugin_version": "0.10.3",
+    "since": "2026-10-27T21:52:13+00:00"
+  },
+  "source_inventory_required": true,
+  "controller_revision": 158,
+  "remarks": [
+    {
+      "stage": "S2",
+      "text": "Q3 tolko Move dopustim, no vopros podsvetit v otchete po testirovaniyu dlya peredachi analitiku\nQ6 proveryaem vse chto mozhem nastroit pri sozdanii proekta, vopros pro to polnyy li eto spisok dobavim v otchet po testirovaniyu",
+      "at": "2026-10-27T23:21:27+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S8",
+      "text": "prinimayu vyvod\n\n(Reply to the conductor: accept the conclusion that TC-014 is not a defect. For Data sources the project change checks user.has_access_to_application(new_project_name) (routers/index/_common.py:192, service/datasource/file_datasource_service.py:161): admin/maintainer, member or project admin of the target; a plain member may move. Q7 rule: same restrictions as Data sources, so a plain member moving a user-scope integration (200) is expected. Assistants and Workflows were not re-read.)",
+      "at": "2026-10-28T12:03:44+00:00",
+      "by": "human"
+    }
+  ],
+  "size_initial": "XXL",
+  "size_final": "XXL",
+  "stage_overrides": [
+    {
+      "stage": "S4",
+      "match": "design review",
+      "decision": "Odobryayu kak est\n\n(Reply to the conductor question: approve the 11 design-review rows as they stand, with the critic concerns on TC-002, TC-004, TC-005, TC-007, TC-011, TC-014 and the stale TS-14 row carried to the testing report. The critic round had no failing case, only dimension concerns.)",
+      "at": "2026-10-28T04:22:02+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "not receipted",
+      "decision": "Prinimayu okna S5 bez kvitantsiy kachestva\n\n(Reply to the conductor question: accept the S5 windows without the quality receipts config_schema, test_repo, ticket_adapter, vcs, because no factory script writes them.)",
+      "at": "2026-10-28T08:07:35+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: TC-008",
+      "decision": "Prinimayu TC-008 i TC-009 bez proby chuvstvitelnosti\n\n(Reply to the conductor question: the two UI tests may stay unprobed because probe_by_code.py cannot read pytest ids with the [chromium] suffix; tooling gap, tests ran green live.)",
+      "at": "2026-10-28T09:31:05+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: TC-009",
+      "decision": "Prinimayu TC-008 i TC-009 bez proby chuvstvitelnosti\n\n(Reply to the conductor question: the two UI tests may stay unprobed because probe_by_code.py cannot read pytest ids with the [chromium] suffix; tooling gap, tests ran green live.)",
+      "at": "2026-10-28T09:31:06+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: test_edit_integration_change_project_confirmation_modal",
+      "decision": "Prinimayu TC-008 i TC-009 bez proby chuvstvitelnosti\n\n(Reply to the conductor question: the two UI tests may stay unprobed because probe_by_code.py cannot read pytest ids with the [chromium] suffix; tooling gap, tests ran green live.)",
+      "at": "2026-10-28T09:31:08+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "probe gap: test_edit_integration_project_change_keeps_credential_fields",
+      "decision": "Prinimayu TC-008 i TC-009 bez proby chuvstvitelnosti\n\n(Reply to the conductor question: the two UI tests may stay unprobed because probe_by_code.py cannot read pytest ids with the [chromium] suffix; tooling gap, tests ran green live.)",
+      "at": "2026-10-28T09:31:10+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "the test repository has 14 uncommitted change(s) on branch `",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "TS-13 carries a declared gap the next stage cannot close (S-",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "I found no existing test under `.` to prove that `api` write",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: auth-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: aws-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: azure-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: confluence-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: github-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: gitlab-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: jira-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: keycloak-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: oauth-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: other-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: preview-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: sandbox-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: sonar-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "integration missing: xwiki-integration",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    },
+    {
+      "stage": "S5",
+      "match": "preconditions no machine can check",
+      "decision": "accept - the person wrote: approve as is",
+      "at": "2026-10-28T11:07:33+00:00",
+      "by": "human"
+    }
+  ],
+  "first_test_run_at": "2026-10-28T04:47:29+00:00",
+  "closed_at": "2026-10-28T12:26:27+00:00",
+  "closed_by": "gate B + S8 done",
+  "reopened_at": "2026-10-28T12:36:41+00:00",
+  "reopened_by_words": "1) 1 i 2 eto odin bag\n2) proveryu rukami\n3) MR ne nuzhen\n"
+}

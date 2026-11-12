@@ -1,0 +1,147 @@
+# Every handoff in the factory, and the contract that governs it.
+#
+# A stage is not a document, it is a HANDOVER: one role stops and another starts on what the
+# first one left. There are twenty such moments in a story and every one of them is a place
+# where the second role can start without something it needs. On TP1-13797 four of them
+# cost a round each, and none of the four was a decision — the tester never opened
+# `impl-diff.txt` and four derived requirements were never written; the critic could not tell
+# which case version it was reviewing; the runner had no evidence policy for a manual case;
+# the delivery did not know what the person had answered about the drafts.
+#
+# `handoff_init.py --stage <S> --from <role>` resolves the contract here, so no role and no
+# orchestrator has to know the file names. `kind` says what the file is:
+#   produce  — a role hands its work on
+#   review   — a role hands a verdict back (it carries `findings`, and every finding carries
+#              `expected` and `check`: a refusal that does not say what the reviewer wants is
+#              not a refusal, it is a riddle, and the author pays for it in rounds)
+#   decision — a person's answer, recorded verbatim, handed to the role that acts on it
+#   setup    — the story's own start: there is no item list yet, only what the first role is given
+#   report   — what a person is shown at a gate: the items are the questions, not rows of work
+#   ledger   — what outlives the story
+#
+# `secondary: true` marks a handover a role makes BESIDE its dispatch: the same role hands its
+# window to the next role AND something further on (the designer's manual cases reach S6, the
+# automator's instances reach the runner, the analyst's triage reaches the scribe). A lookup
+# without a named receiver returns the dispatch-time contract, never one of these - which
+# `story_step start` relies on, and which a test holds.
+#
+# `purpose: <word>` marks a handover that serves ONE kind of dispatch of a stage that also has the usual
+# one (S5's plan dispatch, `purpose: s5_plan`, beside the window dispatches). `contract_of` matches such a
+# row only when it is asked for that purpose, and a lookup that names no purpose never returns it - so the
+# window contract of a stage stays what it was, and a purpose nobody registered resolves to no contract.
+#
+# `produce`, `review` and `ledger` carry `scope`: one row per item, with a state from the
+# vocabulary. The other three have no item list of their own and a test asserts exactly that,
+# so "this contract has no scope" is a stated shape rather than an omission nobody noticed.
+#   ledger   — what outlives this story, handed to the project
+schema_version: 1
+
+handoffs:
+  - {stage: S0, from: qa-story,              to: qa-scout,              contract: s0-setup-to-scout,        kind: setup}
+  - {stage: S1, from: qa-scout,              to: qa-requirements-tester, contract: s1-scout-to-tester,      kind: produce}
+  - {stage: S2, from: qa-requirements-tester, to: qa-test-strategist,   contract: s2-tester-to-strategist,  kind: produce}
+  - {stage: S3, from: qa-test-strategist,    to: qa-case-designer,      contract: s3-strategist-to-designer, kind: produce}
+  - {stage: S2, from: qa-case-critic,        to: qa-requirements-tester, contract: s2-stage-critic-to-tester, kind: review,
+     note: "the stage critic's verdict on S2; the same file closes S2 when the verdict is `ok`"}
+  - {stage: S3, from: qa-case-critic,        to: qa-test-strategist,    contract: s3-stage-critic-to-strategist, kind: review,
+     note: "the stage critic's verdict on S3; the same file closes S3 when the verdict is `ok`"}
+  - {stage: S4, from: qa-case-designer,     to: qa-case-critic,        contract: s4-designer-to-case-critic, kind: produce}
+  - {stage: S4, from: qa-case-critic,        to: qa-case-designer,      contract: s4-case-critic-to-designer, kind: review,
+     note: "the same file closes S4 when the verdict is `approved`"}
+  - {stage: S4, from: qa-case-designer,      to: qa-runner,             contract: s4-designer-to-runner,    kind: produce, secondary: true,
+     note: "manual-agent cases skip S5 entirely and reach S6 from here"}
+  - {gate: A,   from: person,                to: qa-automator,          contract: gate-a-to-automator,      kind: decision}
+  - {stage: S5, from: qa-automator,          to: qa-code-critic,        contract: s5-automator-to-critic,   kind: produce}
+  - {stage: S5, from: qa-code-critic,        to: qa-automator,          contract: s5-critic-to-automator,   kind: review,
+     note: "the same file closes the window when the verdict is `approved`"}
+  - {stage: S5, from: qa-automator,          to: qa-runner,             contract: s5-automator-to-runner,   kind: produce, secondary: true}
+  - {stage: S5, from: qa-automator,          to: qa-code-critic,        contract: s5-automator-plan-to-critic, kind: produce, purpose: s5_plan,
+     note: "the plan for every case of the stage, before any window; asked for only by purpose"}
+  - {stage: S5, from: qa-code-critic,        to: qa-automator,          contract: s5-critic-plan-to-automator, kind: review, purpose: s5_plan,
+     note: "the review of that plan: blockers go back to the author, remarks travel into the windows"}
+  - {stage: S6, from: qa-runner,             to: qa-failure-analyst,    contract: s6-runner-to-analyst,     kind: produce}
+  - {stage: S7, from: qa-failure-analyst,    to: qa-automator,          contract: s7-analyst-to-automator,  kind: review}
+  - {stage: S7, from: qa-automator,          to: qa-failure-analyst,    contract: s7-automator-to-analyst,  kind: produce}
+  - {stage: S7, from: qa-failure-analyst,    to: qa-doc-scribe,         contract: s7-analyst-to-scribe,     kind: produce, secondary: true}
+  - {stage: S8, from: qa-doc-scribe,         to: person,                contract: s8-scribe-to-gate-b,      kind: report}
+  - {gate: B,   from: person,                to: qa-bug-reporter,       contract: gate-b-to-delivery,       kind: decision,
+     note: "the same file authorises the MR, the external writes and `retro_mode`"}
+  - {stage: S8, from: qa-bug-reporter,       to: qa-doc-scribe,         contract: s8-bug-reporter-to-scribe, kind: produce,
+     note: "what the reporter filed after gate B: bug, draft, case, requirements; the tracker is never said here (HF8-21)"}
+  - {stage: S9, from: qa-retro-analyst,      to: project,               contract: s9-retro-to-project,      kind: ledger}
+
+# What a REPAIR dispatch's form takes from the accepted form it reworks (HF9-2). A rework repeats accepted work on the same
+# inputs (the rework request INHERITS the parent's input hash; nothing re-measures the inputs on disk), so a fact about the
+# WHOLE stage's inputs - how many requirements the register carried, how many cases the plan carried - is the parent's answer,
+# and the repair role fills only its own rows. A per-dispatch fact (the cases THIS dispatch was handed, how much of its input
+# THIS role opened) is never listed: S6 counts and S2 `read` are asked again. Contract id ->
+# paths of the form: `section[].key` names the key in every row of the section, `section[0].key` in one row. A listed field is
+# carried only when the parent form is readable, is of the same contract, and answered it; a row only when its other
+# contract-written values equal the parent's. `.version` is never listed: its deriver measures the file as it is now. Every
+# carried value is recorded in the form's `derived:` section with the parent as its source. An unlisted contract carries
+# nothing. Read by `handoff.repair_carries`, written by `handoff_init.py --carry-from`.
+repair_carries:
+  s2-tester-to-strategist:
+    - inputs_read[].handed
+  s3-strategist-to-designer:
+    - inputs_read[].requirements
+    - inputs_read[].existing_candidates_considered
+    - budget.size
+    - budget.cap
+    - budget.planned_rows
+    - budget.within_cap
+    - budget.if_over
+  s4-designer-to-case-critic:
+    - inputs_read[].rows
+  s8-scribe-to-gate-b:
+    - inputs_read[0].path
+    - inputs_read[].drafts_received
+    - inputs_read[].rows
+
+# Not a handoff between stages: the way out when a role cannot fill one of the files above.
+escalation:
+  contract: role-to-conductor
+  kind: help
+  note: >-
+    A role never takes a filling problem to the person. It fills `blocked` in its own handoff,
+    runs `handoff_help.py`, and the conductor answers in the second half of this file — with
+    the correction, or with the one question that is genuinely a person's to answer.
+
+# A value the judge decided is carried by the form itself, never by a separate file. The field
+# takes the vocabulary's spelling, and one row per repair is appended to the form's `judged`
+# section: the field, the value, the role's own `as_written` words, the confidence and which
+# question decided it. The receiving role sees which values a machine chose and may refuse any
+# of them like any other claim. `handoff_check.py` writes these rows; nothing about the judge
+# reaches a role as prose, and no model reads the judge's journal to explain it to another
+# model - on TP1-13797 that wiring cost $18.78 of orchestrator for a judge that cost one cent.
+# What CODE filled, from the artifacts on disk, when the check ran. One row per value: the
+# receiving role sees which values are the artifacts' word rather than the author's and may
+# refuse any of them, and the check can still tell a form the ROLE never touched from one
+# `--fix` has written into.
+derived_row:
+  field: <the path of the field code filled>
+  source: "<where it came from, e.g. automation-manifest.runs[]>"
+
+judged_row:
+  field: <the path of the field, e.g. scope[2].state>
+  value: <the vocabulary spelling the judge chose>
+  as_written: "<what the role actually wrote, or the row it was read from when the field was empty>"
+  confidence: <0..1, at or above the judgment's threshold>
+  judgment: <the registered question: form_row_state, form_digest_verdict, form_unresolved_reason,
+             result_observation_matches_then>
+# Two kinds of question, one section. `form_*` maps a word the role DID write onto the closed list
+# it meant. `result_observation_matches_then` answers an EMPTY field from the row's own contents -
+# the runner's `observed` against the `then` the case quoted - and can only answer `passed` or
+# `failed`; `inconclusive` stays the role's word, because a judge that cannot settle the question
+# must not be the one to say nobody can.
+
+# Every file above shares this skeleton, so a role that has filled one has filled them all.
+common_shape:
+  inputs: what the RECEIVING role must read, with `required` on each
+  inputs_read: what the SENDING role confirms it read of its own predecessor, with versions
+  header: {role, stage, window_or_scope, verdict: one of vocabulary.header_verdicts}
+  scope: one row per item, each with `id`, `state` from vocabulary.row_states, and `reason`
+  artifacts: the files the receiving role is entitled to, by path
+  claims: what the sender asserts, each one checkable by code
+  unresolved: what stays open on purpose, with a reason from vocabulary.unresolved_reasons
+  blocked: the field the role could not fill, what it tried, and the data the conductor needs

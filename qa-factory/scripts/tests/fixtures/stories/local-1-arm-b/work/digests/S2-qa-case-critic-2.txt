@@ -1,0 +1,7 @@
+qa-case-critic S2 S2-qa-case-critic-2 · concerns
+register · reviewed · inputs_read now names the tester's real form; sha256 not added
+work/handoffs/S2-qa-case-critic-2.values.yaml
+The fix is only partly done. I replaced the placeholder with work/handoffs/S2-qa-requirements-tester-1.yaml in a values file. I left out its sha256 because I have no shell here to compute it, and I didn't want to invent one. The driver will need to add the hash.
+My earlier review is unchanged: ok, with finding F-1 (not blocking) and one not_looked row for the cited MyBooks source lines.
+There was no S2-qa-case-critic-2.yaml form in the handoffs folder, only the -1 form. So the values file is named for dispatch 2, and I haven't confirmed the checker will pick it up.
+notes: state/findings/S2-qa-case-critic-2-digest-notes.md

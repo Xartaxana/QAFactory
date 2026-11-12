@@ -1,0 +1,40 @@
+---
+id: LOCAL-1_TC_009
+title: OUT_OF_STOCK and INSUFFICIENT_STOCK refuse the add and leave the cart unchanged
+area: cart
+priority: P0
+status: Draft
+channel: auto
+reuse_decision: new
+updated: 2026-11-05
+task: LOCAL-1
+covers: [R-7]
+defect_class: boundary
+basis: external:MyBooks/docs/openapi.json
+preconditions: [{"id": "PC-1", "kind": "data", "what": "marked books with stock 0 and stock 5", "check": {"case_seeds": "the case seeds a stock-0 book Z, a stock-5 book A and its own guest session"}}]
+then_oracles: [{"then": 1, "source": "unknown", "ref": "Q7"}, {"then": 2, "source": "unknown", "ref": "Q8"}]
+question_thens: [{"question": "Q7", "then": 1, "readings": {"now": "Z gives 400 OUT_OF_STOCK, A quantity 2 is accepted with the cart at 5, A quantity 3 gives 400 INSUFFICIENT_STOCK", "before": "the statuses and codes the person names"}, "not_needed": ""}, {"question": "Q8", "then": 2, "readings": {"now": "the cart is identical to before each refused call", "before": "the cart state the person names"}, "not_needed": ""}]
+branches: [{"id": "BN-8", "then": 1}]
+---
+
+Requirements: R-7
+Plan row: TS-9
+
+## Given
+Guest cart empty; book Z stock 0; book A stock 5 with 3 already in the cart.
+
+## Steps
+1. POST /api/cart Z quantity 1.
+2. POST /api/cart A quantity 2 (total equals stock).
+3. Reset A to 3 in the cart, POST /api/cart A quantity 3 (total one over stock).
+4. GET /api/cart after each call.
+
+## Then
+1. P-zero, P-met, P-over: the three adds get the status and error code that the answer to the raised question gives; P-over is a different code from P-zero.
+2. After each refused add, GET /api/cart (independent of the POST answer) equals the cart before the call: no Z line, A unchanged.
+
+## Obligation coverage
+| OB | part | oracle | boundary | Then | residual gap |
+|---|---|---|---|---|---|
+| OB-9 | stock 0 | openapi 400 codes, raised | 0 | 1, 2 | |
+| OB-9 | met / one over with cart | raised | stock and stock+1 | 1, 2 | concurrent buyers walked in TC_015 |

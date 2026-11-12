@@ -1,0 +1,281 @@
+{
+  "steps": {
+    "goto": {
+      "args": "<url>",
+      "arity": [
+        1,
+        1
+      ],
+      "does": "open a full URL on a stand host named in config environments[]; the first goto of the file names the stand of the session"
+    },
+    "click": {
+      "args": "<selector>",
+      "arity": [
+        1,
+        1
+      ],
+      "does": "click the element"
+    },
+    "fill": {
+      "args": "[--whole] <selector> <text>",
+      "arity": [
+        2,
+        3
+      ],
+      "whole_flag": "--whole",
+      "whole_types": [
+        "checkbox",
+        "color",
+        "date",
+        "datetime-local",
+        "file",
+        "hidden",
+        "month",
+        "password",
+        "radio",
+        "range",
+        "time",
+        "week"
+      ],
+      "whole_tags": [
+        "select"
+      ],
+      "does": "make the field hold exactly the text, as a person does: clear the field (select all, delete), then key the text one character at a time with `manual_capture.type_delay_ms` between characters, record the field's value and focus after each character, then once more after `manual_capture.settle_ms`; an empty text only clears the field; a text that would take longer than the step limit at that pace is refused before any key is sent (door: `fill --whole`); `fill --whole <selector> <text>` and a field that cannot be keyed (a type of `whole_types`, a tag of `whole_tags`) set the whole value at once and say `input: whole` in the step line; never a credential - an account goes in with `fill-account`; a text that looks like a secret is keyed all the same but its log is not stored"
+    },
+    "fill-account": {
+      "args": "<selector> <actor> user|secret",
+      "arity": [
+        3,
+        3
+      ],
+      "does": "type the account's name (user) or password (secret) into the field; the actor is a form of `--as` (default, a role, env:USER_KEY/SECRET_KEY, created:<name>) and the value is read by code, never written in the steps file; the screen is not saved from the first such step until the page leaves the sign-in address"
+    },
+    "fill-new-account": {
+      "args": "<selector> user|secret [template]",
+      "arity": [
+        2,
+        3
+      ],
+      "does": "make a NEW account through the app's own sign-up form, on a stand whose config row records `safe_to_break`: `user` generates the pair, records it (under a lock, before anything is typed) and types the name, shaped by the template (the data row `generated_user_template`, default `{generated_username}`; give `{generated_username}@example.test` when the form validates an email; a template without `{generated_username}` is refused); `secret` types the same pair's password and needs a `user` step before it in the item; the value is never written in the steps file, the log or the answer (they say `created:<name> [generated]`); the screen is not saved from the first such step until the page leaves the sign-in address; if the app refuses the sign-up (a later step fails while the page is still on the form) the account is recorded `unconfirmed` and is never used as `--as created:<name>`"
+    },
+    "account": {
+      "args": "<handle> confirmed|unconfirmed <why>",
+      "arity": [
+        3,
+        3
+      ],
+      "verdicts": [
+        "confirmed",
+        "unconfirmed"
+      ],
+      "why_max": 300,
+      "does": "say whether an account works: `confirmed` when you saw the app accept it (a created user that landed on the same address), `unconfirmed` when you created or were given it and could not confirm it works; the why quotes what you saw (one quoted argument, at most `why_max` characters, never a credential); the handle is a form of `--as` (default, a role, env:USER_KEY/SECRET_KEY, created:<name>); the step acts on nothing in the browser and records the word, the why and the page's path"
+    },
+    "look": {
+      "args": "[<selector>]",
+      "arity": [
+        0,
+        1
+      ],
+      "max_bytes": 24000,
+      "short_lines": 20,
+      "short_chars": 1500,
+      "does": "look at the page the way a person does: store what the page shows (the accessibility tree of the whole page, or of the element when a selector is given; the page's text when the tree cannot be read) as a state file the role may cite; the first line of the file says which form it is (`form: aria`, `form: text (<why>)`); a tree longer than `max_bytes` is cut at a line with the cut named (`look <selector>` narrows it); refused inside the sign-in window"
+    },
+    "watch": {
+      "args": "<selector> [<label>]",
+      "arity": [
+        1,
+        2
+      ],
+      "max_watched": 5,
+      "does": "from now on, until the end of the call, read the text of the element after every step; a change on a step that is no action is a `surprise` line; an element that is gone reads `<gone>`; at most `max_watched` watches per call"
+    },
+    "type": {
+      "args": "<selector> <text> [<delay_ms>]",
+      "arity": [
+        2,
+        3
+      ],
+      "default_delay_ms": 200,
+      "max_delay_ms": 2000,
+      "max_chars": 200,
+      "settle_ms": 1500,
+      "keeps_run": [
+        "read",
+        "look",
+        "wait",
+        "watch",
+        "capture",
+        "fail_request",
+        "restore_request",
+        "http"
+      ],
+      "does": "focus the field once,then key the text one character at a time with the pause between characters, and record the field's value and whether it still has focus after each character, then once more after `settle_ms`; a string a person types in a row is ONE call: a second `type` on the same field with no action between (a passive step - `keeps_run`: a read, a look, a wait - is not an action, as a person who looks does not click) goes on with the typing and does NOT set the focus again - when the field lost it, the keys go where the focus is and the step is not ok (`focus lost before the call: keys went to <what has focus>`); a `click` on the field between two calls is the person's own new click; use it when a field's value goes to the server or redraws the page (`fill` sets the whole value at once and hides a lost character or a lost focus); a text longer than max_chars is `fill`"
+    },
+    "press": {
+      "args": "<selector> <key>",
+      "arity": [
+        2,
+        2
+      ],
+      "keys": [
+        "Backspace",
+        "Delete",
+        "Enter",
+        "Tab",
+        "Escape",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+        "Control+A",
+        "Meta+A",
+        "Control+V"
+      ],
+      "does": "focus the field and press one key from `keys` (or one printable character); records the field's value and its focus, and whether it had focus before the step; right after a `type` on the same field it goes on without a new focus (a person does not click again to press Enter), and a field that lost the focus is told as `focus lost before the call`"
+    },
+    "paste": {
+      "args": "<selector> <text>",
+      "arity": [
+        2,
+        2
+      ],
+      "does": "focus the field and insert the text at once (an `input` event, not a `paste` event); records the field's value and its focus; right after a `type` on the same field it goes on without a new focus, as `press` does"
+    },
+    "fail_request": {
+      "args": "<url_glob> <status|timeout>",
+      "arity": [
+        2,
+        2
+      ],
+      "status_min": 400,
+      "status_max": 599,
+      "max_logged": 50,
+      "does": "from now on every browser request of the page that matches the glob gets the status (an empty JSON body) or is dropped as timed out; it does not reach the stand; a glob with a host must name a stand host; a request sent by the page's server is not seen"
+    },
+    "restore_request": {
+      "args": "<url_glob>",
+      "arity": [
+        1,
+        1
+      ],
+      "does": "stop failing the requests of the glob; its result (`requests failed: N`) is written to the evidence, and a restored rule no longer holds a `capture post_action`; a rule never lifted ends with the walk item that declared it"
+    },
+    "end-session": {
+      "args": "",
+      "arity": [
+        0,
+        0
+      ],
+      "device": "none: a device has no such step (`app_steps` lacks it), the steps file of a device naming it is refused with the device's own list",
+      "does": "delete every cookie of the browser context of the current actor, as a session that ran out; the page stays open as it was, and the next request of the page goes without the session cookie; the answer says how many cookies were deleted - `0 cookies` when the context held none (a guest, an actor not signed in, a second `end-session` in a row), which is a no-op said aloud, not a failure; no cookie name or value is stored"
+    },
+    "drag": {
+      "args": "<selector> <dx> <dy>",
+      "arity": [
+        3,
+        3
+      ],
+      "does": "press on the element, move the mouse by dx, dy pixels (whole numbers), release"
+    },
+    "wait": {
+      "args": "<ms> | <selector>",
+      "arity": [
+        1,
+        1
+      ],
+      "does": "a whole number is milliseconds; anything else waits for the selector to appear"
+    },
+    "read": {
+      "args": "<selector> [attr=<name> | style=<prop> | state=<name> | text] [expect=<text>]",
+      "arity": [
+        1,
+        3
+      ],
+      "does": "store the value (text by default) in a log file and in the step line; this is how a viewport transform or a status text is read; an attribute the element lacks reads as read_absent_marker, an empty one as nothing; state= is true or false for one of read_states; `expect=<text>` (the LAST argument) is the role's own planned value: the value read is compared with it, whitespace collapsed, and the step line says `expect: matched` or `expect: differs` (the step row carries `expect`); a walk call stops on a difference, a `ui` call only records it; the code compares bytes and never says who is right"
+    },
+    "capture": {
+      "args": "<pre_action|post_action|supporting> [label]",
+      "arity": [
+        1,
+        2
+      ],
+      "does": "take a screenshot now; the label names the file and is what the capture proves: `capture post_action completion` is the one line that proves the completion condition was reached"
+    },
+    "http": {
+      "args": "<METHOD> <path|url> [--body-file <file>]",
+      "arity": [
+        2,
+        4
+      ],
+      "does": "one HTTP request on the walk's stand, sent as the request's actor; walk only. A path (`/v1/x`) is joined to the stand's base_url, a full URL must be on the walk's stand; the body file is given as an absolute path written with forward slashes (a backslash is an escape in a step line) and holds no generated-value placeholder; the request and the answer are stored as one JSON document (a capture the role may quote), and a 3xx, 4xx or 5xx answer is a `surprise` line (a redirect is not followed)"
+    }
+  },
+  "login": {
+    "ui": {
+      "path": "/",
+      "local_storage": {},
+      "expand": {
+        "text": "more options"
+      },
+      "username": {
+        "role": "textbox",
+        "name": "Email address"
+      },
+      "password": {
+        "role": "textbox",
+        "name": "Password"
+      },
+      "submit": {
+        "role": "button",
+        "name": "Sign in to your account"
+      },
+      "landed": {
+        "url_not": [
+          "/auth/sign-in",
+          "openid-connect"
+        ],
+        "session_cookie": null
+      }
+    },
+    "http": {
+      "path": "/v1/local-auth/login",
+      "token_field": "access_token"
+    },
+    "ui_fit_wait_s": 5,
+    "words": {
+      "default_unconfirmed_status": [
+        404,
+        405
+      ],
+      "source_project": "recipe from your config",
+      "source_access": "environment.access",
+      "source_factory_default": "the factory's default recipe, which this project never confirmed",
+      "not_known_line": "login by code: this project's sign-in is not an HTTP request the factory knows (environment.access.kind {kind}); nothing was sent",
+      "not_known_door": "a screen case signs in with fill-account steps, and a seed is done through the screens; for the project: record manual_capture.login.http in config.json (path and token_field), or null if this kind of capture needs no login",
+      "default_unconfirmed": "login by code at {url} did not give a token ({status}). The address is the factory's default recipe, which this project never confirmed, so the stand has not judged the account: record manual_capture.login.http in config.json (path and token_field), or record the sign-in as environment.access of kind local_login with its url; say so in your findings",
+      "none_said": "environment.access.kind is none: no login by code"
+    }
+  },
+  "role_commands": {
+    "manual_capture.py ui": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --case <id> --steps-file <file> [--as <account>] [--session <actor>] [--attempt a<n>]: --session keeps that actor's browser profile between calls (calls of one --profile join one open attempt; leave --as out; the stand probe of gate A must have proved the sign-in), and `manual_capture.py session close --task-root <T> --case <id> [--attempt a<n>]` deletes the profiles - run it before `build`, which refuses a live profile. One step per line from the closed list in references/manual-capture-steps.json - goto <url>, end-session (no argument: deletes the cookies of this actor's browser context and the page stays open, as for a session that ran out; it says `0 cookies` when there were none), click <selector>, fill <selector> <text>, fill-account <selector> <actor> user|secret, drag <selector> dx dy, wait <ms>|<selector>, read <selector> [attr=<name>|style=<prop>|text], capture <pre_action|post_action|supporting> [label]. The file holds at least one goto (the first goto names the session's stand), and every goto must be on a configured stand; `capture post_action completion` proves the completion condition; never type a credential in a step - the code signs in (`--as` names the account), or `fill-account` types the account the factory resolves (a steps file with `fill-account` makes no code login, so leave `--as` out). An S7 analyst captures only with `--case settle-<place id>`, the place id as `place_answers.py list` prints it.",
+      "verify": "the printed JSON lists every capture with its phase and every step with its outcome; exit 0 means every step ran, 1 a step failed or timed out, 3 the stand could not be identified, or the login by code did not land (`do_not_retry`, owner `user`: the account was refused - make no further capture of any kind in this block, put the case in env_blocked[] with the printed `login by code: ...` line and halt the block, never `build`; owner `factory`: the recipe did not fit the page - sign in ONCE through `fill-account` steps in a new attempt, then the same halt if that fails)."
+    },
+    "manual_capture.py http": {
+      "roles": [
+        "qa-runner",
+        "qa-failure-analyst"
+      ],
+      "input": "--task-root <T> --case <id> --method GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS --url <url on a configured stand> [--body-file <file>] [--header \"Name: value\"]... [--state-url <url>] [--phase pre_action|post_action|supporting] [--proves <word>]... [--as <account>] [--session <actor>: the request carries that session's cookies only in the same --profile's open attempt; without --profile it opens its own attempt and signs in again] [--attempt a<n>]. Without --phase the call is a post_action; `--proves completion` marks the completion condition reached; --state-url also saves a GET of that URL as the state; never put a credential in a header - the code signs in (`--as` names the account); to create a user, put `{generated_username}` and `{generated_password}` in the --body-file (only there): the factory fills them in and keeps the password out of every output. An S7 analyst captures only with `--case settle-<place id>`, the place id as `place_answers.py list` prints it.",
+      "verify": "the printed JSON lists the saved request_response (and state) with phase and hash; exit 0 means the call was answered, 1 it timed out, 3 the stand could not be identified (the case is env_blocked, no record)."
+    }
+  }
+}

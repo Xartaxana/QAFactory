@@ -1,0 +1,91 @@
+# S0: the story's setup is handed to the scout.
+#
+# The only handoff whose sender is not a role: S0 is the orchestrator's own stage (the driver's
+# conductor fills it by code). It exists because the scout's first dispatch is the one that has
+# historically arrived incomplete — on TP2-2553 the dispatch named no ticket tool and the
+# scout came back with nothing after two hours; on a UI story `code_repos[]` was empty and the
+# change had to be found by guesswork. Everything here is copied from `config.json`, `pipeline.json`
+# and the person's own words. Nothing in it is remembered from another story.
+schema_version: 1
+contract: s0-setup-to-scout
+stage: S0
+from_role: qa-story
+to_role: qa-scout
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: pipeline.json
+    what: the story's state — stage statuses, environment, size, remarks
+    required: true
+  - path: project:config.json
+    what: repositories, adapters, environments, external write channels
+    required: true
+  - path: project:obligations.md
+    what: rows earlier stories left for this area, listed for the scout, acted on by nobody yet
+    required: false
+
+header:
+  role: qa-story
+  stage: S0
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+# What the story is about, in the person's own spelling. `launch_flags` is the one field that is
+# never paraphrased: passing `--branch feature/x` when the person said `--mr 412` is a grounding
+# lie that lands in every artifact downstream of it.
+task:
+  ticket: <TICKET>
+  ticket_source: <the configured ticket adapter, or the path given with --ticket-file; REST leaves work/ticket-view.md, work/ticket-references.json, work/ticket-raw/issue.pretty.json>
+  launch_flags: "<--mr ... | --branch ... | --commit ... | --ungrounded | none, verbatim>"
+  scope_line: "<the one line S0 stated about what this story covers>"
+  resumed: <true|false>                 # true means §2b freshness applies before the gate
+
+# Where the scout may look, and nowhere else. Read from config, never retyped from memory of
+# another story: a story split across repositories comes back with one `implementations[]` entry
+# per repository, and an empty list is why a UI change once had no diff at all.
+repositories:
+  - name: <config.code_repos[].name, plus `tests` for the harness repo>
+    path: <as config spells it>
+    role: <code|tests>
+
+environment:
+  id: <the stand's id from config.environments[], or a dash>
+  pending: <true|false>                 # true: the stand question travels with the source review
+  none_configured: <true|false>         # true: say so once, plan on, stop nothing here
+
+# The tools S0 proved before this dispatch, with the command lines spelled out. A dispatch that
+# names the role's references but not its script hands the role a job with no tool for it.
+tools:
+  ticket_adapter: "python ${CLAUDE_PLUGIN_ROOT}/scripts/ticket_adapter.py"
+  ticket_adapter_proved: <true|false>   # readiness §5 ran it; false blocks this dispatch
+  judge_mode: <on|advisory|none>
+
+# Rows earlier stories left behind that touch this area. Listed, not acted on: an obligation is
+# context for the scout's search, never an instruction to test something nobody asked for.
+obligations:
+  - id: <obligation id>
+    trigger_or_area: <what made it relevant to this story>
+    text: <one line>
+
+claims:
+  launch_flags_copied_verbatim: <true|false>
+  repositories_read_from_config_not_memory: <true|false>
+  ticket_tool_named_in_the_prompt: <true|false>
+  readiness_green_or_waived: <true|false>       # a waived line names the person's words
+
+unresolved:
+  - id: <what is not settled>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+# S0's sender is the orchestrator, so its `blocked` is the one that does go to the person —
+# every other contract's goes to the conductor first.
+blocked:
+  field: <the field of this file that cannot be filled>
+  problem: <what was tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything needed to settle it>

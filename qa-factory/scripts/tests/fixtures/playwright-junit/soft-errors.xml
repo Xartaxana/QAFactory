@@ -1,0 +1,143 @@
+<testsuites id="" name="" tests="4" failures="4" skipped="0" errors="0" time="2.2">
+<testsuite name="soft.spec.js" timestamp="2026-10-31T17:38:37.865Z" hostname="" tests="2" failures="2" skipped="0" time="0.023" errors="0">
+<testcase name="two soft" classname="soft.spec.js" time="0.01">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/soft-two-soft/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  soft.spec.js:2:1 › two soft ──────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 1
+
+      1 | const { test, expect } = require('@playwright/test');
+      2 | test('two soft', async () => {
+    > 3 |   expect.soft(1).toBe(2);
+        |                  ^
+      4 |   expect.soft(3).toBe(4);
+      5 | });
+      6 | test('b10', async () => {
+        at /work/proj/tests/soft.spec.js:3:18
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 4
+    Received: 3
+
+      2 | test('two soft', async () => {
+      3 |   expect.soft(1).toBe(2);
+    > 4 |   expect.soft(3).toBe(4);
+        |                  ^
+      5 | });
+      6 | test('b10', async () => {
+      7 |   expect.soft(1).toBe(2);
+        at /work/proj/tests/soft.spec.js:4:18
+
+    Error Context: ../test-results/soft-two-soft/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="b10" classname="soft.spec.js" time="0.013">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/soft-b10/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  soft.spec.js:6:1 › b10 ───────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 1
+
+       5 | });
+       6 | test('b10', async () => {
+    >  7 |   expect.soft(1).toBe(2);
+         |                  ^
+       8 |   throw new Error('gone');
+       9 |   expect(3).toBe(4);
+      10 | });
+        at /work/proj/tests/soft.spec.js:7:18
+
+    Error: gone
+
+       6 | test('b10', async () => {
+       7 |   expect.soft(1).toBe(2);
+    >  8 |   throw new Error('gone');
+         |         ^
+       9 |   expect(3).toBe(4);
+      10 | });
+      11 |
+        at /work/proj/tests/soft.spec.js:8:9
+
+    Error Context: ../test-results/soft-b10/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="h.spec.ts" timestamp="2026-10-31T18:48:58.795Z" hostname="" tests="2" failures="2" skipped="0" time="1.513" errors="0">
+<testcase name="hang" classname="h.spec.ts" time="1.503">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/h-hang/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  h.spec.ts:2:5 › hang ─────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 1
+
+      1 | import { test, expect } from '@playwright/test';
+      2 | test('hang', async () => {
+    > 3 |   expect.soft(1).toBe(2);
+        |                  ^
+      4 |   await new Promise(() => {});
+      5 |   expect(1).toBe(1);
+      6 | });
+        at /work/proj/tests/h.spec.ts:3:18
+
+    Test timeout of 1500ms exceeded.
+
+    Error Context: ../test-results/h-hang/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="stackless" classname="h.spec.ts" time="0.01">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/h-stackless/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  h.spec.ts:7:5 › stackless ────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 1
+
+       6 | });
+       7 | test('stackless', async () => {
+    >  8 |   expect.soft(1).toBe(2);
+         |                  ^
+       9 |   const e = new Error('nostack'); e.stack = 'Error: nostack';
+      10 |   throw e;
+      11 | });
+        at /work/proj/tests/h.spec.ts:8:18
+
+    Error: nostack
+
+    Error Context: ../test-results/h-stackless/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

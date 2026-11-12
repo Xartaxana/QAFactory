@@ -1,0 +1,9 @@
+{
+  "dispatch": "S1-qa-scout-1",
+  "stage": "S1",
+  "close": {
+    "words_ref": "state/words/s1-conflict-20261101-234118.txt",
+    "words_sha256": "1dd9b646ba7a7e3c8b11bf985410a6956cecb70407b392a017a3158b68a7ad01",
+    "at": "2026-11-01T22:41:48+00:00"
+  }
+}

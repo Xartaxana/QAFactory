@@ -1,0 +1,42 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that a signed-in user can add three copies of an in-stock book and the cart shows quantity 3 with the correct subtotal.\n\n*Type:* positive  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* Application is reachable (local disposable environment)\n* A regular user account is available\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* Book \"1984\" has stock >= 3; read the real price and stock at run time\n\n*Test data:*\n* Book: 1984\n* Quantity: 3\n* Expected subtotal: 3 x price read on the page ($41.97 at $13.99)\n\n*Steps & Expected results:*\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; the cart badge in the navigation is absent or 0\n# On the catalog page type \"1984\" into the search box and click Search  \n   *Expected:* A catalog card titled \"1984\" is listed\n# Open the detail page of \"1984\"  \n   *Expected:* Detail page opens with heading \"1984\"\n# Set the Quantity field to 3  \n   *Expected:* Value is 3\n# Click Add to Cart  \n   *Expected:* Cart badge shows 3\n# Open the cart  \n   *Expected:* One line \"1984\" is listed\n# Read the line quantity and subtotal  \n   *Expected:* Quantity 3, subtotal $41.97\n\n*Postconditions:*\n* Cart contains one line \"1984\" with quantity 3 and subtotal $41.97\n* Cart is emptied afterwards\n\n*Traceability:*\n* User story: REF-10",
+  "id": "14509521",
+  "key": "REF-17",
+  "labels": [
+    "positive",
+    "quantity",
+    "shopping_cart",
+    "web"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 15780,
+    "fields_requested": "*all",
+    "sha256": "ebf3bc40bd72f4ccbf4a32a2d2c51e3ea8dcbad2fa2f142a46454426570fc521",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-12T15:02:55.500+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Add three copies of a book to cart",
+  "type": "Test"
+}

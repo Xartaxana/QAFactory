@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "note": "Read by scripts/investigation_probe.py (the limits of the ONE read-only investigation pass of an S7 chain) and, for `resolving_verdicts`, by the investigation module's target check. The CLOSED lists and numbers live here, never in code (AR-1): `methods` are the HTTP methods the probe may send (read-only ones; the file is the only thing that keeps a mutating method out, so a change to it is a change of what a role may do to the stand), `probes_per_dispatch` is P (probes in one pass, counted over the whole retry/relaunch chain of the investigation dispatch), `reproductions_per_target` is R (probes of one target, and the number of captures `--status reproduced` needs), `timebox_minutes` is T (the pass's clock starts at its first probe), `resolving_verdicts` are the triage verdicts that settle a target by themselves (NOT_EXECUTED, ENV_ISSUE and RUNNER_MISREAD_EVIDENCE are deliberately absent: they are context, never a resolution - the last one sends the check back to its runner and settles nothing about the product). The validity of this file is judged by ONE function, `investigation.budget_problems`; a file it objects to stops every probe (an unknown budget is not a budget).",
+  "methods": ["GET", "HEAD", "OPTIONS"],
+  "probes_per_dispatch": 12,
+  "reproductions_per_target": 3,
+  "timebox_minutes": 20,
+  "resolving_verdicts": ["APP_BUG", "TEST_BUG", "TEST_BUG:collection", "FLAKY", "APP_CHANGED", "CASE_DEFECT", "ASSERT_STRICTER"]
+}

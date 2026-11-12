@@ -1,0 +1,430 @@
+# S2 -> S3: the requirements register is handed to the strategist.
+#
+# The register is the story's oracle, so this file is where the factory proves the register was
+# built from everything it was given. `inputs_read` is not bookkeeping: it is the answer to the
+# one failure that has no refusal attached to it - a source or a diff hunk nobody opened. On
+# REF-30 the tester read part of `impl-diff.txt`, wrote 14 requirements, and every later
+# stage was correct about the wrong 14. The repaired run read every hunk and reached 21.
+#
+# The strategist may not add a requirement and may not repair one. Whatever is missing here is
+# missing from the plan, the cases, the tests and the report.
+# Fill: write your fields as "path: value" lines to work/handoffs/S2-qa-requirements-tester-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S2-qa-requirements-tester-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too. A row of a list, one line per key: "scope[0].id": <value>, the next row "scope[1].id".
+schema_version: 1
+contract: s2-tester-to-strategist
+stage: S2
+from_role: qa-requirements-tester
+to_role: qa-test-strategist
+
+inputs:
+  - path: work/handoffs/S2-qa-requirements-tester-1.yaml
+    what: this file
+    required: true
+  - path: work/requirements-register.md
+    what: every requirement with its source, revision, impact class and observable, the branches of the requirements (`## Branches`, BN-n) and a home for every sentence of the story's text (`## Source obligations`)
+    required: true
+  - path: work/requirements-readiness.json
+    what: the open questions with their readings and owners
+    required: true
+  - path: understanding.md
+    what: the brief the person reads at gate A, and the Size line
+    required: true
+  - path: work/sizing.json
+    what: the computed size, weights and the arithmetic behind them
+    required: true
+
+# One line per entry of the scout's `inputs`, with what was actually read of it. The counts come
+# from the scout's handoff and the answer is `<read> of <handed>`; anything short of the whole
+# is a `blocked` field, not a smaller number quietly written.
+inputs_read:
+  - path: work/impl-diff.txt
+    handed: 0 (no diff; implementation_source current-code)
+    read: 0 of 0
+  - path: work/context-bundle.json
+    version: 8274e6447507d33b9892d20a1283b8206e3e9f71ffafa413356d29e4e191728b
+  - path: REF-10 and 28 linked tickets (SRC-b8ad129913f9cbb25ab3 ...)
+    version: "2026-10-13T12:00:20.795+0000 (44); per-ticket revisions in the bundle"
+
+header:
+  role: qa-requirements-tester
+  stage: S2
+  window: LOCAL-1
+  verdict: ok
+
+# One row per requirement. This is the register in its machine form; the prose stays in the
+# register file. `state` from vocabulary.row_states - normally `found`, or `unresolved` for a
+# requirement whose oracle nobody can name yet.
+scope:
+  - id: R-1
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:BookDetailPage.tsx:45"
+    impact_class: blocked-flow
+    delta: new
+    derived_from_hunk: -
+  - id: R-2
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:BookDetailPage.tsx:170"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-3
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:BookDetailPage.tsx:55"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-4
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:103"
+    impact_class: money
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-5
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:session.ts:34"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-6
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:session.ts:34"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-7
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:AppProviders.tsx:35"
+    impact_class: cosmetic
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-8
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:BookDetailPage.tsx:164"
+    impact_class: degraded
+    delta: changed
+    derived_from_hunk: -
+  - id: R-9
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:BookDetailPage.tsx:164"
+    impact_class: degraded
+    delta: changed
+    derived_from_hunk: -
+  - id: R-10
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:BookDetailPage.tsx:164"
+    impact_class: degraded
+    delta: changed
+    derived_from_hunk: -
+  - id: R-11
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:44"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-12
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:44"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-13
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:schemas.ts:41"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-14
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:schemas.ts:41"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-15
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:schemas.ts:41"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-16
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:53"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-17
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:53"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-18
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:33"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-19
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:HomePage.tsx:118"
+    impact_class: blocked-flow
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-20
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: derived_risk
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:HomePage.tsx:118"
+    impact_class: degraded
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-21
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: derived_risk
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:WishlistPage.tsx:47"
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-22
+    state: found  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: register row with source and current-code observable
+    kind: derived_risk
+    source: REF-10 and linked tickets, see register
+    observable: "current-code:cartService.ts:118"
+    impact_class: data-loss
+    delta: unchanged
+    derived_from_hunk: -
+  - id: R-23
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: no code observable and no authored expected result
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "none: no implementation or no authored steps"
+    impact_class: blocked-flow
+    delta: new
+    derived_from_hunk: -
+  - id: R-24
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: no code observable and no authored expected result
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "none: no implementation or no authored steps"
+    impact_class: money
+    delta: new
+    derived_from_hunk: -
+  - id: R-25
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: no code observable and no authored expected result
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "none: no implementation or no authored steps"
+    impact_class: degraded
+    delta: new
+    derived_from_hunk: -
+  - id: R-26
+    state: unresolved  # `blocked` needs `blocked.problem` below; a factory refusal of your run is `header.verdict: halt`
+    reason: no code observable and no authored expected result
+    kind: confirmed_ac
+    source: REF-10 and linked tickets, see register
+    observable: "none: no implementation or no authored steps"
+    impact_class: blocked-flow
+    delta: new
+    derived_from_hunk: -
+    # the register's `derived_from` cell takes the marks of vocabulary.derived_from_marks (`bug:candidate-defect`) as a segment
+
+# Requirements that disagree with each other or with a source. Both readings travel: the plan row
+# carries `source_conflict` or `oracle_unknown`, the design review is forced, and the owner sees
+# BOTH readings at gate A. A matrix cell that reaches no plan row is an exit-gate error at S3.
+contradiction_matrix:
+  - id: C-1
+    requirement: R-2
+    contradicts: REF-10 AC-2 says message; code shows disabled button
+    reading_a: a message is required
+    reading_b: a disabled Out of Stock button satisfies the AC
+    owner_role: po_ba
+  - id: C-2
+    requirement: R-8
+    contradicts: "REF-2: 0 rejected; code BookDetailPage.tsx:164 turns 0 into 1"
+    reading_a: "requirement stands: reject, bug candidate in the UI"
+    reading_b: UI behaviour is intended
+    owner_role: po_ba
+  - id: C-3
+    requirement: R-9
+    contradicts: "REF-4/152: -1 and 1.5 rejected; code coerces to 1"
+    reading_a: "requirement stands: reject, bug candidate in the UI"
+    reading_b: UI behaviour is intended
+    owner_role: po_ba
+  - id: C-4
+    requirement: R-10
+    contradicts: "REF-5: non-numeric rejected; code falls back to 1"
+    reading_a: "requirement stands: reject, bug candidate in the UI"
+    reading_b: UI behaviour is intended
+    owner_role: po_ba
+
+# Questions that block understanding. Each travels whole - the statement, what the sources say and
+# where, and the lettered readings with what each one costs. A question that arrives without its
+# readings goes back to this role, never to the person (REF-31).
+open_questions:
+  - id: Q1
+    statement: Reject or coerce invalid quantity in the UI
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: see requirements-readiness.json
+    readings:
+      - id: a
+        reading: first reading in the readiness file
+        cost: tests follow that reading
+  - id: Q2
+    statement: "Over-stock: reject whole add or add available"
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: see requirements-readiness.json
+    readings:
+      - id: a
+        reading: first reading in the readiness file
+        cost: tests follow that reading
+  - id: Q3
+    statement: Maximum allowed and huge quantity expectation
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: see requirements-readiness.json
+    readings:
+      - id: a
+        reading: first reading in the readiness file
+        cost: tests follow that reading
+  - id: Q4
+    statement: Expected results of quick view, price race, network, session
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: see requirements-readiness.json
+    readings:
+      - id: a
+        reading: first reading in the readiness file
+        cost: tests follow that reading
+  - id: Q5
+    statement: Disabled Out of Stock button vs message
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: see requirements-readiness.json
+    readings:
+      - id: a
+        reading: first reading in the readiness file
+        cost: tests follow that reading
+  - id: Q6
+    statement: Code-only add behaviours intended?
+    owner_role: po_ba
+    severity: non_blocking
+    sources_say: see requirements-readiness.json
+    readings:
+      - id: a
+        reading: first reading in the readiness file
+        cost: tests follow that reading
+
+size:
+  computed: L
+  override: -
+  reasoning_ref: work/sizing.json
+
+artifacts:
+  register: work/requirements-register.md
+  readiness: work/requirements-readiness.json
+  understanding: understanding.md
+  sizing: work/sizing.json
+
+claims:
+  every_hunk_of_the_diff_was_read: true
+  every_requirement_has_an_observable_or_says_none: true
+  contradiction_matrix_walked_in_full: true
+  size_computed_by_sizing_py_not_quoted: true
+  size_recorded_in_pipeline: false  # `null` in pipeline.json while sizing.json said XXL
+
+expected_of_the_receiver:
+  - "every requirement above reaches a plan row (a `skip` row with a reason is a row) - the
+     strategist may not drop one silently and may not invent one"
+  - "a row touched by the contradiction matrix carries `source_conflict: true` or
+     `oracle_unknown: true` and forces design review at S4"
+  - "`observable: none` is a gate A question AND a plan row (`unverifiable` with `question_refs` and `if_answered`), never a
+     reason to skip the requirement; a register row marked `derived_from: bug:candidate-defect` (a suspect place in the code,
+     `observable: current-code:<file>:<line>`) asks for a test row: `automate` or `manual-agent`, or `unverifiable` with a branch
+     that sets one"
+  - "every branch of the register (`## Branches`, BN-n) is read as a unit of its own: a plan row carries it or it is named with a reason - it is never folded into the text of its requirement"
+
+unresolved:
+  - id: R-23
+    reason: pending_implementation
+    detail: expected result not authored / no implementation; owner answer to Q4 settles it
+  - id: R-24
+    reason: expectation_unconfirmed
+    detail: expected result not authored / no implementation; owner answer to Q4 settles it
+  - id: R-25
+    reason: expectation_unconfirmed
+    detail: expected result not authored / no implementation; owner answer to Q4 settles it
+  - id: R-26
+    reason: expectation_unconfirmed
+    detail: expected result not authored / no implementation; owner answer to Q4 settles it
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

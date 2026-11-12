@@ -1,0 +1,102 @@
+# S2: the stage critic (qa-case-critic) hands its verdict on the understanding and the register back - to the requirements
+# tester for a repair round, or on to S3. The same file serves both: `header.verdict` decides which (`ok` closes the stage,
+# `concerns` sends it back; the table that maps the word to the stage acceptance record is `vocabulary.stage_acceptance_verdicts`).
+#
+# What code reads here is DATA: the verdict word, the section `stage_acceptance` (failure_class, quote, witness_paths), the
+# places the critic did not look, the advice file it read. What the verdict MEANS is the critic's (spec t-1765 X2-1); the driver
+# records it with `stage_done.py --acceptance` and the tester is sent back with this file and the artifact only.
+schema_version: 1
+contract: s2-stage-critic-to-tester
+stage: S2
+from_role: qa-case-critic
+to_role: qa-requirements-tester      # on `ok` the same file closes S2 instead
+
+inputs:
+  - path: work/handoffs/<the author's dispatch>.yaml
+    what: the tester's handoff for this stage, with its `tried` table
+    required: true
+  - path: work/requirements-register.md
+    what: the register under review
+    required: true
+  - path: understanding.md
+    what: the understanding under review
+    required: true
+  - path: work/advice-S2.json
+    what: what the stage's advisers printed (absent on a first run: say so in `advice_read`)
+    required: false
+
+# The author row only; add a row of your own for each further input you read.
+inputs_read:
+  - path: work/handoffs/<the author's dispatch>.yaml
+    version: <the file's sha256, or omit for an unversioned input>
+
+required_when:
+  concerns: [stage_acceptance, questions]
+
+rows_owed_when:
+  concerns: [findings]
+  review: [findings]
+
+header:
+  role: qa-case-critic
+  stage: S2
+  window: <the register ids under review>
+  verdict: <one of vocabulary.header_verdicts>
+
+# Owed on `concerns` (see `required_when`): the failure class and a verbatim quote (path#anchor, at most 300 characters).
+stage_acceptance:
+  failure_class: <spec|capability|data|tooling>
+  quote: "<the artifact's own words, with path#anchor>"
+  witness_paths:
+    - <task-relative path the verdict rests on, or omit when the acceptor cited no evidence paths>
+
+scope:
+  - id: <requirement id or artifact name>
+    state: <one of vocabulary.row_states>
+    reason: <= 80 characters>
+
+findings:
+  - id: <F-n>
+    where: <the section or requirement id>
+    problem: <what is wrong, one sentence>
+    expected: "<what the reviewer expects to see instead, concretely>"
+    fix: <what to do, one sentence>
+    check: <what shows the author it is satisfied, or a dash when nothing does>
+    blocking: <true|false>
+
+# One row per place the brief named and the critic did not look, with the reason; an empty list means everything named was looked at.
+not_looked:
+  - where: <path or area>
+    why: "<one sentence>"
+
+advice_read: "<work/advice-S2.json, or a dash and the reason it was absent>"
+advice_rejected:
+  - script: <the adviser>
+    why: "<one sentence: why its remark is not a defect>"
+
+# A question about the story's INTENT that no file settles (spec X2-6); the driver raises it into the register.
+questions:
+  - question: "<the question, in plain words>"
+    read:
+      - <path#anchor the critic read before asking>
+    recommendation: "<what the work goes on with meanwhile>"
+    options:
+      - reading: "<one possible answer>"
+        if_chosen: "<what changes in the work if this is the answer>"
+      - reading: "<another possible answer>"
+        if_chosen: "<what changes in the work if this is the answer>"
+    severity: <blocker|major|minor>   # major and minor do not block; anything else blocks
+    owner_role: <the role the answer concerns>
+    why_person: <the class of person-owned.json, or omit when none>
+
+claims:
+  every_named_input_was_read: <true|false>
+  every_reject_carries_a_quote: <true|false>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

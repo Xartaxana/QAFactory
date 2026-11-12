@@ -1,0 +1,18 @@
+{
+  "session_id": "synthetic-gaps-b",
+  "usage_completeness": "provisional",
+  "by_activity": {
+    "act-doctor": {"type": "doctor", "task": null},
+    "unclassified": {"type": "unclassified", "task": null}
+  },
+  "agents": [
+    {"agent": "qa-factory:qa-doctor", "file": "agent-d1.jsonl", "tokens": 400, "activity_id": "act-doctor", "task": "(no task)"}
+  ],
+  "incomplete_agents": ["qa-doctor"],
+  "requests": [
+    {"request_key": "gap-b-1", "stream": "orchestrator", "activity_id": "act-doctor", "task": "(no task)", "timestamp": "2026-09-21T10:00:00Z", "usage": {"input": 100, "output": 20}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-b-2", "stream": "agent-d1.jsonl", "activity_id": "act-doctor", "task": "(no task)", "timestamp": "2026-09-21T10:00:10Z", "usage": {"input": 40, "output": 5}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-b-3", "stream": "orchestrator", "activity_id": "unclassified", "task": "(no task)", "timestamp": "2026-09-21T10:30:00Z", "usage": {"input": 30, "output": 5}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-b-4", "stream": "orchestrator", "activity_id": "unclassified", "task": "(no task)", "timestamp": "2026-09-21T10:31:00Z", "usage": {"input": 20, "output": 5}, "valuation": {"pricing_coverage": "none"}}
+  ]
+}

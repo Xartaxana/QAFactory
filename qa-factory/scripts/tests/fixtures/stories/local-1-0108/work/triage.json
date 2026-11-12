@@ -1,0 +1,479 @@
+{
+  "schema_version": 2,
+  "task_id": "LOCAL-1",
+  "triage": [
+    {
+      "test": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "attempt_id": "c48d521f15fe9c9f5472",
+      "evidence": "evidence/runs/c48d521f15fe9c9f5472/repair_verify-c48d521f15fe9c9f5472-20261102-055650.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_004"
+    },
+    {
+      "test": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "attempt_id": "dfd30559038f1c26d877",
+      "evidence": "evidence/runs/dfd30559038f1c26d877/repair_verify-dfd30559038f1c26d877-20261102-060453.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_013"
+    },
+    {
+      "test": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "attempt_id": "7b26228ab7b4ba8ec416",
+      "evidence": "evidence/runs/7b26228ab7b4ba8ec416/repair_verify-7b26228ab7b4ba8ec416-20261102-060522.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_015"
+    },
+    {
+      "test": "api\\cart\\cart.spec.ts::@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "instance_id": "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "attempt_id": "92cf19f738c819ce67d7",
+      "evidence": "evidence/runs/92cf19f738c819ce67d7/repair_verify-92cf19f738c819ce67d7-20261102-060552.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_016"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "attempt_id": "ee7c46807bbf891ddc5e",
+      "evidence": "evidence/runs/ee7c46807bbf891ddc5e/repair_verify-ee7c46807bbf891ddc5e-20261102-055804.json",
+      "verdict": "APP_BUG",
+      "detail": "BookDetailPage.tsx:164 rewrites an invalid quantity to a valid one, so the add succeeds; R-8/R-9/R-10 require rejection with a message and no line.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "case": "LOCAL-1_TC_007"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "attempt_id": "b3914dc75fbd4d3b446f",
+      "evidence": "evidence/runs/b3914dc75fbd4d3b446f/repair_verify-b3914dc75fbd4d3b446f-20261102-061553.json",
+      "verdict": "APP_BUG",
+      "detail": "BookDetailPage.tsx:164 rewrites an invalid quantity to a valid one, so the add succeeds; R-8/R-9/R-10 require rejection with a message and no line.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "case": "LOCAL-1_TC_008"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "attempt_id": "001bd334b84d23a46f7b",
+      "evidence": "evidence/runs/001bd334b84d23a46f7b/repair_verify-001bd334b84d23a46f7b-20261102-061426.json",
+      "verdict": "APP_BUG",
+      "detail": "BookDetailPage.tsx:164 rewrites an invalid quantity to a valid one, so the add succeeds; R-8/R-9/R-10 require rejection with a message and no line.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "case": "LOCAL-1_TC_008"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "attempt_id": "e8b888d314fa6393c611",
+      "evidence": "evidence/runs/e8b888d314fa6393c611/repair_verify-e8b888d314fa6393c611-20261102-055955.json",
+      "verdict": "APP_BUG",
+      "detail": "BookDetailPage.tsx:164 rewrites an invalid quantity to a valid one, so the add succeeds; R-8/R-9/R-10 require rejection with a message and no line.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "case": "LOCAL-1_TC_009"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "attempt_id": "ee147dcb430276fc3fa9",
+      "evidence": "evidence/runs/ee147dcb430276fc3fa9/repair_verify-ee147dcb430276fc3fa9-20261102-060153.json",
+      "verdict": "APP_BUG",
+      "detail": "Same defect as LOCAL-1_TC_007: the UI rewrites the invalid quantity (BookDetailPage.tsx:164); no second draft.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "blocking_check": "LOCAL-1_TC_007",
+      "case": "LOCAL-1_TC_012"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "attempt_id": "ee147dcb430276fc3fa9",
+      "evidence": "evidence/runs/ee147dcb430276fc3fa9/repair_verify-ee147dcb430276fc3fa9-20261102-060153.json",
+      "verdict": "APP_BUG",
+      "detail": "Same defect as LOCAL-1_TC_008: the UI rewrites the invalid quantity (BookDetailPage.tsx:164); no second draft.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "blocking_check": "LOCAL-1_TC_008",
+      "case": "LOCAL-1_TC_012"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "attempt_id": "ee147dcb430276fc3fa9",
+      "evidence": "evidence/runs/ee147dcb430276fc3fa9/repair_verify-ee147dcb430276fc3fa9-20261102-060153.json",
+      "verdict": "APP_BUG",
+      "detail": "Same defect as LOCAL-1_TC_008: the UI rewrites the invalid quantity (BookDetailPage.tsx:164); no second draft.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "blocking_check": "LOCAL-1_TC_008",
+      "case": "LOCAL-1_TC_012"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "attempt_id": "ee147dcb430276fc3fa9",
+      "evidence": "evidence/runs/ee147dcb430276fc3fa9/repair_verify-ee147dcb430276fc3fa9-20261102-060153.json",
+      "verdict": "APP_BUG",
+      "detail": "Same defect as LOCAL-1_TC_009: the UI rewrites the invalid quantity (BookDetailPage.tsx:164); no second draft.",
+      "control": {
+        "action": "add the invalid quantity from the product page",
+        "without": "the quantity handling under test",
+        "result": "impossible",
+        "why": "the stand runs only the current build, no build without the change exists; R-8/R-9/R-10 quoted ask what the assert checks",
+        "evidence": "evidence/triage-quantity-coercion.json"
+      },
+      "blocking_check": "LOCAL-1_TC_009",
+      "case": "LOCAL-1_TC_012"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "attempt_id": "3108c63cb34d6c2c5824",
+      "evidence": "evidence/runs/3108c63cb34d6c2c5824/repair_verify-3108c63cb34d6c2c5824-20261102-060623.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_018"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "attempt_id": "3108c63cb34d6c2c5824",
+      "evidence": "evidence/runs/3108c63cb34d6c2c5824/repair_verify-3108c63cb34d6c2c5824-20261102-060623.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_018"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "attempt_id": "3108c63cb34d6c2c5824",
+      "evidence": "evidence/runs/3108c63cb34d6c2c5824/repair_verify-3108c63cb34d6c2c5824-20261102-060623.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_018"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "attempt_id": "c1122450fcfe08b86e57",
+      "evidence": "evidence/runs/c1122450fcfe08b86e57/repair_verify-c1122450fcfe08b86e57-20261102-060730.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_019"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "attempt_id": "c91227e3862a61341b23",
+      "evidence": "evidence/runs/c91227e3862a61341b23/repair_verify-c91227e3862a61341b23-20261102-055330.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_020"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "instance_id": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "attempt_id": "61cd24ec5555bf283657",
+      "evidence": "evidence/runs/61cd24ec5555bf283657/repair_verify-61cd24ec5555bf283657-20261102-055515.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_001"
+    },
+    {
+      "test": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "instance_id": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "attempt_id": "58b25da4303b90f8e441",
+      "evidence": "evidence/runs/58b25da4303b90f8e441/repair_verify-58b25da4303b90f8e441-20261102-055614.json",
+      "verdict": "CASE_DEFECT",
+      "detail": "The case pins the unit price to a field of GET /api/cart, but the API CartItem carries no price (spec.ts:983) while R-4 only asks the cart to show the right price, which the cart page and total do.",
+      "case": "LOCAL-1_TC_003"
+    }
+  ],
+  "reducer": {
+    "name": "finalize_task",
+    "sources": [
+      {
+        "id": "1b46c920fb0839c72dde-reparse-691900002f9d",
+        "source": "run-blocks/1b46c920fb0839c72dde-reparse-691900002f9d.json"
+      },
+      {
+        "id": "e6c2457a319bdf3ac0e4-reparse-a17a5e06e2d4",
+        "source": "run-blocks/e6c2457a319bdf3ac0e4-reparse-a17a5e06e2d4.json"
+      },
+      {
+        "id": "4818d0a3e31035ac44c9-reparse-2a9f952c324a",
+        "source": "run-blocks/4818d0a3e31035ac44c9-reparse-2a9f952c324a.json"
+      },
+      {
+        "id": "b5b3bfdf7a244e2f0a3e-reparse-c52f2245b261",
+        "source": "run-blocks/b5b3bfdf7a244e2f0a3e-reparse-c52f2245b261.json"
+      },
+      {
+        "id": "d97d2f04d5be9dc15b05-reparse-59731cbb32f3",
+        "source": "run-blocks/d97d2f04d5be9dc15b05-reparse-59731cbb32f3.json"
+      },
+      {
+        "id": "67f7afb1c1bcab9dc0bc-reparse-7ef1fbbb1174",
+        "source": "run-blocks/67f7afb1c1bcab9dc0bc-reparse-7ef1fbbb1174.json"
+      },
+      {
+        "id": "db96171cb1a2ca0e4f68-reparse-b091ef9f6e9d",
+        "source": "run-blocks/db96171cb1a2ca0e4f68-reparse-b091ef9f6e9d.json"
+      },
+      {
+        "id": "cc1aacba8095bfb1a291-reparse-4fafe5af03ab",
+        "source": "run-blocks/cc1aacba8095bfb1a291-reparse-4fafe5af03ab.json"
+      },
+      {
+        "id": "aef3dc36d1c618c09f58",
+        "source": "run-blocks/20261102T024345448312Z-aef3dc36d1c618c09f58.json"
+      },
+      {
+        "id": "025b1e23567caa167e72",
+        "source": "run-blocks/20261102T024410653651Z-025b1e23567caa167e72.json"
+      },
+      {
+        "id": "ed9f0993e860494c0c82",
+        "source": "run-blocks/20261102T024437055926Z-ed9f0993e860494c0c82.json"
+      },
+      {
+        "id": "18dd8f589c923ec7d55f",
+        "source": "run-blocks/20261102T024503503321Z-18dd8f589c923ec7d55f.json"
+      },
+      {
+        "id": "904473577bc2cc0d6c1b",
+        "source": "run-blocks/20261102T024631239316Z-904473577bc2cc0d6c1b.json"
+      },
+      {
+        "id": "cdbd32075982b6cfee68",
+        "source": "run-blocks/20261102T025410893526Z-cdbd32075982b6cfee68.json"
+      },
+      {
+        "id": "df7f03cbb1698d353ef2",
+        "source": "run-blocks/20261102T025500303223Z-df7f03cbb1698d353ef2.json"
+      },
+      {
+        "id": "79c39e14fda5e05e6e49",
+        "source": "run-blocks/20261102T025552915479Z-79c39e14fda5e05e6e49.json"
+      },
+      {
+        "id": "41fc1859641827e1cd32",
+        "source": "run-blocks/20261102T030455146753Z-41fc1859641827e1cd32.json"
+      },
+      {
+        "id": "1f9af159d44b73e90ed5",
+        "source": "run-blocks/20261102T030537103329Z-1f9af159d44b73e90ed5.json"
+      },
+      {
+        "id": "e7528915f9f26e6d46ea",
+        "source": "run-blocks/20261102T031159292368Z-e7528915f9f26e6d46ea.json"
+      },
+      {
+        "id": "e41c6842489cec23b009",
+        "source": "run-blocks/20261102T032019869800Z-e41c6842489cec23b009.json"
+      },
+      {
+        "id": "1789d5d95ff413c3e0ee",
+        "source": "run-blocks/20261102T032128532648Z-1789d5d95ff413c3e0ee.json"
+      },
+      {
+        "id": "3bb03c30bc68d784ded9",
+        "source": "run-blocks/20261102T032219357283Z-3bb03c30bc68d784ded9.json"
+      },
+      {
+        "id": "686b76f8e9c486d946d9",
+        "source": "run-blocks/20261102T032336174450Z-686b76f8e9c486d946d9.json"
+      },
+      {
+        "id": "fd8c5b5e9ad85d699f0f",
+        "source": "run-blocks/20261102T032511332378Z-fd8c5b5e9ad85d699f0f.json"
+      },
+      {
+        "id": "a9cb85e27ba6cd9979cb",
+        "source": "run-blocks/20261102T032648066569Z-a9cb85e27ba6cd9979cb.json"
+      },
+      {
+        "id": "d159d1c67627ce75fb34",
+        "source": "run-blocks/20261102T032744668055Z-d159d1c67627ce75fb34.json"
+      },
+      {
+        "id": "a875612829c24fc479d2",
+        "source": "run-blocks/20261102T032902386817Z-a875612829c24fc479d2.json"
+      },
+      {
+        "id": "14342300abd3d031f4c4",
+        "source": "run-blocks/20261102T033000576965Z-14342300abd3d031f4c4.json"
+      },
+      {
+        "id": "6585e388d79cba7ff64f",
+        "source": "run-blocks/20261102T034008664737Z-6585e388d79cba7ff64f.json"
+      },
+      {
+        "id": "7c2a80b4e313fd9043fd",
+        "source": "run-blocks/20261102T034102383445Z-7c2a80b4e313fd9043fd.json"
+      },
+      {
+        "id": "0740a4d2923d0ffa7306",
+        "source": "run-blocks/20261102T034524982285Z-0740a4d2923d0ffa7306.json"
+      },
+      {
+        "id": "475622e3599d811dd75c",
+        "source": "run-blocks/20261102T035101515645Z-475622e3599d811dd75c.json"
+      },
+      {
+        "id": "63b36eb49341dc1f2581",
+        "source": "run-blocks/20261102T040303072959Z-63b36eb49341dc1f2581.json"
+      },
+      {
+        "id": "70c64e53d871768835c5",
+        "source": "run-blocks/20261102T040431565632Z-70c64e53d871768835c5.json"
+      },
+      {
+        "id": "6be0653c44bf5bc1f2d4",
+        "source": "run-blocks/20261102T040533068500Z-6be0653c44bf5bc1f2d4.json"
+      },
+      {
+        "id": "07789a0fc566538259ca",
+        "source": "run-blocks/20261102T041731120707Z-07789a0fc566538259ca.json"
+      },
+      {
+        "id": "0296b632887a0e52678d",
+        "source": "run-blocks/20261102T042731745166Z-0296b632887a0e52678d.json"
+      },
+      {
+        "id": "849fa6cda0e1aa8d4bb7",
+        "source": "run-blocks/20261102T043643637122Z-849fa6cda0e1aa8d4bb7.json"
+      },
+      {
+        "id": "6c78988a18cad94ba2a6",
+        "source": "run-blocks/20261102T043727647296Z-6c78988a18cad94ba2a6.json"
+      },
+      {
+        "id": "c91227e3862a61341b23",
+        "source": "run-blocks/20261102T045352902054Z-c91227e3862a61341b23.json"
+      },
+      {
+        "id": "61cd24ec5555bf283657",
+        "source": "run-blocks/20261102T045536852509Z-61cd24ec5555bf283657.json"
+      },
+      {
+        "id": "da65583cca3c5b9f2c04",
+        "source": "run-blocks/20261102T045602855959Z-da65583cca3c5b9f2c04.json"
+      },
+      {
+        "id": "58b25da4303b90f8e441",
+        "source": "run-blocks/20261102T045636985498Z-58b25da4303b90f8e441.json"
+      },
+      {
+        "id": "c48d521f15fe9c9f5472",
+        "source": "run-blocks/20261102T045702848943Z-c48d521f15fe9c9f5472.json"
+      },
+      {
+        "id": "24208ece98332ac01d5e",
+        "source": "run-blocks/20261102T045725606794Z-24208ece98332ac01d5e.json"
+      },
+      {
+        "id": "66020091677028026acd",
+        "source": "run-blocks/20261102T045751191063Z-66020091677028026acd.json"
+      },
+      {
+        "id": "ee7c46807bbf891ddc5e",
+        "source": "run-blocks/20261102T045842932354Z-ee7c46807bbf891ddc5e.json"
+      },
+      {
+        "id": "732e06ce9a7894195a64",
+        "source": "run-blocks/20261102T045940001654Z-732e06ce9a7894195a64.json"
+      },
+      {
+        "id": "e8b888d314fa6393c611",
+        "source": "run-blocks/20261102T050038272549Z-e8b888d314fa6393c611.json"
+      },
+      {
+        "id": "1d44d22851b915c20213",
+        "source": "run-blocks/20261102T050109271063Z-1d44d22851b915c20213.json"
+      },
+      {
+        "id": "ddb214a3a9f0a810b3f0",
+        "source": "run-blocks/20261102T050136900044Z-ddb214a3a9f0a810b3f0.json"
+      },
+      {
+        "id": "ee147dcb430276fc3fa9",
+        "source": "run-blocks/20261102T050436016225Z-ee147dcb430276fc3fa9.json"
+      },
+      {
+        "id": "dfd30559038f1c26d877",
+        "source": "run-blocks/20261102T050506393339Z-dfd30559038f1c26d877.json"
+      },
+      {
+        "id": "7b26228ab7b4ba8ec416",
+        "source": "run-blocks/20261102T050536789946Z-7b26228ab7b4ba8ec416.json"
+      },
+      {
+        "id": "92cf19f738c819ce67d7",
+        "source": "run-blocks/20261102T050606302362Z-92cf19f738c819ce67d7.json"
+      },
+      {
+        "id": "3108c63cb34d6c2c5824",
+        "source": "run-blocks/20261102T050716565793Z-3108c63cb34d6c2c5824.json"
+      },
+      {
+        "id": "c1122450fcfe08b86e57",
+        "source": "run-blocks/20261102T050750379247Z-c1122450fcfe08b86e57.json"
+      },
+      {
+        "id": "001bd334b84d23a46f7b",
+        "source": "run-blocks/20261102T051515671732Z-001bd334b84d23a46f7b.json"
+      },
+      {
+        "id": "b3914dc75fbd4d3b446f",
+        "source": "run-blocks/20261102T051634205990Z-b3914dc75fbd4d3b446f.json"
+      }
+    ]
+  },
+  "analyst_preserved": true
+}

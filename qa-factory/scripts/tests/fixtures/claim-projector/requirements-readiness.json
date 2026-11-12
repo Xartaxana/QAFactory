@@ -1,0 +1,24 @@
+{
+  "verdict": "ready",
+  "register": {
+    "total": 3,
+    "by_source": {"story": 0, "feature": 0, "assumption": 0, "discussion": 0, "ac": 2, "derived": 1}
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "Which status code must the update endpoint return when the guard fails?",
+      "source_says": [{"quote": "the update endpoint is guarded", "where": "register R-3 (derived from the diff alone)"}],
+      "readings": [
+        {"reading": "Intended: the behaviour now is the expected one (403).", "from": "claim",
+         "if_chosen": "The expected value of the Then is the behaviour now (403); the Then is checked against it."},
+        {"reading": "A regression: the behaviour before the change is the expected one (400).", "from": "claim",
+         "if_chosen": "The expected value of the Then is the behaviour before the change (400); the behaviour now is reported as a defect."}
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {"value": "400", "where": "diff:-app/api.py:29"},
+      "now": {"value": "403", "where": "diff:app/api.py:30"}
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "task": "CART-1",
+  "size": "XXL",
+  "cap": 28,
+  "computed_budget": 32,
+  "computed_budget_raw": 32.6,
+  "recommended_budget": 28,
+  "overage": 4,
+  "verifiable_count": 13,
+  "unverifiable": [
+    {
+      "r": "R-9",
+      "reason": "verifiable: no"
+    },
+    {
+      "r": "R-13",
+      "reason": "verifiable: no"
+    },
+    {
+      "r": "R-16",
+      "reason": "verifiable: no; observable: none"
+    }
+  ],
+  "requirements": [
+    {
+      "r": "R-1",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-2",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": "checkout and payment",
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-3",
+      "impact": "blocked-flow",
+      "priority": "P1",
+      "weight": 1.3,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.6
+    },
+    {
+      "r": "R-4",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-5",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-6",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-7",
+      "impact": "access",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-8",
+      "impact": "data-loss",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": "sign-in and user accounts",
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-10",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-11",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-12",
+      "impact": "access",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    },
+    {
+      "r": "R-14",
+      "impact": "degraded",
+      "priority": "P2",
+      "weight": 1.0,
+      "area_match": null,
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 2.0
+    },
+    {
+      "r": "R-15",
+      "impact": "money",
+      "priority": "P0",
+      "weight": 1.6,
+      "area_match": "checkout and payment",
+      "signal": null,
+      "escalated_from": null,
+      "escalated_to": null,
+      "contribution": 3.2
+    }
+  ],
+  "reducers_applied": [],
+  "signals": {
+    "repos": [
+      "MyBooks"
+    ],
+    "surfaces": [
+      "api",
+      "ui"
+    ],
+    "surfaces_signal": false,
+    "migration_signal": false,
+    "migration_files": []
+  },
+  "precedents": {
+    "checked": false,
+    "nearest": []
+  },
+  "config": {
+    "weights": {
+      "P0": 1.6,
+      "P1": 1.3,
+      "P2": 1.0,
+      "P3": 0.6
+    },
+    "weights_source": "config.sizing.weights",
+    "has_impact_column": true
+  },
+  "size_override": null,
+  "size_override_reason": null,
+  "reasoning": [
+    "R-9: verifiable: no — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "R-13: verifiable: no — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "R-16: verifiable: no; observable: none — contributes 0, flagged as a requirements defect for the ticket owner, not a test to invent",
+    "ticket type unknown (no issue_type on the manifest or readiness, and none passed in) — the defect-ticket cap was not evaluated",
+    "computed budget 32 exceeds the XXL cap of 28 by 4 — shown, not silently trimmed; a gate-A question, not a block",
+    "computed budget is above the XL cap of 28 — this reads like several stories under one ticket number; recommend decomposing before testing (a recommendation, not a block — the human's word to test it as one story passes this)",
+    "qa-factory/records/estimation-ledger.jsonl is absent or empty — no precedent to check against"
+  ]
+}

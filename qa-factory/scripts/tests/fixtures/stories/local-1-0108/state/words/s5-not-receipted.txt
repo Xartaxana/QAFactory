@@ -1,0 +1,1 @@
+Da (prinyat vse okna S5 bez kvitantsii revyu: instrumenty fabriki rasschitany na pytest, proekt na TypeScript/Playwright; kritik chitaet kod, krasnye ostayutsya krasnymi, zelenye bez mutatsionnoi proby pomechayutsya v otchete)

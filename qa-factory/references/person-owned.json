@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "purpose": "What only a person can know or decide (PROJECT.md P22, FR-48). A question to a person names ONE class; anything else the conductor settles itself.",
+  "classes": [
+    {"id": "access",             "says": "access or data the person can give: a credential, a stand, a file, a source the factory's own probe could not reach WITH what it has (P5, FR-50); never what the factory's probe proved unreachable for good (D-0043)"},
+    {"id": "requirement_intent", "says": "what a requirement or the ticket means when the requirements are silent, or contradict each other or the code (P20, P23)"},
+    {"id": "money",              "says": "budget, spend, a cap the person sets (story budget, rerun price)"},
+    {"id": "risk",               "says": "a risk to the product or the process the person owns: a dirty tree, a branch, a stand mutation, a regression scope"},
+    {"id": "outbound",           "says": "an action that leaves the project: a tracker write, an MR, a publication"},
+    {"id": "team_agreement",     "says": "a team convention, priority or business context only the team knows (where tests live, what a story is for)"},
+    {"id": "subjective",         "says": "a judgment only a person makes, or makes faster and cheaper (P19 step 4)"},
+    {"id": "gate_word",          "says": "the word that passes a gate or a block (P13, FR-4)"}
+  ],
+  "code_routes": {"story_budget": "money", "executor": "access", "readiness": "access"}
+}

@@ -1,0 +1,304 @@
+# The factory's closed lists, in one place.
+#
+# Every word a role may write into a handoff lives here, once.
+#
+# `used_by` is documentation, NOT a permission: it names the roles that normally write the
+# word. A role outside that list is a WARNING in the check and never a refusal — on
+# TP1-13797 the case designer wrote `deferred`, the scribe and the retro analyst wrote
+# `passed_green` and `not_executed`, all of them correctly, and a guessed allowlist would
+# have refused three more handoffs. Only `restricted_to` refuses, and it exists for words
+# whose wrong author would make the record itself false (a triage verdict from anyone but
+# the failure analyst, a disposition from anyone but the strategist). `role_digest.ROW_STATES`,
+# `contract.RESULT_STATUS`, `EXECUTION_STATUS`, `UNRESOLVED_REASONS`, `TRIAGE_VERDICTS`,
+# `CRITIC_VERDICTS` and `DISPOSITIONS` are generated from this file, the role charters quote
+# it, and every refusal about a value prints the list that applies to the role it refused.
+#
+# The rule this file exists for: on TP1-13797 four handoffs were lost to `unverified`,
+# `inconclusive`, `filed` and `appended` — words a role wrote because its own charter or the
+# run contract told it to, and the form's vocabulary had never heard of. Three independent
+# lists cannot stay in step by hand. Adding a word is a change to THIS file plus a test.
+schema_version: 1
+
+# The verdict of the handoff as a whole, the last field of the header line.
+header_verdicts:
+  ok: every item in scope is answered and nothing needs a decision
+  concerns: the work stands, and something the next role or the person must weigh is named
+  halt: the role stopped and cannot go on without an answer; the reason is in `blocked`
+  impossible: the work cannot be done as scoped, with the evidence for that in the artifact
+
+# One row per item in scope. `roles` names who may use the word; `any` means every role.
+row_states:
+  # --- the work exists and stands
+  found: {used_by: [qa-scout, qa-requirements-tester], meaning: the item was located and read}
+  not_found: {used_by: [qa-scout, qa-requirements-tester], meaning: the item does not exist; the reason is in the artifact}
+  created: {used_by: [qa-case-designer, qa-automator, qa-bug-reporter, qa-retro-analyst], meaning: written in this dispatch}
+  updated: {used_by: [qa-case-designer, qa-automator, qa-doc-scribe], meaning: an existing item was changed}
+  reviewed: {used_by: [qa-case-critic, qa-code-critic], meaning: "looked at, with the verdict in the findings file"}
+  filed: {used_by: [qa-bug-reporter, qa-retro-analyst], meaning: "written into the project's own ledger (bugs, backlog, obligations)"}
+  not_filed: {used_by: [qa-bug-reporter], meaning: "a draft the person chose that was not filed, the reason in `not_filed`"}
+  nothing_chosen: {used_by: [qa-bug-reporter], meaning: "the person chose no draft at gate B (a quarantine-only decision, or bugs ordered with nothing chosen); the one row `gate_b`"}
+  routed: {used_by: [qa-retro-analyst, qa-doc-scribe], meaning: handed to a ledger or a document outside this story}
+  # --- a test instance
+  green: {used_by: [qa-automator, qa-runner], meaning: the instance ran and passed against the implementation}
+  red: {used_by: [qa-automator, qa-runner], meaning: "the instance ran and failed; a failure by requirement is a bug, not a defect of the test"}
+  passed: {used_by: [qa-runner, qa-failure-analyst], meaning: the run's own word for a green result}
+  failed: {used_by: [qa-runner, qa-failure-analyst], meaning: the run's own word for a red result}
+  error: {used_by: [qa-runner], meaning: the test could not run to a verdict}
+  skipped: {used_by: [qa-runner], meaning: the runner skipped it and the reason says why}
+  not_run: {used_by: [qa-runner, qa-automator], meaning: nothing executed it in this window}
+  not_executed: {used_by: [qa-runner, qa-doc-scribe, qa-retro-analyst], meaning: nothing in the story executed it at all}
+  broken_run: {used_by: [qa-runner], meaning: the run itself broke and proves nothing}
+  timeout: {used_by: [qa-runner], meaning: the run exceeded its budget}
+  passed_green: {used_by: [qa-runner, qa-doc-scribe, qa-retro-analyst], meaning: "a reused green receipt, not a fresh run"}
+  # --- a review could not conclude
+  unverified: {used_by: [qa-code-critic, qa-case-critic], meaning: the review could not prove the item either way; the cause is named}
+  inconclusive: {used_by: [qa-runner], meaning: a manual-agent case whose observation does not settle the question}
+  manual_skipped: {used_by: [qa-runner], meaning: "a manual-agent case nobody executed, with the reason"}
+  not_verified_flaky: {used_by: [qa-failure-analyst], meaning: flakiness suspected and not proven by three isolated reruns}
+  review_skipped: {used_by: [qa-code-critic, qa-case-critic], meaning: "the item was out of this review's scope by a rule, named in the findings"}
+  # --- the item is stuck
+  blocked: {used_by: any, meaning: something outside the role stops it; `blocked.problem` in the file says what (a row with it empty is refused)}
+  blocked_by_env: {used_by: [qa-automator, qa-runner], meaning: "the stand, not the product and not the test"}
+  env_blocked: {used_by: [qa-runner, qa-doc-scribe], meaning: the run's own word for a stand block}
+  unprepared_walk: {used_by: [qa-runner], meaning: "an unprepared manual-agent case closed by `manual_evidence.py unprepared`, walked or not; no pass or fail"}
+  pending_implementation: {used_by: [qa-automator, qa-test-strategist], meaning: the product does not carry this behaviour yet}
+  contradicts_requirement: {used_by: [qa-automator, qa-code-critic], meaning: "the implementation contradicts the approved case; handed over RED, never adjusted"}
+  handed_to_person: {used_by: any, meaning: only a person can settle it; the question is in `blocked`}
+  impossible: {used_by: any, meaning: "no observable exists for it, with the evidence in the artifact"}
+  unresolved: {used_by: any, meaning: "left open on purpose, with a reason from `unresolved_reasons`"}
+  subtask_in_progress: {used_by: [qa-scout], meaning: a subtask of the ticket is still being worked on}
+  # --- decisions about the item
+  approved: {used_by: [qa-case-critic, qa-code-critic], meaning: the review accepts it}
+  approved_with_fixes: {used_by: [qa-case-critic, qa-code-critic], meaning: accepted with named fixes the author makes}
+  rejected: {used_by: [qa-case-critic, qa-code-critic], meaning: sent back with findings}
+  approve: {used_by: [qa-case-critic], meaning: "the case critic's verdict word for a case it accepts (the role file and critic_rollcall spell it so)"}
+  approve_with_fixes: {used_by: [qa-case-critic], meaning: "accepted with named fixes the author makes (the case critic's spelling)"}
+  approve_with_concerns: {used_by: [qa-case-critic], meaning: "accepted with concerns written in the findings (the case critic's spelling)"}
+  partial: {used_by: [qa-case-critic], meaning: "the roll-call is incomplete: some rows are not reviewed"}
+  reject: {used_by: [qa-case-critic], meaning: "sent back with findings (the case critic's spelling)"}
+  waived: {used_by: any, meaning: a person's recorded word passed the block on this item}
+  deferred: {used_by: [qa-test-strategist, qa-retro-analyst, qa-case-designer], meaning: out of this story by decision}
+  deferred_by_decision: {used_by: [qa-test-strategist], meaning: "the same, with the decision named"}
+  handed: {used_by: any, meaning: "passed to another role or stage, named in the reason"}
+  # --- a plan row's disposition, when the row itself is the item
+  automate: {restricted_to: [qa-test-strategist], meaning: an automated test will cover it}
+  manual-agent: {restricted_to: [qa-test-strategist], meaning: an agent executes it by hand}
+  manual-human: {restricted_to: [qa-test-strategist], meaning: a person executes it}
+  skip: {restricted_to: [qa-test-strategist], meaning: "not covered in this story, with the reason"}
+  unverifiable: {restricted_to: [qa-test-strategist], meaning: "nothing in reach can observe it, or a gate A question decides whether and how it is checked"}
+  # --- a triage verdict, when a failure is the item
+  APP_BUG: {restricted_to: [qa-failure-analyst], meaning: the product is wrong}
+  TEST_BUG: {restricted_to: [qa-failure-analyst], meaning: the test is wrong}
+  "TEST_BUG:collection": {restricted_to: [qa-failure-analyst], meaning: the suite could not even collect the test}
+  ENV_ISSUE: {restricted_to: [qa-failure-analyst], meaning: the stand is wrong}
+  FLAKY: {restricted_to: [qa-failure-analyst], meaning: proven flaky by three isolated reruns with a named mechanism}
+  APP_CHANGED: {restricted_to: [qa-failure-analyst], meaning: the product changed under the test on purpose}
+  CASE_DEFECT: {restricted_to: [qa-failure-analyst], meaning: the approved case itself is wrong}
+  ASSERT_STRICTER: {restricted_to: [qa-failure-analyst], meaning: "the same action without the change under test shows the same value, and the requirement does not ask what the assert asks; the person decides"}
+  NOT_EXECUTED: {restricted_to: [qa-failure-analyst], meaning: "the check did not answer; code writes it at S7 for a manual check whose own record says what stopped it"}
+  RUNNER_MISREAD_EVIDENCE: {restricted_to: [qa-failure-analyst], meaning: "the manual runner's verdict contradicts the text its own attempt captured; the runner judges the same captures again, no bug"}
+  NO_DEFECT: {restricted_to: [qa-failure-analyst], meaning: "a manual runner's observation or recorder surprise (<case>#obs<n>, <case>#sur-<id>) judged not a bug, the reason quoting the recorded evidence; never on a failed Then"}
+
+# Why an item may stay open when a stage closes.
+unresolved_reasons:
+  impossible: no observable exists for it anywhere in reach
+  blocked_by_env: the stand cannot support it, and the remedy is named
+  pending_implementation: the product does not carry the behaviour yet
+  contradicts_requirement: the implementation contradicts the approved case
+  handed_to_person: only a person can settle it
+  expectation_unconfirmed: the expected value of a Then nobody confirmed; the question that holds it is named in question
+  blocked_by_check: the Then never ran because an earlier check of the same test failed; the failing check is named in blocking_check
+
+# The run as a whole (run-report.json `execution_status`).
+execution_status: [passed, failed, env_blocked, not_executed, broken_run, timeout]
+
+# One result row of a run (run-report.json `results[].status`).
+result_status: [passed, failed, error, skipped, not_run]
+
+# What a review dispatch concludes as a whole.
+critic_verdicts: [approved, approved_with_fixes, rejected, unverified]
+
+# What the verdict word of the stage critic (S2-S4) means for the stage acceptance record (`acceptance.stage_acceptance_verdict`,
+# written by `stage_done.py --acceptance`). The word is the critic's; this table only says which side of `accept|reject` it falls
+# on. A word outside the table gives NO record, and a missing table reads as no word known: the direction of error is never `accept`.
+stage_acceptance_verdicts: {approve: accept, approve_with_fixes: accept, concerns: reject, review: reject, ok: accept}
+
+# Why a repair was dispatched.
+repair_causes: [test_defect, mechanical, environment, tooling, reviewer_error]
+
+# What a code probe proves about one instance.
+probe_verdicts:
+  intended_failure: the assertion fired at its own line — the test can fail, and for its own reason
+  no_failure: the assertion never fires — dead or tautological; a defect of the test
+  wrong_location: the test fell before its assertion; `actual_location` says whose fault that is
+  not_executed: the probe did not run; `notes` name the cause, never the author's round
+  incomplete: the probe ran but the tool could not read the run well enough to judge the test (an error row, an unresolved frame, a launcher that may not rebuild): a tooling finding, never a verdict on the test; or it failed at the mutated line with a text the tool cannot read (`cause: judgment`), and the code critic judges it (`probe_by_code.py --judge`)
+
+# --------------------------------------------------------------------------------------------
+# The closed lists the handoff contracts name. They were scattered across phase files, role
+# charters and script constants; a contract that offers a role a choice must offer it from here,
+# for the same reason the row states live here: three copies of a list cannot stay in step.
+
+# What kind of thing a register row is (s2-tester-to-strategist).
+requirement_kinds: [confirmed_ac, technical_invariant, derived_risk]
+
+# The marks of a register row's `derived_from` cell that mean more than a source (G2-15). `bug:candidate-defect` is a
+# suspect place in the code with no stated expected result: the row asks for a test (a plan row, an automator's brief
+# line), and is never the expected result itself. A segment of the cell equal to a mark, exactly, is the mark.
+derived_from_marks: [bug:candidate-defect]
+
+# Who owns an open question (s2, and the gate briefs).
+question_owners: [po_ba, dev_arch, qa]
+
+# The story size sizing.py computes (a count of functions). XXL is a recommendation the person's word passes, never a block.
+sizes: [XS, S, M, L, XL, XXL]
+
+# How the story is grounded (s1, pipeline.implementation_source).
+implementation_sources: [diff, current-code, ungrounded]
+
+# How one hunk of the implementation diff relates to the task's requirements (the grounding table,
+# work/grounding.yaml, s3). The order is the order a refusal lists them. Each word is the STRONGEST
+# claim the hunk supports; a hunk that mixes two goes into two rows.
+grounding_labels:
+  implements: the hunk implements a requirement of the register; the row names its R ids
+  refactoring: the hunk changes structure, not behaviour, beyond what the requirements ask
+  behaviour_change: the hunk changes behaviour no requirement states; a claim with before and now goes to the person, never an expectation
+  unrelated: the hunk serves no requirement of this task; the question asks whether this is the right MR
+  infrastructure: build, configuration, generated or vendored content
+  test_code: the developer's own tests
+  unclassified: the role cannot tell; the reason and a question go with it, and it counts toward the refactoring share
+
+# Where one requirement of the register stands against the implementation diff (grounding.yaml, s3).
+requirement_grounding_states:
+  implemented: hunks of this diff implement it; the line names them
+  partial: implemented for the stop count, not whole; it is highlighted
+  not_implemented: no hunk of this diff implements it while it asks for a change; a blocking question goes with it
+  outside_diff: code outside this diff meets it; `where` names the place, `none` needs a question
+  unknown: outside the stop count; highlighted with a question
+
+# The level a plan row is tested at (s3).
+test_levels: [unit, integration, api, e2e-ui, other]
+
+# What a plan row does with coverage that already exists (s3, s4).
+coverage_choices: [reuse, extend, new]
+
+# Where a test instance came from, for the window under review (s5).
+instance_origins: [new, changed, reused]
+
+# --------------------------------------------------------------------------------------------
+# The S5 automation plan (work/s5-plan.json, scripts/s5_plan.py): the one plan every case of the
+# stage is written against before any window starts. The words live here and nowhere else
+# (AR-1); `manifest_from_tests.SHAPES` reads `test_shapes` from this file.
+
+# What a planned test does with the coverage that already exists (s5 plan, tests[].shape).
+# `consolidates` means two lists: in the S5 plan, the tests a consolidated test merges; in the manifest, the cases the instance proves.
+test_shapes: [reuse, extend, parameterize, consolidate, new]
+
+# Which plan shapes honour the `fit` word of the S3 plan row (the word before the first space).
+# A shape outside the row's list needs a declared deviation {from: fit}. New cases with the same
+# setup and action may be one parameterized test (P16).
+fit_to_shapes:
+  extend: [extend, reuse, consolidate]
+  param: [parameterize, consolidate]
+  new: [new, parameterize, consolidate]
+
+# The critic's verdict on the plan (s5 plan review).
+plan_verdicts: [approved, approved_with_remarks, blocked]
+
+# What one remark of the plan review is: a blocker is what the window's automator cannot fix
+# inside its own window; a remark travels to the window.
+plan_remark_kinds: [blocker, remark]
+
+# What the window's automator did with a remark of the plan review (plan_remarks[].row).
+plan_remark_rows: [applied, not_applicable]
+
+# Where a planned test gets its data (s5 plan, tests[].data).
+data_strategies: [own, run_tag, seeded]
+
+# What a window's code did differently from the plan it was handed (deviations[].from).
+plan_deviation_kinds: [file, function, shape, level, count, fixture, remainder]
+
+# Whether a receipt still stands (s5-automator-to-runner).
+freshness_states: [fresh, stale, never_run]
+
+# What made a receipt stale. The runner records one of these per rerun; a stage transition is
+# not among them, because a stage transition never makes a green receipt stale.
+staleness_causes: [source, test, runtime, environment, build, provenance]
+
+# The mechanism a FLAKY verdict must name (s7). Without one, the verdict is rejected.
+flaky_mechanisms: [isolation, race, timing, shared_state, teardown, environment, unknown]
+
+# How an ENV_ISSUE row is dismissed (s7).
+env_dismissals: [our_signal, env_fix, unverified]
+
+# The four answers a stand-gap card offers at a gate (gate-a, gate-b).
+stand_gap_answers: [apply, theirs, handed, accept]
+
+# What the person may decide about an open row at gate B.
+gap_decisions: [fix_now, verify_elsewhere, defer_with_reminder, accept_the_risk]
+
+# What the person may decide about a bug draft at gate B.
+draft_decisions: [filed, waived]
+
+# What happens to a test still flaky after the S7 cap (gate-b).
+flaky_decisions: [another_round, quarantine]
+
+# Whether a bug has been reproduced outside the run (s7, gate-b).
+bug_confirmations: [unconfirmed, reproduced_by_factory, confirmed_by_person, confirmed_by_rerun]
+
+# What kind of reproduction an S7 bug draft's `reproduction` entry records (s7): a rerun of the red test on fresh data, the
+# analyst's own script, or a walk of the analyst on the stand (a place-answer record). The code derives `reproduced_by_factory` from a checked entry; it does not read the role's word.
+bug_reproduction_kinds: [fresh_data_rerun, own_script, walk]
+
+# Why a filed bug is NOT in the tracker (HF8-21): the person's own words in the report, read by `bug_records.filing_of` and
+# printed by the report. `contract.BUG_NOT_SENT_REASONS` mirrors the keys (a test holds them equal); the values are the words.
+bug_not_sent_reasons:
+  project_choice: the project keeps bugs in markdown
+  gate_b_word: you said at gate B to keep it local
+  no_access: the factory has no access to the tracker
+  run_closed: this run is an experiment and sends nothing outward
+
+# What the external-writes channel decision was (gate-b). `keep_local` is recorded with the
+# block text `keep it local` and no other spelling, because that is the spelling code reads.
+external_write_decisions: [set_up_now, file_by_hand, keep_local]
+
+# How the story closes (gate-b, S9). Silence is `full`, and the other two are never offered
+# as a menu.
+retro_modes: [full, numbers, skip]
+
+# Which document owns a folded fact (S9). Exactly one, because a section that exists in two
+# fails audit A21.
+fold_documents:
+  - project:strategy/framework-rules.md
+  - project:strategy/test-strategy.md
+  - project:strategy/faq.md
+  - project:project-profile.md
+  - project:glossary.md
+
+# How the conductor answers a role that cannot fill its handoff (role-to-conductor).
+conductor_resolutions: [fill, correct_the_work, ask_the_person, change_the_contract]
+
+# On whose authority. A conductor quotes a source; it does not decide.
+conductor_authorities: [contract, vocabulary, phase_canon, person]
+
+# --------------------------------------------------------------------------------------------
+# A test that went red and later passed on changed code (s5, B-194). The author records the
+# change in `expectation_changes[]` of the manifest; the code critic writes ONE verdict per
+# record, in these words. Code never classifies a change: it finds the pair and reads the word.
+expectation_change_verdicts:
+  legitimate_correction: the changed value is one the approved case leaves open or the author invented, and the change matches what the case and the product require
+  fitted_to_code: the expected value was changed to match what the code did; the Then's value is to be restored and the test handed over red with contradicts_requirement
+  could_not_judge: the critic could not tell from the red evidence, the code and the case, and says why in its note; the conductor records the window as unresolved with the reason
+
+# The words the report (ledger.md), the window record and the critic's brief print for a pair.
+# `{verdict}`, `{why}` and `{function}` are filled by the printer. Code writes them; a verdict
+# keeps its own word (FR-35) and an unknown is never printed as a fact (FR-41).
+expectation_change_words:
+  recorded_and_judged: "recorded and judged: {verdict}"
+  recorded_not_judged: "recorded, not judged"
+  not_recorded_passed_by_word: "not recorded, passed by a person's word"
+  not_measured: "not measured: {why}"
+  # the gap `acceptance.validate_window` prints per pair of the window that stands unresolved
+  gap_no_verdict: "expectation_change:{function}: the change after the red run has no critic verdict"
+  gap_could_not_judge: "expectation_change:{function}: the critic could not judge the change after the red run"
+  gap_fitted_to_code: "expectation_change:{function}: the critic found the expectation fitted to the code"

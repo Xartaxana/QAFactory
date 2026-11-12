@@ -1,0 +1,108 @@
+# S8 -> the scribe: what the bug reporter filed after gate B, and what it did not.
+#
+# Before this file the reporter had a charter and no form (B-183, run 12586: `bugs/BUG-1.md` was written with nothing
+# that said which draft it came from, which case it was about, or what became of the others). The report prints
+# "where the bug lies" and the case behind it; both are read from what this file names, so a bug filed with no case
+# is a stated gap here and never a silent one.
+#
+# What this file does NOT carry: whether the tracker has the bug. The reporter writes a proposal and never calls the
+# tracker (`references/external-writes.md`), so it cannot know; the code reads the books of `external_writes.py` and
+# says it (`bug_records.filing_of`). A role that wrote "sent" here would be guessing.
+#
+# The three lists and their empty outcomes (FR-23, AR-23):
+#   - `scope` is never empty. It holds one row per draft the person answered about. When the person chose no draft (a
+#     quarantine-only decision, or `--bugs ordered` with nothing chosen) it holds ONE row, `id: gate_b`, state
+#     `nothing_chosen`: that is the legal "nothing to file", and the reason says what the decision was.
+#   - `filed: []` is legal exactly then, and when every chosen draft went to `not_filed`.
+#   - `not_filed: []` means no chosen draft was refused: every one of them is under `filed`.
+#   - `quarantined: []` means the person quarantined no flaky test.
+schema_version: 1
+contract: s8-bug-reporter-to-scribe
+stage: S8
+from_role: qa-bug-reporter
+to_role: qa-doc-scribe
+
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/bug-drafts/
+    what: the drafts; only the ones the person chose at gate B are filed
+    required: true
+  - path: bugs/
+    what: the bug files this stage wrote or updated
+    required: false
+
+inputs_read:
+  - path: work/handoffs/<the gate B decision file>.yaml
+    version: <the gate B decision id>
+    drafts_chosen: <n>
+
+header:
+  role: qa-bug-reporter
+  stage: S8
+  window: <TICKET>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per draft the person answered about; with no draft chosen, the one row `gate_b` (see the head of this file).
+scope:
+  - id: <the draft ref, or gate_b when the person chose no draft>
+    state: <filed|not_filed|nothing_chosen>
+    reason: <= 80 characters>
+
+# One entry per bug file this stage wrote or appended to.
+filed:
+  - draft: <the immutable draft ref, as the person chose it>
+    bug: <the bug id, BUG-n>
+    action: <created|updated_existing>   # a word the list lacks: `new: <word> -- <why>` (nothing reads this word; the stage critic judges it)
+    cases: <the case ids the bug is about, comma separated, or a dash when it names none>
+    no_case_reason: <why the bug names no case, or a dash when it names one>
+    requirements: <the requirement ids the bug violates, comma separated, or a dash when it names none>
+    source_draft: <the draft path relative to the story folder, as written in the bug file>
+    proposal: <the proposal file for the tracker, or a dash when the channel is markdown>
+
+# One entry per chosen draft that was NOT filed, with the reason in words.
+not_filed:
+  - draft: <the draft ref>
+    why: <one sentence; an observation or a risk goes back to the gate, never into a file>
+
+# One entry per flaky test the person quarantined.
+quarantined:
+  - id: <instance id>
+    debt_file: <bugs/DEBT-n.md>
+    trigger: <what reopens it>
+
+claims:
+  every_chosen_draft_has_a_row_in_scope: <true|false>
+  every_filed_bug_names_its_draft_and_its_case_or_says_why_not: <true|false>
+  no_bug_was_filed_for_a_draft_the_person_did_not_choose: <true|false>
+  nothing_was_written_to_the_tracker_by_the_role: <true|false>
+
+expected_of_the_receiver:
+  - "the report's bug rows are read from the bug files and the code's own filing record, never from this
+     form: it tells the scribe what to expect, it is not the source of the numbers"
+  - "a bug named here with `no_case_reason` is reported as a bug that names no case, not as a bug that is not filed"
+  - "whether the tracker has a bug is never said from this file: the code states it"
+
+# The searches you made before filing: for duplicates in the tracker, and to reproduce the bug (spec t-1765 X7-7). The scribe reads
+# it against your Good outcome. Empty only with `tried_note` saying why nothing was searched. Distinct from `blocked.tried` below,
+# which is what failed while filling this form.
+tried:
+  - requirement: <the bug draft id>
+    technique: <the duplicate search or the reproduction attempt, as you ran it>
+    observation: <what you found, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+unresolved:
+  - id: <draft ref or instance id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

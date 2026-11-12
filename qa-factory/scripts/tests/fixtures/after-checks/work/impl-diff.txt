@@ -1,0 +1,9 @@
+diff --git a/src/app.py b/src/app.py
+@@ -9,6 +9,14 @@
++MAX_DISCOUNT = 50
++
++def apply_coupon(cart, percent):
++    if percent > MAX_DISCOUNT:
++        raise CouponError("DISCOUNT_TOO_LARGE")
++    cart.total = round(cart.subtotal * (100 - percent) / 100, 2)
++    return cart.total

@@ -1,0 +1,21 @@
+    Error: Then 4: Add is disabled on B
+
+    expect(locator).not.toBeDisabled() failed
+
+    Locator:  getByTestId('book-detail-add-to-cart-button')
+    Expected: not disabled
+    Received: disabled
+    Timeout:  5000ms
+
+    Call log:
+      - Then 4: Add is disabled on B with timeout 5000ms
+      - waiting for getByTestId('book-detail-add-to-cart-button')
+        9 × locator resolved to <button disabled data-testid="book-detail-add-to-cart-button" class="btn btn-primary min-w-[220px] justify-between">Out of Stock</button>
+          - unexpected value "disabled"
+
+
+      102 |
+      103 |     await detail.open(B);
+    > 104 |     await expect(detail.addButton, 'Then 4: Add is disabled on B').not.toBeDisabled();
+          |                                                                        ^
+      105 |     await detail.clickAddForced();

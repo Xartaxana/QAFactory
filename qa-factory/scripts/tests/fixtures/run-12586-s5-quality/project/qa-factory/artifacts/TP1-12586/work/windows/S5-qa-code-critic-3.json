@@ -1,0 +1,434 @@
+{
+  "schema_version": 2,
+  "author_dispatch_id": "S5-qa-automator-3",
+  "reviewer_dispatch_id": "S5-qa-code-critic-3",
+  "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+  "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+  "scope_instances": {
+    "TC-005": [
+      "test_put_project_change_from_user_scope_and_collision"
+    ],
+    "TC-006": [
+      "test_put_project_change_failing_move_persists_nothing[TC-006-sonar]",
+      "test_put_project_change_failing_move_persists_nothing[TC-006-jira]"
+    ],
+    "TC-007": [
+      "test_put_project_change_clears_dependent_setting_link"
+    ],
+    "TC-011": [
+      "test_put_project_change_leaves_project_settings_and_lists_intact"
+    ]
+  },
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_from_user_scope_and_collision",
+      "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-6",
+          "obligation_hash": "394a023667fc28c1b26272544708771271d4a71cd3687ac27c98d920649a1460"
+        },
+        {
+          "obligation_id": "OB-7",
+          "obligation_hash": "60f18538ed7c3541ed13cc26096b3045944c96c757d3dcc76965a70310b240cc"
+        }
+      ],
+      "obligation_ids": [
+        "OB-6",
+        "OB-7"
+      ],
+      "obligation_hash": "0285f7795d7c302f5eb4416d32d8b9091c056e94cbe7b8e9765f78c323830ab6",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:350-357",
+      "defect_location": "testproject1/src/testproject1/rest_api/routers/user_settings.py:237-248",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-005",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2"
+      },
+      "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+      "instance_identity": {
+        "instance_content_sha": "9f8b854051fa4528d4b642ca03c8f1b94ef12c73493d5823519b97422edf6994",
+        "instance_code_sha": "3c0a2cbd1d0ea9a32db1edf4f42b023d47b9367ea4d63cc9c4ded2c30d4bc9d4",
+        "job_id": "ff42eb7698b7f8684679"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "24b19c40391e60d1509c599b28c638e9006950bae7e49401ff396c5a3e26643a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T081540713636Z-ff42eb7698b7f8684679.json",
+          "sha256": "245106fddc5dfd5189f0ebd2be93d2a2ab5660f4681142ea53af23973960bc83"
+        },
+        {
+          "path": "evidence/runs/ff42eb7698b7f8684679/initial-ff42eb7698b7f8684679-20261028-091515.junit.xml",
+          "sha256": "0260a48c70ee0166fe6ccb22eaa3733f3f06349b9e5b93392a6c9b6fe34d1969"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_from_user_scope_and_collision-live-3eb4b5857aa43eeb.json",
+          "sha256": "b305b82e31e735729145764d88712ae0d028f9e7e88eff2d9abe3aa811869af7"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "9f8b854051fa4528d4b642ca03c8f1b94ef12c73493d5823519b97422edf6994",
+        "instance_code_sha": "3c0a2cbd1d0ea9a32db1edf4f42b023d47b9367ea4d63cc9c4ded2c30d4bc9d4",
+        "attempt_id": "ff42eb7698b7f8684679"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:325",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:325",
+        "expected_reason": "probe-test_put_project_change_from_user_scope_and_collision invert: SUCCESS",
+        "actual_reason": "probe-test_put_project_change_from_user_scope_and_collision invert: SUCCESS",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-6",
+          "OB-7"
+        ],
+        "obligation_hash": "0285f7795d7c302f5eb4416d32d8b9091c056e94cbe7b8e9765f78c323830ab6",
+        "defect_location": "testproject1/src/testproject1/rest_api/routers/user_settings.py:237-248",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:350-357",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_from_user_scope_and_collision-live-3eb4b5857aa43eeb.json",
+        "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+        "instance_identity": {
+          "instance_content_sha": "9f8b854051fa4528d4b642ca03c8f1b94ef12c73493d5823519b97422edf6994",
+          "instance_code_sha": "3c0a2cbd1d0ea9a32db1edf4f42b023d47b9367ea4d63cc9c4ded2c30d4bc9d4",
+          "job_id": "ff42eb7698b7f8684679"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_failing_move_persists_nothing[TC-006-sonar]",
+      "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8",
+          "obligation_hash": "8eb9fdfc74b468db2de3f7ba3100684e79440d7befdf7be9d1bf801466d84274"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "obligation_hash": "61338499117fbd4e2385f1f2c0398bbfde5e9c6659bdf4837295fdfb6863ffb3",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:440-445",
+      "defect_location": "testproject1/src/testproject1/rest_api/routers/project_settings.py:178-185",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-006",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2"
+      },
+      "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+      "instance_identity": {
+        "instance_content_sha": "6911296bb3b1b105e80f879dc02f227b2aa2f570e52084c0b15c12aeb3f111f9",
+        "instance_code_sha": "dc4b1e1c062779f4999a446ee3c361aa31d8d006c6adebe4739f91004528ae10",
+        "job_id": "ff42eb7698b7f8684679"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "24b19c40391e60d1509c599b28c638e9006950bae7e49401ff396c5a3e26643a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T081540713636Z-ff42eb7698b7f8684679.json",
+          "sha256": "245106fddc5dfd5189f0ebd2be93d2a2ab5660f4681142ea53af23973960bc83"
+        },
+        {
+          "path": "evidence/runs/ff42eb7698b7f8684679/initial-ff42eb7698b7f8684679-20261028-091515.junit.xml",
+          "sha256": "0260a48c70ee0166fe6ccb22eaa3733f3f06349b9e5b93392a6c9b6fe34d1969"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_failing_move_persists_nothing--TC-006-sonar-0ed94b1c-live-810c95717431d900.json",
+          "sha256": "938adbb8b3499d95a5022e74a0059fd089ab17690b7a63b3e048ee6f92a97a2d"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "6911296bb3b1b105e80f879dc02f227b2aa2f570e52084c0b15c12aeb3f111f9",
+        "instance_code_sha": "dc4b1e1c062779f4999a446ee3c361aa31d8d006c6adebe4739f91004528ae10",
+        "attempt_id": "ff42eb7698b7f8684679"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:420",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:420",
+        "expected_reason": "probe-test_put_project_change_failing_move_persists_nothing[TC-006-sonar] invert: CLIENT_ERROR",
+        "actual_reason": "probe-test_put_project_change_failing_move_persists_nothing[TC-006-sonar] invert: CLIENT_ERROR",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-8"
+        ],
+        "obligation_hash": "61338499117fbd4e2385f1f2c0398bbfde5e9c6659bdf4837295fdfb6863ffb3",
+        "defect_location": "testproject1/src/testproject1/rest_api/routers/project_settings.py:178-185",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:440-445",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_failing_move_persists_nothing--TC-006-sonar-0ed94b1c-live-810c95717431d900.json",
+        "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+        "instance_identity": {
+          "instance_content_sha": "6911296bb3b1b105e80f879dc02f227b2aa2f570e52084c0b15c12aeb3f111f9",
+          "instance_code_sha": "dc4b1e1c062779f4999a446ee3c361aa31d8d006c6adebe4739f91004528ae10",
+          "job_id": "ff42eb7698b7f8684679"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_failing_move_persists_nothing[TC-006-jira]",
+      "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8",
+          "obligation_hash": "8eb9fdfc74b468db2de3f7ba3100684e79440d7befdf7be9d1bf801466d84274"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "obligation_hash": "61338499117fbd4e2385f1f2c0398bbfde5e9c6659bdf4837295fdfb6863ffb3",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:440-445",
+      "defect_location": "testproject1/src/testproject1/rest_api/routers/project_settings.py:178-185",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-006",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2"
+      },
+      "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+      "instance_identity": {
+        "instance_content_sha": "6911296bb3b1b105e80f879dc02f227b2aa2f570e52084c0b15c12aeb3f111f9",
+        "instance_code_sha": "dc4b1e1c062779f4999a446ee3c361aa31d8d006c6adebe4739f91004528ae10",
+        "job_id": "ff42eb7698b7f8684679"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "24b19c40391e60d1509c599b28c638e9006950bae7e49401ff396c5a3e26643a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T081540713636Z-ff42eb7698b7f8684679.json",
+          "sha256": "245106fddc5dfd5189f0ebd2be93d2a2ab5660f4681142ea53af23973960bc83"
+        },
+        {
+          "path": "evidence/runs/ff42eb7698b7f8684679/initial-ff42eb7698b7f8684679-20261028-091515.junit.xml",
+          "sha256": "0260a48c70ee0166fe6ccb22eaa3733f3f06349b9e5b93392a6c9b6fe34d1969"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_failing_move_persists_nothing--TC-006-jira-4e1c3aeb-live-0908232c7cde740a.json",
+          "sha256": "202ac8b94844aa18795c23aadbb06176a367978799a7ee02cee5ccde9fa361d7"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "6911296bb3b1b105e80f879dc02f227b2aa2f570e52084c0b15c12aeb3f111f9",
+        "instance_code_sha": "dc4b1e1c062779f4999a446ee3c361aa31d8d006c6adebe4739f91004528ae10",
+        "attempt_id": "ff42eb7698b7f8684679"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:420",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:420",
+        "expected_reason": "probe-test_put_project_change_failing_move_persists_nothing[TC-006-jira] invert: CLIENT_ERROR",
+        "actual_reason": "probe-test_put_project_change_failing_move_persists_nothing[TC-006-jira] invert: CLIENT_ERROR",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-8"
+        ],
+        "obligation_hash": "61338499117fbd4e2385f1f2c0398bbfde5e9c6659bdf4837295fdfb6863ffb3",
+        "defect_location": "testproject1/src/testproject1/rest_api/routers/project_settings.py:178-185",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:440-445",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_failing_move_persists_nothing--TC-006-jira-4e1c3aeb-live-0908232c7cde740a.json",
+        "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+        "instance_identity": {
+          "instance_content_sha": "6911296bb3b1b105e80f879dc02f227b2aa2f570e52084c0b15c12aeb3f111f9",
+          "instance_code_sha": "dc4b1e1c062779f4999a446ee3c361aa31d8d006c6adebe4739f91004528ae10",
+          "job_id": "ff42eb7698b7f8684679"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_clears_dependent_setting_link",
+      "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9",
+          "obligation_hash": "0e4421000cadf253621471b26af435f62afae291e300f2273c9dea2c831aa821"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "obligation_hash": "134d36266cc856436ed606db178181254a7ea71c2c08c5a2ea94c2086261ab4f",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:506-512",
+      "defect_location": "testproject1/src/testproject1/service/settings/settings_transfer_service.py:356-376",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-007",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2"
+      },
+      "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+      "instance_identity": {
+        "instance_content_sha": "320fbc7f4d2411ccd0fac169becb2d089d0c61abfb10e8fc25bddea9032b51c2",
+        "instance_code_sha": "3ffa7af480bd7cd79d2ad40c4cbd6e1e3ff50b61026c38d938bfdd3a86f41768",
+        "job_id": "ff42eb7698b7f8684679"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "24b19c40391e60d1509c599b28c638e9006950bae7e49401ff396c5a3e26643a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T081540713636Z-ff42eb7698b7f8684679.json",
+          "sha256": "245106fddc5dfd5189f0ebd2be93d2a2ab5660f4681142ea53af23973960bc83"
+        },
+        {
+          "path": "evidence/runs/ff42eb7698b7f8684679/initial-ff42eb7698b7f8684679-20261028-091515.junit.xml",
+          "sha256": "0260a48c70ee0166fe6ccb22eaa3733f3f06349b9e5b93392a6c9b6fe34d1969"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_clears_dependent_setting_link-live-4eff776e75301977.json",
+          "sha256": "699033baf0ff3f9d89d3b3b39a8054544cb08a66be1cb621e0edb72d97844dd4"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "320fbc7f4d2411ccd0fac169becb2d089d0c61abfb10e8fc25bddea9032b51c2",
+        "instance_code_sha": "3ffa7af480bd7cd79d2ad40c4cbd6e1e3ff50b61026c38d938bfdd3a86f41768",
+        "attempt_id": "ff42eb7698b7f8684679"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:496",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:496",
+        "expected_reason": "probe-test_put_project_change_clears_dependent_setting_link invert: equal_to([moved.id, kept.id])",
+        "actual_reason": "probe-test_put_project_change_clears_dependent_setting_link invert: equal_to([moved.id, kept.id])",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-9"
+        ],
+        "obligation_hash": "134d36266cc856436ed606db178181254a7ea71c2c08c5a2ea94c2086261ab4f",
+        "defect_location": "testproject1/src/testproject1/service/settings/settings_transfer_service.py:356-376",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:506-512",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_clears_dependent_setting_link-live-4eff776e75301977.json",
+        "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+        "instance_identity": {
+          "instance_content_sha": "320fbc7f4d2411ccd0fac169becb2d089d0c61abfb10e8fc25bddea9032b51c2",
+          "instance_code_sha": "3ffa7af480bd7cd79d2ad40c4cbd6e1e3ff50b61026c38d938bfdd3a86f41768",
+          "job_id": "ff42eb7698b7f8684679"
+        }
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_put_project_change_leaves_project_settings_and_lists_intact",
+      "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-14",
+          "obligation_hash": "fda586c59f7faa4de7e4ae809bb40a7480487f8101d9dd6ecac0410064f707ec"
+        }
+      ],
+      "obligation_ids": [
+        "OB-14"
+      ],
+      "obligation_hash": "21b09aa093892bfc8656d4eebf095ddf353c9b7222c498b7aa0414d8dac8e21a",
+      "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:563-582",
+      "defect_location": "testproject1/src/testproject1/service/settings/settings_transfer_service.py:306-353",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-011",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2"
+      },
+      "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+      "instance_identity": {
+        "instance_content_sha": "737a6249e8eaee1593e98b4678ccea9b6259945f75e6e8b6abaf0f0f64e5097a",
+        "instance_code_sha": "f59b10e1ebb2d0be2760f5b4514aa3e1faed9c232a405191e916819510d8242b",
+        "job_id": "ff42eb7698b7f8684679"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test file did not exist at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "24b19c40391e60d1509c599b28c638e9006950bae7e49401ff396c5a3e26643a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261028T081540713636Z-ff42eb7698b7f8684679.json",
+          "sha256": "245106fddc5dfd5189f0ebd2be93d2a2ab5660f4681142ea53af23973960bc83"
+        },
+        {
+          "path": "evidence/runs/ff42eb7698b7f8684679/initial-ff42eb7698b7f8684679-20261028-091515.junit.xml",
+          "sha256": "0260a48c70ee0166fe6ccb22eaa3733f3f06349b9e5b93392a6c9b6fe34d1969"
+        },
+        {
+          "path": "work/sensitivity-receipts/test_put_project_change_leaves_project_settings_and_lists_intact-live-d2ded0de94fd6359.json",
+          "sha256": "a603129aed2643fc8b76b23ca5cf480eebc21b1ac0b07f792f3834ed33ad33cf"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "737a6249e8eaee1593e98b4678ccea9b6259945f75e6e8b6abaf0f0f64e5097a",
+        "instance_code_sha": "f59b10e1ebb2d0be2760f5b4514aa3e1faed9c232a405191e916819510d8242b",
+        "attempt_id": "ff42eb7698b7f8684679"
+      },
+      "probe": {
+        "verdict": "intended_failure",
+        "input_hash": "ad4f25bfc52a8386dcfaa9cd3970083d42faf6e4dc6457d3f833d2fa7f740ee2",
+        "expected_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:561",
+        "actual_location": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:561",
+        "expected_reason": "probe-test_put_project_change_leaves_project_settings_and_lists_intact invert: SUCCESS",
+        "actual_reason": "probe-test_put_project_change_leaves_project_settings_and_lists_intact invert: SUCCESS",
+        "failure_kind": "assertion",
+        "mutation_kind": "assertion",
+        "proof_level": "live",
+        "obligation_ids": [
+          "OB-14"
+        ],
+        "obligation_hash": "21b09aa093892bfc8656d4eebf095ddf353c9b7222c498b7aa0414d8dac8e21a",
+        "defect_location": "testproject1/src/testproject1/service/settings/settings_transfer_service.py:306-353",
+        "assertion_id": "testproject1_test_harness/tests/integrations/project/test_integration_project_change.py:563-582",
+        "evidence_ref": "work/sensitivity-receipts/test_put_project_change_leaves_project_settings_and_lists_intact-live-d2ded0de94fd6359.json",
+        "test_code_sha": "842c6ec8876188034a987da86162b37e75080c2eacc0a1bba194bfded5216a98",
+        "instance_identity": {
+          "instance_content_sha": "737a6249e8eaee1593e98b4678ccea9b6259945f75e6e8b6abaf0f0f64e5097a",
+          "instance_code_sha": "f59b10e1ebb2d0be2760f5b4514aa3e1faed9c232a405191e916819510d8242b",
+          "job_id": "ff42eb7698b7f8684679"
+        }
+      }
+    }
+  ],
+  "required_quality_checks": [
+    "ticket_adapter",
+    "test_repo",
+    "vcs",
+    "config_schema"
+  ],
+  "quality_receipts": [],
+  "expectation_changes": [],
+  "blocked_by_env": []
+}

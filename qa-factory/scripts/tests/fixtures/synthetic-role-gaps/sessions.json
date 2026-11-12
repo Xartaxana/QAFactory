@@ -1,0 +1,35 @@
+{
+  "sessions": [
+    {
+      "session_id": "synthetic-session-a",
+      "agents": [
+        {"agent": "qa-factory:qa-scout", "file": "agent-a1.jsonl", "tokens": 1200, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-scout", "file": "agent-a2.jsonl", "tokens": 900, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-case-designer", "file": "agent-a3.jsonl", "tokens": 3000, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-case-designer", "file": "agent-a4.jsonl", "tokens": 2800, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-case-designer", "file": "agent-a5.jsonl", "tokens": 2500, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-case-designer", "file": "agent-a6.jsonl", "tokens": 2100, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-reviewer", "file": "agent-a7.jsonl", "tokens": 700, "activity_id": "act-story", "task": "SYN-1"},
+        {"agent": "qa-factory:qa-critic", "file": "agent-a8.jsonl", "tokens": 650, "activity_id": "act-story", "task": "SYN-1"}
+      ]
+    },
+    {
+      "session_id": "synthetic-session-b",
+      "agents": [
+        {"agent": "qa-factory:qa-scout", "file": "agent-b1.jsonl", "tokens": 500, "activity_id": "act-doctor", "task": "(no task)"}
+      ]
+    },
+    {
+      "session_id": "synthetic-session-c",
+      "agents": [
+        {"agent": "qa-factory:qa-scout", "file": "agent-c1.jsonl", "tokens": 480, "activity_id": "act-story", "task": "SYN-2"}
+      ]
+    },
+    {
+      "session_id": "synthetic-session-d",
+      "agents": [
+        {"agent": "qa-factory:qa-doctor", "file": "agent-d1.jsonl", "tokens": 420, "activity_id": "act-doctor", "task": "(no task)"}
+      ]
+    }
+  ]
+}

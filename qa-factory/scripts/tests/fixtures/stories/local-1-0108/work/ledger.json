@@ -1,0 +1,2612 @@
+{
+  "ticket": "LOCAL-1",
+  "generated": "2026-11-02T09:50:44+00:00",
+  "rows": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "partial",
+      "detail": "LOCAL-1_TC_002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_003"
+    },
+    {
+      "ref": "TS-4",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_004"
+    },
+    {
+      "ref": "TS-5",
+      "kind": "plan_row",
+      "state": "partial",
+      "detail": "LOCAL-1_TC_005"
+    },
+    {
+      "ref": "TS-6",
+      "kind": "plan_row",
+      "state": "partial",
+      "detail": "LOCAL-1_TC_006"
+    },
+    {
+      "ref": "TS-7",
+      "kind": "plan_row",
+      "state": "skipped:cosmetic, badge sum asserted inside TS-1 and TS-3; toast text goes to the Developers line",
+      "detail": ""
+    },
+    {
+      "ref": "TS-8",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "LOCAL-1_TC_007"
+    },
+    {
+      "ref": "TS-9",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "LOCAL-1_TC_008"
+    },
+    {
+      "ref": "TS-10",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "LOCAL-1_TC_009"
+    },
+    {
+      "ref": "TS-11",
+      "kind": "plan_row",
+      "state": "partial",
+      "detail": "LOCAL-1_TC_010"
+    },
+    {
+      "ref": "TS-12",
+      "kind": "plan_row",
+      "state": "partial",
+      "detail": "LOCAL-1_TC_011"
+    },
+    {
+      "ref": "TS-13",
+      "kind": "plan_row",
+      "state": "failed:APP_BUG",
+      "detail": "LOCAL-1_TC_012"
+    },
+    {
+      "ref": "TS-14",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_013"
+    },
+    {
+      "ref": "TS-15",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_014"
+    },
+    {
+      "ref": "TS-16",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_015"
+    },
+    {
+      "ref": "TS-17",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_016"
+    },
+    {
+      "ref": "TS-18",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_017"
+    },
+    {
+      "ref": "TS-19",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_018"
+    },
+    {
+      "ref": "TS-20",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_019"
+    },
+    {
+      "ref": "TS-21",
+      "kind": "plan_row",
+      "state": "failed:CASE_DEFECT",
+      "detail": "LOCAL-1_TC_020"
+    },
+    {
+      "ref": "TS-22",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "LOCAL-1_TC_021"
+    },
+    {
+      "ref": "TS-23",
+      "kind": "plan_row",
+      "state": "skipped:the owner's answer leaves no implemented quick-view add path to verify inside add-to-cart scope",
+      "detail": ""
+    },
+    {
+      "ref": "TS-24",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "LOCAL-1_TC_022"
+    },
+    {
+      "ref": "TS-25",
+      "kind": "plan_row",
+      "state": "not_executed:no result recorded for this row's cases",
+      "detail": "LOCAL-1_TC_023"
+    },
+    {
+      "ref": "TS-26",
+      "kind": "plan_row",
+      "state": "skipped:unverifiable — no observable, two readings (BN-11); owner decides at gate A",
+      "detail": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_004",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_005 — probe incomplete: probe tool cannot read TypeScript failure wording (cause: tooling, language: typescript)",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_011 — probe not_executed: probe tool could not write its request file, path too long (cause: tooling, language: typescript)",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_013",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_014 — probe incomplete: probe tool cannot read TypeScript (cause: tooling, language: typescript); person's word recorded",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_015",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_016",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/api/cart/cart.spec.ts::LOCAL-1_TC_017 — probe incomplete: probe tool cannot read TypeScript (cause: tooling, language: typescript); person's word recorded",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_001",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_002 — probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_003",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_006 a signed-in cart survives logout and login",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_006 — probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_007",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_008",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_008",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_009",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "LOCAL-1_TC_010 a quantity above stock is refused with the available number shown",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_010 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012 — probe not applicable to TypeScript: person's word probe gap tooling:typescript; static review found no defect",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+      "kind": "test",
+      "state": "failed:APP_BUG",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_019",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "kind": "test",
+      "state": "failed:CASE_DEFECT",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_020",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    },
+    {
+      "ref": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "kind": "test",
+      "state": "review_unverified",
+      "detail": "tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_021 — probe not applicable to TypeScript: person's word probe gap tooling:typescript",
+      "proof_level": null,
+      "proof_words": "not probed",
+      "proof_reason": ""
+    }
+  ],
+  "delivery_ready": false,
+  "delivery_verdict": "no",
+  "left_items": [
+    {
+      "kind": "unconfirmed_expectation",
+      "kinds": [
+        "unconfirmed_expectation"
+      ],
+      "ref": "R-26",
+      "case": "",
+      "requirements": [
+        "R-26"
+      ],
+      "tests": [],
+      "to_check": "answer Q9 (R-26): Q4 (TS-26): after session expiry, must the system extend the session, or ask for login and then add the product?",
+      "how": "",
+      "words": "",
+      "source": "traceability",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_005",
+      "case": "LOCAL-1_TC_005",
+      "requirements": [
+        "R-5"
+      ],
+      "tests": [
+        "LOCAL-1_TC_005"
+      ],
+      "to_check": "The add is accepted for the guest: a 2xx, no redirect to login and no 401.; In the new context with the same cookie `GET /api/cart` holds the line for B quantity 1.; An anonymous context with no cookie sees no line for B (the cart is owned by the cookie). What the guest sees before the first add (empty vs login prompt, BN-9, Q4) is not asserted.; The `Set-Cookie` of the guest add (step 1) is persistent: it carries `Max-Age` or `Expires` in the future, not a session-only cookie that is lost when the browser closes (the persistence clause of R-5).",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_011",
+      "case": "LOCAL-1_TC_011",
+      "requirements": [
+        "R-12"
+      ],
+      "tests": [
+        "LOCAL-1_TC_011"
+      ],
+      "to_check": "Both second requests are refused (4xx, INSUFFICIENT_STOCK-class error), not a 2xx and not a 5xx.; The line of A still has quantity 3 (not 6, not 5); the line of S still has quantity 1.; Boundary: a third `POST` A quantity 2 (3 + 2 = stock 5) is accepted and the line of A reads 5.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_014",
+      "case": "LOCAL-1_TC_014",
+      "requirements": [
+        "R-15"
+      ],
+      "tests": [
+        "LOCAL-1_TC_014"
+      ],
+      "to_check": "Each request is answered with a 4xx error or the add is capped to a limit that is at most the stock (10): never a 5xx and never a line above stock.; After each request `GET /api/cart` holds either no line for B or one with quantity at most 10.; The application stays up: `GET /api/health` answers 200 and a normal add of quantity 1 for B afterwards is accepted.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_017",
+      "case": "LOCAL-1_TC_017",
+      "requirements": [
+        "R-18"
+      ],
+      "tests": [
+        "LOCAL-1_TC_017"
+      ],
+      "to_check": "The answer is 404 with the error code BOOK_NOT_FOUND.; The cart has no line for that bookId and the user's line count is the same as before the request.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_002",
+      "case": "LOCAL-1_TC_002",
+      "requirements": [
+        "R-2"
+      ],
+      "tests": [
+        "LOCAL-1_TC_002"
+      ],
+      "to_check": "After the UI attempt (step 2): `GET /api/cart` holds no line for O and the badge is unchanged.; The wording check: a message or label naming the out-of-stock state is visible on the page (either reading of Q5 satisfies it). The Then asserts only the presence of the text \"out of stock\" (case-insensitive) on the page (open question Q5, BN-1).; After the API attempt (step 3): the request is not a 2xx and `GET /api/cart` holds no line for O. The exact 4xx code is informative only; R-2 states only \"cannot be added\".",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_006",
+      "case": "LOCAL-1_TC_006",
+      "requirements": [
+        "R-6"
+      ],
+      "tests": [
+        "LOCAL-1_TC_006"
+      ],
+      "to_check": "After login the cart page shows B with quantity 2.; `GET /api/cart` (signed in again) holds the line of B with quantity 2 and no second line for B.",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_010",
+      "case": "LOCAL-1_TC_010",
+      "requirements": [
+        "R-11"
+      ],
+      "tests": [
+        "LOCAL-1_TC_010"
+      ],
+      "to_check": "A visible message states the available number (4).; `GET /api/cart` holds no line for B after the request completed. (Whether only the available quantity could be added instead is open question Q2; this Then asserts the requirement text \"nothing is added\".)",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_012",
+      "case": "LOCAL-1_TC_012",
+      "requirements": [
+        "R-13"
+      ],
+      "tests": [
+        "LOCAL-1_TC_012"
+      ],
+      "to_check": "Valid partitions (P-one, P-ten, P-234, P-contains-zero, P-multi-digit, P-stock-boundary): `GET /api/cart` holds one line for B whose quantity equals the entered value exactly (not truncated, not clamped, 234 is not 23 or 2, 100 is not 1) and subtotal is value x P (P from the catalog record).; P-zero: a visible rejection message; no line for B.; P-negative and P-non-integer: a visible rejection message; no line for B (never rounded or coerced to 1).; P-non-numeric: a visible error message; no line for B.; P-above-stock (301): a visible message stating the available number 300; no line for B.; Every invalid partition (P-zero, P-above-stock, P-negative, P-non-integer, P-non-numeric): the cart read via the API after the click completes holds no line for B.; For every partition the typed value stays whole in the field and the field keeps focus until the click (multi-character value entered whole, cleared and re-entered, pasted).",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "review_unverified",
+      "kinds": [
+        "review_unverified"
+      ],
+      "ref": "LOCAL-1_TC_021",
+      "case": "LOCAL-1_TC_021",
+      "requirements": [
+        "R-22"
+      ],
+      "tests": [
+        "LOCAL-1_TC_021"
+      ],
+      "to_check": "If Q6 = a (person's answer): G is in the user's cart at quantity 3, equal to the quantity the guest added (the guest item is not lost and the quantity is not coerced to 1); `GET /api/cart` as the signed-in user shows it. Otherwise it follows the owner's answer (before).; If Q6 = a: H has quantity 4 (higher of 2 and 4 wins, not 6); otherwise the owner's rule (before).; If Q6 = a: Z is absent (no stock, dropped) and no line has a quantity above its stock; otherwise the owner's rule (before).",
+      "how": "",
+      "words": "",
+      "source": "ledger",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_unproven",
+      "kinds": [
+        "branch_unproven"
+      ],
+      "ref": "BN-2",
+      "case": "",
+      "requirements": [
+        "R-8"
+      ],
+      "tests": [],
+      "to_check": "A quantity of 0 is rejected with a clear message and nothing is added",
+      "how": "LOCAL-1_TC_007 carries it, but no test or recorded check proves it",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_unproven",
+      "kinds": [
+        "branch_unproven"
+      ],
+      "ref": "BN-3",
+      "case": "",
+      "requirements": [
+        "R-9"
+      ],
+      "tests": [],
+      "to_check": "negative (-1) and fractional (1.5) quantities",
+      "how": "LOCAL-1_TC_008 carries it, but no test or recorded check proves it",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_unproven",
+      "kinds": [
+        "branch_unproven"
+      ],
+      "ref": "BN-7",
+      "case": "",
+      "requirements": [
+        "R-14"
+      ],
+      "tests": [],
+      "to_check": "\"maximum allowed\" is not defined (stock vs the schema cap 999)",
+      "how": "LOCAL-1_TC_013 carries it, but no test or recorded check proves it",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_unproven",
+      "kinds": [
+        "branch_unproven"
+      ],
+      "ref": "BN-10",
+      "case": "",
+      "requirements": [
+        "R-25"
+      ],
+      "tests": [],
+      "to_check": "the system completes the action or notifies the user to retry",
+      "how": "LOCAL-1_TC_023 carries it, but no test or recorded check proves it",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "BN-11",
+      "case": "",
+      "requirements": [
+        "R-26"
+      ],
+      "tests": [],
+      "to_check": "the session is extended or a new login is asked",
+      "how": "the role left it out, you have not said so: plan row TS-26 is `unverifiable`: No code observable (REF-8); two readings (BN-11); owner decides at gate A.",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-a929b15ff589",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "*Objective:* Verify that raising a cart line's quantity above available stock is rejected and the stored quantity stays unchanged.",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-126d8bb02629",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "Book \"Ariel\" is in stock; read its real stock S0",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-b306bc733eb9",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "Initial quantity: 1",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-a9becee51472",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "Attempted cart quantity: S0 + 1",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-443c860e4a21",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "*Expected:* One line \"Ariel\" with quantity 1",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-a96b3e0b1a34",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "Change the line's quantity to S0 + 1 and commit it (Enter or blur)",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-640f71a6da65",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "*Expected:* A visible error states there is not enough stock",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-fb8e200cdf18",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "Reload the cart page",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-789949bf9f23",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "*Expected:* Line \"Ariel\" still shows quantity 1; cart badge shows 1",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "branch_excluded",
+      "kinds": [
+        "branch_excluded"
+      ],
+      "ref": "U-4e59f1300e2c",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "to_check": "Cart line quantity is unchanged",
+      "how": "the role left it out, you have not said so: raising a cart line quantity is a cart edit, not an add-to-cart path (person's scope decision, s1-conflict-20261101-234118)",
+      "words": "",
+      "source": "branches",
+      "counts": true,
+      "stopped": ""
+    },
+    {
+      "kind": "regression",
+      "ref": "regression",
+      "case": "",
+      "requirements": [],
+      "tests": [],
+      "lines": [
+        "No regression: the tests repository has no cart test (coverage_search tests: none) and the implementation source is current-code with no diff, so no existing test defends this blast radius; developers keep the application's own unit tests `src/lib/cartRules.test.ts` and `src/lib/validation/schemas.test.ts`."
+      ],
+      "to_check": "",
+      "how": "",
+      "words": "",
+      "source": "plan",
+      "counts": false
+    }
+  ],
+  "reasons": [
+    "traceability: R-1 has no terminal outcome (LOCAL-1_TC_001: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-2 has no terminal outcome (LOCAL-1_TC_002: run result 'partial' is not terminal)",
+    "traceability: R-3 has no terminal outcome (LOCAL-1_TC_003: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-4 has no terminal outcome (LOCAL-1_TC_004: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-5 has no terminal outcome (LOCAL-1_TC_005: run result 'partial' is not terminal)",
+    "traceability: R-6 has no terminal outcome (LOCAL-1_TC_006: run result 'partial' is not terminal)",
+    "traceability: R-8 has no terminal outcome (LOCAL-1_TC_007: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-9 has no terminal outcome (LOCAL-1_TC_008: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-10 has no terminal outcome (LOCAL-1_TC_009: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-11 has no terminal outcome (LOCAL-1_TC_010: run result 'partial' is not terminal)",
+    "traceability: R-12 has no terminal outcome (LOCAL-1_TC_011: run result 'partial' is not terminal)",
+    "traceability: R-13 has no terminal outcome (LOCAL-1_TC_012: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-14 has no terminal outcome (LOCAL-1_TC_013: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-16 has no terminal outcome (LOCAL-1_TC_015: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-17 has no terminal outcome (LOCAL-1_TC_016: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-19 has no terminal outcome (LOCAL-1_TC_018: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-20 has no terminal outcome (LOCAL-1_TC_019: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-21 has no terminal outcome (LOCAL-1_TC_020: unresolved (contradicts_requirement) with no decision attached)",
+    "traceability: R-24 has no terminal outcome (LOCAL-1_TC_022: neither in automation-manifest tests[] nor unresolved[])",
+    "traceability: R-25 has no terminal outcome (LOCAL-1_TC_023: neither in automation-manifest tests[] nor unresolved[])",
+    "ledger: TS-2 is `partial` (LOCAL-1_TC_002)",
+    "ledger: TS-5 is `partial` (LOCAL-1_TC_005)",
+    "ledger: TS-6 is `partial` (LOCAL-1_TC_006)",
+    "ledger: TS-8 is `failed:APP_BUG` (LOCAL-1_TC_007)",
+    "ledger: TS-9 is `failed:APP_BUG` (LOCAL-1_TC_008)",
+    "ledger: TS-10 is `failed:APP_BUG` (LOCAL-1_TC_009)",
+    "ledger: TS-11 is `partial` (LOCAL-1_TC_010)",
+    "ledger: TS-12 is `partial` (LOCAL-1_TC_011)",
+    "ledger: TS-13 is `failed:APP_BUG` (LOCAL-1_TC_012)",
+    "ledger: TS-24 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_022)",
+    "ledger: TS-25 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_023)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_007)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_008)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_008)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_009)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+    "coverage red: OB-4 — none",
+    "coverage red: OB-8 — none",
+    "coverage red: OB-9 — none",
+    "coverage red: OB-10 — none",
+    "coverage red: OB-13 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage red: OB-14 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage red: OB-16 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage red: OB-17 — none",
+    "coverage red: OB-19 — none",
+    "coverage red: OB-20 — none",
+    "coverage red: OB-21 — none",
+    "coverage red: OB-23 — no implementation or observable",
+    "test instance LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal requires current sensitivity proof: no sensitivity receipt",
+    "factory: LOCAL-1_TC_004 cart unit price and total equal the catalog price — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: LOCAL-1_TC_005 guest adds without login and the cart follows the cookie — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: LOCAL-1_TC_013 maximum quantity is added with the right subtotal — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "factory: cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+    "ledger: TS-1 is `failed:CASE_DEFECT` (LOCAL-1_TC_001)",
+    "ledger: TS-3 is `failed:CASE_DEFECT` (LOCAL-1_TC_003)",
+    "ledger: TS-4 is `failed:CASE_DEFECT` (LOCAL-1_TC_004)",
+    "ledger: TS-14 is `failed:CASE_DEFECT` (LOCAL-1_TC_013)",
+    "ledger: TS-16 is `failed:CASE_DEFECT` (LOCAL-1_TC_015)",
+    "ledger: TS-17 is `failed:CASE_DEFECT` (LOCAL-1_TC_016)",
+    "ledger: TS-19 is `failed:CASE_DEFECT` (LOCAL-1_TC_018)",
+    "ledger: TS-20 is `failed:CASE_DEFECT` (LOCAL-1_TC_019)",
+    "ledger: TS-21 is `failed:CASE_DEFECT` (LOCAL-1_TC_020)",
+    "ledger: cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_004)",
+    "ledger: cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_013)",
+    "ledger: cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_015)",
+    "ledger: cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_016)",
+    "ledger: LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_001)",
+    "ledger: LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_003)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page] is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card] is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move] is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_019)",
+    "ledger: cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_020)",
+    "coverage: OB-1 — none",
+    "coverage: OB-2 — none",
+    "coverage: OB-3 — none",
+    "coverage: OB-5 — none",
+    "coverage: OB-6 — none",
+    "coverage: OB-7 — toast text not asserted by an automated check",
+    "coverage: OB-11 — none",
+    "coverage: OB-12 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-15 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-18 — none",
+    "coverage: OB-22 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+    "coverage: OB-24 — none",
+    "coverage: OB-25 — none"
+  ],
+  "reason_records": [
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-1",
+      "detail": "traceability: R-1 has no terminal outcome (LOCAL-1_TC_001: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_001",
+        "R-1"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-2",
+      "detail": "traceability: R-2 has no terminal outcome (LOCAL-1_TC_002: run result 'partial' is not terminal)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_002",
+        "R-2"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-3",
+      "detail": "traceability: R-3 has no terminal outcome (LOCAL-1_TC_003: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_003",
+        "R-3"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-4",
+      "detail": "traceability: R-4 has no terminal outcome (LOCAL-1_TC_004: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_004",
+        "R-4"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-5",
+      "detail": "traceability: R-5 has no terminal outcome (LOCAL-1_TC_005: run result 'partial' is not terminal)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005",
+        "R-5"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-6",
+      "detail": "traceability: R-6 has no terminal outcome (LOCAL-1_TC_006: run result 'partial' is not terminal)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_006",
+        "R-6"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-8",
+      "detail": "traceability: R-8 has no terminal outcome (LOCAL-1_TC_007: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_007",
+        "R-8"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-9",
+      "detail": "traceability: R-9 has no terminal outcome (LOCAL-1_TC_008: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008",
+        "R-9"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-10",
+      "detail": "traceability: R-10 has no terminal outcome (LOCAL-1_TC_009: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009",
+        "R-10"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-11",
+      "detail": "traceability: R-11 has no terminal outcome (LOCAL-1_TC_010: run result 'partial' is not terminal)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_010",
+        "R-11"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-12",
+      "detail": "traceability: R-12 has no terminal outcome (LOCAL-1_TC_011: run result 'partial' is not terminal)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_011",
+        "R-12"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-13",
+      "detail": "traceability: R-13 has no terminal outcome (LOCAL-1_TC_012: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_012",
+        "R-13"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-14",
+      "detail": "traceability: R-14 has no terminal outcome (LOCAL-1_TC_013: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_013",
+        "R-14"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-16",
+      "detail": "traceability: R-16 has no terminal outcome (LOCAL-1_TC_015: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_015",
+        "R-16"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-17",
+      "detail": "traceability: R-17 has no terminal outcome (LOCAL-1_TC_016: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_016",
+        "R-17"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-19",
+      "detail": "traceability: R-19 has no terminal outcome (LOCAL-1_TC_018: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018",
+        "R-19"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-20",
+      "detail": "traceability: R-20 has no terminal outcome (LOCAL-1_TC_019: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_019",
+        "R-20"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-21",
+      "detail": "traceability: R-21 has no terminal outcome (LOCAL-1_TC_020: unresolved (contradicts_requirement) with no decision attached)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_020",
+        "R-21"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-24",
+      "detail": "traceability: R-24 has no terminal outcome (LOCAL-1_TC_022: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_022",
+        "R-24"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "TRACEABILITY_GAP",
+      "entity": "R-25",
+      "detail": "traceability: R-25 has no terminal outcome (LOCAL-1_TC_023: neither in automation-manifest tests[] nor unresolved[])",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_023",
+        "R-25"
+      ],
+      "kind": "chain_broken"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-2",
+      "detail": "ledger: TS-2 is `partial` (LOCAL-1_TC_002)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_002",
+        "TS-2"
+      ],
+      "kind": "partial_or_error"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-5",
+      "detail": "ledger: TS-5 is `partial` (LOCAL-1_TC_005)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005",
+        "TS-5"
+      ],
+      "kind": "partial_or_error"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-6",
+      "detail": "ledger: TS-6 is `partial` (LOCAL-1_TC_006)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_006",
+        "TS-6"
+      ],
+      "kind": "partial_or_error"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-8",
+      "detail": "ledger: TS-8 is `failed:APP_BUG` (LOCAL-1_TC_007)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_007",
+        "TS-8"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-9",
+      "detail": "ledger: TS-9 is `failed:APP_BUG` (LOCAL-1_TC_008)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008",
+        "TS-9"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-10",
+      "detail": "ledger: TS-10 is `failed:APP_BUG` (LOCAL-1_TC_009)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009",
+        "TS-10"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-11",
+      "detail": "ledger: TS-11 is `partial` (LOCAL-1_TC_010)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_010",
+        "TS-11"
+      ],
+      "kind": "partial_or_error"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-12",
+      "detail": "ledger: TS-12 is `partial` (LOCAL-1_TC_011)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_011",
+        "TS-12"
+      ],
+      "kind": "partial_or_error"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-13",
+      "detail": "ledger: TS-13 is `failed:APP_BUG` (LOCAL-1_TC_012)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_012",
+        "TS-13"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-24",
+      "detail": "ledger: TS-24 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_022)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_022",
+        "TS-24"
+      ],
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-25",
+      "detail": "ledger: TS-25 is `not_executed:no result recorded for this row's cases` (LOCAL-1_TC_023)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_023",
+        "TS-25"
+      ],
+      "kind": "not_executed"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_007)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_007"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_008)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_008)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_008"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_009)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_009"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_012"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_012"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_012"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric] is `failed:APP_BUG` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_012)",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_012"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-4",
+      "detail": "coverage red: OB-4 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-8",
+      "detail": "coverage red: OB-8 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-9",
+      "detail": "coverage red: OB-9 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-10",
+      "detail": "coverage red: OB-10 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-13",
+      "detail": "coverage red: OB-13 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-14",
+      "detail": "coverage red: OB-14 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-16",
+      "detail": "coverage red: OB-16 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-17",
+      "detail": "coverage red: OB-17 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-19",
+      "detail": "coverage red: OB-19 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-20",
+      "detail": "coverage red: OB-20 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-21",
+      "detail": "coverage red: OB-21 — none",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-23",
+      "detail": "coverage red: OB-23 — no implementation or observable",
+      "owner": "product",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "DELIVERY_CONTRACT_GAP",
+      "entity": "no",
+      "detail": "test instance LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal requires current sensitivity proof: no sensitivity receipt",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_003"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "LOCAL-1_TC_004",
+      "detail": "factory: LOCAL-1_TC_004 cart unit price and total equal the catalog price — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "LOCAL-1_TC_005",
+      "detail": "factory: LOCAL-1_TC_005 guest adds without login and the cart follows the cookie — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_005",
+        "LOCAL-1_TC_005 guest adds without login and the cart follows the cookie"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "LOCAL-1_TC_011",
+      "detail": "factory: LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_011",
+        "LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "LOCAL-1_TC_013",
+      "detail": "factory: LOCAL-1_TC_013 maximum quantity is added with the right subtotal — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "cart.spec.@regression",
+      "detail": "factory: cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_001",
+        "cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "cart.spec.@regression",
+      "detail": "factory: cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_002",
+        "cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "cart.spec.@regression",
+      "detail": "factory: cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_003",
+        "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "cart.spec.@regression",
+      "detail": "factory: cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_006",
+        "cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "FACTORY_DEFECT",
+      "entity": "cart.spec.@regression",
+      "detail": "factory: cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown — INSTANCE_MANIFEST_JOIN_FAILED: no manifest row",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_010",
+        "cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown"
+      ],
+      "kind": "factory_record"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-1",
+      "detail": "ledger: TS-1 is `failed:CASE_DEFECT` (LOCAL-1_TC_001)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_001",
+        "TS-1"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-3",
+      "detail": "ledger: TS-3 is `failed:CASE_DEFECT` (LOCAL-1_TC_003)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_003",
+        "TS-3"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-4",
+      "detail": "ledger: TS-4 is `failed:CASE_DEFECT` (LOCAL-1_TC_004)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_004",
+        "TS-4"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-14",
+      "detail": "ledger: TS-14 is `failed:CASE_DEFECT` (LOCAL-1_TC_013)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_013",
+        "TS-14"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-16",
+      "detail": "ledger: TS-16 is `failed:CASE_DEFECT` (LOCAL-1_TC_015)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_015",
+        "TS-16"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-17",
+      "detail": "ledger: TS-17 is `failed:CASE_DEFECT` (LOCAL-1_TC_016)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_016",
+        "TS-17"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-19",
+      "detail": "ledger: TS-19 is `failed:CASE_DEFECT` (LOCAL-1_TC_018)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018",
+        "TS-19"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-20",
+      "detail": "ledger: TS-20 is `failed:CASE_DEFECT` (LOCAL-1_TC_019)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_019",
+        "TS-20"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "TS-21",
+      "detail": "ledger: TS-21 is `failed:CASE_DEFECT` (LOCAL-1_TC_020)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_020",
+        "TS-21"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@api",
+      "detail": "ledger: cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_004)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_004",
+        "LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@api",
+      "detail": "ledger: cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_013)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_013",
+        "LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@api",
+      "detail": "ledger: cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_015)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_015"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@api",
+      "detail": "ledger: cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total is `failed:CASE_DEFECT` (tests/api/cart/cart.spec.ts::LOCAL-1_TC_016)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_016"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "LOCAL-1_TC_001",
+      "detail": "ledger: LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_001)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_001"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "LOCAL-1_TC_003",
+      "detail": "ledger: LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_003)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_003"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page] is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card] is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move] is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_018)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_018"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_019)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_019"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "LEDGER_TERMINAL_GAP",
+      "entity": "cart.spec.@regression",
+      "detail": "ledger: cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist is `failed:CASE_DEFECT` (tests/e2e/cart/cart.spec.ts::LOCAL-1_TC_020)",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [
+        "LOCAL-1_TC_020"
+      ],
+      "kind": "red"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-1",
+      "detail": "coverage: OB-1 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-2",
+      "detail": "coverage: OB-2 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-3",
+      "detail": "coverage: OB-3 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-5",
+      "detail": "coverage: OB-5 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-6",
+      "detail": "coverage: OB-6 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-7",
+      "detail": "coverage: OB-7 — toast text not asserted by an automated check",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-11",
+      "detail": "coverage: OB-11 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-12",
+      "detail": "coverage: OB-12 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-15",
+      "detail": "coverage: OB-15 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-18",
+      "detail": "coverage: OB-18 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-22",
+      "detail": "coverage: OB-22 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-24",
+      "detail": "coverage: OB-24 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    },
+    {
+      "code": "COVERAGE_EVIDENCE_GAP",
+      "entity": "OB-25",
+      "detail": "coverage: OB-25 — none",
+      "owner": "factory",
+      "owner_established": true,
+      "refs": [],
+      "kind": "coverage_gap"
+    }
+  ],
+  "blocked_by": [
+    "product",
+    "factory"
+  ],
+  "superseded_blocks": [],
+  "coverage": {
+    "schema_version": 2,
+    "status": "current",
+    "obligations": [
+      {
+        "obligation_id": "OB-1",
+        "plan_row": "TS-1",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "inconclusive",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_001 an in-stock book is added once with the right price from the product page"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-2",
+        "plan_row": "TS-2",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "inconclusive",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_002 an out-of-stock book cannot be added to the cart"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-3",
+        "plan_row": "TS-3",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "inconclusive",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_003 quantity 3 is added and the cart shows 3 with the right subtotal"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-4",
+        "plan_row": "TS-4",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_004 cart unit price and total equal the catalog price"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-5",
+        "plan_row": "TS-5",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_005 guest adds without login and the cart follows the cookie"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-6",
+        "plan_row": "TS-6",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "inconclusive",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_006 a signed-in cart survives logout and login"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-7",
+        "plan_row": "TS-7",
+        "decision": "unresolved",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [],
+        "gap": "toast text not asserted by an automated check"
+      },
+      {
+        "obligation_id": "OB-8",
+        "plan_row": "TS-8",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-9",
+        "plan_row": "TS-9",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+          "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-10",
+        "plan_row": "TS-10",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-11",
+        "plan_row": "TS-11",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "inconclusive",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_010 a quantity above stock is refused with the available number shown"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-12",
+        "plan_row": "TS-12",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_011 an add that exceeds stock is refused and the cart is unchanged"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-13",
+        "plan_row": "TS-13",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_234]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_above_stock]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_contains_zero]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_multi_digit]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_negative]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_integer]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_non_numeric]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_one]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_stock_boundary]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_ten]",
+          "cart.spec.@regression LOCAL-1_TC_012 quantity_class_behaves[p_zero]"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-14",
+        "plan_row": "TS-14",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_013 maximum quantity is added with the right subtotal"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-15",
+        "plan_row": "TS-15",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_014 an extremely large quantity gives an error or a limit and the app stays up"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-16",
+        "plan_row": "TS-16",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_015 adding the same product twice gives one line with the summed quantity"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched"
+      },
+      {
+        "obligation_id": "OB-17",
+        "plan_row": "TS-17",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_016 several products give one line each and a summed total"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-18",
+        "plan_row": "TS-18",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@api @regression LOCAL-1_TC_017 a nonexistent book is refused with 404 BOOK_NOT_FOUND"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-19",
+        "plan_row": "TS-19",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[catalog_card]",
+          "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[product_page]",
+          "cart.spec.@regression LOCAL-1_TC_018 add_path_obeys_the_add_rules[wishlist_move]"
+        ],
+        "gap": "none"
+      },
+      {
+        "obligation_id": "OB-20",
+        "plan_row": "TS-20",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_019 the catalog card adds the book to the cart with the right line"
+        ],
+        "gap": "none",
+        "oracle_status": "resolved",
+        "oracle_answers": [
+          {
+            "then": 2,
+            "question": "Q6",
+            "expected": "the card adds a line with quantity exactly 1 and the badge rose by 1"
+          }
+        ]
+      },
+      {
+        "obligation_id": "OB-21",
+        "plan_row": "TS-21",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "failed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist"
+        ],
+        "gap": "none",
+        "oracle_status": "resolved",
+        "oracle_answers": [
+          {
+            "then": 2,
+            "question": "Q6",
+            "expected": "the item is removed from the wishlist after a successful move"
+          },
+          {
+            "then": 3,
+            "question": "Q6",
+            "expected": "when the add fails the item stays in the wishlist"
+          }
+        ]
+      },
+      {
+        "obligation_id": "OB-22",
+        "plan_row": "TS-22",
+        "decision": "new",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "passed",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [
+          "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items"
+        ],
+        "gap": "reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+        "oracle_status": "resolved",
+        "oracle_answers": [
+          {
+            "then": 1,
+            "question": "Q6",
+            "expected": "the guest item survives sign-in at the quantity the guest added (3), not coerced to 1"
+          },
+          {
+            "then": 2,
+            "question": "Q6",
+            "expected": "for a book in both carts the higher quantity wins"
+          },
+          {
+            "then": 3,
+            "question": "Q6",
+            "expected": "the merged quantity is capped at stock and a no-stock item is dropped"
+          }
+        ]
+      },
+      {
+        "obligation_id": "OB-23",
+        "plan_row": "TS-23",
+        "decision": "unresolved",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": true,
+        "instance_ids": [],
+        "gap": "no implementation or observable"
+      },
+      {
+        "obligation_id": "OB-24",
+        "plan_row": "TS-24",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [],
+        "gap": "none",
+        "oracle_status": "resolved",
+        "oracle_answers": [
+          {
+            "then": 1,
+            "question": "Q7",
+            "expected": "the cart line and subtotal keep the price shown at add time (6.00), not the updated 8.00"
+          }
+        ]
+      },
+      {
+        "obligation_id": "OB-25",
+        "plan_row": "TS-25",
+        "decision": "manual-agent",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "not_applicable",
+        "sensitivity": "not_required",
+        "verified": false,
+        "person_debt": false,
+        "oracle_open": false,
+        "instance_ids": [],
+        "gap": "none",
+        "oracle_status": "resolved",
+        "oracle_answers": [
+          {
+            "then": 2,
+            "question": "Q8",
+            "expected": "the system completes the action: after the connection returns the book is in the cart once at the quantity the user chose; if the add still fails, the user gets a message asking to try again"
+          }
+        ]
+      },
+      {
+        "obligation_id": "OB-26",
+        "plan_row": "TS-26",
+        "decision": "unresolved",
+        "execution_scope": "current_task",
+        "design_assessment": "unknown",
+        "execution_state": "not_run",
+        "code_validity": "unverified",
+        "sensitivity": "missing",
+        "verified": false,
+        "person_debt": true,
+        "oracle_open": true,
+        "instance_ids": [],
+        "gap": "the expected result is not confirmed by anyone; it is left with you: your answer to Q9 is needed"
+      }
+    ],
+    "unique_instances": 34
+  },
+  "manual_evidence": {
+    "rows": [],
+    "errors": []
+  },
+  "subtasks_open": [],
+  "review_skipped": false,
+  "repair_windows": [],
+  "repair_windows_problem": "",
+  "source_inputs": {
+    "schema_version": 1,
+    "files": {
+      "test-plan.json": {
+        "path": "work/test-plan.json",
+        "sha256": "535fa63eead33ffa59818e615278079510a191294eb3b6791e95d7312b0becab"
+      },
+      "run-report.json": {
+        "path": "work/run-report.json",
+        "sha256": "b418fdceb5bcec45d2c7456603518ba9016dd75d16717dc4ffd53f938f8a981e"
+      },
+      "automation-manifest.json": {
+        "path": "work/automation-manifest.json",
+        "sha256": "8e192a0be59609163541de83201d6a6fbecbe91e440bf1fafe4e441b242548ce"
+      },
+      "triage.json": {
+        "path": "work/triage.json",
+        "sha256": "457105e05753577037824d7a9c83c18d486cf3d635ee5a452a620a3d92aa28ba"
+      }
+    },
+    "fingerprint": "e6a3ea4bd4e8b23660246d3e744dce10976f1707676060b03bb11002a127c697"
+  },
+  "person_debts": [],
+  "factory_findings": []
+}

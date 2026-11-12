@@ -1,0 +1,63 @@
+# S5: the automator hands ONE plan for every case of the stage to the code critic, before any window starts.
+#
+# This file is the contract AND the form, for the dispatch whose purpose is `s5_plan` (the index row
+# names it). The plan itself is `work/s5-plan.json`: one row per case and one row per test, in the
+# schema the dispatch brief states; this form only points at it and says which cases it answers. The
+# critic reads THE PLAN, the S3 rows it answers and the cases - this file is the receipt that the plan
+# exists and covers the scope. The facts about the plan that code can establish (every Then lands in a
+# test or in a remainder, the shape fits the S3 row, the extended function exists) are the output of
+# `s5_plan.py --check`, which the author runs before the hand-over; no claim here repeats them.
+#
+# Not a window: a window's form (s5-automator-to-critic.yaml) is filled later, one per window, against
+# this plan and the critic's remarks on it.
+schema_version: 1
+contract: s5-automator-plan-to-critic
+stage: S5
+from_role: qa-automator
+to_role: qa-code-critic
+
+# What the receiving role must read before it starts, and what it confirms it read.
+# The critic's own handoff carries `inputs_read` with one line per entry here.
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/s5-plan.json
+    what: the plan - every case with its tests, the shape and the level of each test, the Then clauses left as remainders
+    required: true
+  - path: work/test-plan.json
+    what: the S3 rows the plan answers (level, fit, oracle), the slice of the cases in scope
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every approved case in `scope`, at the pinned version
+    required: true
+
+# The head of the handoff: the same three facts the digest line carries.
+header:
+  role: qa-automator
+  stage: S5
+  window: <the case ids the plan covers, comma separated>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per case the plan covers. `id` is a case id; `state` comes from vocabulary.row_states and must be
+# allowed for qa-automator; `reason` is at most 80 characters and is a verdict, never an explanation - the
+# explanation lives in the plan.
+scope:
+  - id: <case id>
+    state: <one of vocabulary.row_states>   # `created` for a case the plan answers; `blocked` needs `blocked.problem` below
+    reason: <= 80 characters>
+
+# The files this hand-over entitles the critic to.
+artifacts:
+  plan: work/s5-plan.json
+
+# Filled ONLY when the role cannot fill the rest. `handoff_help.py --file <this file>` sends
+# it to the conductor with the contract, the refusal and the vocabulary; the conductor answers
+# with the correction or asks the person. The role never goes to the person directly.
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

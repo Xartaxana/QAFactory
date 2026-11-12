@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "note": "Questions the orchestrator asks about a PERSON'S OWN WORDS at a gate, a stand-gap card or a repeated refusal (scripts/judge_reply.py). None of them records anything: the answer pre-fills the option the orchestrator then reads back to the person, who confirms it. A gate decision is a safety refusal and never goes through judged_refusal - what is saved here is the turn spent re-asking 'did you mean approve or approve with edits', not the person's authority. Thresholds are 0.9 throughout, because a misread answer at a gate is the one mistake this factory cannot take back.",
+  "judgments": [
+    {
+      "id": "gate_reply_intent",
+      "stage": "gate",
+      "script": "judge_reply.py",
+      "type": "choice",
+      "replaces": "the orchestrator's own reading of a gate answer before it builds the `gate-decision` request",
+      "undecided": "the orchestrator asks the person which of the options they meant, as without a judge",
+      "instructions": "The text in `question` was put to a person. What does their `reply` do with it?",
+      "criteria": {
+        "approve": "Agrees with what was shown and asks for no change to it.",
+        "approve_with_edits": "Agrees to go on, and names something to change first, drop, add or reword.",
+        "reject": "Refuses what was shown, or asks for the work to be done again before anything continues.",
+        "question": "Asks something back and states no decision.",
+        "waiver": "Says to go on despite a stated gap, block or risk, accepting it.",
+        "other": "None of the above: a remark, a thank-you, an instruction about something else."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "gate_stand_gap_option",
+      "stage": "gate",
+      "script": "judge_reply.py",
+      "type": "choice",
+      "replaces": "contract.stand_gap_decisions reading the first word of the answer to a stand-gap card",
+      "undecided": "the answer is kept whole as free text, exactly as contract.stand_gap_decisions keeps it today",
+      "instructions": "A tester was shown a missing thing on the test environment, the exact fix for it, and four answers. Which one does the `reply` give?",
+      "criteria": {
+        "apply": "Asks the factory to make the change itself now.",
+        "theirs": "Says they, or their team, will make the change.",
+        "handed": "Says they will run the affected test themselves where the missing thing exists.",
+        "accept": "Says to leave it missing and go on with that behaviour untested.",
+        "other": "None of the four: a question, a different instruction, or an answer about something else."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "gate_same_cause",
+      "stage": "gate",
+      "script": "judge_reply.py",
+      "type": "noul",
+      "replaces": "the orchestrator deciding whether a refusal it just saw is the one it already reported, before it says 'this repeats - /qa-factory:qa-doctor'",
+      "undecided": "the orchestrator treats them as two different blocks and reports the new one",
+      "instructions": "Do `message_a` and `message_b` report the same underlying problem?",
+      "criteria": {
+        "true": "Both name the same missing thing, the same rule, or the same broken step - even worded differently or about a different file.",
+        "false": "They name different problems, different rules, or one is a consequence of the other rather than the same thing."
+      },
+      "thresholds": {
+        "true_at": 0.9,
+        "false_at": 0.1
+      }
+    }
+  ]
+}

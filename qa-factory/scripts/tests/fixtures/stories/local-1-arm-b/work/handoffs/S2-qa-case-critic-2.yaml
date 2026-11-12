@@ -1,0 +1,79 @@
+# S2: the stage critic (qa-case-critic) hands its verdict on the understanding and the register back - to the requirements
+# tester for a repair round, or on to S3. The same file serves both: `header.verdict` decides which (`ok` closes the stage,
+# `concerns` sends it back; the table that maps the word to the stage acceptance record is `vocabulary.stage_acceptance_verdicts`).
+#
+# What code reads here is DATA: the verdict word, the section `stage_acceptance` (failure_class, quote, witness_paths), the
+# places the critic did not look, the advice file it read. What the verdict MEANS is the critic's (spec t-1765 X2-1); the driver
+# records it with `stage_done.py --acceptance` and the tester is sent back with this file and the artifact only.
+# Person's repair (arm B, 05.11.2026 02:20): this form is the critic's first-round form (S2-qa-case-critic-1.yaml, verdict ok) with
+# inputs_read[0] completed by hand from the critic-2 values file and the tester form's sha256; the critic could not write it itself.
+schema_version: 1
+contract: s2-stage-critic-to-tester
+stage: S2
+from_role: qa-case-critic
+to_role: qa-requirements-tester      # on `ok` the same file closes S2 instead
+
+inputs:
+  - path: work/handoffs/S2-qa-requirements-tester-1.yaml
+    what: the tester's handoff for this stage, with its `tried` table
+    required: true
+  - path: work/requirements-register.md
+    what: the register under review
+    required: true
+  - path: understanding.md
+    what: the understanding under review
+    required: true
+  - path: work/advice-S2.json
+    what: what the stage's advisers printed (absent on a first run: say so in `advice_read`)
+    required: false
+
+inputs_read:
+  - path: work/handoffs/S2-qa-requirements-tester-1.yaml
+    sha256: 90e08407a1dcc31f2c9224a12769902ce5f86c78b76e3a9d783e67dd9d40266b
+  - path: work/requirements-register.md
+  - path: understanding.md
+  - path: work/advice-S2.json
+
+required_when:
+  concerns: [stage_acceptance, questions]
+
+header:
+  role: qa-case-critic
+  stage: S2
+  window: LOCAL-1
+  verdict: ok
+
+# Owed on `concerns` (see `required_when`): the failure class and a verbatim quote (path#anchor, at most 300 characters).
+stage_acceptance:
+  failure_class: spec
+  quote: "work/requirements-register.md#register R-10: contradicts PATCH vs PUT carried in Contradiction matrix and Q2"
+  witness_paths:
+    - work/requirements-register.md
+
+scope:
+  - id: register
+    state: reviewed
+    reason: 14 requirements, branches, matrix and questions carried whole
+
+findings:
+  - id: F-1
+    where: R-2, R-4
+    problem: R-2 and R-4 are compound but branches BN-2/3/5 split them, so no loss
+    expected: "none"
+    fix: strategist plans per branch
+    check: "-"
+    blocking: false
+
+# One row per place the brief named and the critic did not look, with the reason; an empty list means everything named was looked at.
+not_looked:
+  - where: MyBooks source code lines cited as observables
+    why: "read-only critic did not open code; judged register by its sources and tried table"
+
+advice_read: "work/advice-S2.json read: no records, nothing unread"
+advice_rejected: []
+
+questions: []
+
+claims:
+  every_named_input_was_read: true
+  every_reject_carries_a_quote: true

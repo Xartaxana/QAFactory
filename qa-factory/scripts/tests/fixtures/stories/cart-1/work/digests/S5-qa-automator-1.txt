@@ -1,0 +1,18 @@
+qa-automator S5 plan window CART-1_TC_001..010 · ok
+CART-1_TC_001 · created · planned as T-1 (api, new)
+CART-1_TC_002 · created · planned as T-2 (api, new)
+CART-1_TC_003 · created · planned as T-3 (api, new)
+CART-1_TC_004 · created · planned as T-4 (api, new)
+CART-1_TC_005 · created · planned as T-5 (api, new)
+CART-1_TC_006 · created · planned as T-6 (api, new)
+CART-1_TC_007 · created · planned as T-7 (api, new)
+CART-1_TC_008 · created · planned as T-8 (api, new)
+CART-1_TC_009 · created · planned as T-9 (api, new)
+CART-1_TC_010 · created · planned as T-10 (e2e-ui, new, needs a new CartPage)
+qa-factory/artifacts/CART-1/work/s5-plan.json
+
+Checks run: s5_plan.py --check returns OK, and handoff_check.py reports the form complete.
+
+Branch check was not proven by ancestry. Commit a25b0801669b is unknown to this repository. The person's recorded word says the story has no code changes, so I went on without a content comparison.
+
+I planned one test per case with no grouping. The cases have different setups and different Thens, so none fit a parameterized or consolidated test. Each T-n row's `apart_reason` says this.

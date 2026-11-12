@@ -1,0 +1,133 @@
+# S5: the automator hands one window to the code critic.
+#
+# This file is the contract AND the form. `handoff_init.py --contract s5-automator-to-critic
+# --dispatch <id>` copies it into `work/handoffs/<dispatch>.yaml` with every value replaced by
+# `<fill>`; the automator fills it; `handoff_check.py --file <...>` refuses with the field, the
+# problem and the allowed values; `story_step finish` accepts the window only when the check is
+# green, and the file becomes evidence. The critic reads THIS file; nothing else is hunted for.
+schema_version: 1
+contract: s5-automator-to-critic
+stage: S5
+from_role: qa-automator
+to_role: qa-code-critic
+
+# What the receiving role must read before it starts, and what it confirms it read.
+# The critic's own handoff carries `inputs_read` with one line per entry here.
+inputs:
+  - path: work/handoffs/<dispatch>.yaml
+    what: this file
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances this window added or changed, with their case links and obligations
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every approved case in `scope`, at the pinned version named here
+    required: true
+  - path: <test files listed in artifacts.tests>
+    what: the code this window wrote
+    required: true
+  - path: work/probes/<instance>.json
+    what: one code probe per new or changed instance, when the automator ran them
+    required: false
+
+# The head of the handoff: the same three facts the digest line carries.
+header:
+  role: qa-automator
+  stage: S5
+  window: <the case ids of this window, comma separated>
+  verdict: <one of vocabulary.header_verdicts>
+
+# One row per item in scope. `id` is a case id or an instance id; `state` comes from
+# vocabulary.row_states and must be allowed for qa-automator; `reason` is at most 80
+# characters and is a verdict, never an explanation — the explanation lives in the artifact.
+scope:
+  - id: <case or instance id>
+    state: <one of vocabulary.row_states>   # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: <= 80 characters>
+    # The three facts the review needs and the manifest did not give it: which case version the
+    # instance was written against, which obligation it answers, and which instances this window
+    # wrote ("probe every new or changed instance" needs that list).
+    origin: <one of vocabulary.instance_origins - new|changed|reused>          # reused = an earlier window's instance, not re-probed
+    case_version: <the pinned cv_ id this instance was written against>
+    obligations: "<obligation ids of the plan row this instance answers, or an empty list>"
+
+# The files this window produced or changed. The receiving role is entitled to every one of
+# them; `story_step finish` checks that each exists and is not empty.
+artifacts:
+  manifest: work/automation-manifest.json
+  # The identity of the stand these instances ran against (the critic re-probes on the same
+  # stand; another build proves nothing). `runtime_probe.py` writes it.
+  runtime_provenance: <path of the runtime_provenance record of this window's run>
+  tests:
+    - <repo-relative path of every test file this window wrote or changed>
+  run_witness: <path of the run_suite summary with the exit code and the totals line>
+  probes:
+    - <work/probes/<instance>.json, one per new or changed instance, or the empty list>
+  notes: <work/s5-notes/<your dispatch id>.md, or omit>
+
+# What the automator asserts about the window, in the factory's own words. Code verifies two of
+# these keys today: every_instance_names_its_current_case_version and
+# every_expectation_change_after_red_is_recorded - a false claim there is caught before the
+# critic spends a turn on it. The other three are the role's own statement; nothing checks them yet.
+claims:
+  every_case_in_scope_has_an_instance: <true|false>   # false needs `unresolved` below
+  every_instance_names_its_current_case_version: <true|false>   # a stale link is a finding, not a detail
+  every_instance_ran: <true|false>
+  every_expectation_change_after_red_is_recorded: <true|false>   # a test that failed and later passed on changed code has a row in the manifest's expectation_changes[] saying what changed and why; a failure by requirement is handed over RED instead
+  manifest_matches_the_tests: <true|false>            # manifest_from_tests.py is the writer
+
+# Written against a PLAN (the stage began with the plan dispatch, purpose `s5_plan`, and the code critic's remarks on it).
+# A window of a story whose S5 began without a plan leaves both sections out, or empty: they are not required.
+#
+# One row for each remark the brief hands this window - by the remark's `id`, `applied` (the code does what the remark
+# asked) or `not_applicable` (it does not, and `reason` says why in at most 80 characters). The critic of the window judges
+# whether the reason is true. A remark with no row, or with two, is a finding of the author's own precheck.
+plan_remarks:
+  - id: <PR-n, or the empty list>
+    row: <one of vocabulary.plan_remark_rows>
+    reason: <= 80 characters>
+
+# One row for each place where the code is not what the plan said: a test in another file or function, another shape or level,
+# a different count of parameters, a fixture the plan did not name, a Then moved to a remainder. A difference with a row is a
+# decision the critic of the window can read; a difference with no row is a finding. The empty list says the code is the plan.
+deviations:
+  - test: <file::function of the test that differs, or the empty list>
+    from: <one of vocabulary.plan_deviation_kinds>
+    planned: <file::function or T-n of the planned test>
+    reason: <= 80 characters>
+
+# What you did to make the test fall, one row per attempt: the mutation or the wrong value you tried, the run, what you saw
+# (spec t-1765 X7-7). The stage critic reads it against your Good outcome. Empty only with `tried_note` saying why nothing was tried.
+# Distinct from `blocked.tried` below, which is what failed while filling this form.
+tried:
+  - requirement: <R-n, a source id or an area>
+    technique: <what you did to make the test fall (the mutation, the wrong value, the removed line)>
+    observation: <what you saw, in one line>
+    evidence: <the path (and anchor) where it shows>
+tried_note: <why the table is empty, or a dash when it has rows>
+
+# Items left open on purpose. Empty list is a valid answer; a non-empty one is copied into the
+# stage's completion, so the controller no longer asks for it separately.
+unresolved:
+  - id: <case or instance id>
+    reason: <one of vocabulary.unresolved_reasons>
+    detail: <what exactly is missing, and what would settle it>   # the critic checks it: for an instance that RAN and failed, `detail` names the control you did that shows the stand, not the product, blocked it
+    # The next two are for `blocked_by_env` rows: one row per case.
+    instance_ids: <only when blocked_by_env: every instance the stand blocked, comma separated>   # the critic checks the list is complete: an instance missing from it reads as a plain failure; accepted only when the newest run of those instances shows the stand (env_blocked, a stand signal, a connection refusal) - a test killed by the project's per-test timeout is test_defect
+    remedy: <only when blocked_by_env: kind, where, change, restart - names only>   # the critic checks it names an exact fix and carries no credential value
+
+# What the critic must look at first, in the author's own words. This is the only free text
+# in the file and it is capped at ten lines.
+for_the_reviewer:
+  - "<one line: where the risk is, what you would question, what you already proved>"
+
+# Filled ONLY when the role cannot fill the rest. `handoff_help.py --file <this file>` sends
+# it to the conductor with the contract, the refusal and the vocabulary; the conductor answers
+# with the correction or asks the person. The role never goes to the person directly.
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

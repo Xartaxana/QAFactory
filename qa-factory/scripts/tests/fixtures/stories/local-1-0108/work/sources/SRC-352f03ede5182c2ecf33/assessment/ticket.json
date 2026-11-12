@@ -1,0 +1,45 @@
+{
+  "acceptance_criteria": [],
+  "attachment_names": [],
+  "attachments": [],
+  "comment_count": 1,
+  "comments": [],
+  "depth": "assessment",
+  "description": "*Found by:* code review.\n\n*Problem:* {{CartService.addToCart}} accepts any quantity and does not compare it with stock. {{CartItem}} has no foreign key to {{Book}}, so deleting a book leaves orphan rows, and the null filter on {{book!}} in {{getCartItemsWithBooks}} has no effect.\n\n*Steps:* POST {{/api/cart}} with a quantity above stock, or with a non-integer or negative quantity.\n\n*Expected:* 400 with a clear message; quantity must be a whole number from 1 up to stock, including what is already in the cart.\n*Actual:* the item is added.\n\nRelated: REF-10.",
+  "id": "14500481",
+  "key": "REF-29",
+  "labels": [
+    "cart",
+    "product-bug",
+    "sprint-1",
+    "validation"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-2",
+        "relation": "relates to",
+        "status": "Open",
+        "summary": "Add to cart: quantity 0 on the book page is added to the cart as 1 instead of being rejected",
+        "type": "Relates"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "Medium",
+  "provenance": {
+    "bytes": 16981,
+    "fields_requested": "*all",
+    "sha256": "ccd9f6a595ac331b7a3932a5908d015ae4f04c9ed341c6c9e88847d13e9d2281",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-09T14:05:59.917+0000",
+  "status": "Resolved",
+  "subtasks": [],
+  "title": "B3: Add to cart does not check stock or quantity; deleted books leave orphan cart rows",
+  "type": "Bug"
+}

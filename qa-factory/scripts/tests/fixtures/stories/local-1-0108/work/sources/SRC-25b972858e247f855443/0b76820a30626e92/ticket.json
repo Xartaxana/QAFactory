@@ -1,0 +1,42 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that when only one copy exists, the first add succeeds and a second add is rejected.\n\n*Type:* negative  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* Application is reachable (local disposable environment)\n* A regular user account is available\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* An admin account is available\n* No single-copy book exists in the seeded catalog, so the case creates its own as admin\n* A unique title is built from the current date and time (the QA title)\n\n*Test data:*\n* New book: QA title, author \"QA Author\", price 20.00, stock 1\n* Quantity per add: 1\n\n*Steps & Expected results:*\n# Open the login page and sign in with the admin account  \n   *Expected:* User lands on the catalog page; the Logout button and the Admin button are visible\n# Open the Admin dashboard and the Books tab  \n   *Expected:* The \"Add New Book\" form is visible\n# Fill title (QA title), author \"QA Author\", price 20.00, stock 1 and click Add Book  \n   *Expected:* The book list shows a card with the QA title, $20.00 and \"Stock: 1\"\n# Click Logout  \n   *Expected:* Session ends; the Login button is visible\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; the cart badge in the navigation is absent or 0\n# On the catalog page type \"[QA title]\" into the search box and click Search  \n   *Expected:* A catalog card titled \"[QA title]\" is listed\n# Open the detail page of \"[QA title]\"  \n   *Expected:* Detail page opens with heading \"[QA title]\" and price $20.00\n# With Quantity 1 click Add to Cart  \n   *Expected:* Cart badge shows 1\n# Click Add to Cart again  \n   *Expected:* A visible error states there is not enough stock; cart badge still shows 1\n# Open the cart  \n   *Expected:* One line for the QA book, quantity 1, subtotal $20.00\n\n*Postconditions:*\n* Cart holds one copy of the QA book\n* The QA book is deleted by an admin afterwards\n\n*Traceability:*\n* User story: REF-10",
+  "id": "14509524",
+  "key": "REF-19",
+  "labels": [
+    "boundary",
+    "insufficient_stock",
+    "shopping_cart",
+    "web"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 16437,
+    "fields_requested": "*all",
+    "sha256": "2c4ebda17584c2088ca274ccdd32e28f24071ecaca4e000b4981e498a4d00b2c",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-12T15:03:00.515+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Reject adding a second copy of a single-stock book",
+  "type": "Test"
+}

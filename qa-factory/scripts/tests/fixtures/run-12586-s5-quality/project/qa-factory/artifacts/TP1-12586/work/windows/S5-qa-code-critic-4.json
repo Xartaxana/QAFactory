@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "author_dispatch_id": "S5-qa-automator-4",
+  "reviewer_dispatch_id": "S5-qa-code-critic-4",
+  "input_hash": "ea4f0ddd15c5502bfcb6b3b29465458f78399e818e520c60c3b8936e4249c1c9",
+  "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+  "scope_instances": {
+    "TC-008": [
+      "test_edit_integration_change_project_confirmation_modal"
+    ],
+    "TC-009": [
+      "test_edit_integration_project_change_keeps_credential_fields"
+    ]
+  },
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "test_edit_integration_change_project_confirmation_modal",
+      "input_hash": "1e4e38084aabe571ae3097b86c8bbda127db7d43d1cda9332b872a3d0babf563",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-10",
+          "obligation_hash": "48704fc90840d032ee6dac5201dfb2edc6e5ff1d4ec4cf243e55ee4ca5ffc0f5"
+        },
+        {
+          "obligation_id": "OB-11",
+          "obligation_hash": "6184174e68966e9b8292060b08d6fa092df76aca41f496214ee6fc5c1e116cd6"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10",
+        "OB-11"
+      ],
+      "obligation_hash": "aed991864a4b73451ed783bc571052ef7f1e9d5a2773ab895b2eb60ff113b7d5",
+      "assertion_id": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py:245",
+      "defect_location": "testproject1-ui/src/pages/integrations/components/EditSettingPageBase.tsx:109",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-008",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "1e4e38084aabe571ae3097b86c8bbda127db7d43d1cda9332b872a3d0babf563"
+      },
+      "test_code_sha": "151e7d0367ecb4d28ec4d95fed387a31a7081b8ea55cb6072b470ee19e14f662",
+      "instance_identity": {
+        "instance_content_sha": "db285f939d13565293fcfc4c1f952a1fa8dc57f36219e1c4ae463e20a863a43a",
+        "instance_code_sha": "c08d9f529551afa70c2aaea40fe656745c6c2b1e64d6946190987bb441a81875",
+        "job_id": "e2b4dcf0bcb2a2eef000"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test function did not exist in its file at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "21798988fe8a76078c93dbead99f594928361e6d41b2c5e0f83d3a4a210cd4ec",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/e2b4dcf0bcb2a2eef000-reparse-9e6ed2b72da8.json",
+          "sha256": "0782d15f849e7b494460dbb65732739b993e7bb5fcdd566fb8bdf8272a3f5a46"
+        },
+        {
+          "path": "evidence/runs/e2b4dcf0bcb2a2eef000/initial-e2b4dcf0bcb2a2eef000-20261028-094416.junit.xml",
+          "sha256": "ccedbe7006ec8b17a15fca8d61db69d6a95990b48bd43b29e93f1ba22516a520"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "db285f939d13565293fcfc4c1f952a1fa8dc57f36219e1c4ae463e20a863a43a",
+        "instance_code_sha": "c08d9f529551afa70c2aaea40fe656745c6c2b1e64d6946190987bb441a81875",
+        "attempt_id": "e2b4dcf0bcb2a2eef000"
+      },
+      "probe_gap": {
+        "verdict": "not_executed",
+        "record": "work/probes/test_edit_integration_change_project_confirmation_modal.json",
+        "why": "0 report rows are named 'test_edit_integration_change_project_confirmation_modal'; the instance cannot be told from them",
+        "named_by": "test_edit_integration_change_project_confirmation_modal",
+        "words": "xxxxxxxx TC-008 x TC-009 xxx xxxxx xxxxxxxxxxxxxxxx (Reply to the conductor question: the two UI tests may stay unprobed because probe_by_code.py cannot read pytest ids with the [chromium] suffix; tooling gap, tests ran green live.)",
+        "at": "2026-10-28T09:31:08+00:00"
+      }
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "test_edit_integration_project_change_keeps_credential_fields",
+      "input_hash": "1e4e38084aabe571ae3097b86c8bbda127db7d43d1cda9332b872a3d0babf563",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-12",
+          "obligation_hash": "8b370fa9c3055337bf7a961cbaee4fb3d7a70b48d235249e0f127a0813057f0f"
+        }
+      ],
+      "obligation_ids": [
+        "OB-12"
+      ],
+      "obligation_hash": "519dabeb6752a8f5a38a3648e4977ce3808de438c3b92f63a7466ee1cb9e43fb",
+      "assertion_id": "testproject1_test_harness/tests/ui/integrations/test_edit_integration.py:313",
+      "defect_location": "testproject1-ui/src/pages/integrations/components/SettingsForm/SettingsForm.tsx:467",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:TC-009",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "1e4e38084aabe571ae3097b86c8bbda127db7d43d1cda9332b872a3d0babf563"
+      },
+      "test_code_sha": "151e7d0367ecb4d28ec4d95fed387a31a7081b8ea55cb6072b470ee19e14f662",
+      "instance_identity": {
+        "instance_content_sha": "b5346eb61eae1f43e9642b63aad674d43ffc0ff2352f43027a6839a70bc9480c",
+        "instance_code_sha": "da611f3e285f85e8e4e45aad085fb1cde67d3677f1e4d63b4c8fa67a0b7e76fb",
+        "job_id": "e2b4dcf0bcb2a2eef000"
+      },
+      "novelty": {
+        "value": "new",
+        "basis": "the test function did not exist in its file at the story's base 2d584b39c4d7",
+        "resolved": true
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "21798988fe8a76078c93dbead99f594928361e6d41b2c5e0f83d3a4a210cd4ec",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/e2b4dcf0bcb2a2eef000-reparse-9e6ed2b72da8.json",
+          "sha256": "0782d15f849e7b494460dbb65732739b993e7bb5fcdd566fb8bdf8272a3f5a46"
+        },
+        {
+          "path": "evidence/runs/e2b4dcf0bcb2a2eef000/initial-e2b4dcf0bcb2a2eef000-20261028-094416.junit.xml",
+          "sha256": "ccedbe7006ec8b17a15fca8d61db69d6a95990b48bd43b29e93f1ba22516a520"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "b5346eb61eae1f43e9642b63aad674d43ffc0ff2352f43027a6839a70bc9480c",
+        "instance_code_sha": "da611f3e285f85e8e4e45aad085fb1cde67d3677f1e4d63b4c8fa67a0b7e76fb",
+        "attempt_id": "e2b4dcf0bcb2a2eef000"
+      },
+      "probe_gap": {
+        "verdict": "not_executed",
+        "record": "work/probes/test_edit_integration_project_change_keeps_credential_fields.json",
+        "why": "0 report rows are named 'test_edit_integration_project_change_keeps_credential_fields'; the instance cannot be told from them",
+        "named_by": "test_edit_integration_project_change_keeps_credential_fields",
+        "words": "xxxxxxxx TC-008 x TC-009 xxx xxxxx xxxxxxxxxxxxxxxx (Reply to the conductor question: the two UI tests may stay unprobed because probe_by_code.py cannot read pytest ids with the [chromium] suffix; tooling gap, tests ran green live.)",
+        "at": "2026-10-28T09:31:10+00:00"
+      }
+    }
+  ],
+  "required_quality_checks": [
+    "ticket_adapter",
+    "test_repo",
+    "vcs",
+    "config_schema"
+  ],
+  "quality_receipts": [],
+  "expectation_changes": [],
+  "blocked_by_env": []
+}

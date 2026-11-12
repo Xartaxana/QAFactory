@@ -1,0 +1,115 @@
+{
+ "task": "CART-1",
+ "label": "initial-6b183c7a8fd8088f1c50",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit=<path-1>\\test-automation-framework\\qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\report.junit.xml",
+  "--project=chromium",
+  "tests/api/cart/cart-isolation.spec.ts",
+  "tests/api/cart/cart-merge.spec.ts",
+  "tests/api/cart/cart-update-delete.spec.ts",
+  "tests/api/cart/cart-ownership.spec.ts"
+ ],
+ "exit_code": 1,
+ "duration_s": 27.7,
+ "log": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\initial-6b183c7a8fd8088f1c50-20261031-103221.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-10-31T09:32:21.783982+00:00",
+ "ended_at": "2026-10-31T09:32:49.465036+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 4,
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 24.1,
+  "passed": 3
+ },
+ "failed": [
+  {
+   "test": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+   "kind": "failure",
+   "why": "cart-isolation.spec.ts:4:1 @api @regression CART-1_TC_005 cart isolation between owners"
+  }
+ ],
+ "results": [
+  {
+   "test_id": "api\\cart\\cart-isolation.spec.ts::@api @regression CART-1_TC_005 cart isolation between owners",
+   "status": "failed",
+   "reason": "cart-isolation.spec.ts:4:1 @api @regression CART-1_TC_005 cart isolation between owners"
+  },
+  {
+   "test_id": "api\\cart\\cart-merge.spec.ts::@api @regression CART-1_TC_006 guest cart merge on login",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-ownership.spec.ts::@api @regression CART-1_TC_008 foreign cart item mutation denied",
+   "status": "passed",
+   "reason": ""
+  },
+  {
+   "test_id": "api\\cart\\cart-update-delete.spec.ts::@api @regression CART-1_TC_007 update and delete cart item",
+   "status": "passed",
+   "reason": ""
+  }
+ ],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\initial-6b183c7a8fd8088f1c50-20261031-103221.junit.xml",
+ "report_hash": "c939049e8d0e92ac4c902a1b385cd705040cd7b8dad7ad0665fc00d4582382b0",
+ "report_evidence": {
+  "path": "evidence/runs/6b183c7a8fd8088f1c50/initial-6b183c7a8fd8088f1c50-20261031-103221.junit.xml",
+  "sha256": "c939049e8d0e92ac4c902a1b385cd705040cd7b8dad7ad0665fc00d4582382b0"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "failed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "initial",
+ "dispatch_id": "S5-qa-automator-3",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T09:32:16Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-10-31T09:32:49Z",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, local node process on port 3000 (person's word: no container)",
+  "result": "matched",
+  "evidence_refs": [
+   "qa-factory/artifacts/CART-1/work/evidence/s5-2-runtime.json"
+  ],
+  "provenance": {
+   "technical_verification": true,
+   "source_linkage": "exact",
+   "deployed_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "deployed": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+ },
+ "summary_path": "qa-factory\\artifacts\\CART-1\\evidence\\runs\\6b183c7a8fd8088f1c50\\initial-6b183c7a8fd8088f1c50-20261031-103221.json"
+}

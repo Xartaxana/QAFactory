@@ -1,0 +1,90 @@
+{
+  "_about": "Words for the report's 'Not proven, and what it costs' and 'Decided at gate A' blocks (report_facts.py). Closed variety lives here, never in code (FR-13). The keys of `impact` are the impact classes of the plan's own scale (grammar.IMPACT_SCALE); a project can bring a class this table does not hold, and code then quotes the class as written instead of deciding what it means.",
+  "impact": {
+    "data-loss": "data can be lost or corrupted in production",
+    "money": "money can be charged, paid or counted wrongly in production",
+    "access": "someone can reach what they must not, or be locked out of what they need",
+    "blocked-flow": "people can be stopped from finishing a flow they rely on",
+    "degraded": "a flow keeps working, but worse than intended",
+    "cosmetic": "how it looks or reads is off; the behaviour holds",
+    "none": "the plan assessed no user impact for it"
+  },
+  "impact_unknown_words": "the plan row names the impact class \"{impact}\", which this report has no words for",
+  "no_impact_words": "not assessed at planning: the plan row {ts} records no impact class",
+  "no_plan_row_words": "not assessed at planning — no plan row",
+  "project_wide_checks": {
+    "s5_environment": "a project-wide check of the stand's credentials and accounts; it binds no requirement and no case",
+    "s5_integrations": "a project-wide check of an integration's keys when no case could be tied to it; it binds no requirement and no case"
+  },
+  "delivery_state_words": {
+    "_about": "Words for the delivery summary (delivery_summary.py render), the text a merge request description carries: the codes of the checks' own records never reach a person (HF8-20, FR-13). `columns` heads the counts table; `row_states` holds the exact states the factory writes, `row_prefixes` the first word of a state (the part before the first colon) for the states that carry prose after it (`prefix_drops_reason` names the prefixes whose part after the colon is a code, never printed; `waived:<state>` is read through the same table, its inner state in words); `bug_states` is the state of a bug's filing; `source_gaps` maps a fragment of a limit the projection recorded to its words. A state or limit not found here is said as `unknown_state` / `unknown_limit` and the code is NOT printed; the render adds the one line `unknown_finding` to the limits block.",
+    "columns": {
+      "planned": "Rows in the plan",
+      "executed": "Checks run",
+      "planned_manual": "Checks planned by hand",
+      "executed_manual": "Checks run by hand",
+      "verified": "Rows verified",
+      "failed": "Rows that failed",
+      "unverified": "Rows not verified",
+      "env_blocked": "Rows blocked by the environment",
+      "deferred": "Rows deferred"
+    },
+    "row_states": {
+      "not_verified:stale_ledger_inputs": "was verified before, but what it rested on has changed since; it counts as not verified until the results are read again",
+      "not_verified:delivery projection not available": "no verification result is available for it yet",
+      "not_verified:expectation_unconfirmed": "waits for your answer about what is expected",
+      "not_verified:missing_sensitivity_proof": "its test passed, but nobody has shown that the check can fail",
+      "not_verified:on_substitute": "passed only against a stand-in for part of the product; run it again where that part is real",
+      "not_verified:sides_unknown": "passed while the record of which parts of the product were real could not be read; run it again",
+      "not_verified:placeholder_open": "its test still points at an element the product does not have yet; it proves nothing until the test is run against the real element",
+      "not_executed:handed_to_person": "left with you to check",
+      "not_executed:blocked_by_check": "stands behind a check that failed, so it was not reached",
+      "not_executed:contradicts_requirement": "reported as disagreeing with the requirement; no test was run to show it",
+      "not_executed:unresolved": "was not run: something it needs is still unresolved",
+      "deferred_by_decision": "deferred by a decision",
+      "pending_implementation": "waits for the product to implement it",
+      "impossible": "the factory found no way to check it"
+    },
+    "row_prefixes": {
+      "passed_green": "verified",
+      "failed": "failed",
+      "not_executed": "not run",
+      "not_verified": "not verified",
+      "not_verified_flaky": "unstable: it passed and failed on different runs",
+      "skipped": "skipped",
+      "env_blocked": "blocked by the environment",
+      "impossible": "the factory found no way to check it",
+      "review_skipped": "its test was not reviewed",
+      "review_rejected": "the code review rejected its test",
+      "review_unverified": "the code review could not confirm its test",
+      "waived": "waived by a decision",
+      "partial": "only partly run",
+      "error": "the run ended in an error"
+    },
+    "prefix_drops_reason": ["env_blocked", "failed"],
+    "bug_states": {
+      "published": "filed in the tracker",
+      "prepared": "prepared, not sent to the tracker yet",
+      "outcome_unknown": "sent, but the tracker's answer was not recorded",
+      "filed": "filed as a bug file in the repository, not in the tracker",
+      "selected": "chosen at gate B, not filed yet",
+      "draft": "a draft, not chosen so far",
+      "provenance_invalid": "its link to a gate B decision could not be established, so it is not counted"
+    },
+    "source_gaps": [
+      {"match": "ledger.json is missing", "words": "the checks' results are missing, so the outcomes below are the plan's own"},
+      {"match": "ledger freshness is unknown", "words": "the checks' results carry no mark of when they were taken, so they may be out of date"},
+      {"match": "ledger is stale", "words": "the plan, the run results or the review verdicts changed after the checks' results were written, so those results may be out of date"},
+      {"match": "plan rows are missing", "words": "neither the plan nor the checks' results could be read, so no row is listed"},
+      {"match": "verification-gaps.json gaps is not an array", "words": "the list of open verification gaps could not be read"},
+      {"match": "invalid or duplicate verification gap", "words": "one open verification gap is recorded in a form the factory cannot read, so it is not listed"},
+      {"match": "verification gap", "words": "a closed verification gap names no evidence for its closing, so it is not counted as closed"},
+      {"match": "run-report.json is missing", "words": "the run's results are missing, so the number of checks run is not known"},
+      {"match": "the readable text of a bug draft could not be written", "words": "the readable text of one bug draft could not be written, so the draft is shown without it"},
+      {"match": "malformed delivery reason", "words": "one reason for the delivery word is recorded in a form the factory cannot read, so it is not listed"}
+    ],
+    "unknown_state": "the factory cannot say what this row's state means",
+    "unknown_limit": "the factory cannot say what limits this summary",
+    "unknown_finding": "The factory has no words for part of this summary; that is its own gap, and nothing is asked of you."
+  }
+}

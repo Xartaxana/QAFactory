@@ -1,0 +1,2377 @@
+{
+ "rows": [
+  {
+   "id": "TS-1",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "A project integration PUT with a new project_name moves it: gone from the source project, listed in the target with the same id, still usable.",
+   "R": [
+    "R-3",
+    "R-7"
+   ],
+   "requirements": [
+    "R-3",
+    "R-7"
+   ],
+   "defect_hypothesis": "state @ update_project_setting -> SettingsTransferService.transfer_setting",
+   "impact_class": "data-loss",
+   "priority": "P0",
+   "observable": "diff:src/testproject1/rest_api/routers/project_settings.py:185",
+   "oracle": "requirement:R-3",
+   "disposition": "automate",
+   "reason": "Input 1: the story headline and the project's definition of done require every requirement checked. Input 2: T4 covers a field update with no project change and T1 covers the bulk transfer endpoint, so the PUT move is substrings. Input 3: B-7 and B-9 matter and cross-team integration is the P1 area. Input 4: observable through the public API, deterministic on local-docker.",
+   "fit": "param T4",
+   "level": "api",
+   "technique": "state transition with read-back of both projects",
+   "impact": "severe",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "A move that leaves a copy in the source or loses the record in the target is a persistent change of ownership data; the PUT is a new route to the transfer service.",
+   "risk_source_refs": [
+    "grounding:K-13",
+    "grounding:G-19",
+    "blast:B-7",
+    "blast:B-8"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T4",
+    "T1"
+   ],
+   "unknowns": [
+    "UI never calls /v1/settings/transfer; PUT accepted by decision Q1 b, so the oracle is the outcome only"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "move to a permitted target with a field change in the same PUT",
+    "source list no longer holds the id",
+    "target list holds the same id (move, not copy)",
+    "moved integration readable by id and describes afterwards"
+   ],
+   "test_level_rationale": "Public service contract on a real stand: api; the moved state lives in postgres and is visible only through the listing endpoints.",
+   "design_review_required": true,
+   "source_conflict": true,
+   "oracle_unknown": false,
+   "decision_refs": [
+    "Q1 b: PUT with server-side transfer is acceptable; wrong endpoint is a minor report note"
+   ],
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-1",
+     "requirement_refs": [
+      {
+       "ref": "R-3",
+       "revision": "r1"
+      },
+      {
+       "ref": "R-7",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "After PUT with a changed project_name the integration is in the target project only, under the same id, and remains usable.",
+     "oracle_source_ref": "R-3",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-pos",
+       "variant": "positive",
+       "rationale": "move with a field change"
+      },
+      {
+       "id": "sc-state",
+       "variant": "state",
+       "rationale": "source no longer lists it, target lists it"
+      }
+     ],
+     "observation_boundary": "API: PUT then list/GET of both projects",
+     "completion_condition": "PUT answered 2xx and both read-backs done",
+     "coverage_links": [
+      {
+       "candidate_id": "T4",
+       "test_ref": "test_integration_update.py::test_project_integration_update",
+       "assertion_refs": [
+        "test_integration_update.py:53"
+       ],
+       "proves": [
+        "field update without a project change"
+       ],
+       "does_not_prove": [
+        "project move",
+        "source/target state"
+       ],
+       "assessment": "partial",
+       "assessment_reason": "same PUT route, no project_name change"
+      }
+     ],
+     "decision": "extend",
+     "remaining_gap": "none after parameterization",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3",
+      "c4"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Four assertions cover target, source, identity and additions."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-3",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API target project list",
+        "status": "planned",
+        "assertion_ref": "c2"
+       },
+       {
+        "id": "S-2",
+        "boundary": "API source project list",
+        "status": "planned",
+        "assertion_ref": "c3"
+       },
+       {
+        "id": "S-3",
+        "boundary": "API GET by id and a later PUT",
+        "status": "planned",
+        "assertion_ref": "c4"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story; T4 is the only reusable instance.",
+    "entries": [
+     {
+      "obligation_id": "OB-1",
+      "disposition": "strengthen",
+      "rationale": "Parameterize T4 with a project move.",
+      "existing_case_refs": [
+       "T4"
+      ]
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-1-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 1,
+     "logical_cases_after": 1,
+     "executable_instances_before": 1,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-2",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "An MS Teams integration can be moved to another permitted project, and the source project no longer holds it (moved, not copied).",
+   "R": [
+    "R-5",
+    "R-6"
+   ],
+   "requirements": [
+    "R-5",
+    "R-6"
+   ],
+   "defect_hypothesis": "order @ update_project_setting: ms_teams validator runs before the move",
+   "impact_class": "data-loss",
+   "priority": "P0",
+   "observable": "diff:src/testproject1/service/settings/settings_transfer_service.py:396",
+   "oracle": "requirement:R-5",
+   "disposition": "automate",
+   "reason": "Input 1: Q2 a makes the move a stated requirement and the person asked for a test that confirms MS Teams is not copied. Input 2: T3 covers the prepended duplicate 409 only, no MS Teams project change anywhere. Input 3: B-9 matters and the MS Teams prepended is a named fragile spot. Input 4: observable through the API; the ms_teams feature flag is a precondition. Expected to fail until the validator is fixed: the 400 Project mismatch is an APP_BUG by Q2 a.",
+   "fit": "new",
+   "level": "api",
+   "technique": "state transition, requirement-driven (oracle from the requirement, not the current code)",
+   "impact": "severe",
+   "likelihood": "high",
+   "confidence": "medium",
+   "risk_rationale": "The current validator rejects the move outright; if a fix copies instead of moving, a second MS Teams record stays in the source project.",
+   "risk_source_refs": [
+    "grounding:K-7",
+    "grounding:G-19",
+    "blast:B-9"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T3"
+   ],
+   "unknowns": [
+    "TEAMS_BOT_INTEGRATION_FEATURE must be enabled on the stand; not confirmed",
+    "expected red until the validator accepts a project change"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "MS Teams PUT with another permitted project_name answers 2xx, not 400 Project mismatch",
+    "target lists it",
+    "source does not list it",
+    "no second MS Teams record in the source (not copied)"
+   ],
+   "test_level_rationale": "Public contract on the real stand: api; the validator and the transfer service are both in the request path.",
+   "design_review_required": true,
+   "source_conflict": true,
+   "oracle_unknown": false,
+   "decision_refs": [
+    "Q2 a: the move must succeed for MS Teams; the 400 is a defect"
+   ],
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-2",
+     "requirement_refs": [
+      {
+       "ref": "R-5",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "A PUT that changes the project of an MS Teams integration succeeds.",
+     "oracle_source_ref": "R-5",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-pos",
+       "variant": "positive",
+       "rationale": "Move to a permitted project"
+      },
+      {
+       "id": "sc-neg",
+       "variant": "negative",
+       "rationale": "400 Project mismatch is the defect"
+      }
+     ],
+     "observation_boundary": "API response of the PUT",
+     "completion_condition": "PUT answered",
+     "coverage_links": [
+      {
+       "candidate_id": "T3",
+       "test_ref": "test_ms_teams_integration.py::test_create_ms_teams_integration_duplicate_returns_409",
+       "assertion_refs": [
+        "test_ms_teams_integration.py:213"
+       ],
+       "proves": [
+        "duplicate create answers 409"
+       ],
+       "does_not_prove": [
+        "project change"
+       ],
+       "assessment": "none",
+       "assessment_reason": "create path only"
+      }
+     ],
+     "decision": "new",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c1"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "One status assertion plus the message, pinned to the requirement."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-5",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API PUT response",
+        "status": "planned",
+        "assertion_ref": "c1"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    },
+    {
+     "obligation_id": "OB-3",
+     "requirement_refs": [
+      {
+       "ref": "R-6",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "After the move the source project holds no MS Teams integration and the target holds exactly one.",
+     "oracle_source_ref": "R-6",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-state",
+       "variant": "state",
+       "rationale": "source/target membership after the move"
+      }
+     ],
+     "observation_boundary": "API: list of integrations in both projects",
+     "completion_condition": "PUT answered 2xx and both lists read",
+     "coverage_links": [],
+     "decision": "new",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c2",
+      "c3",
+      "c4"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Source and target are read independently; a copy shows as two records."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-6",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c2",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API source list",
+        "status": "planned",
+        "assertion_ref": "c3"
+       },
+       {
+        "id": "S-2",
+        "boundary": "API target list",
+        "status": "planned",
+        "assertion_ref": "c4"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-2",
+      "disposition": "gap",
+      "rationale": "No MS Teams project-change coverage exists.",
+      "gap_reason": "none of T1..T5 changes an MS Teams project"
+     },
+     {
+      "obligation_id": "OB-3",
+      "disposition": "gap",
+      "rationale": "Same.",
+      "gap_reason": "none of T1..T5 reads source and target after an MS Teams move"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-2-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-3",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "The MS Teams one-per-project rule survives a move: moving into a project that already has one is rejected and creates no duplicate.",
+   "R": [
+    "R-10"
+   ],
+   "requirements": [
+    "R-10"
+   ],
+   "defect_hypothesis": "state @ MS Teams partial unique index scoped to PROJECT type, reached through the new move path",
+   "impact_class": "blocked-flow",
+   "priority": "P1",
+   "observable": "current-code:src/external/smaller/versions/a8032409ff23_scope_ms_teams_project_prepended_to_project_type.py:43",
+   "oracle": "requirement:R-10",
+   "disposition": "automate",
+   "reason": "Input 1: the ticket says the prepended must remain unchanged. Input 2: T3 defends the create path only. Input 3: B-9 matters and the prepended is a named constraint on this blast radius. Input 4: observable by counting records per project through the API. The exact rejection status is not stated by any source, so the row asserts rejection and unchanged counts, not a code.",
+   "fit": "extend T3",
+   "level": "api",
+   "technique": "boundary on postcompact (0, 1, 2 per project) with a state read-back",
+   "impact": "moderate",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "A duplicate MS Teams integration in one project breaks the bot routing; reversible by deleting one record.",
+   "risk_source_refs": [
+    "blast:B-9",
+    "grounding:G-19"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T3"
+   ],
+   "unknowns": [
+    "exact rejection status for a move into an occupied project",
+    "this row can pass vacuously while TS-2 is red, so it also asserts the rejection reason is not the Project mismatch text"
+   ],
+   "verification_depth": "normal",
+   "required_scenarios": [
+    "move into a project that already holds an MS Teams integration is rejected",
+    "target keeps exactly one, source keeps its own",
+    "after TS-2 passes, the source can create a new one once its integration has moved away"
+   ],
+   "test_level_rationale": "Postcompact is enforced in postgres and observed through the API: api.",
+   "design_review_required": false,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-4",
+     "requirement_refs": [
+      {
+       "ref": "R-10",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "No project holds two MS Teams integrations after a rejected or accepted move.",
+     "oracle_source_ref": "R-10",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-bnd",
+       "variant": "boundary",
+       "rationale": "target already at the limit of one"
+      },
+      {
+       "id": "sc-state",
+       "variant": "state",
+       "rationale": "counts per project after the attempt"
+      }
+     ],
+     "observation_boundary": "API: PUT answer and the list of both projects",
+     "completion_condition": "PUT answered and both lists read",
+     "coverage_links": [
+      {
+       "candidate_id": "T3",
+       "test_ref": "test_ms_teams_integration.py::test_create_ms_teams_integration_duplicate_returns_409",
+       "assertion_refs": [
+        "test_ms_teams_integration.py:213"
+       ],
+       "proves": [
+        "a second create in one project answers 409"
+       ],
+       "does_not_prove": [
+        "the move path"
+       ],
+       "assessment": "partial",
+       "assessment_reason": "same constraint, different entry point"
+      }
+     ],
+     "decision": "extend",
+     "remaining_gap": "none after the extension",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Rejection, counts and reason text cover the passing-for-the-wrong-reason risk."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-10",
+       "revision": "r1"
+      },
+      "controls": [
+       "c3"
+      ],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API per-project lists",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-4",
+      "disposition": "strengthen",
+      "rationale": "Add a move scenario beside the create scenario.",
+      "existing_case_refs": [
+       "T3"
+      ]
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-3-i1",
+     "TS-3-i2"
+    ],
+    "counts": {
+     "logical_cases_before": 1,
+     "logical_cases_after": 1,
+     "executable_instances_before": 1,
+     "executable_instances_after": 2
+    }
+   }
+  },
+  {
+   "id": "TS-4",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "A user who is not admin on the target project cannot move a project integration into it, and the integration stays where it was.",
+   "R": [
+    "R-13"
+   ],
+   "requirements": [
+    "R-13"
+   ],
+   "defect_hypothesis": "permission @ update_project_setting._check_permission on the target project",
+   "impact_class": "access",
+   "priority": "P0",
+   "observable": "diff:src/testproject1/rest_api/routers/project_settings.py:169",
+   "oracle": "requirement:R-13",
+   "disposition": "automate",
+   "reason": "Input 1: R-13 is as-built-intended by Q5 a and the definition of done needs every requirement checked. Input 2: nothing defends the permission on the move. Input 3: B-9 matters; access is a P0 class. Input 4: observable through the API with a second user created via the admin API; deterministic.",
+   "fit": "new",
+   "level": "api",
+   "technique": "permission matrix (admin on source only, no role on target) with unchanged-state proof",
+   "impact": "severe",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "A missing or switches check lets a user push an integration, and its credentials, into a project they do not unfinished.",
+   "risk_source_refs": [
+    "grounding:K-8",
+    "grounding:G-19",
+    "blast:B-9"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [],
+   "unknowns": [
+    "whether the rejection also needs admin on the source project is not stated"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "admin on source only, move to target answers 4xx with a clear message",
+    "user with no role on target answers 4xx",
+    "integration still in source with all fields unchanged",
+    "target list has no new record",
+    "admin on both projects succeeds (positive control)"
+   ],
+   "test_level_rationale": "Authorization on a public contract with real users: api.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-5",
+     "requirement_refs": [
+      {
+       "ref": "R-13",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "A denied move changes nothing: no field update, no project change, no record in the target.",
+     "oracle_source_ref": "R-13",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-neg",
+       "variant": "negative",
+       "rationale": "non-admin on target"
+      },
+      {
+       "id": "sc-int",
+       "variant": "interaction",
+       "rationale": "field change sent together with the project change"
+      }
+     ],
+     "observation_boundary": "API: GET of the integration and the lists of both projects before and after",
+     "completion_condition": "PUT answered with the denial",
+     "coverage_links": [],
+     "decision": "new",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Before/after reads around a completed denied call, plus a mutating positive control."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "state_unchanged"
+      ],
+      "oracle_ref": {
+       "ref": "R-13",
+       "revision": "r1"
+      },
+      "controls": [
+       "c5"
+      ],
+      "completion_ref": "c3",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API integration and project lists",
+        "status": "planned",
+        "assertion_ref": "c4"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": [],
+      "sequence": [
+       {
+        "phase": "before_read",
+        "ref": "c1"
+       },
+       {
+        "phase": "action",
+        "ref": "c2"
+       },
+       {
+        "phase": "completion",
+        "ref": "c3"
+       },
+       {
+        "phase": "after_read",
+        "ref": "c4"
+       }
+      ],
+      "positive_control_ref": "c5",
+      "reachability_assertion_ref": "c6"
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-5",
+      "disposition": "gap",
+      "rationale": "No permission coverage on the move.",
+      "gap_reason": "none of T1..T5 uses a non-admin user for a project change"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-4-i1",
+     "TS-4-i2"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 2
+    }
+   }
+  },
+  {
+   "id": "TS-5",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "A user-scope integration PUT with a new project_name moves it to that project, and a failing move leaves the integration untouched.",
+   "R": [
+    "R-15",
+    "R-11"
+   ],
+   "requirements": [
+    "R-15",
+    "R-11"
+   ],
+   "defect_hypothesis": "data-loss @ update_user_setting: field update and project move in one transaction",
+   "impact_class": "blocked-flow",
+   "priority": "P1",
+   "observable": "diff:src/testproject1/rest_api/routers/user_settings.py:247",
+   "oracle": "requirement:R-15",
+   "disposition": "automate",
+   "reason": "Input 1: Q5 a confirms the built behaviour as intended and every requirement must be checked. Input 2: B-11 matters and no existing test changes a user integration project. Input 3: shared transaction helper in the blast radius. Input 4: observable through the API, deterministic.",
+   "fit": "new",
+   "level": "api",
+   "technique": "state transition plus forced failure by alias collision in the target",
+   "impact": "moderate",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "A half-applied user-scope change is local and reversible, but the second route to the move had no coverage at all.",
+   "risk_source_refs": [
+    "grounding:K-11",
+    "grounding:G-26",
+    "blast:B-11"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T4"
+   ],
+   "unknowns": [
+    "the permission outcome for a user-scope move into a project the user does not unfinished is not stated (see TS-14)"
+   ],
+   "verification_depth": "normal",
+   "required_scenarios": [
+    "user-scope PUT with a changed project_name relocates the integration",
+    "alias collision in the target rejects the PUT",
+    "after the rejection the field change is not persisted and the project is unchanged"
+   ],
+   "test_level_rationale": "Public contract of the user settings router: api.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-6",
+     "requirement_refs": [
+      {
+       "ref": "R-15",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "The user-scope PUT moves the integration into the named project.",
+     "oracle_source_ref": "R-15",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-pos",
+       "variant": "positive",
+       "rationale": "own user-scope integration, permitted project"
+      }
+     ],
+     "observation_boundary": "API: GET of the integration and the target project list",
+     "completion_condition": "PUT answered 2xx and read-back done",
+     "coverage_links": [],
+     "decision": "new",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c1",
+      "c2"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Read-back of the project field and of the target list."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-15",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API integration read",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    },
+    {
+     "obligation_id": "OB-7",
+     "requirement_refs": [
+      {
+       "ref": "R-11",
+       "revision": "r1"
+      },
+      {
+       "ref": "R-15",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "A user-scope PUT whose move fails persists no part of the change.",
+     "oracle_source_ref": "R-11",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-err",
+       "variant": "negative",
+       "rationale": "alias collision in the target"
+      }
+     ],
+     "observation_boundary": "API: GET before and after the failed PUT",
+     "completion_condition": "PUT answered with the rejection",
+     "coverage_links": [],
+     "decision": "new",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Before/after reads around a completed rejected call, with a mutating control."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "state_unchanged"
+      ],
+      "oracle_ref": {
+       "ref": "R-11",
+       "revision": "r1"
+      },
+      "controls": [
+       "c7"
+      ],
+      "completion_ref": "c5",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API integration read",
+        "status": "planned",
+        "assertion_ref": "c6"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": [],
+      "sequence": [
+       {
+        "phase": "before_read",
+        "ref": "c3"
+       },
+       {
+        "phase": "action",
+        "ref": "c4"
+       },
+       {
+        "phase": "completion",
+        "ref": "c5"
+       },
+       {
+        "phase": "after_read",
+        "ref": "c6"
+       }
+      ],
+      "positive_control_ref": "c7",
+      "reachability_assertion_ref": "c8"
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-6",
+      "disposition": "gap",
+      "rationale": "No user-scope project change coverage.",
+      "gap_reason": "T4 is project scope"
+     },
+     {
+      "obligation_id": "OB-7",
+      "disposition": "gap",
+      "rationale": "No rollback coverage.",
+      "gap_reason": "none of T1..T5 forces a failed move"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-5-i1",
+     "TS-5-i2"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 2,
+     "executable_instances_before": 0,
+     "executable_instances_after": 2
+    }
+   }
+  },
+  {
+   "id": "TS-6",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "A project-scope PUT that changes a field and the project, where the move fails, persists neither: the field keeps its old value and the integration stays in the source.",
+   "R": [
+    "R-11",
+    "R-8"
+   ],
+   "requirements": [
+    "R-11",
+    "R-8"
+   ],
+   "defect_hypothesis": "data-loss @ update_project_setting collaboration_session: field update lands, move fails",
+   "impact_class": "data-loss",
+   "priority": "P0",
+   "observable": "diff:src/testproject1/clients/postgres.py:316",
+   "oracle": "requirement:R-11",
+   "disposition": "automate",
+   "reason": "Input 1: Q5 a confirms atomicity as intended; the definition of done needs every requirement checked. Input 2: T4 covers a field update only; no forced move failure exists. Input 3: a shared transaction helper under every model save is in the blast radius (B-7, B-8 matter). Input 4: the failure is forced by a natural alias collision in the target, no mocks, deterministic. The same call checks that the rejection message is clear (R-8, API side).",
+   "fit": "param T4",
+   "level": "api",
+   "technique": "fault injection by data (alias collision) with before/after state proof",
+   "impact": "severe",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "The commit semantics of every model save changed; a partial write silently corrupts a stored integration.",
+   "risk_source_refs": [
+    "grounding:K-9",
+    "grounding:K-4",
+    "grounding:G-19",
+    "blast:B-7",
+    "blast:B-8"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T4"
+   ],
+   "unknowns": [
+    "the exact error status and text for an alias collision are not stated; the row asserts a 4xx with a non-empty human-readable detail"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "alias collision in the target rejects the PUT",
+    "the changed field keeps its old value",
+    "integration still listed in the source and absent from the target",
+    "a PUT without collision applies both changes (positive control)"
+   ],
+   "test_level_rationale": "Transaction behaviour is visible only against real postgres through the public contract: api.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-8",
+     "requirement_refs": [
+      {
+       "ref": "R-11",
+       "revision": "r1"
+      },
+      {
+       "ref": "R-8",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "A failed move rolls the field update back and answers with a clear error.",
+     "oracle_source_ref": "R-11",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-err",
+       "variant": "negative",
+       "rationale": "alias collision in the target"
+      },
+      {
+       "id": "sc-int",
+       "variant": "interaction",
+       "rationale": "field change and project change in one request"
+      }
+     ],
+     "observation_boundary": "API: GET of the integration and both project lists before and after",
+     "completion_condition": "PUT answered with the rejection",
+     "coverage_links": [
+      {
+       "candidate_id": "T4",
+       "test_ref": "test_integration_update.py::test_project_integration_update",
+       "assertion_refs": [
+        "test_integration_update.py:53"
+       ],
+       "proves": [
+        "successful field update"
+       ],
+       "does_not_prove": [
+        "rollback"
+       ],
+       "assessment": "partial",
+       "assessment_reason": "happy path of the same route"
+      }
+     ],
+     "decision": "extend",
+     "remaining_gap": "none after the extension",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Field value and membership are read after a completed rejected call; the success twin is the mutating control."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "state_unchanged"
+      ],
+      "oracle_ref": {
+       "ref": "R-11",
+       "revision": "r1"
+      },
+      "controls": [
+       "c5"
+      ],
+      "completion_ref": "c3",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API integration read and both lists",
+        "status": "planned",
+        "assertion_ref": "c4"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": [],
+      "sequence": [
+       {
+        "phase": "before_read",
+        "ref": "c1"
+       },
+       {
+        "phase": "action",
+        "ref": "c2"
+       },
+       {
+        "phase": "completion",
+        "ref": "c3"
+       },
+       {
+        "phase": "after_read",
+        "ref": "c4"
+       }
+      ],
+      "positive_control_ref": "c5",
+      "reachability_assertion_ref": "c6"
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-8",
+      "disposition": "strengthen",
+      "rationale": "Add a failing-move parameter set beside the happy path.",
+      "existing_case_refs": [
+       "T4"
+      ]
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-6-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 1,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-7",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "After a move, datasources left in the source project that used the integration lose their setting_id, and other datasources keep theirs.",
+   "R": [
+    "R-12"
+   ],
+   "requirements": [
+    "R-12"
+   ],
+   "defect_hypothesis": "data-loss @ _unlink_orphaned_datasources: clears too many or too few setting_id values",
+   "impact_class": "access",
+   "priority": "P0",
+   "observable": "diff:src/testproject1/service/settings/settings_transfer_service.py:356",
+   "oracle": "requirement:R-12",
+   "disposition": "automate",
+   "reason": "Input 1: Q5 a confirms the unlink as intended. Input 2: T1 and T2 check integrations only, no datasource check. Input 3: B-12 matters and datasources are shared data of another team (P1 cross-team area). Input 4: observable through the datasource API; creating a datasource that references an integration may need an external system, which the designer must settle (gap recorded).",
+   "fit": "new",
+   "level": "api",
+   "technique": "state transition on a dependent entity with a control datasource",
+   "impact": "severe",
+   "likelihood": "medium",
+   "confidence": "low",
+   "risk_rationale": "Clearing the wrong setting_id breaks datasources of untouched integrations; failing to clear leaves a datasource using credentials of a project it no longer belongs to.",
+   "risk_source_refs": [
+    "grounding:K-12",
+    "grounding:G-28",
+    "blast:B-12"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T1",
+    "T2"
+   ],
+   "unknowns": [
+    "a datasource creatable on local-docker without external credentials (14 integration credentials unknown in env_probe)",
+    "what 'fail visibly' looks like for the datasource in the API"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "datasource tied to the moved integration has setting_id cleared",
+    "datasource tied to another integration in the source keeps its setting_id",
+    "the moved integration itself is intact in the target"
+   ],
+   "test_level_rationale": "Dependent state is read through the datasource API on a real stand: api.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-9",
+     "requirement_refs": [
+      {
+       "ref": "R-12",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "Only the datasources that used the moved integration lose their setting_id.",
+     "oracle_source_ref": "R-12",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-pos",
+       "variant": "positive",
+       "rationale": "dependent datasource unlinked"
+      },
+      {
+       "id": "sc-neg",
+       "variant": "negative",
+       "rationale": "unrelated datasource untouched"
+      }
+     ],
+     "observation_boundary": "API: datasource reads after the move",
+     "completion_condition": "move answered 2xx and datasources read",
+     "coverage_links": [
+      {
+       "candidate_id": "T1",
+       "test_ref": "test_settings_transfer.py::test_transfer_move_relocates_project_and_user_scoped_integrations",
+       "assertion_refs": [
+        "test_settings_transfer.py:221"
+       ],
+       "proves": [
+        "integrations doorless on bulk move"
+       ],
+       "does_not_prove": [
+        "datasource unlink"
+       ],
+       "assessment": "none",
+       "assessment_reason": "no datasource assertion"
+      }
+     ],
+     "decision": "new",
+     "remaining_gap": "datasource creation prerequisite",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Dependent and control datasource are both read after the move."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-12",
+       "revision": "r1"
+      },
+      "controls": [
+       "c3"
+      ],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API datasource read",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-9",
+      "disposition": "gap",
+      "rationale": "No datasource assertion exists.",
+      "gap_reason": "T1 and T2 read integrations only"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-7-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-8",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "In the UI a user changes the project of an existing integration through the form; a confirmation modal gates the save, and the saved integration is in the new project.",
+   "R": [
+    "R-1",
+    "R-2",
+    "R-4",
+    "R-14"
+   ],
+   "requirements": [
+    "R-1",
+    "R-2",
+    "R-4",
+    "R-14"
+   ],
+   "defect_hypothesis": "state @ EditSettingPageBase submit gate and SettingsForm Project obsolete on edit",
+   "impact_class": "blocked-flow",
+   "priority": "P1",
+   "observable": "diff:src/pages/integrations/components/SettingsForm/SettingsForm.tsx:604",
+   "oracle": "requirement:R-1",
+   "disposition": "automate",
+   "reason": "Input 1: the story is a UI feature and the definition of done needs every requirement checked. Input 2: T5 covers an alias edit only; the project change has no UI coverage. Input 3: B-3 and B-5 matter. Input 4: observable and deterministic with an API read-back. The e2e-ui level is earned by the highest-risk user path of the story: an enabled obsolete plus the submit gate cannot be reached through the API, and the developer tests are component-level with mocks. One test with parameters, not one per assertion.",
+   "fit": "extend T5",
+   "level": "e2e-ui",
+   "technique": "state transition with decision table on (project changed, confirm or cancel) and an API read-back",
+   "impact": "moderate",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "If the gate or the obsolete fails, the headline feature is unusable or a change is submitted without warning; reversible.",
+   "risk_source_refs": [
+    "grounding:K-3",
+    "grounding:G-4",
+    "grounding:G-8",
+    "blast:B-3",
+    "blast:B-5"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T5"
+   ],
+   "unknowns": [
+    "R-2 asks for a 'Change project' action; the build enables the obsolete instead (S2 matrix); the row is checked against the obsolete, decided by Q4 a"
+   ],
+   "verification_depth": "normal",
+   "required_scenarios": [
+    "Project obsolete is enabled on an existing integration",
+    "changing the project and saving shows the Change integration project? modal",
+    "cancel sends nothing; the integration stays in the source",
+    "confirm saves; API read-back shows the target project",
+    "saving with an unchanged project shows no modal"
+   ],
+   "test_level_rationale": "The oracle is a user path through the form, the modal and the real backend: e2e-ui, one test, parameterized.",
+   "design_review_required": true,
+   "source_conflict": true,
+   "oracle_unknown": false,
+   "decision_refs": [
+    "Q4 a: editing the project is the wanted feature",
+    "Q3 b: Move only, no mode selector"
+   ],
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-10",
+     "requirement_refs": [
+      {
+       "ref": "R-1",
+       "revision": "r1"
+      },
+      {
+       "ref": "R-2",
+       "revision": "r1"
+      },
+      {
+       "ref": "R-4",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "The user changes the project of an existing integration in the form and the change persists.",
+     "oracle_source_ref": "R-1",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-pos",
+       "variant": "positive",
+       "rationale": "obsolete enabled, project changed, saved"
+      }
+     ],
+     "observation_boundary": "UI form plus API read-back of the integration",
+     "completion_condition": "save finished and the API answered",
+     "coverage_links": [
+      {
+       "candidate_id": "T5",
+       "test_ref": "test_edit_integration.py::test_edit_integration_update_alias",
+       "assertion_refs": [
+        "test_edit_integration.py:106"
+       ],
+       "proves": [
+        "alias edit saves"
+       ],
+       "does_not_prove": [
+        "project change"
+       ],
+       "assessment": "partial",
+       "assessment_reason": "same page, different field"
+      }
+     ],
+     "decision": "extend",
+     "remaining_gap": "none after the extension",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Persistence is read back through the API, not from the page."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-1",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c2",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "UI obsolete",
+        "status": "planned",
+        "assertion_ref": "c1"
+       },
+       {
+        "id": "S-2",
+        "boundary": "API read-back",
+        "status": "planned",
+        "assertion_ref": "c3"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    },
+    {
+     "obligation_id": "OB-11",
+     "requirement_refs": [
+      {
+       "ref": "R-14",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "The confirmation modal appears only when the project changed; cancel sending nothing.",
+     "oracle_source_ref": "R-14",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-dec",
+       "variant": "state",
+       "rationale": "changed or unchanged, confirm or cancel"
+      }
+     ],
+     "observation_boundary": "UI modal plus API read-back after cancel",
+     "completion_condition": "the action taken in the modal finished",
+     "coverage_links": [],
+     "decision": "new",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c4",
+      "c5",
+      "c6"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Cancel is proven by the backend still holding the old project."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "rendered_behavior"
+      ],
+      "oracle_ref": {
+       "ref": "R-14",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c5",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "UI modal",
+        "status": "planned",
+        "assertion_ref": "c4"
+       },
+       {
+        "id": "S-2",
+        "boundary": "API read-back after cancel",
+        "status": "planned",
+        "assertion_ref": "c6"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-10",
+      "disposition": "strengthen",
+      "rationale": "Extend the edit test with a project change.",
+      "existing_case_refs": [
+       "T5"
+      ]
+     },
+     {
+      "obligation_id": "OB-11",
+      "disposition": "gap",
+      "rationale": "No modal coverage.",
+      "gap_reason": "T5 expects no modal"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-8-i1",
+     "TS-8-i2",
+     "TS-8-i3"
+    ],
+    "counts": {
+     "logical_cases_before": 1,
+     "logical_cases_after": 1,
+     "executable_instances_before": 1,
+     "executable_instances_after": 3
+    }
+   }
+  },
+  {
+   "id": "TS-9",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "Changing the project while editing an integration does not discard the loaded credential values: after saving, the stored credentials are the ones that were loaded.",
+   "R": [
+    "R-16"
+   ],
+   "requirements": [
+    "R-16"
+   ],
+   "defect_hypothesis": "state @ SettingsForm credential-type auto-reset skipped in edit mode",
+   "impact_class": "data-loss",
+   "priority": "P0",
+   "observable": "diff:src/pages/integrations/components/SettingsForm/SettingsForm.tsx:467",
+   "oracle": "requirement:R-16",
+   "disposition": "automate",
+   "reason": "Input 1: Q5 a confirms the behaviour as intended and every requirement is to be checked. Input 2: the developer unit test (credentialTypeReset.test.tsx) is component level with mocks; no real-stack coverage. Input 3: B-3 matters and the reset was changed to avoid silent data loss. Input 4: stored non-secret credential fields are readable through the API after the save. The e2e-ui level is earned by data-loss (P0): the discard happens in form state before the request is built, so the API alone cannot reach it.",
+   "fit": "extend T5",
+   "level": "e2e-ui",
+   "technique": "state transition with read-back of the persisted credential fields",
+   "impact": "severe",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "A silent reset of credentials on save loses stored secrets of a working integration.",
+   "risk_source_refs": [
+    "grounding:K-1",
+    "grounding:G-3",
+    "blast:B-3"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T5"
+   ],
+   "unknowns": [
+    "secret fields may be masked in GET, so only non-secret fields may be provable",
+    "whether a real credential-type change on edit should reset values is not stated; recorded as a report note, not asserted"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "edit an integration with loaded credentials, change only the project, save",
+    "stored non-secret credential fields equal the loaded ones",
+    "alias edit with no project change keeps credentials (control)"
+   ],
+   "test_level_rationale": "Form state decides what is sent: e2e-ui with a backend read-back.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-12",
+     "requirement_refs": [
+      {
+       "ref": "R-16",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "Loaded credential values survive a project change on edit.",
+     "oracle_source_ref": "R-16",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-pos",
+       "variant": "positive",
+       "rationale": "project change with loaded credentials"
+      },
+      {
+       "id": "sc-int",
+       "variant": "interaction",
+       "rationale": "credential type field and project field together"
+      }
+     ],
+     "observation_boundary": "UI save followed by API read of the integration credentials",
+     "completion_condition": "save finished and the API answered",
+     "coverage_links": [
+      {
+       "candidate_id": "T5",
+       "test_ref": "test_edit_integration.py::test_edit_integration_update_alias",
+       "assertion_refs": [
+        "test_edit_integration.py:106"
+       ],
+       "proves": [
+        "alias edit saves"
+       ],
+       "does_not_prove": [
+        "credential retention"
+       ],
+       "assessment": "partial",
+       "assessment_reason": "same edit flow"
+      }
+     ],
+     "decision": "extend",
+     "remaining_gap": "secret fields may be unreadable",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Persisted credential fields are compared with the values created in the setup."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-16",
+       "revision": "r1"
+      },
+      "controls": [
+       "c3"
+      ],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API credential read-back",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-12",
+      "disposition": "strengthen",
+      "rationale": "Add a credentials scenario to the edit test.",
+      "existing_case_refs": [
+       "T5"
+      ]
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-9-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 1,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-10",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "When a move is refused in the UI (alias taken in the target), the user sees a clear error and the form does not report success.",
+   "R": [
+    "R-8"
+   ],
+   "requirements": [
+    "R-8"
+   ],
+   "defect_hypothesis": "error-path @ EditSettingPageBase submit: backend rejection shown as success or as a raw error",
+   "impact_class": "degraded",
+   "priority": "P2",
+   "observable": "diff:src/testproject1/rest_api/routers/project_settings.py:169",
+   "oracle": "requirement:R-8",
+   "disposition": "manual-agent",
+   "reason": "Observable and deterministic, but an e2e at degraded impact is not the risk that earns e2e code; the API half is asserted in TS-4 and TS-6. The runner checks the displayed message once on the live stand with screenshots; developer component tests own the repeatable check.",
+   "fit": "",
+   "level": "e2e-ui",
+   "technique": "error guessing on the rejection path",
+   "impact": "moderate",
+   "likelihood": "medium",
+   "confidence": "medium",
+   "risk_rationale": "A rejection shown as success misleads the user, who then believes the integration moved; reversible.",
+   "risk_source_refs": [
+    "grounding:G-8",
+    "blast:B-5"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [],
+   "unknowns": [
+    "the wording of the error is not stated by any source"
+   ],
+   "verification_depth": "normal",
+   "required_scenarios": [
+    "alias collision in the target shows an error message",
+    "the integration is still in the source afterwards",
+    "no success notification appears"
+   ],
+   "test_level_rationale": "Rung of P19: no API or component test of ours reaches the rendered message; an agent by hand is the lowest rung that can, and a person is not needed.",
+   "design_review_required": false,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "evidence_policy": "ui",
+   "manual_evidence": {
+    "executed_by": "agent",
+    "kinds": [
+     "screenshot before",
+     "screenshot after",
+     "actual steps",
+     "API read of the integration"
+    ],
+    "before_not_applicable_reason": "",
+    "inconclusive_when": "no screenshot of the message or no API read after the attempt"
+   },
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-13",
+     "requirement_refs": [
+      {
+       "ref": "R-8",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "A refused move is shown to the user as an error.",
+     "oracle_source_ref": "R-8",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-err",
+       "variant": "negative",
+       "rationale": "alias collision in the target"
+      }
+     ],
+     "observation_boundary": "UI message plus API read of the integration",
+     "completion_condition": "the save attempt finished: the refusal message or a success toast is on screen and the integration is read back through the API",
+     "coverage_links": [],
+     "decision": "manual-agent",
+     "evidence_policy": "ui",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c1",
+      "c2"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Screenshot of the message and a backend read after."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "rendered_behavior"
+      ],
+      "oracle_ref": {
+       "ref": "R-8",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "UI message",
+        "status": "planned",
+        "assertion_ref": "c1"
+       },
+       {
+        "id": "S-2",
+        "boundary": "API read",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-13",
+      "disposition": "gap",
+      "rationale": "No UI error coverage.",
+      "gap_reason": "manual evidence, no automated check"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-10-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-11",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "After a move, the project-related state of both projects reads consistently through the API, for everything configurable at project creation.",
+   "R": [
+    "R-9"
+   ],
+   "requirements": [
+    "R-9"
+   ],
+   "defect_hypothesis": "contract @ project-related reads of source and target after a move",
+   "impact_class": "degraded",
+   "priority": "P2",
+   "observable": "expected-contract",
+   "oracle": "requirement:R-9",
+   "disposition": "automate",
+   "reason": "Input 1: the person set the breadth (Q6: everything configurable at project creation) and the definition of done needs every requirement checked. Input 2: nothing reads project state after a move. Input 3: B-8 (project router) matters. Input 4: observable through the API reads; deterministic. Whether the project-creation list is complete goes to the report as a question for the analyst.",
+   "fit": "new",
+   "level": "api",
+   "technique": "state comparison of both projects before and after the move, over the Q6 list",
+   "impact": "moderate",
+   "likelihood": "low",
+   "confidence": "low",
+   "risk_rationale": "A stale or inconsistent listing is visible and recoverable by refresh, but the breadth of the project state is not enumerated by any source.",
+   "risk_source_refs": [
+    "blast:B-8",
+    "grounding:G-19"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T1"
+   ],
+   "unknowns": [
+    "the list of settings configurable at project creation is the designer's to enumerate from the product; its completeness is a report question (Q6)",
+    "the diff holds no refresh code, so the expected value comes from the requirement only"
+   ],
+   "verification_depth": "normal",
+   "required_scenarios": [
+    "integration lists of source and target after the move",
+    "project detail reads of both projects unchanged except for the moved integration",
+    "each project-creation setting is read for both projects and compared with its value before"
+   ],
+   "test_level_rationale": "Reads of persisted state through the public contract: api.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-14",
+     "requirement_refs": [
+      {
+       "ref": "R-9",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "Both projects report the new membership and keep their other configured state.",
+     "oracle_source_ref": "R-9",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-state",
+       "variant": "state",
+       "rationale": "before/after comparison of both projects"
+      }
+     ],
+     "observation_boundary": "API reads of both projects",
+     "completion_condition": "move answered 2xx and reads done",
+     "coverage_links": [
+      {
+       "candidate_id": "T1",
+       "test_ref": "test_settings_transfer.py::test_transfer_move_relocates_project_and_user_scoped_integrations",
+       "assertion_refs": [
+        "test_settings_transfer.py:221"
+       ],
+       "proves": [
+        "integrations doorless"
+       ],
+       "does_not_prove": [
+        "other project state"
+       ],
+       "assessment": "partial",
+       "assessment_reason": "membership only"
+      }
+     ],
+     "decision": "new",
+     "remaining_gap": "completeness of the project-creation list",
+     "planned_check_refs": [
+      "c1",
+      "c2"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Reads per creation-time setting; the list itself is an open item for the report."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-9",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API project reads",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-14",
+      "disposition": "gap",
+      "rationale": "Nothing reads project state after a move.",
+      "gap_reason": "T1 reads membership only"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-11-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-12",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "The Project obsolete on edit offers only projects the user may unfinished, and after a saved move the integration lists of both projects update without a reload.",
+   "R": [
+    "R-4",
+    "R-9"
+   ],
+   "requirements": [
+    "R-4",
+    "R-9"
+   ],
+   "defect_hypothesis": "permission @ Project obsolete options on edit; state @ list refresh after save",
+   "impact_class": "blocked-flow",
+   "priority": "P1",
+   "observable": "expected-contract",
+   "oracle": "requirement:R-4",
+   "disposition": "manual-agent",
+   "reason": "Observable and deterministic, but the checks are appearance of a list and its options in a browser; a stable e2e for them is brittle and the risk is below the data-loss and access rows that earn e2e. The runner does it once on the live stand with a non-admin user and screenshots. The diff shows no refresh code, so R-9 in the UI rests on the requirement text only.",
+   "fit": "",
+   "level": "e2e-ui",
+   "technique": "equivalence partitions of users (admin of all, admin of some, admin of none) and a before/after view of both lists",
+   "impact": "moderate",
+   "likelihood": "medium",
+   "confidence": "low",
+   "risk_rationale": "A obsolete offering forbidden projects only ends in a refusal; a stale list misleads but is cured by reload.",
+   "risk_source_refs": [
+    "grounding:K-2",
+    "grounding:G-4",
+    "blast:B-3"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [
+    "T5"
+   ],
+   "unknowns": [
+    "what the obsolete is meant to list for a non-admin user is not stated by any source",
+    "UI list refresh is unverified in the diff (unresolved fact)"
+   ],
+   "verification_depth": "normal",
+   "required_scenarios": [
+    "obsolete options for a user admin on some projects only",
+    "after a confirmed move the source list no longer shows the integration without reload",
+    "the target list shows it without reload"
+   ],
+   "test_level_rationale": "Rung of P19: the API half is TS-1/TS-11; the rendered options and refresh are reachable by an agent by hand, so no person is needed.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "evidence_policy": "ui",
+   "manual_evidence": {
+    "executed_by": "agent",
+    "kinds": [
+     "screenshot before",
+     "screenshot after",
+     "actual steps",
+     "option list as text"
+    ],
+    "before_not_applicable_reason": "",
+    "inconclusive_when": "the user used has no restricted role, or a list was read after a manual reload"
+   },
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-15",
+     "requirement_refs": [
+      {
+       "ref": "R-4",
+       "revision": "r1"
+      },
+      {
+       "ref": "R-9",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "Only permitted targets are selectable and both lists refresh after a move.",
+     "oracle_source_ref": "R-4",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-perm",
+       "variant": "interaction",
+       "rationale": "partial admin rights"
+      },
+      {
+       "id": "sc-state",
+       "variant": "state",
+       "rationale": "lists before and after"
+      }
+     ],
+     "observation_boundary": "UI obsolete options and both list views",
+     "completion_condition": "save finished and both lists displayed without a manual reload",
+     "coverage_links": [],
+     "decision": "manual-agent",
+     "evidence_policy": "ui",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c1",
+      "c2"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Options as text plus before and after screenshots of both lists."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "rendered_behavior"
+      ],
+      "oracle_ref": {
+       "ref": "R-4",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c2",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "UI obsolete options",
+        "status": "planned",
+        "assertion_ref": "c1"
+       },
+       {
+        "id": "S-2",
+        "boundary": "UI lists of both projects",
+        "status": "planned",
+        "assertion_ref": "c2"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-15",
+      "disposition": "gap",
+      "rationale": "No UI coverage of options or refresh.",
+      "gap_reason": "manual evidence, no automated check"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-12-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  },
+  {
+   "id": "TS-13",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "Not tested by us: the model save/update joining an ambient session (commit semantics outside a transaction, StaleDataError, session leakage between requests).",
+   "R": [
+    "R-11"
+   ],
+   "requirements": [
+    "R-11"
+   ],
+   "defect_hypothesis": "seam @ BaseModelWithSQLSupport.save/update and collaboration_session ContextVar",
+   "impact_class": "data-loss",
+   "priority": "P0",
+   "observable": "diff:src/testproject1/clients/postgres.py:316",
+   "oracle": "requirement:R-11",
+   "disposition": "skip",
+   "reason": "The ambient session, a deleted record raising StaleDataError and session leakage between requests are unit and component matters owned by the developers (their tests are in the MR). Through the API the rollback is already proved by TS-6 and TS-5, and the commit semantics outside a transaction are defended by the existing suites run as regression (B-7, B-8). Recorded as a component-level recommendation.",
+   "fit": "",
+   "level": "component",
+   "technique": "none (skipped)",
+   "impact": "severe",
+   "likelihood": "low",
+   "confidence": "low",
+   "risk_rationale": "Shared helper under every model save: severe if wrong, but exercised on every request by the whole suite.",
+   "risk_source_refs": [
+    "grounding:K-4",
+    "grounding:K-5",
+    "grounding:K-6",
+    "grounding:G-12",
+    "grounding:G-14",
+    "grounding:G-15",
+    "blast:B-7",
+    "blast:B-8"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [],
+   "unknowns": [
+    "a concurrent-request leak of the ambient session cannot be observed through the harness"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "regression run of B-7 and B-8 suites after the change",
+    "developers' component tests for StaleDataError and nested commit"
+   ],
+   "test_level_rationale": "Isolated code under the developers' ownership: unit/component, not ours to write.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-16",
+     "requirement_refs": [
+      {
+       "ref": "R-11",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "Session joining keeps the old commit semantics outside a transaction.",
+     "oracle_source_ref": "R-11",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-seam",
+       "variant": "interaction",
+       "rationale": "save/update inside and outside the ambient session"
+      }
+     ],
+     "observation_boundary": "developers' unit/component tests and the regression suites",
+     "completion_condition": "regression run finished",
+     "coverage_links": [],
+     "decision": "unresolved",
+     "remaining_gap": "no QA-owned assertion of the session joining; recommended to the developers",
+     "planned_check_refs": [
+      "c1"
+     ],
+     "execution_scope": "recommended_regression",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Not sufficient by ourselves; stated as a gap and a recommendation."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-11",
+       "revision": "r1"
+      },
+      "controls": [],
+      "completion_ref": "c1",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "developer component tests",
+        "status": "gap",
+        "gap_reason": "owned by the developers, not read by us"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-16",
+      "disposition": "gap",
+      "rationale": "Skipped by us.",
+      "gap_reason": "developer-owned seam"
+     }
+    ],
+    "planned_instance_ids": [],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 0,
+     "executable_instances_before": 0,
+     "executable_instances_after": 0
+    }
+   }
+  },
+  {
+   "id": "TS-14",
+   "schema_version": 2,
+   "coverage_contract_revision": "coverage-observation-v1",
+   "what_we_verify": "Records what happens when a user moves their user-scope integration into a project they do not unfinished, judged against the Q7 rule (same restriction as the existing project change for Data sources / Assistants / Workflows).",
+   "R": [
+    "R-15"
+   ],
+   "requirements": [
+    "R-15"
+   ],
+   "defect_hypothesis": "permission @ update_user_setting: project_name change with no target-project check",
+   "impact_class": "blocked-flow",
+   "priority": "P1",
+   "observable": "diff:src/testproject1/rest_api/routers/user_settings.py:247",
+   "oracle": "requirement:R-15",
+   "disposition": "manual-agent",
+   "reason": "Observable; the oracle is settled by Q7 (same restriction as for Data sources / Assistants / Workflows), but what that restriction is on the stand must be read there first, which is a one-off lookup by hand. The agent runs the move once with state evidence and compares it with that reference; a repeatable assertion is left to the report.",
+   "fit": "",
+   "level": "api",
+   "technique": "error guessing on the permission boundary, outcome recorded",
+   "impact": "unknown",
+   "likelihood": "unknown",
+   "confidence": "low",
+   "risk_rationale": "If a user can push an integration with credentials into any project, this is an access hole; if it is intended, nothing happens. The consequence is unknown, so it is not treated as low.",
+   "risk_source_refs": [
+    "grounding:K-10",
+    "grounding:G-26",
+    "blast:B-11"
+   ],
+   "risk_policy_revision": "factory-starter-v1",
+   "coverage_refs": [],
+   "unknowns": [
+    "expected outcome for a user-scope move into a project the user does not unfinished"
+   ],
+   "verification_depth": "critical",
+   "required_scenarios": [
+    "user with no role in the target project moves own user-scope integration",
+    "outcome and state recorded before and after",
+    "admin of the target does the same (control)"
+   ],
+   "test_level_rationale": "Rung of P19: reachable by an API call, but the expected value is unsettled, so an agent records the outcome by hand rather than a test asserting a guess.",
+   "design_review_required": true,
+   "source_conflict": false,
+   "oracle_unknown": false,
+   "evidence_policy": "api",
+   "manual_evidence": {
+    "executed_by": "agent",
+    "kinds": [
+     "secret-free request",
+     "response with status",
+     "integration read before and after",
+     "target project list"
+    ],
+    "before_not_applicable_reason": "",
+    "inconclusive_when": "no before or after read, or the PUT was not completed"
+   },
+   "coverage_obligations": [
+    {
+     "obligation_id": "OB-17",
+     "requirement_refs": [
+      {
+       "ref": "R-15",
+       "revision": "r1"
+      }
+     ],
+     "behavior": "A user-scope move into an counterfactual project is refused or accepted exactly as the existing project change for Data sources / Assistants / Workflows does (Q7).",
+     "oracle_source_ref": "R-15 (Q7 answer: same restrictions as the existing project change for Data sources / Assistants / Workflows)",
+     "oracle_status": "resolved",
+     "applicable_scenarios": [
+      {
+       "id": "sc-perm",
+       "variant": "negative",
+       "rationale": "no role on target"
+      }
+     ],
+     "observation_boundary": "API response plus integration and target list reads",
+     "completion_condition": "PUT answered with a status and the integration and target project are read back after",
+     "coverage_links": [],
+     "decision": "manual-agent",
+     "evidence_policy": "api",
+     "remaining_gap": "none",
+     "planned_check_refs": [
+      "c1",
+      "c2",
+      "c3",
+      "c4"
+     ],
+     "execution_scope": "current_task",
+     "sufficiency_review": {
+      "author_dispatch_id": "S3-qa-test-strategist-3",
+      "input_hash": "46c1266646dc3add34ec0d35223bef9c2a6fb6f1408e1934efbd82acb1331ffc",
+      "rationale": "Records the outcome only; no pass or fail is claimed."
+     },
+     "observation_contract": {
+      "claim_kind": [
+       "ordinary"
+      ],
+      "oracle_ref": {
+       "ref": "R-15",
+       "revision": "r1"
+      },
+      "controls": [
+       "c4"
+      ],
+      "completion_ref": "c2",
+      "surfaces": [
+       {
+        "id": "S-1",
+        "boundary": "API response",
+        "status": "planned",
+        "assertion_ref": "c2"
+       },
+       {
+        "id": "S-2",
+        "boundary": "API read after",
+        "status": "planned",
+        "assertion_ref": "c3"
+       }
+      ],
+      "independent_expectations": [],
+      "source_conflicts": []
+     }
+    }
+   ],
+   "coverage_delta": {
+    "baseline_kind": "initial",
+    "initial_scope_rationale": "First plan for this story.",
+    "entries": [
+     {
+      "obligation_id": "OB-17",
+      "disposition": "gap",
+      "rationale": "No coverage and no oracle.",
+      "gap_reason": "oracle unresolved"
+     }
+    ],
+    "planned_instance_ids": [
+     "TS-14-i1"
+    ],
+    "counts": {
+     "logical_cases_before": 0,
+     "logical_cases_after": 1,
+     "executable_instances_before": 0,
+     "executable_instances_after": 1
+    }
+   }
+  }
+ ]
+}

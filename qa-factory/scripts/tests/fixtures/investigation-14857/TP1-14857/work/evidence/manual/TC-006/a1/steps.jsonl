@@ -1,0 +1,16 @@
+{"at": "2026-10-27T01:13:38+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/llm_models/embeddings", "outcome": "ok", "detail": "status 404"}
+{"at": "2026-10-27T01:15:06+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/embeddings_models", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:16:08+00:00", "command": "http", "step": "http POST http://localhost:8080/v1/application/testproject1/index", "outcome": "ok", "detail": "status 201"}
+{"at": "2026-10-27T01:17:02+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index?per_page=200&page=0", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:18:02+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:18:55+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:19:23+00:00", "command": "http", "step": "http PUT http://localhost:8080/v1/application/testproject1/index/tc006-15247", "outcome": "ok", "detail": "status 201"}
+{"at": "2026-10-27T01:20:05+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:20:31+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:20:59+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:21:26+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:21:54+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:22:30+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:23:34+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:23:34+00:00", "command": "http", "step": "http GET http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940 (state)", "outcome": "ok", "detail": "status 200"}
+{"at": "2026-10-27T01:25:41+00:00", "command": "http", "step": "http DELETE http://localhost:8080/v1/index/4164ee0b-2a2e-420a-849d-7f365f23b940", "outcome": "ok", "detail": "status 200"}

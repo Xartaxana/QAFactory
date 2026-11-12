@@ -1,0 +1,335 @@
+{
+  "verdict": "ready",
+  "goal_summary": "Check that every way a product gets into the cart (product page, catalog card, wishlist move) follows the requirements: quantity classes, stock limits, price, persistence for guest and user; requirement is the oracle, not the code.",
+  "aspects": {
+    "shopping cart": {
+      "status": "ready",
+      "reason": "main subject: stock checks, quantity limits, badge, guest merge"
+    },
+    "checkout and payment": {
+      "status": "n/a",
+      "reason": "scope is only the add-to-cart function"
+    },
+    "orders, cancellation and refunds": {
+      "status": "n/a",
+      "reason": "scope is only the add-to-cart function"
+    },
+    "sign-in and user accounts": {
+      "status": "ready",
+      "reason": "guest vs signed-in cart, merge at sign-in, session expiry (no expectation authored)"
+    },
+    "roles and permissions": {
+      "status": "ready",
+      "reason": "guest and USER may add; admin used only to create test books"
+    },
+    "API contract and errors": {
+      "status": "ready",
+      "reason": "POST /api/cart answers 400 VALIDATION_ERROR, OUT_OF_STOCK, INSUFFICIENT_STOCK, 404 BOOK_NOT_FOUND"
+    }
+  },
+  "register": {
+    "total": 26,
+    "by_source": {
+      "ac": 3,
+      "story": 16,
+      "feature": 2,
+      "discussion": 2,
+      "assumption": 0,
+      "derived": 3
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "Should the product-page quantity control reject 0, -1, 1.5 and non-numeric input, or may it turn them into 1?",
+      "severity": "major",
+      "owner_role": "po_ba",
+      "source_says": [
+        {
+          "quote": "A quantity of 0 is rejected with a clear message and nothing is added.",
+          "where": "REF-2 description"
+        },
+        {
+          "quote": "setQuantity(Math.max(1, parseInt(e.target.value) || 1))",
+          "where": "MyBooks/src/components/pages/BookDetailPage.tsx:164"
+        },
+        {
+          "quote": "Testirovat po trebovaniyu: proverit testom, chto 0 otklonyaetsya",
+          "where": "person's decision s1-conflict-20261101-234118"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Requirement stands: invalid quantities are rejected with a message and nothing is added",
+          "from": "description",
+          "if_chosen": "tests expect rejection; the current UI behaviour is reported as a bug candidate at gate B"
+        },
+        {
+          "reading": "The UI coercion to 1 is intended",
+          "from": "code",
+          "if_chosen": "tests expect one copy added for invalid input and the tickets are changed"
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "question": "Quantity above stock: is the whole add rejected, or is only the available quantity added?",
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "source_says": [
+        {
+          "quote": "Either no product is added or only available quantity is added",
+          "where": "REF-25 TC-010"
+        },
+        {
+          "quote": "A visible error states that only S0 are in stock; Cart is empty",
+          "where": "REF-11"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Reject the whole add with a message, cart unchanged",
+          "from": "description",
+          "if_chosen": "tests assert an empty cart and an error naming the stock"
+        },
+        {
+          "reading": "Add only the available quantity",
+          "from": "precedent",
+          "if_chosen": "tests assert the cart holds the stock quantity"
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "question": "What is the maximum allowed quantity and what must a huge quantity (e.g. 999999) do?",
+      "severity": "major",
+      "owner_role": "po_ba",
+      "source_says": [
+        {
+          "quote": "Set quantity to maximum allowed value",
+          "where": "REF-25 TC-008 / REF-23"
+        },
+        {
+          "quote": "integer 1..999",
+          "where": "MyBooks/src/lib/validation/schemas.ts:41"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Maximum equals stock",
+          "from": "description",
+          "if_chosen": "boundary tests at stock and stock+1; above is rejected"
+        },
+        {
+          "reading": "Maximum is the schema cap 999",
+          "from": "code",
+          "if_chosen": "boundary tests at 999 and 1000, with stock large enough"
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "question": "What is expected for quick view add, add during a price update, network interruption and session expiry?",
+      "severity": "major",
+      "owner_role": "po_ba",
+      "source_says": [
+        {
+          "quote": "Steps & Expected results: To be authored.",
+          "where": "REF-3, 164, 165, 166"
+        },
+        {
+          "quote": "no quick-view component in src (grep empty)",
+          "where": "context bundle fact REF-3"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Scenarios are in scope and the owner supplies expected results",
+          "from": "person",
+          "if_chosen": "rows become testable with those results"
+        },
+        {
+          "reading": "Scenarios stay unverifiable (quick view has no implementation)",
+          "from": "description",
+          "if_chosen": "rows stay unverifiable and are named in the report"
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "question": "For an out-of-stock product, does a disabled 'Out of Stock' button satisfy the AC 'I should see an Out of stock message'?",
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "source_says": [
+        {
+          "quote": "Then I should see an \"Out of stock\" message and no item is added",
+          "where": "REF-10 AC-2"
+        },
+        {
+          "quote": "The application shows a disabled \"Out of Stock\" button rather than a message",
+          "where": "REF-15 notes"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "A disabled button labelled Out of Stock is enough",
+          "from": "comment:REF-15 notes",
+          "if_chosen": "tests assert the disabled button with that label and an empty cart"
+        },
+        {
+          "reading": "A message is required",
+          "from": "acceptance_criteria:AC-2",
+          "if_chosen": "tests assert a message; the missing message is a bug candidate"
+        }
+      ]
+    },
+    {
+      "id": "Q6",
+      "question": "Code-only add behaviours with no requirement: catalog card add (qty 1), wishlist move-to-cart, guest cart merge at sign-in. Are they intended?",
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown (no base revision read)",
+        "where": "no diff, current code only"
+      },
+      "now": {
+        "value": "card adds qty 1; wishlist move adds qty 1 then deletes the item; merge keeps the higher quantity capped at stock",
+        "where": "HomePage.tsx:118, WishlistPage.tsx:47, cartService.ts:118"
+      },
+      "source_says": [
+        {
+          "quote": "every path by which a product can get into the cart",
+          "where": "LOCAL-1 description"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "The behaviour now is intended",
+          "from": "claim",
+          "claim": "now",
+          "if_chosen": "tests assert the current behaviour"
+        },
+        {
+          "reading": "The behaviour before is expected (a regression)",
+          "from": "claim",
+          "claim": "before",
+          "if_chosen": "tests wait for the owner's before value"
+        }
+      ]
+    },
+    {
+      "id": "Q7",
+      "question": "Q4 (TS-24): which price is charged when a book price is updated while the shopper is adding it: the price shown at add time, or the updated price?",
+      "source_says": [
+        {
+          "quote": "Adding a product while its price is being updated causes no errors and the user is charged the price shown when added",
+          "where": "R-24, REF-6 TC-015"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (unknown).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (unknown); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no readable base for this behaviour"
+      },
+      "now": {
+        "value": "unknown",
+        "where": "no code observable, cart price is read from the database at total time"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_022",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q8",
+      "question": "Q4 (TS-25): on an interrupted network during add, must the system complete the action, or tell the user to retry?",
+      "source_says": [
+        {
+          "quote": "An interrupted network while adding shows an error and the system recovers or tells the user to retry",
+          "where": "R-25, REF-7 TC-016"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (unknown).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (unknown); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no readable base for this behaviour"
+      },
+      "now": {
+        "value": "unknown",
+        "where": "no code observable for the interrupted add"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_023",
+        "then": 2
+      }
+    },
+    {
+      "id": "Q9",
+      "question": "Q4 (TS-26): after session expiry, must the system extend the session, or ask for login and then add the product?",
+      "source_says": [
+        {
+          "quote": "Adding after session expiry extends the session or asks for login, and the product is added after re-authentication",
+          "where": "R-26, REF-8 TC-017"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (unknown).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (unknown); the Then is checked against it.",
+          "claim": "now"
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect.",
+          "claim": "before"
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "no readable base for this behaviour"
+      },
+      "now": {
+        "value": "unknown",
+        "where": "no code observable for expiry handling"
+      },
+      "raised_for": {
+        "case": "LOCAL-1_TC_024",
+        "then": 1
+      }
+    }
+  ]
+}

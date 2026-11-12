@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "probe_tool": "probe_by_code.py",
+  "task": "LOCAL-1",
+  "dispatch_id": "S5-qa-code-critic-3",
+  "instance_id": "LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+  "case": "LOCAL-1_TC_010",
+  "test_node": "tests/api/cart/add-to-cart.spec.ts::@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+  "verdict": "incomplete",
+  "mutation": "invert",
+  "mutation_kind": "assertion",
+  "proof_level": "live",
+  "failure_kind": "assertion",
+  "expected_location": "tests/api/cart/add-to-cart.spec.ts:109",
+  "actual_location": null,
+  "expected_reason": "probe-LOCAL-1_TC_010 repeat add of the same book sums quantities in one line invert: expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').toBeLessThan(300); fires as /^(?:Error: )?expect\\(received\\)(?:\\.(?:resolves|rejects))?\\.not\\.to[A-Z]\\w*\\(|^Error: (?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.not\\.to[A-Z]\\w*\\(|^(?:AssertionError: )?expected .+ not to /",
+  "actual_reason": null,
+  "observed": {
+    "status": "failed",
+    "message_head": "add-to-cart.spec.ts:106:1 @regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line",
+    "frame": "        at {project_root}\\tests\\api\\cart\\add-to-cart.spec.ts:109:84",
+    "location": "tests/api/cart/add-to-cart.spec.ts:109",
+    "failure_kind": "assertion"
+  },
+  "input_hash": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+  "input_hash_source": "fingerprint:test_content_sha over the author's bytes",
+  "test_file_sha256": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec",
+  "test_code_sha": "",
+  "instance_identity": {},
+  "instance_content_sha": "",
+  "mutated_file": {
+    "path": "tests/api/cart/add-to-cart.spec.ts",
+    "sha256": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec",
+    "code_sha": ""
+  },
+  "obligation_ids": [
+    "OB-7"
+  ],
+  "obligation_hash": "1703329f7de66971cd13ce68470f3e51eb2986d96ad7600e0b390ac49eac6cb6",
+  "defect_location": "MyBooks/src/lib/services/cartService.ts:53",
+  "assertion_id": "tests/api/cart/add-to-cart.spec.ts:114",
+  "obligation_refs": [
+    {
+      "obligation_id": "OB-7",
+      "obligation_hash": "5813c0cbd1713a9098219f5e54bce1f27f8620e4376dd790e8fb6c12ad00732b"
+    }
+  ],
+  "manifest_fields_missing": [],
+  "evidence_ref": "evidence/runs/64d1d369a594bd0a73fd/red_probe-64d1d369a594bd0a73fd-20261103-004307.json",
+  "evidence_refs": [
+    {
+      "path": "evidence/runs/64d1d369a594bd0a73fd/red_probe-64d1d369a594bd0a73fd-20261103-004307.json",
+      "sha256": "871df2adb5f972ec87d8b535cb15cc949e9c81216800bac474ee3e78167e7ab8"
+    },
+    {
+      "path": "evidence/runs/64d1d369a594bd0a73fd/red_probe-64d1d369a594bd0a73fd-20261103-004307.junit.xml",
+      "sha256": "eaf2f7a698d1755707102dadabc073f17847494d6605adf74531c1b1689a83fc"
+    }
+  ],
+  "request": "work/probe-requests/probe-LOCAL-1_TC_010-repeat-add-of-the-same-book-sums-quantities-in-one-line.json",
+  "mutation_detail": {
+    "line": 109,
+    "end_line": 109,
+    "mutation": "invert",
+    "style": "detector",
+    "language": "typescript",
+    "head": "expect(",
+    "form": 0,
+    "pair": 1,
+    "pair_id": "T2",
+    "at": null,
+    "candidates": [
+      106
+    ],
+    "statement_before": "expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').toBeLessThan(300);",
+    "statement_after": "expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').not.toBeLessThan(300);",
+    "fires_as": "^(?:Error: )?expect\\(received\\)(?:\\.(?:resolves|rejects))?\\.not\\.to[A-Z]\\w*\\(|^Error: (?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.not\\.to[A-Z]\\w*\\(|^(?:AssertionError: )?expected .+ not to ",
+    "marker": "probe-LOCAL-1_TC_010 repeat add of the same book sums quantities in one line invert: expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').toBeLessThan(300); fires as /^(?:Error: )?expect\\(received\\)(?:\\.(?:resolves|rejects))?\\.not\\.to[A-Z]\\w*\\(|^Error: (?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.not\\.to[A-Z]\\w*\\(|^(?:AssertionError: )?expected .+ not to /",
+    "matcher_at": "after_args",
+    "declaration_line": 106,
+    "file": "tests/api/cart/add-to-cart.spec.ts"
+  },
+  "restore": {
+    "verified": true,
+    "sha256": "1786b0eb6c56007c39a8d1ea9e3734cff363461c665f34e0ef3ef80ac66a32ec",
+    "restored_from": "copy",
+    "copy": "qa-factory/state/probe-copies/e87422340cad1d30.orig",
+    "copy_kept": false
+  },
+  "notes": [
+    "command, fingerprint file list and runtime probe are those of this story's last typed run on profile web",
+    "the run failed at the mutated statement, but its message (`add-to-cart.spec.ts:106:1 @regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line`) does not match the failure this inverted form must show (assertion_probes.typescript, pair T2): the library's wording differs from the row's, so the row is the factory's to correct, and nothing is said about the test (E15)"
+  ],
+  "recorded_at": "2026-11-02T23:43:02+00:00",
+  "run": {
+    "label": "red_probe-64d1d369a594bd0a73fd",
+    "exit_code": 1,
+    "execution_status": "failed"
+  },
+  "language": "typescript",
+  "cause": "tooling",
+  "window_probe": {
+    "verdict": "incomplete",
+    "input_hash": "0d3ca07d0c0392f49331edc0f8c8cc4b6e0aaf02ebb01dc253d278c22eee94c4",
+    "expected_location": "tests/api/cart/add-to-cart.spec.ts:109",
+    "actual_location": null,
+    "expected_reason": "probe-LOCAL-1_TC_010 repeat add of the same book sums quantities in one line invert: expect((await actor.addToCart(b.id, 1)).status, 'setup: first add accepted').toBeLessThan(300); fires as /^(?:Error: )?expect\\(received\\)(?:\\.(?:resolves|rejects))?\\.not\\.to[A-Z]\\w*\\(|^Error: (?:Timed out \\d+ms waiting for )?expect\\((?:locator|page|response)\\)\\.not\\.to[A-Z]\\w*\\(|^(?:AssertionError: )?expected .+ not to /",
+    "actual_reason": null,
+    "failure_kind": "assertion",
+    "mutation_kind": "assertion",
+    "proof_level": "live",
+    "obligation_ids": [
+      "OB-7"
+    ],
+    "obligation_hash": "1703329f7de66971cd13ce68470f3e51eb2986d96ad7600e0b390ac49eac6cb6",
+    "defect_location": "MyBooks/src/lib/services/cartService.ts:53",
+    "assertion_id": "tests/api/cart/add-to-cart.spec.ts:114",
+    "evidence_ref": "evidence/runs/64d1d369a594bd0a73fd/red_probe-64d1d369a594bd0a73fd-20261103-004307.json"
+  },
+  "record": "work/probes/LOCAL-1_TC_010-repeat-add-of-the-same-book-sums-quantities-in-one-line.json",
+  "receipt": null,
+  "receipt_missing": []
+}

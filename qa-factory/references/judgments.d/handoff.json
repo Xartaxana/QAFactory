@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "subject": "handoff",
+  "note": "The questions the handoff contracts ask. They exist because the most expensive thing the factory did to itself on TP1-13797 was not testing: at S5 alone, twenty-three resumed role sessions ($14.15) and nineteen conductor sessions ($5.97) went on the form, the vocabulary and receipts. Every question here replaces waking a model that holds 200k tokens of context in order to change one word. None of them lifts a block, passes a gate, authorises a write, or answers what belongs to a person. The mapping of a word onto a closed list is NOT a new question here: `form_row_state`, `form_digest_verdict` and `form_unresolved_reason` already ask it and are calibrated; `handoff_check.py` is the call site they never had.",
+  "judgments": [
+    {
+      "id": "conductor_resolution",
+      "stage": "S0-S9",
+      "script": "handoff_help.py",
+      "type": "choice",
+      "replaces": "the conductor session that reads a role's filling problem and decides what kind of problem it is (fifty-four of them on TP1-13797, about $0.45 each)",
+      "undecided": "the conductor reads the same request file and answers it, exactly as before this question existed",
+      "instructions": "A role of a test factory could not fill one field of its handover form and asked for help. `field` is the field, `problem` is what it could not say, `refusal` is what the factory's check told it verbatim, `tried` is what it already attempted, and `candidate` is the value it would have written if it had to. What kind of problem is this?",
+      "criteria": {
+        "fill": "The answer already exists in the contract, the vocabulary or an artifact on disk, and the role did not find it.",
+        "correct_the_work": "The form is right and the work is not: something must be done or produced before this field can be filled honestly.",
+        "ask_the_person": "Only a person can settle it: it is a decision about scope, risk, money, their stand or their data.",
+        "change_the_contract": "The role is right and the form is wrong: the value it needs does not exist in the contract or the vocabulary."
+      },
+      "thresholds": {
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "finding_is_factory_tool",
+      "stage": "S4-S7",
+      "script": "handoff_check.py",
+      "type": "noul",
+      "replaces": "the repair round an author spends on a finding it cannot fix, because the defect is in a factory script and not in the test",
+      "undecided": "the finding travels to the author as today, and the author may answer that it is not its to fix",
+      "instructions": "A reviewer in a test factory wrote the finding in `finding` about the work in `subject`. Does the finding describe a defect of the FACTORY'S OWN TOOLING - a probe, a detector, a checker, a script that refused or misjudged - rather than a defect of the work under review? Answer true only when the author of the work could not remove the finding by changing the work itself.",
+      "thresholds": {
+        "true_at": 0.85,
+        "false_at": 0.15
+      }
+    }
+  ]
+}

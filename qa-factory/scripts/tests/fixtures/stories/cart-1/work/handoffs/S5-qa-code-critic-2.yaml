@@ -1,0 +1,143 @@
+# S5: the code critic hands the window back — to the automator for a repair round, or on to
+# the stage's close. The same file serves both: `verdict` decides which.
+#
+# It is the mirror of s5-automator-to-critic.yaml: what the critic read, what it proved, what
+# it could not prove and why, and — when it sends the window back — what exactly the author
+# must change. A finding without a `cause` and a file is not a finding.
+# Fill: write your fields as "path: value" lines to work/handoffs/S5-qa-code-critic-2.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S5-qa-code-critic-2.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s5-critic-to-automator
+stage: S5
+from_role: qa-code-critic
+to_role: qa-automator            # on `approved` the same file closes the window instead
+
+inputs:
+  - path: work/handoffs/<the automator's dispatch>.yaml
+    what: the author's handoff for this window
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances under review
+    required: true
+  - path: work/test-cases/<area>/<case>.md
+    what: every case in scope at its pinned version
+    required: true
+
+# Proof that the review read what it was handed. One line per entry of the author's
+# `inputs`, with the version or hash it read — a review of a file that has since changed is
+# not a review of this window.
+inputs_read:
+  - path: <path exactly as the author listed it>
+    version: <pinned case version, content hash, or the file's sha256>
+
+header:
+  role: qa-code-critic
+  stage: S5
+  window: CART-1_TC_001,CART-1_TC_002,CART-1_TC_003,CART-1_TC_004
+  verdict: concerns
+
+# The review's own conclusion about the window.
+review:
+  outcome: unverified
+  findings_file: work/test-code/critic-findings.md     # required; the window is not receipted without it
+  receipt_ref: work/windows/S5-qa-code-critic-2.json
+  rounds_used: 0
+
+# One row per instance reviewed. `state` from vocabulary.row_states, allowed for
+# qa-code-critic: approved, approved_with_fixes, rejected, unverified, review_skipped.
+scope:
+  - id: "@api @regression CART-1_TC_001 add unknown or sold-out book rejected"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_002 add beyond stock rejected"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_003 repeat add accumulates"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+  - id: "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]"
+    state: unverified
+    reason: static review clean; probe refused (tooling), no live receipt
+
+# Every probe this review ran, by code. A probe that did not conclude is a `tooling` finding,
+# never a verdict about the test.
+probes:
+  # The stand the probes ran on: the same record the author handed over, re-read. A probe on
+  # another build is not a probe of this window.
+  runtime_provenance: work/requests/s5-2-initial.json
+  records:
+  - instance: "@api @regression CART-1_TC_001 add unknown or sold-out book rejected"
+    verdict: not_executed  # incomplete: the tool could not read the run well enough to judge the test, a tooling finding, never a verdict on the test
+    record: work/probes/<instance>.json
+    note: "tooling: probe_by_code refused, no selector_args/report_test_id in manifest; no probe ran for any of the 12 instances"
+
+# What the author must change, when the outcome sends the window back.
+#
+# A refusal that does not say what the reviewer expects is not a refusal, it is a riddle: the
+# author then guesses, and every guess is a round (REF-1: the digest form refused four
+# handoffs without ever naming the words it wanted). So every finding carries, beside the
+# problem, the EXPECTED state in the reviewer's own words — what the code should do, or what
+# the artifact should say — and, where one exists, the command that shows the author whether
+# it is satisfied. `fix` is the action; `expected` is the condition the author can check
+# against; `check` is how to check it without asking the reviewer again.
+findings:
+  - id: <F-n>
+    file: <repo-relative path>
+    line: <line or range>
+    problem: <what is wrong, one sentence>
+    expected: "<what the reviewer expects to see instead, concretely - the assertion, the value, the shape>"
+    fix: <what to do, one sentence>
+    check: <the command or the file+line that shows the author it is satisfied, or a dash when none exists>
+    cause: <one of vocabulary.repair_causes - test_defect|mechanical|environment|tooling|reviewer_error>
+    blocking: <true|false>
+
+# A finding whose `cause` is `tooling` or `environment` is NOT the author's to fix and is not a
+# round: the author cannot repair a factory script. It belongs in `unverified` below, with
+# `would_settle_it`, and in the factory backlog. On REF-1 nine of the code critic's twelve
+# findings declared `cause: tooling` - the same probe-tool scope, handed back to the author across
+# four consecutive windows, and seven of them reached the person's ledger as `review_rejected`,
+# which blames the work for a defect of the tool.
+tooling_findings:
+  - id: <F-n>
+    tool: <the factory script that refused or misjudged>
+    backlog_row: <the factory-backlog id, or `-` when it is not yet written>
+    instances: "<the instance ids it leaves unproven>"
+
+# What the review could not settle, and what would settle it. This is the honest answer that
+# had no word before: a probe the tool cannot run is a gap of the factory, not of the test.
+unverified:
+  - id: <instance id>
+    why: "<one sentence: what stopped the proof>"
+    expected: <what the review wanted to see, so the author knows whether it can supply it>
+    would_settle_it: <what evidence or tool would>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

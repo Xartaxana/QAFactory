@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "receipt_kind": "s5_review_window",
+  "immutable": true,
+  "reviewer_dispatch_id": "S5-qa-code-critic-13",
+  "author_dispatch_id": "S5-qa-automator-13",
+  "input_hash": "162033d5429dcc957cc480cbf64624c5266ada15931debb285b2e35a061ce45a",
+  "scope_instances": {
+    "LOCAL-1_TC_020": [
+      "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist"
+    ],
+    "LOCAL-1_TC_021": [
+      "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items"
+    ]
+  },
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist",
+      "input_hash": "9a813e242deb4ea8a85ac2cdff0a94ae1be7d63d82468953bbb37425d6e893c8",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-21"
+        }
+      ],
+      "obligation_ids": [
+        "OB-21"
+      ],
+      "obligation_hash": "d5a606d042d1aed6b1d9ade57c6582b26d81c109dc6945fc5d53e0f15776112d",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:470",
+      "defect_location": "MyBooks/src/components/pages/WishlistPage.tsx:47",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_020",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "9a813e242deb4ea8a85ac2cdff0a94ae1be7d63d82468953bbb37425d6e893c8"
+      },
+      "instance_identity": {
+        "instance_content_sha": "45aec0c0a7ee428d6d9c7f0b6fdbf5ef2222eb37bf571aa0d209f712847efed9",
+        "instance_code_sha": "2c6de7a99eec336f3894bdf34b6ab5e25204094b86ef3778bb80350cbfb6e721",
+        "job_id": "849fa6cda0e1aa8d4bb7"
+      },
+      "outcome": "failed",
+      "execution_fingerprint": "1ff35f69518e2def88167347bcff67e297d1e67d109e4a292058f74a7051790d",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T043643637122Z-849fa6cda0e1aa8d4bb7.json",
+          "sha256": "faf15a6d733805ffc4f4cd6722cebb1fe3268d5fde68d07f25665401f0a653e1"
+        },
+        {
+          "path": "evidence/runs/849fa6cda0e1aa8d4bb7/initial-849fa6cda0e1aa8d4bb7-20261102-053614.junit.xml",
+          "sha256": "e473358a22c5c1dd1fbdac87a193cc59b8519c381a13e6cb56b99c58bf43125a"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "45aec0c0a7ee428d6d9c7f0b6fdbf5ef2222eb37bf571aa0d209f712847efed9",
+        "instance_code_sha": "2c6de7a99eec336f3894bdf34b6ab5e25204094b86ef3778bb80350cbfb6e721",
+        "attempt_id": "849fa6cda0e1aa8d4bb7"
+      },
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_020",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_020 moving a wishlist item to the cart adds it and removes it from the wishlist"
+            ],
+            "thens": [
+              1
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:470"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+      "input_hash": "9a813e242deb4ea8a85ac2cdff0a94ae1be7d63d82468953bbb37425d6e893c8",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-22"
+        }
+      ],
+      "obligation_ids": [
+        "OB-22"
+      ],
+      "obligation_hash": "5ba1c41fe860289540a3e947c3499a05b30922d6b01a457f6c28cdd25359c0cd",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:515",
+      "defect_location": "MyBooks/src/lib/services/cartService.ts:118",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_021",
+      "review": {
+        "verdict": "unverified",
+        "input_hash": "9a813e242deb4ea8a85ac2cdff0a94ae1be7d63d82468953bbb37425d6e893c8"
+      },
+      "instance_identity": {
+        "instance_content_sha": "af1bde77a77409062ec0d2cc2dca2c8187db153e8d4121deb989e7731a23fb08",
+        "instance_code_sha": "c9def28f8e1a09f0aa81f02fcb8a1ed7cdd28ea11fa3e050274eac71f7a67460",
+        "job_id": "6c78988a18cad94ba2a6"
+      },
+      "outcome": "passed",
+      "execution_fingerprint": "1ff35f69518e2def88167347bcff67e297d1e67d109e4a292058f74a7051790d",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T043727647296Z-6c78988a18cad94ba2a6.json",
+          "sha256": "18e97c278c30b32cc4ea60c77e6fc7942e2d1c76af67fac53b60bd29dd9c10e1"
+        },
+        {
+          "path": "evidence/runs/6c78988a18cad94ba2a6/initial-6c78988a18cad94ba2a6-20261102-053713.junit.xml",
+          "sha256": "b8bc757eb58b16e90e8426e739dca1c9e8140fc51d7ae89d2d15ac0019472a40"
+        }
+      ],
+      "run_identity": {
+        "instance_content_sha": "af1bde77a77409062ec0d2cc2dca2c8187db153e8d4121deb989e7731a23fb08",
+        "instance_code_sha": "c9def28f8e1a09f0aa81f02fcb8a1ed7cdd28ea11fa3e050274eac71f7a67460",
+        "attempt_id": "6c78988a18cad94ba2a6"
+      },
+      "probe_gap": {
+        "verdict": "incomplete",
+        "record": "work/probes/cart.spec.@regression-LOCAL-1_TC_021-a-guest-cart-is-merged-at-sign-in-without-losing-items.json",
+        "why": "the run failed at the mutated statement, but its message (`cart.spec.ts:478:1 @regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items`) does not match the failure this inverted form must show (assertion_probes.typescript, pair T2): the library's wording differs from the ro…",
+        "named_by": "tooling:typescript",
+        "words": "Da (mozhno ostavit TypeScript-testy bez mutatsionnoi proby: instrument prob ne chitaet TypeScript; v otchete pometit zelenye testy kak ne proverennye mutatsiei)",
+        "at": "2026-11-02T01:49:32+00:00"
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:515"
+      ]
+    }
+  ],
+  "receipt_hash": "2f8aeec02141d6df82b8513452d57f3587f3304a381005b7bfb3baac364680ad"
+}

@@ -1,0 +1,56 @@
+{
+ "empty": {
+  "status": 400,
+  "body": {
+   "error": "Cart is empty",
+   "code": "ORDER_REJECTED"
+  }
+ },
+ "add": {
+  "status": 201,
+  "body": {
+   "id": 66,
+   "bookId": 3,
+   "quantity": 2,
+   "sessionId": null,
+   "userId": 2,
+   "createdAt": "2026-10-31T12:06:52.364Z",
+   "updatedAt": "2026-10-31T12:06:52.364Z"
+  }
+ },
+ "cart": {
+  "status": 200,
+  "body": [
+   {
+    "id": 66,
+    "bookId": 3,
+    "quantity": 2,
+    "sessionId": null,
+    "userId": 2,
+    "createdAt": "2026-10-31T12:06:52.364Z",
+    "updatedAt": "2026-10-31T12:06:52.364Z"
+   }
+  ]
+ },
+ "quote": {
+  "status": 200,
+  "body": {
+   "shippingMethod": "STANDARD",
+   "promoCode": null,
+   "subtotal": 27.98,
+   "discount": 0,
+   "shipping": 4.99,
+   "tax": 2.24,
+   "total": 35.21
+  }
+ },
+ "quote_keys": [
+  "shippingMethod",
+  "promoCode",
+  "subtotal",
+  "discount",
+  "shipping",
+  "tax",
+  "total"
+ ]
+}

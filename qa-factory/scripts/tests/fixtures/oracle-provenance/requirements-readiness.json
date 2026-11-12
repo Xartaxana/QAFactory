@@ -1,0 +1,65 @@
+{
+  "verdict": "ready",
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "Which two revisions does the visual diff compare?",
+      "source_says": [
+        {
+          "quote": "Exactly two revisions are compared.",
+          "where": "TP1-14482 AC8"
+        },
+        {
+          "quote": "canvas = selected history entry, baseline = current editor YAML",
+          "where": "testproject1-ui!1881 prepareVisualDiffCanvas.ts:64, WorkflowVisualVersionHistoryPopup.tsx"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "The selected saved revision against the current editor buffer, which may hold unsaved edits.",
+          "from": "code",
+          "if_chosen": "Then-steps compare the selected revision with the editor text; an unsaved-edit case is written and AC8 is read as selected vs current."
+        },
+        {
+          "reading": "Two saved revisions chosen by the user.",
+          "from": "acceptance_criteria:AC-8",
+          "if_chosen": "The code behavior is reported as an APP_BUG proposal and the compare cases are held until a two-revision picker exists."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q7",
+      "question": "Which status code must PUT /v1/workflows/{id} return for a body that breaks the guardrail check and the MCP/autonomous check at once?",
+      "source_says": [
+        {
+          "quote": "returns the same results and error codes for every invalid input as before",
+          "where": "register R-19 (derived from the diff alone, no AC)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (400).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (400); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one - unknown; say what it was.",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is what you say the behaviour was before the change; the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown",
+        "where": "the base revision is not in the diff hunk: impl-diff-testproject1-backend.txt:1015 cuts the status of the re-raise"
+      },
+      "now": {
+        "value": "400",
+        "where": "observed by the S5 run, automation-manifest.json:1627"
+      }
+    }
+  ]
+}

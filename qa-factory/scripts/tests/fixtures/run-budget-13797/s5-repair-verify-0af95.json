@@ -1,0 +1,367 @@
+{
+ "job_id": "1916e40a3ed7d05c490d",
+ "idempotency_key": "S5-qa-automator-2:repair_verify:TC-002+TC-003:87cdaab9d40f",
+ "request_digest": "1916e40a3ed7d05c490d869d1c91304e00e59850c4437122d4a31806e617c282",
+ "status": "completed",
+ "created_at": "2026-09-27T03:50:08+00:00",
+ "request": {
+  "task": "TP1-13797",
+  "revision": "57",
+  "dispatch_id": "S5-qa-automator-2",
+  "profile_id": "api",
+  "purpose": "repair_verify",
+  "reason": "S5-qa-automator-2: --mine TC-002,TC-003 (repair_verify)",
+  "idempotency_key": "S5-qa-automator-2:repair_verify:TC-002+TC-003:87cdaab9d40f",
+  "input_fingerprint": "2a73b902292616cd19ed275784a4981efb887daa7c23b02fc9cb19a5966d2d8b",
+  "fingerprint_components": {
+   "source_sha": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "test_content_sha": "c520f46ecc3e9130f4ba8a7c47589998afe21a1ca76e7afb75c1146b7cc52bea",
+   "config_sha": "aa440f66fabd3ac0231530dd44e6c7e13779d96574603af387328927099f19cc",
+   "dependency_sha": "0e2c1736ef1ace4414528c4e4db9474ee31a5aea69f2c063aff0d6a7f3da8875",
+   "runtime_sha": "0d2a407544e4e89f7b1df42b8aea5abee0115ce4f1cfeb528a8dbea362e002fb",
+   "policy_revision": "unknown"
+  },
+  "fingerprint_files": [
+   {
+    "path": "<root>/testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py",
+    "sha256": "e3bced7e49135219d6a660633e29a69d70466b9e2eabc319313d917d08947c14",
+    "kind": "test_files"
+   },
+   {
+    "path": "<root>/testproject1_test_harness/tests/conftest.py",
+    "sha256": "c55dfa5f861e4f638afb208ea81c055255c132a7d49cae5dab4534537a79a92c",
+    "kind": "helper_files"
+   },
+   {
+    "path": "<root>/testproject1_test_harness/tests/webhook/conftest.py",
+    "sha256": "a4faa0fc1c8ddbf322d1e437c722fce00d109c0440bbdc893be83086cad93638",
+    "kind": "helper_files"
+   },
+   {
+    "path": "<root>/qa-factory/config.json",
+    "sha256": "a7b4eab2940504ac61965989c5aefb7806dd449a6650781a7b5fbe68ffedd9d2",
+    "kind": "config_files"
+   },
+   {
+    "path": "<root>/pyproject.toml",
+    "sha256": "93316b6a223648584e8917c170771aa750e1b74b3683261a2f9aa3a163a6a787",
+    "kind": "dependency_files"
+   },
+   {
+    "path": "<root>/poetry.lock",
+    "sha256": "4073d098cdaf4142afdc0002386978687849e17349256e598d0c1a274e66143c",
+    "kind": "dependency_files"
+   }
+  ],
+  "freshness": "fresh",
+  "remaining_budget": 1,
+  "selected_instance_ids": [
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "test_json_path_filter_at_length_cap_is_accepted",
+   "test_matching_payload_triggers_workflow[exact-match]",
+   "test_matching_payload_triggers_workflow[falsy-match]"
+  ],
+  "current_scope_instance_ids": [
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "test_json_path_filter_at_length_cap_is_accepted",
+   "test_matching_payload_triggers_workflow[exact-match]",
+   "test_matching_payload_triggers_workflow[falsy-match]",
+   "test_json_path_filter_expression_persisted_unchanged",
+   "test_non_matching_payload_does_not_trigger_and_acks_filtered"
+  ],
+  "runtime_required": true,
+  "runtime_probe": {
+   "argv": [
+    "<python>",
+    "<plugin>/scripts/runtime_probe.py",
+    "--profile",
+    "api",
+    "--environment",
+    "localhost",
+    "--container",
+    "testproject1-dev-fresh-testproject1-1",
+    "--checkout",
+    "../../testproject1",
+    "--app-root",
+    "/app"
+   ],
+   "cwd": "<root>",
+   "timeout_s": 120
+  },
+  "runtime_provenance": {
+   "profile_id": "api",
+   "timestamp": "2026-09-27T03:50:04+00:00",
+   "environment_id": "localhost",
+   "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+   "evidence_refs": [
+    "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T024630Z.json"
+   ],
+   "provenance": {
+    "technical_verification": true,
+    "source_linkage": "verified_content",
+    "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "verified_source_revisions": [
+     "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+    ]
+   },
+   "result": "matched",
+   "comparisons": [
+    {
+     "file": "src/testproject1/service/settings/settings_request_validator.py",
+     "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+     "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+     "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+     "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook.py",
+     "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+     "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+     "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+     "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+    }
+   ],
+   "container": "testproject1-dev-fresh-testproject1-1",
+   "checkout": "..\\..\\testproject1"
+  },
+  "command": {
+   "argv": [
+    "poetry",
+    "run",
+    "pytest",
+    "--reruns",
+    "2",
+    "--ui-headless"
+   ],
+   "cwd": "<root>",
+   "scope": "selected",
+   "reporter": "pytest",
+   "selector_contract_verified": true,
+   "selector_args": {
+    "test_invalid_json_path_filter_rejected_at_save_time[malformed]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]"
+    ],
+    "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]"
+    ],
+    "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]"
+    ],
+    "test_invalid_json_path_filter_rejected_at_save_time[length-501]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]"
+    ],
+    "test_json_path_filter_at_length_cap_is_accepted": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted"
+    ],
+    "test_matching_payload_triggers_workflow[exact-match]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]"
+    ],
+    "test_matching_payload_triggers_workflow[falsy-match]": [
+     "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]"
+    ]
+   }
+  },
+  "instance_contracts": {
+   "test_invalid_json_path_filter_rejected_at_save_time[malformed]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS2-1"
+    ],
+    "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+    "instance_content_scope": "function"
+   },
+   "test_invalid_json_path_filter_rejected_at_save_time[regex-operator]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS2-2"
+    ],
+    "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+    "instance_content_scope": "function"
+   },
+   "test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS2-3"
+    ],
+    "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+    "instance_content_scope": "function"
+   },
+   "test_invalid_json_path_filter_rejected_at_save_time[length-501]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "instance_content_sha": "5dfa92c0f4cb082f45e66ef0975f89b124e0acbf9934f40d5bcf44068084d640",
+    "instance_content_scope": "function"
+   },
+   "test_json_path_filter_at_length_cap_is_accepted": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-002",
+      "version": "cv_0f6f5d53577968fa9b5e"
+     }
+    ],
+    "instance_content_sha": "a8e756892f2cf39ea0101f6bda0f875751c52ae41e495bf0f120e8018b4393dc",
+    "instance_content_scope": "function"
+   },
+   "test_matching_payload_triggers_workflow[exact-match]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-003",
+      "version": "cv_84047d650b7d540c409b"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS3-1"
+    ],
+    "instance_content_sha": "b626049000167358363e87fefad7e07965d88929e53f9e83c0bd6b5ffb84fe7b",
+    "instance_content_scope": "function"
+   },
+   "test_matching_payload_triggers_workflow[falsy-match]": {
+    "report_test_id": "testproject1_test_harness.tests.webhook.test_github_webhook_json_path_filter.TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]",
+    "parameters": {},
+    "case_version_links": [
+     {
+      "case_id": "TC-003",
+      "version": "cv_84047d650b7d540c409b"
+     }
+    ],
+    "obligation_ids": [
+     "OBL-TS3-1"
+    ],
+    "instance_content_sha": "b626049000167358363e87fefad7e07965d88929e53f9e83c0bd6b5ffb84fe7b",
+    "instance_content_scope": "function"
+   }
+  },
+  "execution": {
+   "schema_version": 1,
+   "selection": {
+    "reason": "failed_or_invalidated",
+    "evidence_refs": [
+     "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\30a9a409aac235c157f7\\repair_verify-30a9a409aac235c157f7-20260927-044848.json"
+    ]
+   },
+   "reporter": {
+    "format": "pytest",
+    "path_template": "{report_path}"
+   }
+  },
+  "built_by": {
+   "tool": "run_suite.py --mine",
+   "cases": [
+    "TC-002",
+    "TC-003"
+   ]
+  },
+  "resolved_argv": [
+   "poetry",
+   "run",
+   "pytest",
+   "--reruns",
+   "2",
+   "--ui-headless",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[malformed]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[regex-operator]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[unsupported-shape]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_invalid_json_path_filter_rejected_at_save_time[length-501]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_json_path_filter_at_length_cap_is_accepted",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[exact-match]",
+   "testproject1_test_harness/tests/webhook/test_github_webhook_json_path_filter.py::TestGitHubWebhookJsonPathFilter::test_matching_payload_triggers_workflow[falsy-match]"
+  ],
+  "runtime_probe_before": {
+   "profile_id": "api",
+   "timestamp": "2026-09-27T03:50:05+00:00",
+   "environment_id": "localhost",
+   "expected_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+   "observed_runtime_identity": "verified_content:d3efd0bbb77a|2294e6cf3dd8|c072c2cd6e8f|f1f58898a58a",
+   "evidence_refs": [
+    "qa-factory/artifacts/TP1-13797/evidence/runtime-provenance-api-20260927T035005Z.json"
+   ],
+   "provenance": {
+    "technical_verification": true,
+    "source_linkage": "verified_content",
+    "deployed_source_revision": "92f6999018d7119964d28f0fac99eb9a40ca37cd",
+    "verified_source_revisions": [
+     "92f6999018d7119964d28f0fac99eb9a40ca37cd"
+    ]
+   },
+   "result": "matched",
+   "comparisons": [
+    {
+     "file": "src/testproject1/service/settings/settings_request_validator.py",
+     "container_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf",
+     "local_sha256": "d3efd0bbb77a42b9c4ab3408b24128a4cbf2ac7822596dd38a66fb6a54a72fbf"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/github_webhook_security.py",
+     "container_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b",
+     "local_sha256": "2294e6cf3dd8c2a3646bd443adb4ca24ef41884d41baecf64a7c7fd2185ee65b"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook.py",
+     "container_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e",
+     "local_sha256": "c072c2cd6e8f26f9be633d2eb74f2d9bfab65e3b52e353ecb2bde878e269055e"
+    },
+    {
+     "file": "src/testproject1/triggers/bindings/webhook_json_path_filter.py",
+     "container_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe",
+     "local_sha256": "f1f58898a58a14063abe1f47f212fae7bd16deace9bcdced718ae78424a78abe"
+    }
+   ],
+   "container": "testproject1-dev-fresh-testproject1-1",
+   "checkout": "..\\..\\testproject1"
+  }
+ },
+ "updated_at": "2026-09-27T03:50:39+00:00",
+ "runner_pid": 27844,
+ "runner_started_at": "2026-09-27T03:49:35.528044+00:00",
+ "child_pid": 3368,
+ "child_started_at": "2026-09-27T03:50:12.227301+00:00",
+ "execution_status": "passed",
+ "freshness": "fresh",
+ "summary": "qa-factory\\artifacts\\TP1-13797\\evidence\\runs\\1916e40a3ed7d05c490d\\repair_verify-1916e40a3ed7d05c490d-20260927-055012.json",
+ "run_block": "qa-factory\\artifacts\\TP1-13797\\work\\run-blocks\\20260927T035039972513Z-1916e40a3ed7d05c490d.json",
+ "baseline_receipt": null
+}

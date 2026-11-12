@@ -1,0 +1,367 @@
+{
+  "schema_version": 2,
+  "task_id": "TP1-12586",
+  "links": [
+    {
+      "case_id": "TC-001",
+      "version": "cv_9342b71470e02c52cfaa",
+      "content_hash": "9342b71470e02c52cfaae06b81f3aba762a95a7c1517115bbff1e0cc974a9de3",
+      "path": "state/case-versions/TC-001/cv_9342b71470e02c52cfaa.md",
+      "store_provenance": {
+        "content_hash": "9342b71470e02c52cfaae06b81f3aba762a95a7c1517115bbff1e0cc974a9de3",
+        "source_name": "TC-001.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-001.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-002",
+      "version": "cv_4f8396942791f9f06ae2",
+      "content_hash": "4f8396942791f9f06ae239a852e8107e3a017cef0325bbd4df375a658df16a1c",
+      "path": "state/case-versions/TC-002/cv_4f8396942791f9f06ae2.md",
+      "store_provenance": {
+        "content_hash": "4f8396942791f9f06ae239a852e8107e3a017cef0325bbd4df375a658df16a1c",
+        "source_name": "TC-002.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-002.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-003",
+      "version": "cv_cfd2444f5f82e27f413f",
+      "content_hash": "cfd2444f5f82e27f413f6c700e4877248a439093f556179b3be2e223232e3c03",
+      "path": "state/case-versions/TC-003/cv_cfd2444f5f82e27f413f.md",
+      "store_provenance": {
+        "content_hash": "cfd2444f5f82e27f413f6c700e4877248a439093f556179b3be2e223232e3c03",
+        "source_name": "TC-003.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-003.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-004",
+      "version": "cv_05e9226b163aa18ce90b",
+      "content_hash": "05e9226b163aa18ce90b1923ecd4984b3f0e96ddd7f655f61865a3c51a0c63ae",
+      "path": "state/case-versions/TC-004/cv_05e9226b163aa18ce90b.md",
+      "store_provenance": {
+        "content_hash": "05e9226b163aa18ce90b1923ecd4984b3f0e96ddd7f655f61865a3c51a0c63ae",
+        "source_name": "TC-004.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-004.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-005",
+      "version": "cv_3477344988c62adff137",
+      "content_hash": "3477344988c62adff137b0ae5e3a4b1c64955edd91b5aec212fa1b23e26e70fc",
+      "path": "state/case-versions/TC-005/cv_3477344988c62adff137.md",
+      "store_provenance": {
+        "content_hash": "3477344988c62adff137b0ae5e3a4b1c64955edd91b5aec212fa1b23e26e70fc",
+        "source_name": "TC-005.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-005.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-006",
+      "version": "cv_d02cb67b0ccbba51273d",
+      "content_hash": "d02cb67b0ccbba51273dcdb976da94131d0c88c3064aced20cee09b977191b46",
+      "path": "state/case-versions/TC-006/cv_d02cb67b0ccbba51273d.md",
+      "store_provenance": {
+        "content_hash": "d02cb67b0ccbba51273dcdb976da94131d0c88c3064aced20cee09b977191b46",
+        "source_name": "TC-006.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-006.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-007",
+      "version": "cv_3028e7f1e13e647f273e",
+      "content_hash": "3028e7f1e13e647f273ec03dd7fa676d026c753648c452fd79c15b02ebf94675",
+      "path": "state/case-versions/TC-007/cv_3028e7f1e13e647f273e.md",
+      "store_provenance": {
+        "content_hash": "3028e7f1e13e647f273ec03dd7fa676d026c753648c452fd79c15b02ebf94675",
+        "source_name": "TC-007.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-007.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-008",
+      "version": "cv_3377980656aa15bf5e12",
+      "content_hash": "3377980656aa15bf5e12dea7032729395af62be4c0a98f69b756e160cddb722d",
+      "path": "state/case-versions/TC-008/cv_3377980656aa15bf5e12.md",
+      "store_provenance": {
+        "content_hash": "3377980656aa15bf5e12dea7032729395af62be4c0a98f69b756e160cddb722d",
+        "source_name": "TC-008.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-008.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-009",
+      "version": "cv_7f7ee6997a3f5c3bbd78",
+      "content_hash": "7f7ee6997a3f5c3bbd780e71f5bbb1b2448a1b8cb634b6b1530040b4a66121c3",
+      "path": "state/case-versions/TC-009/cv_7f7ee6997a3f5c3bbd78.md",
+      "store_provenance": {
+        "content_hash": "7f7ee6997a3f5c3bbd780e71f5bbb1b2448a1b8cb634b6b1530040b4a66121c3",
+        "source_name": "TC-009.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-009.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-010",
+      "version": "cv_6666ef82ab42c3fa556e",
+      "content_hash": "6666ef82ab42c3fa556e27653f9d2d41e3e6cdcf5772bf31f9336e161f0b16d1",
+      "path": "state/case-versions/TC-010/cv_6666ef82ab42c3fa556e.md",
+      "store_provenance": {
+        "content_hash": "6666ef82ab42c3fa556e27653f9d2d41e3e6cdcf5772bf31f9336e161f0b16d1",
+        "source_name": "TC-010.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-010.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-011",
+      "version": "cv_916ebc3a0c8b97fbf570",
+      "content_hash": "916ebc3a0c8b97fbf570d10d7fe5c0423c39d6c1646265b05e3b0ddd05e289e4",
+      "path": "state/case-versions/TC-011/cv_916ebc3a0c8b97fbf570.md",
+      "store_provenance": {
+        "content_hash": "916ebc3a0c8b97fbf570d10d7fe5c0423c39d6c1646265b05e3b0ddd05e289e4",
+        "source_name": "TC-011.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-011.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-012",
+      "version": "cv_c7d135e8f465cd4564a2",
+      "content_hash": "c7d135e8f465cd4564a292741e52531afb2b7682d558cf39af18fae593c4e4d3",
+      "path": "state/case-versions/TC-012/cv_c7d135e8f465cd4564a2.md",
+      "store_provenance": {
+        "content_hash": "c7d135e8f465cd4564a292741e52531afb2b7682d558cf39af18fae593c4e4d3",
+        "source_name": "TC-012.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-012.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-014",
+      "version": "cv_50e6790808f03ab1daa4",
+      "content_hash": "50e6790808f03ab1daa4a1c63efcf6c7f3d9bc0c05e815977f0a58ab59003911",
+      "path": "state/case-versions/TC-014/cv_50e6790808f03ab1daa4.md",
+      "store_provenance": {
+        "content_hash": "50e6790808f03ab1daa4a1c63efcf6c7f3d9bc0c05e815977f0a58ab59003911",
+        "source_name": "TC-014.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-014.md"
+      },
+      "area": "integrations"
+    }
+  ],
+  "history": [
+    {
+      "case_id": "TC-001",
+      "version": "cv_5ed24b22edf429064e81",
+      "content_hash": "5ed24b22edf429064e8145016f7d2423e7e4b26df75a9fb15d1b981941ba25cb",
+      "path": "state/case-versions/TC-001/cv_5ed24b22edf429064e81.md",
+      "store_provenance": {
+        "content_hash": "5ed24b22edf429064e8145016f7d2423e7e4b26df75a9fb15d1b981941ba25cb",
+        "source_name": "TC-001.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-001.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-002",
+      "version": "cv_4f8396942791f9f06ae2",
+      "content_hash": "4f8396942791f9f06ae239a852e8107e3a017cef0325bbd4df375a658df16a1c",
+      "path": "state/case-versions/TC-002/cv_4f8396942791f9f06ae2.md",
+      "store_provenance": {
+        "content_hash": "4f8396942791f9f06ae239a852e8107e3a017cef0325bbd4df375a658df16a1c",
+        "source_name": "TC-002.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-002.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-003",
+      "version": "cv_cfd2444f5f82e27f413f",
+      "content_hash": "cfd2444f5f82e27f413f6c700e4877248a439093f556179b3be2e223232e3c03",
+      "path": "state/case-versions/TC-003/cv_cfd2444f5f82e27f413f.md",
+      "store_provenance": {
+        "content_hash": "cfd2444f5f82e27f413f6c700e4877248a439093f556179b3be2e223232e3c03",
+        "source_name": "TC-003.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-003.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-004",
+      "version": "cv_b6de5c01ca99c0958cac",
+      "content_hash": "b6de5c01ca99c0958cac08a2bba8147765a284edac26b1b81ae1f5f0d61b9503",
+      "path": "state/case-versions/TC-004/cv_b6de5c01ca99c0958cac.md",
+      "store_provenance": {
+        "content_hash": "b6de5c01ca99c0958cac08a2bba8147765a284edac26b1b81ae1f5f0d61b9503",
+        "source_name": "TC-004.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-004.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-005",
+      "version": "cv_3477344988c62adff137",
+      "content_hash": "3477344988c62adff137b0ae5e3a4b1c64955edd91b5aec212fa1b23e26e70fc",
+      "path": "state/case-versions/TC-005/cv_3477344988c62adff137.md",
+      "store_provenance": {
+        "content_hash": "3477344988c62adff137b0ae5e3a4b1c64955edd91b5aec212fa1b23e26e70fc",
+        "source_name": "TC-005.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-005.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-006",
+      "version": "cv_d02cb67b0ccbba51273d",
+      "content_hash": "d02cb67b0ccbba51273dcdb976da94131d0c88c3064aced20cee09b977191b46",
+      "path": "state/case-versions/TC-006/cv_d02cb67b0ccbba51273d.md",
+      "store_provenance": {
+        "content_hash": "d02cb67b0ccbba51273dcdb976da94131d0c88c3064aced20cee09b977191b46",
+        "source_name": "TC-006.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-006.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-007",
+      "version": "cv_3028e7f1e13e647f273e",
+      "content_hash": "3028e7f1e13e647f273ec03dd7fa676d026c753648c452fd79c15b02ebf94675",
+      "path": "state/case-versions/TC-007/cv_3028e7f1e13e647f273e.md",
+      "store_provenance": {
+        "content_hash": "3028e7f1e13e647f273ec03dd7fa676d026c753648c452fd79c15b02ebf94675",
+        "source_name": "TC-007.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-007.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-008",
+      "version": "cv_3377980656aa15bf5e12",
+      "content_hash": "3377980656aa15bf5e12dea7032729395af62be4c0a98f69b756e160cddb722d",
+      "path": "state/case-versions/TC-008/cv_3377980656aa15bf5e12.md",
+      "store_provenance": {
+        "content_hash": "3377980656aa15bf5e12dea7032729395af62be4c0a98f69b756e160cddb722d",
+        "source_name": "TC-008.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-008.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-009",
+      "version": "cv_7f7ee6997a3f5c3bbd78",
+      "content_hash": "7f7ee6997a3f5c3bbd780e71f5bbb1b2448a1b8cb634b6b1530040b4a66121c3",
+      "path": "state/case-versions/TC-009/cv_7f7ee6997a3f5c3bbd78.md",
+      "store_provenance": {
+        "content_hash": "7f7ee6997a3f5c3bbd780e71f5bbb1b2448a1b8cb634b6b1530040b4a66121c3",
+        "source_name": "TC-009.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-009.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-010",
+      "version": "cv_6666ef82ab42c3fa556e",
+      "content_hash": "6666ef82ab42c3fa556e27653f9d2d41e3e6cdcf5772bf31f9336e161f0b16d1",
+      "path": "state/case-versions/TC-010/cv_6666ef82ab42c3fa556e.md",
+      "store_provenance": {
+        "content_hash": "6666ef82ab42c3fa556e27653f9d2d41e3e6cdcf5772bf31f9336e161f0b16d1",
+        "source_name": "TC-010.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-010.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-011",
+      "version": "cv_916ebc3a0c8b97fbf570",
+      "content_hash": "916ebc3a0c8b97fbf570d10d7fe5c0423c39d6c1646265b05e3b0ddd05e289e4",
+      "path": "state/case-versions/TC-011/cv_916ebc3a0c8b97fbf570.md",
+      "store_provenance": {
+        "content_hash": "916ebc3a0c8b97fbf570d10d7fe5c0423c39d6c1646265b05e3b0ddd05e289e4",
+        "source_name": "TC-011.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-011.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-012",
+      "version": "cv_c7d135e8f465cd4564a2",
+      "content_hash": "c7d135e8f465cd4564a292741e52531afb2b7682d558cf39af18fae593c4e4d3",
+      "path": "state/case-versions/TC-012/cv_c7d135e8f465cd4564a2.md",
+      "store_provenance": {
+        "content_hash": "c7d135e8f465cd4564a292741e52531afb2b7682d558cf39af18fae593c4e4d3",
+        "source_name": "TC-012.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-012.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-014",
+      "version": "cv_b1b51e5806fceddf5aab",
+      "content_hash": "b1b51e5806fceddf5aab355d396ccffe045f88835ce2e72fe0a6c34535b87f28",
+      "path": "state/case-versions/TC-014/cv_b1b51e5806fceddf5aab.md",
+      "store_provenance": {
+        "content_hash": "b1b51e5806fceddf5aab355d396ccffe045f88835ce2e72fe0a6c34535b87f28",
+        "source_name": "TC-014.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-014.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-014",
+      "version": "cv_6f3c700d4e79c373a43b",
+      "content_hash": "6f3c700d4e79c373a43bc6e10f202999dee21f855d9aa8962e708d1627263fa5",
+      "path": "state/case-versions/TC-014/cv_6f3c700d4e79c373a43b.md",
+      "store_provenance": {
+        "content_hash": "6f3c700d4e79c373a43bc6e10f202999dee21f855d9aa8962e708d1627263fa5",
+        "source_name": "TC-014.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-014",
+      "version": "cv_50e6790808f03ab1daa4",
+      "content_hash": "50e6790808f03ab1daa4a1c63efcf6c7f3d9bc0c05e815977f0a58ab59003911",
+      "path": "state/case-versions/TC-014/cv_50e6790808f03ab1daa4.md",
+      "store_provenance": {
+        "content_hash": "50e6790808f03ab1daa4a1c63efcf6c7f3d9bc0c05e815977f0a58ab59003911",
+        "source_name": "TC-014.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-014.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-001",
+      "version": "cv_9342b71470e02c52cfaa",
+      "content_hash": "9342b71470e02c52cfaae06b81f3aba762a95a7c1517115bbff1e0cc974a9de3",
+      "path": "state/case-versions/TC-001/cv_9342b71470e02c52cfaa.md",
+      "store_provenance": {
+        "content_hash": "9342b71470e02c52cfaae06b81f3aba762a95a7c1517115bbff1e0cc974a9de3",
+        "source_name": "TC-001.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-001.md"
+      },
+      "area": "integrations"
+    },
+    {
+      "case_id": "TC-004",
+      "version": "cv_05e9226b163aa18ce90b",
+      "content_hash": "05e9226b163aa18ce90b1923ecd4984b3f0e96ddd7f655f61865a3c51a0c63ae",
+      "path": "state/case-versions/TC-004/cv_05e9226b163aa18ce90b.md",
+      "store_provenance": {
+        "content_hash": "05e9226b163aa18ce90b1923ecd4984b3f0e96ddd7f655f61865a3c51a0c63ae",
+        "source_name": "TC-004.md",
+        "source_path": "qa-factory/artifacts/TP1-12586/work/test-cases/integrations/TC-004.md"
+      },
+      "area": "integrations"
+    }
+  ]
+}

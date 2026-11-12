@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "note": "Closed variety of the light ticket form (FR-13): which Jira fields a role sees, what is noise, where an acceptance-criteria section is looked for. Read by scripts/ticket_light.py. A project adds its own custom-field ids in config (direct_api.custom_fields, direct_api.acceptance_criteria_fields); this table never names a project's custom field. The raw response is kept whole elsewhere, so a name missing here hides nothing from the record.",
+  "standard": [
+    "summary", "description", "status", "issuetype", "parent", "issuelinks", "subtasks",
+    "comment", "attachment", "labels", "components", "fixVersions", "priority", "reporter",
+    "assignee", "updated"
+  ],
+  "noise": [
+    "self", "id", "expand", "avatarUrls", "iconUrl", "statusCategory", "timeZone", "active",
+    "thumbnail", "emailAddress", "key"
+  ],
+  "noise_scope": {
+    "id": "nested",
+    "key": "user"
+  },
+  "noise_scope_note": "A name with no entry here is dropped from every nested object. `id` is dropped from nested objects only (a comment, an attachment and the issue itself keep their own id, spelled out in the projection). `key` is dropped from user objects only (an object that carries displayName, accountId or emailAddress); an issue key stays.",
+  "acceptance_headings": [
+    "Acceptance Criteria",
+    "What needs to be tested",
+    "AC"
+  ],
+  "acceptance_headings_note": "Matched case-insensitively against a whole line, after an optional h1.-h6. prefix, bold markers and a trailing colon. Config may add more (direct_api.acceptance_headings).",
+  "section_names": [
+    "QA Factory evaluation goals",
+    "Notes",
+    "Out of scope",
+    "Implementation",
+    "Preconditions",
+    "Scenarios of Use",
+    "Affected Areas",
+    "Definition of Done",
+    "Dependencies",
+    "Risks",
+    "Description",
+    "Purpose",
+    "Background",
+    "Technical notes",
+    "Open questions",
+    "Test data",
+    "Links"
+  ],
+  "section_names_note": "A plain line equal to one of these (case-insensitive, trailing colon allowed) ends an acceptance-criteria section. The other end is the first line that is not a list item and not indented after a blank line. Config may add more.",
+  "not_tracker_prefixes": [
+    "UTF", "ISO", "SHA", "RFC", "LICENSE", "CVE", "CWE", "MD", "AES", "RSA", "TLS", "SSL", "HTTP",
+    "UCS", "ASCII", "BASE", "CP", "WINDOWS", "LATIN", "ECMA", "IEEE", "ES", "PEP", "X", "V", "PY",
+    "GPT", "H", "MP", "WCAG", "BN"
+  ],
+  "not_tracker_prefixes_note": "Text that has the shape of a tracker key and is not one (UTF-8, ISO-8601, LICENSE-2). Moved here from source_inventory.py NOT_TRACKER_PREFIXES. Project-local plan ids (BE-1, FE-2) cannot be listed: the per-prefix probe settles those. Key shape is uppercase only (tp1-123 is not a key), with no letter or digit glued on either side (fooTP1-9 and TP1-9a are not keys; MY_PROJ-12 is one whole key).",
+  "attachment_policy": {
+    "note": "proposal, unmeasured",
+    "empty_mime_as": "application/octet-stream",
+    "blob_suffixes": [{"suffix": ".pdf", "mime_prefix": "application/pdf"}],
+    "note_empty_mime": "Jira sends a null media type for a file it could not label (a plan.md, a screenshot). Such a file is judged as `empty_mime_as`: never_suffixes is still checked FIRST, so a null-typed .exe, .sh or .zip is never downloaded, and one with an unknown suffix (.bin) is downloaded under the octet-stream limit. A project policy with no `empty_mime_as` key leaves a null type as `type`. blob_suffixes: a stored blob takes the suffix when the media type starts with the prefix or the file name ends with it, so the Read tool opens a PDF as a document; the hash stays over the content; older blobs keep their bare names and are read through local_ref.",
+    "note_text_like": "Text-like attachments are ALLOWED under the size limit (a HAR, a log, a JSON or a YAML a person attached is often the evidence a story stands on, and it costs no model tokens to fetch): text/*, application/json and the other text-like media types below, and application/octet-stream, which is where Jira usually files a .yml .yaml .log .har .txt .md .csv. Octet-stream is decided by the file's suffix: the never_suffixes list is checked FIRST, whatever the media type says, so an .exe, .dll, .msi, .sh, .bat, .ps1, an archive or a video is never downloaded even when it is labelled octet-stream; one whose suffix is not on that list is downloaded under the same limit as a document. The code reads only never_suffixes by suffix, so an octet-stream file with an unknown suffix (.bin) is downloaded too, and a text-like file Jira gave a media type no rule names is skipped as `type`. Only executables, archives and video are never downloaded.",
+    "rules": [
+      {
+        "class": "image",
+        "mime_prefixes": ["image/"],
+        "max_bytes": 5242880
+      },
+      {
+        "class": "document",
+        "mime_prefixes": [
+          "text/", "application/pdf", "application/msword", "application/vnd.ms-excel",
+          "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.",
+          "application/vnd.oasis.opendocument."
+        ],
+        "max_bytes": 10485760
+      },
+      {
+        "class": "text_like",
+        "mime_prefixes": [
+          "application/json", "application/x-ndjson", "application/xml", "application/x-yaml",
+          "application/yaml", "application/csv", "application/x-har"
+        ],
+        "max_bytes": 10485760
+      },
+      {
+        "class": "unlabelled",
+        "mime_prefixes": ["application/octet-stream"],
+        "max_bytes": 10485760
+      },
+      {
+        "class": "executable",
+        "mime_prefixes": [
+          "application/x-msdownload", "application/x-msdos-program", "application/x-dosexec",
+          "application/x-executable", "application/x-msi", "application/x-sh", "application/x-bat",
+          "application/vnd.microsoft.portable-executable"
+        ],
+        "never": true
+      },
+      {
+        "class": "video",
+        "mime_prefixes": ["video/"],
+        "never": true
+      },
+      {
+        "class": "archive",
+        "mime_prefixes": [
+          "application/zip", "application/x-zip", "application/x-tar", "application/gzip",
+          "application/x-gzip", "application/x-7z", "application/x-rar"
+        ],
+        "never": true
+      }
+    ],
+    "never_suffixes": [
+      ".exe", ".dll", ".msi", ".sh", ".bat", ".ps1",
+      ".mp4", ".mov", ".avi", ".mkv", ".webm",
+      ".zip", ".tar", ".gz", ".7z", ".rar"
+    ]
+  },
+  "description_limit_bytes": 32768,
+  "description_limit_note": "proposal, unmeasured"
+}

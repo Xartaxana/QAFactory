@@ -1,0 +1,47 @@
+{
+  "tests": [
+    {
+      "case": "TC-001",
+      "plan_row": "TS-1",
+      "file": "tests/test_coupon.py",
+      "marker": "TC-001",
+      "status": "green",
+      "critic_verdict": "approved"
+    },
+    {
+      "case": "TC-005",
+      "plan_row": "TS-5",
+      "file": "tests/e2e/coupon.android.spec.ts",
+      "marker": "TC-005",
+      "status": "written",
+      "critic_verdict": "approved"
+    }
+  ],
+  "unresolved": [
+    {"case": "TC-005", "reason": "handed_to_person", "detail": "android: npm run e2e -- --grep TC-005"}
+  ],
+  "self_fixes": [
+    {
+      "test": "tests/test_coupon.py::test_cap_rejected",
+      "what": "the client fixture used the old base_url key",
+      "why_test_defect": "the key was renamed in the test harness, not in the product",
+      "evidence": "evidence/sanity-20260911-105500.json",
+      "before": "assert response.status_code == 422\nassert response.json()['code'] == 'DISCOUNT_TOO_LARGE'",
+      "after": "assert response.status_code == 422\nassert response.json()['code'] == 'DISCOUNT_TOO_LARGE'"
+    }
+  ],
+  "probe": {
+    "layers": "api layer only, client through the SDK wrapper",
+    "reuse": "reused the existing cart builder",
+    "then_channel": "status and persisted order record, not the rendered label",
+    "duplicates": "none - tests/test_cart.py covers totals without a coupon",
+    "own_data": "yes - the builder creates and cleans its own cart",
+    "collected": 1
+  },
+  "witness": {
+    "red_probe": "removed the cap check in a scratch copy, the test failed on the status assertion",
+    "independent_run": "evidence/sanity-20260911-105500.json, exit 0",
+    "green_after_fix": "evidence/sanity-20260911-105500.json, 1 passed"
+  },
+  "run_witness": "evidence/sanity-20260911-105500.json exit 0 - 1 passed, 0 failed, 0 skipped in 4.2s"
+}

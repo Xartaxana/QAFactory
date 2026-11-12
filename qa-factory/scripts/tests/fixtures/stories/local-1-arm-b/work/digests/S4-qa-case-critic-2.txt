@@ -1,0 +1,12 @@
+qa-case-critic S4 S4-qa-case-critic-2 · ok
+LOCAL-1_TC_005 · approve · P-cap reachable, Thens concrete with independent GET
+LOCAL-1_TC_006 · approve_with_concerns · Then 2 observable loose; lower level: impossible
+LOCAL-1_TC_007 · approve · 201, 201, one line quantity 5 on independent GET
+LOCAL-1_TC_009 · approve · codes named, boundaries stock and stock+1, GET after refusals
+LOCAL-1_TC_011 · approve · owner absence Thens plus allowed same-account GET
+LOCAL-1_TC_012 · approve · api only, 5 accepted and 6 refused, GET unchanged
+LOCAL-1_TC_013 · approve_with_concerns · values written; lower level: impossible (UI providers)
+LOCAL-1_TC_014 · approve_with_concerns · lower level: api, kept for UI walk (P19)
+LOCAL-1_TC_015 · approve_with_concerns · lower level: api, kept for typed input, double click (P19)
+LOCAL-1_TC_016 · approve_with_concerns · lower level: api, kept for cookies and two browsers (P19)
+state/story-case-links.json

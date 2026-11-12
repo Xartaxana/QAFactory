@@ -1,0 +1,15 @@
+qa-runner S6 CART-1_TC_011,CART-1_TC_012 · ok
+CART-1_TC_011 · passed · valid add and above-stock error read back from cart page; sold-out D0 absent
+CART-1_TC_012 · passed · W1 moved qty 1, gone after reload; W0 move button disabled, W0 not in cart
+qa-factory/artifacts/CART-1/work/handoffs/S6-qa-runner-2.yaml
+
+Notes for the conductor:
+- **Records:** both manual blocks are built (TC_011 from attempt a7, TC_012 from a8). `finalize_task.py` ran afterwards and reported 10 blocks and 42 results.
+- **api door unusable:** `manual_capture.py http` still refused on the first attempt after the probe fix, with the verbatim line below. Nothing there was retried. I created the four own books (D3 stock 3, D0 stock 0, W1 stock 5, W0 stock 0) through the admin UI form instead. The wishlist entries were saved through the book-page toggle.
+  `login by code at http://localhost:3000/v1/local-auth/login did not give a token (status 404), and what answered is not shown to be the stand's own (an HTML page titled "Bookstore" ...)`
+- **ui login by code:** this failed once as `--as user` (attempt a6, 31.6 s, owner factory). I then signed in once through `fill-account` steps, as the recovery rule allows, and every later attempt used that path.
+- **TC_011 disabled state:** the `attr=disabled` read returns an empty string for both the enabled D3 button and the sold-out D0 button, so it does not discriminate. The sold-out state rests on the stock badge and button label "Out of Stock", the screenshot, and the source (`disabled={isOutOfStock || adding}`). A click-refusal check was not run for D0, and the record's actual text says so.
+- **TC_012 disabled state:** diagnostic attempt a9, not in the record, confirmed W0's move button is disabled. Playwright refused the click as "not enabled" and the cursor reads not-allowed. a9 ended in that failed click, so it was not built.
+- **Cart reset:** the cart was emptied via the Remove button before each case, because an earlier attempt left D3 qty 2 in the user's cart.
+- **Leftover data:** the four own books (ids 110 to 113) were not cleaned up and W0 is still on the user's wishlist. The cart holds W1 qty 1.
+- **before_change:** `not_recorded` for both cases (R-1 and R-14).

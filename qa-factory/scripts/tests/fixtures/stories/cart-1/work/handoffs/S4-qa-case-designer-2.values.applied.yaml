@@ -1,0 +1,6 @@
+"scope[0].reason": "JU jar sends guest cookie plus user session; seeded defect now fails"
+"scope[0].case_version": cv_3767896d512c623e0b59
+"scope[1].case_version": cv_3736b2c697846070acdd
+"scope[2].case_version": cv_2b3ebd621560f9547704
+"scope[3].case_version": cv_2b3ebd621560f9547704
+claims.every_case_in_scope_is_pinned_and_the_version_is_named: true

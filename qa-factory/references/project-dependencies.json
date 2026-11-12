@@ -1,0 +1,13 @@
+{
+  "about": "What the factory reads of a project's dependency lock and how a package manager installs. Read only through scripts/dependency_drift.py (load_table, install_command). `locks`: a lock file name, its `format` and the `manager` that writes it. Only `toml_packages` is read (a Poetry lock: a TOML file with a [[package]] array of tables carrying `name` and `version`; a package with a non-empty `markers` or `optional = true` is conditional and is counted, not required). `uv_lock` and `pdm_lock` are named so that the file is found but are NOT read yet: their markers (on a dependency link in uv, `marker` in pdm) and forks are not Poetry's, so the answer for them is unknown, never in_sync or differs. `install_commands`: package manager (the first word of a profile's execution_prerequisites.package_manager, lower case) -> the argv that brings the environment to its lock without re-locking. The factory prints this command and never runs it. A manager with no row here has no table command; the profile's own commands.install always comes first.",
+  "locks": [
+    {"file": "poetry.lock", "format": "toml_packages", "manager": "poetry"},
+    {"file": "uv.lock", "format": "uv_lock", "manager": "uv"},
+    {"file": "pdm.lock", "format": "pdm_lock", "manager": "pdm"}
+  ],
+  "install_commands": {
+    "poetry": ["poetry", "install"],
+    "uv": ["uv", "sync", "--locked"],
+    "pdm": ["pdm", "sync"]
+  }
+}

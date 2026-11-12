@@ -1,0 +1,151 @@
+# S8 -> GATE B: the scribe hands the story to the person.
+#
+# The receiving role here is a human being, and the failure mode is the opposite of every other
+# handoff: not too little, too much. On REF-3 the same text reached the person three times
+# over; on REF-2 the machine ledger was pasted beside eighteen green tests and read
+# "verified 0". So this file is a contract about WHAT IS SHOWN AND WHAT IS NOT, and it lists, per
+# section, the code that prints it - because every part of the gate message is quoted, never
+# composed.
+#
+# The rule that decides the hard cases: a reason whose owner is the factory is REPORTED, never put
+# to the person as a choice. Nothing is wanted from them for the factory's own defects.
+#
+# The report has eleven sections, in this order (grammar.REPORT_SECTIONS): Proven, Product bugs,
+# Left with you, Open questions, Not proven, Decided at gate A, Decided at gate B, Factory defects,
+# Size, Where to look, Appendix. Code renders most of them (report_facts.py); "Decided at gate B"
+# exists only after the gate, so this message never quotes it.
+# Fill: write your fields as "path: value" lines to work/handoffs/S8-qa-doc-scribe-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S8-qa-doc-scribe-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s8-scribe-to-gate-b
+stage: S8
+from_role: qa-doc-scribe
+to_role: person
+
+inputs:
+  - path: work/handoffs/S8-qa-doc-scribe-1.yaml
+    what: this file
+    required: true
+  - path: test-report.md
+    what: the long form - the person reads it, the message quotes three of its sections
+    required: true
+  - path: work/ledger.json
+    what: delivery_verdict (yes, after_checks or no), its reasons grouped by owner, left_items and blocked_by
+    required: true
+  - path: work/traceability.json
+    what: one row per requirement x case, rendered for the message
+    required: true
+
+inputs_read:
+  - path: work/handoffs/<the analyst's dispatch>.yaml
+    version: S7-triage
+    drafts_received: 0
+  - path: work/ledger.json
+    version: 677522b253c1a41a
+    rows: 30
+
+header:
+  role: qa-doc-scribe
+  stage: S8
+  window: CART-1
+  verdict: concerns
+
+delivery:
+  ready: no  # the ledger's `delivery_verdict` word; `after_checks` = ready once the person finishes the checks left with them
+  reasons_by_owner:
+    product: ["<reason>"]
+    person: ["<reason>"]
+    stand: ["<reason>"]
+    factory: ["<reason - reported, never asked>"]
+  blocked_by: "[\"product\"]"
+
+# What the message carries, in this order, each one quoted from the command named. A section with
+# nothing to print is omitted; a section is never summarised and never rebuilt from memory.
+message_sections:
+  - id: verdict
+    source: test-report.md, the verdict paragraph above the first section and the delivery_ready line (yes, after_checks or no)
+  - id: traceability
+    source: "traceability.py --task CART-1 --render"
+    rule: every row, sorted by R then TC - a row not shown reads as passed
+  - id: product_bugs_left_with_you_not_proven
+    source: "test-report.md, the sections ## Product bugs, ## Left with you and ## Not proven as written"
+  - id: run_these_yourself
+    source: "gate_brief.py --gate B"
+    rule: the cases the person took over at gate A, with the exact command; not a question
+  - id: stand_gaps
+    source: "gate_brief.py --gate B"
+    rule: one card per blocked_by_env row and per env_blocked run row, verbatim
+  - id: decisions_per_gap
+    source: work/ledger.json
+    rule: one line per row that is not passed_green AND whose owner is the person
+  - id: bugs_to_file
+    source: "gate_brief.py --gate B"
+    rule: numbered and self-contained; the answer comes back by number
+  - id: open_before_the_mr
+    source: "gate_brief.py --gate B"
+    rule: not a block; if the person says open it anyway, these lines go into the MR description
+  - id: judge
+    source: "gate_brief.py --gate B"
+    rule: only when a judge is configured
+
+not_shown:
+  - "the machine ledger - it is bookkeeping, and it reads nothing like what the person sees"
+  - "Proven, Factory defects, Size, Where to look - detail behind a decision, already in the report"
+  - "Open questions, Decided at gate A - the report's own record; the same facts reach the message
+     through open_before_the_mr and the one line per gap accepted at gate A, never by pasting these
+     sections"
+  - "anything already accepted at gate A: it is shown as one line of what was decided, never asked
+     a second time"
+
+# The questions the person is actually being asked, each with its closed set of answers and the
+# command that records the answer. A question with no recording command does not belong at a gate.
+questions:
+  - id: CART-1_TC_009
+    question: Then 2 of TC_009 expects an items array in the quote body that R-15 does not require
+    answers: remove the check from the test | add the items array to the requirement
+    records_with: "waiver.py --task <T> --stage <S> --block \"<the exact block text code reads>\""
+
+# The rehearsal that must be green before the person is asked anything at all.
+rehearsal:
+  ran: false
+  factory_fixable_open: 0  # must be 0 - stage_done refuses S8 while one is open
+  person_decides: TC_009 assert stricter than R-15; R-9, R-13, R-16 have no case
+  factory_defect: probe tool cannot read Playwright TypeScript (FB-4); gate brief rehearsal not run by the scribe
+
+artifacts:
+  report: test-report.md
+  ledger: work/ledger.json
+  ledger_human: work/ledger.md
+  traceability: work/traceability.json
+  delivery_summary: work/delivery-summary.md
+
+claims:
+  every_section_is_quoted_from_the_command_named: true
+  no_factory_owned_reason_is_put_to_the_person_as_a_choice: true
+  no_gate_a_decision_is_asked_again: true
+  the_bug_list_is_built_by_code_and_numbered: true
+  traceability_table_exists_on_disk: true  # work/traceability.json was never written on
+                                                    # REF-1 and no check asked for it
+  s8_was_closed_before_the_gate_was_asked: false
+
+unresolved:
+  - id: <row or item>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>
+
+# Values code filled from the artifacts on disk when the check ran. They are the
+# artifacts' word, not the author's; the receiving role may refuse any of them.
+derived:
+  - field: inputs_read[1].version
+    source: "sha256 of work/ledger.json"
+  - field: delivery.blocked_by
+    source: "ledger.blocked_by"
+  - field: claims.traceability_table_exists_on_disk
+    source: "verified by handoff_check.CLAIMS"

@@ -1,0 +1,113 @@
+{
+  "statuses": ["open", "answered", "not_needed", "with_designer", "named", "deferred_to_report"],
+  "recorded_statuses": ["open", "answered", "not_needed", "with_designer", "deferred_to_report"],
+  "where": ["gate A", "gate B", "S2 stop", "S3 stop", "S4 stop", "waiver", "remark", "conductor", "stage ran"],
+  "where_words_note": "How a person reads each `where` value, as the end of a phrase (`on your word <words>`, `answered <words>`), read by question_register.where_words (FR-13). Every value of `where` has a row in `where_words`; a value this file does not know is read as `earlier`. `gate A` and `gate B` keep the form they have always had on the gate cards (`at gate A`). The `S4 stop` row is added together with the `S4 stop` value of `where` (HF2-7 part P5a).",
+  "where_words": {
+    "gate A": "at gate A",
+    "gate B": "at gate B",
+    "S2 stop": "when the requirements were checked",
+    "S3 stop": "while the test plan was written",
+    "S4 stop": "while the test cases were written",
+    "waiver": "in a recorded pass",
+    "remark": "in a remark you left",
+    "conductor": "in an answer you gave in the chat",
+    "stage ran": "while the stage ran"
+  },
+  "by": ["person", "conductor", "driver", "orchestrator"],
+  "risk_word": "deliver with known gaps",
+  "risk_word_note": "The one word of gate B that orders a delivery over a verdict that is not yes: read by question_register.risk_reason_of ONLY as a whole line of its own, the word alone or followed by `:` and the person's reason (FR-12, FR-13). Any other form is the conductor's reading, never a phrase search in code.",
+  "case_decisions": ["manual", "automate"],
+  "stop_reasons": ["scope_or_structure", "no_readings", "dependent", "over_threshold", "low_confidence", "blocking"],
+  "stand_gap_words": {
+    "note": "The one-word answers to a stand-gap card at gate B, written on a line of their own as `<case id>: <word>` (gate_brief.read_stand_gap_answers reads them; the driver then records the person's word with the same command the card used to print). CLOSED and ENGLISH ONLY on purpose (FR-13, owner 02.10): a person answers in their own language, and any wording that is not `word` or one of `synonyms` - in any language - is not read by code: it goes to the conductor, which maps it to this form. `option` is the value contract.STAND_GAP_OPTIONS keeps in the record (it is what `stand_gap_decisions` reads back); `word` is what the card shows; `says` is the card's explanation. Matching is on the WHOLE text after the colon, lower-cased, with backquotes, quotes and a closing . or ! removed and runs of spaces collapsed. A word or synonym may belong to one option only. A row with `lasting: true` (`accept always`, B-414) is the option `accept` with a longer life - the project's environment record keeps it (D-0029); it is read only for a gap that has a key to record it under (never for a gap whose cause is a file or the machine, D-0032), listed only while an open card offers it, and left out of every reader that maps an option to ONE word (gate_brief.stand_gap_words(lasting=True) returns it; the default list does not). A level gap (every test of one execution contour) is answered by its contour: `<level name>: <word>`.",
+    "answers": [
+      {"option": "apply",  "word": "change",
+       "says": "I make the change shown above, on your word",
+       "synonyms": ["apply", "change it", "fix it", "you change it"]},
+      {"option": "theirs", "word": "myself",
+       "says": "you make that change yourself",
+       "synonyms": ["theirs", "mine", "i will change it", "i change it", "i will fix it", "i fix it"]},
+      {"option": "handed", "word": "run",
+       "says": "you run this test yourself, where the missing piece exists",
+       "synonyms": ["handed", "run it", "i will run it", "i run it", "i will run the test", "i run the test"]},
+      {"option": "accept", "word": "accept",
+       "says": "it stays blocked and is reported as not run",
+       "synonyms": ["accepted", "blocked", "stay blocked", "stays blocked", "leave it blocked", "accept as blocked"]},
+      {"option": "accept", "word": "accept always", "lasting": true,
+       "says": "the same as `accept` for this story, and the project's environment record keeps it, so no story asks it again until what it was recorded for changes or you take it back",
+       "synonyms": ["accepted always", "always accept", "accept for good", "accept for all stories", "accept it for good"]}
+    ]
+  },
+  "exploratory_question_words": {
+    "note": "The one-word answers to a QUESTION LINE of the exploratory findings at gate B (`Questions for you - is this intended?`), written on a line of their own as `<case id>: <word>` (gate_brief.read_exploratory_answers reads them with the stand-gap reader's grammar; the driver then carries each one out: `intended` confirms the line and its question, `bug` sends the failure analysis back with the person's words, `open` leaves it with the person). CLOSED and ENGLISH ONLY on purpose (FR-13, FR-12): any other wording, in any language, is not read by code - it goes to the conductor. `option` is `intended`, `bug` or `open`; `word` is what the packet shows; `says` is the packet's explanation; `factory`, `you` and `story` are the three price lines the packet prints under the option (human-questions.md item 6). Matching is on the WHOLE text after the colon, lower-cased, with backquotes, quotes and a closing . or ! removed and runs of spaces collapsed. A word or synonym belongs to one option of one reader only: no word here is a word of stand_gap_words, environment_words, probe_answers, gate-approval-words.json, the case decisions, `not needed` or `until the report` (a test holds the files apart).",
+    "answers": [
+      {"option": "intended", "word": "intended",
+       "says": "what was seen is the expected behaviour; it is recorded with your words and is not a bug",
+       "factory": "a record only; no agent works.",
+       "you": "nothing more.",
+       "story": "the expectation is confirmed by you; delivery unchanged.",
+       "synonyms": ["as intended", "expected"]},
+      {"option": "bug", "word": "bug",
+       "says": "what was seen is wrong; the failure analysis runs again with your words as the expectation, and a bug follows its usual road",
+       "factory": "the failure analysis and everything after it run again.",
+       "you": "this answer, and one more look at this gate.",
+       "story": "delivery waits until the gate is shown again.",
+       "synonyms": ["it is a bug", "wrong"]},
+      {"option": "open", "word": "open",
+       "says": "leave it undecided",
+       "factory": "nothing runs.",
+       "you": "deciding it later, outside the factory.",
+       "story": "it stays in the report's findings as left open with you; delivery unchanged.",
+       "synonyms": ["leave open", "undecided"]}
+    ]
+  },
+  "attachment_question_words": {
+    "note": "The two answers of the attachments block of gate A (gate_brief._attachment_lines, FR-13): `nothing_to_add` is read with gate A's approval word (the word is data of gate-approval-words.json, never written here); `own_words` is answered in the person's own words, which the conductor turns into a rework of S2. `{word}` in a `says` is that approval word, and `says_without_word` is the sentence when gate A has none (FR-59). Each row carries the three price lines of human-questions.md item 6. NOT in question-prices.json: a key rendered from gate_brief makes K15 red.",
+    "nothing_to_add": {
+      "says": "nothing to add; this also approves the plan and the cases as they stand",
+      "says_without_word": "say that there is nothing to add",
+      "factory": "a record only; no agent works.",
+      "you": "nothing more.",
+      "story": "what stands only in these attachments is not checked; the delivery verdict stays as the report has it."
+    },
+    "own_words": {
+      "says": "say which requirement, in your own words, instead of `{word}`",
+      "says_without_word": "say which requirement, in your own words",
+      "factory": "a helper reads your words and offers you the choices; then the requirements stage (S2) and the stages after it run again up to this gate.",
+      "you": "this answer, one more answer to choose, and one more look at this gate.",
+      "story": "delivery waits until the gate is shown again."
+    }
+  },
+  "report_kind_words": {"junit-xml": "a JUnit XML report", "trx": "a .NET (trx) report"},
+  "environment_words": {
+    "note": "The word about what the project's environment record (qa-factory/records/environment-properties.json) holds, read by gate_brief.read_stand_gap_answers ONLY against a gap the record covers - a gap with no card, listed in the block `Decided once for this environment` - into `revokes`, never into `read` (B-414). `revoke` takes the record's row back: later gates ask the gap again; the stories that already answered it keep their own answers. Matching is the same as for stand_gap_words, and a word or synonym may not belong to both lists.",
+    "answers": [
+      {"option": "revoke", "word": "ask again",
+       "says": "the environment record forgets this answer, and the gap is asked again at every gate",
+       "synonyms": ["ask it again", "ask me again", "take it back", "forget it", "revoke"]}
+    ]
+  },
+  "finding_door_words": {
+    "note": "The words a rehearsal finding's OWN door takes besides the stand-gap answers, read ONLY by story_run.Driver.read_finding_doors, for a finding whose door option is the row's option (gate_brief.finding_door_words). The word may be followed by a separator and the person's reason, which is kept whole. The list is closed and English only (FR-13). A word or synonym of this block belongs to no other block of this file, and a test holds them apart.",
+    "answers": [
+      {"option": "product_gap", "word": "product gap",
+       "says": "the product has no such function: the requirement is reported as not implemented and the delivery is not ready",
+       "synonyms": ["no such function", "not implemented"]}
+    ]
+  },
+  "probe_answers": {
+    "note": "The answers of a stand-gap card about a test command that writes no report (the gate A reporter card, B-220 part 2) that are NOT one of stand_gap_words, read by gate_brief.read_stand_gap_answers: `command` is the word followed by the person's own command line, written as they would type it (the REST of the line, case kept; one pair of backquotes round the whole value is peeled; a value that ends in one of `continuation_marks` is not read - the command may go on in a line that is not here; at most 1000 characters, which is what `value` says). The other answers a reporter card takes are the existing words `myself`, `run`, `accept`, and `change` - but `change` only while `live` is true AND report-cures.json holds a cure that is one change of that command. `live` says whether the factory EXECUTES the two answers that change the command: a `command` line (the driver probes it, asks one `Do it?` and applies it only on the person's recorded yes) and `change` (the same path, for the cure the card shows): false until those handlers exist, and while it is false (this release) a reporter card offers exactly `myself`, `run`, `accept`, and a line that uses `command` or `change` is not read - an offered word nobody executes would pass the card on a promise (FR-9). `reporter_accept` is the line a card about such a test command adds under the list of words, to say what `accept` means there. A `value` that is not a regular expression drops the row and the reader names why (`problem`).",
+    "live": false,
+    "command": {
+      "option": "command",
+      "word": "command",
+      "arg": "required",
+      "value": "\\S.{0,999}",
+      "continuation_marks": ["\\", "^", "`"],
+      "says": "you give the command line that makes this test command write a report, written after the word as you would type it; I try it first, and I ask you once more before I change anything",
+      "note": "offered only for a card about a test command that writes no report"
+    },
+    "reporter_accept": "On a card about a test command that writes no report, `accept` means the factory goes on without that report: the tests of that command cannot be read, so the report lists them as not run."
+  }
+}

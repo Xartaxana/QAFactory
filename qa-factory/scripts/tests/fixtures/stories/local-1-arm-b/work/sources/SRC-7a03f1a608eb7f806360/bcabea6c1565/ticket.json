@@ -1,0 +1,11 @@
+{
+  "key": "https://github.com/person-4/MyBooks",
+  "type": "document",
+  "title": "MyBooks",
+  "description": "Read from the local checkout ../MyBooks at a25b0801669b97d76f96f5a981fdc9ad4525d63d (not the GitHub page).\nCart writers: POST /api/cart (src/app/api/cart/route.ts:15) -> CartService.addToCart (cartService.ts:31); callers: HomePage.tsx:120 (BookCard), BookDetailPage.tsx:49, WishlistPage.tsx:48 (Move to cart); POST /api/cart/merge (LoginPage.tsx:36) -> mergeGuestCart (cartService.ts:118).\nRules: quantity int 1..999 (schemas.ts:40); OUT_OF_STOCK, INSUFFICIENT_STOCK counting inCart (cartService.ts:35,44); quantity added to existing; PATCH /api/cart/{id} capped at stock; merge = higher wins, capped at stock.\n",
+  "acceptance_criteria": [],
+  "comments": [],
+  "provenance": {
+    "source": "file"
+  }
+}

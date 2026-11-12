@@ -1,0 +1,48 @@
+# S4: the case designer hands the pinned cases to the case critic. (trimmed accepted form of a parent dispatch, ticket QA-1)
+# Fill: write your fields as "path: value" lines to work/handoffs/S4-qa-case-designer-1.values.yaml in one Write.
+schema_version: 1
+contract: s4-designer-to-case-critic
+stage: S4
+from_role: qa-case-designer
+to_role: qa-case-critic
+
+inputs:
+  - path: work/handoffs/S4-qa-case-designer-1.yaml
+    what: this file
+    required: true
+
+inputs_read:
+  - path: work/test-plan.json
+    version: "2"
+    rows: 3
+  - path: work/requirements-register.md
+    version: "read in full, hash not computed (no shell)"
+
+header:
+  role: qa-case-designer
+  stage: S4
+  window: QA-1
+  verdict: concerns
+
+scope:
+  - id: TC-001
+    state: created
+    reason: trigger-time stamp
+    plan_row: TS-1
+    obligations: "OB-1"
+    requirements: "R-1"
+    case_version: pending_pin
+    origin: new
+    reuse_of: "-"
+    disposition: automate
+    design_review_required: true
+    self_probe: "a completion-time stamp fails Then 2"
+
+review_scope:
+  cases: "TC-001"
+  rounds_used: 0
+  focus:
+    - "the stamp is read before the trigger"
+
+claims:
+  every_case_bearing_plan_row_has_at_least_one_case: true

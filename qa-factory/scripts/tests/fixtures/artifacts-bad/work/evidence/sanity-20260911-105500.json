@@ -1,0 +1,10 @@
+{
+  "task": "QA-1",
+  "label": "sanity",
+  "command": ["poetry", "run", "pytest", "tests/", "-q"],
+  "exit_code": 1,
+  "duration_s": 9.8,
+  "totals": {"tests": 2, "failures": 1, "errors": 0, "skipped": 0, "passed": 1, "time_s": 9.8},
+  "failed": [{"test": "tests/test_cart_banner.py::test_banner", "kind": "failure", "why": "element not found"}],
+  "execution_status": "failed"
+}

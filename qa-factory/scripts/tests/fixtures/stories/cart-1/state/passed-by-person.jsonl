@@ -1,0 +1,1 @@
+{"ts": "2026-10-31T10:44:47+00:00", "stage": "S5", "dispatch": "S5-qa-code-critic-7", "block": "probe_gap:@regression CART-1_TC_010 add from catalog shows badge and cart page", "decision": "Accept unprobed (Recommended): the UI test CART-1_TC_010 stays green-but-unprobed (probe tool cannot read the TypeScript tests); list it under Left with you.", "by": "human"}

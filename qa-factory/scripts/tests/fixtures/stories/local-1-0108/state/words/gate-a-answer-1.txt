@@ -1,0 +1,9 @@
+Idti dalshe na etoi vetke (repozitorii s 6 nezakommichennymi izmeneniyami).
+Probely v plane (TS-7, TS-23..26): prinyat, uchityvaya moi otvety.
+Q4 b, no v otchete po testirovaniyu dolzhno byt zaneseno kak probel, chto funktsiya bystrogo prosmotra ne realizovana.
+Q5 a.
+Then 1 of LOCAL-1_TC_021 (guest cart merge): kolichestvo ne ravno 1. Ono ravno tomu kolichestvu, kotoroe dobavil gost (nuzhno proverit, chto nastoyaschee kolichestvo ne prevraschaetsya v 1).
+Q7 - pravilnoe povedenie opisano v trebovaniyakh: dobavlenie tovara v moment obnovleniya ego tseny ne vyzyvaet oshibok, i s polzovatelya vzimaetsya tsena, kotoraya otobrazhalas v moment dobavleniya. Primer: dobavili knigu po 6$, poka dobavlyali tsena stala 8$ - v korzine dolzhna ostatsya tsena 6$.
+Q8 a (no dobavlyaetsya ne odin tovar, a stolko, skolko vybral polzovatel. Esli pri vosstanovlenii seti ne poluchilos dobavit tovary, to polzovatelyu vykhodit soobschenie s prosboi poprobovat esche raz).
+Q9 Adding after session expiry asks for login, and the product is added after re-authentication.
+Ostalnoe soglasna s rekomendatsiyami: R-8 a, R-9 a, R-10 a, Q1 a, Q2 a, Q3 a, Q6 a; adres UI stenda - BASE_URL iz .env.

@@ -1,0 +1,135 @@
+{
+ "tests": [
+  {
+   "case": "CART-1_TC_010",
+   "covers": [
+    "CART-1_TC_010"
+   ],
+   "file": "tests/e2e/cart/add-to-cart.spec.ts",
+   "marker": "CART-1_TC_010",
+   "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "test": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "selector": "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "shape": "new",
+   "status": "green",
+   "consolidates": [
+    "CART-1_TC_010"
+   ],
+   "obligation_ids": [
+    "OB-10"
+   ],
+   "obligation_refs": [
+    {
+     "obligation_id": "OB-10",
+     "obligation_hash": "1f380f95500bcdf2a6c6d4beaf4694d776e840d821aec845796c562155adcef8"
+    }
+   ],
+   "change_disposition": "new_or_changed",
+   "change_basis_ref": "manifest:CART-1_TC_010",
+   "case_version_links": [
+    {
+     "case_id": "CART-1_TC_010",
+     "version": "cv_514d05efe43b2506bb5f"
+    }
+   ],
+   "assertion_id": "tests/e2e/cart/add-to-cart.spec.ts:33",
+   "defect_location": "MyBooks/src/components/Navigation.tsx:60",
+   "profile_id": "web",
+   "trace_binding": {
+    "selector": "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+    "assertion_refs": [
+     "tests/e2e/cart/add-to-cart.spec.ts:26",
+     "tests/e2e/cart/add-to-cart.spec.ts:27",
+     "tests/e2e/cart/add-to-cart.spec.ts:32",
+     "tests/e2e/cart/add-to-cart.spec.ts:33",
+     "tests/e2e/cart/add-to-cart.spec.ts:37",
+     "tests/e2e/cart/add-to-cart.spec.ts:38"
+    ],
+    "test_content_sha": "3a0dd8c705cf8f613e32dc88eba21379a720b62b8d23431780dd449845438362"
+   },
+   "sensitivity_proof_missing_reason": "tooling: probe_by_code cannot read Playwright TS; probe gap left to the critic"
+  }
+ ],
+ "then_bindings": [
+  {
+   "case": "CART-1_TC_010",
+   "then": 1,
+   "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "assertion_ref": "tests/e2e/cart/add-to-cart.spec.ts:26",
+   "status": "covered"
+  },
+  {
+   "case": "CART-1_TC_010",
+   "then": 2,
+   "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "assertion_ref": "tests/e2e/cart/add-to-cart.spec.ts:33",
+   "status": "covered"
+  },
+  {
+   "case": "CART-1_TC_010",
+   "then": 3,
+   "instance_id": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "assertion_ref": "tests/e2e/cart/add-to-cart.spec.ts:38",
+   "status": "covered"
+  }
+ ],
+ "obligation_bindings": [
+  {
+   "obligation_id": "OB-10",
+   "obligation_hash": "1f380f95500bcdf2a6c6d4beaf4694d776e840d821aec845796c562155adcef8",
+   "instance_ids": [
+    "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+   ],
+   "design_assessment": "sufficient",
+   "assertion_refs": [
+    "tests/e2e/cart/add-to-cart.spec.ts:26",
+    "tests/e2e/cart/add-to-cart.spec.ts:27",
+    "tests/e2e/cart/add-to-cart.spec.ts:32",
+    "tests/e2e/cart/add-to-cart.spec.ts:33",
+    "tests/e2e/cart/add-to-cart.spec.ts:37",
+    "tests/e2e/cart/add-to-cart.spec.ts:38"
+   ],
+   "change_disposition": "new_or_changed",
+   "change_basis_ref": "manifest:CART-1_TC_010",
+   "code_validity": "unverified",
+   "sensitivity": "missing",
+   "quality_receipt_refs": []
+  }
+ ],
+ "plan_remarks": [
+  {
+   "id": "PR-2",
+   "row": "applied",
+   "reason": "CartApi and cartApi fixtures from core reused; no per-spec copy"
+  }
+ ],
+ "deviations": [
+  {
+   "test": "tests/e2e/cart/add-to-cart.spec.ts::@regression CART-1_TC_010 add from catalog shows badge and cart page",
+   "from": "function",
+   "planned": "T-10",
+   "reason": "title carries tags and case id per framework-rules"
+  }
+ ],
+ "runs": [
+  {
+   "role": "qa-automator",
+   "label": "initial-c9286026d096394cd0e6",
+   "scope": [
+    "@regression CART-1_TC_010 add from catalog shows badge and cart page"
+   ],
+   "code_fingerprint": "5cd21eb+add-to-cart",
+   "warranted": true,
+   "result": "1 passed"
+  }
+ ],
+ "run_witness": "qa-factory/artifacts/CART-1/evidence/runs/c9286026d096394cd0e6/initial-c9286026d096394cd0e6-20261031-113621.json exit 0 1 passed",
+ "probe": {
+  "layers": "ok",
+  "reuse": "ok",
+  "then_channel": "ok",
+  "duplicates": "none",
+  "own_data": "yes",
+  "collected": 1
+ }
+}

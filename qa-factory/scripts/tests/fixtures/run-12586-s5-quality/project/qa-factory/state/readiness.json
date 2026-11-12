@@ -1,0 +1,60 @@
+{
+  "capabilities": {
+    "ticket_adapter": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "jira_direct_api": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "test_repo": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "case_store": {
+      "status": "not_configured",
+      "owner": "user"
+    },
+    "case_id_form": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "adapter_forms": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "app_repo": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "vcs": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "environment": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "external_writes": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "tracker_write": {
+      "status": "not_configured",
+      "owner": "factory"
+    },
+    "config_schema": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "vcs_api": {
+      "status": "ok",
+      "owner": "factory"
+    },
+    "host_hooks": {
+      "status": "unknown",
+      "owner": "factory"
+    }
+  }
+}

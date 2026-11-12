@@ -1,0 +1,34 @@
+{
+  "TS-14": {
+    "executed_by": "agent",
+    "evidence": "screenshots of cart and badge before and after sign-in, GET /api/cart body",
+    "required_fields": [
+      "steps taken",
+      "what was seen",
+      "every oddity"
+    ],
+    "inconclusive_when": "the stand cannot hold a guest session"
+  },
+  "TS-15": {
+    "executed_by": "agent",
+    "evidence": "screenshots of messages and badge per input, cart body after a double click",
+    "required_fields": [
+      "inputs typed",
+      "response shown",
+      "cart after",
+      "every oddity"
+    ],
+    "inconclusive_when": "a second tab cannot be driven or stock cannot be set to the last copy"
+  },
+  "TS-16": {
+    "executed_by": "agent",
+    "evidence": "screenshots of both browsers and cart bodies after sign-out",
+    "required_fields": [
+      "owner",
+      "cookie state",
+      "what each cart showed",
+      "every oddity"
+    ],
+    "inconclusive_when": "two separate browser profiles are not available"
+  }
+}

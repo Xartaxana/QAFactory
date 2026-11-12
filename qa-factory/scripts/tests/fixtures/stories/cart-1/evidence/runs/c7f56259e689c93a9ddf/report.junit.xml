@@ -1,0 +1,79 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="10.674004">
+<testsuite name="api\cart\cart-quote-order.spec.ts" timestamp="2026-10-31T10:24:39.791Z" hostname="chromium" tests="1" failures="1" skipped="0" time="4.265" errors="0">
+<testcase name="@api @regression CART-1_TC_009 quote and order from cart" classname="api\cart\cart-quote-order.spec.ts" time="4.265">
+<failure message="cart-quote-order.spec.ts:9:1 @api @regression CART-1_TC_009 quote and order from cart" type="FAILURE">
+<![CDATA[  [chromium] › api\cart\cart-quote-order.spec.ts:9:1 › @api @regression CART-1_TC_009 quote and order from cart 
+
+    Error: Then 2: quote lists B1 x2 and B2 x1, equal to the cart read
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Object {
+    -     "bookId": 79,
+    -     "quantity": 2,
+    -   },
+    -   Object {
+    -     "bookId": 80,
+    -     "quantity": 1,
+    -   },
+    - ]
+    + Array []
+
+      51 |   expect.soft(afterOrder, 'Then 5: no cart row for B1 or B2 after the order').toEqual([]);
+      52 |   // Then 2 (the red check last: soft asserts keep Thens 1, 3, 4 and 5 evaluated either way)
+    > 53 |   expect.soft(linesOf(quote.body).sort(byBook), 'Then 2: quote lists B1 x2 and B2 x1, equal to the cart read').toEqual(cartRows);
+         |                                                                                                                ^
+      54 | });
+      55 |
+        at <path-1>\test-automation-framework\tests\api\cart\cart-quote-order.spec.ts:53:112
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Then 2: quote lists B1 x2 and B2 x1, equal to the cart read
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Object {
+    -     "bookId": 81,
+    -     "quantity": 2,
+    -   },
+    -   Object {
+    -     "bookId": 82,
+    -     "quantity": 1,
+    -   },
+    - ]
+    + Array []
+
+      51 |   expect.soft(afterOrder, 'Then 5: no cart row for B1 or B2 after the order').toEqual([]);
+      52 |   // Then 2 (the red check last: soft asserts keep Thens 1, 3, 4 and 5 evaluated either way)
+    > 53 |   expect.soft(linesOf(quote.body).sort(byBook), 'Then 2: quote lists B1 x2 and B2 x1, equal to the cart read').toEqual(cartRows);
+         |                                                                                                                ^
+      54 | });
+      55 |
+        at <path-1>\test-automation-framework\tests\api\cart\cart-quote-order.spec.ts:53:112
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\api-cart-cart-quote-order--dc27f-9-quote-and-order-from-cart-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\api-cart-cart-quote-order--dc27f-9-quote-and-order-from-cart-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\..\..\..\..\test-results\api-cart-cart-quote-order--dc27f-9-quote-and-order-from-cart-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "receipt_scripts": ["activity_capture.py", "host_probe.py", "onboard_apply.py", "gate_brief.py", "explore_step.py"],
+  "env_vars": ["CLAUDE_CODE_SESSION_ID", "CODEX_THREAD_ID", "CLAUDE_SESSION_ID"],
+  "cd_words": ["cd", "Set-Location", "pushd"],
+  "warm_seconds": 30,
+  "scan_limit": 20,
+  "spool_dir": "qa-factory-receipts",
+  "spool_prune_days": 2
+}

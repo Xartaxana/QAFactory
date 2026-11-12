@@ -1,0 +1,8 @@
+qa-automator S5 CART-1_TC_001..004 · ok
+CART-1_TC_001 · green · 1 test passed on local stand
+CART-1_TC_002 · green · 1 test passed on local stand
+CART-1_TC_003 · green · 1 test passed on local stand
+CART-1_TC_004 · green · 9 partition instances passed
+qa-factory/artifacts/CART-1/work/handoffs/S5-qa-automator-2.yaml
+
+Repair done. All 12 `tests[]` rows now carry `case` (the single case id) alongside `file` and `status`, merged through manifest_put.py (revision 8). s5_precheck.py reports OK and handoff_check.py reports the form complete. I did not re-run the tests, and no test file changed.

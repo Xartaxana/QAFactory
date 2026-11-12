@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "task": "CART-1",
+  "ledger_hash": "aa3c20e2684cab8d583e06a1f53f3e2a61a116f675cafa9c58e90a6edd09e89f",
+  "counts": {
+    "planned": 12,
+    "executed": 20,
+    "planned_manual": 2,
+    "executed_manual": 2,
+    "verified": 11,
+    "failed": 1,
+    "unverified": 0,
+    "env_blocked": 0,
+    "deferred": 0
+  },
+  "gaps": [],
+  "outcomes": [
+    {
+      "ref": "TS-1",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_001"
+    },
+    {
+      "ref": "TS-2",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_002"
+    },
+    {
+      "ref": "TS-3",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_003"
+    },
+    {
+      "ref": "TS-4",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_004"
+    },
+    {
+      "ref": "TS-5",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_005"
+    },
+    {
+      "ref": "TS-6",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_006"
+    },
+    {
+      "ref": "TS-7",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_007"
+    },
+    {
+      "ref": "TS-8",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_008"
+    },
+    {
+      "ref": "TS-9",
+      "kind": "plan_row",
+      "state": "failed:ASSERT_STRICTER",
+      "detail": "CART-1_TC_009"
+    },
+    {
+      "ref": "TS-10",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_010"
+    },
+    {
+      "ref": "TS-11",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_011"
+    },
+    {
+      "ref": "TS-12",
+      "kind": "plan_row",
+      "state": "passed_green",
+      "detail": "CART-1_TC_012"
+    }
+  ],
+  "bugs": [],
+  "handed_to_person": [],
+  "proof_levels": {
+    "none": 18
+  },
+  "not_required_reasons": {},
+  "unverified_by_critic": [
+    {
+      "ref": "@api @regression CART-1_TC_001 add unknown or sold-out book rejected",
+      "test": "tests/api/cart/add-rejections.spec.ts::CART-1_TC_001",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_002 add beyond stock rejected",
+      "test": "tests/api/cart/add-stock-limit.spec.ts::CART-1_TC_002",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_003 repeat add accumulates",
+      "test": "tests/api/cart/add-accumulate.spec.ts::CART-1_TC_003",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-fraction]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 quantity accepted[P-qty-min]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 quantity accepted[P-qty-max]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-over]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-zero]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-fraction]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-qty-string]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-zero]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_004 rejected with a stable error shape[P-id-negative]",
+      "test": "tests/api/cart/add-boundaries.spec.ts::CART-1_TC_004",
+      "why": "tooling: probe_by_code cannot read this project's TypeScript tests (no selector_args/report_test_id; template-literal titles unmatched); person's word recorded as waiver 'probe gap'"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_005 cart isolation between owners",
+      "test": "tests/api/cart/cart-isolation.spec.ts::CART-1_TC_005",
+      "why": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_006 guest cart merge on login",
+      "test": "tests/api/cart/cart-merge.spec.ts::CART-1_TC_006",
+      "why": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_007 update and delete cart item",
+      "test": "tests/api/cart/cart-update-delete.spec.ts::CART-1_TC_007",
+      "why": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "ref": "@api @regression CART-1_TC_008 foreign cart item mutation denied",
+      "test": "tests/api/cart/cart-ownership.spec.ts::CART-1_TC_008",
+      "why": "tooling: probe_by_code refused, no selector_args/report_test_id for a Playwright TS test; probe gap returned to conductor"
+    },
+    {
+      "ref": "@regression CART-1_TC_010 add from catalog shows badge and cart page",
+      "test": "tests/e2e/cart/add-to-cart.spec.ts::CART-1_TC_010",
+      "why": "tooling: probe_by_code cannot read Playwright TypeScript; person accepted probe gap: CART-1_TC_010"
+    }
+  ],
+  "root_causes": [
+    {
+      "root_id": "98fdb0efdc43062a9d5463a0952f607ae59334ecf49d3d37a6152842af96065a",
+      "details": [
+        {
+          "code": "TRACEABILITY_GAP",
+          "entity": "R-9",
+          "detail": "traceability: R-9 has no terminal outcome (no row of test-plan.md names this requirement)",
+          "owner": "product",
+          "kind": "chain_broken"
+        }
+      ]
+    },
+    {
+      "root_id": "bc2415f0a002e3f69ef8baca49464a010b096cbc8ee2799a5863e2e547a8e9e1",
+      "details": [
+        {
+          "code": "TRACEABILITY_GAP",
+          "entity": "R-13",
+          "detail": "traceability: R-13 has no terminal outcome (no row of test-plan.md names this requirement)",
+          "owner": "product",
+          "kind": "chain_broken"
+        }
+      ]
+    },
+    {
+      "root_id": "6a40ecca0537b2f95ae09d82f31d8a0fd4f02fadfb4c5e7141e1e093365296d8",
+      "details": [
+        {
+          "code": "TRACEABILITY_GAP",
+          "entity": "R-16",
+          "detail": "traceability: R-16 has no terminal outcome (no row of test-plan.md names this requirement)",
+          "owner": "product",
+          "kind": "chain_broken"
+        }
+      ]
+    },
+    {
+      "root_id": "cc86c894ca1206e0676ff70b33949d91acc32e6d138e6e29f125040d6747faf4",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-1",
+          "detail": "coverage: OB-1 — disabled buttons not covered (UI)",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "3120c819c71fd433a1e48c333924b75efb987782ed04bfdcc7a5429dd236128c",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-2",
+          "detail": "coverage: OB-2 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "6a8d3aee3a63ab45df090120b5c5fe09689e8a94baf57ce0822ac9365fc4bcbb",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-3",
+          "detail": "coverage: OB-3 — none",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "b037db1c0a0d93250f1043be5f0f6e378ff458eb40a555285aa3a216318de978",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-4",
+          "detail": "coverage: OB-4 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "4448c0ac2cac4d5e4d88ad6827f005efc0210e3eb78ebef8dd8d00e54fb8face",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-5",
+          "detail": "coverage: OB-5 — none",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "841e75f69e13a66f23a060e24fbc44b256d9778e1858212ade3ea25e52b2a70e",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-6",
+          "detail": "coverage: OB-6 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "ded6d15e666abc2c1b7ceec39cc487186b49ae7cbeeae007b485d16f6c3d26aa",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-7",
+          "detail": "coverage: OB-7 — none",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "ea08775337255e196e23cd6a5d561c15887ca428e6959cbb4a37f06f35b30426",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-8",
+          "detail": "coverage: OB-8 — proves no persistent change, not that no write was attempted",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "96f83353e12a72edafa194e93120cad99d5154e1a38a7997d587094508a9caa6",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-9",
+          "detail": "coverage: OB-9 — payment itself is out of scope",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    },
+    {
+      "root_id": "53d17b4cd97f0171f4047d298770a40923831712129e32c268c22363aac06ea3",
+      "details": [
+        {
+          "code": "COVERAGE_EVIDENCE_GAP",
+          "entity": "OB-10",
+          "detail": "coverage: OB-10 — detail-page and wishlist paths are manual-agent rows",
+          "owner": "product",
+          "kind": "coverage_gap"
+        }
+      ]
+    }
+  ],
+  "reasons_by_owner": {
+    "product": [
+      "traceability: R-9 has no terminal outcome (no row of test-plan.md names this requirement)",
+      "traceability: R-13 has no terminal outcome (no row of test-plan.md names this requirement)",
+      "traceability: R-16 has no terminal outcome (no row of test-plan.md names this requirement)",
+      "coverage: OB-1 — disabled buttons not covered (UI)",
+      "coverage: OB-2 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "coverage: OB-3 — none",
+      "coverage: OB-4 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "coverage: OB-5 — none",
+      "coverage: OB-6 — reused candidate assertion evidence is missing, nonexecutable, or mismatched",
+      "coverage: OB-7 — none",
+      "coverage: OB-8 — proves no persistent change, not that no write was attempted",
+      "coverage: OB-9 — payment itself is out of scope",
+      "coverage: OB-10 — detail-page and wishlist paths are manual-agent rows"
+    ]
+  },
+  "blocked_by": [
+    "product"
+  ],
+  "current_design_gaps": [],
+  "controller_revision": 139,
+  "comparisons_ready": true,
+  "comparison_gaps": [],
+  "comparison_gate_a_ref": "gateA-CART-1",
+  "delivery_ready": false,
+  "delivery_verdict": "no",
+  "left_with_you": null,
+  "source_gaps": [],
+  "ledger_freshness": "current",
+  "current_source_inputs": {
+    "schema_version": 1,
+    "files": {
+      "test-plan.json": {
+        "path": "work/test-plan.json",
+        "sha256": "4a3ed29830e15961860a6ebabbc0eb5b9edf1f8a05fd0a7c8ed4887dcc48a156"
+      },
+      "run-report.json": {
+        "path": "work/run-report.json",
+        "sha256": "305dd5893e5287d25198a90f86e507889176b9e7394a51022b3878792305841e"
+      },
+      "automation-manifest.json": {
+        "path": "work/automation-manifest.json",
+        "sha256": "9b3d004479424d511210cefb344c0a6d05e51f7557668665676ccd687c64835d"
+      },
+      "triage.json": {
+        "path": "work/triage.json",
+        "sha256": "79addf4a6f9adbfdc648f63bccb15ab58474e9bd9463eb9da49bc22e599bb8d2"
+      }
+    },
+    "fingerprint": "9885be2d3684fa1fc2c920334ef2b3c068d05827ef1fea94b170b4ddff3543b4"
+  }
+}

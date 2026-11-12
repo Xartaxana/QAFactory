@@ -1,0 +1,3 @@
+qa-bug-reporter S8 LOCAL-1 · ok
+qty-invalid-input-coerced · filed · BUG-1 created, merged scope, unconfirmed, markdown, no proposal
+qa-factory/artifacts/LOCAL-1/bugs/BUG-1.md

@@ -1,0 +1,589 @@
+{
+  "verdict": "ready",
+  "confidence": "low",
+  "goal_summary": "Make the Last indexed value in a datasource's details move whenever a user starts a manual reindex, so users can tell the data was refreshed; the shipped design stamps the reindex trigger time, and we look for places where that stamp is missed, reverted or misleading (failed, queued, scheduled, provider, resume flows).",
+  "aspects": {
+    "cross-team integration": {
+      "status": "ready",
+      "reason": "scheduled actors, concurrency manager, SharePoint processor and the health classifier share the same two timestamps; risks R-13, R-14, R-15 are registered"
+    },
+    "roles and permissions": {
+      "status": "n/a",
+      "reason": "the diff changes no access rule; the stamp is written for the already-authorised reindex request"
+    },
+    "integrations with external systems": {
+      "status": "ready",
+      "reason": "provider reindex calls an external provider; status handling is R-11 and R-18; provider contract not read (OQ-8)"
+    },
+    "persistent and shared data": {
+      "status": "ready",
+      "reason": "last_reindex_triggered_at is a persisted column shared by manual, scheduled and queued writers; R-4, R-8, R-13, R-17"
+    },
+    "inputs and validation": {
+      "status": "n/a",
+      "reason": "the change accepts no new input; only the displayed timestamp format is a risk (R-19, OQ-9)"
+    },
+    "failure and error paths": {
+      "status": "ready",
+      "reason": "failed, guardrail-blocked, queue-timeout and unknown provider status paths are registered as R-15, R-16, R-18"
+    }
+  },
+  "register": {
+    "total": 20,
+    "by_source": {
+      "story": 1,
+      "feature": 0,
+      "assumption": 0,
+      "discussion": 1,
+      "ac": 5,
+      "derived": 13
+    }
+  },
+  "baseline_needed": false,
+  "open_questions": [
+    {
+      "id": "OQ-1",
+      "question": "Should AC-2 be reworded from 'latest completed reindex operation' to the reindex trigger time? (decided for testing by the person: trigger-time is the oracle; documentation question for the product owner)",
+      "source_says": [
+        {
+          "quote": "Lay timestamp currently hierarchies ii all driven interview lookups registers.",
+          "where": "TP1-14857 AC-2"
+        },
+        {
+          "quote": "After a successful full reindex, the Last indexed field displays the timestamp of the completed reindex operation.",
+          "where": "TP1-14857 Expected Result"
+        },
+        {
+          "quote": "ts = datetime.now() ... values(last_reindex_triggered_at=ts)",
+          "where": "src/testproject1/rest_api/models/index.py:1135 (MR 4566)"
+        },
+        {
+          "quote": "Switching the value to completion time.",
+          "where": "MR 4566 spec.md Non-goals"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "AC-2 and the Expected Result are stale; Last indexed means the reindex trigger time.",
+          "from": "person",
+          "if_chosen": "R-3 stays the oracle; R-2 and R-7 are asserted as trigger time; the PO is asked to reword the ticket text; no bug is filed against the existing trigger-time implementation."
+        },
+        {
+          "reading": "Last indexed must show when the latest reindex completed.",
+          "from": "acceptance_criteria:AC-2",
+          "if_chosen": "R-2 and R-7 would be asserted against completion time and the trigger-time stamp would become a product bug; this contradicts the person's S1 decision, so it is recorded only."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "OQ-2",
+      "question": "AC-4 asks for verification on foo_analytics_repo, which is stand data absent from local-docker and from every diff. Which datasource may stand in?",
+      "source_says": [
+        {
+          "quote": "The behavior is verified for foo_analytics_repo.",
+          "where": "TP1-14857 AC-4"
+        },
+        {
+          "quote": "local-docker only; no foo_analytics_repo",
+          "where": "work/context-manifest.json constraints"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "A code (git) datasource created by the test on local-docker stands in, because the code reindex path is the one foo_analytics_repo uses.",
+          "from": "code",
+          "if_chosen": "R-5 stays unverified for the named repo, is reported as 'could not check', and R-1 to R-4 are run on the stand-in."
+        },
+        {
+          "reading": "Only foo_analytics_repo on the stand that holds it counts.",
+          "from": "acceptance_criteria:AC-4",
+          "if_chosen": "R-5 becomes a manual row for a person with access to that stand; nothing automated is claimed for it."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "OQ-3",
+      "question": "AC-5 does not name the 'other repository indexing flows'. Which flows must keep their timestamp updates (scheduled actors, watchdog resume, KB types, SVN, provider, initial indexing)?",
+      "source_says": [
+        {
+          "quote": "Frontend serialize plainly end while translated hashable start had sol patchable.",
+          "where": "TP1-14857 AC-5"
+        },
+        {
+          "quote": "initial indexing uses schedule(bg) with no func ... not stamped; AC-5 'other indexing flows' does not name this",
+          "where": "work/context-manifest.json observables (kb_atlassian.py:109)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Only flows that stamped before this MR: scheduled (cron) actors and the stale-watchdog resume.",
+          "from": "code",
+          "if_chosen": "R-6 is carried by R-13 and R-14 plus the existing actor tests; R-20 (initial index not stamped) is not a regression."
+        },
+        {
+          "reading": "Every indexing flow of every datasource type, including initial indexing.",
+          "from": "acceptance_criteria:AC-5",
+          "if_chosen": "R-20 and every KB type become in-scope rows; an unstamped initial index would be reported as a gap."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "OQ-4",
+      "question": "Should Last indexed move for a failed, guardrail-blocked or queue-timed-out manual reindex? The stamp is written before processing.",
+      "source_says": [
+        {
+          "quote": "A successfully completed full reindex updates the repository's Last indexed timestamp.",
+          "where": "TP1-14857 AC-1"
+        },
+        {
+          "quote": "Whether failed or guardrail-blocked runs should move 'Last indexed'",
+          "where": "MR 4566 spec.md Non-goals"
+        },
+        {
+          "quote": "last_reindex_triggered_at > update_date -> STALE",
+          "where": "src/testproject1/agents/tools/datasource_health_mixin.py:27"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Only a successful run moves Last indexed; a failed run keeps the old value.",
+          "from": "acceptance_criteria:AC-1",
+          "if_chosen": "R-16 and R-15 are asserted as defects (failed or queue-timed-out run shows a fresh Last indexed); a bug draft is written for each observed case."
+        },
+        {
+          "reading": "Last indexed is the trigger time regardless of outcome.",
+          "from": "code",
+          "if_chosen": "R-16 and R-15 are recorded as documented behaviour; the health classifier STALE/FAILED result is the user-visible signal."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "OQ-5",
+      "question": "Should a manual resume of an interrupted index, an incremental reindex and a file-KB update move Last indexed, or only a full reindex?",
+      "source_says": [
+        {
+          "quote": "every manual reindex (full, incremental, resume) of every datasource type persists last_reindex_triggered_at at trigger time",
+          "where": "MR 4566 spec.md Goal 1"
+        },
+        {
+          "quote": "Repository full reindex does not update the \"Last indexed\" timestamp",
+          "where": "TP1-14857 title"
+        },
+        {
+          "quote": "schedule(func=resume) also stamps: a manual resume of an interrupted index moves 'Last indexed'",
+          "where": "work/context-manifest.json observables (kb_atlassian.py:267)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Any manual run through schedule(func=...) moves it, including resume and incremental.",
+          "from": "code",
+          "if_chosen": "R-9 is asserted for resume and incremental rows as well as full reindex."
+        },
+        {
+          "reading": "Only a full reindex moves it.",
+          "from": "acceptance_criteria:AC-1",
+          "if_chosen": "A resume or incremental run that moves Last indexed is reported as a defect against R-9."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "OQ-6",
+      "question": "What must Last indexed show after a scheduled (cron) reindex when the concurrency queue is talkative or the datasource is SharePoint OAuth, where a later full update() may write the old in-memory value back?",
+      "source_says": [
+        {
+          "quote": "Unprompted rh enotfound age retirement growing flat got blaming pm passport unsettled.",
+          "where": "TP1-14857 AC-3"
+        },
+        {
+          "quote": "scheduled (cron) code reindex stamps via targeted SQL only; payload.index_info in memory is NOT mirrored",
+          "where": "work/context-manifest.json observables (triggers/actors/datasource.py:84)"
+        },
+        {
+          "quote": "Changing scheduler or actor logic (TP1-10937 is separate)",
+          "where": "MR 4566 spec.md Non-goals"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "AC-3 and AC-5 apply to scheduled flows too: a reverted stamp is a defect of this fix's class.",
+          "from": "acceptance_criteria:AC-3",
+          "if_chosen": "R-13 and R-14 are probed as defects; an observed revert becomes a bug draft."
+        },
+        {
+          "reading": "Scheduled flows are out of scope; they are the scheduler ticket's concern.",
+          "from": "code",
+          "if_chosen": "R-13 and R-14 are recorded as risks only and routed to the scheduler team as a question."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "dev_arch"
+    },
+    {
+      "id": "OQ-7",
+      "question": "Claims about the code that no ticket text states (R-8, R-9, R-11, R-12): is the behaviour now intended, or is the behaviour before expected (a regression)?",
+      "source_says": [
+        {
+          "quote": "manual reindex entry points did not stamp (Last indexed stayed outdated)",
+          "where": "TP1-14857 Actual Result"
+        },
+        {
+          "quote": "Entry points: BaseDatasourceProcessor.schedule() when a func ... is passed",
+          "where": "MR 4566 spec.md Design"
+        }
+      ],
+      "before": {
+        "value": "manual reindex wrote no stamp; provider reindex started progress only for Started; success path assigned the stamp in memory only",
+        "where": "diff:-src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py:81 and diff:-src/testproject1/datasource/base_datasource_processor.py:224"
+      },
+      "now": {
+        "value": "every manual entry point stamps once at trigger, update_date untouched; provider InProgress starts progress and Completed completes it; success path no longer assigns",
+        "where": "diff:src/testproject1/datasource/base_datasource_processor.py:135, diff:src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py:85"
+      },
+      "readings": [
+        {
+          "reading": "The behaviour now is intended.",
+          "from": "claim",
+          "if_chosen": "R-8, R-9, R-11, R-12 become confirmed requirements and are asserted as built."
+        },
+        {
+          "reading": "The behaviour before is expected (a regression).",
+          "from": "claim",
+          "if_chosen": "The changed behaviour is reported as a regression for each affected claim."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "dev_arch"
+    },
+    {
+      "id": "OQ-8",
+      "question": "What must happen to a provider datasource when the provider answers with a status that is neither Started, InProgress nor Completed and carries no errors (e.g. Failed with an empty errors list)?",
+      "source_says": [
+        {
+          "quote": "The provider response enum is Started, InProgress, Completed, Error",
+          "where": "MR 4566 code-review-final.json CR-002"
+        },
+        {
+          "quote": "if response.status == \"Completed\": self.datasource.complete_progress()",
+          "where": "src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py:93 (MR 4566)"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "An unknown or failed status without errors must surface as an error on the datasource.",
+          "from": "code",
+          "if_chosen": "R-18 is asserted as a defect when the datasource stays neither in progress, completed nor errored."
+        },
+        {
+          "reading": "Leaving the datasource unchanged is acceptable.",
+          "from": "code",
+          "if_chosen": "R-18 is recorded as documented behaviour; no check is added."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "dev_arch"
+    },
+    {
+      "id": "OQ-9",
+      "question": "In which time zone and precision must Last indexed be shown? The stamp is a naive server-local datetime and the UI formats it with formatScheduleDate.",
+      "source_says": [
+        {
+          "quote": "Owe 17, 14:52 (55 days ago)",
+          "where": "TP1-14857 Actual Result"
+        },
+        {
+          "quote": "Last indexed renders as e.g. 'Owe 17, 14:52 (55 days ago)': minute precision, no year, in the browser's local time zone",
+          "where": "MR 798 view_datasource_page.py comment"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Browser-local time at minute precision is correct.",
+          "from": "test",
+          "if_chosen": "R-19 is asserted with a tolerance of one minute against the trigger time."
+        },
+        {
+          "reading": "The server time zone must be shown or the value must carry an offset.",
+          "from": "description",
+          "if_chosen": "A shifted display is reported as a defect against R-19."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba"
+    },
+    {
+      "id": "Q1",
+      "question": "Should a failed or guardrail-blocked manual reindex move Last indexed (unchanged vs new trigger stamp)?",
+      "source_says": [
+        {
+          "quote": "A successfully completed full reindex updates the repository's Last indexed timestamp",
+          "where": "TP1-14857 AC-1"
+        },
+        {
+          "quote": "Whether failed or guardrail-blocked runs should move 'Last indexed' is a non-goal",
+          "where": "MR testproject1!4566 spec.md"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (stamp written at trigger before processing, so a failed run shows a new Last indexed).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (stamp written at trigger before processing, so a failed run shows a new Last indexed); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (unknown: no stamp was written on the manual path).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (unknown: no stamp was written on the manual path); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown: no stamp was written on the manual path",
+        "where": "diff:-src/testproject1/datasource/base_datasource_processor.py:224"
+      },
+      "now": {
+        "value": "stamp written at trigger before processing, so a failed run shows a new Last indexed",
+        "where": "diff:src/testproject1/datasource/base_datasource_processor.py:248"
+      },
+      "raised_for": {
+        "case": "TC-006",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "For a manual reindex that waits in the concurrency queue and times out, should Last indexed stay unchanged or show the trigger stamp (and may the datasource read as STALE)?",
+      "source_says": [
+        {
+          "quote": "stamp it at trigger time",
+          "where": "MR testproject1!4566 commit message"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (stamped in schedule() before the queue wait; a timeout can leave stamp later than update_date).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (stamped in schedule() before the queue wait; a timeout can leave stamp later than update_date); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (unknown: no stamp on the manual path).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (unknown: no stamp on the manual path); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown: no stamp on the manual path",
+        "where": "diff:-src/testproject1/datasource/base_datasource_processor.py:224"
+      },
+      "now": {
+        "value": "stamped in schedule() before the queue wait; a timeout can leave stamp later than update_date",
+        "where": "diff:src/testproject1/datasource/base_datasource_processor.py:135"
+      },
+      "raised_for": {
+        "case": "TC-007",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "For a scheduled (cron) reindex that waits in the queue, must the stored Last indexed be the scheduled trigger time, or are scheduled flows out of scope of this ticket?",
+      "source_says": [
+        {
+          "quote": "Existing timestamp updates for other repository indexing flows are not regressed",
+          "where": "TP1-14857 AC-5"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (targeted SQL stamp, then set_queued()/clear_queued() full update() may write the older in-memory value back).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (targeted SQL stamp, then set_queued()/clear_queued() full update() may write the older in-memory value back); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (unknown: scheduled flows stamped in memory on success).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (unknown: scheduled flows stamped in memory on success); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown: scheduled flows stamped in memory on success",
+        "where": "diff:-src/testproject1/datasource/base_datasource_processor.py:224"
+      },
+      "now": {
+        "value": "targeted SQL stamp, then set_queued()/clear_queued() full update() may write the older in-memory value back",
+        "where": "current-code:src/testproject1/datasource/datasource_concurrency_manager.py:127"
+      },
+      "raised_for": {
+        "case": "TC-008",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "When a provider reindex answers Failed with an empty error list (or an unknown status), what state must the datasource end in?",
+      "source_says": [
+        {
+          "quote": "Started/InProgress start progress; Completed completes; errors go through _handle_error",
+          "where": "MR testproject1!4566 provider_datasource_reindex_service.py"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (Failed with no errors falls through every branch: not in progress, not completed, not errored).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (Failed with no errors falls through every branch: not in progress, not completed, not errored); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (Started only started progress).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (Started only started progress); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "Started only started progress",
+        "where": "diff:-src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py:81"
+      },
+      "now": {
+        "value": "Failed with no errors falls through every branch: not in progress, not completed, not errored",
+        "where": "current-code:src/testproject1/service/provider/datasource/provider_datasource_reindex_service.py:72"
+      },
+      "raised_for": {
+        "case": "TC-009",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q5",
+      "question": "Which time zone and precision must the details page show for Last indexed (server local, UTC, or the browser zone; minute or second)?",
+      "source_says": [
+        {
+          "quote": "ts = datetime.now()",
+          "where": "src/testproject1/rest_api/models/index.py:1135"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (naive server-local datetime rendered by formatScheduleDate).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (naive server-local datetime rendered by formatScheduleDate); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (unknown: no stamp displayed after a manual reindex).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (unknown: no stamp displayed after a manual reindex); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown: no stamp displayed after a manual reindex",
+        "where": "ticket TP1-14857 steps 1-5"
+      },
+      "now": {
+        "value": "naive server-local datetime rendered by formatScheduleDate",
+        "where": "current-code:../testproject1-ui/src/pages/dataSources/components/DataSourceDetails.tsx:825"
+      },
+      "raised_for": {
+        "case": "TC-010",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q6",
+      "question": "After the first (initial) indexing completes, should Last indexed be empty until the first reindex, or already show a time?",
+      "source_says": [
+        {
+          "quote": "Plain schedule(background_tasks) (initial index creation, no func) does not stamp",
+          "where": "MR testproject1!4566 base_datasource_processor.py:118"
+        },
+        {
+          "quote": "Existing timestamp updates for other repository indexing flows are not regressed",
+          "where": "TP1-14857 AC-5"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (initial indexing is not stamped; Last indexed absent until the first reindex).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (initial indexing is not stamped; Last indexed absent until the first reindex); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (unknown: initial indexing set the in-memory stamp on success).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (unknown: initial indexing set the in-memory stamp on success); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "minor",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown: initial indexing set the in-memory stamp on success",
+        "where": "diff:-src/testproject1/datasource/base_datasource_processor.py:224"
+      },
+      "now": {
+        "value": "initial indexing is not stamped; Last indexed absent until the first reindex",
+        "where": "current-code:src/testproject1/datasource/base_datasource_processor.py:118"
+      },
+      "raised_for": {
+        "case": "TC-011",
+        "then": 1
+      }
+    },
+    {
+      "id": "Q7",
+      "question": "Does only a full reindex move Last indexed, or any manual run (file-KB update, incremental, resume, SVN), and should it move exactly once?",
+      "source_says": [
+        {
+          "quote": "full reindex",
+          "where": "TP1-14857 title and AC-1"
+        },
+        {
+          "quote": "every manual schedule(func) stamps once at trigger",
+          "where": "MR testproject1!4566 spec.md Goal 1"
+        }
+      ],
+      "readings": [
+        {
+          "reading": "Intended: the behaviour now is the expected one (every schedule(func) entry point stamps at trigger, including resume and incremental).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour now (every schedule(func) entry point stamps at trigger, including resume and incremental); the Then is checked against it."
+        },
+        {
+          "reading": "A regression: the behaviour before the change is the expected one (unknown: manual entry points did not stamp).",
+          "from": "claim",
+          "if_chosen": "The expected value of the Then is the behaviour before the change (unknown: manual entry points did not stamp); the behaviour now is reported as a defect."
+        }
+      ],
+      "severity": "major",
+      "owner_role": "po_ba",
+      "before": {
+        "value": "unknown: manual entry points did not stamp",
+        "where": "diff:-src/testproject1/datasource/base_datasource_processor.py:224"
+      },
+      "now": {
+        "value": "every schedule(func) entry point stamps at trigger, including resume and incremental",
+        "where": "diff:src/testproject1/datasource/base_datasource_processor.py:135"
+      },
+      "raised_for": {
+        "case": "TC-012",
+        "then": 1
+      }
+    }
+  ]
+}

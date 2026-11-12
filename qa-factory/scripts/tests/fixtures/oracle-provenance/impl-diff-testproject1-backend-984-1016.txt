@@ -1,0 +1,33 @@
+     try:
+-        MCPAccessControlService.validate_on_save(_collect_workflow_mcp_servers(updated_config))
+-        _strip_workflow_mcp_servers(updated_config)
+-        logger.debug(f"Update workflow. Request: {request}")
+-
+-        if updated_config.mode == WorkflowMode.AUTONOMOUS:
+-            raise ExtendedHTTPException(
+-                code=status.HTTP_403_FORBIDDEN,
+-                message="Autonomous workflows are disabled",
+-                details="Updating workflows to autonomous mode is not allowed. Only sequential workflows can be used.",
+-                help="Please set the workflow mode to 'SEQUENTIAL' instead.",
+-            )
+-        await workflow_service.validate_for_update(workflow, updated_config, user, error_format)
+         updated_workflow = workflow_service.update_workflow(workflow, updated_config, user)
+ 
+         GuardrailService.sync_guardrail_assignments_for_entity(
+@@ -505,12 +555,10 @@ async def update_workflow(
+             "data": updated_workflow,
+             "warnings": await _consumer_slot_warnings(updated_config, user),
+         }
+-    except ValidationException:
+-        raise
+-    except NotFoundException:
++    except (ValidationException, NotFoundException):
+         raise
+     except Exception as e:
+-        formatted_exception = str(e).strip()
++        formatted_exception = e.message if isinstance(e, ExtendedHTTPException) else str(e).strip()
+         details = (
+             e.args[0]
+             if error_format == WorkflowErrorFormat.JSON and e.args and isinstance(e.args[0], dict)
+@@ -524,6 +572,50 @@ async def update_workflow(
+         ) from e

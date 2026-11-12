@@ -1,0 +1,22 @@
+{
+  "session_id": "synthetic-gaps-a",
+  "usage_completeness": "provisional",
+  "by_activity": {
+    "act-story": {"type": "story", "task": "SYN-1"},
+    "unclassified": {"type": "unclassified", "task": null}
+  },
+  "agents": [
+    {"agent": "qa-factory:qa-scout", "file": "agent-s1.jsonl", "tokens": 900, "activity_id": "act-story", "task": "SYN-1"},
+    {"agent": "qa-factory:qa-case-designer", "file": "agent-s2.jsonl", "tokens": 800, "activity_id": "act-story", "task": "SYN-1"},
+    {"agent": "qa-factory:qa-critic", "file": "agent-s3.jsonl", "tokens": 700, "activity_id": "act-story", "task": "SYN-1"}
+  ],
+  "incomplete_agents": ["qa-scout", "qa-case-designer", "qa-critic"],
+  "requests": [
+    {"request_key": "gap-a-1", "stream": "orchestrator", "activity_id": "act-story", "task": "SYN-1", "timestamp": "2026-09-20T19:22:00Z", "usage": {"input": 100, "output": 50}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-a-2", "stream": "agent-s1.jsonl", "activity_id": "act-story", "task": "SYN-1", "timestamp": "2026-09-20T19:22:10Z", "usage": {"input": 90, "output": 10}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-a-3", "stream": "agent-s2.jsonl", "activity_id": "act-story", "task": "SYN-1", "timestamp": "2026-09-20T19:22:20Z", "usage": {"input": 80, "output": 10}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-a-4", "stream": "agent-s3.jsonl", "activity_id": "act-story", "task": "SYN-1", "timestamp": "2026-09-20T19:22:30Z", "usage": {"input": 70, "output": 10}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-a-5", "stream": "orchestrator", "activity_id": "unclassified", "task": "(no task)", "timestamp": "2026-09-20T19:30:00Z", "usage": {"input": 60, "output": 5}, "valuation": {"pricing_coverage": "none"}},
+    {"request_key": "gap-a-6", "stream": "orchestrator", "activity_id": "unclassified", "task": "(no task)", "timestamp": "2026-09-20T19:31:00Z", "usage": {"input": 50, "output": 5}, "valuation": {"pricing_coverage": "none"}}
+  ]
+}

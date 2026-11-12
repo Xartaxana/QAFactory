@@ -1,0 +1,42 @@
+{
+  "acceptance_criteria": [],
+  "attachments": [],
+  "comments": [],
+  "description": "*Objective:* Verify that a negative quantity is rejected when adding a book to the cart and nothing is added.\n\n*Type:* negative  \n*Level:* end-to-end  \n*Priority:* high\n\n*Preconditions:*\n* Application is reachable (local disposable environment)\n* A regular user account is available\n* Books are located by title via catalog search, never by ID, because IDs change when the database is reseeded\n* Book \"1984\" is in stock\n\n*Test data:*\n* Book: 1984\n* Invalid quantity: -1\n\n*Steps & Expected results:*\n# Open the login page and sign in with the regular user account  \n   *Expected:* User lands on the catalog page; the Logout button is visible\n# Open the cart; remove every line that is present  \n   *Expected:* Cart is empty; the cart badge in the navigation is absent or 0\n# On the catalog page type \"1984\" into the search box and click Search  \n   *Expected:* A catalog card titled \"1984\" is listed\n# Open the detail page of \"1984\"  \n   *Expected:* Detail page opens with heading \"1984\"\n# Clear the Quantity field and type -1 (if the control refuses the input, record that)  \n   *Expected:* Control shows the typed value or prevents it\n# Click Add to Cart  \n   *Expected:* Add is rejected with a validation or error message, or the control prevents it; cart badge absent or 0\n# Open the cart  \n   *Expected:* Cart is empty; \"1984\" is not listed\n\n*Postconditions:*\n* Cart is empty (quantity must be a whole number >= 1)\n\n*Traceability:*\n* User story: REF-10\n* Related bug: REF-29\n\n*Notes:*\n* Observed in the last run: the control turns -1 into 1 and the book is added with a success message.",
+  "id": "14509630",
+  "key": "REF-4",
+  "labels": [
+    "negative",
+    "shopping_cart",
+    "validation",
+    "web"
+  ],
+  "links": {
+    "branch": null,
+    "issue_links": [
+      {
+        "key": "REF-10",
+        "relation": "tests",
+        "status": "Open",
+        "summary": "Add Product to Shopping Cart",
+        "type": "Tests"
+      }
+    ],
+    "merge_request": null,
+    "remote_links": []
+  },
+  "parent": null,
+  "priority": "High",
+  "provenance": {
+    "bytes": 15848,
+    "fields_requested": "*all",
+    "sha256": "fbe6cee3d23d1b2e668556f01ebc8f878f4c8d4420f60b4a89c810a427eca59e",
+    "source": "fetched"
+  },
+  "reporter": "person-2",
+  "revision": "2026-10-15T14:26:47.506+0000",
+  "status": "Open",
+  "subtasks": [],
+  "title": "Reject quantity -1 when adding to cart",
+  "type": "Test"
+}

@@ -1,0 +1,36 @@
+{
+  "_about": "Why a source or a material could not be read (C2-9, D-0043, D-0047). media_causes: the closed list of causes an `inspect --inspection-status unavailable --reason \"<cause>: <fact>\"` may carry. access_causes: the causes about ACCESS the person can restore - they are asked. default_causes: the causes the factory itself can establish (a code carrier, a structural fact, a measured size, a standing decision) - a point with such a cause is a gap in the report and is not asked; the value names the carrier the predicate checks (`probe`: a vcs_evidence receipt, `structural`: the URL shape, `size`: a measured size at or above the limit). `forbidden_by_policy` is NOT here on purpose: nothing in the package records a standing decision it could be checked against, so a role's word alone is never a default and the point is asked (FR-59). vcs_codes: every code vcs_evidence.py answers with -> the cause it means; a code not in this table is never a default.",
+  "media_causes": {
+    "no_tool": "nothing in this run can open that kind of address",
+    "auth_required": "a login page, a redirect to SSO, 401 or 403",
+    "host_unreachable": "DNS or routing failed - this is what a dropped VPN looks like",
+    "not_found": "the host answered 404 or 410",
+    "transient": "a timeout or a 5xx that did not settle on retry",
+    "too_large": "fetched, but too large to keep as evidence",
+    "forbidden_by_policy": "the factory is not allowed to fetch this"
+  },
+  "access_causes": ["auth_required", "host_unreachable"],
+  "default_causes": {
+    "host_unreachable": "probe",
+    "no_tool": "structural",
+    "too_large": "size"
+  },
+  "vcs_codes": {
+    "host_unreachable": "host_unreachable",
+    "unauthenticated": "auth_required",
+    "forbidden": "auth_required",
+    "cli_missing": "auth_required",
+    "cli_config_error": "auth_required",
+    "cli_config_or_sandbox_denied": "auth_required",
+    "not_found_or_hidden": "not_found",
+    "network_timeout": "transient",
+    "network_transient": "transient",
+    "rate_limited": "transient",
+    "invalid_api_response": "transient",
+    "invalid_page": "transient",
+    "pagination_did_not_advance": "transient",
+    "missing_revision": "transient",
+    "mr_changed_during_collection": "transient",
+    "diff_truncated": "too_large"
+  }
+}

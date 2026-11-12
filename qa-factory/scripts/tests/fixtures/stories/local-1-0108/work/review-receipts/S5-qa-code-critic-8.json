@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "receipt_kind": "s5_review_window",
+  "immutable": true,
+  "reviewer_dispatch_id": "S5-qa-code-critic-8",
+  "author_dispatch_id": "S5-qa-automator-8",
+  "input_hash": "162033d5429dcc957cc480cbf64624c5266ada15931debb285b2e35a061ce45a",
+  "scope_instances": {
+    "LOCAL-1_TC_007": [
+      "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+    ],
+    "LOCAL-1_TC_008": [
+      "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+    ],
+    "LOCAL-1_TC_009": [
+      "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+    ]
+  },
+  "required_quality_checks": [],
+  "quality_receipts": [],
+  "instances": [
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]",
+      "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-8"
+        }
+      ],
+      "obligation_ids": [
+        "OB-8"
+      ],
+      "obligation_hash": "96f36b8870071fcd34405ad64d01751cd1dfcb5aba9b47a66eb4eecb6f112512",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_007",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "4c6b06a432f2cfc311ccc678788b07d591a1264d74f093140a9d2d0050f5fe8a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T032648066569Z-a9cb85e27ba6cd9979cb.json",
+          "sha256": "79eb1a2f34d70c16d6fe379c05f3fd929d2e25c6583bd081b7db692c7c3c46a5"
+        },
+        {
+          "path": "evidence/runs/a9cb85e27ba6cd9979cb/repair_verify-a9cb85e27ba6cd9979cb-20261102-042601.junit.xml",
+          "sha256": "de689d6668f2657100bd5bf3fdfc49434a94019bdc4092cd68850e0e1c2b82f0"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_007",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_007 invalid_quantity_rejected[tc007_zero]"
+            ],
+            "thens": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+      "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "obligation_hash": "20a15ca0ec3112caaf01af1853739969387b3e560668467b4785960670b93354",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_008",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "4c6b06a432f2cfc311ccc678788b07d591a1264d74f093140a9d2d0050f5fe8a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T032902386817Z-a875612829c24fc479d2.json",
+          "sha256": "e79007ad4305866d8c5a32b0bdaabb0f372714a893e708eb727dc000fef06b74"
+        },
+        {
+          "path": "evidence/runs/a875612829c24fc479d2/repair_verify-a875612829c24fc479d2-20261102-042819.junit.xml",
+          "sha256": "7a797006d6d100e3400183217b3836f22384356fc0f684dda347d31a9663b0c5"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_008",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+              "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+            ],
+            "thens": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]",
+      "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-9"
+        }
+      ],
+      "obligation_ids": [
+        "OB-9"
+      ],
+      "obligation_hash": "20a15ca0ec3112caaf01af1853739969387b3e560668467b4785960670b93354",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_008",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "4c6b06a432f2cfc311ccc678788b07d591a1264d74f093140a9d2d0050f5fe8a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T033000576965Z-14342300abd3d031f4c4.json",
+          "sha256": "3dcce99a95d7e2d3c1fe51f89feaccd83c8511177a1b10b3ae25e16a71bad194"
+        },
+        {
+          "path": "evidence/runs/14342300abd3d031f4c4/repair_verify-14342300abd3d031f4c4-20261102-042922.junit.xml",
+          "sha256": "de06f67e2ad93531509eb8a988bfad44ced0ebc54e6eee09a611c2fdc131f9db"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_008",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_negative]",
+              "cart.spec.@regression LOCAL-1_TC_008 invalid_quantity_rejected[tc008_non_integer]"
+            ],
+            "thens": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188"
+      ]
+    },
+    {
+      "schema_version": 2,
+      "instance_id": "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]",
+      "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20",
+      "obligation_refs": [
+        {
+          "obligation_id": "OB-10"
+        }
+      ],
+      "obligation_ids": [
+        "OB-10"
+      ],
+      "obligation_hash": "fa6836144cc3a5ac1186fccd58c35f4d8d04778132d9165bb60b81127c2969b8",
+      "assertion_id": "tests/e2e/cart/cart.spec.ts:188",
+      "defect_location": "MyBooks/src/components/pages/BookDetailPage.tsx:164",
+      "change_disposition": "new_or_changed",
+      "change_basis_ref": "manifest:LOCAL-1_TC_009",
+      "review": {
+        "verdict": "approved",
+        "input_hash": "fa8b180a98fbe0818f6ca74ed9a72bcfbe823b8ada9ae9aab52afc5444c7da20"
+      },
+      "instance_identity_why": "the run's command is not pytest, or its selector, its files or its bytes could not be measured",
+      "outcome": "failed",
+      "execution_fingerprint": "4c6b06a432f2cfc311ccc678788b07d591a1264d74f093140a9d2d0050f5fe8a",
+      "evidence_refs": [
+        {
+          "path": "work/run-blocks/20261102T032744668055Z-d159d1c67627ce75fb34.json",
+          "sha256": "5ce49323f9b042fde8e7e365eb976b0bafe003c268c953b5854c3919a7e5d124"
+        },
+        {
+          "path": "evidence/runs/d159d1c67627ce75fb34/repair_verify-d159d1c67627ce75fb34-20261102-042702.junit.xml",
+          "sha256": "c6d76b869252bcc0c7e3134e04d755ec13965e71c4d6dd602c305134aed12a7f"
+        }
+      ],
+      "probe_not_applicable": {
+        "why": "red",
+        "reason": "contradicts_requirement",
+        "rows": [
+          {
+            "case": "LOCAL-1_TC_009",
+            "instance_ids": [
+              "cart.spec.@regression LOCAL-1_TC_009 invalid_quantity_rejected[tc009_non_numeric]"
+            ],
+            "thens": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      "assertion_refs": [
+        "tests/e2e/cart/cart.spec.ts:188"
+      ]
+    }
+  ],
+  "receipt_hash": "e418863b9e1e3ebbf069407e9d97d1a2dae8dadd38a29145ad579bee18d7e2e0"
+}

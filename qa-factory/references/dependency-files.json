@@ -1,0 +1,16 @@
+{
+  "_comment": "Closed variety (FR-13): the files whose bytes a test run depends on. Read by scripts/execution_request.py dependency_table() (through hooklib.load_ref_json); the run fingerprint (D-0017/D-0018) and the reporter-rehearsal key (D-0023, scripts/gate_preflight.py) watch what is listed and present in the run's cwd. `names`: dependency manifests and lock files, by name, in the cwd. `patterns`: file-name patterns, the TOP LEVEL of the cwd only (a pattern holds no path separator); anything deeper, or a name this table lacks, is the project's own entry `run.dependency_files` in qa-factory/config.json (paths relative to the run's cwd). `report_config`: the files a test runner reads its report options from; only the rehearsal key watches them (a changed report option is a new rehearsal, not a new run). A listed file that is present is at worst one extra run or rehearsal; a file missing from this list is a changed dependency nobody noticed, so when in doubt, list it. A table that cannot be read or has a malformed key falls back, with one note, to the files watched before this table existed (pyproject.toml, poetry.lock, requirements.txt, setup.cfg, package.json, package-lock.json; pytest.ini, tox.ini, setup.cfg, conftest.py); the first six must stay in `names` (a test reads this file and pins it).",
+  "names": [
+    "pyproject.toml", "poetry.lock", "requirements.txt", "setup.cfg", "package.json", "package-lock.json",
+    "setup.py", "Pipfile", "Pipfile.lock", "uv.lock", "pdm.lock", "yarn.lock", "pnpm-lock.yaml", "npm-shrinkwrap.json",
+    "pom.xml", "build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts", "gradle.lockfile",
+    "go.mod", "go.sum", "Cargo.toml", "Cargo.lock", "Gemfile", "Gemfile.lock", "composer.json", "composer.lock",
+    "global.json", "Directory.Build.props", "Directory.Packages.props", "packages.lock.json"
+  ],
+  "patterns": ["*.csproj", "*.fsproj", "*.vbproj"],
+  "report_config": [
+    "pytest.ini", "tox.ini", "setup.cfg", "conftest.py",
+    "jest.config.js", "jest.config.ts", "vitest.config.ts", "vitest.config.js", "karma.conf.js",
+    "playwright.config.ts", "playwright.config.js", ".runsettings"
+  ]
+}

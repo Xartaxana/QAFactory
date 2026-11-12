@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "note": "The data of an exploration (qa-explore), read ONLY by scripts/exploration.py (`table()`). `label` and `env_prefix` name the exploration to the guards and the brief; `question_key` is the key of references/question-prices.json that holds the prices of the frame packet; `limits` are every number the exploration code uses (a new number is a row here, never a literal in code); `slug` is the closed variety of the folder name (the hash form and the reserved device names a Windows folder cannot carry); `roles` says which step each role works on; `ready_repo_statuses` are the statuses of a repository in work/feature-hits.json that a scout may be sent to; `steps` is the walk E1-E3, each with the statuses `set_step` accepts, the files the brief names as input, and its `actions` in order (kind `run`: a command, satisfied when its `writes` file exists; kind `dispatch`: a role, satisfied when its `writes` file exists, per repository with hits when `per_repo`; kind `check`: a command, printed while the step is pending, the command sets the status); `artifacts` is one row per file of the exploration with its ONE writer, its readers and the outcome when nothing was found. The names of writers and readers may be scripts of later nodes of the exploratory batch: nothing here checks that they exist.",
+  "label": "Exploration:",
+  "env_prefix": "explore:",
+  "question_key": "explore.frame",
+  "limits": {
+    "phrase_chars": 200,
+    "slug_chars": 48,
+    "slug_min_chars": 3,
+    "slug_suffix_max": 99,
+    "path_max": 240,
+    "path_reserve": 100,
+    "issues_per_source": 200,
+    "page_size": 50,
+    "files_per_repo": 200,
+    "hits_per_file": 5,
+    "too_broad_files": 2000,
+    "words_max": 30,
+    "grep_timeout_s": 120,
+    "e2_files_per_scout": 60,
+    "turns_per_scout": 60,
+    "output_bytes": 200000
+  },
+  "slug": {
+    "hash_prefix": "feature-",
+    "hash_chars": 8,
+    "reserved": ["con", "prn", "aux", "nul",
+                 "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9",
+                 "lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", "lpt7", "lpt8", "lpt9"]
+  },
+  "roles": {
+    "qa-scout": ["E1", "E2"],
+    "qa-requirements-tester": ["E3"]
+  },
+  "ready_repo_statuses": ["ready", "ready_no_git"],
+  "steps": {
+    "E1": {
+      "statuses": ["pending", "done"],
+      "inputs": ["work/requirement-hits.json"],
+      "actions": [
+        {"kind": "run", "writes": "work/requirement-hits.json", "run": "requirement_search.py search --exploration {slug}"},
+        {"kind": "dispatch", "role": "qa-scout", "writes": "work/requirements.yaml"},
+        {"kind": "check", "run": "feature_map.py check-requirements --exploration {slug}"}
+      ]
+    },
+    "E2": {
+      "statuses": ["pending", "done", "partial"],
+      "inputs": ["work/requirements.yaml", "work/feature-hits.json"],
+      "actions": [
+        {"kind": "run", "writes": "work/feature-hits.json", "run": "feature_hits.py search --exploration {slug}"},
+        {"kind": "dispatch", "role": "qa-scout", "per_repo": true, "writes": "work/feature-map.{repo}.yaml"},
+        {"kind": "check", "run": "feature_map.py merge --exploration {slug}"}
+      ]
+    },
+    "E3": {
+      "statuses": ["pending", "done"],
+      "inputs": ["work/requirements.yaml", "work/feature-map.yaml"],
+      "actions": [
+        {"kind": "dispatch", "role": "qa-requirements-tester", "writes": "work/coverage-matrix.yaml"},
+        {"kind": "check", "run": "feature_map.py check-matrix --exploration {slug} --fix-summary"}
+      ]
+    }
+  },
+  "artifacts": {
+    "explore.json": {"writer": "exploration.py", "readers": ["exploration.py", "explore_step.py", "requirement_search.py", "feature_hits.py", "feature_map.py"],
+                      "null_outcome": "never absent once the frame ran; lists are [] and jql is empty when nothing narrows the search"},
+    "state/explorations/<slug>.lock": {"writer": "exploration.acquire", "readers": ["exploration.acquire", "exploration.release_lock"],
+                                       "null_outcome": "absent: nobody holds the exploration"},
+    "work/frame-packet.md": {"writer": "exploration.py", "readers": ["explore_step.py"],
+                              "null_outcome": "kept after the answer (never removed); rewritten by frame only while the frame is asked and has no words"},
+    "state/words/*": {"writer": "person_words.write_words", "readers": ["explore_step.py", "the conductor"],
+                       "null_outcome": "no file: the person has not answered in words"},
+    "work/requirement-hits.json": {"writer": "requirement_search.py", "readers": ["feature_map.py"],
+                                    "null_outcome": "sources[] lists every source with its status; a source with no hit is a row with zero hits"},
+    "work/sources/*.json": {"writer": "requirement_search.py", "readers": ["the scout"],
+                             "null_outcome": "no file for a source that was not searched; its row in work/requirement-hits.json says why"},
+    "work/feature-hits.json": {"writer": "feature_hits.py", "readers": ["exploration.py", "feature_map.py"],
+                                "null_outcome": "repos[] has a row per repository with hits_total 0 when nothing matched"},
+    "work/requirements.yaml": {"writer": "qa-scout", "readers": ["feature_map.py", "qa-requirements-tester"],
+                                "null_outcome": "a list with zero requirements and the reason"},
+    "work/feature-map.{repo}.yaml": {"writer": "qa-scout", "readers": ["feature_map.py"],
+                                      "null_outcome": "a map with zero functions and the reason"},
+    "work/feature-map.yaml": {"writer": "feature_map.py", "readers": ["qa-requirements-tester", "explore_step.py"],
+                               "null_outcome": "zero fragments: the merge says so and the step is partial"},
+    "work/coverage-matrix.yaml": {"writer": "qa-requirements-tester", "readers": ["feature_map.py"],
+                                   "null_outcome": "a matrix with zero rows and the reason"},
+    "work/coverage-matrix.md": {"writer": "feature_map.py", "readers": ["the person"],
+                                 "null_outcome": "states that nothing was found"}
+  }
+}

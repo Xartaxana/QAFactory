@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "request_kind": "manual_capture",
+  "case": "CART-1_TC_011",
+  "case_version": "cv_de13157c14b004fc1bbd",
+  "obligation_ids": [
+    "OB-11"
+  ],
+  "obligation_hashes": {
+    "OB-11": "819116770cedf51734680f7504f05793a5c44ddf8ec1f8362c78351df38867df"
+  },
+  "source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "controller_revision": 119,
+  "gate_a_decision_ref": "gateA-CART-1",
+  "evidence_policy": "ui",
+  "completion_condition": "toast shown or button disabled state read",
+  "approved_policy_hash": "758479ba59b0024c0867c81fd78b4ae1d738be292524109c59941c5f93aa90ce",
+  "expected": [
+    "detail-page add with quantity"
+  ],
+  "covers": [
+    "R-1",
+    "R-2"
+  ],
+  "legacy_evidence_gaps": [],
+  "required_actual_fields": [
+    "steps_actual",
+    "actual",
+    "evidence_refs",
+    "runtime_before",
+    "runtime_after",
+    "attempt_started_at",
+    "attempt_ended_at"
+  ],
+  "actors": [
+    {
+      "id": "PC-1",
+      "what": "a signed-in seed user",
+      "check": {
+        "stand_account": "user"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{"ts": "2026-09-20T19:22:10+00:00", "event": "subagent_stop", "agent": "qa-scout", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a1", "status": "completed"}
+{"ts": "2026-09-20T19:23:10+00:00", "event": "subagent_stop", "agent": "qa-scout", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a2", "status": "completed"}
+{"ts": "2026-09-20T19:24:10+00:00", "event": "subagent_stop", "agent": "qa-case-designer", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a3", "status": "completed"}
+{"ts": "2026-09-20T19:25:10+00:00", "event": "subagent_stop", "agent": "qa-case-designer", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a4", "status": "completed"}
+{"ts": "2026-09-20T19:26:10+00:00", "event": "subagent_stop", "agent": "qa-case-designer", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a5", "status": "completed"}
+{"ts": "2026-09-20T19:27:10+00:00", "event": "subagent_stop", "agent": "qa-case-designer", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a6", "status": "completed"}
+{"ts": "2026-09-20T19:28:10+00:00", "event": "subagent_stop", "agent": "qa-factory:qa-reviewer", "session": "synthetic-session-a", "task": "SYN-1", "dispatch": "d-a7", "status": "completed"}
+{"ts": "2026-09-20T19:29:10+00:00", "event": "subagent_stop", "agent": "qa-critic", "session": "synthetic-session-a", "task": "SYN-1", "status": "completed"}
+{"ts": "2026-09-20T19:30:10+00:00", "event": "stage_gate", "session": "synthetic-session-a", "task": "SYN-1"}
+{"ts": "2026-09-20T19:31:10+00:00", "event": "subagent_stop", "agent": "qa-scout", "session": "synthetic-session-b", "dispatch": "d-b1", "status": "completed"}
+{"ts": "2026-09-20T19:32:10+00:00", "event": "subagent_stop", "agent": "qa-scout", "session": "synthetic-session-c", "task": "SYN-2", "dispatch": "d-c1", "status": "completed"}
+{"ts": "2026-09-20T19:33:10+00:00", "event": "subagent_stop", "agent": "qa-doctor", "session": "synthetic-session-d", "dispatch": "d-d1", "status": "completed"}

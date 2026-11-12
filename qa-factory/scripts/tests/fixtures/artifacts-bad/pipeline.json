@@ -1,0 +1,23 @@
+{
+  "ticket": "QA-1",
+  "size": "S",
+  "environment": "local",
+  "implementation_source": "diff",
+  "stages": {
+    "S0": {"status": "done", "started": "2026-09-11T09:00:00Z", "finished": "2026-09-11T09:02:00Z", "role": null, "digest": "preflight green"},
+    "S1": {"status": "done", "started": "2026-09-11T09:02:00Z", "finished": "2026-09-11T09:12:00Z", "role": "qa-scout", "digest": "diff grounded"},
+    "S2": {"status": "done", "started": "2026-09-11T09:12:00Z", "finished": "2026-09-11T09:25:00Z", "role": "qa-requirements-tester", "digest": "4 requirements"},
+    "S3": {"status": "done", "started": "2026-09-11T09:25:00Z", "finished": "2026-09-11T09:40:00Z", "role": "qa-test-strategist", "digest": "3 plan rows"},
+    "S4": {"status": "done", "started": "2026-09-11T10:05:00Z", "finished": "2026-09-11T10:20:00Z", "role": "qa-case-designer", "digest": "3 cases"},
+    "S5": {"status": "done", "started": "2026-09-11T10:20:00Z", "finished": "2026-09-11T10:50:00Z", "role": "qa-automator", "digest": "2 tests, 1 unresolved"},
+    "S6": {"status": "done", "started": "2026-09-11T10:50:00Z", "finished": "2026-09-11T11:00:00Z", "role": "qa-runner", "digest": "1 failure"},
+    "S7": {"status": "running", "started": "2026-09-11T11:00:00Z", "finished": null, "role": "qa-failure-analyst", "digest": "triage in progress"},
+    "S8": {"status": "pending", "started": null, "finished": null, "role": "qa-doc-scribe", "digest": ""},
+    "S9": {"status": "pending", "started": null, "finished": null, "role": "qa-retro-analyst", "digest": ""}
+  },
+  "gates": {
+    "A": {"decision": "approve", "at": "2026-09-11T10:00:00Z", "by": "human", "edits": []},
+    "B": {"decision": null, "at": null, "deliver_with_risks": null}
+  },
+  "halts": []
+}

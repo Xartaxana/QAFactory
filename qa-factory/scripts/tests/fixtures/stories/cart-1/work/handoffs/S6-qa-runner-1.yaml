@@ -1,0 +1,212 @@
+# S6 -> S7: the run is handed to the failure analyst.
+#
+# The analyst gives every failure a verdict with evidence, so what it needs is not the summary but
+# the join: which row, which instance, which artifact, on which build. A row the reducer could not
+# join to a manifest instance decided `execution_status` for a whole story once, and nothing said
+# it was a ghost - so this file names the ghosts too, and says which rerun superseded them.
+#
+# `env_blocked` rows carry a remedy and the `env_probe` line that failed. A blocked row with no
+# remedy is refused by `validate_artifacts.py`, and rightly: "the stand is wrong" with nothing to
+# do about it is not a finding, it is a shrug.
+# Fill: write your fields as "path: value" lines to work/handoffs/S6-qa-runner-1.values.yaml in one Write, or run handoff_check.py --file work/handoffs/S6-qa-runner-1.yaml --fix --values - (Bash); a Write over this form is refused, and while that file waits an Edit here is refused too.
+schema_version: 1
+contract: s6-runner-to-analyst
+stage: S6
+from_role: qa-runner
+to_role: qa-failure-analyst
+
+inputs:
+  - path: work/handoffs/S6-qa-runner-1.yaml
+    what: this file
+    required: true
+  - path: work/run-report.json
+    what: the whole-story report, reduced by finalize_task.py and never hand-written
+    required: true
+  - path: work/automation-manifest.json
+    what: the instances the rows join to, with their cases and obligations
+    required: true
+  - path: work/evidence/
+    what: the artifact behind every row - logs, screenshots, manual observations
+    required: true
+  - path: test-plan.md
+    what: each row's oracle
+    required: true
+
+inputs_read:
+  - path: work/handoffs/<the automator's file>.yaml
+    version: S5-qa-automator-7
+    instances_handed: 18
+  - path: work/handoffs/<the designer's manual file>.yaml
+    version: S4-qa-case-designer-2
+    manual_cases_handed: 0
+  - path: work/handoffs/S5-qa-code-critic-7.yaml
+    version: S5-qa-code-critic-7
+
+header:
+  role: qa-runner
+  stage: S6
+  window: CART-1
+  verdict: concerns
+
+run:
+  execution_status: failed
+  report: work/run-report.json
+  witness: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json exit_code 1, tests 18, passed 17, failures 1 (TC_009 red on purpose)
+  environment: local
+  application_build: "MyBooks checkout HEAD a25b0801669b97d76f96f5a981fdc9ad4525d63d, node process on :3000"
+  probe_before: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+  probe_after: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+  totals: passed 34 / failed 2 / not_run 6 (story-wide, ghosts included)
+  # The reduced report counts every attempt the story ever made: on REF-1 `totals` read
+  # 69 not_run beside a current window of 20 rows. The next role is answering about THIS window,
+  # so the window's own numbers travel beside the story's.
+  window_totals: passed 17 / failed 1 / error 0 / skipped 0 / not_run 0
+
+# One row per item executed or deliberately not executed. `state` from vocabulary.row_states:
+# passed, failed, error, skipped, not_run, passed_green (a reused receipt), inconclusive,
+# manual_skipped, env_blocked, broken_run, timeout.
+scope:
+  - id: CART-1_TC_001
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_001
+    obligations: OB-1
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_002
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_002
+    obligations: OB-2
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_003
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_003
+    obligations: OB-3
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_004
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_004
+    obligations: OB-4
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_005
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_005
+    obligations: OB-5
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_006
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_006
+    obligations: OB-6
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_007
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_007
+    obligations: OB-7
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_008
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_008
+    obligations: OB-8
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_009
+    state: red  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: Then 2 red, contradicts_requirement R-15, no items in quote
+    case: CART-1_TC_009
+    obligations: OB-9
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+  - id: CART-1_TC_010
+    state: passed  # `blocked` needs `blocked.problem` below; the stand's word is `blocked_by_env`; a factory refusal of your run is `header.verdict: halt`
+    reason: passed in fresh run
+    case: CART-1_TC_010
+    obligations: OB-10
+    executed: fresh
+    rerun_reason: fixture and spec bytes moved
+    evidence: qa-factory/artifacts/CART-1/evidence/runs/2605aa2460823ce36b05/initial-2605aa2460823ce36b05-20261031-114752.json
+    duration: 43s whole run
+
+# Manual-agent observations, compared with the Then as the case quoted it. This is the section
+# that makes `inconclusive` an answer instead of an improvisation.
+manual_observations:
+  - case: <case id>
+    then: "<the expectation, quoted from the case>"
+    observed: "<what was actually seen, in the product's own terms>"
+    before_change: "<the record's before_change - r, value, ref and source claim or not_recorded - as built by code; not_recorded is never read as unchanged>"
+    result: <passed|failed|inconclusive|manual_skipped>
+    evidence: <path>
+    why_inconclusive: <what the observation failed to settle, when it did>
+
+# Rows blocked by the stand. Every one names the remedy - names only, never a value - and the
+# `env_probe.py` line that failed.
+env_blocked:
+  - id: <instance or case id>
+    probe_line: <the env_probe check that failed, verbatim>
+    remedy: <the exact change, by name>
+    owner: <factory|user>
+
+# Rows that exist in the report but are not evidence about this story: a ghost the reducer could
+# not join, superseded by a rerun under the real instance ids.
+superseded:
+  - row: 6 unprefixed not_run ghost rows from earlier blocks
+    superseded_by: file-prefixed rows of block 2605aa2460823ce36b05 (reparsed)
+    note: "a rerun is a repair, not an attempt anyone has to waive"
+
+claims:
+  every_row_carries_an_evidence_path: true
+  every_blocked_row_names_a_remedy_and_the_probe_line: true
+  no_comparison_was_fabricated_where_before_evidence_is_missing: true
+  handed_and_manual_human_cases_are_absent_by_design: true
+  the_report_was_reduced_by_code_not_written: true
+
+expected_of_the_receiver:
+  - "triage every `failed`, every `error`, and every `inconclusive` - an inconclusive check has
+     an owner and a next step and never reaches gate B untouched"
+  - "a red instance carrying `contradicts_requirement` goes through your rule 2d. A red on an
+     extra or different value gets the control experiment first; the expectation is never
+     adjusted to the code"
+  - "a FLAKY verdict needs three isolated reruns of that one test and a named mechanism"
+
+unresolved:
+  - id: <instance or case id>
+    reason: <one of vocabulary.unresolved_reasons - blocked_by_check|blocked_by_env|contradicts_requirement|expectation_unconfirmed|handed_to_person|impossible|pending_implementation>
+    detail: <what exactly is missing, and what would settle it>
+
+blocked:
+  field: <the field of this file the role cannot fill>
+  problem: <what the role tried and what refused it, verbatim>
+  tried:
+    - <command or step, and its answer>
+  data:
+    - <path of anything the conductor needs to see>

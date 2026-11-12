@@ -1,0 +1,158 @@
+header.verdict: concerns
+inputs_read[0].version: factory-starter-v1
+inputs_read[0].rows: 12
+inputs_read[1].version: register-CART-1-16-ids
+scope[0].id: CART-1_TC_001
+scope[0].state: created
+scope[0].reason: unknown book and stock 0 partitions
+scope[0].plan_row: TS-1
+scope[0].obligations: "OB-1"
+scope[0].requirements: "R-3"
+scope[0].case_version: pending-pin
+scope[0].origin: new
+scope[0].reuse_of: "-"
+scope[0].disposition: automate
+scope[0].design_review_required: false
+scope[0].self_probe: two partitions and cart read-back
+scope[1].id: CART-1_TC_002
+scope[1].state: created
+scope[1].reason: stock boundary with persisted rows
+scope[1].plan_row: TS-2
+scope[1].obligations: "OB-2"
+scope[1].requirements: "R-4"
+scope[1].case_version: pending-pin
+scope[1].origin: new
+scope[1].reuse_of: "-"
+scope[1].disposition: automate
+scope[1].design_review_required: false
+scope[1].self_probe: equal and plus one with read-back
+scope[2].id: CART-1_TC_003
+scope[2].state: created
+scope[2].reason: repeat add one row
+scope[2].plan_row: TS-3
+scope[2].obligations: "OB-3"
+scope[2].requirements: "R-5"
+scope[2].case_version: pending-pin
+scope[2].origin: new
+scope[2].reuse_of: "-"
+scope[2].disposition: automate
+scope[2].design_review_required: false
+scope[2].self_probe: 1 then 2 tells sum from replace
+scope[3].id: CART-1_TC_004
+scope[3].state: created
+scope[3].reason: validation boundaries and error shape
+scope[3].plan_row: TS-4
+scope[3].obligations: "OB-4"
+scope[3].requirements: "R-6"
+scope[3].case_version: pending-pin
+scope[3].origin: new
+scope[3].reuse_of: "-"
+scope[3].disposition: automate
+scope[3].design_review_required: false
+scope[3].self_probe: BVA 0/1/999/1000 and no 5xx
+scope[4].id: CART-1_TC_005
+scope[4].state: created
+scope[4].reason: guest vs account vs other guest
+scope[4].plan_row: TS-5
+scope[4].obligations: "OB-5"
+scope[4].requirements: "R-7"
+scope[4].case_version: pending-pin
+scope[4].origin: new
+scope[4].reuse_of: "-"
+scope[4].disposition: automate
+scope[4].design_review_required: true
+scope[4].self_probe: positive control plus payload inspection
+scope[5].id: CART-1_TC_006
+scope[5].state: created
+scope[5].reason: merge max cap and drop
+scope[5].plan_row: TS-6
+scope[5].obligations: "OB-6"
+scope[5].requirements: "R-8"
+scope[5].case_version: pending-pin
+scope[5].origin: new
+scope[5].reuse_of: "-"
+scope[5].disposition: automate
+scope[5].design_review_required: true
+scope[5].self_probe: max vs sum both directions and cap and stock 0
+scope[6].id: CART-1_TC_007
+scope[6].state: created
+scope[6].reason: PUT set and over stock and DELETE
+scope[6].plan_row: TS-7
+scope[6].obligations: "OB-7"
+scope[6].requirements: "R-11"
+scope[6].case_version: pending-pin
+scope[6].origin: new
+scope[6].reuse_of: "-"
+scope[6].disposition: automate
+scope[6].design_review_required: false
+scope[6].self_probe: set vs add told apart
+scope[7].id: CART-1_TC_008
+scope[7].state: created
+scope[7].reason: foreign item 404 and unchanged
+scope[7].plan_row: TS-8
+scope[7].obligations: "OB-8"
+scope[7].requirements: "R-12"
+scope[7].case_version: pending-pin
+scope[7].origin: new
+scope[7].reuse_of: "-"
+scope[7].disposition: automate
+scope[7].design_review_required: true
+scope[7].self_probe: before and after read plus positive control
+scope[8].id: CART-1_TC_009
+scope[8].state: created
+scope[8].reason: quote reads cart and order clears
+scope[8].plan_row: TS-9
+scope[8].obligations: "OB-9"
+scope[8].requirements: "R-15"
+scope[8].case_version: pending-pin
+scope[8].origin: new
+scope[8].reuse_of: "-"
+scope[8].disposition: automate
+scope[8].design_review_required: true
+scope[8].self_probe: quote vs cart read-back
+scope[9].id: CART-1_TC_010
+scope[9].state: created
+scope[9].reason: card add badge and cart page
+scope[9].plan_row: TS-10
+scope[9].obligations: "OB-10"
+scope[9].requirements: "R-1, R-2, R-10"
+scope[9].case_version: pending-pin
+scope[9].origin: new
+scope[9].reuse_of: "-"
+scope[9].disposition: automate
+scope[9].design_review_required: false
+scope[9].self_probe: content asserted and badge cross-read
+scope[10].id: CART-1_TC_011
+scope[10].state: created
+scope[10].reason: manual ui detail page
+scope[10].plan_row: TS-11
+scope[10].obligations: "OB-11"
+scope[10].requirements: "R-1, R-2"
+scope[10].case_version: pending-pin
+scope[10].origin: new
+scope[10].reuse_of: "-"
+scope[10].disposition: manual-agent
+scope[10].design_review_required: false
+scope[10].self_probe: ui evidence policy copied
+scope[11].id: CART-1_TC_012
+scope[11].state: created
+scope[11].reason: manual ui wishlist move
+scope[11].plan_row: TS-12
+scope[11].obligations: "OB-12"
+scope[11].requirements: "R-14"
+scope[11].case_version: pending-pin
+scope[11].origin: new
+scope[11].reuse_of: "-"
+scope[11].disposition: manual-agent
+scope[11].design_review_required: false
+scope[11].self_probe: both lists re-read after reload
+review_scope.cases: "CART-1_TC_005, CART-1_TC_006, CART-1_TC_008, CART-1_TC_009"
+review_scope.rounds_used: 0
+review_scope.focus: [TC_006 stock lowering via test seed endpoint unverified on the stand; TC_009 quote and order paths left to S5 from spec.ts:576; defect_class taken from the plan hypothesis prefix]
+artifacts.cases_root: test-cases
+artifacts.appendix: "-"
+claims.every_case_bearing_plan_row_has_at_least_one_case: true
+claims.every_case_quotes_its_rows_obligation_ids: true
+claims.every_case_in_scope_is_pinned_and_the_version_is_named: false
+claims.every_case_names_the_requirement_it_proves_not_a_test: true
+claims.existing_cases_were_checked_before_new_ones_were_written: true

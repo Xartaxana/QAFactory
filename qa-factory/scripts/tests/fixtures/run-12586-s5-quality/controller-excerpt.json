@@ -1,0 +1,10 @@
+{
+  "required_quality_checks": [
+    "ticket_adapter",
+    "test_repo",
+    "vcs",
+    "config_schema"
+  ],
+  "source_revision": "c794619b0dbdf91eda66a060ce9e306ed7adc4a83b3df49ad3cd225154b3577c",
+  "coverage_contract_version": 2
+}

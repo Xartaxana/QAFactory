@@ -1,0 +1,12 @@
+qa-case-critic S4 S4-qa-case-critic-1 · ok
+LOCAL-1_TC_005 · reviewed · P-cap guest A=12 over stock 10 unreachable via add
+LOCAL-1_TC_006 · reviewed · Then 2 cannot fail; lower level impossible (login page)
+LOCAL-1_TC_007 · reviewed · openapi gives 201 and sum, but Thens defer to Q4
+LOCAL-1_TC_009 · reviewed · codes named by R-7 left to raised question; reset call unnamed
+LOCAL-1_TC_011 · reviewed · R-9 values not written; foreign refusal code has no source
+LOCAL-1_TC_012 · reviewed · UI Then 3 in an api row; cannot fail as worded
+LOCAL-1_TC_013 · reviewed · badge/total values left to Q4; lower level impossible (UI)
+LOCAL-1_TC_014 · reviewed · account cart before sign-in unstated; no evidence policy
+LOCAL-1_TC_015 · reviewed · covers R-8 with no step; merge pairs with TC_008/010 kept (P19)
+LOCAL-1_TC_016 · reviewed · Thens are Q4 placeholders; no evidence policy
+state/story-case-links.json

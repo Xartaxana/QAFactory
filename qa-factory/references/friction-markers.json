@@ -1,0 +1,18 @@
+{
+  "about": "How scripts/friction.py recognises a turn spent fighting the factory's own code (FR-55). Closed variety: the spellings OUR scripts, hooks and validators use when they refuse a call (FR-13). Read by code, judged by nobody: a spelling this file does not hold is not counted, so the retro says 'friction' only for what it can name. traceback, guard_markers and validator_head_phrases are matched against the lower-cased result text; stand_markers and usage_regex against the original text.",
+  "traceback": "traceback (most recent call last)",
+  "stand_markers": ["\"execution_status\": \"broken_run\"", "\"error_head\""],
+  "guard_markers": ["pre-tool guard", "hook error"],
+  "usage_regex": "usage: [a-z_]+\\.py [-\\[]",
+  "validator_head_phrases": [
+    "is not ready", "unsupported value", "missing required", "missing source_sha",
+    "is refused", "refuses", "file does not exist"
+  ],
+  "validator_head_chars": 300,
+  "listing_prefix": "1\t",
+  "adhoc_path_regexes": [
+    "(?i)[\\\\/](_[a-z0-9_]+\\.py|tmp[a-z0-9_]*\\.py|patch[a-z0-9_]*\\.py)$",
+    "\\b_(patch|try|tmp|fix)[a-z0-9_]*\\.py"
+  ],
+  "project_test_regex": "(?i)^(test_[a-z0-9_]+|[a-z0-9_]+_test)\\.py$"
+}

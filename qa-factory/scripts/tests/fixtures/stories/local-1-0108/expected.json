@@ -1,0 +1,165 @@
+{
+ "stages": {
+  "S0": {
+   "outcome": "accepted",
+   "handed": [],
+   "source": "events.jsonl seq 1 stage_transition done"
+  },
+  "S1": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S1-qa-scout-1.yaml",
+    "work/context-bundle.json",
+    "work/context-manifest.json",
+    "work/impl-diff.txt",
+    "work/source-inventory.json"
+   ],
+   "dispatch": "S1-qa-scout-1",
+   "source": "events.jsonl seq 9 accept; handed: required inputs of work/handoffs/S1-qa-scout-1.yaml",
+   "refused": [
+    {
+     "stage": "S1",
+     "seq": 6,
+     "status": "blocked",
+     "reason": "source review awaiting the person"
+    }
+   ]
+  },
+  "S2": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S2-qa-requirements-tester-1.yaml",
+    "work/requirements-register.md",
+    "work/requirements-readiness.json",
+    "understanding.md",
+    "work/sizing.json"
+   ],
+   "dispatch": "S2-qa-requirements-tester-1",
+   "source": "events.jsonl seq 14 accept; handed: required inputs of work/handoffs/S2-qa-requirements-tester-1.yaml"
+  },
+  "S3": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S3-qa-test-strategist-3.yaml",
+    "work/test-plan.json",
+    "test-plan.md",
+    "work/requirements-register.md"
+   ],
+   "dispatch": "S3-qa-test-strategist-3",
+   "source": "events.jsonl seq 43 accept; handed: required inputs of work/handoffs/S3-qa-test-strategist-3.yaml"
+  },
+  "S4": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S4-qa-case-designer-3.yaml",
+    "<cases_root>/<area>/<case>.md",
+    "work/test-plan.json",
+    "work/requirements-register.md",
+    "state/story-case-links.json"
+   ],
+   "dispatch": "S4-qa-case-designer-3",
+   "source": "events.jsonl seq 47 accept; handed: required inputs of work/handoffs/S4-qa-case-designer-3.yaml"
+  },
+  "gateA": {
+   "decision": "approve",
+   "recorded_action": "approve_plan_and_cases",
+   "status": "approved",
+   "words": [
+    "gate-a-answer-1.txt",
+    "gate-a-decision.txt"
+   ],
+   "source": "events.jsonl seq 48 decision; state/words/gate-a-answer-1.txt, state/words/gate-a-decision.txt"
+  },
+  "S5": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/<the automator's dispatch>.yaml",
+    "work/automation-manifest.json",
+    "work/test-cases/<area>/<case>.md"
+   ],
+   "dispatch": "S5-qa-code-critic-14",
+   "source": "events.jsonl seq 234 accept; handed: required inputs of work/handoffs/S5-qa-code-critic-14.yaml",
+   "refused": [
+    {
+     "stage": "S5",
+     "seq": 71,
+     "status": "incomplete",
+     "reason": "manifest instance ids differ from the run report ids: manifest has 'LOCAL-1_TC_004 cart unit price...' while window_record reads the test as 'cart.spec.@api @regression LOCAL-1_TC_004 cart unit price."
+    },
+    {
+     "stage": "S5",
+     "seq": 227,
+     "status": "incomplete",
+     "reason": "Manifest rows of TC_020 and TC_021 carry obligation_refs without obligation_hash (coverage v2 needs exact hashes of the approved plan obligations OB-21, OB-22); author sets them through manifest_put.p"
+    }
+   ]
+  },
+  "S6": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S6-qa-runner-2.yaml",
+    "work/run-report.json",
+    "work/automation-manifest.json",
+    "work/evidence/",
+    "test-plan.md"
+   ],
+   "dispatch": "S6-qa-runner-2",
+   "source": "events.jsonl seq 243 accept; handed: required inputs of work/handoffs/S6-qa-runner-2.yaml"
+  },
+  "S7": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S7-qa-failure-analyst-2.yaml",
+    "work/triage.json",
+    "work/automation-manifest.json",
+    "<the evidence paths named per repair>"
+   ],
+   "dispatch": "S7-qa-failure-analyst-2",
+   "source": "events.jsonl seq 256 accept; handed: required inputs of work/handoffs/S7-qa-failure-analyst-2.yaml"
+  },
+  "S8": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S8-qa-bug-reporter-1.yaml",
+    "work/bug-drafts/"
+   ],
+   "dispatch": "S8-qa-bug-reporter-1",
+   "source": "work/delivery-summary.json delivery_verdict",
+   "delivery": "no"
+  },
+  "gateB": {
+   "decision": "approve",
+   "recorded_action": "approve_delivery",
+   "status": "approved",
+   "words": [
+    "gateB-20261102-approved.txt",
+    "gateB-20261102-merge-bugs.txt"
+   ],
+   "source": "events.jsonl seq 263 decision; state/words/gateB-20261102-approved.txt, state/words/gateB-20261102-merge-bugs.txt"
+  },
+  "S9": {
+   "outcome": "accepted",
+   "handed": [
+    "work/handoffs/S9-qa-retro-analyst-1.yaml",
+    "retro.md",
+    "work/retro-numbers.json"
+   ],
+   "dispatch": "S9-qa-retro-analyst-1",
+   "source": "events.jsonl seq 271 accept; handed: required inputs of work/handoffs/S9-qa-retro-analyst-1.yaml"
+  }
+ },
+ "amendments": [
+  {
+   "stage": "gateA",
+   "field": "decision",
+   "recorded": "approve",
+   "expected": "refused",
+   "names": [
+    "critic has not reviewed"
+   ],
+   "why": "the run passed gate A with cases the case critic never saw in their final form (designer round 3 accepted after critic round 2), no waiver recorded; RN1-20 (0.10.9) came from this run and refuses it",
+   "ref": "docs/tasks/specs/reviews/td-15-local-1-0108-reds.md; commit 08e788add (2026-11-03)",
+   "accepted_by": "Lead, 2026-11-11"
+  }
+ ]
+}

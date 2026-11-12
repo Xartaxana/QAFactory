@@ -1,0 +1,40 @@
+{
+  "note": "Settings of scripts/role_load.py and audit A22 (role start load). threshold_tokens is PROVISIONAL until threshold_confirmed_by carries \"owner, <date>\": while it is null, a role over the threshold prints an A22 info line and never turns the audit red. ratchet_tokens is a SHRINK-ONLY bound per role, at the maximum role_load.py --all measured when A22 replaced the byte caps (A22 42,000 B per role and A25 58,000 B): a role over its row is a red A22 whatever the threshold says; a row only ever goes DOWN, and a raise is named in the verdict (AR-20). ratchet_slack_tokens is how far a row may sit above the measured load before audit A22-K8 says it is not tight (the slack that lets a small, honest growth of a layer land without editing 12 rows; a row stays at the measured maximum and a raise beyond the slack is unnamed and red). The process ratchet (the per-role object below) is the SHRINK-ONLY, slack-0 bound per role (one row for EVERY agents/*.md) on the tokens of its load that are not craft: a section is craft only under a kind: craft marker comment line above its heading, everything else is process; process above its row, below its row, a missing row or a stale row turns A22 red (spec t-1765 2.3). target_tokens is the aimed-at tokens of factory text a role carries, INFORMATIONAL until target_confirmed_by carries owner, <date>. bytes_per_token converts bytes to tokens (ceil). host_base_tokens is the host's own system prompt and tool schemas in the first request of a role; null until a live run calibrates it - the first-request control then reads not_calibrated, never ok. allowances are what a per-story layer is counted as when no story is named (the packet and the launch card; the brief counts at its ceiling, brief_pack.BRIEF_MAX_BYTES; side files of the brief are not counted without a story). control_tolerance_percent is the gap between the first request in the cost file and the sum role_load.py predicted for it.",
+  "threshold_tokens": 25000,
+  "threshold_confirmed_by": null,
+  "bytes_per_token": 4,
+  "host_base_tokens": null,
+  "allowances": {"packet": 5400, "launch": 2000},
+  "control_tolerance_percent": 15,
+  "ratchet_slack_tokens": 1000,
+  "ratchet_tokens": {
+    "qa-scout": 15437,
+    "qa-requirements-tester": 12630,
+    "qa-test-strategist": 16925,
+    "qa-case-designer": 13320,
+    "qa-case-critic": 18296,
+    "qa-automator": 20181,
+    "qa-code-critic": 19389,
+    "qa-runner": 16124,
+    "qa-failure-analyst": 18361,
+    "qa-bug-reporter": 14799,
+    "qa-doc-scribe": 17944,
+    "qa-retro-analyst": 14075
+  },
+  "process_ratchet_tokens": {
+    "qa-scout": 13975,
+    "qa-requirements-tester": 11280,
+    "qa-test-strategist": 15396,
+    "qa-case-designer": 12083,
+    "qa-case-critic": 15929,
+    "qa-automator": 18614,
+    "qa-code-critic": 17566,
+    "qa-runner": 14433,
+    "qa-failure-analyst": 16336,
+    "qa-bug-reporter": 13919,
+    "qa-doc-scribe": 16954,
+    "qa-retro-analyst": 13206
+  },
+  "target_tokens": 6000,
+  "target_confirmed_by": ""
+}

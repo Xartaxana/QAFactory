@@ -1,0 +1,14 @@
+[
+ {
+  "kind": "role",
+  "role": "qa-runner",
+  "resume": false,
+  "prompt": "You are qa-runner. Ticket: QA-9. Dispatch: S6-qa-runner-1.\nArtifacts dir: qa-factory/artifacts/QA-9/\nInputs:\n  qa-factory/artifacts/QA-9/work/automation-manifest.json\n  qa-factory/artifacts/QA-9/state/story-case-links.json\n  qa-factory/artifacts/QA-9/work/first-look.yaml\n  Rework reason: manual block\nRead qa-factory/artifacts/QA-9/work/briefs/S6-qa-runner-1.md first; it names the files and the commands.\nReturn your digest line only.\nDispatch scope (one digest line per item): TC-1, TC-2, TC-3\nExecution kind: manual — execute the approved manual-agent cases in this block, record each observation as manual evidence, then `finalize_task.py <task root>`.\nPrepared requests, one per case (read the one of each case; never rebuild it): work/evidence/manual/TC-1/request.json, work/evidence/manual/TC-2/request.json, work/evidence/manual/TC-3/request.json\nEnvironment: local\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ },
+ {
+  "kind": "role",
+  "role": "qa-runner",
+  "resume": false,
+  "prompt": "You are qa-runner. Ticket: QA-9. Dispatch: S6-qa-runner-2.\nArtifacts dir: qa-factory/artifacts/QA-9/\nInputs:\n  qa-factory/artifacts/QA-9/work/automation-manifest.json\n  qa-factory/artifacts/QA-9/state/story-case-links.json\n  qa-factory/artifacts/QA-9/work/first-look.yaml\n  Rework reason: manual block\nRead qa-factory/artifacts/QA-9/work/briefs/S6-qa-runner-2.md first; it names the files and the commands.\nReturn your digest line only.\nDispatch scope (one digest line per item): TC-4\nExecution kind: manual — execute the approved manual-agent cases in this block, record each observation as manual evidence, then `finalize_task.py <task root>`.\nPrepared requests, one per case (read the one of each case; never rebuild it): work/evidence/manual/TC-4/request.json\nEnvironment: local\nPlugin root: <plugin> — factory scripts are `python <plugin>/scripts/<name>.py`; the rule layer is in your system prompt, do not read the plugin's files.\nYour final message is the handoff form only:\n<role> <stage> <window or scope> · ok|concerns|halt|impossible\n<id> · <state> · <reason ≤ 80 chars>   (one line per item in scope)\n<task-relative path of the artifact>"
+ }
+]

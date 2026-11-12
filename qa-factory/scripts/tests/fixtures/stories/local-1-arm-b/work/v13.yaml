@@ -1,0 +1,28 @@
+header.verdict: ok
+"scope[0].id": LOCAL-1_TC_019
+"scope[0].state": green
+"scope[0].reason": both failure modes show an error, no success, badge and cart agree
+"scope[0].origin": new
+"scope[0].case_version": cv_42197f7763d53d7d627e
+"scope[0].obligations": ["OB-19"]
+"scope[1].id": LOCAL-1_TC_020
+"scope[1].state": green
+"scope[1].reason": failed add and failed book read handled in both modes
+"scope[1].origin": new
+"scope[1].case_version": cv_2c77502f513509930339
+"scope[1].obligations": ["OB-20"]
+artifacts.runtime_provenance: evidence/runtime-provenance-web-20261105T063652Z.json
+artifacts.tests: ["tests/e2e/cart/add_to_cart.spec.ts", "core/pages/BookDetailPage.ts"]
+artifacts.run_witness: qa-factory/artifacts/LOCAL-1/evidence/runs/01a8c35f4e7e7776a658/repair_verify-01a8c35f4e7e7776a658-20261105-073603.json
+artifacts.probes: []
+claims.every_case_in_scope_has_an_instance: true
+claims.every_instance_names_its_current_case_version: true
+claims.every_instance_ran: true
+claims.every_expectation_change_after_red_is_recorded: true
+claims.manifest_matches_the_tests: true
+plan_remarks: []
+deviations: []
+tried: []
+tried_note: no mutation run - the product is not mine to change and the probe tool cannot flip these toast asserts; the guard lines are Then 1 error toast and Then 2 badge/cart
+unresolved: []
+for_the_reviewer: ["Both cases ran green: the failed add is handled with an error toast in both modes, so no red against R-1/R-2 here", "TC_020 Then 3 asserts main has any text, as the case words blank page judgment", "TC_019 Then 3 unroutes then clicks Add again; badge 1 proves the button works again", "shape parameterize via for-loop over error500|timeout; obligation hashes sha256 of plan obligation"]

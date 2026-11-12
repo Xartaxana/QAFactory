@@ -1,0 +1,118 @@
+{
+ "task": "LOCAL-1",
+ "label": "initial-6c78988a18cad94ba2a6",
+ "command": [
+  "node",
+  "scripts/run-playwright.mjs",
+  "--junit=<path-1>\\test-automation-framework\\qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\6c78988a18cad94ba2a6\\report.junit.xml",
+  "--project=chromium",
+  "tests/e2e/cart/cart.spec.ts",
+  "--grep",
+  "LOCAL-1_TC_021"
+ ],
+ "exit_code": 0,
+ "duration_s": 13.2,
+ "log": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\6c78988a18cad94ba2a6\\initial-6c78988a18cad94ba2a6-20261102-053713.log",
+ "headless": "1",
+ "quiet": false,
+ "started_at": "2026-11-02T04:37:13.203450+00:00",
+ "ended_at": "2026-11-02T04:37:26.446233+00:00",
+ "reporter": "junit-xml",
+ "totals": {
+  "tests": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "time_s": 4.9,
+  "passed": 1
+ },
+ "failed": [],
+ "results": [
+  {
+   "test_id": "e2e\\cart\\cart.spec.ts::@regression LOCAL-1_TC_021 a guest cart is merged at sign-in without losing items",
+   "status": "passed",
+   "reason": ""
+  }
+ ],
+ "skip_reasons": {},
+ "junitxml": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\6c78988a18cad94ba2a6\\initial-6c78988a18cad94ba2a6-20261102-053713.junit.xml",
+ "report_hash": "b8bc757eb58b16e90e8426e739dca1c9e8140fc51d7ae89d2d15ac0019472a40",
+ "report_evidence": {
+  "path": "evidence/runs/6c78988a18cad94ba2a6/initial-6c78988a18cad94ba2a6-20261102-053713.junit.xml",
+  "sha256": "b8bc757eb58b16e90e8426e739dca1c9e8140fc51d7ae89d2d15ac0019472a40"
+ },
+ "teardown": "teardown: no owned external sessions recorded",
+ "execution_status": "passed",
+ "exit_means_not_executed": null,
+ "exit_note": "no runner row recognises `node`; exit codes 2, 3, 4, 5 are read as \"nothing ran\" by the legacy rule",
+ "purpose": "initial",
+ "dispatch_id": "S5-qa-automator-13",
+ "environment": "local",
+ "stand_waited_s": 0,
+ "stand_lease": {
+  "environment": "local"
+ },
+ "node_id_notes": [
+  "node ids were not verified: the factory lists collected tests only for runners with a node-id checker (pytest); `node` ran the ids as written"
+ ],
+ "runtime_probe_before": {
+  "profile_id": "web",
+  "timestamp": "2026-11-02T04:37:04+00:00",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "person-confirmed:2026-11-02T01:26:12+00:00",
+  "evidence_refs": [
+   "<path-1>/test-automation-framework/qa-factory/artifacts/LOCAL-1/evidence/runtime-provenance-web-20261102T043704Z.json"
+  ],
+  "provenance": {
+   "technical_verification": false,
+   "identity_kind": "person_confirmed"
+  },
+  "result": "person_confirmed",
+  "person_confirmation": {
+   "words": "Da, na stende pravilnaya versiya, mozhno testirovat (MyBooks a25b080, npm run start)",
+   "at": "2026-11-02T01:26:12+00:00",
+   "task": "LOCAL-1",
+   "kind": "deployed",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "container": "",
+  "checkout": "..\\MyBooks",
+  "comparisons": []
+ },
+ "runtime_probe_after": {
+  "profile_id": "web",
+  "timestamp": "2026-11-02T04:37:27+00:00",
+  "environment_id": "local",
+  "expected_source_revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d",
+  "observed_runtime_identity": "person-confirmed:2026-11-02T01:26:12+00:00",
+  "evidence_refs": [
+   "<path-1>/test-automation-framework/qa-factory/artifacts/LOCAL-1/evidence/runtime-provenance-web-20261102T043727Z.json"
+  ],
+  "provenance": {
+   "technical_verification": false,
+   "identity_kind": "person_confirmed"
+  },
+  "result": "person_confirmed",
+  "person_confirmation": {
+   "words": "Da, na stende pravilnaya versiya, mozhno testirovat (MyBooks a25b080, npm run start)",
+   "at": "2026-11-02T01:26:12+00:00",
+   "task": "LOCAL-1",
+   "kind": "deployed",
+   "revision": "a25b0801669b97d76f96f5a981fdc9ad4525d63d"
+  },
+  "container": "",
+  "checkout": "..\\MyBooks",
+  "comparisons": []
+ },
+ "runtime_identity_unread": true,
+ "summary_path": "qa-factory\\artifacts\\LOCAL-1\\evidence\\runs\\6c78988a18cad94ba2a6\\initial-6c78988a18cad94ba2a6-20261102-053713.json",
+ "phases_s": {
+  "build_s": 0.8,
+  "stand_probe_s": 1.0,
+  "collect_s": null,
+  "before_launch_s": 7.5,
+  "pytest_s": 13.2,
+  "after_s": 1.2
+ }
+}

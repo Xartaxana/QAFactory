@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "task_id": "CART-1",
+  "triage": [
+    {
+      "test": "tests/api/cart/cart-quote-order.spec.ts::@api @regression CART-1_TC_009 quote and order from cart",
+      "instance_id": "@api @regression CART-1_TC_009 quote and order from cart",
+      "attempt_id": "2605aa2460823ce36b05",
+      "case": "CART-1_TC_009",
+      "verdict": "ASSERT_STRICTER",
+      "evidence": "evidence/control-tc009-quote-items.json",
+      "detail": "Only Then 2 (quote lists B1 x2 and B2 x1) is red, line 53; Thens 1, 3, 4, 5 green. R-15 (requirements-register.md:27): \"Checkout quote reads the owner's cart (empty or over-stock is rejected) and a successful order clears the cart\" - it asks for the quote to read the cart, not for an items array in the quote body. The documented contract (MyBooks/src/lib/openapi/spec.ts:934 Quote schema) lists only shippingMethod, promoCode, subtotal, discount, shipping, tax, total; the person's gate A ruling Q1:a makes the documented contract the expected behaviour.",
+      "control": {
+        "action": "sign in as the seed user, empty the cart, POST /api/checkout/quote (empty), POST /api/cart bookId x2, GET /api/cart, POST /api/checkout/quote",
+        "without": "the CART-1 change: the quote route is untouched by the story (last change commit b80a598, pre-existing; R-15 register status unchanged)",
+        "result": "effect_without_change",
+        "observed": "Then 2 of TC_009 (one Then of five) expects the quote body to list the cart items. The quote of a filled cart answers 200 and prices the cart (subtotal, discount, shipping, tax, total), the empty cart is rejected 400, but the body has no items array - the same with no change from this story. R-15 and the documented Quote schema do not ask for items in the quote body, so the assert asks more than the requirement; the person decides.",
+        "evidence": "evidence/control-tc009-quote-items.json"
+      }
+    }
+  ],
+  "reducer": {
+    "name": "finalize_task",
+    "sources": [
+      {
+        "id": "446b57460fbe233362ab-reparse-9e61821ee753",
+        "source": "run-blocks/446b57460fbe233362ab-reparse-9e61821ee753.json"
+      },
+      {
+        "id": "6b183c7a8fd8088f1c50",
+        "source": "run-blocks/20261031T093249959623Z-6b183c7a8fd8088f1c50.json"
+      },
+      {
+        "id": "d67215ba124bbc6b138b-reparse-f6cc89666345",
+        "source": "run-blocks/d67215ba124bbc6b138b-reparse-f6cc89666345.json"
+      },
+      {
+        "id": "4d9f931528dfe8f92f72",
+        "source": "run-blocks/20261031T101747416616Z-4d9f931528dfe8f92f72.json"
+      },
+      {
+        "id": "4bfb53e668563c7768a5",
+        "source": "run-blocks/20261031T101845416647Z-4bfb53e668563c7768a5.json"
+      },
+      {
+        "id": "c7f56259e689c93a9ddf-reparse-a0cb4a33e66f",
+        "source": "run-blocks/c7f56259e689c93a9ddf-reparse-a0cb4a33e66f.json"
+      },
+      {
+        "id": "c9286026d096394cd0e6-reparse-dba7e3576bb8",
+        "source": "run-blocks/c9286026d096394cd0e6-reparse-dba7e3576bb8.json"
+      },
+      {
+        "id": "2605aa2460823ce36b05-reparse-6022db6dd917",
+        "source": "run-blocks/2605aa2460823ce36b05-reparse-6022db6dd917.json"
+      },
+      {
+        "id": "manual-f82a6d59d3b723e90cdc",
+        "source": "manual-blocks/manual-f82a6d59d3b723e90cdc912e7bba88a8c3ca4b4281f30793a5b85e79888363ff.json"
+      },
+      {
+        "id": "manual-0e23143fcad1b614417f",
+        "source": "manual-blocks/manual-0e23143fcad1b614417fb948ee5fad7d82704eabefddc1e812637fd8e3eedfc3.json"
+      }
+    ]
+  },
+  "analyst_preserved": true
+}

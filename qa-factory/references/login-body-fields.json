@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "_note": "Closed variety of the JSON body a local_login endpoint takes (FR-13, AR-1, FB-3): the pairs of field NAMES the factory tries, in order, when environment.access.user_field and secret_field are both empty. One reader: config_contract.body_field_candidates(). The first pair is also the default of a recorded single field. A project never edits this file: it records its own names in environment.access.",
+  "pairs": [["username", "password"], ["email", "password"]]
+}

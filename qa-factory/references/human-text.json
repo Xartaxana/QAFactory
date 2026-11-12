@@ -1,0 +1,131 @@
+{
+  "schema_version": 2,
+  "note": "The machine half of references/human-questions.md: the shapes that file forbids in text the factory shows a person, as patterns `human_text.py` can look for. The prose file stays the one that explains them and is what a person writing a question reads; this file exists so the rule is also checkable. Patterns are Python regexes, matched case-sensitively unless the pattern says otherwise, and they are applied ONLY to the body - never to the question head (`head_pattern`: the machine lines the driver writes above a question), never to the `how to answer` block, where a command is an instruction to type rather than jargon (rule 5), and never to a person's own words quoted back to them. `applies_to` on a row names the kinds of text it checks: [\"question\"], [\"report\"], or both; absent means both. A report (kind `report`) is checked by these rows alone - no filler, floor or answer-block rule. A row with `kind: explained_ids` is not a presence check: the FIRST mention of each distinct id matched by `pattern` must be followed by text matching `explanation` (`{id}` in it stands for `pattern`: a comma explains an id only when another id does not follow), or stand in parentheses right after a word (`explained_in_parens`: `before` matches the text ending where the id starts, `after` the text beginning where it ends); later mentions are free. `link_explains` on such a row (`ids`: which ids it holds for; `shapes`: what a link to, or a path of, the file the id names looks like, `{token}` standing for the id itself) makes an id explained when a shape matches on the SAME line as its first mention: a case id that is the text of a link to its case file (the link target carries `/{token}` as a path segment: another case's file, a URL or an anchor explains nothing), or that stands beside that file's path, is explained by the file the person can open; a shape that matches inside a code span (an odd number of backquotes before it) does not count. Every other id keeps the rule above. A row with `except_whole` does not count a match whose text between the outer backquotes is, as a whole, that pattern (a code span that is only a file name or a path). A row with `kind: config_key_path` is a presence check that counts a match only when its FIRST name (a trailing `[...]` dropped) is a root: the part before the first dot of a key of the table `roots_table` in the reference file `roots_file` (the factory's own configuration), whose LAST name is not in `skip_last_names`, outside the lines that start with `exempt_line_prefixes`; an unreadable file means no root and the row stays silent. `action_lines` (top level) names the ACTION slots: a line that starts with one of its `prefixes` (`the fix:` / `where:` as gate_preflight renders a stand-gap card, `I propose to run` as the onboarding offers a changed test command, `To add a stand:`) may carry ONE thing the owner allowed - the command, in backquotes - and the rows named in `command_span_rows` (flag, script_name, config_key, plugin_command) do not see the backquoted spans of such a line. Nothing else on it is exempt: an exit code, a form field, a bare flag outside the backquotes are caught for every row, and every other line is the body (B-220 F3). `whole_line` keeps the t-373 rule for the config_key row: a card's `the fix:` / `where:` line writes the setting's place without quotes, and the person must see where it lives, so the whole line is that row's slot. `min_body_chars` is a floor against a filler sentence, not a length target: S9's closing question is 107 characters and complete. X7-5 splits the rows by kind for the scribe's report, by the field `report_refuses` of a row (`validate_artifacts.check_report_human_text` reads it; absent means true): a factory id or machine marker (script name, flag, form field, field assignment, refusal id, plugin path, record file, dispatch id, relayed refusal/markup/traceback, snake_case token in code quotes) is a shape and the report is refused for it; a phrase about a tool run (`exit_code`, `slash_command`: `report_refuses: false`) is a judgment of wording and is not refused in the scribe's report - what a report says in words is the scribe's craft, accepted by the tier above (AR-29). Questions and the other callers of the `report` kind keep every row.",
+  "head_pattern": "\\A#[^\\n]*\\n(?:[a-z_]+:[^\\n]*\\n)*",
+  "how_to_answer_markers": [
+    "\n---\nAnswer:",
+    "\n## How to answer",
+    "\nAnswer: write your words"
+  ],
+  "filler": [
+    "The conductor needs your word.",
+    "The factory stopped and only a person can pass it:"
+  ],
+  "min_body_chars": 60,
+  "price_lines": {"labels": ["the factory:", "you:", "the story:"], "applies_to": ["question"]},
+  "action_lines": {
+    "prefixes": ["I propose to run", "the fix:", "where:", "To add a stand:"],
+    "command_span_rows": ["flag", "script_name", "config_key", "plugin_command"],
+    "whole_line": {"config_key": ["the fix:", "where:"]},
+    "quoted_words": {"prefixes": ["On a build you confirmed"]}
+  },
+  "forbidden": [
+    {
+      "id": "relayed_refusal",
+      "pattern": "(?m)^\\s*Refusal:\\s*$",
+      "why": "a refusal is written for the role that called the script; relayed whole it is our failure to translate. Put the factory's own words in the details file and name it in the answer block."
+    },
+    {
+      "id": "script_name",
+      "pattern": "(?<![\\w/.-])[a-z][a-z0-9_]{2,}\\.py(?![\\w])",
+      "why": "a script name in the body is jargon; in the `how to answer` block it is an instruction to type"
+    },
+    {
+      "id": "flag",
+      "pattern": "(?<![\\w-])--[a-z][a-z-]{2,}",
+      "why": "a command-line flag belongs in the `how to answer` block, nowhere else"
+    },
+    {
+      "id": "form_field",
+      "pattern": "(?<![\\w.])(?:header|inputs_read|person|items|outputs|scope)\\.[a-z_]+(?:\\[\\d+\\])?(?:\\.[a-z_]+)*",
+      "why": "a form or schema field name: the person has never seen the form (`person.review_recorded` was the measured case)"
+    },
+    {
+      "id": "field_assignment",
+      "pattern": "(?<![\\w])[a-z_]{3,}\\s*[:=]\\s*(?:false|true|not filled|null)(?![\\w])",
+      "why": "a field with its machine value (`reviewed=false`, `header.verdict: not filled`) says nothing to a reader who has not seen the schema"
+    },
+    {
+      "id": "exit_code",
+      "report_refuses": false,
+      "pattern": "(?<![\\w])(?:REAL )?exit (?:code )?[0-9]+",
+      "why": "an exit code is the script's answer to the role, not a fact about the story"
+    },
+    {
+      "id": "refusal_id",
+      "pattern": "(?<![\\w-])(?:FB|PT|SG|IC|GP|A)-[A-Za-z0-9-]{2,}",
+      "why": "an internal refusal or audit id cannot be looked up by the person"
+    },
+    {
+      "id": "plugin_path",
+      "pattern": "(?:CLAUDE_PLUGIN_ROOT|ai-packages/qa-factory/(?:scripts|references|skills|agents|handoffs)/)",
+      "why": "a path inside the plugin is a place the person cannot be expected to open"
+    },
+    {
+      "id": "technical_file_named",
+      "pattern": "(?<![\\w./\\\\-])(?!/(?:usr|var|opt|srv|etc)/)[\\w./\\\\-]+\\.(?:json|jsonl|ya?ml|txt)(?![\\w])",
+      "applies_to": ["report"],
+      "why": "a JSON, YAML, JSONL or text file is the factory's own record, not a document a person reads (owner, 29.10.2026): say what the record holds in words; a screenshot and a markdown document may be named. A path on the stand itself (under /usr, /var, /opt, /srv, /etc, such as the build marker the stand serves) is the person's own system, told to them so they can open it, not a factory record. A question may name a file of the person's own project that it asks them to edit (`config.json`, `stand-identity.json`), so this row checks a report only"
+    },
+    {
+      "id": "dispatch_id",
+      "pattern": "(?<![\\w-])S[0-9]-qa-[a-z-]+-[0-9]+(?![\\w-])",
+      "why": "a dispatch id names one launch of one role; a person is asked about the story, not about a launch (TP1-13877: a halt text led with one)"
+    },
+    {
+      "id": "relayed_markup",
+      "pattern": "(?i)<!doctype html|<html[\\s>]|</(?:html|head|body|div|script|title)>|\\bcf-ray\\b",
+      "why": "an HTML page relayed as-is: it is the answer of a service to our call, not something a person can read (TP1-13877: a Cloudflare page reached the person)"
+    },
+    {
+      "id": "relayed_traceback",
+      "pattern": "Traceback \\(most recent call last\\)",
+      "why": "a stack trace is the program's answer to whoever runs it, not a fact about the story"
+    },
+    {
+      "id": "slash_command",
+      "report_refuses": false,
+      "pattern": "(?<![\\w/])/login\\b",
+      "why": "a slash command of a tool the person may not be using (TP1-13877: a login error line relayed as-is); say what is wrong and what they can do about it"
+    },
+    {
+      "id": "config_key",
+      "kind": "config_key_path",
+      "pattern": "(?<![\\w./\\\\-])[a-z][a-z0-9_]*(?:\\[[^\\]\\n]*\\])?(?:\\.[a-z][a-z0-9_]*(?:\\[[^\\]\\n]*\\])?){1,}(?![\\w])",
+      "roots_file": "config-keys.json",
+      "roots_table": "keys",
+      "skip_last_names": ["json", "jsonl", "yaml", "yml", "md", "py", "txt", "log", "xml", "toml", "ini", "cfg", "html", "csv", "sh", "js", "ts", "bak", "old", "tmp", "cmd", "com", "org", "net", "io", "dev", "edu", "gov"],
+      "applies_to": ["question"],
+      "why": "a key of the factory's own configuration (`adapters.ticket.direct_api.base_url`, `profiles[api].commands.one_test`) belongs in the `how to answer` block, where it is an instruction; in the body say `the setting named below`. A dotted path counts only when it has three or more names - or two, when the table lists that key whole (`environment.access`); `external_writes.bugs` is a root and a word - (a name may carry a `[...]` selector), its FIRST name is a root of the factory's own configuration (`roots_table` of `roots_file`: the first names of the keys of references/config-keys.json, so a new key is a data line there) and its LAST name is not one of `skip_last_names` (a file extension or a top-level domain: a file or a host, not a key); any other dotted name - an image label (`org.opencontainers.image.revision`), a host name, a module path - is a fact about the person's world and is left alone. A card's `the fix:` / `where:` line is that row's action slot (see the top-level `action_lines`) and is not the body. t-363 B3: the config question carried the adapter's key names in its body"
+    },
+    {
+      "id": "plugin_command",
+      "pattern": "(?<![\\w/])/qa-factory:[a-z][a-z0-9-]*",
+      "applies_to": ["question"],
+      "why": "a command of the plugin (`/qa-factory:qa-onboarding`) is something to type, so it belongs in the `how to answer` block, never in the body (t-363 B3)"
+    },
+    {
+      "id": "snake_token",
+      "pattern": "`[^`\\n]*(?<![\\w.-])[a-z]+(?:_[a-z0-9]+)+(?![\\w])[^`\\n]*`",
+      "except_whole": "(?:[\\w.-]+[/\\\\])*[\\w-][\\w.-]*\\.[A-Za-z0-9]+",
+      "applies_to": ["report"],
+      "why": "a ledger state or field name inside code quotes (`review_rejected`, `run-report.json: execution_status ...`): say what happened in words, the state stays in the ledger"
+    },
+    {
+      "id": "explained_ids",
+      "kind": "explained_ids",
+      "pattern": "(?<![\\w-])(?:SURF|OBL|TS|TC|SRC|REQ)-[0-9A-Za-z_]+",
+      "explanation": "^[`*_]*[ \\t]*(?:\\(|—|–|-\\s|:\\s|,\\s+(?![`*_\\[]*{id}))",
+      "explained_in_parens": {"before": "\\w[ \\t]*\\($", "after": "^[ \\t]*\\)"},
+      "link_explains": {
+        "ids": "^TC-",
+        "shapes": [
+          "\\[[`*_]*{token}[`*_]*\\]\\([^)\\s]*/{token}(?!\\w)[^)\\s]*\\)",
+          "[/\\\\]{token}(?!\\w)[\\w.-]*\\.md\\b"
+        ]
+      },
+      "applies_to": ["question"],
+      "why": "an internal row id the person cannot look up: where it first appears, say what it is - `TS-14 (the import size limit)`, `TS-14 - the import size limit`, `TS-14: the import size limit`, `TS-14, the import size limit,` or `the import size limit (TS-14)`"
+    }
+  ]
+}

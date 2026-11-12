@@ -1,0 +1,34 @@
+<testsuites id="" name="" tests="10" failures="0" skipped="0" errors="0" time="16.779967">
+<testsuite name="api\cart\add-to-cart.spec.ts" timestamp="2026-11-02T23:30:06.406Z" hostname="chromium" tests="10" failures="0" skipped="0" time="11.619" errors="0">
+<testcase name="@regression LOCAL-1_TC_001 P-guest-qty1 guest add of one book appears in the cart read" classname="api\cart\add-to-cart.spec.ts" time="0.371">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_001 P-user-qty3 signed-in add of three appears in the cart read" classname="api\cart\add-to-cart.spec.ts" time="2.215">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_001 P-merge guest cart is in the account cart after the sign-in merge" classname="api\cart\add-to-cart.spec.ts" time="2.142">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_007 add of an unknown book id is refused with a stable error shape, cart unchanged" classname="api\cart\add-to-cart.spec.ts" time="0.435">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_008 add of an out-of-stock book is refused, stock-1 boundary accepted" classname="api\cart\add-to-cart.spec.ts" time="0.472">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_009 add beyond stock is refused for an empty cart and an existing line" classname="api\cart\add-to-cart.spec.ts" time="0.519">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_010 repeat add of the same book sums quantities in one line" classname="api\cart\add-to-cart.spec.ts" time="0.368">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_011 invalid quantity and book id payloads are rejected, edges 1 and 999 accepted" classname="api\cart\add-to-cart.spec.ts" time="0.561">
+</testcase>
+<testcase name="@regression LOCAL-1_TC_012 guest and user carts are isolated" classname="api\cart\add-to-cart.spec.ts" time="2.167">
+<properties>
+<property name="sessions" value="G1 guest-session=none user=none | G2 guest-session=none user=none | U guest-session=none user=qa.cart.mvzw66mmxku9.0.2@example.com | G3 guest-session=none user=none">
+</property>
+<property name="g3-change-status" value="404">
+</property>
+</properties>
+</testcase>
+<testcase name="@regression LOCAL-1_TC_013 guest cart merge on login follows the confirmed quantity, stock and zero-stock rules" classname="api\cart\add-to-cart.spec.ts" time="2.369">
+<properties>
+<property name="sessions" value="account jar guest-session=none user=qa.cart.mvzw68b3zs8w.0.5@example.com | merging jar guest-session=9c55d9d6-0551-42f4-9906-a0b39db0729c user=qa.cart.mvzw68b3zs8w.0.5@example.com">
+</property>
+</properties>
+</testcase>
+</testsuite>
+</testsuites>
